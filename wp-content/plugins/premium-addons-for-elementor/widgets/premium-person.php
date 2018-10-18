@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Person_Widget extends Widget_Base
-{
+class Premium_Person extends Widget_Base {
     public function get_name() {
         return 'premium-addon-person';
     }
@@ -37,6 +36,7 @@ class Premium_Person_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Image', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::MEDIA,
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => [
                         'url'	=> Utils::get_placeholder_image_src()
                 ],
@@ -515,8 +515,7 @@ class Premium_Person_Widget extends Widget_Base
         
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
         
@@ -561,5 +560,87 @@ class Premium_Person_Widget extends Widget_Base
 </div>
     <?php
     }
+    
+    protected function _content_template() {
+        ?>
+        <#
+        
+        view.addInlineEditingAttributes('premium_person_name');
+        
+        view.addInlineEditingAttributes('premium_person_title');
+        
+        view.addInlineEditingAttributes('premium_person_content', 'advanced');
+        
+        var nameHeading = settings.premium_person_name_heading,
+        
+        titleHeading = settings.premium_person_title_heading,
+        
+        imageEffect = 'premium-person-' + settings.premium_person_hover_image_effect + '-effect' ;
+        
+        view.addRenderAttribute('container', 'class', [ 'premium-person-container', imageEffect ] );
+        
+        #>
+        
+        <div {{{ view.getRenderAttributeString('container') }}} >
+            <div class="premium-person-image-container">
+                <img src="{{ settings.premium_person_image.url}}" alt="{{ settings.premium_person_name }}">
+            </div>
+            <div class="premium-person-info">
+                <div class="premium-person-info-container">
+                    <# if( '' != settings.premium_person_name  ) { #>
+                    <{{{nameHeading}}} class="premium-person-name">
+                    <span {{{ view.getRenderAttributeString('premium_person_name') }}}>
+                        {{{ settings.premium_person_name }}}
+                    </span></{{{nameHeading}}}>
+                    <# } #>
+                    <# if( '' != settings.premium_person_title  ) { #>
+                    <{{{titleHeading}}} class="premium-person-title">
+                    <span {{{ view.getRenderAttributeString('premium_person_title') }}}>
+                        {{{ settings.premium_person_title }}}
+                    </span></{{{titleHeading}}}>
+                    <# } #>
+                    <div class="premium-person-content">
+                        <div {{{ view.getRenderAttributeString('premium_person_content') }}}>
+                            {{{ settings.premium_person_content }}}
+                        </div>
+                    </div>
+                    <ul class="premium-person-social-list">
+                        <# if( '' != settings.premium_person_facebook  ) { #>
+                            <li class="premium-person-list-item premium-person-facebook"><a href="{{ settings.premium_person_facebook }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <# } #>
+                        
+                        <# if( '' != settings.premium_person_twitter  ) { #>
+                            <li class="premium-person-list-item premium-person-twitter"><a href="{{ settings.premium_person_twitter }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                        <# } #>
+                        
+                        <# if( '' != settings.premium_person_linkedin  ) { #>
+                            <li class="premium-person-list-item premium-person-linkedin"><a href="{{ settings.premium_person_linkedin }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <# } #>
+                        
+                        <# if( '' != settings.premium_person_google  ) { #>
+                            <li class="premium-person-list-item premium-person-google"><a href="{{ settings.premium_person_google }}" target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                        <# } #>
+                        
+                        <# if( '' != settings.premium_person_pinterest  ) { #>
+                            <li class="premium-person-list-item premium-person-pinterest"><a href="{{ settings.premium_person_pinterest }}" target="_blank"><i class="fa fa-pinterest"></i></a></li>
+                        <# } #>
+                        
+                        <# if( '' != settings.premium_person_dribbble  ) { #>
+                            <li class="premium-person-list-item premium-person-dribbble"><a href="{{ settings.premium_person_dribbble }}" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                        <# } #>
+                        
+                        <# if( '' != settings.premium_person_behance  ) { #>
+                            <li class="premium-person-list-item premium-person-behance"><a href="{{ settings.premium_person_behance }}" target="_blank"><i class="fa fa-behance"></i></a></li>
+                        <# } #>
+                        
+                        <# if( '' != settings.premium_person_mail  ) { #>
+                            <li class="premium-person-list-item premium-person-mail"><a href="{{ settings.premium_person_mail }}" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                        <# } #>
+                    
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <?php 
+    }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Person_Widget());

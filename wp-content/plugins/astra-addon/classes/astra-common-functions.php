@@ -6,6 +6,34 @@
  */
 
 /**
+ * Apply CSS for the element
+ */
+if ( ! function_exists( 'astra_color_responsive_css' ) ) {
+
+	/**
+	 * Astra Responsive Colors
+	 *
+	 * @param  array  $setting      Responsive colors.
+	 * @param  string $css_property CSS property.
+	 * @param  string $selector     CSS selector.
+	 * @return string               Dynamic responsive CSS.
+	 */
+	function astra_color_responsive_css( $setting, $css_property, $selector ) {
+		$css = '';
+		if ( isset( $setting['desktop'] ) && ! empty( $setting['desktop'] ) ) {
+			$css .= $selector . '{' . $css_property . ':' . esc_attr( $setting['desktop'] ) . ';}';
+		}
+		if ( isset( $setting['tablet'] ) && ! empty( $setting['tablet'] ) ) {
+			$css .= '@media (max-width:768px) {' . $selector . '{' . $css_property . ':' . esc_attr( $setting['tablet'] ) . ';} }';
+		}
+		if ( isset( $setting['mobile'] ) && ! empty( $setting['mobile'] ) ) {
+			$css .= '@media (max-width:544px) {' . $selector . '{' . $css_property . ':' . esc_attr( $setting['mobile'] ) . ';} }';
+		}
+		return $css;
+	}
+}
+
+/**
  * Get Font Size value
  */
 if ( ! function_exists( 'astra_responsive_font' ) ) {
@@ -164,3 +192,43 @@ if ( ! function_exists( 'astra_get_background_obj' ) ) {
 		return $gen_bg_css;
 	}
 }
+
+
+/**
+ * Search Form
+ */
+if ( ! function_exists( 'astra_get_search_form' ) ) :
+	/**
+	 * Display search form.
+	 *
+	 * @param bool $echo Default to echo and not return the form.
+	 * @return string|void String when $echo is false.
+	 */
+	function astra_get_search_form( $echo = true ) {
+
+		$form = '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">
+			<label>
+				<span class="screen-reader-text">' . _x( 'Search for:', 'label', 'astra-addon' ) . '</span>
+				<input type="search" class="search-field" placeholder="' . esc_attr_x( 'Search &hellip;', 'placeholder', 'astra-addon' ) . '" value="' . get_search_query() . '" name="s" />
+			</label>
+			<button type="submit" class="search-submit" value="' . esc_html__( 'Search', 'astra-addon' ) . '"><i class="astra-search-icon"></i></button>
+		</form>';
+
+		/**
+		 * Filters the HTML output of the search form.
+		 *
+		 * @param string $form The search form HTML output.
+		 */
+		$result = apply_filters( 'astra_get_search_form', $form );
+
+		if ( null === $result ) {
+			$result = $form;
+		}
+
+		if ( $echo ) {
+			echo $result;
+		} else {
+			return $result;
+		}
+	}
+endif;

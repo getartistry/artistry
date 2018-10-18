@@ -4,7 +4,7 @@ Tags: move, transfer, copy, migrate, backup, clone, restore, db migration, wordp
 Requires at least: 3.3
 Tested up to: 4.9
 Requires PHP: 5.2.17
-Stable tag: 6.73
+Stable tag: 6.77
 License: GPLv2 or later
 
 Move, transfer, copy, migrate, and backup a site with 1-click. Quick, easy, and reliable.
@@ -58,9 +58,11 @@ Mobile device compatible: All in One WP Plugin is the first plugin to offer true
 * [Backblaze B2](https://servmask.com/products/backblaze-b2-extension)
 * [Google Cloud Storage](https://servmask.com/products/google-cloud-storage-extension)
 * [Microsoft Azure Storage](https://servmask.com/products/microsoft-azure-storage-extension)
+* [Amazon Glacier](https://servmask.com/products/amazon-glacier-extension)
+* [pCloud](https://servmask.com/products/pcloud-extension)
 
 = Supported hosting providers =
-**The plugin does not have any dependancies, making it compatible with all PHP hosting providers. We support a vast range of hosting providers. Some of the most popular include:**
+**The plugin does not have any dependencies, making it compatible with all PHP hosting providers. We support a vast range of hosting providers. Some of the most popular include:**
 
 * DigitalOcean
 * Bluehost
@@ -103,6 +105,43 @@ Alternatively you can download the plugin using the download button on this page
 All-in-One WP Migration **asks for your consent** to collect **requester's email address** when filling plugin's contact form. [GDPR Compliant Privacy Policy](https://www.iubenda.com/privacy-policy/946881)
 
 == Changelog ==
+= 6.77 =
+**Added**
+
+* Support for pCloud
+
+**Fixed**
+
+* Respect user's profile language choice when localizing the plugin
+
+**Removed**
+
+* sanitize_option_siteurl and sanitize_option_home filters during import
+
+= 6.76 =
+**Added**
+
+* Support for Amazon Glacier
+* Support for BeTheme Responsive
+
+= 6.75 =
+**Fixed**
+
+* WP-CLI export/import missing data
+* Serialization in PHP 7.2
+* Missing <staticContent> entry in the web.config file
+
+= 6.74 =
+**Added**
+
+* Support for LiteSpeed web server
+* Fully localized the export, import, and restore processes
+
+**Fixed**
+
+* Table prefix replacement on import in limited corner cases
+* URL replacement in Bitnami
+
 = 6.73 =
 **Fixed**
 

@@ -28,7 +28,11 @@ if ( 'lightbox' === $link_type ) {
 	$this->add_render_attribute( $link_instance, 'data-elementor-open-lightbox', 'yes' );
 	$this->add_render_attribute( $link_instance, 'data-elementor-lightbox-slideshow', $this->get_id()  );
 } else {
+	$target = $this->__loop_item( array( 'item_target' ), '%s' );
+	$target = ! empty( $target ) ? $target : '_self';
+
 	$this->add_render_attribute( $link_instance, 'href', $this->__loop_item( array( 'item_url' ), '%s' ) );
+	$this->add_render_attribute( $link_instance, 'target', $target );
 }
 
 $this->item_counter++;
@@ -52,7 +56,9 @@ $this->item_counter++;
 					?>
 
 					<?php
-						echo $this->__loop_item( array( 'item_title' ), '<h5 class="jet-images-layout__title">%s</h5>' );
+						$title_tag = $this->__get_html( 'title_html_tag', '%s' );
+
+						echo $this->__loop_item( array( 'item_title' ), '<' . $title_tag . ' class="jet-images-layout__title">%s</' . $title_tag . '>' );
 						echo $this->__loop_item( array( 'item_desc' ), '<div class="jet-images-layout__desc">%s</div>' );
 					?>
 

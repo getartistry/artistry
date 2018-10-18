@@ -30,7 +30,7 @@ class Jet_Elements_Banner extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-17';
+		return 'jetelements-icon-10';
 	}
 
 	public function get_categories() {
@@ -76,6 +76,26 @@ class Jet_Elements_Banner extends Jet_Elements_Base {
 		);
 
 		$this->add_control(
+			'banner_title_html_tag',
+			array(
+				'label'   => esc_html__( 'Title HTML Tag', 'jet-elements' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => array(
+					'h1'   => esc_html__( 'H1', 'jet-elements' ),
+					'h2'   => esc_html__( 'H2', 'jet-elements' ),
+					'h3'   => esc_html__( 'H3', 'jet-elements' ),
+					'h4'   => esc_html__( 'H4', 'jet-elements' ),
+					'h5'   => esc_html__( 'H5', 'jet-elements' ),
+					'h6'   => esc_html__( 'H6', 'jet-elements' ),
+					'div'  => esc_html__( 'div', 'jet-elements' ),
+					'span' => esc_html__( 'span', 'jet-elements' ),
+					'p'    => esc_html__( 'p', 'jet-elements' ),
+				),
+				'default' => 'h5',
+			)
+		);
+
+		$this->add_control(
 			'banner_text',
 			array(
 				'label'   => esc_html__( 'Description', 'jet-elements' ),
@@ -88,6 +108,18 @@ class Jet_Elements_Banner extends Jet_Elements_Base {
 			array(
 				'label'   => esc_html__( 'Link', 'jet-elements' ),
 				'type'    => Controls_Manager::TEXT,
+			)
+		);
+
+		$this->add_control(
+			'banner_link_target',
+			array(
+				'label'        => esc_html__( 'Open link in new window', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => '_blank',
+				'condition'    => array(
+					'banner_link!' => '',
+				),
 			)
 		);
 
@@ -107,6 +139,7 @@ class Jet_Elements_Banner extends Jet_Elements_Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'lily',
 				'options' => array(
+					'none'   => esc_html__( 'None', 'jet-elements' ),
 					'lily'   => esc_html__( 'Lily', 'jet-elements' ),
 					'sadie'  => esc_html__( 'Sadie', 'jet-elements' ),
 					'layla'  => esc_html__( 'Layla', 'jet-elements' ),
@@ -146,6 +179,13 @@ class Jet_Elements_Banner extends Jet_Elements_Base {
 
 		$this->start_controls_tabs( 'tabs_background' );
 
+		$this->start_controls_tab(
+			'tab_background_normal',
+			array(
+				'label' => esc_html__( 'Normal', 'jet-elements' ),
+			)
+		);
+
 		$this->add_control(
 			'items_content_color',
 			array(
@@ -166,13 +206,6 @@ class Jet_Elements_Banner extends Jet_Elements_Base {
 					'{{WRAPPER}} .jet-effect-sarah ' . $css_scheme['banner_title'] . '::after' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .jet-effect-chico ' . $css_scheme['banner_content'] . '::before' => 'border-color: {{VALUE}}',
 				),
-			)
-		);
-
-		$this->start_controls_tab(
-			'tab_background_normal',
-			array(
-				'label' => esc_html__( 'Normal', 'jet-elements' ),
 			)
 		);
 
@@ -356,6 +389,32 @@ class Jet_Elements_Banner extends Jet_Elements_Base {
 			)
 		);
 
+		$this->add_responsive_control(
+			'title_alignment',
+			array(
+				'label'   => esc_html__( 'Alignment', 'jet-elements' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'default' => 'center',
+				'options' => array(
+					'left'    => array(
+						'title' => esc_html__( 'Left', 'jet-elements' ),
+						'icon'  => 'fa fa-arrow-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'jet-elements' ),
+						'icon'  => 'fa fa-align-center',
+					),
+					'right' => array(
+						'title' => esc_html__( 'Right', 'jet-elements' ),
+						'icon'  => 'fa fa-arrow-right',
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['banner_title'] => 'text-align: {{VALUE}};',
+				),
+			)
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -395,6 +454,32 @@ class Jet_Elements_Banner extends Jet_Elements_Base {
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['banner_text'] => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'text_alignment',
+			array(
+				'label'   => esc_html__( 'Alignment', 'jet-elements' ),
+				'type'    => Controls_Manager::CHOOSE,
+				'default' => 'center',
+				'options' => array(
+					'left'    => array(
+						'title' => esc_html__( 'Left', 'jet-elements' ),
+						'icon'  => 'fa fa-arrow-left',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Center', 'jet-elements' ),
+						'icon'  => 'fa fa-align-center',
+					),
+					'right' => array(
+						'title' => esc_html__( 'Right', 'jet-elements' ),
+						'icon'  => 'fa fa-arrow-right',
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['banner_text'] => 'text-align: {{VALUE}};',
 				),
 			)
 		);

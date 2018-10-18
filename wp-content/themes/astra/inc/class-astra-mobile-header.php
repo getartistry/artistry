@@ -102,7 +102,10 @@ if ( ! class_exists( 'Astra_Mobile_Header' ) ) :
 				'<a href="%1$s" class="custom-mobile-logo-link" rel="home" itemprop="url">%2$s</a>',
 				esc_url( home_url( '/' ) ),
 				wp_get_attachment_image(
-					$custom_logo_id, $size, false, array(
+					$custom_logo_id,
+					$size,
+					false,
+					array(
 						'class' => 'ast-mobile-header-logo',
 					)
 				)

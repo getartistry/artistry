@@ -1,7 +1,7 @@
 <div class="wpallimport-collapsed closed">
 	<div class="wpallimport-content-section">
 		<div class="wpallimport-collapsed-header">
-			<h3><?php _e('Order Items','wpai_woocommerce_addon_plugin');?></h3>	
+			<h3><?php _e('Order Items',PMWI_Plugin::TEXT_DOMAIN);?></h3>
 		</div>
 		<div class="wpallimport-collapsed-content" style="padding:0;">
 			<div class="wpallimport-collapsed-content-inner">
@@ -16,31 +16,31 @@
 										<ul class="product_data_tabs wc-tabs shop_order_tabs">
 
 											<li class="woocommerce-order-products-data active">
-												<a href="javascript:void(0);" rel="order_products"><?php _e('Products','wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="order_products"><?php _e('Products',PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>
 
 											<li class="woocommerce-order-fees-data">
-												<a href="javascript:void(0);" rel="order_fees"><?php _e('Fees', 'wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="order_fees"><?php _e('Fees', PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>
 
 											<li class="woocommerce-order-coupons-data">
-												<a href="javascript:void(0);" rel="order_coupons"><?php _e('Coupons', 'wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="order_coupons"><?php _e('Coupons', PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>											
 
 											<li class="woocommerce-order-shipping-data">
-												<a href="javascript:void(0);" rel="order_shipping"><?php _e('Shipping', 'wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="order_shipping"><?php _e('Shipping', PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>
 
 											<li class="woocommerce-order-taxes-data">
-												<a href="javascript:void(0);" rel="order_taxes"><?php _e('Taxes', 'wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="order_taxes"><?php _e('Taxes', PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>
 
 											<li class="woocommerce-order-refunds-data">
-												<a href="javascript:void(0);" rel="order_refunds"><?php _e('Refunds', 'wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="order_refunds"><?php _e('Refunds', PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>											
 
 											<li class="woocommerce-order-total-data">
-												<a href="javascript:void(0);" rel="order_total"><?php _e('Total', 'wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="order_total"><?php _e('Total', PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>											
 
 										</ul>

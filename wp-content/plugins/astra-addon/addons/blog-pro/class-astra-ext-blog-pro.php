@@ -39,6 +39,7 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro' ) ) {
 		 */
 		public function __construct() {
 
+			require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/class-astra-ext-blog-pro-images-resizer.php';
 			require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/class-astra-ext-blog-pro-loader.php';
 			require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/class-astra-ext-blog-pro-markup.php';
 

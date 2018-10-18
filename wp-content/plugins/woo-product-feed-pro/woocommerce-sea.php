@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: WooCommerce Product Feed PRO 
- * Version:     3.4.8
+ * Version:     3.6.8
  * Plugin URI:  https://www.adtribes.io/support/?utm_source=wpadmin&utm_medium=plugin&utm_campaign=woosea_product_feed_pro
  * Description: Configure and maintain your WooCommerce product feeds for Google Shopping, Facebook, Remarketing, Bing, Yandex, Comparison shopping websites and over a 100 channels more.
  * Author:      AdTribes.io
@@ -45,7 +45,7 @@ if (!defined('ABSPATH')) {
 /**
  * Plugin versionnumber, please do not override
  */
-define( 'WOOCOMMERCESEA_PLUGIN_VERSION', '3.4.8' );
+define( 'WOOCOMMERCESEA_PLUGIN_VERSION', '3.6.8' );
 define( 'WOOCOMMERCESEA_PLUGIN_NAME', 'woocommerce-product-feed-pro' );
 
 if ( ! defined( 'WOOCOMMERCESEA_FILE' ) ) {
@@ -146,7 +146,8 @@ function woosea_plugin_action_links($links, $file) {
 		// link to what ever you want
         	$plugin_links[] = '<a href="https://adtribes.io/support/" target="_blank">Support</a>';
         	$plugin_links[] = '<a href="https://adtribes.io/blog/" target="_blank">Blog</a>';
-        	//$plugin_links[] = '<a href="https://adtribes.io/pro-vs-elite/?utm_source=adminpage&utm_medium=pluginpage&utm_campaign=upgrade-elite" target="_blank">Upgrade to Elite</a>';
+        	//$plugin_links[] = '<a href="https://adtribes.io/pro-vs-elite/?utm_source=adminpage&utm_medium=pluginpage&utm_campaign=upgrade-elite&utm_term=upgrade to elite" target="_blank">Upgrade to Elite</a>';
+        	//$plugin_links[] = '<a href="https://adtribes.io/pro-vs-elite/?utm_source=adminpage&utm_medium=pluginpage&utm_campaign=upgrade-elite&utm_term=premium support" target="_blank">Premium Support</a>';
  
         	// add the links to the list of links already there
 		foreach($plugin_links as $link) {
@@ -188,7 +189,8 @@ function woosea_add_remarketing_tags( $product = null ){
 							$variable_product = wc_get_product($variation_id);
 						
 							if(is_object( $variable_product ) ) {
-								$product_price = $variable_product->get_price();
+								$product_price = $variable_product->get_price_html();
+								$ecomm_price = $product_price;
 							} else {
 								// AggregateOffer
        	       					 	   	$prices  = $product->get_variation_prices();
@@ -659,7 +661,9 @@ function woosea_product_delete_meta_price( $product = null ) {
 					
 					if(is_object( $variable_product ) ) {
 
+						// Structured data error here, it ignores VAT when prices has been entered without VAT
 						$product_price = $variable_product->get_price();
+
 
 						// Get product condition
 						$condition = ucfirst( get_post_meta( $variation_id, '_woosea_condition', true ) );
@@ -1043,6 +1047,21 @@ function woosea_add_wpml (){
 	}
 }
 add_action( 'wp_ajax_woosea_add_wpml', 'woosea_add_wpml' );
+
+/**
+ * This function enables the setting to use
+ * Mother main image for all product variations 
+ */
+function woosea_add_mother_image (){
+        $status = sanitize_text_field($_POST['status']);
+
+	if ($status == "off"){
+		update_option( 'add_mother_image', 'no', 'yes');
+	} else {
+		update_option( 'add_mother_image', 'yes', 'yes');
+	}
+}
+add_action( 'wp_ajax_woosea_add_mother_image', 'woosea_add_mother_image' );
 
 /**
  * This function enables the setting to add 

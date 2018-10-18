@@ -46,6 +46,14 @@
 		{
 			e.preventDefault();
 
+			var $form = $(this).closest('form');
+
+			// If the form inputs are invalid
+			if( ! $form[0].checkValidity() ) {
+				$form[0].reportValidity();
+				return false;
+			}
+
 			var $thisbutton  = $( this ),
 				product_id 	 = $(this).val() || '',
 				variation_id = $('input[name="variation_id"]').val() || '';

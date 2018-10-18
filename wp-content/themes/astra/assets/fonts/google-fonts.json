@@ -4131,6 +4131,22 @@
         }
     },
     {
+        "Kosugi": {
+            "variants": [
+                "regular"
+            ],
+            "category": "sans-serif"
+        }
+    },
+    {
+        "Kosugi Maru": {
+            "variants": [
+                "regular"
+            ],
+            "category": "sans-serif"
+        }
+    },
+    {
         "Kotta One": {
             "variants": [
                 "regular"
@@ -4563,6 +4579,34 @@
                 "regular"
             ],
             "category": "serif"
+        }
+    },
+    {
+        "M PLUS 1p": {
+            "variants": [
+                "100",
+                "300",
+                "regular",
+                "500",
+                "700",
+                "800",
+                "900"
+            ],
+            "category": "sans-serif"
+        }
+    },
+    {
+        "M PLUS Rounded 1c": {
+            "variants": [
+                "100",
+                "300",
+                "regular",
+                "500",
+                "700",
+                "800",
+                "900"
+            ],
+            "category": "sans-serif"
         }
     },
     {
@@ -5467,6 +5511,14 @@
         }
     },
     {
+        "Notable": {
+            "variants": [
+                "regular"
+            ],
+            "category": "sans-serif"
+        }
+    },
+    {
         "Nothing You Could Do": {
             "variants": [
                 "regular"
@@ -5497,6 +5549,32 @@
         }
     },
     {
+        "Noto Sans JP": {
+            "variants": [
+                "100",
+                "300",
+                "regular",
+                "500",
+                "700",
+                "900"
+            ],
+            "category": "sans-serif"
+        }
+    },
+    {
+        "Noto Sans KR": {
+            "variants": [
+                "100",
+                "300",
+                "regular",
+                "500",
+                "700",
+                "900"
+            ],
+            "category": "sans-serif"
+        }
+    },
+    {
         "Noto Serif": {
             "variants": [
                 "regular",
@@ -5505,6 +5583,34 @@
                 "700italic"
             ],
             "category": "serif"
+        }
+    },
+    {
+        "Noto Serif JP": {
+            "variants": [
+                "200",
+                "300",
+                "regular",
+                "500",
+                "600",
+                "700",
+                "900"
+            ],
+            "category": "sans-serif"
+        }
+    },
+    {
+        "Noto Serif KR": {
+            "variants": [
+                "200",
+                "300",
+                "regular",
+                "500",
+                "600",
+                "700",
+                "900"
+            ],
+            "category": "sans-serif"
         }
     },
     {
@@ -7116,6 +7222,22 @@
                 "regular"
             ],
             "category": "handwriting"
+        }
+    },
+    {
+        "Sawarabi Gothic": {
+            "variants": [
+                "regular"
+            ],
+            "category": "sans-serif"
+        }
+    },
+    {
+        "Sawarabi Mincho": {
+            "variants": [
+                "regular"
+            ],
+            "category": "sans-serif"
         }
     },
     {

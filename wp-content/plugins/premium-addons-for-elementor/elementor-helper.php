@@ -47,7 +47,7 @@ class premium_Template_Tags {
 	public function get_all_post() {
 
 		$post_types = get_post_types();
-		$post_type_not__in = array('attachment', 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'elementor_library');
+		$post_type_not__in = array('attachment', 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'elementor_library', 'post');
 
 		foreach ( $post_type_not__in as $post_type_not ) {
 			unset( $post_types[$post_type_not] );
@@ -57,7 +57,7 @@ class premium_Template_Tags {
 
 		$all_posts = get_posts( array(
                 'posts_per_page'    => -1,
-				'post_type'         => $post_type,
+				'post_type'         => 'page',
 			)
 		);
 		if( !empty( $all_posts ) && !is_wp_error( $all_posts ) ) {

@@ -17,7 +17,7 @@ class Product_Upsell extends Products_Base {
 	}
 
 	public function get_title() {
-		return __( 'Up-Sells', 'elementor-pro' );
+		return __( 'Upsells', 'elementor-pro' );
 	}
 
 	public function get_icon() {
@@ -33,7 +33,7 @@ class Product_Upsell extends Products_Base {
 		$this->start_controls_section(
 			'section_upsell_content',
 			[
-				'label' => __( 'Up-Sells', 'elementor-pro' ),
+				'label' => __( 'Upsells', 'elementor-pro' ),
 			]
 		);
 

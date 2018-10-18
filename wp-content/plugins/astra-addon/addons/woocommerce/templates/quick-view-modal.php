@@ -8,7 +8,7 @@
 ?>
 <div class="ast-quick-view-bg"><div class="ast-quick-view-loader blockUI blockOverlay"></div></div>
 <div id="ast-quick-view-modal">
-	<div class="ast-content-main-wrapper"><?php ;/*Don't remove this html comment*/ ?><!--
+	<div class="ast-content-main-wrapper"><?php /*Don't remove this html comment*/ ?><!--
 	--><div class="ast-content-main">
 			<div class="ast-lightbox-content">
 				<div class="ast-content-main-head">

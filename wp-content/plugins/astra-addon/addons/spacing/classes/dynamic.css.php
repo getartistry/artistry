@@ -114,7 +114,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		/**
 		 * Main Submenu Spacing
 		 */
-		'.main-navigation ul.sub-menu li a, .main-navigation ul.children li a, .ast-header-break-point .main-navigation ul.sub-menu li a, .ast-header-break-point .main-navigation ul.children li a' => array(
+		'.ast-desktop .main-navigation .ast-mm-template-content, .ast-desktop .main-navigation .ast-mm-custom-text-content,.main-navigation ul.sub-menu li a, .main-navigation ul.children li a, .ast-header-break-point .main-navigation ul.sub-menu li a, .ast-header-break-point .main-navigation ul.children li a' => array(
 			'padding-top'    => astra_responsive_spacing( $primary_submenu_spacing, 'top', 'desktop' ),
 			'padding-right'  => astra_responsive_spacing( $primary_submenu_spacing, 'right', 'desktop' ),
 			'padding-bottom' => astra_responsive_spacing( $primary_submenu_spacing, 'bottom', 'desktop' ),
@@ -167,7 +167,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 			'padding-bottom' => astra_responsive_spacing( $below_header_spacing, 'bottom', 'desktop' ),
 		),
 		// Below Header Spacing Left / Right Padding apply to inside container.
-		'.ast-below-header .ast-container' => array(
+		'.ast-below-header .ast-container, #masthead .ast-below-header .ast-container' => array(
 			'padding-left'  => astra_responsive_spacing( $below_header_spacing, 'left', 'desktop' ),
 			'padding-right' => astra_responsive_spacing( $below_header_spacing, 'right', 'desktop' ),
 		),
@@ -183,7 +183,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		/**
 		 * Below Header Submenu Spacing
 		 */
-		'.ast-below-header-menu ul a, .ast-header-break-point .ast-below-header-actual-nav ul.sub-menu li a' => array(
+		'.ast-desktop .ast-below-header-menu .ast-mm-template-content, .ast-desktop .ast-below-header-menu .ast-mm-custom-text-content, .ast-below-header-menu ul a, .ast-header-break-point .ast-below-header-actual-nav ul.sub-menu li a' => array(
 			'padding-top'    => astra_responsive_spacing( $below_header_submenu_spacing, 'top', 'desktop' ),
 			'padding-right'  => astra_responsive_spacing( $below_header_submenu_spacing, 'right', 'desktop' ),
 			'padding-bottom' => astra_responsive_spacing( $below_header_submenu_spacing, 'bottom', 'desktop' ),
@@ -226,7 +226,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 			'padding-bottom' => astra_responsive_spacing( $above_header_spacing, 'bottom', 'desktop' ),
 		),
 		// Above Header Spacing Left / Right Padding apply to inside container.
-		'.ast-above-header-wrap .ast-above-header .ast-container' => array(
+		'.ast-above-header-wrap .ast-above-header .ast-container, #masthead .ast-above-header-wrap .ast-above-header .ast-container' => array(
 			'padding-left'  => astra_responsive_spacing( $above_header_spacing, 'left', 'desktop' ),
 			'padding-right' => astra_responsive_spacing( $above_header_spacing, 'right', 'desktop' ),
 		),
@@ -249,7 +249,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		/**
 		 * Above Header Submenu Spacing
 		 */
-		'.ast-above-header-enabled .ast-above-header-navigation .ast-above-header-menu li ul a, .ast-header-break-point .ast-above-header-enabled .ast-above-header-menu li ul.sub-menu a, .ast-above-header-enabled .ast-above-header-menu > li:first-child .sub-menu li a' => array(
+		'.ast-desktop .ast-above-header-navigation .ast-mm-custom-text-content, .ast-desktop .ast-above-header-navigation .ast-mm-template-content, .ast-above-header-enabled .ast-above-header-navigation .ast-above-header-menu li ul a, .ast-header-break-point .ast-above-header-enabled .ast-above-header-menu li ul.sub-menu a, .ast-above-header-enabled .ast-above-header-menu > li:first-child .sub-menu li a' => array(
 			'padding-top'    => astra_responsive_spacing( $above_header_submenu_spacing, 'top', 'desktop' ),
 			'padding-right'  => astra_responsive_spacing( $above_header_submenu_spacing, 'right', 'desktop' ),
 			'padding-bottom' => astra_responsive_spacing( $above_header_submenu_spacing, 'bottom', 'desktop' ),
@@ -458,7 +458,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		 * Main Submenu Spacing
 		 */
 
-		'.main-navigation ul.sub-menu li a, .main-navigation ul.children li a, .ast-header-break-point .main-navigation ul.sub-menu li a, .ast-header-break-point .main-navigation ul.children li a' => array(
+		'.ast-desktop .main-navigation .ast-mm-template-content, .ast-desktop .main-navigation .ast-mm-custom-text-content,.main-navigation ul.sub-menu li a, .main-navigation ul.children li a, .ast-header-break-point .main-navigation ul.sub-menu li a, .ast-header-break-point .main-navigation ul.children li a' => array(
 			'padding-top'    => astra_responsive_spacing( $primary_submenu_spacing, 'top', 'tablet' ),
 			'padding-right'  => 0,
 			'padding-bottom' => astra_responsive_spacing( $primary_submenu_spacing, 'bottom', 'tablet' ),
@@ -529,7 +529,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 			'padding-bottom' => astra_responsive_spacing( $below_header_spacing, 'bottom', 'tablet' ),
 		),
 		// Below Header Spacing Left / Right Padding apply to inside container.
-		'.ast-below-header .ast-container' => array(
+		'.ast-below-header .ast-container, #masthead .ast-below-header .ast-container' => array(
 			'padding-left'  => astra_responsive_spacing( $below_header_spacing, 'left', 'tablet' ),
 			'padding-right' => astra_responsive_spacing( $below_header_spacing, 'right', 'tablet' ),
 		),
@@ -545,7 +545,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		/**
 		 * Below Header Submenu Spacing
 		 */
-		'.ast-below-header-menu ul a, .ast-header-break-point .ast-below-header-actual-nav ul.sub-menu li a' => array(
+		'.ast-desktop .ast-below-header-menu .ast-mm-template-content, .ast-desktop .ast-below-header-menu .ast-mm-custom-text-content, .ast-below-header-menu ul a, .ast-header-break-point .ast-below-header-actual-nav ul.sub-menu li a' => array(
 			'padding-top'    => astra_responsive_spacing( $below_header_submenu_spacing, 'top', 'tablet' ),
 			'padding-right'  => astra_responsive_spacing( $below_header_submenu_spacing, 'right', 'tablet' ),
 			'padding-bottom' => astra_responsive_spacing( $below_header_submenu_spacing, 'bottom', 'tablet' ),
@@ -600,7 +600,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 			'padding-bottom' => astra_responsive_spacing( $above_header_spacing, 'bottom', 'tablet' ),
 		),
 		// Above Header Spacing Left / Right Padding apply to inside container.
-		'.ast-above-header-wrap .ast-above-header .ast-container' => array(
+		'.ast-above-header-wrap .ast-above-header .ast-container, #masthead .ast-above-header-wrap .ast-above-header .ast-container' => array(
 			'padding-left'  => astra_responsive_spacing( $above_header_spacing, 'left', 'tablet' ),
 			'padding-right' => astra_responsive_spacing( $above_header_spacing, 'right', 'tablet' ),
 		),
@@ -623,7 +623,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		/**
 		 * Above Header Submenu Spacing
 		 */
-		'.ast-above-header-enabled .ast-above-header-navigation .ast-above-header-menu li ul a, .ast-header-break-point .ast-above-header-enabled .ast-above-header-menu li ul.sub-menu a, .ast-above-header-enabled .ast-above-header-menu > li:first-child .sub-menu li a' => array(
+		'.ast-desktop .ast-above-header-navigation .ast-mm-custom-text-content, .ast-desktop .ast-above-header-navigation .ast-mm-template-content, .ast-above-header-enabled .ast-above-header-navigation .ast-above-header-menu li ul a, .ast-header-break-point .ast-above-header-enabled .ast-above-header-menu li ul.sub-menu a, .ast-above-header-enabled .ast-above-header-menu > li:first-child .sub-menu li a' => array(
 			'padding-top'    => astra_responsive_spacing( $above_header_submenu_spacing, 'top', 'tablet' ),
 			'padding-right'  => astra_responsive_spacing( $above_header_submenu_spacing, 'right', 'tablet' ),
 			'padding-bottom' => astra_responsive_spacing( $above_header_submenu_spacing, 'bottom', 'tablet' ),
@@ -845,7 +845,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		 * Main Submenu Spacing
 		 */
 
-		'.main-navigation ul.sub-menu li a, .main-navigation ul.children li a, .ast-header-break-point .main-navigation ul.sub-menu li a, .ast-header-break-point .main-navigation ul.children li a' => array(
+		'.ast-desktop .main-navigation .ast-mm-template-content, .ast-desktop .main-navigation .ast-mm-custom-text-content,.main-navigation ul.sub-menu li a, .main-navigation ul.children li a, .ast-header-break-point .main-navigation ul.sub-menu li a, .ast-header-break-point .main-navigation ul.children li a' => array(
 			'padding-top'    => astra_responsive_spacing( $primary_submenu_spacing, 'top', 'mobile' ),
 			'padding-right'  => 0,
 			'padding-bottom' => astra_responsive_spacing( $primary_submenu_spacing, 'bottom', 'mobile' ),
@@ -915,7 +915,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 			'padding-bottom' => astra_responsive_spacing( $below_header_spacing, 'bottom', 'mobile' ),
 		),
 		// Below Header Spacing Left / Right Padding apply to inside container.
-		'.ast-below-header .ast-container' => array(
+		'.ast-below-header .ast-container, #masthead .ast-below-header .ast-container' => array(
 			'padding-left'  => astra_responsive_spacing( $below_header_spacing, 'left', 'mobile' ),
 			'padding-right' => astra_responsive_spacing( $below_header_spacing, 'right', 'mobile' ),
 		),
@@ -931,7 +931,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		/**
 		 * Below Header Submenu Spacing
 		 */
-		'.ast-below-header-menu ul a, .ast-header-break-point .ast-below-header-actual-nav ul.sub-menu li a' => array(
+		'.ast-desktop .ast-below-header-menu .ast-mm-template-content, .ast-desktop .ast-below-header-menu .ast-mm-custom-text-content, .ast-below-header-menu ul a, .ast-header-break-point .ast-below-header-actual-nav ul.sub-menu li a' => array(
 			'padding-top'    => astra_responsive_spacing( $below_header_submenu_spacing, 'top', 'mobile' ),
 			'padding-right'  => astra_responsive_spacing( $below_header_submenu_spacing, 'right', 'mobile' ),
 			'padding-bottom' => astra_responsive_spacing( $below_header_submenu_spacing, 'bottom', 'mobile' ),
@@ -985,7 +985,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 			'padding-bottom' => astra_responsive_spacing( $above_header_spacing, 'bottom', 'mobile' ),
 		),
 		// Above Header Spacing Left / Right Padding apply to inside container.
-		'.ast-above-header-wrap .ast-above-header .ast-container' => array(
+		'.ast-above-header-wrap .ast-above-header .ast-container, #masthead .ast-above-header-wrap .ast-above-header .ast-container' => array(
 			'padding-left'  => astra_responsive_spacing( $above_header_spacing, 'left', 'mobile' ),
 			'padding-right' => astra_responsive_spacing( $above_header_spacing, 'right', 'mobile' ),
 		),
@@ -1008,7 +1008,7 @@ function astra_ext_spacing_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		/**
 		 * Above Header Submenu Spacing
 		 */
-		'.ast-above-header-enabled .ast-above-header-navigation .ast-above-header-menu li ul a, .ast-header-break-point .ast-above-header-enabled .ast-above-header-menu li ul.sub-menu a, .ast-above-header-enabled .ast-above-header-menu > li:first-child .sub-menu li a' => array(
+		'.ast-desktop .ast-above-header-navigation .ast-mm-custom-text-content, .ast-desktop .ast-above-header-navigation .ast-mm-template-content, .ast-above-header-enabled .ast-above-header-navigation .ast-above-header-menu li ul a, .ast-header-break-point .ast-above-header-enabled .ast-above-header-menu li ul.sub-menu a, .ast-above-header-enabled .ast-above-header-menu > li:first-child .sub-menu li a' => array(
 			'padding-top'    => astra_responsive_spacing( $above_header_submenu_spacing, 'top', 'mobile' ),
 			'padding-right'  => astra_responsive_spacing( $above_header_submenu_spacing, 'right', 'mobile' ),
 			'padding-bottom' => astra_responsive_spacing( $above_header_submenu_spacing, 'bottom', 'mobile' ),

@@ -62,6 +62,24 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 			add_filter( 'astra_get_option_header-main-rt-section', array( $this, 'header_custom_menu_item' ) );
 			add_filter( 'astra_get_option_header-display-outside-menu', array( $this, 'header_display_outside_menu' ) );
 			add_filter( 'astra_get_option_header-main-rt-section-html', array( $this, 'header_custom_menu_text' ) );
+			add_filter( 'astra_search_style_header_main_rt_section', array( $this, 'default_search_type' ) );
+		}
+
+		/**
+		 * Advanced Header Search Style
+		 *
+		 * @param  string $default Search style.
+		 * @return string
+		 */
+		function default_search_type( $default ) {
+
+			$search_style = Astra_Ext_Advanced_Headers_Loader::astra_advanced_headers_design_option( 'search-style' );
+
+			if ( ! empty( $search_style ) && 'default' !== $search_style ) {
+				return $search_style;
+			}
+
+			return $default;
 		}
 
 		/**
@@ -179,7 +197,10 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 					'<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
 					esc_url( home_url( '/' ) ),
 					wp_get_attachment_image(
-						$custom_logo_id, 'ast-adv-header-logo-size', false, array(
+						$custom_logo_id,
+						'ast-adv-header-logo-size',
+						false,
+						array(
 							'class' => 'custom-logo',
 						)
 					)
@@ -322,7 +343,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 			// Add advanced header wrapper classes.
 			printf(
 				'<div class="%1$s" %2$s>',
-				$combined . $parallax . $full_screen . $vertical_center, ( ! empty( $parallax ) ) ? 'data-parallax-speed="' . esc_attr( $parallax_speed ) . '"' : ''
+				$combined . $parallax . $full_screen . $vertical_center,
+				( ! empty( $parallax ) ) ? 'data-parallax-speed="' . esc_attr( $parallax_speed ) . '"' : ''
 			);
 		}
 
@@ -361,7 +383,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Markup' ) ) {
 				// Add advanced header wrapper classes.
 				printf(
 					'<div class="%1$s" %2$s>',
-					$combined . $parallax . $full_screen . $vertical_center, ( ! empty( $parallax ) ) ? 'data-parallax-speed="' . esc_attr( $parallax_speed ) . '"' : ''
+					$combined . $parallax . $full_screen . $vertical_center,
+					( ! empty( $parallax ) ) ? 'data-parallax-speed="' . esc_attr( $parallax_speed ) . '"' : ''
 				);
 			}
 

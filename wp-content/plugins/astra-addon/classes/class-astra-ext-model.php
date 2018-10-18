@@ -29,7 +29,9 @@ final class Astra_Ext_Model {
 	 */
 	function load_extensions() {
 
-		$enabled_extension = Astra_Ext_Extension::get_enabled_addons();
+		$enabled_extension  = Astra_Ext_Extension::get_enabled_addons();
+		$default_extensions = Astra_Ext_Extension::get_default_addons();
+		$enabled_extension  = $enabled_extension + $default_extensions;
 
 		if ( 0 < count( $enabled_extension ) ) {
 

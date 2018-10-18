@@ -16,7 +16,7 @@ class ACF_URL extends Data_Tag {
 	}
 
 	public function get_title() {
-		return __( 'ACF URL Field', 'elementor-pro' );
+		return __( 'ACF', 'elementor-pro' ) . ' ' . __( 'URL Field', 'elementor-pro' );
 	}
 
 	public function get_group() {
@@ -39,7 +39,11 @@ class ACF_URL extends Data_Tag {
 
 		list( $field_key, $meta_key ) = explode( ':', $key );
 
-		$field = get_field_object( $field_key );
+		if ( 'options' === $field_key ) {
+			$field = get_field_object( $meta_key, $field_key );
+		} else {
+			$field = get_field_object( $field_key );
+		}
 
 		if ( $field ) {
 			$value = $field['value'];

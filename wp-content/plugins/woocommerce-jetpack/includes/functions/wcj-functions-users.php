@@ -2,12 +2,27 @@
 /**
  * Booster for WooCommerce - Functions - Users
  *
- * @version 3.7.0
+ * @version 3.9.0
  * @since   2.7.0
  * @author  Algoritmika Ltd.
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'wcj_current_user_can' ) ) {
+	/**
+	 * wcj_current_user_can.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 */
+	function wcj_current_user_can( $capability ) {
+		if ( ! function_exists( 'wp_get_current_user' ) ) {
+			require_once( ABSPATH . 'wp-includes/pluggable.php' );
+		}
+		return current_user_can( $capability );
+	}
+}
 
 if ( ! function_exists( 'wcj_get_current_user_id' ) ) {
 	/**
@@ -171,7 +186,6 @@ if ( ! function_exists( 'wcj_is_user_role' ) ) {
 	 * @version 3.7.0
 	 * @since   2.5.0
 	 * @return  bool
-	 * @todo    clean up
 	 */
 	function wcj_is_user_role( $user_role, $user_id = 0 ) {
 		if ( ! function_exists( 'wp_get_current_user' ) ) {
@@ -197,13 +211,5 @@ if ( ! function_exists( 'wcj_is_user_role' ) ) {
 				return ( in_array( $user_role, $_user->roles ) );
 			}
 		}
-		/* if ( ! is_array( $user_role ) ) {
-			$user_role = array( $user_role );
-		}
-		if ( in_array( 'administrator', $user_role ) ) {
-			$user_role[] = 'super_admin';
-		}
-		$_intersect = array_intersect( $user_role, $_user->roles );
-		return ( ! empty( $_intersect ) ); */
 	}
 }

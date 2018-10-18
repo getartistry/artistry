@@ -2,8 +2,9 @@
 Contributors: webbistro
 Tags: media library, media category, media categories, media gallery, gallery shortcode, media tag, media tags, media taxonomy, media taxonomies, media uploader, mime type, mime, mime types, file types, media types, media filter, attachment, gallery, image, images, media, ux, user experience, wp-admin, admin, taxonomy, taxonomies
 Requires at least: 4.5
-Tested up to: 4.9.6
-Stable tag: 2.6.4
+Tested up to: 4.9.9
+Requires PHP: 5.6
+Stable tag: 2.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -57,7 +58,7 @@ If you need to move your media library to another website you should export and 
 Network activate the plugin and choose which options will be available to your admins. In the PRO version, the license key should be activated once for the whole network.
 
 
-### Easy to Use and WordPress Native Functionality Oriented Plugin ###
+### Easy to Use and WordPress Native Look and Feel ###
 
 We spend hours to make plugins features work as though they were native WordPress functionality. If you are a developer and looking for a solution totally compatible with WordPress core and, at the same point, really easy to deal with for your non-geeky customers, give it a try, you won't be disappointed.
 
@@ -76,20 +77,21 @@ Assistance with translating is highly appreciated! If you'd like to be a transla
 
 ### Compatible with the Plugins: ###
 
-* Advanced Custom Fields
-* WooCommerce
-* I Order Terms
-* Search & Filter
-* Document Gallery
-* Meta Slider
-* Jetpack Carousel
-* Jetpack Tiled Galleries
-* Simple Lightbox
-* Responsive Lightbox by dFactory
-* Justified Gallery
-* Meow Gallery
-* Meow Lightbox
-* Compress JPEG & PNG Images (TinyPNG)
+* [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/)
+* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
+* [Anything Order by Terms](https://wordpress.org/plugins/anything-order-by-terms/)
+* [Search & Filter](https://wordpress.org/plugins/search-filter/)
+* [Document Gallery](https://wordpress.org/plugins/document-gallery/)
+* [Jetpack Carousel](https://wordpress.org/plugins/jetpack/)
+* [Jetpack Tiled Galleries](https://wordpress.org/plugins/jetpack/)
+* [Simple Lightbox](https://wordpress.org/plugins/simple-lightbox/)
+* [Justified Gallery](https://wordpress.org/plugins/justified-gallery/)
+* [Meow Gallery](https://wordpress.org/plugins/meow-gallery/)
+* [Meow Lightbox](https://wordpress.org/plugins/meow-lightbox/)
+* [Slick Slider](https://wordpress.org/plugins/slick-slider/)
+* [MetaSlider](https://wordpress.org/plugins/ml-slider/)
+* [Responsive Lightbox & Gallery](https://wordpress.org/plugins/responsive-lightbox/)
+* [Compress JPEG & PNG Images](https://wordpress.org/plugins/tiny-compress-images/) (TinyPNG)
 
 
 Please let us know if you find any issue with the plugins from the list above or others.
@@ -97,7 +99,7 @@ Please let us know if you find any issue with the plugins from the list above or
 
 ### Incompatibility ###
 
-Please notice that you use Enhanced Media Library with other plugins which add media categories, media folders, or manage MIME Types at your own risk. We cannot guarantee their compatibility because of the different approach to the same functionality. We do not recommend using them at the same time with Enhanced Media Library. Please choose the one you prefer.
+Please notice that you use Enhanced Media Library with other plugins which add media categories, media folders, or manage MIME Types at your own risk. We cannot guarantee their compatibility because of the different approach to the same functionality. We do not recommend using other media library (folder) plugin at the same time with Enhanced Media Library. Please choose the one you prefer.
 
 
 ### Enhanced Media Library PRO ###
@@ -116,7 +118,7 @@ Additional comfort and even more convenient way to organize WordPress media libr
 ### Useful Links ###
 
 * [Where to Start?](https://wpuxsolutions.com/documents/enhanced-media-library/where-to-start)
-* [Documentation](https://www.wpuxsolutions.com/documents/enhanced-media-library)
+* [Documentation](https://www.wpuxsolutions.com/documents/enhanced-media-library) (Is being updated after v2.6 and v2.7 changes)
 * [FAQs](https://www.wpuxsolutions.com/documents/enhanced-media-library/faqs)
 * [Contribute to Translation](https://www.wpuxsolutions.com/l10n/projects/enhanced-media-library)
 * [Enhanced Media Shortcode Possible Conflicts](https://www.wpuxsolutions.com/documents/enhanced-media-library/enhanced-media-shortcode-possible-conflicts)
@@ -169,6 +171,44 @@ Additional comfort and even more convenient way to organize WordPress media libr
 
 
 ## Changelog ##
+
+### 2.7.2 ###
+*Release Date - September 13, 2018*
+
+= Improvements =
+* Compatibility with Smush (WP SmushIt) plugin ensured
+
+
+### 2.7.1 ###
+*Release Date - September 11, 2018*
+*v2.7 bugfixes*
+
+= Bugfixes =
+* `[playlist]` broken shortcode bug fixed
+* "Image not uploading", "Can't add featured image", "Media library right sidebar gone" and possibly some other situations common bug fixed.
+* PRO only: hidden filters bug fixed
+* A few minor bug fixed, some minor code improvements made
+
+
+### 2.7 ###
+*Release Date - September 10, 2018*
+
+= New =
+* Better workflow for saving categories in both single item and bulk edit: everything is being saved on the fly by default (Save Changes button is now optional)
+* Better layout for the Media Library
+* `[gallery]` and `[playlist]` shortcodes now understand media category slugs, not only IDs
+* Multisite "Unify Media Settings over Network" option added
+
+= Improvements =
+* Taxonomy fields are now always at the end of other fields in Attachment Details
+* Admin Menu Editor compatibility added
+
+= Bugfixes =
+* Multisite performance issue fixed
+* Admin titles for plugin settings pages fixed
+* Natural sort order bug - not showing media items with the same titles - fixed
+* `data[caption_type]` not found bug fixed
+
 
 ### 2.6.4 ###
 *Release Date - May 23, 2018*

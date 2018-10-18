@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 
@@ -249,6 +255,139 @@ if ( ! class_exists( 'Astra_Above_Header_Configs' ) ) {
 				),
 
 				/**
+				 * Option: Above Header Submenu Border Divier
+				 */
+				array(
+					'name'     => ASTRA_THEME_SETTINGS . '[above-header-submenu-border-divider]',
+					'type'     => 'control',
+					'control'  => 'ast-divider',
+					'required' => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'section'  => 'section-above-header',
+					'priority' => 95,
+					'settings' => array(),
+				),
+				/**
+				 * Option: Submenu Border
+				 */
+				array(
+					'name'           => ASTRA_THEME_SETTINGS . '[above-header-submenu-border]',
+					'type'           => 'control',
+					'control'        => 'ast-border',
+					'transport'      => 'postMessage',
+					'required'       => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'section'        => 'section-above-header',
+					'default'        => astra_get_option( 'above-header-submenu-border' ),
+					'title'          => __( 'Submenu Container Border', 'astra-addon' ),
+					'linked_choices' => true,
+					'priority'       => 95,
+					'choices'        => array(
+						'top'    => __( 'Top', 'astra-addon' ),
+						'right'  => __( 'Right', 'astra-addon' ),
+						'bottom' => __( 'Bottom', 'astra-addon' ),
+						'left'   => __( 'Left', 'astra-addon' ),
+					),
+				),
+
+				/**
+				 * Option: Submenu Border Color
+				 */
+				array(
+					'name'      => ASTRA_THEME_SETTINGS . '[above-header-submenu-border-color]',
+					'type'      => 'control',
+					'required'  => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'control'   => 'ast-color',
+					'default'   => astra_get_option( 'above-header-submenu-border-color' ),
+					'priority'  => 95,
+					'transport' => 'postMessage',
+					'section'   => 'section-above-header',
+					'title'     => __( 'Border Color', 'astra-addon' ),
+				),
+
+				/**
+				 * Option: Submenu Item Border
+				 */
+				array(
+					'name'      => ASTRA_THEME_SETTINGS . '[above-header-submenu-item-border]',
+					'type'      => 'control',
+					'control'   => 'checkbox',
+					'transport' => 'postMessage',
+					'required'  => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'section'   => 'section-above-header',
+					'default'   => astra_get_option( 'above-header-submenu-item-border' ),
+					'title'     => __( 'Submenu Item Border', 'astra-addon' ),
+					'priority'  => 95,
+				),
+
+				/**
+				 * Option: Submenu Border Color
+				 */
+				array(
+					'name'      => ASTRA_THEME_SETTINGS . '[above-header-submenu-item-b-color]',
+					'type'      => 'control',
+					'required'  => array(
+						ASTRA_THEME_SETTINGS . '[above-header-submenu-item-border]',
+						'==',
+						true,
+					),
+					'control'   => 'ast-color',
+					'default'   => astra_get_option( 'above-header-submenu-item-b-color' ),
+					'priority'  => 95,
+					'transport' => 'postMessage',
+					'section'   => 'section-above-header',
+					'title'     => __( 'Submenu Item Border Color', 'astra-addon' ),
+				),
+
+				/**
+				 * Option: Submenu Container Animation
+				 */
+				array(
+					'name'     => ASTRA_THEME_SETTINGS . '[above-header-submenu-container-animation]',
+					'default'  => astra_get_option( 'above-header-submenu-container-animation' ),
+					'type'     => 'control',
+					'control'  => 'select',
+					'section'  => 'section-above-header',
+					'priority' => 95,
+					'title'    => __( 'Submenu Container Animation', 'astra-addon' ),
+					'required' => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'choices'  => array(
+						''           => __( 'Default', 'astra-addon' ),
+						'slide-down' => __( 'Slide Down', 'astra-addon' ),
+						'slide-up'   => __( 'Slide Up', 'astra-addon' ),
+						'fade'       => __( 'Fade', 'astra-addon' ),
+					),
+				),
+
+				/**
 				 * Option: Mobile Menu Label Divider
 				 */
 				array(
@@ -284,7 +423,13 @@ if ( ! class_exists( 'Astra_Above_Header_Configs' ) ) {
 					'default'     => astra_get_option( 'above-header-merge-menu' ),
 					'type'        => 'control',
 					'control'     => 'checkbox',
-					'required'    => array( ASTRA_THEME_SETTINGS . '[above-header-layout]', '!=', 'disabled' ),
+					'required'    => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[above-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
 					'section'     => 'section-above-header',
 					'title'       => __( 'Merge menu on mobile devices', 'astra-addon' ),
 					'description' => __( 'You can merge menu with Primary menu in mobile devices by enabling this option.', 'astra-addon' ),

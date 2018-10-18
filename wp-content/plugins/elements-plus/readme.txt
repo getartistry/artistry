@@ -2,13 +2,13 @@
 Contributors: cssigniterteam, nvourva, tsiger, anastis, silencerius
 Tags: elements plus, elementor, elementor widgets, custom widgets, custom elements, page builder
 Requires at least: 4.7
-Tested up to: 4.9.7
+Tested up to: 4.9.8
 Requires PHP: 5.4
-Stable tag: 1.7.5
+Stable tag: 1.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Elements Plus! provides awesome custom widgets for the Elementor page builder. Labels, Styled maps, Justified galleries, Button, Call to Action, AudioIgniter, YouTube Slideshow, Preloader, Instagram, Tooltip, Icon and FlipClock widgets are available.
+Elements Plus! provides awesome custom widgets for the Elementor page builder. Labels, Styled maps, Justified galleries, Button, Call to Action, AudioIgniter, YouTube Slideshow, Preloader, Instagram, Tooltip, Icon, FlipClock, Image Comparison and Image Hover Effects widgets are available.
 
 == Description ==
 Elements Plus! is a plugin for the popular Elementor page builder. It gives the user eleven extra 'elements' (widgets) to use.
@@ -45,6 +45,10 @@ The plugin's documentation can be found [here](https://www.cssigniter.com/docs/e
 
 * FlipClock Plus: A versatile flipclock timer to add to your projects.
 
+* Image Comparison Plus: An element which allows you to highlight the differences between two images.
+
+* Image Hover Effects Plus: An element which allows you to switch between two images on hover with beautiful effects.
+
 **Notice**
 The plugin requires the [Elementor](https://wordpress.org/plugins/elementor/) page builder to be active in order to work.
 
@@ -69,6 +73,21 @@ Manually via FTP:
 3. The justified gallery widget
 
 == Changelog ==
+
+= 1.9.1 =
+* Added Car Icons to the Icon Plus! element.
+
+= 1.9.0 =
+* Added the Image Hover Effects Plus! element.
+
+= 1.8.1 =
+* Added Christmas icons to the Icon Plus! element.
+
+= 1.8.0 =
+* Added the Image Comparison Plus! element.
+
+= 1.7.7 =
+* Added Transportation icons to the Icon Plus element.
 
 = 1.7.6 =
 * Added Fashion icons to the Icon Plus element.

@@ -157,6 +157,8 @@ class Locations_Manager {
 		$is_header_footer = 'header' === $location || 'footer' === $location;
 		$need_override_location = ! empty( $location_settings['overwrite'] ) && ! $is_header_footer;
 
+		$need_override_location = apply_filters( 'elementor/theme/need_override_location', $need_override_location, $location, $this );
+
 		if ( $location && empty( $page_template ) && ( ! $location_exist || $need_override_location ) ) {
 			$page_template = $page_templates_module::TEMPLATE_HEADER_FOOTER;
 		}
@@ -371,7 +373,6 @@ class Locations_Manager {
 			],
 			'single' => [
 				'is_core' => true,
-				'overwrite' => true,
 				'label' => __( 'Single', 'elementor-pro' ),
 				'edit_in_content' => true,
 			],

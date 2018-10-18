@@ -186,6 +186,14 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 	$parse_css .= astra_parse_css( $adv_header_logo_output );
 
 	if ( 'disable' !== $advanced_headers_layout ) {
+
+		$page_header = array(
+			'.ast-title-bar-wrap header .site-logo-img .custom-logo-link img' => array(
+				'max-width' => astra_get_css_value( $header_logo_width, 'px' ),
+			),
+		);
+		$parse_css  .= astra_parse_css( $page_header );
+
 		/**
 		 * Above Header Style
 		 */
@@ -222,15 +230,6 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 				'.ast-advanced-headers .main-header-bar' => array(
 					'background-color' => esc_attr( $header_bg_color ),
 				),
-				'.ast-advanced-headers .main-header-bar .ast-search-menu-icon form' => array(
-					'background-color' => esc_attr( $header_bg_color ),
-				),
-				'.ast-advanced-headers .ast-masthead-custom-menu-items .slide-search .search-field' => array(
-					'background-color' => esc_attr( $header_bg_color ),
-				),
-				'.ast-advanced-headers .ast-masthead-custom-menu-items .slide-search .search-field:focus' => array(
-					'background-color' => esc_attr( $header_bg_color ),
-				),
 
 				'.ast-advanced-headers .site-title a, .site-title a:focus, .ast-advanced-headers .site-title a:hover, .ast-advanced-headers .site-title a:visited' => array(
 					'color' => esc_attr( $header_color_site_fb_title ),
@@ -258,13 +257,10 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 					'color' => esc_attr( $primary_menu_h_fb_color ),
 				),
 
-				'.ast-advanced-headers .main-header-menu, .ast-advanced-headers .main-header-menu a,.ast-advanced-headers  .ast-masthead-custom-menu-items .slide-search .search-submit,.ast-advanced-headers .ast-masthead-custom-menu-items, .ast-advanced-headers .ast-masthead-custom-menu-items a' => array(
+				'.ast-advanced-headers .main-header-menu, .ast-advanced-headers .main-header-menu a,.ast-advanced-headers .ast-masthead-custom-menu-items, .ast-advanced-headers .ast-masthead-custom-menu-items a' => array(
 					'color' => esc_attr( $primary_menu_fb_color ),
 				),
 
-				'.ast-advanced-headers .ast-masthead-custom-menu-items .ast-inline-search form' => array(
-					'border-color' => esc_attr( $primary_menu_fb_color ),
-				),
 			);
 
 				$parse_css .= astra_parse_css( $merge_header_style );
@@ -275,7 +271,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 						 * Above Heaader
 						 */
 				$above_header_style = array(
-					'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header .slide-search .search-field' => array(
+					'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header .slide-search' => array(
 						'background' => esc_attr( $above_header_bg_color ),
 					),
 					'.ast-advanced-headers .ast-above-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-above-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-above-header-menu > li.current_page_item > a' => array(
@@ -301,7 +297,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 					 */
 				$below_header_style = array(
 
-					'.ast-advanced-headers .ast-below-header,  .ast-advanced-headers .ast-below-header .slide-search .search-field' => array(
+					'.ast-advanced-headers .ast-below-header,  .ast-advanced-headers .ast-below-header .slide-search' => array(
 						'background' => esc_attr( $below_header_bg_color ),
 					),
 					'.ast-advanced-headers .ast-below-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-below-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-below-header-menu > li.current_page_item > a' => array(
@@ -459,15 +455,6 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 		$parse_css .= astra_parse_css( $transparent_header_style );
 
 		$transparent_header_mobile_style = array(
-			'.ast-transparent-header .main-header-bar .ast-search-menu-icon form' => array(
-				'background-color' => esc_attr( $tr_header_bg_color ),
-			),
-			'.ast-transparent-header .ast-masthead-custom-menu-items .slide-search .search-field' => array(
-				'background-color' => esc_attr( $tr_header_bg_color ),
-			),
-			'.ast-transparent-header .ast-masthead-custom-menu-items .slide-search .search-field:focus' => array(
-				'background-color' => esc_attr( $tr_header_bg_color ),
-			),
 
 			'.ast-transparent-header .site-title a, .site-title a:focus, .ast-transparent-header .site-title a:hover, .ast-transparent-header .site-title a:visited' => array(
 				'color' => esc_attr( $tr_header_color_site_title ),
@@ -495,11 +482,8 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 				'color' => esc_attr( $tr_primary_menu_h_color ),
 			),
 
-			'.ast-transparent-header .main-header-menu, .main-header-menu > li > a,.ast-transparent-header  .ast-masthead-custom-menu-items .slide-search .search-submit,.ast-transparent-header .ast-masthead-custom-menu-items, .ast-transparent-header .ast-masthead-custom-menu-items a' => array(
+			'.ast-transparent-header .main-header-menu, .main-header-menu > li > a,.ast-transparent-header .ast-masthead-custom-menu-items, .ast-transparent-header .ast-masthead-custom-menu-items a' => array(
 				'color' => esc_attr( $tr_primary_menu_color ),
-			),
-			'.ast-transparent-header .ast-masthead-custom-menu-items .ast-inline-search form' => array(
-				'border-color' => esc_attr( $tr_primary_menu_color ),
 			),
 
 			/**
@@ -577,7 +561,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 		 * Above Heaader
 		 */
 		$above_header_style = array(
-			'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header .slide-search .search-field' => array(
+			'.ast-advanced-headers .ast-above-header, .ast-advanced-headers .ast-above-header .slide-search' => array(
 				'background' => esc_attr( $above_header_bg_color ),
 			),
 			'.ast-advanced-headers .ast-above-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-above-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-above-header-menu > li.current_page_item > a' => array(
@@ -604,7 +588,7 @@ function astra_ext_advanced_headers_dynamic_css( $dynamic_css, $dynamic_css_filt
 		 */
 		$below_header_style = array(
 
-			'.ast-advanced-headers .ast-below-header,  .ast-advanced-headers .ast-below-header .slide-search .search-field' => array(
+			'.ast-advanced-headers .ast-below-header,  .ast-advanced-headers .ast-below-header .slide-search' => array(
 				'background' => esc_attr( $below_header_bg_color ),
 			),
 			'.ast-advanced-headers .ast-below-header-menu > li.current-menu-item > a,.ast-advanced-headers .ast-below-header-menu >li.current-menu-ancestor > a,.ast-advanced-headers .ast-below-header-menu > li.current_page_item > a' => array(

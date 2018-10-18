@@ -30,7 +30,7 @@ class Jet_Elements_Circle_Progress extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-03';
+		return 'jetelements-icon-3';
 	}
 
 	public function get_categories() {
@@ -459,6 +459,15 @@ class Jet_Elements_Circle_Progress extends Jet_Elements_Base {
 			)
 		);
 
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'name'     => 'circle_box_shadow',
+				'label'    => esc_html__( 'Circle Box Shadow', 'jet-elements' ),
+				'selector' => '{{WRAPPER}} .circle-progress',
+			)
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -536,6 +545,27 @@ class Jet_Elements_Circle_Progress extends Jet_Elements_Base {
 		);
 
 		$this->add_responsive_control(
+			'number_prefix_gap',
+			array(
+				'label'      => esc_html__( 'Prefix Gap (px)', 'jet-elements' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array(
+					'px',
+				),
+				'range'      => array(
+					'px' => array(
+						'min' => 1,
+						'max' => 30,
+					),
+				),
+				'selectors'  => array(
+					'body:not(.rtl) {{WRAPPER}} .circle-counter .circle-val .circle-counter__prefix' => 'margin-right: {{SIZE}}{{UNIT}}',
+					'body.rtl {{WRAPPER}} .circle-counter .circle-val .circle-counter__prefix' => 'margin-left: {{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'number_prefix_alignment',
 			array(
 				'label'       => esc_html__( 'Prefix Alignment', 'jet-elements' ),
@@ -578,6 +608,27 @@ class Jet_Elements_Circle_Progress extends Jet_Elements_Base {
 				),
 				'selectors'  => array(
 					'{{WRAPPER}} .circle-counter .circle-val .circle-counter__suffix' => 'font-size: {{SIZE}}{{UNIT}}',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'number_suffix_gap',
+			array(
+				'label'      => esc_html__( 'Suffix Gap (px)', 'jet-elements' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array(
+					'px',
+				),
+				'range'      => array(
+					'px' => array(
+						'min' => 1,
+						'max' => 30,
+					),
+				),
+				'selectors'  => array(
+					'body:not(.rtl) {{WRAPPER}} .circle-counter .circle-val .circle-counter__suffix' => 'margin-left: {{SIZE}}{{UNIT}}',
+					'body.rtl {{WRAPPER}} .circle-counter .circle-val .circle-counter__suffix' => 'margin-right: {{SIZE}}{{UNIT}}',
 				),
 			)
 		);

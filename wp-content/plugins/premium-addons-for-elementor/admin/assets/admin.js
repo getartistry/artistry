@@ -1,6 +1,5 @@
 //Go Between the Tabs
 ( function ( $ ){
-
     var redirectionLink = " https://premiumaddons.com/pro/?utm_source=wp-menu&utm_medium=wp-dash&utm_campaign=get-pro&utm_term=";
     "use strict";
     

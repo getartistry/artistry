@@ -228,12 +228,16 @@ function craigslist_get_post($camp) {
 		if (trim ( $keyword ) != '') {
 
 			// getting links from the db for that keyword
-			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'cl_{$camp->camp_id}_$keyword' and item_status ='0'";
+			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'cl_{$camp->camp_id}_$keyword' ";
 			$this->used_keyword=$keyword;
 			$res = $this->db->get_results ( $query );
 
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_general where item_type='cl_{$camp->camp_id}_$keyword' ";
+				$this->db->query ( $query_delete );
 
 				// get new fresh items
 				$this->craigslist_fetch_items ( $keyword, $camp );
@@ -262,7 +266,7 @@ function craigslist_get_post($camp) {
 					  echo '<br>craigslist item ('. $t_data ['item_title'] .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
 						
 					//delete the item
-					$query = "delete from {$this->wp_prefix}automatic_general where item_id='{$t_row->item_id}' and item_type=  'cl_{$camp->camp_id}_$keyword'";
+					$query = "delete from {$this->wp_prefix}automatic_general where id={$t_row->id} ";
 					$this->db->query ( $query );
 						
 				}else{
@@ -308,14 +312,14 @@ function craigslist_get_post($camp) {
 				}
 				
 				// update the link status to 1
-				$query = "update {$this->wp_prefix}automatic_general set item_status='1' where item_id='$ret->item_id' and item_type='cl_{$camp->camp_id}_$keyword' ";
+				$query = "delete from {$this->wp_prefix}automatic_general where id={$ret->id}";
 				$this->db->query ( $query );
 					
 				// if cache not active let's delete the cached videos and reset indexes
 				if (! in_array ( 'OPT_CL_CACHE', $camp_opt )) {
 					 
 					echo '<br>Cache disabled claring cache ...';
-					$query = "delete from {$this->wp_prefix}automatic_general where item_type='cl_{$camp->camp_id}_$keyword' and item_status ='0'";
+					$query = "delete from {$this->wp_prefix}automatic_general where item_type='cl_{$camp->camp_id}_$keyword' ";
 					$this->db->query ( $query );
 
 					// reset index

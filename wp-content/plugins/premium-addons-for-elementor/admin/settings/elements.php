@@ -8,7 +8,7 @@ class PA_admin_settings {
     
     protected $page_slug = 'premium-addons';
 
-    public $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox','premium-pricing-table','premium-button','premium-contactform', 'premium-image-button', 'premium-grid'];
+    public static $pa_elements_keys = ['premium-banner', 'premium-blog','premium-carousel', 'premium-countdown','premium-counter','premium-dual-header','premium-fancytext','premium-image-separator','premium-maps','premium-modalbox','premium-person','premium-progressbar','premium-testimonials','premium-title','premium-videobox','premium-pricing-table','premium-button','premium-contactform', 'premium-image-button', 'premium-grid'];
     
     private $pa_default_settings;
     
@@ -25,7 +25,7 @@ class PA_admin_settings {
     
     public function localize_js_script(){
         wp_localize_script(
-            'premium-addons-admin-js',
+            'pa-admin-js',
             'premiumRollBackConfirm',
             [
                 'home_url'  => home_url(),
@@ -43,60 +43,53 @@ class PA_admin_settings {
         wp_enqueue_style( 'pa_admin_icon', PREMIUM_ADDONS_URL .'admin/assets/pa-elements-font/css/pafont.css' );
         $current_screen = get_current_screen();
         if( strpos($current_screen->id , $this->page_slug) !== false ){
+            wp_enqueue_style( 'pa-admin-css', PREMIUM_ADDONS_URL.'admin/assets/admin.css' );
             
-            wp_register_style( 'premium-addons-admin-style', PREMIUM_ADDONS_URL.'admin/assets/admin.css' );
-            wp_enqueue_style('premium-addons-admin-style');
+            wp_enqueue_style( 'premium-addons-sweetalert-style', PREMIUM_ADDONS_URL.'admin/assets/js/sweetalert2/sweetalert2.min.css' );
             
-            wp_register_style( 'premium-addons-sweetalert-style', PREMIUM_ADDONS_URL.'admin/assets/js/sweetalert2/css/sweetalert2.min.css' );
-            wp_enqueue_style('premium-addons-sweetalert-style');
+            wp_enqueue_script('pa-admin-js', PREMIUM_ADDONS_URL .'admin/assets/admin.js' , array('jquery'), PREMIUM_ADDONS_VERSION , true );
             
-            wp_register_script('premium-addons-admin-js', PREMIUM_ADDONS_URL .'admin/assets/admin.js' , array('jquery'), PREMIUM_ADDONS_VERSION , true );
-            wp_enqueue_script('premium-addons-admin-js');
+            wp_enqueue_script('pa-admin-dialog', PREMIUM_ADDONS_URL . 'admin/assets/js/dialog/dialog.js',array('jquery-ui-position'),PREMIUM_ADDONS_VERSION,true);
             
-            wp_register_script('premium-addons-admin-dialog', PREMIUM_ADDONS_URL . 'admin/assets/js/dialog/dialog.js',array('jquery-ui-position'),PREMIUM_ADDONS_VERSION,true);
-            wp_enqueue_script('premium-addons-admin-dialog');
+            wp_enqueue_script('pa-sweetalert-core', PREMIUM_ADDONS_URL . 'admin/assets/js/sweetalert2/core.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
             
-            wp_register_script( 'premium-addons-sweetalert-core', PREMIUM_ADDONS_URL.'admin/assets/js/sweetalert2/js/core.js', array( 'jquery' ), PREMIUM_ADDONS_VERSION, true );
-            wp_enqueue_script('premium-addons-sweetalert-core');
-            
-			wp_register_script( 'premium-addons-sweetalert', PREMIUM_ADDONS_URL.'admin/assets/js/sweetalert2/js/sweetalert2.min.js', array( 'jquery', 'premium-addons-sweetalert-core' ), PREMIUM_ADDONS_VERSION, true );
-            wp_enqueue_script('premium-addons-sweetalert');
+			wp_enqueue_script( 'pa-sweetalert', PREMIUM_ADDONS_URL . 'admin/assets/js/sweetalert2/sweetalert2.min.js', array( 'jquery', 'pa-sweetalert-core' ), PREMIUM_ADDONS_VERSION, true );
             
         }
     }
 
     public function pa_admin_menu() {
-        if( defined('PREMIUM_PRO_ADDONS_VERSION') && isset(get_option('pa_wht_lbl_save_settings')['premium-wht-lbl-plugin-name']) && '' != get_option('pa_wht_lbl_save_settings')['premium-wht-lbl-plugin-name'] ){
-            $plugin_name = get_option('pa_wht_lbl_save_settings')['premium-wht-lbl-plugin-name'];
-        } else {
+        
+        $plugin_name = get_option('pa_wht_lbl_save_settings')['premium-wht-lbl-plugin-name'];
+        
+        if( ! defined('PREMIUM_PRO_ADDONS_VERSION') || ! isset( $plugin_name ) || '' == $plugin_name ){
             $plugin_name = 'Premium Addons for Elementor';
         }
         
-        add_menu_page( $plugin_name, $plugin_name , 'manage_options', 'premium-addons', array( $this , 'pa_admin_page' ), '' , 100  );
+        add_menu_page(
+            $plugin_name,
+            $plugin_name,
+            'manage_options',
+            'premium-addons',
+            array( $this , 'pa_admin_page' ),
+            '' ,
+            100
+        );
     }
 
     public function pa_admin_page(){
-
-        $theme = wp_get_theme();
+        $theme_name = Premium_Admin_Notices::get_installed_theme();
         
-        if( $theme->parent() ) {
-            $theme_name = $theme->parent()->get('Name');
-        } else {
-            $theme_name = $theme->get('Name');
-        }
-
-        $theme_name = sanitize_key($theme_name);
-
         $js_info = array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'ajaxurl'   => admin_url( 'admin-ajax.php' ),
             'theme'     => $theme_name
 		);
 
-		wp_localize_script( 'premium-addons-admin-js', 'settings', $js_info );
+		wp_localize_script( 'pa-admin-js', 'settings', $js_info );
         
-        $this->pa_default_settings = array_fill_keys( $this->pa_elements_keys, true );
+        $this->pa_default_settings = $this->get_default_keys();
        
-        $this->pa_get_settings = get_option( 'pa_save_settings', $this->pa_default_settings );
+        $this->pa_get_settings = $this->get_enabled_keys();
        
         $pa_new_settings = array_diff_key( $this->pa_default_settings, $this->pa_get_settings );
        
@@ -518,6 +511,17 @@ class PA_admin_settings {
                             </tr>
                             
                             <tr>
+                                <th><?php echo esc_html__('Premium Whatsapp Chat', 'premium-addons-for-elementor'); ?></th>
+                                <td>
+                                    <label class="switch">
+                                            <input type="checkbox" id="premium-whatsapp-chat" name="premium-whatsapp-chat">
+                                            <span class="pro-slider round"></span>
+                                    </label>
+                                </td>
+                                
+                            </tr>
+                            
+                            <tr>
                                 <th><?php echo esc_html__('Premium Section Parallax', 'premium-addons-for-elementor'); ?></th>
                                 <td>
                                     <label class="switch">
@@ -568,40 +572,54 @@ class PA_admin_settings {
 	<?php
 }
 
+    public static function get_default_keys() {
+        
+        $default_keys = array_fill_keys( self::$pa_elements_keys, true );
+        
+        return $default_keys;
+    }
+    
+    public static function get_enabled_keys() {
+        
+        $enabled_keys = get_option( 'pa_save_settings', self::get_default_keys() );
+        
+        return $enabled_keys;
+    }
+
     public function pa_save_settings_with_ajax() {
         
-            if( isset( $_POST['fields'] ) ) {
-                parse_str( $_POST['fields'], $settings );
-            }else {
-                return;
-            }
-
-            $this->pa_settings = array(
-                'premium-banner'            => intval( $settings['premium-banner'] ? 1 : 0 ),
-                'premium-blog'              => intval( $settings['premium-blog'] ? 1 : 0 ),
-                'premium-carousel'          => intval( $settings['premium-carousel'] ? 1 : 0 ),
-                'premium-countdown'         => intval( $settings['premium-countdown'] ? 1 : 0 ),
-                'premium-counter'           => intval( $settings['premium-counter'] ? 1 : 0 ),
-                'premium-dual-header'       => intval( $settings['premium-dual-header'] ? 1 : 0 ),
-                'premium-fancytext'         => intval( $settings['premium-fancytext'] ? 1 : 0 ),
-                'premium-image-separator'   => intval( $settings['premium-image-separator'] ? 1 : 0 ),
-                'premium-maps'              => intval( $settings['premium-maps'] ? 1 : 0 ),
-                'premium-modalbox' 			=> intval( $settings['premium-modalbox'] ? 1 : 0 ),
-                'premium-person' 			=> intval( $settings['premium-person'] ? 1 : 0 ),
-                'premium-progressbar' 		=> intval( $settings['premium-progressbar'] ? 1 : 0 ),
-                'premium-testimonials' 		=> intval( $settings['premium-testimonials'] ? 1 : 0 ),
-                'premium-title'             => intval( $settings['premium-title'] ? 1 : 0 ),
-                'premium-videobox'          => intval( $settings['premium-videobox'] ? 1 : 0 ),
-                'premium-pricing-table'     => intval( $settings['premium-pricing-table'] ? 1 : 0),
-                'premium-button'            => intval( $settings['premium-button'] ? 1 : 0),
-                'premium-contactform'       => intval( $settings['premium-contactform'] ? 1 : 0),
-                'premium-image-button'      => intval( $settings['premium-image-button'] ? 1 : 0),
-                'premium-grid'              => intval( $settings['premium-grid'] ? 1 : 0),
-            );
-            
-            update_option( 'pa_save_settings', $this->pa_settings );
-            
-            return true;
-            die();
+        if( isset( $_POST['fields'] ) ) {
+            parse_str( $_POST['fields'], $settings );
+        } else {
+            return;
         }
+
+        $this->pa_settings = array(
+            'premium-banner'            => intval( $settings['premium-banner'] ? 1 : 0 ),
+            'premium-blog'              => intval( $settings['premium-blog'] ? 1 : 0 ),
+            'premium-carousel'          => intval( $settings['premium-carousel'] ? 1 : 0 ),
+            'premium-countdown'         => intval( $settings['premium-countdown'] ? 1 : 0 ),
+            'premium-counter'           => intval( $settings['premium-counter'] ? 1 : 0 ),
+            'premium-dual-header'       => intval( $settings['premium-dual-header'] ? 1 : 0 ),
+            'premium-fancytext'         => intval( $settings['premium-fancytext'] ? 1 : 0 ),
+            'premium-image-separator'   => intval( $settings['premium-image-separator'] ? 1 : 0 ),
+            'premium-maps'              => intval( $settings['premium-maps'] ? 1 : 0 ),
+            'premium-modalbox' 			=> intval( $settings['premium-modalbox'] ? 1 : 0 ),
+            'premium-person' 			=> intval( $settings['premium-person'] ? 1 : 0 ),
+            'premium-progressbar' 		=> intval( $settings['premium-progressbar'] ? 1 : 0 ),
+            'premium-testimonials' 		=> intval( $settings['premium-testimonials'] ? 1 : 0 ),
+            'premium-title'             => intval( $settings['premium-title'] ? 1 : 0 ),
+            'premium-videobox'          => intval( $settings['premium-videobox'] ? 1 : 0 ),
+            'premium-pricing-table'     => intval( $settings['premium-pricing-table'] ? 1 : 0),
+            'premium-button'            => intval( $settings['premium-button'] ? 1 : 0),
+            'premium-contactform'       => intval( $settings['premium-contactform'] ? 1 : 0),
+            'premium-image-button'      => intval( $settings['premium-image-button'] ? 1 : 0),
+            'premium-grid'              => intval( $settings['premium-grid'] ? 1 : 0),
+        );
+
+        update_option( 'pa_save_settings', $this->pa_settings );
+
+        return true;
+        die();
+    }
 }

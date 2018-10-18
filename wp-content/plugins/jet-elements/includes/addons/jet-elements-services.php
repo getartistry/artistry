@@ -29,7 +29,7 @@ class Jet_Elements_Services extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-23';
+		return 'jetelements-icon-26';
 	}
 
 	public function get_categories() {
@@ -80,6 +80,26 @@ class Jet_Elements_Services extends Jet_Elements_Base {
 				'label'   => esc_html__( 'Title', 'jet-elements' ),
 				'type'    => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Title', 'jet-elements' ),
+			)
+		);
+
+		$this->add_control(
+			'services_title_size',
+			array(
+				'label'   => esc_html__( 'Title HTML Tag', 'jet-elements' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => array(
+					'h1'   => esc_html__( 'H1', 'jet-elements' ),
+					'h2'   => esc_html__( 'H2', 'jet-elements' ),
+					'h3'   => esc_html__( 'H3', 'jet-elements' ),
+					'h4'   => esc_html__( 'H4', 'jet-elements' ),
+					'h5'   => esc_html__( 'H5', 'jet-elements' ),
+					'h6'   => esc_html__( 'H6', 'jet-elements' ),
+					'div'  => esc_html__( 'div', 'jet-elements' ),
+					'span' => esc_html__( 'span', 'jet-elements' ),
+					'p'    => esc_html__( 'p', 'jet-elements' ),
+				),
+				'default' => 'h3',
 			)
 		);
 
@@ -198,7 +218,7 @@ class Jet_Elements_Services extends Jet_Elements_Base {
 		$this->add_control(
 			'header_position',
 			array(
-				'label'   => esc_html__( 'Header Postition', 'jet-elements' ),
+				'label'   => esc_html__( 'Header Position', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'top',
 				'options' => array(
@@ -1327,9 +1347,11 @@ class Jet_Elements_Services extends Jet_Elements_Base {
 			$title_html = sprintf( '<span class="jet-services__title-text">%s</span>', $title );
 		}
 
-		$format = apply_filters( 'jet-elements/services/name-format', '<h3 class="jet-services__title">%1$s%2$s</h3>' );
+		$title_tag = $this->get_settings( 'services_title_size' );
 
-		return sprintf( $format, $icon_html, $title_html );
+		$format = apply_filters( 'jet-elements/services/name-format', '<%3$s class="jet-services__title">%1$s%2$s</%3$s>' );
+
+		return sprintf( $format, $icon_html, $title_html, $title_tag );
 
 	}
 

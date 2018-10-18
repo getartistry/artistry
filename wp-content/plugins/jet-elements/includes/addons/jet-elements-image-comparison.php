@@ -29,7 +29,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-34';
+		return 'jetelements-icon-29';
 	}
 
 	public function get_categories() {
@@ -128,7 +128,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 		$this->add_control(
 			'infinite',
 			array(
-				'label'        => esc_html__( 'Infinite Loop', 'elementor' ),
+				'label'        => esc_html__( 'Infinite Loop', 'jet-elements' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
 				'label_off'    => esc_html__( 'No', 'jet-elements' ),
@@ -648,6 +648,17 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 			)
 		);
 
+		$this->add_control(
+			'handle_arrow_color',
+			array(
+				'label' => esc_html__( 'Arrow Color', 'jet-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} ' . $css_scheme['jx_instance'] . ' .jx-controller i' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			array(
@@ -681,6 +692,17 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 			)
 		);
 
+		$this->add_control(
+			'handle_arrow_color_hover',
+			array(
+				'label' => esc_html__( 'Arrow Color', 'jet-elements' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} ' . $css_scheme['jx_instance'] . ':hover .jx-controller i' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			array(
@@ -702,6 +724,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['handle'] . ' .jx-controller' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+				'separator' => 'before',
 			)
 		);
 
@@ -747,7 +770,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 		$this->add_control(
 			'heading_handle_divider_style',
 			array(
-				'label'     => esc_html__( 'Heading Divider', 'jet-elements' ),
+				'label'     => esc_html__( 'Handle Divider', 'jet-elements' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -805,7 +828,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 		$this->add_control(
 			'heading_handle_arrow_style',
 			array(
-				'label'     => esc_html__( 'Heading Arrow', 'jet-elements' ),
+				'label'     => esc_html__( 'Handle Arrow', 'jet-elements' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -865,50 +888,6 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 			)
 		);
 
-		$this->start_controls_tabs( 'tabs_handle_arrow_styles' );
-
-		$this->start_controls_tab(
-			'tab_handle_arrow_normal',
-			array(
-				'label' => esc_html__( 'Normal', 'jet-elements' ),
-			)
-		);
-
-		$this->add_control(
-			'handle_arrow_color',
-			array(
-				'label' => esc_html__( 'Icon Color', 'jet-elements' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} ' . $css_scheme['jx_instance'] . ' .jx-controller i' => 'color: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'tab_handle_arrow_hover',
-			array(
-				'label' => esc_html__( 'Hover', 'jet-elements' ),
-			)
-		);
-
-		$this->add_control(
-			'handle_arrow_color_hover',
-			array(
-				'label' => esc_html__( 'Icon Color', 'jet-elements' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} ' . $css_scheme['jx_instance'] . ':hover .jx-controller i' => 'color: {{VALUE}}',
-				),
-			)
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
-
 		$this->end_controls_section();
 
 		/*
@@ -936,6 +915,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'arrows_style',
+				'label'          => esc_html__( 'Arrows Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['arrow'],
 				'fields_options' => array(
 					'color' => array(
@@ -961,6 +941,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'arrows_hover_style',
+				'label'          => esc_html__( 'Arrows Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['arrow'] . ':hover',
 				'fields_options' => array(
 					'color' => array(
@@ -989,7 +970,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 		$this->add_control(
 			'prev_vert_position',
 			array(
-				'label'   => esc_html__( 'Vertical Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Vertical Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'top',
 				'options' => array(
@@ -1060,7 +1041,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 		$this->add_control(
 			'prev_hor_position',
 			array(
-				'label'   => esc_html__( 'Horizontal Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Horizontal Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'left',
 				'options' => array(
@@ -1140,7 +1121,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 		$this->add_control(
 			'next_vert_position',
 			array(
-				'label'   => esc_html__( 'Vertical Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Vertical Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'top',
 				'options' => array(
@@ -1211,7 +1192,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 		$this->add_control(
 			'next_hor_position',
 			array(
-				'label'   => esc_html__( 'Horizontal Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Horizontal Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'right',
 				'options' => array(
@@ -1306,6 +1287,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['dots'] .' li span',
 				'fields_options' => array(
 					'color' => array(
@@ -1314,6 +1296,10 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_3,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -1331,6 +1317,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_hover',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['dots'] . ' li span:hover',
 				'fields_options' => array(
 					'color' => array(
@@ -1339,6 +1326,10 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_1,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -1356,6 +1347,7 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_active',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['dots'] .' li.slick-active span',
 				'fields_options' => array(
 					'color' => array(
@@ -1364,6 +1356,10 @@ class Jet_Elements_Image_Comparison extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_4,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);

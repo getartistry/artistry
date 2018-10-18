@@ -238,6 +238,12 @@ if ( ! class_exists( 'Ocean_Extra_Social_Share_Widget' ) ) {
 				return;
 			}
 
+			// Return if no content or search page
+			if ( empty( get_the_content() )
+				|| is_search() ) {
+				return;
+			}
+
 			// Define vars
 			$title         	  = isset( $instance['title'] ) ? apply_filters( 'widget_title', $instance['title'] ) : '';
 			$style   		  = isset( $instance['style'] ) ? $instance['style'] : '';
@@ -279,7 +285,7 @@ if ( ! class_exists( 'Ocean_Extra_Social_Share_Widget' ) ) {
 						$icon    = $social_array[$social_key]['icon'];
 
 
-						if( $social_key == 'twitter' && !empty( $twitter_username ) ) {
+						if ( $social_key == 'twitter' && !empty( $twitter_username ) ) {
 							$url = $url . '&amp;via='.$twitter_username;
 						}
 

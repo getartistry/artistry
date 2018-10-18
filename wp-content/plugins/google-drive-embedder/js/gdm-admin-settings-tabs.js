@@ -35,6 +35,7 @@ jQuery(document).ready(function() {
 		activeTab.addClass('nav-tab-active');
 		gdmSetActionToTab(active_tab);
 	}
-
+	
+	 
 	
 });

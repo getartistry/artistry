@@ -59,6 +59,7 @@ if ( ! class_exists( 'Jet_Elements_Integration' ) ) {
 			add_action( 'wp_ajax_elementor_render_widget', array( $this, 'set_elementor_ajax' ), 10, -1 );
 
 			add_action( 'elementor/frontend/before_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_action( 'elementor/editor/before_enqueue_scripts', array( $this, 'editor_scripts' ) );
 			add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'editor_styles' ) );
 
 			// Frontend messages
@@ -101,6 +102,21 @@ if ( ! class_exists( 'Jet_Elements_Integration' ) ) {
 				'jet-elements',
 				'jetElements',
 				apply_filters( 'jet-elements/frontend/localize-data', $this->localize_data )
+			);
+		}
+
+		/**
+		 * Enqueue plugin scripts only with elementor scripts
+		 *
+		 * @return void
+		 */
+		public function editor_scripts() {
+			wp_enqueue_script(
+				'jet-elements-editor',
+				jet_elements()->plugin_url( 'assets/js/jet-elements-editor.js' ),
+				array( 'jquery' ),
+				jet_elements()->get_version(),
+				true
 			);
 		}
 
@@ -228,15 +244,6 @@ if ( ! class_exists( 'Jet_Elements_Integration' ) ) {
 						'conditional' => array(
 							'cb'  => 'defined',
 							'arg' => 'WPCF7_PLUGIN_URL',
-						),
-					),
-					'mp_timetable' => array(
-						'file' => jet_elements()->plugin_path(
-							'includes/addons/vendor/jet-elements-mp-timetable.php'
-						),
-						'conditional' => array(
-							'cb'  => 'defined',
-							'arg' => 'MP_TT_PLUGIN_NAME',
 						),
 					),
 					'mp_timetable' => array(

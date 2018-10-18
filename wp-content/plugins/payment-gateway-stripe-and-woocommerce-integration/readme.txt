@@ -1,12 +1,12 @@
 === WooCommerce Stripe Payment Gateway (Credit Card, AliPay, Apple Pay)  ===
-Contributors: xadapter, mujeebur
-Donate link: 
+Contributors: webtoffee
+Donate link: https://www.webtoffee.com/plugins/
 Tags: stripe, woocommerce, apple pay, alipay, payment gateway
 Requires at least: 3.0.1
-Tested up to: 4.9.6
-Stable tag: 3.1.4
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tested up to: 4.9.8
+Stable tag: 3.1.5
+License: GPLv3
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 Pay via Credit Card, Alipay & Apple Pay using Stripe WooCommerce payment gateway.
 
@@ -20,19 +20,20 @@ With this plugin, your customer can use their credit cards during the checkout p
 What else? A unique and intuitive stripe overview page will provide you a consolidated overview of Stripe Payments, where you can do one click capture and refund.
 
 = Features =
-* Pay using Credit Card within your Web Store.
-* Pay using Alipay. 
-* Stripe Overview Page: A dashboard where you can review transactions & do any payment actions.
-* Capture Later: Capture the authorized payment later.
-* Full & Partial refunds.
-* Customize each user facing elements by various settings options.
-* Customize Stripe Checkout Logo.
-* Automatic Email Receipt.
-* Save Cards to your Stripe account.
-* WPML Supported</strong>: French and German ( Deutschland ) language supported out of the box.
-* Various settings customisation options.
-* Restrict payment only from preferred cards.
-* Basic currency conversation feature included.
+ &#128312; Pay using Credit Card within your Web Store.
+ &#128312; Pay using Alipay. 
+ &#128312; Stripe Overview Page: A dashboard where you can review transactions & do any payment actions.
+ &#128312; Capture Later: Capture the authorized payment later.
+ &#128312; Full & Partial refunds.
+ &#128312; Customize each user facing elements by various settings options.
+ &#128312; Customize Stripe Checkout Logo.
+ &#128312; Automatic Email Receipt.
+ &#128312; Save Cards to your Stripe account.
+ &#128312; WPML Supported</strong>: French and German ( Deutschland ) language supported out of the box.
+ &#128312; Various settings customisation options.
+ &#128312; Restrict payment only from preferred cards.
+ &#128312; Basic currency conversation feature included.
+ &#128312; Tested OK with WooCommerce 3.4.5.
 
 [youtube https://www.youtube.com/watch?v=lrQL-jIDiic]
 
@@ -40,15 +41,13 @@ What else? A unique and intuitive stripe overview page will provide you a consol
 
 = Premium version Features =
 
-<ul>
-<li><strong>Apple Pay Supported</strong>: Integrate Apple Pay with Cart and Checkout Page.</li>
-<li>Supports WooCommerce Subscriptions</li>
-<li>More Customisation options.</li>
-<li>Timely compatibility updates and bug fixes.</li>
-<li>Premium support!</li>
-</ul>
+ &#9989; <strong>Apple Pay Supported</strong>: Integrate Apple Pay with Cart and Checkout Page.
+ &#9989; Supports WooCommerce Subscriptions
+ &#9989; More Customisation options.
+ &#9989; Timely compatibility updates and bug fixes.
+ &#9989; Premium support!
 
-For complete list of features and details, please visit <a rel="nofollow" href="https://www.xadapter.com/product/stripe-payment-gateway-for-woocommerce/">Stripe Payment Gateway for WooCommerce</a>
+For complete list of features and details, please visit <a rel="nofollow" href="https://www.webtoffee.com/product/woocommerce-stripe-payment-gateway/">Stripe Payment Gateway for WooCommerce</a>
 </blockquote>
 
 = About Stripe =
@@ -62,9 +61,9 @@ Alipay, or Zhifubao in Chinese, is a third-party mobile and online payment platf
 = About Apple Pay =
 Apple Pay offers an easy, secure, and private way to pay on iPhone, iPad, Apple Watch, and Mac. In stores, you can use Apple Pay on your iPhone or Apple Watch. Within apps, you can use Apple Pay on your iPhone, iPad, and Apple Watch. Within websites in Safari, you can use Apple Pay on your iPhone, iPad, and Mac. To use Apple Pay with Safari on a Mac model without built-in Touch ID, go to Settings > Wallet & Apple Pay and turn on Allow Payments on Mac.
 
-= About XAdapter =
+= About WebToffee =
 
-XAdapter is a reliable, efficient and focused WooCommerce extension developer firm. Our team comprises of profoundly experienced developers with a vast knowledge pool.
+WebToffee is a reliable, efficient and focused WooCommerce extension developer firm. Our team comprises of profoundly experienced developers with a vast knowledge pool.
 
 == Installation ==
 
@@ -94,8 +93,11 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
 
 == Changelog ==
 
+=3.1.5 =
+ * Tested OK with WC 3.4.5 and WP4.9.8
+
 =3.1.4 =
- * Tested OK with WC 3.4.3
+ * Tested OK with WC 3.4.4
  * Bitcoin support revoked
 
 =3.1.3 =
@@ -217,6 +219,5 @@ Stripe is available for businesses in 25 countries. https://stripe.com/global
  
 == Upgrade Notice ==
 
-=3.1.4 =
- * Tested OK with WC 3.4.3
- * Bitcoin support revoked
+=3.1.5 =
+ * Tested OK with WC 3.4.5 and WP4.9.8

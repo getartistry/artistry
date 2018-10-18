@@ -54,7 +54,6 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 			add_action( 'astra_get_js_files', array( $this, 'add_scripts' ) );
 			add_filter( 'astra_addon_js_localize', array( $this, 'localize_variables' ) );
 			add_filter( 'astra_dynamic_css', array( $this, 'astra_ext_advanced_hooks_dynamic_css' ) );
-
 		}
 
 		/**
@@ -132,7 +131,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 					$action = 'astra_advanced_hook_template';
 				}
 
-				$vc_activated = self::is_vc_activated( $post_id );
+				$vc_activated = Astra_Addon_Page_Builder_Compatibility::is_vc_activated( $post_id );
 				if ( 'astra_advanced_hook_template' == $action || $vc_activated ) {
 					remove_action( 'astra_advanced_hook_template', array( $this, 'template_empty_content' ) );
 					add_action( 'astra_advanced_hook_template', 'the_content' );
@@ -149,13 +148,15 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 					}
 
 					add_action(
-						$action, function() use ( $post_id ) {
+						$action,
+						function() use ( $post_id ) {
 							echo '<header class="ast-custom-header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">';
 
 								Astra_Ext_Advanced_Hooks_Markup::get_instance()->get_the_hook_content();
 
 							echo '</header>';
-						}, $priority
+						},
+						$priority
 					);
 				} elseif ( 'footer' == $layout ) {
 					// remove default site's footer.
@@ -169,21 +170,25 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 
 					// Add Action for custom header advanced-hooks.
 					add_action(
-						$action, function() use ( $post_id ) {
+						$action,
+						function() use ( $post_id ) {
 							echo '<footer class="ast-custom-footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">';
 
 								Astra_Ext_Advanced_Hooks_Markup::get_instance()->get_the_hook_content();
 
 							echo '</footer>';
-						}, $priority
+						},
+						$priority
 					);
 				} else {
 					add_action(
-						$action, function() use ( $post_id ) {
+						$action,
+						function() use ( $post_id ) {
 
 							Astra_Ext_Advanced_Hooks_Markup::get_instance()->get_the_hook_content();
 
-						}, $priority
+						},
+						$priority
 					);
 				}
 			}
@@ -293,37 +298,16 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 			);
 
 			$result = Astra_Target_Rules_Fields::get_instance()->get_posts_by_conditions( ASTRA_ADVANCED_HOOKS_POST_TYPE, $option );
+
 			foreach ( $result as $post_id => $post_data ) {
 
-				// Check if current layout is built using the thrive architect.
-				if ( self::is_tve_activated( $post_id ) && ! is_editor_page() ) {
+				if ( class_exists( 'Astra_Addon_Page_Builder_Compatibility' ) ) {
+					$page_builder_base_instance = Astra_Addon_Page_Builder_Compatibility::get_instance();
 
-					if ( tve_get_post_meta( $post_id, 'thrive_icon_pack' ) && ! wp_style_is( 'thrive_icon_pack', 'enqueued' ) ) {
-						TCB_Icon_Manager::enqueue_icon_pack();
-					}
+					$page_builder_instance = $page_builder_base_instance->get_active_page_builder( $post_id );
 
-					tve_enqueue_extra_resources( $post_id );
-					tve_enqueue_style_family( $post_id );
-					tve_enqueue_custom_fonts( $post_id, true );
-					tve_load_custom_css( $post_id );
-
-					add_filter( 'tcb_enqueue_resources', '__return_true' );
-					tve_frontend_enqueue_scripts();
-					remove_filter( 'tcb_enqueue_resources', '__return_true' );
-				}
-
-				if ( self::is_elementor_activated( $post_id ) ) {
-					if ( class_exists( '\Elementor\Plugin' ) ) {
-						$elementor = \Elementor\Plugin::instance();
-						$elementor->frontend->enqueue_styles();
-					}
-					if ( class_exists( '\ElementorPro\Plugin' ) ) {
-						$elementor = \ElementorPro\Plugin::instance();
-						$elementor->enqueue_styles();
-					}
-					if ( '' !== $post_id && class_exists( '\Elementor\Post_CSS_File' ) ) {
-						$css_file = new \Elementor\Post_CSS_File( $post_id );
-						$css_file->enqueue();
+					if ( is_callable( array( $page_builder_instance, 'enqueue_scripts' ) ) ) {
+						$page_builder_instance->enqueue_scripts( $post_id );
 					}
 				}
 			}
@@ -361,6 +345,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 			$header_counter     = 0;
 			$footer_counter     = 0;
 			$layout_404_counter = 0;
+
 			foreach ( $result as $post_id => $post_data ) {
 				$post_type = get_post_type();
 
@@ -369,7 +354,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 					$layout   = get_post_meta( $post_id, 'ast-advanced-hook-layout', false );
 					$priority = get_post_meta( $post_id, 'ast-advanced-hook-priority', true );
 					add_action(
-						'wp_enqueue_scripts', function() use ( $post_id ) {
+						'wp_enqueue_scripts',
+						function() use ( $post_id ) {
 
 							$styles = '';
 
@@ -411,9 +397,11 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 						}
 
 						add_action(
-							'astra_entry_content_404_page', function() use ( $post_id ) {
+							'astra_entry_content_404_page',
+							function() use ( $post_id ) {
 									Astra_Ext_Advanced_Hooks_Markup::get_instance()->get_action_content( $post_id );
-							}, $priority
+							},
+							$priority
 						);
 
 						$layout_404_counter ++;
@@ -429,11 +417,13 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 							$action = 'astra_header';
 						}
 						add_action(
-							$action, function() use ( $post_id ) {
+							$action,
+							function() use ( $post_id ) {
 								echo '<header class="ast-custom-header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">';
 									Astra_Ext_Advanced_Hooks_Markup::get_instance()->get_action_content( $post_id );
 								echo '</header>';
-							}, $priority
+							},
+							$priority
 						);
 						$header_counter++;
 					} elseif ( isset( $layout[0] ) && 'footer' == $layout[0] && 0 == $footer_counter ) {
@@ -448,29 +438,34 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 
 						// Add Action for custom header advanced-hooks.
 						add_action(
-							$action, function() use ( $post_id ) {
+							$action,
+							function() use ( $post_id ) {
 								echo '<footer class="ast-custom-footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">';
 
 								Astra_Ext_Advanced_Hooks_Markup::get_instance()->get_action_content( $post_id );
 
 								echo '</footer>';
-							}, $priority
+							},
+							$priority
 						);
 						$footer_counter++;
 					}
 
-					if ( isset( $layout[0] ) && 'header' != $layout[0] && 'footer' != $layout[0] ) {
+					if ( isset( $layout[0] ) && '0' != $layout[0] && 'header' != $layout[0] && 'footer' != $layout[0] ) {
 						// Add Action for advanced-hooks.
 						add_action(
-							$action, function() use ( $post_id ) {
+							$action,
+							function() use ( $post_id ) {
 
 								Astra_Ext_Advanced_Hooks_Markup::get_instance()->get_action_content( $post_id );
 
-							}, $priority
+							},
+							$priority
 						);
 					}
 				}
 			}
+
 		}
 
 		/**
@@ -497,202 +492,19 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 
 			} else {
 
-				$current_post = get_post( $post_id, OBJECT );
+				if ( class_exists( 'Astra_Addon_Page_Builder_Compatibility' ) ) {
+					$page_builder_base_instance = Astra_Addon_Page_Builder_Compatibility::get_instance();
 
-				if ( class_exists( 'FLBuilderModel' ) ) {
-					$do_render  = apply_filters( 'fl_builder_do_render_content', true, FLBuilderModel::get_post_id() );
-					$fl_enabled = get_post_meta( $post_id, '_fl_builder_enabled', true );
-					if ( $do_render && $fl_enabled ) {
+					$page_builder_instance = $page_builder_base_instance->get_active_page_builder( $post_id );
 
-						if ( is_callable( 'FLBuilderShortcodes::insert_layout' ) ) {
-							echo FLBuilderShortcodes::insert_layout(
-								array( // WPCS: XSS OK.
-									'id' => $post_id,
-								)
-							);
-						}
+					$page_builder_instance->render_content( $post_id );
 
-						if ( $with_wrapper ) {
-							echo '</div>';
-						}
-
-						return;
-					}
 				}
-				if ( self::is_elementor_activated( $post_id ) ) {
-					// set post to glabal post.
-					$elementor_instance = Elementor\Plugin::instance();
-					echo $elementor_instance->frontend->get_builder_content_for_display( $post_id );
-					if ( $with_wrapper ) {
-						echo '</div>';
-					}
-					return;
-				}
-
-				if ( self::is_vc_activated( $post_id ) ) {
-					echo do_shortcode( $current_post->post_content );
-					if ( $with_wrapper ) {
-						echo '</div>';
-					}
-					return;
-				}
-
-				// Add custom support for the Thrive Architect.
-				if ( self::is_tve_activated( $post_id ) ) {
-					global $post;
-					$post = $current_post;
-
-					$tve_content = apply_filters( 'the_content', $current_post->post_content );
-
-					if ( isset( $_REQUEST[ TVE_EDITOR_FLAG ] ) ) {
-						$tve_content = str_replace( 'id="tve_editor"', '', $tve_content );
-					}
-
-					echo $tve_content;
-
-					if ( $with_wrapper ) {
-						echo '</div>';
-					}
-
-					wp_reset_postdata();
-
-					return;
-				}
-
-				// Add custom support for the Divi builder.
-				if ( self::is_divi_activated( $post_id ) ) {
-					global $post;
-					$post = $current_post;
-
-					$current_post->post_content = self::add_divi_wrap( $current_post->post_content );
-
-					echo apply_filters( 'the_content', $current_post->post_content );
-
-					if ( $with_wrapper ) {
-						echo '</div>';
-					}
-
-					wp_reset_postdata();
-
-					return;
-				}
-
-				ob_start();
-				echo do_shortcode( $current_post->post_content );
-				echo ob_get_clean();
 			}
 
 			if ( $with_wrapper ) {
 				echo '</div>';
 			}
-		}
-
-		/**
-		 * Check if Thrive Architect is enabled for the post.
-		 *
-		 * @since  1.1.0
-		 *
-		 * @param  int $id Post ID of the post which is to be tested for the Thrive Architect.
-		 * @return boolean     Returns true if the post is created using Thrive Architect, False if not.
-		 */
-		public static function is_tve_activated( $id ) {
-
-			if ( ! defined( 'TVE_VERSION' ) ) {
-				return false;
-			}
-
-			if ( get_post_meta( $id, 'tcb_editor_enabled', true ) ) {
-				return true;
-			} else {
-				return false;
-			}
-		}
-
-		/**
-		 * Check is elementor activated.
-		 *
-		 * @param int $id Post/Page Id.
-		 * @return boolean
-		 */
-		public static function is_elementor_activated( $id ) {
-			if ( ! class_exists( '\Elementor\Plugin' ) ) {
-				return false;
-			}
-			if ( version_compare( ELEMENTOR_VERSION, '1.5.0', '<' ) ) {
-				return ( 'builder' === Elementor\Plugin::$instance->db->get_edit_mode( $id ) );
-			} else {
-				return Elementor\Plugin::$instance->db->is_built_with_elementor( $id );
-			}
-
-			return false;
-		}
-
-		/**
-		 * Check VC activated or not on post.
-		 *
-		 * @param  int $post_id Post Id.
-		 * @return boolean
-		 */
-		public static function is_vc_activated( $post_id ) {
-
-			$post      = get_post( $post_id );
-			$vc_active = get_post_meta( $post_id, '_wpb_vc_js_status', true );
-
-			if ( class_exists( 'Vc_Manager' ) && ( 'true' == $vc_active || has_shortcode( $post->post_content, 'vc_row' ) ) ) {
-				return true;
-			}
-
-			return false;
-		}
-
-		/**
-		 * Check if Divi builder is activated or not on post.
-		 *
-		 * @since 1.3.3
-		 *
-		 * @param  int $post_id Post Id.
-		 * @return boolean       Divi activate status.
-		 */
-		public static function is_divi_activated( $post_id ) {
-
-			if ( function_exists( 'et_pb_is_pagebuilder_used' ) ) {
-				return et_pb_is_pagebuilder_used( $post_id );
-			}
-
-			return false;
-		}
-
-		/**
-		 * Adds Divi wrapper container to post content.
-		 *
-		 * @since 1.3.3
-		 *
-		 * @param string $content Post content.
-		 * @return string         Post content.
-		 */
-		public static function add_divi_wrap( $content ) {
-
-			$outer_class   = apply_filters( 'et_builder_outer_content_class', array( 'et_builder_outer_content' ) );
-			$outer_classes = implode( ' ', $outer_class );
-
-			$outer_id = apply_filters( 'et_builder_outer_content_id', 'et_builder_outer_content' );
-
-			$inner_class   = apply_filters( 'et_builder_inner_content_class', array( 'et_builder_inner_content' ) );
-			$inner_classes = implode( ' ', $inner_class );
-
-			$content = sprintf(
-				'<div class="%2$s" id="%4$s">
-					<div class="%3$s">
-						%1$s
-					</div>
-				</div>',
-				$content,
-				esc_attr( $outer_classes ),
-				esc_attr( $inner_classes ),
-				esc_attr( $outer_id )
-			);
-
-			return $content;
 		}
 
 		/**
@@ -891,6 +703,25 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Markup' ) ) {
 				$parse_css .= astra_parse_css( $box_css );
 			endif;
 			return $dynamic_css . $parse_css;
+		}
+
+		/**
+		 * Check is elementor activated.
+		 *
+		 * @param int $id Post/Page Id.
+		 * @return boolean
+		 */
+		public static function is_elementor_activated( $id ) {
+			if ( ! class_exists( '\Elementor\Plugin' ) ) {
+				return false;
+			}
+			if ( version_compare( ELEMENTOR_VERSION, '1.5.0', '<' ) ) {
+				return ( 'builder' === Elementor\Plugin::$instance->db->get_edit_mode( $id ) );
+			} else {
+				return Elementor\Plugin::$instance->db->is_built_with_elementor( $id );
+			}
+
+			return false;
 		}
 
 	}

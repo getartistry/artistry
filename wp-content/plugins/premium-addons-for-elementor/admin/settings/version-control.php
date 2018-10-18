@@ -14,8 +14,7 @@ class PA_Version_Control {
     
     private $pa_beta_get_settings;
     
-    public function __construct()
-    {
+    public function __construct() {
         add_action( 'admin_menu', array ($this,'create_version_control_menu' ), 100 );
         add_action( 'wp_ajax_pa_beta_save_settings', array( $this, 'pa_beta_save_settings_with_ajax' ) );
     }
@@ -39,7 +38,7 @@ class PA_Version_Control {
 			'ajaxurl' => admin_url( 'admin-ajax.php' )
 		);
         
-        wp_localize_script( 'premium-addons-admin-js', 'settings', $js_info );
+        wp_localize_script( 'pa-admin-js', 'settings', $js_info );
         
         $this->pa_beta_default_settings = array_fill_keys( $this->pa_beta_keys, true );
        
@@ -80,7 +79,7 @@ class PA_Version_Control {
                <tr class="pa-roll-row">
                   <th>Rollback Version</th>
                   <td>
-                     <div><?php echo  sprintf( '<a target="_blank" href="%s" class="button pa-btn pa-rollback-button elementor-button-spinner">Reinstall Version 2.5.5</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ) ); ?> </div>
+                     <div><?php echo  sprintf( '<a target="_blank" href="%s" class="button pa-btn pa-rollback-button elementor-button-spinner">Reinstall Version 2.7.1</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ) ); ?> </div>
                      <p class="pa-roll-desc"><span>Warning: Please backup your database before making the rollback.</span></p>
                   </td>
                </tr>

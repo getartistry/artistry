@@ -7,6 +7,7 @@ window.eml = window.eml || { l10n: {} };
     var media = wp.media,
         l10n = media.view.l10n,
         l10n_defaults = { media_orderby: 'date', media_order: 'DESC' },
+        mediaTrash = media.view.settings.mediaTrash,
         original = {};
 
 
@@ -23,6 +24,10 @@ window.eml = window.eml || { l10n: {} };
 
         activate: media.controller.Library.prototype.activate
     };
+
+    _.extend( media.controller.Library.prototype.defaults, {
+        idealColumnWidth   : $( window ).width() < 640 ? 120 : 135
+    });
 
     _.extend( media.controller.Library.prototype, {
 
@@ -86,19 +91,71 @@ window.eml = window.eml || { l10n: {} };
      * wp.media.view.AttachmentCompat
      *
      */
-    var newAttachmentCompatEvents = {
-        'click input'  : 'preSave'
-    };
-
-    _.extend( media.view.AttachmentCompat.prototype.events, newAttachmentCompatEvents );
 
     _.extend( media.view.AttachmentCompat.prototype, {
 
-        preSave: function() {
+        save: function( event ) {
+
+            var data = {},
+                spinner;
+
+
+            if ( event ) {
+                event.preventDefault();
+            }
+
+            if ( this.controller.isModeActive( 'eml-grid' ) ) {
+                spinner = this.controller.browserView.toolbar.get( 'spinner' );
+            }
+
+            _.each( this.$el.serializeArray(), function( pair ) {
+                data[ pair.name ] = pair.value;
+            });
+
+            $( 'input', this.$el ).prop('disabled', true);
+            if ( spinner ) {
+                spinner.show();
+            }
 
             this.noRender = true;
-
             media.model.Query.cleanQueries();
+
+            this.controller.trigger( 'attachment:compat:waiting', ['waiting'] );
+            this.model.saveCompat( data ).done( _.bind( this.postSave, this, 1 ) ).fail( _.bind( this.postSave, this, 0 ) );
+        },
+
+        postSave: function( success ) {
+
+            var toolbar,
+                spinner,
+                emlMessage;
+
+
+            if ( 'edit-attachment' !== this.controller._state ) {
+                toolbar = this.controller.toolbar.get();
+            }
+
+            if ( this.controller.isModeActive( 'eml-grid' ) ) {
+                spinner = this.controller.browserView.toolbar.get( 'spinner' );
+            }
+
+
+            $( 'input', this.$el ).prop('disabled', false);
+
+            if ( spinner ) {
+                spinner.hide();
+            }
+
+            if ( toolbar ) {
+                emlMessage = success ? toolbar.get( 'emlAttachmentSuccess' ) : toolbar.get( 'emlAttachmentError' );
+
+                emlMessage.$el.fadeIn( 200 );
+                setTimeout( function() {
+                    emlMessage.$el.fadeOut( 100 );
+                }, 800 );
+            }
+
+            this.controller.trigger( 'attachment:compat:ready', ['ready'] );
         },
 
         render: function() {
@@ -132,11 +189,15 @@ window.eml = window.eml || { l10n: {} };
 
             // TODO: find a better solution
             if ( this.controller.isModeActive( 'select' ) &&
-                'edit-attachment' != this.controller.state().get('id') ) {
+                'edit-attachment' !== this.controller._state ) {
 
                 $.each( eml.l10n.compat_taxonomies_to_hide, function( id, taxonomy ) {
                     $compat_el.find( '.compat-field-'+taxonomy ).remove();
                 });
+
+                if ( ! this.$el.find( '.compat-attachment-fields tbody' ).children().length ) {
+                    this.$el.find( '.media-types-required-info' ).hide();
+                }
             }
 
 
@@ -184,7 +245,7 @@ window.eml = window.eml || { l10n: {} };
             }
 
 
-            if ( filter && media.view.settings.mediaTrash && ! _.isUndefined( this.controller.toolbar ) ) {
+            if ( filter && mediaTrash && ! _.isUndefined( this.controller.toolbar ) ) {
                 this.controller.toolbar.get().$('.media-selection').toggleClass( 'trash', 'trash' === filter.props.status );
             }
 
@@ -283,7 +344,7 @@ window.eml = window.eml || { l10n: {} };
             });
 
 
-            if ( media.view.settings.mediaTrash &&
+            if ( mediaTrash &&
                 ( this.controller.isModeActive( 'grid' ) ||
                 this.controller.isModeActive( 'eml-grid' ) ) ) {
 
@@ -353,10 +414,10 @@ window.eml = window.eml || { l10n: {} };
             _.each( self.options.termList || {}, function( term, key ) {
 
                 var term_id = term.term_id,
-                    term_name = $("<div/>").html(term.term_name).text();
+                    term_row = $("<div/>").html(term.term_row).text();
 
                 filters[ term_id ] = {
-                    text: term_name,
+                    text: term_row,
                     props: {
                         uncategorized : null,
                         orderby       : eml.l10n.media_orderby,
@@ -454,6 +515,10 @@ window.eml = window.eml || { l10n: {} };
 
 
 
+    /**
+     * wp.media.view.Button.resetFilters
+     *
+     */
     media.view.Button.resetFilters = media.view.Button.extend({
 
         id: 'reset-all-filters',
@@ -482,158 +547,49 @@ window.eml = window.eml || { l10n: {} };
 
 
 
-    media.view.Button.DeleteSelected = media.view.Button.extend({
+    /**
+     * wp.media.view.emlAttachmentDetailsEditMessage
+     *
+     */
+    media.view.emlAttachmentDetailsEditMessage = media.View.extend({
+
+        tagName:    'div',
+        id:         'eml-save-changes-message',
 
         initialize: function() {
-
-            media.view.Button.prototype.initialize.apply( this, arguments );
-            if ( this.options.filters ) {
-                this.options.filters.model.on( 'change', this.filterChange, this );
-            }
-            this.controller.state().get( 'selection' ).on( 'add remove reset', this.toggleDisabled, this );
-        },
-
-        filterChange: function( model ) {
-            if ( 'trash' === model.get( 'status' ) ) {
-                this.model.set( 'text', l10n.untrashSelected );
-            } else if ( wp.media.view.settings.mediaTrash ) {
-                this.model.set( 'text', l10n.trashSelected );
-            } else {
-                this.model.set( 'text', l10n.deleteSelected );
-            }
-        },
-
-        toggleDisabled: function() {
-            this.model.set( 'disabled', ! this.controller.state().get( 'selection' ).length );
+            this.text = this.options.text;
+            this.class = this.options.class;
         },
 
         render: function() {
-            media.view.Button.prototype.render.apply( this, arguments );
-            this.toggleDisabled();
+            this.$el.addClass( this.class );
+            this.$el.html( '<p><strong>'+this.text+'</strong></p>' );
+
             return this;
-        },
-
-        click: function() {
-
-            var changed = [], removed = [],
-                selection = this.controller.state().get( 'selection' ),
-                library = this.controller.state().get( 'library' );
-
-            if ( ! selection.length ) {
-                return;
-            }
-
-            if ( ! media.view.settings.mediaTrash && ! window.confirm( l10n.warnBulkDelete ) ) {
-                return;
-            }
-
-            if ( media.view.settings.mediaTrash &&
-                'trash' !== selection.at( 0 ).get( 'status' ) &&
-                ! window.confirm( l10n.warnBulkTrash ) ) {
-
-                return;
-            }
-
-            selection.each( function( model ) {
-                if ( ! model.get( 'nonces' )['delete'] ) {
-                    removed.push( model );
-                    return;
-                }
-
-                if ( media.view.settings.mediaTrash && 'trash' === model.get( 'status' ) ) {
-                    model.set( 'status', 'inherit' );
-                    changed.push( model.save() );
-                    removed.push( model );
-                } else if ( media.view.settings.mediaTrash ) {
-                    model.set( 'status', 'trash' );
-                    changed.push( model.save() );
-                    removed.push( model );
-                } else {
-                    model.destroy({wait: true});
-                }
-            } );
-
-            if ( changed.length ) {
-                selection.remove( removed );
-
-                $.when.apply( null, changed ).then( _.bind( function() {
-                    library._requery( true );
-                    this.controller.trigger( 'selection:action:done' );
-                }, this ) );
-            } else {
-                this.controller.trigger( 'selection:action:done' );
-            }
         }
     });
 
 
 
-    media.view.Button.DeleteSelectedPermanently = media.view.Button.DeleteSelected.extend({
+    /**
+     * wp.media.view.Attachment.Details
+     *
+     */
 
-        filterChange: function( model ) {
+    _.extend( media.view.Attachment.Details.prototype, {
 
-            this.canShow = ( 'trash' === model.get( 'status' ) );
-            this.$el.toggleClass( 'hidden', ! this.canShow );
-            this.controller.browserView.fixLayout();
-        },
-
-        render: function() {
-
-            media.view.Button.prototype.render.apply( this, arguments );
-            this.$el.toggleClass( 'hidden', ! this.canShow );
-            return this;
-        },
-
-        click: function() {
-
-            var removed = [], selection = this.controller.state().get( 'selection' ),
-                library = this.controller.state().get( 'library' );
-
-            if ( ! selection.length || ! window.confirm( l10n.warnBulkDelete ) ) {
-                return;
-            }
-
-            selection.each( function( model ) {
-
-                if ( ! model.get( 'nonces' )['delete'] ) {
-                    removed.push( model );
-                    return;
-                }
-
-                model.destroy({wait: true});
-            } );
-
-            this.controller.trigger( 'selection:action:done' );
-        }
-    });
-
-
-
-    media.view.Button.Deselect = media.view.Button.extend({
-
-        initialize: function() {
-
-            media.view.Button.prototype.initialize.apply( this, arguments );
-            this.controller.state().get( 'selection' ).on( 'add remove reset', this.toggleDisabled, this );
-        },
-
-        toggleDisabled: function() {
-            this.model.set( 'disabled', ! this.controller.state().get( 'selection' ).length );
-        },
-
-        click: function( event ) {
-
+        deleteAttachment: function( event ) {
             event.preventDefault();
 
-            var selection = this.controller.state().get( 'selection' );
-
-            selection.reset();
-
-            // Keep focus inside media modal
-            if ( this.controller.modal ) {
-                this.controller.modal.focusManager.focus();
+            if ( window.confirm( l10n.warnDelete ) ) {
+                this.model.destroy();
+                // Keep focus inside media modal
+                // after image is deleted
+                if ( this.controller.modal ) {
+                    this.controller.modal.focusManager.focus();
+                }
             }
-        }
+        },
     });
 
 
@@ -646,6 +602,9 @@ window.eml = window.eml || { l10n: {} };
 
         initialize: media.view.AttachmentsBrowser.prototype.initialize,
         createToolbar: media.view.AttachmentsBrowser.prototype.createToolbar,
+        createSidebar: media.view.AttachmentsBrowser.prototype.createSidebar,
+        createSingle: media.view.AttachmentsBrowser.prototype.createSingle,
+        disposeSingle: media.view.AttachmentsBrowser.prototype.disposeSingle
     };
 
     _.extend( media.view.AttachmentsBrowser.prototype, {
@@ -867,31 +826,43 @@ window.eml = window.eml || { l10n: {} };
 
             if ( this.controller.isModeActive( 'eml-grid' ) ) {
 
-                this.toolbar.set( 'deselectButton', new media.view.Button.Deselect ({
-                    controller: this.controller,
-                    text: l10n.cancelSelection,
+                var toolbar = this.controller.toolbar.get();
+
+                if ( $('body').hasClass('eml-pro-media-css') ) {
+                    toolbar.set( 'emlSelectAllButton', new media.view.emlSelectAllButton({
+                        filters: Filters,
+                        disabled: true,
+                        text: eml.l10n.select_all,
+                        controller: this.controller,
+                        priority: -80
+                    }).render() );
+                }
+
+                toolbar.set( 'emlDeselectButton', new media.view.emlDeselectButton({
+                    filters: Filters,
                     disabled: true,
-                    priority: -70 + i++
+                    text: l10n.cancelSelection,
+                    controller: this.controller,
+                    priority: -70
                 }).render() );
 
-                this.toolbar.set( 'emlDeleteSelectedButton', new media.view.Button.DeleteSelected({
+                toolbar.set( 'emlDeleteSelectedButton', new media.view.emlDeleteSelectedButton({
                     filters: Filters,
                     style: 'primary',
-                    // className: 'delete-selected-button',
                     disabled: true,
-                    text: media.view.settings.mediaTrash ? l10n.trashSelected : l10n.deleteSelected,
+                    text: mediaTrash ? l10n.trashSelected : l10n.deleteSelected,
                     controller: this.controller,
-                    priority: -70 + i++
+                    priority: -60
                 }).render() );
 
-                if ( media.view.settings.mediaTrash ) {
-                    this.toolbar.set( 'emlDeleteSelectedPermanentlyButton', new media.view.Button.DeleteSelectedPermanently({
+                if ( mediaTrash ) {
+                    toolbar.set( 'emlDeleteSelectedPermanentlyButton', new media.view.emlDeleteSelectedPermanentlyButton({
                         filters: Filters,
                         style: 'primary',
                         disabled: true,
                         text: l10n.deleteSelected,
                         controller: this.controller,
-                        priority: -55
+                        priority: -50
                     }).render() );
                 }
             }
@@ -911,7 +882,7 @@ window.eml = window.eml || { l10n: {} };
                     filters: Filters,
                     style: 'primary',
                     disabled: true,
-                    text: media.view.settings.mediaTrash ? l10n.trashSelected : l10n.deleteSelected,
+                    text: mediaTrash ? l10n.trashSelected : l10n.deleteSelected,
                     controller: this.controller,
                     priority: -60,
                     click: function() {
@@ -966,7 +937,7 @@ window.eml = window.eml || { l10n: {} };
                     }
                 }).render() );
 
-                if ( media.view.settings.mediaTrash ) {
+                if ( mediaTrash ) {
                     this.toolbar.set( 'deleteSelectedPermanentlyButton', new wp.media.view.DeleteSelectedPermanentlyButton({
                         filters: Filters,
                         style: 'primary',
@@ -1003,12 +974,12 @@ window.eml = window.eml || { l10n: {} };
                     attributes: {
                         'for': 'media-search-input'
                     },
-                    priority:   -50
+                    priority:   -30
                 }).render() );
                 this.toolbar.set( 'search', new media.view.Search({
                     controller: this.controller,
                     model:      this.collection.props,
-                    priority:   -50
+                    priority:   -30
                 }).render() );
             }
 
@@ -1017,6 +988,79 @@ window.eml = window.eml || { l10n: {} };
                     el: $( '<div class="instructions">' + l10n.dragInfo + '</div>' )[0],
                     priority: -40
                 }) );
+            }
+
+            if ( 'edit-attachment' !== this.controller._state ) {
+
+                var toolbar = this.controller.toolbar.get();
+
+                toolbar.set( 'emlAttachmentSuccess', new media.view.emlAttachmentDetailsEditMessage({
+                    text: eml.l10n.saveButton_success,
+                    class: 'updated',
+                    controller: this.controller,
+                    priority:   200
+                }) );
+
+                toolbar.set( 'emlAttachmentError', new media.view.emlAttachmentDetailsEditMessage({
+                    text: eml.l10n.saveButton_failure,
+                    class: 'error',
+                    controller: this.controller,
+                    priority:   220
+                }) );
+            }
+        },
+
+        createSidebar: function() {
+            original.AttachmentsBrowser.createSidebar.apply( this, arguments );
+
+            if ( this.controller.isModeActive( 'eml-grid' ) ) {
+                this.toggleSidebar();
+            }
+        },
+
+        toggleSidebar: function() {
+
+            var selection = this.controller.state().get( 'selection' );
+
+            if ( selection.length ) {
+                this.sidebar.$el.removeClass( 'hidden' );
+                this.$el.children('.attachments').css( 'right', '300px' );
+                this.$el.children('.uploader-inline').css( 'right', '310px' );
+            }
+            else {
+                this.sidebar.$el.addClass( 'hidden' );
+                this.$el.children('.attachments').css( 'right', 0 );
+                this.$el.children('.uploader-inline').css( 'right', '10px' );
+            }
+        },
+
+        createSingle: function() {
+
+            original.AttachmentsBrowser.createSingle.apply( this, arguments );
+
+            if ( this.controller.isModeActive( 'eml-grid' ) ) {
+
+                var sidebar = this.sidebar,
+                    single = this.options.selection.single();
+
+                if ( 'trash' !== this.options.selection.at( 0 ).get( 'status' ) ) {
+                    sidebar.set( 'details', new wp.media.view.emlGridAttachmentDetails({
+                        controller: this.controller,
+                        model:      single,
+                        priority:   80
+                    }) );
+                }
+
+                this.toggleSidebar();
+            }
+        },
+
+        disposeSingle: function() {
+
+            original.AttachmentsBrowser.disposeSingle.apply( this, arguments );
+
+            if ( this.controller.isModeActive( 'eml-grid' ) ) {
+                this.toggleSidebar();
             }
         },
 
@@ -1102,43 +1146,6 @@ window.eml = window.eml || { l10n: {} };
             }
         }
     });
-
-
-
-    /**
-     * wp.media.view.DateFilter
-     *
-     * a copy from media-grid.js | for WP less than 4.1
-     */
-    if ( _.isUndefined( media.view.DateFilter ) ) {
-
-        media.view.DateFilter = media.view.AttachmentFilters.extend({
-
-            id: 'media-attachment-date-filters',
-
-            createFilters: function() {
-                var filters = {};
-                _.each( media.view.settings.months || {}, function( value, index ) {
-                    filters[ index ] = {
-                        text: value.text,
-                        props: {
-                            year: value.year,
-                            monthnum: value.month
-                        }
-                    };
-                });
-                filters.all = {
-                    text:  l10n.allDates,
-                    props: {
-                        monthnum: false,
-                        year:  false
-                    },
-                    priority: 10
-                };
-                this.filters = filters;
-            }
-        });
-    }
 
 
 

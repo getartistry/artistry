@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Module extends Module_Base {
 
-	const WOOCOMMERCE_PRODUCT_GROUP = 'woocommerce_product';
+	const WOOCOMMERCE_GROUP = 'woocommerce';
 
 	protected $docs_types = [];
 
@@ -135,6 +135,7 @@ class Module extends Module_Base {
 	public function get_widgets() {
 		return [
 			'Archive_Products',
+			'Archive_Description',
 			'Products',
 			'Products_Deprecated',
 
@@ -187,13 +188,14 @@ class Module extends Module_Base {
 			'Product_Stock',
 			'Product_Terms',
 			'Product_Title',
+			'Category_Image',
 		];
 
 		/** @var \Elementor\Core\DynamicTags\Manager $module */
 		$module = Plugin::elementor()->dynamic_tags;
 
-		$module->register_group( self::WOOCOMMERCE_PRODUCT_GROUP, [
-			'title' => __( 'Woocommerce Product', 'elementor-pro' ),
+		$module->register_group( self::WOOCOMMERCE_GROUP, [
+			'title' => __( 'Woocommerce', 'elementor-pro' ),
 		] );
 
 		foreach ( $tags as $tag ) {
@@ -302,6 +304,14 @@ class Module extends Module_Base {
 		return $settings;
 	}
 
+	public function theme_template_include( $need_override_location, $location ) {
+		if ( is_product() && 'single' === $location ) {
+			$need_override_location = true;
+		}
+
+		return $need_override_location;
+	}
+
 	public function __construct() {
 		parent::__construct();
 
@@ -310,10 +320,15 @@ class Module extends Module_Base {
 		add_action( 'elementor/documents/register', [ $this, 'register_documents' ] );
 		add_action( 'elementor/theme/register_conditions', [ $this, 'register_conditions' ] );
 
+		add_filter( 'elementor/theme/need_override_location', [ $this, 'theme_template_include' ], 10, 2 );
+
 		add_filter( 'elementor/editor/localize_settings', [ $this, 'localized_settings' ] );
 
-		// On Editor - register WooCommerce frontend hooks - before the Editor init
-		add_action( 'admin_action_elementor', [ $this, 'register_wc_hooks' ], 9 );
+		// On Editor - Register WooCommerce frontend hooks before the Editor init.
+		// Priority = 5, in order to allow plugins remove/add their wc hooks on init.
+		if ( ! empty( $_REQUEST['action'] ) && 'elementor' === $_REQUEST['action'] && is_admin() ) {
+			add_action( 'init', [ $this, 'register_wc_hooks' ], 5 );
+		}
 
 		add_filter( 'woocommerce_add_to_cart_fragments', [ $this, 'menu_cart_fragments' ] );
 	}

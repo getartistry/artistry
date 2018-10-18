@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Sticky_Above_Header_Colors_Bg_Configs' ) ) {

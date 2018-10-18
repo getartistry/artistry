@@ -48,18 +48,6 @@ if ( ! class_exists( 'Astra_Addon_Customizer' ) ) :
 			add_action( 'customize_register', array( $this, 'customize_register' ) );
 			add_action( 'customize_register', array( $this, 'customize_register_new' ), 3 );
 
-			$this->includes();
-		}
-
-		/**
-		 * Include helper classes for Astra Addon Customizer
-		 */
-		private function includes() {
-
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
-				// Astra Customizer Notices.
-				require ASTRA_EXT_DIR . 'classes/customizer/class-astra-customizer-notices.php';
-			}
 		}
 
 		/**
@@ -70,10 +58,7 @@ if ( ! class_exists( 'Astra_Addon_Customizer' ) ) :
 		 */
 		function customize_register_new( $wp_customize ) {
 
-			if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
-
-				require ASTRA_EXT_DIR . 'classes/customizer/class-astra-customizer-notices-configs.php';
-			}
+			require ASTRA_EXT_DIR . 'classes/customizer/class-astra-customizer-notices-configs.php';
 		}
 
 
@@ -84,10 +69,9 @@ if ( ! class_exists( 'Astra_Addon_Customizer' ) ) :
 		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 		 */
 		function customize_register( $wp_customize ) {
-			// Register controls.
-			$wp_customize->register_control_type( 'Astra_Control_Background' );
 
-			if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
+			// if Customizer Control base class exist.
+			if ( class_exists( 'Astra_Customizer_Control_Base' ) ) {
 
 				/**
 				 * Add Controls
@@ -116,15 +100,14 @@ if ( ! class_exists( 'Astra_Addon_Customizer' ) ) :
 						'santize_callback' => 'sanitize_border',
 					)
 				);
+				Astra_Customizer_Control_Base::add_control(
+					'ast-customizer-refresh',
+					array(
+						'callback'          => 'Astra_Control_Customizer_refresh',
+						'sanitize_callback' => '',
+					)
+				);
 			}
-
-			$wp_customize->register_control_type( 'Astra_Control_Heading' );
-
-			$wp_customize->register_control_type( 'Astra_Control_Responsive_Color' );
-
-			$wp_customize->register_control_type( 'Astra_Control_Responsive_Background' );
-
-			$wp_customize->register_control_type( 'Astra_Control_Color' );
 
 			// Helper files.
 			require ASTRA_EXT_DIR . 'classes/customizer/controls/background/class-astra-control-background.php';
@@ -133,6 +116,7 @@ if ( ! class_exists( 'Astra_Addon_Customizer' ) ) :
 			require ASTRA_EXT_DIR . 'classes/customizer/controls/responsive-background/class-astra-control-responsive-background.php';
 			require ASTRA_EXT_DIR . 'classes/customizer/controls/heading/class-astra-control-heading.php';
 			require ASTRA_EXT_DIR . 'classes/customizer/controls/color/class-astra-control-color.php';
+			require ASTRA_EXT_DIR . 'classes/customizer/controls/class-astra-control-customizer-refresh.php';
 		}
 
 		/**

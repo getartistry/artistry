@@ -1,0 +1,388 @@
+@import "mixins";
+/**
+ * Mega Menu styling
+ */
+.ast-desktop {
+	.ast-mega-menu-enabled {
+		.astra-megamenu-li {
+			.astra-megamenu.sub-menu > li{
+				display: none;
+			}
+			&.ast-mm-has-desc > .menu-link{
+				vertical-align: middle;
+				text-align: center;
+			}
+
+			li:hover > a {
+				background-color: transparent;
+				color: inherit;
+			}
+		} 
+
+		.astra-megamenu{
+			opacity: 0;
+			visibility: hidden;
+		}
+		.menu-item-has-children{
+			&.astra-megamenu-li {
+				.astra-megamenu.sub-menu{
+					li > a:after{
+						content: '';
+					}
+				} 
+			}
+		}
+		&.submenu-with-border .astra-megamenu-li,
+		.astra-megamenu-li{
+			.sub-menu {
+				a{
+					border: none;
+				}
+			}
+		}
+
+		.astra-megamenu-li:hover{
+			.astra-megamenu {
+				opacity: 1;
+				visibility: visible;
+				display: flex;
+				padding: 15px;
+				&.astra-megamenu-has-divider > li {
+					padding-left: 15px;
+					padding-right: 15px;
+				}
+				&.astra-megamenu-has-divider > li:first-child {
+					padding-left: 0;
+				}
+				&.astra-megamenu-has-divider > li:last-child {
+					padding-right: 0;
+				}
+				&.sub-menu.col-2{
+					li{
+						width: 50%;
+					}
+				}
+				&.sub-menu.col-3{
+					li{
+						width: 33.33%;
+					}
+				}
+				&.sub-menu.col-4{
+					li{
+						width: 25%;
+					}
+				}
+				&.sub-menu > li{
+					display: block;
+					flex: 1;
+					opacity: 1;
+				}
+				.sub-menu{
+					background-color: transparent;
+					display: block;
+					opacity: 1;
+    				visibility: visible;
+    				transform: none;
+				}
+				.astra-nested-sub-menu{
+					li{
+						a{
+							padding-left: 24px;
+						}
+					}
+					.astra-nested-sub-menu{
+						li{
+							a{
+								padding-left: 48px;
+							}
+						}
+					} 
+				}
+
+				&.sub-menu {
+					.sub-menu{
+						border: none;
+					}
+					> li {
+						.sub-menu{
+		    				position: static;
+		    				width: 100%;
+		    				margin: auto;
+		    				li{
+		    					width: 100%;
+		    				}
+	    				}	
+	    			}
+	    			li:last-child{
+	    				border-right: none;
+	    			}
+				}
+			}
+			.astra-full-megamenu-wrapper{
+				.astra-megamenu{
+					display: flex;
+				}
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		:not( .menu-container-width-mega ) {
+			&.astra-megamenu-li:hover{
+				.astra-megamenu{
+					.sub-menu li{
+						width: 100%;
+					}
+				}
+				.astra-megamenu.sub-menu li {
+					.sub-menu{
+	    				min-width: 100%;
+	    			}
+				}
+			}
+		}
+		/*Full Width Mega Menu*/
+		.astra-full-megamenu-wrapper{
+			background: #FFFFFF;
+			position: absolute;
+			opacity: 0;
+			visibility: hidden;
+			top: 100%;
+			.astra-megamenu.sub-menu{
+				display: none;
+				position: relative;
+				left: 0;
+				top: 0;
+				margin: 0 auto;
+				padding-left: 0;
+				padding-right: 0;
+				border-width: 0;
+			}
+		}
+	}
+	.main-header-menu,
+	.ast-below-header-menu,
+	.ast-above-header-menu{
+		.astra-megamenu-li{
+			.sub-menu{
+				li.current-menu-ancestor > a{
+					background-color: transparent;
+					color: inherit;
+				}
+				.menu-item-heading .menu-text {
+				    vertical-align: text-top;
+				}
+			}
+		}
+	}
+
+	.ast-mm-template-content,
+	.ast-mm-custom-text-content {
+	    padding: 0 1em;
+	}
+
+	/** Below Header have some extra padding. */
+	.ast-below-header .ast-mm-custom-text-content,
+	.ast-below-header .ast-mm-template-content {
+	    padding: 0.9em 1em;
+	}
+
+	// Full Mega menu Border only for desktop.
+	.submenu-with-border{
+		.astra-full-megamenu-wrapper{
+			border-width: 1px;
+			border-style: solid;
+		}
+	}
+
+	/* Widget Mega Menu style */
+	.ast-mm-widget-content{
+		a{
+			display: initial;	
+		}
+		.ast-mm-widget-item{
+			padding: 1.5em;
+		}
+	}
+}
+
+
+.ast-desktop .submenu-with-border{
+	.astra-megamenu {
+		border-width: 1px;
+	}
+}
+.ast-menu-description{
+	line-height: 1.6;
+	display: block;
+	font-size: 0.8em;
+	padding: 2px 0;
+}
+/** Added the prefix `.site-header` because it is the common for above, below & primary. */
+.site-header {
+	a {
+		.sub-arrow,
+		.ast-menu-description {
+			transition: none;
+		}
+	}
+
+	.menu-text {
+		transition: none;
+	}
+}
+
+.ast-header-break-point{
+	.ast-menu-description{
+		line-height: inherit;
+	}
+}
+.astra-mm-highlight-label{
+	font-size: 0.7em;
+	margin-left: 5px;
+	line-height: normal;
+	padding: 3px 6px;
+	border-radius: 2px;
+}
+
+.ast-desktop {
+
+	.ast-hide-menu-item {
+		display: none;
+	}
+
+	.ast-mega-menu-enabled{
+		.ast-hide-menu-item{
+			display: none;
+		}
+		&.main-header-menu,
+		&.ast-below-header-menu,
+		&.ast-above-header-menu{
+			> .menu-item-has-children,
+			> .page_item_has_children {
+				> a {
+					.sub-arrow:after{
+						content: "\e900";
+						display: inline-block;
+						font-family: 'Astra';
+						font-size: 9px;
+						font-size: .6rem;
+						font-weight: bold;
+						text-rendering: auto;
+						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
+						margin-left: 10px;
+						line-height: normal;
+					}
+				}
+				> a:after{
+					content: '';
+					margin: 0;
+				}
+			}
+			ul {
+			 	li.menu-item-has-children,
+			 	li.menu-item-has-children{
+			 		> a {
+			 			.sub-arrow:after{
+							transform: rotate(-90deg);
+						}
+						.sub-arrow{
+							position: absolute;
+						    right: 5%;
+						    top: 50%;
+						    transform: translateY(-50%);
+						}
+			 		}
+			 	}
+			}
+			.ast-masthead-custom-menu-items a:hover,
+			.ast-masthead-custom-menu-items a:focus {
+			    background: transparent;
+			}
+		}
+	}
+}
+
+.ast-header-break-point{
+	.ast-mega-menu-enabled{
+		.menu-item-has-children.astra-megamenu-li,
+		.page_item_has_children.astra-megamenu-li {
+			> a {
+				.sub-arrow:after{
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+.ast-disable-link{	
+	cursor: default;
+}
+
+
+.ast-desktop {
+
+	/**
+	 * Above Header
+	 */
+	.ast-mega-menu-enabled {
+		&.ast-above-header-menu {
+			.sub-menu {
+				.menu-item-heading:hover > a,
+				.menu-item-heading:focus > a,
+				.menu-item-heading > a:hover {
+					background: transparent;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Below Header
+	 */
+	.ast-mega-menu-enabled {
+		&.ast-below-header-menu {
+			.sub-menu {
+				.menu-item-heading:hover > a,
+				.menu-item-heading:focus > a,
+				.menu-item-heading > a:hover {
+					background: transparent;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Primary Header
+	 */
+
+	.ast-mega-menu-enabled {
+		&.main-header-menu {
+			.sub-menu {
+				.menu-item-heading:hover > a,
+				.menu-item-heading:focus > a,
+				.menu-item-heading > a:hover {
+					background: transparent;
+				}
+			}
+		}
+	}
+
+	.ast-below-header-menu .astra-mega-menu-width-full,
+	.ast-above-header-menu .astra-mega-menu-width-full,
+	.astra-mega-menu-width-full {
+		background: transparent;
+	}
+}
+
+
+// Mega Menu has the custom template
+.astra-megamenu-li{
+	.ast-mm-template-content{
+		a:not(.button){
+			padding: inherit;
+		}
+	}
+}

@@ -190,6 +190,40 @@ class Slides extends Base_Widget {
 			]
 		);
 
+		$repeater->add_control(
+			'background_overlay_blend_mode',
+			[
+				'label' => __( 'Blend Mode', 'elementor-pro' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'' => __( 'Normal', 'elementor-pro' ),
+					'multiply' => 'Multiply',
+					'screen' => 'Screen',
+					'overlay' => 'Overlay',
+					'darken' => 'Darken',
+					'lighten' => 'Lighten',
+					'color-dodge' => 'Color Dodge',
+					'color-burn' => 'Color Burn',
+					'hue' => 'Hue',
+					'saturation' => 'Saturation',
+					'color' => 'Color',
+					'exclusion' => 'Exclusion',
+					'luminosity' => 'Luminosity',
+				],
+				'conditions' => [
+					'terms' => [
+						[
+							'name' => 'background_overlay',
+							'value' => 'yes',
+						],
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} {{CURRENT_ITEM}} .slick-slide-inner .elementor-background-overlay' => 'mix-blend-mode: {{VALUE}}',
+				],
+			]
+		);
+
 		$repeater->end_controls_tab();
 
 		$repeater->start_controls_tab( 'content', [ 'label' => __( 'Content', 'elementor-pro' ) ] );

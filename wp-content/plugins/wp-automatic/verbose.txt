@@ -1,39 +1,199 @@
-* Hostname i.ytimg.com was found in DNS cache
-*   Trying 172.217.0.22...
+* Hostname in DNS cache was stale, zapped
+*   Trying 31.13.75.174...
 * TCP_NODELAY set
-* Connected to i.ytimg.com (172.217.0.22) port 443 (#0)
+* Connected to www.instagram.com (31.13.75.174) port 443 (#0)
 * ALPN, offering http/1.1
 * Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
 * successfully set certificate verify locations:
-*   CAfile: /etc/pki/tls/certs/ca-bundle.crt
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
   CApath: none
 * SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
 * ALPN, server accepted to use http/1.1
 * Server certificate:
-*  subject: C=US; ST=California; L=Mountain View; O=Google LLC; CN=edgestatic.com
-*  start date: Aug  7 18:40:42 2018 GMT
-*  expire date: Oct 16 18:29:00 2018 GMT
-*  subjectAltName: host "i.ytimg.com" matched cert's "i.ytimg.com"
-*  issuer: C=US; O=Google Trust Services; CN=Google Internet Authority G3
+*  subject: C=US; ST=California; L=Menlo Park; O=Facebook, Inc.; CN=*.www.instagram.com
+*  start date: Sep  5 00:00:00 2018 GMT
+*  expire date: Dec 12 12:00:00 2019 GMT
+*  subjectAltName: host "www.instagram.com" matched cert's "www.instagram.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
 *  SSL certificate verify ok.
-> GET /vi/smJXGTrGWPQ/hqdefault.jpg HTTP/1.1
-Host: i.ytimg.com
+> GET /graphql/query/?query_id=17880160963012870&id=1219747183&first=12&after=QVFDQ2x4U0o1SUh2eFV3WTR2aFg1OU1TVUw3ZXNfZlBmMHFodkxsN3IwbWh1NnhodlBHNk1vOHBKWnRmZmtJaTJLLW5NbFpKMHl6R2IzRmJMSURTYXFKcw%3D%3D HTTP/1.1
+Host: www.instagram.com
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
 Accept: */*
-Referer: http://i.ytimg.com
+Referer: http://www.bing.com/
+Cookie: sessionid=IGSC9ccb6f4c5114bb21c1ee53da5b2f62ced094c3d5a1b8ccc165ed9789320d1ff6%3A3nxzqSPBa5avJrit9lf7SodMgNq3RxnT%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1533823422.5202310085%7D; csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l;
 
 < HTTP/1.1 200 OK
-< Accept-Ranges: bytes
-< Content-Type: image/jpeg
-< Timing-Allow-Origin: https://imasdk.googleapis.com
-< Content-Length: 20710
-< Date: Thu, 16 Aug 2018 10:06:55 GMT
-< Expires: Thu, 16 Aug 2018 12:06:55 GMT
-< Cache-Control: public, max-age=7200
-< ETag: "1509090414"
-< X-Content-Type-Options: nosniff
-< Server: sffe
-< X-XSS-Protection: 1; mode=block
-< Alt-Svc: quic=":443"; ma=2592000; v="44,43,39,35"
+< Content-Type: application/json; charset=utf-8
+< Cache-Control: private, no-cache, no-store, must-revalidate
+< Pragma: no-cache
+< Expires: Sat, 01 Jan 2000 00:00:00 GMT
+< Vary: Accept-Language, Cookie, Accept-Encoding
+< Content-Language: en
+< Date: Sat, 06 Oct 2018 11:48:27 GMT
+< Strict-Transport-Security: max-age=60
+< X-Frame-Options: SAMEORIGIN
+< content-security-policy-report-only: report-uri /security/csp_report/; default-src https://www.instagram.com; img-src https: data: blob:; font-src https: data:; media-src https://*.cdninstagram.com https://*.fbcdn.net; manifest-src https://www.instagram.com; script-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://*.cdninstagram.com wss://www.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' https://*.www.instagram.com https://www.instagram.com 'unsafe-inline'; connect-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://graph.instagram.com https://*.graph.instagram.com https://*.cdninstagram.com https://api.instagram.com wss://www.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net chrome-extension://boadgeojelhgndaghljhdicfkmllpafd; worker-src https://www.instagram.com; frame-src 'self' https://instagram.com https://www.instagram.com https://staticxx.facebook.com https://www.facebook.com https://web.facebook.com https://connect.facebook.net https://m.facebook.com; object-src 'none'
+* Added cookie mid="W7ihCwAEAAFPAr-EVFRQmyIlPam4" for domain instagram.com, path /, expire 1854186507
+< Set-Cookie: mid=W7ihCwAEAAFPAr-EVFRQmyIlPam4; Domain=.instagram.com; expires=Tue, 03-Oct-2028 11:48:27 GMT; Max-Age=315360000; Path=/; Secure
+* Added cookie urlgen=""{}:1g8l4N:SDHCxL5tjwNwmUvPtRgIjb_VgAM"" for domain instagram.com, path /, expire 0
+< Set-Cookie: urlgen="{}:1g8l4N:SDHCxL5tjwNwmUvPtRgIjb_VgAM"; Domain=.instagram.com; HttpOnly; Path=/; Secure
+* Added cookie shbid="9839" for domain instagram.com, path /, expire 1539431307
+< Set-Cookie: shbid=9839; Domain=.instagram.com; expires=Sat, 13-Oct-2018 11:48:27 GMT; HttpOnly; Max-Age=604800; Path=/; Secure
+* Added cookie rur="FRC" for domain instagram.com, path /, expire 0
+< Set-Cookie: rur=FRC; Domain=.instagram.com; HttpOnly; Path=/; Secure
+* Added cookie shbts="1538826507.4462771" for domain instagram.com, path /, expire 1539431307
+< Set-Cookie: shbts=1538826507.4462771; Domain=.instagram.com; expires=Sat, 13-Oct-2018 11:48:27 GMT; HttpOnly; Max-Age=604800; Path=/; Secure
+* skipped cookie with bad tailmatch domain: i.instagram.com
+< Set-Cookie: sessionid=""; Domain=i.instagram.com; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* skipped cookie with bad tailmatch domain: i.instagram.com
+< Set-Cookie: sessionid=""; Domain=.i.instagram.com; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* Added cookie sessionid="""" for domain www.instagram.com, path /, expire 1538826507
+< Set-Cookie: sessionid=""; Domain=www.instagram.com; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* Replaced cookie sessionid="""" for domain www.instagram.com, path /, expire 1538826507
+< Set-Cookie: sessionid=""; Domain=.www.instagram.com; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* Added cookie sessionid="""" for domain www.instagram.com, path /, expire 1538826507
+< Set-Cookie: sessionid=""; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* Added cookie sessionid="IGSC40fcf5c218d0d8b03932891d062d21d69fd4dab7e90e553c714a753bfd9dc012%3AIMTy5znb6dUhICU2XVvQQ6ASI3HsIlDY%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1538826507.4477045536%7D" for domain instagram.com, path /, expire 1570362507
+< Set-Cookie: sessionid=IGSC40fcf5c218d0d8b03932891d062d21d69fd4dab7e90e553c714a753bfd9dc012%3AIMTy5znb6dUhICU2XVvQQ6ASI3HsIlDY%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1538826507.4477045536%7D; Domain=.instagram.com; expires=Sun, 06-Oct-2019 11:48:27 GMT; HttpOnly; Max-Age=31536000; Path=/; Secure
+* Added cookie ds_user_id="3297820541" for domain instagram.com, path /, expire 1546602507
+< Set-Cookie: ds_user_id=3297820541; Domain=.instagram.com; expires=Fri, 04-Jan-2019 11:48:27 GMT; Max-Age=7776000; Path=/; Secure
+* skipped cookie with bad tailmatch domain: i.instagram.com
+< Set-Cookie: csrftoken=""; Domain=i.instagram.com; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* skipped cookie with bad tailmatch domain: i.instagram.com
+< Set-Cookie: csrftoken=""; Domain=.i.instagram.com; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* Added cookie csrftoken="""" for domain www.instagram.com, path /, expire 1538826507
+< Set-Cookie: csrftoken=""; Domain=www.instagram.com; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* Replaced cookie csrftoken="""" for domain www.instagram.com, path /, expire 1538826507
+< Set-Cookie: csrftoken=""; Domain=.www.instagram.com; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* Added cookie csrftoken="""" for domain www.instagram.com, path /, expire 1538826507
+< Set-Cookie: csrftoken=""; expires=Thu, 01-Jan-1970 00:00:00 GMT; Max-Age=0; Path=/
+* Added cookie csrftoken="eqYUPd3nV0gDSWw43IYZjydziMndrn4l" for domain instagram.com, path /, expire 1570276107
+< Set-Cookie: csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l; Domain=.instagram.com; expires=Sat, 05-Oct-2019 11:48:27 GMT; Max-Age=31449600; Path=/; Secure
+* Added cookie mcd="3" for domain instagram.com, path /, expire 1854186507
+< Set-Cookie: mcd=3; Domain=.instagram.com; expires=Tue, 03-Oct-2028 11:48:27 GMT; Max-Age=315360000; Path=/; Secure
+< Connection: keep-alive
+< Content-Length: 12631
 < 
-* Connection #0 to host i.ytimg.com left intact
+* Curl_http_done: called premature == 0
+* Connection #0 to host www.instagram.com left intact
+* Found bundle for host www.instagram.com: 0x7fad638b6530 [can pipeline]
+* Re-using existing connection! (#0) with host www.instagram.com
+* Connected to www.instagram.com (31.13.75.174) port 443 (#0)
+> GET /p/BmKZliGh_6i/?__a=1 HTTP/1.1
+Host: www.instagram.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+Accept: */*
+Referer: http://www.bing.com/
+Cookie: csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l; ds_user_id=3297820541; mcd=3; mid=W7ihCwAEAAFPAr-EVFRQmyIlPam4; rur=FRC; sessionid=IGSC40fcf5c218d0d8b03932891d062d21d69fd4dab7e90e553c714a753bfd9dc012%3AIMTy5znb6dUhICU2XVvQQ6ASI3HsIlDY%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1538826507.4477045536%7D; shbid=9839; shbts=1538826507.4462771; urlgen="{}:1g8l4N:SDHCxL5tjwNwmUvPtRgIjb_VgAM"; sessionid=IGSC9ccb6f4c5114bb21c1ee53da5b2f62ced094c3d5a1b8ccc165ed9789320d1ff6%3A3nxzqSPBa5avJrit9lf7SodMgNq3RxnT%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1533823422.5202310085%7D; csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l;
+
+< HTTP/1.1 200 OK
+< Content-Type: application/json; charset=utf-8
+< x-robots-tag: noindex
+< Cache-Control: private, no-cache, no-store, must-revalidate
+< Pragma: no-cache
+< Expires: Sat, 01 Jan 2000 00:00:00 GMT
+< Vary: Accept-Language, Cookie, Accept-Encoding
+< Content-Language: en
+< Date: Sat, 06 Oct 2018 11:48:27 GMT
+< Strict-Transport-Security: max-age=60
+< X-Frame-Options: SAMEORIGIN
+< content-security-policy-report-only: report-uri /security/csp_report/; default-src https://www.instagram.com; img-src https: data: blob:; font-src https: data:; media-src https://*.cdninstagram.com https://*.fbcdn.net; manifest-src https://www.instagram.com; script-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://*.cdninstagram.com wss://www.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net 'unsafe-inline' 'unsafe-eval' blob:; style-src 'self' https://*.www.instagram.com https://www.instagram.com 'unsafe-inline'; connect-src 'self' https://instagram.com https://www.instagram.com https://*.www.instagram.com https://graph.instagram.com https://*.graph.instagram.com https://*.cdninstagram.com https://api.instagram.com wss://www.instagram.com https://*.facebook.com https://*.fbcdn.net https://*.facebook.net chrome-extension://boadgeojelhgndaghljhdicfkmllpafd; worker-src https://www.instagram.com; frame-src 'self' https://instagram.com https://www.instagram.com https://staticxx.facebook.com https://www.facebook.com https://web.facebook.com https://connect.facebook.net https://m.facebook.com; object-src 'none'
+* Replaced cookie rur="FRC" for domain instagram.com, path /, expire 0
+< Set-Cookie: rur=FRC; Domain=.instagram.com; HttpOnly; Path=/; Secure
+* Replaced cookie ds_user_id="3297820541" for domain instagram.com, path /, expire 1546602508
+< Set-Cookie: ds_user_id=3297820541; Domain=.instagram.com; expires=Fri, 04-Jan-2019 11:48:27 GMT; Max-Age=7776000; Path=/; Secure
+* Replaced cookie urlgen=""{}:1g8l4N:SDHCxL5tjwNwmUvPtRgIjb_VgAM"" for domain instagram.com, path /, expire 0
+< Set-Cookie: urlgen="{}:1g8l4N:SDHCxL5tjwNwmUvPtRgIjb_VgAM"; Domain=.instagram.com; HttpOnly; Path=/; Secure
+* Replaced cookie sessionid="IGSC2a889839b9ae611a246a2e63694ef5aaef34847ab5f5b1db1747d8dcae48037c%3AuGBvmTxCh4QPiPPgQOqnvY4TWREu624T%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1538826507.8996343613%7D" for domain instagram.com, path /, expire 1570362508
+< Set-Cookie: sessionid=IGSC2a889839b9ae611a246a2e63694ef5aaef34847ab5f5b1db1747d8dcae48037c%3AuGBvmTxCh4QPiPPgQOqnvY4TWREu624T%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1538826507.8996343613%7D; Domain=.instagram.com; expires=Sun, 06-Oct-2019 11:48:27 GMT; HttpOnly; Max-Age=31536000; Path=/; Secure
+* Replaced cookie csrftoken="eqYUPd3nV0gDSWw43IYZjydziMndrn4l" for domain instagram.com, path /, expire 1570276108
+< Set-Cookie: csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l; Domain=.instagram.com; expires=Sat, 05-Oct-2019 11:48:27 GMT; Max-Age=31449600; Path=/; Secure
+< Connection: keep-alive
+< Content-Length: 3803
+< 
+* Curl_http_done: called premature == 0
+* Connection #0 to host www.instagram.com left intact
+* Hostname in DNS cache was stale, zapped
+*   Trying 197.199.241.32...
+* TCP_NODELAY set
+* Connected to instagram.faly1-1.fna.fbcdn.net (197.199.241.32) port 443 (#1)
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use http/1.1
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Facebook, Inc.; CN=*.faly1-1.fna.fbcdn.net
+*  start date: Dec  9 00:00:00 2017 GMT
+*  expire date: Mar 14 12:00:00 2019 GMT
+*  subjectAltName: host "instagram.faly1-1.fna.fbcdn.net" matched cert's "*.faly1-1.fna.fbcdn.net"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+> GET /vp/3247c70c1cf2a3b9e9393877f6679e36/5C409E1D/t51.2885-15/e35/37914900_219004548782463_6511260348761243648_n.jpg HTTP/1.1
+Host: instagram.faly1-1.fna.fbcdn.net
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+Accept: */*
+Referer: http://instagram.faly1-1.fna.fbcdn.net
+Cookie: sessionid=IGSC9ccb6f4c5114bb21c1ee53da5b2f62ced094c3d5a1b8ccc165ed9789320d1ff6%3A3nxzqSPBa5avJrit9lf7SodMgNq3RxnT%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1533823422.5202310085%7D; csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l;
+
+< HTTP/1.1 200 OK
+< Last-Modified: Tue, 07 Aug 2018 03:25:13 GMT
+< Content-Type: image/jpeg
+< X-FB-Config-Version-OLB-PROD: 386
+< timing-allow-origin: *
+< Access-Control-Allow-Origin: *
+< Cache-Control: max-age=1209600, no-transform
+< X-FB-Config-Version-ELB-PROD: 386
+< X-FB-Config-Version-FLB-PROD: 224
+< Date: Sat, 06 Oct 2018 11:48:29 GMT
+< Connection: keep-alive
+< Content-Length: 92590
+< 
+* Curl_http_done: called premature == 0
+* Connection #1 to host instagram.faly1-1.fna.fbcdn.net left intact
+* Hostname localhost was found in DNS cache
+*   Trying ::1...
+* TCP_NODELAY set
+* Connected to localhost (::1) port 80 (#2)
+> GET /wordpress/wp-content/uploads/2018/10/37914900_219004548782463_6511260348761243648_n.jpg HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+Accept: */*
+Referer: http://localhost
+Cookie: sessionid=IGSC9ccb6f4c5114bb21c1ee53da5b2f62ced094c3d5a1b8ccc165ed9789320d1ff6%3A3nxzqSPBa5avJrit9lf7SodMgNq3RxnT%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1533823422.5202310085%7D; csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l;
+
+< HTTP/1.1 200 OK
+< Date: Sat, 06 Oct 2018 11:48:30 GMT
+< Server: Apache/2.2.34 (Unix) mod_wsgi/3.5 Python/2.7.13 PHP/7.2.1 mod_ssl/2.2.34 OpenSSL/1.0.2j DAV/2 mod_fastcgi/2.4.6 mod_perl/2.0.9 Perl/v5.24.0
+< Last-Modified: Sat, 06 Oct 2018 11:48:29 GMT
+< ETag: "200c1a3bf-169ae-5778df7709d40"
+< Accept-Ranges: bytes
+< Content-Length: 92590
+< Content-Type: image/jpeg
+< 
+* Curl_http_done: called premature == 0
+* Connection #2 to host localhost left intact
+* Found bundle for host localhost: 0x7fad615c23d0 [can pipeline]
+* Re-using existing connection! (#2) with host localhost
+* Connected to localhost (::1) port 80 (#2)
+> GET /wordpress/wp-content/uploads/2018/10/37914900_219004548782463_6511260348761243648_n.jpg HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+Accept: */*
+Referer: http://localhost
+Cookie: sessionid=IGSC9ccb6f4c5114bb21c1ee53da5b2f62ced094c3d5a1b8ccc165ed9789320d1ff6%3A3nxzqSPBa5avJrit9lf7SodMgNq3RxnT%3A%7B%22_auth_user_id%22%3A3297820541%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_platform%22%3A4%2C%22_token_ver%22%3A2%2C%22_token%22%3A%223297820541%3AMjHHoysLaTRbZSq4ZgpykMGR5NwZLVbY%3A96a9146340eb0fdb68fed538682eab374489849587e339418c4d0590cf3e3a6e%22%2C%22last_refreshed%22%3A1533823422.5202310085%7D; csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l;
+
+< HTTP/1.1 200 OK
+< Date: Sat, 06 Oct 2018 11:48:30 GMT
+< Server: Apache/2.2.34 (Unix) mod_wsgi/3.5 Python/2.7.13 PHP/7.2.1 mod_ssl/2.2.34 OpenSSL/1.0.2j DAV/2 mod_fastcgi/2.4.6 mod_perl/2.0.9 Perl/v5.24.0
+< Last-Modified: Sat, 06 Oct 2018 11:48:29 GMT
+< ETag: "200c1a3bf-169ae-5778df7709d40"
+< Accept-Ranges: bytes
+< Content-Length: 92590
+< Content-Type: image/jpeg
+< 
+* Curl_http_done: called premature == 0
+* Connection #2 to host localhost left intact

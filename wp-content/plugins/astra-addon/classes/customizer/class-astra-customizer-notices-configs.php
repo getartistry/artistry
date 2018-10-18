@@ -5,13 +5,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.4.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Customizer_Notices_Configs' ) ) :
@@ -296,7 +302,7 @@ if ( ! class_exists( 'Astra_Customizer_Notices_Configs' ) ) :
 					break;
 
 				case 'transparent-header':
-					$notice = '<div class="ast-customizer-notice wp-ui-highlight"><p>This page has Transparent Header enabled, so the settings of Primary Header may not apply</p><p><a href="#" class="ast-customizer-internal-link" data-ast-customizer-section="section-colors-transparent-header">Click here</a> to modify the transparent header settings.<p></div>';
+					$notice = '<div class="ast-customizer-notice wp-ui-highlight"><p>This page has Transparent Header enabled, so the settings in this section may not apply</p><p><a href="#" class="ast-customizer-internal-link" data-ast-customizer-section="section-colors-transparent-header">Click here</a> to modify the transparent header settings.<p></div>';
 					break;
 
 				default:

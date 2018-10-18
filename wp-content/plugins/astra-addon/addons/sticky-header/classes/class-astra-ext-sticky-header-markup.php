@@ -73,6 +73,9 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 			$header_logo       = astra_get_option( 'sticky-header-logo' );
 			$inherit_desk_logo = astra_get_option( 'different-sticky-logo', false );
 
+			$sticky_header_meta         = astra_get_option_meta( 'stick-header-meta' );
+			$sticky_primary_header_meta = astra_get_option_meta( 'header-main-stick-meta' );
+
 			if ( ! apply_filters( 'astra_main_header_shrink_disable', false ) && '1' == $main_stick && '1' == $shrink_main ) {
 				$classes[] = 'ast-sticky-main-shrink';
 			}
@@ -83,6 +86,10 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 
 			if ( '1' == $inherit_desk_logo && '1' == $main_stick && '' !== $header_logo ) {
 				$classes[] = 'ast-sticky-custom-logo';
+			}
+
+			if ( ( '1' == $main_stick || ( 'enabled' == $sticky_header_meta && 'on' == $sticky_primary_header_meta ) ) ) {
+				$classes[] = 'ast-primary-sticky-enabled';
 			}
 
 			return $classes;
@@ -204,7 +211,10 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 					'<a href="%1$s" class="sticky-custom-logo" rel="home" itemprop="url">%2$s</a>',
 					esc_url( home_url( '/' ) ),
 					wp_get_attachment_image(
-						$custom_logo_id, $size, false, array(
+						$custom_logo_id,
+						$size,
+						false,
+						array(
 							'class' => 'custom-logo',
 						)
 					)
@@ -248,7 +258,10 @@ if ( ! class_exists( 'Astra_Ext_Sticky_Header_Markup' ) ) {
 					'<a href="%1$s" class="sticky-custom-logo" rel="home" itemprop="url">%2$s</a>',
 					esc_url( home_url( '/' ) ),
 					wp_get_attachment_image(
-						$custom_logo_id, $size, false, array(
+						$custom_logo_id,
+						$size,
+						false,
+						array(
 							'class' => 'custom-logo',
 						)
 					)

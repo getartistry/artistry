@@ -20,6 +20,12 @@
 		z-index: 99;
 	}
 
+	&__image-exact {
+		.sp-image {
+			object-fit: cover;
+		}
+	}
+
 	&:before {
 
 	}

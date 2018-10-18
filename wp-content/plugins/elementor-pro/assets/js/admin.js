@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.1.3 - 15-08-2018 */
+/*! elementor-pro - v2.1.10 - 09-10-2018 */
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var modules = {
 	widget_template_edit_button: require( 'modules/library/assets/js/admin' ),
@@ -717,8 +717,6 @@ module.exports = function() {
 
 },{"./create-template-dialog":14}],14:[function(require,module,exports){
 module.exports = function() {
-	var self = this;
-
 	var selectors = {
 		templateTypeInput: '#elementor-new-template__form__template-type',
 		locationWrapper: '#elementor-new-template__form__location__wrapper',
@@ -743,20 +741,25 @@ module.exports = function() {
 		elements.$postTypeWrapper.toggle( 'single' === elements.$templateTypeInput.val() );
 	};
 
-	self.init = function() {
-
+	var run = function() {
 		setElements();
-
-		if ( ! elements.$templateTypeInput.length ) {
-			return;
-		}
 
 		setLocationFieldVisibility();
 
 		elements.$templateTypeInput.change( setLocationFieldVisibility );
+
+		elementorNewTemplate.layout.modal.off( 'show', run );
 	};
 
-	self.init();
+	this.init = function() {
+		if ( ! window.elementorNewTemplate ) {
+			return;
+		}
+
+		elementorNewTemplate.layout.modal.on( 'show', run );
+	};
+
+	jQuery( setTimeout.bind( window, this.init ) );
 };
 
 },{}]},{},[1])

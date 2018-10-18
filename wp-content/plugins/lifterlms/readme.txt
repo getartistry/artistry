@@ -1,11 +1,11 @@
 === LifterLMS ===
-Contributors: thomasplevy, chrisbadgett, kathy11, lifterlms, codeboxllc
+Contributors: thomasplevy, chrisbadgett, saurabhshukla, lifterlms, codeboxllc
 Donate link: https://lifterlms.com
 Tags: learning management system, LMS, membership, elearning, online courses, quizzes, sell courses, badges, gamification, learning, Lifter, LifterLMS
 Requires at least: 4.8
-Requires PHP: 5.6
+Requires PHP: 7.2
 Tested up to: 4.9.8
-Stable tag: 3.22.2
+Stable tag: 3.23.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -355,6 +355,43 @@ Be sure you’ve taken the free tutorial training video course: [How to Create a
 == Changelog ==
 
 
+= v3.23.0 - 2018-08-27 =
+------------------------
+
+##### Access Plan & Pricing Table Template Improvements
+
++ The pricing table template has been split into multiple templates which are now rendered via action hooks. No visual changes have been made but if you've customized the template using a template override you'll want to review the template changes before updating!
++ New action hooks are available to modify the rendering of access plans in course / membership pricing tables.
+
+  + `llms_access_plan`: Main hook for outputting an entire access plan within the pricing table
+  + `llms_before_access_plan`: Called before main content of access plan. Outputs the "Featured" area of plans
+  + `llms_acces_plan_content`: Main access plan content. Outputs title, pricing info, restrictions, and description
+  + `llms_acces_plan_footer`: Called after main content. Outputs trial info and the checkout / enrollment button
+
++ Added filters to the returns of many of the functions in the `LLMS_Acces_Plan` model.
++ Minor improvements made to `LLMS_Access_Plan` model
+
+##### Updates and Enhancements
+
++ Improved handling of empty blank / empty data when adding instructors to courses and memberships
++ Added filters to the "Sales Page Content" type options & functions for courses and memberships to allow 3rd parties to define their own type of sales page functionality
++ Added filters to the saving of access plan data
++ Improved the HTML and added CSS classes to the access plan admin panel html view
+
+##### Bug Fixes
+
++ Fixes issue causing the "Preview Changes" button on courses to lock the "Update" publishing button which prevents changes from being properly saved.gi
++ Fixed issue causing PHP errors when viewing courses / memberships on the admin panel when an instructor user was deleted
++ Fixed issue causing PHP notices when viewing course / membership post lists on the admin panel when an instructor user was deleted
++ Fixed issue causing PHP warnings to be generated when viewing the user add / edit screen on the admin panel
++ Fixed an issue which would cause access plans to never be available to users. *This bug didn't affect any existing installations except if you wrote custom code that called the `LLMS_Access_Plan::is_available_to_user()` method.*
+
+##### Template Updates
+
++ [templates/admin/post-types/product-access-plan.php](https://github.com/gocodebox/lifterlms/blob/master/templates/admin/post-types/product-access-plan.php)
++ [templates/product/pricing-table.php](https://github.com/gocodebox/lifterlms/blob/master/templates/product/pricing-table.php)
+
+
 = v3.22.2 - 2018-08-13 =
 ------------------------
 
@@ -468,12 +505,6 @@ Be sure you’ve taken the free tutorial training video course: [How to Create a
 + Fixed issue causing admin panel static assets to have a double slash (//) in the assest URI path
 + FIxed issue allowing users with `view_lifterlms_reports` capability (Instructors) to access sales & enrollment reporting screens. The `view_others_lifterlms_reports` capability (Admins & LMS Managers) is now required to view these reporting tabs.
 + Updated IDs of login and registration nonces to be unique. Fixes an issue causing Chrome to throw non-unique ID warnings in the developer console. Also, IDs are supposed to be unique _anyway_ but thanks for helping us out Google.
-
-
-= v3.19.3 - 2018-06-14 =
-------------------------
-
-+ Fix issue causing new quizzes to be unable to load questions list without reloading the builder
 
 
 [View the full changelog](https://github.com/gocodebox/lifterlms/blob/master/CHANGELOG.md#lifterlms-changelog)

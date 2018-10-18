@@ -236,7 +236,7 @@ window.eml = window.eml || { l10n: {} };
     media.compare = function( a, b, ac, bc ) {
 
         if ( parseInt( eml.l10n.natural_sort ) &&
-             'title' === eml.l10n.media_orderby ) {
+             'string' === typeof a && 'string' == typeof b ) {
             return this.natCompare( a, b );
         }
         else if ( _.isEqual( a, b ) ) {
@@ -259,6 +259,7 @@ window.eml = window.eml || { l10n: {} };
             codeB = 1,
             posA = 0,
             posB = 0,
+            leadingZeros = /^0+(?=\d)/,
             alphabet = String.alphabet;
 
 
@@ -278,6 +279,10 @@ window.eml = window.eml || { l10n: {} };
                 : code < 123 ? code + 5        // a-z
                 : code - 63;
         }
+
+
+        a = a.replace(leadingZeros, '');
+        b = b.replace(leadingZeros, '');
 
 
         if ((a+="") != (b+="")) for (;codeB;) {

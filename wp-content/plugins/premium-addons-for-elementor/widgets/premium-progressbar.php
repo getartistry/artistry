@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Progressbar_Widget extends Widget_Base
-{
+class Premium_Progressbar extends Widget_Base {
     public function get_name() {
         return 'premium-addon-progressbar';
     }
@@ -341,7 +340,7 @@ class Premium_Progressbar_Widget extends Widget_Base
                 [
                     'name'          => 'left_label_typography',
                     'scheme'        => Scheme_Typography::TYPOGRAPHY_1,
-                    'selector'      => '{{WRAPPER}} .premium-progressbar-multiple-label',
+                    'selector'      => '{{WRAPPER}} .premium-progressbar-left-label',
                     ]
                 );
         
@@ -353,7 +352,7 @@ class Premium_Progressbar_Widget extends Widget_Base
                 'type'              => Controls_Manager::DIMENSIONS,
                 'size_units'        => [ 'px', 'em', '%' ],
                 'selectors'         => [
-                    '{{WRAPPER}} .premium-progressbar-multiple-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .premium-progressbar-left-label' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ]
             ]      
         );
@@ -691,4 +690,3 @@ class Premium_Progressbar_Widget extends Widget_Base
     <?php
     }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Progressbar_Widget());

@@ -886,6 +886,7 @@ class Ocean_Extra_Scripts_Panel {
 		$sidr 					= self::get_setting( 'oe_sidr_script' );
 		$dropdown_mobile 		= self::get_setting( 'oe_dropdown_mobile_script' );
 		$fullscreen_mobile 		= self::get_setting( 'oe_fullscreen_mobile_script' );
+		$slick 					= self::get_setting( 'oe_slick_script' );
 		$fontAwesome 			= self::get_setting( 'oe_fontAwesome_style' );
 		$simpleLineIcons 		= self::get_setting( 'oe_simpleLineIcons_style' );
 		$wooMenuCart 			= self::get_setting( 'oe_wooMenuCart_style' );
@@ -923,7 +924,6 @@ class Ocean_Extra_Scripts_Panel {
 		$scrollTop 				= self::get_setting( 'oe_scrollTop_style' );
 		$errorPage 				= self::get_setting( 'oe_errorPage_style' );
 		$responsive 			= self::get_setting( 'oe_responsive_style' );
-		$slick 					= self::get_setting( 'oe_slick_script' );
 
 		// Get css directory uri
 		$tSass 	= get_template_directory() . '/sass/';
@@ -939,6 +939,7 @@ class Ocean_Extra_Scripts_Panel {
 			|| ! $sidr
 			|| ! $dropdown_mobile
 			|| ! $fullscreen_mobile
+			|| ! $slick
 			|| ! $fontAwesome
 			|| ! $simpleLineIcons
 			|| ! $wooMenuCart
@@ -975,8 +976,7 @@ class Ocean_Extra_Scripts_Panel {
 			|| ! $searchResults
 			|| ! $scrollTop
 			|| ! $errorPage
-			|| ! $responsive
-			|| ! $slick ) {
+			|| ! $responsive ) {
 
 		    // Array
 		    $aFiles = array();
@@ -1029,6 +1029,11 @@ class Ocean_Extra_Scripts_Panel {
 		    // Load fullscreen_mobile
 			if ( $fullscreen_mobile ) {
 				$aFiles[] = $tDir .'mobile/_fullscreen-mobile.scss';
+			}
+
+		    // Load slick
+			if ( $slick ) {
+				$aFiles[] = $tDir .'plugins/_slick.scss';
 			}
 
 			// Load topBar
@@ -1226,12 +1231,6 @@ class Ocean_Extra_Scripts_Panel {
 
 			}
 
-		    // Load slick to the end to prevent conflict
-			if ( $slick ) {
-				$aFiles[] = $tDir .'plugins/_slick.scss';
-				$aFiles[] = $tDir .'plugins/_slick-theme.scss';
-			}
-
 			// Check WP_Filesystem
 			global $wp_filesystem;
 			self::init_filesystem();
@@ -1315,6 +1314,9 @@ class Ocean_Extra_Scripts_Panel {
 			}
 			if ( ! self::get_setting( 'oe_simpleLineIcons_style' ) ) {
 				wp_deregister_style( 'simple-line-icons' );
+			}
+			if ( ! self::get_setting( 'oe_slick_style' ) ) {
+				wp_deregister_style( 'slick' );
 			}
 			if ( ! self::get_setting( 'oe_lightbox_script' ) ) {
 				wp_deregister_style( 'magnific-popup' );

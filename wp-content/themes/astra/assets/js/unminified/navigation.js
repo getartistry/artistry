@@ -68,24 +68,6 @@ var toggleClass = function ( el, className ) {
 	}
 };
 
-// CustomEvent() constructor functionality in Internet Explorer 9 and higher.
-(function () {
- 	
-    // Internet Explorer 6-11
-    isIE = /*@cc_on!@*/false || !!document.documentMode;
-     // Edge 20+
-    isEdge = !isIE && !!window.StyleMedia;
- 	if ( typeof window.CustomEvent === "function" ) return false;
- 	function CustomEvent ( event, params ) {
-		params = params || { bubbles: false, cancelable: false, detail: undefined };
-		var evt = document.createEvent( 'CustomEvent' );
-		evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
-		return evt;
-	}
- 	CustomEvent.prototype = window.Event.prototype;
- 	window.CustomEvent = CustomEvent;
- })();
-
 /**
  * Trigget custom JS Event.
  * 
@@ -106,6 +88,54 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 };
 
 ( function() {
+
+	var menu_toggle_all 	= document.querySelectorAll( '.main-header-menu-toggle' );
+
+	/* Add break point Class and related trigger */
+	var updateHeaderBreakPoint = function () {
+
+		var break_point = astra.break_point,
+			headerWrap = document.querySelectorAll( '.main-header-bar-wrap' );
+
+		if ( headerWrap.length > 0  ) {
+			for ( var i = 0; i < headerWrap.length; i++ ) {
+
+				if ( headerWrap[i].tagName == 'DIV' && headerWrap[i].classList.contains( 'main-header-bar-wrap' ) ) {
+
+					var header_content_bp = window.getComputedStyle( headerWrap[i], '::before' ).getPropertyValue('content');
+
+					// Edge/Explorer header break point.
+					if( isEdge || isIE || header_content_bp === 'normal' ) {
+						if( window.innerWidth <= break_point ) {
+							header_content_bp = break_point;
+						}
+					}
+
+					header_content_bp = header_content_bp.replace( /[^0-9]/g, '' );
+					header_content_bp = parseInt( header_content_bp );
+
+					// `ast-header-break-point` class will use for Responsive Style of Header.
+					if ( header_content_bp != break_point ) {
+						//remove menu toggled class.
+						if ( null != menu_toggle_all[i] ) {
+							menu_toggle_all[i].classList.remove( 'toggled' );
+						}
+						document.body.classList.remove( "ast-header-break-point" );
+						document.body.classList.add("ast-desktop");
+						astraTriggerEvent( document.body, "astra-header-responsive-enabled" );
+
+					} else {
+
+						document.body.classList.add( "ast-header-break-point" );
+						document.body.classList.remove("ast-desktop");
+						astraTriggerEvent( document.body, "astra-header-responsive-disabled" )						
+					}
+				}
+			}
+		}
+	}
+
+	updateHeaderBreakPoint();
 
 	AstraNavigationMenu = function( parentList ) {
 
@@ -203,7 +233,6 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 	};
 
 	var __main_header_all 	= document.querySelectorAll( '.main-header-bar-navigation' );
-	var menu_toggle_all 	= document.querySelectorAll( '.main-header-menu-toggle' );
 
 	if ( menu_toggle_all.length > 0 ) {
 
@@ -290,54 +319,11 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 			}
 		}
 	}, false);
-	
-	/* Add break point Class and related trigger */
-	var updateHeaderBreakPoint = function () {
-
-		var break_point = astra.break_point,
-			headerWrap = document.querySelectorAll( '.main-header-bar-wrap' );
-
-		if ( headerWrap.length > 0  ) {
-			for ( var i = 0; i < headerWrap.length; i++ ) {
-
-				if ( headerWrap[i].tagName == 'DIV' && headerWrap[i].classList.contains( 'main-header-bar-wrap' ) ) {
-
-					var header_content_bp = window.getComputedStyle( headerWrap[i], '::before' ).getPropertyValue('content');
-
-					// Edge/Explorer header break point.
-					if( isEdge || isIE || header_content_bp === 'normal' ) {
-						if( window.innerWidth <= break_point ) {
-							header_content_bp = break_point;
-						}
-					}
-
-					header_content_bp = header_content_bp.replace( /[^0-9]/g, '' );
-					header_content_bp = parseInt( header_content_bp );
-
-					// `ast-header-break-point` class will use for Responsive Style of Header.
-					if ( header_content_bp != break_point ) {
-						//remove menu toggled class.
-						if ( null != menu_toggle_all[i] ) {
-							menu_toggle_all[i].classList.remove( 'toggled' );
-						}
-						document.body.classList.remove( "ast-header-break-point" );
-						astraTriggerEvent( document.body, "astra-header-responsive-enabled" );
-
-					} else {
-
-						document.body.classList.add( "ast-header-break-point" );
-						astraTriggerEvent( document.body, "astra-header-responsive-disabled" )						
-					}
-				}
-			}
-		}
-	}
 
 	window.addEventListener("resize", function() {
 		updateHeaderBreakPoint();
 	});
 
-	updateHeaderBreakPoint();
 
 	var get_browser = function () {
 	    var ua = navigator.userAgent,tem,M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || []; 
@@ -369,34 +355,35 @@ var astraTriggerEvent = function astraTriggerEvent( el, typeArg ) {
 	for (var i = 0; i < SearchIcons.length; i++) {
 
 		SearchIcons[i].onclick = function(event) {
-			if ( this.classList.contains( 'slide-search' ) ) {
-				event.preventDefault();
-				var sibling = this.parentNode.parentNode.querySelector( '.ast-search-menu-icon' );
-				if ( ! sibling.classList.contains( 'ast-dropdown-active' ) ) {
-					sibling.classList.add( 'ast-dropdown-active' );
-					sibling.querySelector( '.search-field' ).setAttribute('autocomplete','off');
-					setTimeout(function() {
-						sibling.querySelector( '.search-field' ).focus();
-					},200);
-				} else {
-					sibling.classList.remove( 'ast-dropdown-active' );
-				}
-			}
-		}
+            if ( this.classList.contains( 'slide-search' ) ) {
+                event.preventDefault();
+                var sibling = this.parentNode.parentNode.parentNode.querySelector( '.ast-search-menu-icon' );
+                if ( ! sibling.classList.contains( 'ast-dropdown-active' ) ) {
+                    sibling.classList.add( 'ast-dropdown-active' );
+                    sibling.querySelector( '.search-field' ).setAttribute('autocomplete','off');
+                    setTimeout(function() {
+                     sibling.querySelector( '.search-field' ).focus();
+                    },200);
+                } else {
+                	var searchTerm = sibling.querySelector( '.search-field' ).value || '';
+	                if( '' !== searchTerm ) {
+    		            sibling.querySelector( '.search-form' ).submit();
+                    }
+                    sibling.classList.remove( 'ast-dropdown-active' );
+                }
+            }
+        }
 	};
 
 	/* Hide Dropdown on body click*/
 	document.body.onclick = function( event ) {
-		if ( ! this.classList.contains( 'ast-header-break-point' ) ) {
-			if ( ! event.target.classList.contains( 'ast-search-menu-icon' ) && getParents( event.target, '.ast-search-menu-icon' ).length === 0 && getParents( event.target, '.ast-search-icon' ).length === 0  ) {
-
-				var dropdownSearchWrap = document.getElementsByClassName( 'ast-search-menu-icon' );
-
-				for (var i = 0; i < dropdownSearchWrap.length; i++) {
-					dropdownSearchWrap[i].classList.remove( 'ast-dropdown-active' );
-				};
-			}
-		}
+		if ( ! event.target.classList.contains( 'ast-search-menu-icon' ) && getParents( event.target, '.ast-search-menu-icon' ).length === 0 && getParents( event.target, '.ast-search-icon' ).length === 0  ) {
+            var dropdownSearchWrap = document.getElementsByClassName( 'ast-search-menu-icon' );
+            
+            for (var i = 0; i < dropdownSearchWrap.length; i++) {
+                dropdownSearchWrap[i].classList.remove( 'ast-dropdown-active' );
+            };
+        }
 	}
 	/**
 	 * Navigation Keyboard Navigation.

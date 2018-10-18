@@ -2,6 +2,15 @@
   position: relative;
 }
 
+.customize-control-ast-responsive-background .ast-responsive-bg-color-control.wp-color-picker {
+  width: 96px !important;
+  line-height: 17px;
+}
+
+.customize-control-ast-responsive-background .wp-picker-clear {
+  margin-left: 2%;
+}
+
 .customize-control-ast-responsive-background .screen-reader-text {
   top: initial;
 }

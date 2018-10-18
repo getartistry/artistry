@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Testimonials_Widget extends Widget_Base
-{
+class Premium_Testimonials extends Widget_Base {
     public function get_name() {
         return 'premium-addon-testimonials';
     }
@@ -36,9 +35,10 @@ class Premium_Testimonials_Widget extends Widget_Base
                 [
                     'label'             => esc_html__('Image','premium-addons-for-elementor'),
                     'type'              => Controls_Manager::MEDIA,
-                    'default'           => [
-                        'url' => PREMIUM_ADDONS_URL. 'assets/images/person-image.jpg',
-                        ],
+                    'dynamic'       => [ 'active' => true ],
+                    'default'      => [
+                        'url'   => Utils::get_placeholder_image_src()
+                    ],
                     'description'       => esc_html__( 'Choose an image for the author', 'premium-addons-for-elementor' ),
                     'show_label'        => true,
                     ]
@@ -487,8 +487,7 @@ class Premium_Testimonials_Widget extends Widget_Base
         
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
 
@@ -498,54 +497,109 @@ class Premium_Testimonials_Widget extends Widget_Base
         $person_title_tag = $settings['premium_testimonial_person_name_size'];
         
         $company_title_tag = $settings['premium_testimonial_company_name_size'];
-        
+        $image_src = '';
         if(!empty($settings['premium_testimonial_person_image']['url'])) {
             $image_src = $settings['premium_testimonial_person_image']['url'];
-        } else {
-            $image_src = PREMIUM_ADDONS_URL. 'assets/images/person-image.jpg';
         }
         
-?>
+    ?>
     
-<!-- Testimonial Box Wrapper -->
-<div class="premium-testimonial-Box">
-    <div class="premium-testimonial-container">
-        <i class="fa fa-quote-left premium-testimonial-upper-quote"></i>
-        <!-- Testimonial Body Wrapper -->
-        <div class="premium-testimonial-content-wrapper">
-            <!-- Image Wrapper -->
-            <div class="premium-testimonial-img-wrapper" style="border-radius: <?php 
-            if( $settings['premium_testimonial_person_image_shape'] === 'circle' ) : echo "50%;";
-            elseif ( $settings['premium_testimonial_person_image_shape'] === 'square' ) : echo "0;";
-            elseif ( $settings['premium_testimonial_person_image_shape'] === 'rounded' ) : echo "15px;";
-            endif;?>">
-                 <img src="<?php echo $image_src; ?>" alt="premium-image" class="premium-testimonial-person-image" 
-                    style="border-radius: <?php
-                    if ( $settings['premium_testimonial_person_image_shape'] === 'circle' ) : echo "50%;";
-                    elseif ( $settings['premium_testimonial_person_image_shape'] === 'square' ) : echo "0;";
-                    elseif ( $settings['premium_testimonial_person_image_shape'] === 'rounded' ) : echo "15px;";
-                    endif; ?>">
+    <div class="premium-testimonial-Box">
+        <div class="premium-testimonial-container">
+            <i class="fa fa-quote-left premium-testimonial-upper-quote"></i>
+            <div class="premium-testimonial-content-wrapper">
+                <?php if ( ! empty( $image_src ) ) : ?>
+                    <div class="premium-testimonial-img-wrapper" style="border-radius: <?php 
+                        if( $settings['premium_testimonial_person_image_shape'] === 'circle' ) : echo "50%;";
+                        elseif ( $settings['premium_testimonial_person_image_shape'] === 'square' ) : echo "0;";
+                        elseif ( $settings['premium_testimonial_person_image_shape'] === 'rounded' ) : echo "15px;";
+                        endif;?>">
+                         <img src="<?php echo $image_src; ?>" alt="premium-image" class="premium-testimonial-person-image" 
+                            style="border-radius: <?php
+                            if ( $settings['premium_testimonial_person_image_shape'] === 'circle' ) : echo "50%;";
+                            elseif ( $settings['premium_testimonial_person_image_shape'] === 'square' ) : echo "0;";
+                            elseif ( $settings['premium_testimonial_person_image_shape'] === 'rounded' ) : echo "15px;";
+                            endif; ?>">
+                    </div>
+                <?php endif; ?>
+
+                <div class="premium-testimonial-text-wrapper">
+                    <div <?php echo $this->get_render_attribute_string('premium_testimonial_content'); ?>><?php echo $settings['premium_testimonial_content']; ?></div>
+                </div>
+
+                <span class="premium-testimonial-author-info">
+                    <<?php echo $person_title_tag; ?> class="premium-testimonial-person-name"><span <?php echo $this->get_render_attribute_string('premium_testimonial_person_name'); ?>><?php echo $settings['premium_testimonial_person_name']; ?></span></<?php echo $person_title_tag; ?>><span class="premium-testimonial-separator"> - </span>
+
+                    <<?php echo $company_title_tag; ?> class="premium-testimonial-company-name"><?php if($settings['premium_testimonial_company_link_switcher'] == 'yes') : ?><a class="premium-testimonial-company-link" href="<?php echo $settings['premium_testimonial_company_link']; ?>" target="_<?php echo $settings['premium_testimonial_link_target']; ?>"><span <?php echo $this->get_render_attribute_string('premium_testimonial_company_name'); ?>><?php echo $settings['premium_testimonial_company_name']; ?></span></a><?php else: ?><span class="premium-testimonial-company-link" <?php echo $this->get_render_attribute_string('premium_testimonial_company_name'); ?>><?php echo $settings['premium_testimonial_company_name']; ?></span><?php endif;?></<?php echo $company_title_tag; ?>>
+                </span>
             </div>
-        
-            <!-- Testimonial Text Wrapper -->
-            <div class="premium-testimonial-text-wrapper">
-                <div <?php echo $this->get_render_attribute_string('premium_testimonial_content'); ?>><?php echo $settings['premium_testimonial_content']; ?></div>
-            </div>
-        
-            <!-- Person Name & Separator & Company Name--> 
-            <span class="premium-testimonial-author-info">
-                <<?php echo $person_title_tag; ?> class="premium-testimonial-person-name"><span <?php echo $this->get_render_attribute_string('premium_testimonial_person_name'); ?>><?php echo $settings['premium_testimonial_person_name']; ?></span></<?php echo $person_title_tag; ?>><span class="premium-testimonial-separator"> - </span>
-                
-                <<?php echo $company_title_tag; ?> class="premium-testimonial-company-name"><?php if($settings['premium_testimonial_company_link_switcher'] == 'yes') : ?><a class="premium-testimonial-company-link" href="<?php echo $settings['premium_testimonial_company_link']; ?>" target="_<?php echo $settings['premium_testimonial_link_target']; ?>"><span <?php echo $this->get_render_attribute_string('premium_testimonial_company_name'); ?>><?php echo $settings['premium_testimonial_company_name']; ?></span></a><?php else: ?><span class="premium-testimonial-company-link" <?php echo $this->get_render_attribute_string('premium_testimonial_company_name'); ?>><?php echo $settings['premium_testimonial_company_name']; ?></span><?php endif;?></<?php echo $company_title_tag; ?>>
-                
-                
-            </span>
+            <i class="fa fa-quote-right premium-testimonial-lower-quote"></i>
         </div>
-    
-        <i class="fa fa-quote-right premium-testimonial-lower-quote"></i>
     </div>
-</div>
     <?php
+    
     }
+    
+    protected function _content_template() {
+        ?>
+        <#
+        
+            view.addInlineEditingAttributes('premium_testimonial_person_name');
+            view.addInlineEditingAttributes('premium_testimonial_company_name');
+            view.addInlineEditingAttributes('premium_testimonial_content', 'advanced');
+            view.addRenderAttribute('premium_testimonial_company_name', 'class', 'premium-testimonial-company-link');
+            
+            var personTag = settings.premium_testimonial_person_name_size,
+                companyTag = settings.premium_testimonial_company_name_size,
+                imageSrc = '',
+                imageSrc,
+                borderRadius;
+
+            if( '' != settings.premium_testimonial_person_image.url ) {
+                imageSrc = settings.premium_testimonial_person_image.url;
+            }
+                
+            
+            if( 'circle' == settings.premium_testimonial_person_image_shape ) {
+                borderRadius = '50%;';
+            } else if ( 'square' == settings.premium_testimonial_person_image_shape ) {
+                borderRadius = '0;';
+            } else if ( 'rounded' == settings.premium_testimonial_person_image_shape ) {
+                borderRadius = '15px;';
+            }
+            
+        
+        #>
+        
+            <div class="premium-testimonial-Box">
+                <div class="premium-testimonial-container">
+                    <i class="fa fa-quote-left premium-testimonial-upper-quote"></i>
+                    <div class="premium-testimonial-content-wrapper">
+                        <# if ( '' != imageSrc ) { #>
+                            <div class="premium-testimonial-img-wrapper" style="border-radius: {{ borderRadius }}">
+                                <img src="{{ imageSrc }}" alt="premium-image" class="premium-testimonial-person-image" style="border-radius: {{ borderRadius }}">
+                            </div>
+                        <# } #>
+                        <div class="premium-testimonial-text-wrapper">
+                            <div {{{ view.getRenderAttributeString('premium_testimonial_content') }}}>{{{ settings.premium_testimonial_content }}}</div>
+                        </div>
+                        
+                        <span class="premium-testimonial-author-info">
+                            <{{{personTag}}} class="premium-testimonial-person-name"><span {{{ view.getRenderAttributeString('premium_testimonial_person_name') }}}>{{{ settings.premium_testimonial_person_name }}}</span></{{{personTag}}}><span class="premium-testimonial-separator"> - </span>
+
+                            <{{{companyTag}}} class="premium-testimonial-company-name"><a href="{{ settings.premium_testimonial_company_link }}" {{{ view.getRenderAttributeString('premium_testimonial_company_name') }}}>{{{ settings.premium_testimonial_company_name }}}</a></{{{companyTag}}}>
+                        </span>
+                        
+                    </div>
+                    
+                    <i class="fa fa-quote-right premium-testimonial-lower-quote"></i>
+                    
+                    
+                    
+                </div>
+            </div>
+        
+        <?php
+    }
+
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Testimonials_Widget());

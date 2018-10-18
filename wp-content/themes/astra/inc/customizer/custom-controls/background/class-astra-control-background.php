@@ -64,7 +64,9 @@ if ( ! class_exists( 'Astra_Control_Background' ) && class_exists( 'WP_Customize
 			wp_enqueue_style( 'astra-background', $css_uri . 'background.css', null, ASTRA_THEME_VERSION );
 			wp_enqueue_script( 'astra-background', $js_uri . 'background.js', array(), ASTRA_THEME_VERSION, true );
 			wp_localize_script(
-				'astra-background', 'astraCustomizerControlBackground', array(
+				'astra-background',
+				'astraCustomizerControlBackground',
+				array(
 					'placeholder'  => __( 'No file selected', 'astra' ),
 					'lessSettings' => __( 'Less Settings', 'astra' ),
 					'moreSettings' => __( 'More Settings', 'astra' ),

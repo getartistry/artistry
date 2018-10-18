@@ -93,7 +93,10 @@ function emlIsFilterBased( attrs ) {
 
 
     /**
-     * wp.media.view.Attachment.EditLibrary
+     *  wp.media.view.Attachment.EditLibrary
+     *
+     *  Enable/disable the deleting button for gallery media items
+     *  based on whether it's a filter-based gallery or not
      *
      */
     _.extend( media.view.Attachment.EditLibrary.prototype, {
@@ -153,7 +156,7 @@ function emlIsFilterBased( attrs ) {
         },
 
         change_orderbyRandom: function( event ) {
-
+        
             var content = this.controller.frame.content,
                 reverse = content.get().toolbar.get( 'reverse' );
 
@@ -211,12 +214,30 @@ function emlIsFilterBased( attrs ) {
 
             _.each( eml.l10n.taxonomies, function( attrs, taxonomy ) {
 
-                var ids = library.props.get( taxonomy ),
-                    taxonomy_string;
+                var terms = library.props.get( taxonomy ),
+                    taxonomy_string,
+                    terms_to_string = [],
+                    key;
 
-                if ( ids ) {
 
-                    taxonomy_string = attrs.singular_name + ': ' + _.values( _.pick( attrs.terms, ids ) ).join(', ');
+                if ( terms ) {
+
+                    if ( typeof terms !== 'object' ) {
+                        terms = [terms];
+                    }
+
+                    key = ! terms.some(isNaN) ? 'term_id' : 'slug';
+
+                    _.each( terms, function( term ) {
+
+                        var t = _.find( attrs.term_list, function( item ) {
+                            return item[key] == term;
+                        });
+
+                        terms_to_string.push( t.term_name );
+                    });
+
+                    taxonomy_string = attrs.singular_name + ': ' + terms_to_string.join(', ');
                     append += '<li>' + taxonomy_string + '</li>';
                 }
             });

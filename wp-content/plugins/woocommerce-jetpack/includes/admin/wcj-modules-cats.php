@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Modules Array
  *
- * @version 3.7.0
+ * @version 4.0.0
  * @since   2.2.0
  * @author  Algoritmika Ltd.
  * @todo    (maybe) split "Shipping & Orders", "Cart & Checkout", "Products", "Prices & Currencies" etc.
@@ -144,6 +144,7 @@ return apply_filters( 'wcj_modules', array(
 			'shipping_by_user_role',
 			'shipping_by_products',
 			'shipping_by_cities',
+			'shipping_by_time',
 			'shipping_by_order_amount',
 			'address_formats',
 			'orders',
@@ -191,8 +192,10 @@ return apply_filters( 'wcj_modules', array(
 			'wpml',
 			'custom_css',
 			'custom_js',
+			'custom_php',
 			'track_users',
 			'modules_by_user_roles',
+			'template_editor',
 			'product_info', // deprecated
 		),
 	),

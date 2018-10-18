@@ -195,7 +195,9 @@ function twitter_fetch_items($keyword,$camp ){
 		$i = 0;
 		$max_id = 99999999999999999999999999999999999999;
 		foreach ($items as $item){
-			 
+			
+			$itm = array();
+			
 			$i++;
 		 
 			//max_id
@@ -418,13 +420,16 @@ function twitter_get_post($camp){
 			//record current used keyword
 			$this->used_keyword=$keyword;
 				
-				
 			// getting links from the db for that keyword
-			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'tw_{$camp->camp_id}_$keyword' and item_status ='0'";
+			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'tw_{$camp->camp_id}_$keyword' ";
 			$res = $this->db->get_results ( $query );
 				
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_general where item_type='tw_{$camp->camp_id}_$keyword' ";
+				$this->db->query ( $query_delete );
 					
 				//get new links
 				$this->twitter_fetch_items( $keyword, $camp );
@@ -449,10 +454,10 @@ function twitter_get_post($camp){
 					//duplicated item let's delete
 					unset($res[$i]);
 						
-					  echo '<br>Tweet ('. $t_data ['item_title'] .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
+					echo '<br>Tweet ('. $t_data ['item_title'] .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
 						
 					//delete the item
-					$query = "delete from {$this->wp_prefix}automatic_general where item_id='{$t_row->item_id}' and item_type=  'it_{$camp->camp_id}_$keyword'";
+					$query = "delete from {$this->wp_prefix}automatic_general where id={$t_row->id} ";
 					$this->db->query ( $query );
 						
 				}else{
@@ -514,22 +519,22 @@ function twitter_get_post($camp){
 				  echo '<br>Found Link:'.$temp['item_url'] ;
 					
 				// update the link status to 1
-				$query = "update {$this->wp_prefix}automatic_general set item_status='1' where item_id='$ret->item_id' and item_type='tw_{$camp->camp_id}_$keyword' ";
+				$query = "delete from {$this->wp_prefix}automatic_general where id={$ret->id}";
 				$this->db->query ( $query );
 					
 				// if cache not active let's delete the cached items and reset indexes
 				if (! in_array ( 'OPT_IT_CACHE', $camp_opt )) {
-					  echo '<br>Cache disabled claring cache ...';
-					$query = "delete from {$this->wp_prefix}automatic_general where item_type='tw_{$camp->camp_id}_$keyword' and item_status ='0'";
+					 
+					echo '<br>Cache disabled claring cache ...';
+					$query = "delete from {$this->wp_prefix}automatic_general where item_type='tw_{$camp->camp_id}_$keyword' ";
 					$this->db->query ( $query );
-						
-						
 						
 					// reset index
 					$query = "update {$this->wp_prefix}automatic_keywords set keyword_start =1 where keyword_camp={$camp->camp_id}";
 					$this->db->query ( $query );
 						
 					delete_post_meta($camp->camp_id, 'wp_instagram_next_max_id'.md5($keyword));
+
 				}
 					
 				

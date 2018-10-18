@@ -36,7 +36,7 @@ if ( ! class_exists( 'Astra_Menu_Sidebar_Animation' ) ) {
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -88,7 +88,13 @@ if ( ! class_exists( 'Astra_Menu_Sidebar_Animation' ) ) {
 			$mobile_above_menu_style = astra_get_option( 'mobile-above-header-menu-style' );
 			$mobile_below_menu_style = astra_get_option( 'mobile-below-header-menu-style' );
 
-			if ( 'disable' != $canvas_trigger_type || 'flyout' == $mobile_menu_style || 'fullscreen' == $mobile_menu_style || 'flyout' == $mobile_above_menu_style || 'fullscreen' == $mobile_above_menu_style || 'flyout' == $mobile_below_menu_style || 'fullscreen' == $mobile_below_menu_style ) {
+			if ( ( '' != $canvas_trigger_type && 'disable' != $canvas_trigger_type ) ||
+				'flyout' == $mobile_menu_style || 'fullscreen' == $mobile_menu_style ||
+				'flyout' == $mobile_above_menu_style ||
+				'fullscreen' == $mobile_above_menu_style ||
+				'flyout' == $mobile_below_menu_style ||
+				'fullscreen' == $mobile_below_menu_style
+			) {
 				Astra_Minify::add_dependent_js( 'jquery' );
 				Astra_Minify::add_js( $gen_path . 'common-sidebar-and-menu' . $file_prefix . '.js' );
 			}

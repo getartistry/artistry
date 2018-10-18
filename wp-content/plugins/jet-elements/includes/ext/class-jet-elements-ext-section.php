@@ -44,6 +44,8 @@ if ( ! class_exists( 'Jet_Elements_Ext_Section' ) ) {
 
 			add_action( 'elementor/frontend/element/before_render', array( $this, 'section_before_render' ) );
 
+			add_action( 'elementor/frontend/section/before_render', array( $this, 'section_before_render' ) );
+
 			add_action( 'elementor/frontend/before_enqueue_scripts', array( $this, 'enqueue_scripts' ), 9 );
 		}
 
@@ -65,6 +67,14 @@ if ( ! class_exists( 'Jet_Elements_Ext_Section' ) ) {
 				array(
 					'label' => esc_html__( 'Jet Parallax', 'jet-elements' ),
 					'tab'   => Elementor\Controls_Manager::TAB_LAYOUT,
+				)
+			);
+
+			$obj->add_control(
+				'jet_parallax_items_heading',
+				array(
+					'label'     => esc_html__( 'Layouts', 'jet-elements' ),
+					'type'      => Elementor\Controls_Manager::HEADING,
 				)
 			);
 
@@ -107,6 +117,7 @@ if ( ! class_exists( 'Jet_Elements_Ext_Section' ) ) {
 						'none'   => esc_html__( 'None', 'jet-elements' ),
 						'scroll' => esc_html__( 'Scroll', 'jet-elements' ),
 						'mouse'  => esc_html__( 'Mouse Move', 'jet-elements' ),
+						'zoom'   => esc_html__( 'Scrolling Zoom', 'jet-elements' ),
 					),
 				)
 			);
@@ -167,8 +178,28 @@ if ( ! class_exists( 'Jet_Elements_Ext_Section' ) ) {
 					'type'    => Elementor\Controls_Manager::SELECT,
 					'default' => 'transform',
 					'options' => array(
-						'bgposition' => esc_html__( 'Background Position', 'jet-elements' ),
-						'transform'  => esc_html__( 'Transform', 'jet-elements' ),
+						'bgposition'  => esc_html__( 'Background Position', 'jet-elements' ),
+						'transform'   => esc_html__( 'Transform', 'jet-elements' ),
+						'transform3d' => esc_html__( 'Transform 3D', 'jet-elements' ),
+					),
+				)
+			);
+
+			$repeater->add_control(
+				'jet_parallax_layout_on',
+				array(
+					'label'       => __( 'Enable On Device', 'jet-elements' ),
+					'type'        => Elementor\Controls_Manager::SELECT2,
+					'multiple'    => true,
+					'label_block' => 'true',
+					'default'     => array(
+						'desktop',
+						'tablet',
+					),
+					'options'     => array(
+						'desktop' => __( 'Desktop', 'jet-elements' ),
+						'tablet'  => __( 'Tablet', 'jet-elements' ),
+						'mobile'  => __( 'Mobile', 'jet-elements' ),
 					),
 				)
 			);
@@ -199,11 +230,12 @@ if ( ! class_exists( 'Jet_Elements_Ext_Section' ) ) {
 		 */
 		public function section_before_render( $obj ) {
 			$data     = $obj->get_data();
-			$type     = $data['elType'];
+			$type     = isset( $data['elType'] ) ? $data['elType'] : 'section';
 			$settings = $data['settings'];
 
-			if ( isset( $settings['jet_parallax_layout_list'] ) ) {
-				if ( 'section' === $type ) {
+			if ( 'section' === $type ) {
+
+				if ( isset( $settings['jet_parallax_layout_list'] ) ) {
 					$this->parallax_sections[ $data['id'] ] = $settings['jet_parallax_layout_list'];
 				}
 			}

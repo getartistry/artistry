@@ -9,8 +9,14 @@
  * @since       1.4.3
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Scroll_To_Top_Panels_And_Sections' ) ) {
@@ -38,7 +44,7 @@ if ( ! class_exists( 'Astra_Scroll_To_Top_Panels_And_Sections' ) ) {
 				array(
 					'name'     => 'section-scroll-to-top',
 					'title'    => __( 'Scroll To Top', 'astra-addon' ),
-					'type'     => 'panel',
+					'type'     => 'section',
 					'panel'    => 'panel-layout',
 					'priority' => 60,
 				),

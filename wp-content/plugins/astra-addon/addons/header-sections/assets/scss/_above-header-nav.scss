@@ -111,7 +111,7 @@
                 	padding: 0 0 0 1em;
             	}
             	ul a {
-                	padding: 0 0 0 1em;
+                	padding: 0.9em 1em;
             	}
             }
 
@@ -142,10 +142,6 @@
     .ast-above-header {
         
         line-height: 3;
-
-        .ast-search-icon {
-            display: none;
-        }
     }
 
     .ast-above-header-navigation,
@@ -287,3 +283,30 @@
         }  
     }
 }
+
+.ast-desktop {
+    .ast-above-header-menu {
+        .sub-menu {
+            box-shadow: 0 4px 10px -2px rgba(0,0,0, 0.1);
+        }
+        .astra-full-megamenu-wrapper {
+            box-shadow: 0 4px 10px -2px rgba(0,0,0, 0.1);
+        }
+    }
+}
+
+.ast-desktop {
+    .ast-above-header-menu {
+        .astra-full-megamenu-wrapper {
+            .sub-menu {
+                box-shadow: none;   
+            }
+        }
+        .astra-megamenu {
+            .sub-menu {
+                box-shadow: none;
+            }
+        }
+    }
+}
+

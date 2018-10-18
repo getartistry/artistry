@@ -1,48 +1,82 @@
 <?php
 
-abstract class XmlImportWooCommerce {
-	
-	public $import;
-	public $xml;
-	public $logger;
-	public $count;
-	public $chunk;
-	public $xpath;
-	public $wpdb;
+use wpai_woocommerce_add_on\libraries\importer\Importer;
+use wpai_woocommerce_add_on\libraries\parser\ParserInterface;
 
-	public $data;
+require_once dirname(__FILE__) . '/XmlImportWooCommerceInterface.php';
 
-	public $articleData = false;
+/**
+ * Class XmlImportWooCommerce
+ */
+abstract class XmlImportWooCommerce implements XmlImportWooCommerceInterface {
 
-	function pushmeta( $pid, $meta_key, $meta_value )
-	{
-		if (empty($meta_key)) return;		
-		
-		if ( empty($this->articleData['ID']) or $this->is_update_cf($meta_key))
-		{
-			update_post_meta($pid, $meta_key, $meta_value);			
-		}
-	}
+    /**
+     * @var ParserInterface
+     */
+    public $parser;
 
-	function is_update_cf( $meta_key )
-	{
-		if ( $this->import->options['update_all_data'] == 'yes') return true;
+    /**
+     * @var Importer
+     */
+    public $importer;
 
-		if ( ! $this->import->options['is_update_custom_fields'] ) return false;			
+    /**
+     * @var
+     */
+    public $import;
 
-		if ( $this->import->options['update_custom_fields_logic'] == "full_update" ) return true;
-		if ( $this->import->options['update_custom_fields_logic'] == "only" 
-			and ! empty($this->import->options['custom_fields_list']) 
-				and is_array($this->import->options['custom_fields_list']) 
-					and in_array($meta_key, $this->import->options['custom_fields_list']) ) return true;
-		if ( $this->import->options['update_custom_fields_logic'] == "all_except" 
-			and ( empty($this->import->options['custom_fields_list']) or ! in_array($meta_key, $this->import->options['custom_fields_list']) )) return true;
-		
-		return false;
-	}
+    /**
+     * @var
+     */
+    public $xml;
 
-	function filtering($var)
-	{
-		return ("" == $var) ? false : true;
-	}
+    /**
+     * @var
+     */
+    public $logger;
+
+    /**
+     * @var
+     */
+    public $count;
+
+    /**
+     * @var
+     */
+    public $chunk;
+
+    /**
+     * @var
+     */
+    public $xpath;
+
+    /**
+     * @var
+     */
+    public $wpdb;
+
+    /**
+     * @var
+     */
+    public $data;
+
+    /**
+     * @var bool
+     */
+    public $articleData = FALSE;
+
+    /**
+     * XmlImportWooCommerceShopOrder constructor.
+     * @param $options
+     */
+    public function __construct($options) {
+        global $wpdb;
+        $this->import = $options['import'];
+        $this->count = $options['count'];
+        $this->xml = $options['xml'];
+        $this->logger = $options['logger'];
+        $this->chunk = $options['chunk'];
+        $this->xpath = $options['xpath_prefix'];
+        $this->wpdb = $wpdb;
+    }
 }

@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
@@ -41,6 +47,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'type'     => 'control',
 					'control'  => 'ast-divider',
 					'section'  => 'section-primary-header-typo',
+					'priority' => 21,
 					'settings' => array(),
 				),
 
@@ -55,6 +62,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'default'   => astra_get_option( 'font-family-primary-menu' ),
 					'title'     => __( 'Font Family', 'astra-addon' ),
 					'section'   => 'section-primary-header-typo',
+					'priority'  => 22,
 					'connect'   => ASTRA_THEME_SETTINGS . '[font-weight-primary-menu]',
 				),
 
@@ -70,6 +78,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'default'           => astra_get_option( 'font-weight-primary-menu' ),
 					'title'             => __( 'Font Weight', 'astra-addon' ),
 					'section'           => 'section-primary-header-typo',
+					'priority'          => 23,
 					'connect'           => ASTRA_THEME_SETTINGS . '[font-family-primary-menu]',
 				),
 
@@ -83,6 +92,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'control'   => 'select',
 					'transport' => 'postMessage',
 					'title'     => __( 'Text Transform', 'astra-addon' ),
+					'priority'  => 24,
 					'default'   => astra_get_option( 'text-transform-primary-menu' ),
 					'choices'   => array(
 						''           => __( 'Inherit', 'astra-addon' ),
@@ -100,6 +110,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'name'        => ASTRA_THEME_SETTINGS . '[font-size-primary-menu]',
 					'section'     => 'section-primary-header-typo',
 					'type'        => 'control',
+					'priority'    => 25,
 					'title'       => __( 'Font Size', 'astra-addon' ),
 					'control'     => 'ast-responsive',
 					'transport'   => 'postMessage',
@@ -116,15 +127,17 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 				 * Option: Primary Menu Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[line-height-primary-menu]',
-					'section'     => 'section-primary-header-typo',
-					'type'        => 'control',
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'transport'   => 'postMessage',
-					'default'     => '',
-					'control'     => 'ast-slider',
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[line-height-primary-menu]',
+					'section'           => 'section-primary-header-typo',
+					'type'              => 'control',
+					'priority'          => 26,
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'transport'         => 'postMessage',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'control'           => 'ast-slider',
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 10,
@@ -140,6 +153,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'type'     => 'control',
 					'control'  => 'ast-divider',
 					'section'  => 'section-primary-header-typo',
+					'priority' => 27,
 					'settings' => array(),
 				),
 
@@ -154,6 +168,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'title'     => __( 'Font Family', 'astra-addon' ),
 					'default'   => astra_get_option( 'font-family-primary-dropdown-menu' ),
 					'section'   => 'section-primary-header-typo',
+					'priority'  => 28,
 					'connect'   => ASTRA_THEME_SETTINGS . '[font-weight-primary-dropdown-menu]',
 				),
 
@@ -169,6 +184,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'default'           => astra_get_option( 'font-weight-primary-dropdown-menu' ),
 					'title'             => __( 'Font Weight', 'astra-addon' ),
 					'section'           => 'section-primary-header-typo',
+					'priority'          => 29,
 					'connect'           => ASTRA_THEME_SETTINGS . '[font-family-primary-dropdown-menu]',
 				),
 
@@ -181,6 +197,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'type'      => 'control',
 					'title'     => __( 'Text Transform', 'astra-addon' ),
 					'transport' => 'postMessage',
+					'priority'  => 30,
 					'default'   => astra_get_option( 'text-transform-primary-dropdown-menu' ),
 					'control'   => 'select',
 					'choices'   => array(
@@ -202,6 +219,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'type'        => 'control',
 					'control'     => 'ast-responsive',
 					'transport'   => 'postMessage',
+					'priority'    => 31,
 					'default'     => astra_get_option( 'font-size-primary-dropdown-menu' ),
 					'input_attrs' => array(
 						'min' => 0,
@@ -217,15 +235,17 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 				 */
 
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[line-height-primary-dropdown-menu]',
-					'type'        => 'control',
-					'section'     => 'section-primary-header-typo',
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'transport'   => 'postMessage',
-					'default'     => '',
-					'control'     => 'ast-slider',
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[line-height-primary-dropdown-menu]',
+					'type'              => 'control',
+					'section'           => 'section-primary-header-typo',
+					'priority'          => 32,
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'transport'         => 'postMessage',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'control'           => 'ast-slider',
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 5,
@@ -241,6 +261,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'type'     => 'control',
 					'required' => array( ASTRA_THEME_SETTINGS . '[header-display-outside-menu]', '==', '1' ),
 					'control'  => 'ast-divider',
+					'priority' => 33,
 					'section'  => 'section-primary-header-typo',
 					'settings' => array(),
 				),
@@ -256,7 +277,7 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 					'required'    => array( ASTRA_THEME_SETTINGS . '[header-display-outside-menu]', '==', '1' ),
 					'section'     => 'section-primary-header-typo',
 					'default'     => astra_get_option( 'outside-menu-font-size' ),
-					'priority'    => 20,
+					'priority'    => 34,
 					'title'       => __( 'Font Size', 'astra-addon' ),
 					'input_attrs' => array(
 						'min' => 0,
@@ -271,17 +292,18 @@ if ( ! class_exists( 'Astra_Primary_Menu_Typo_Configs' ) ) {
 				 * Option: outside Menu Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[outside-menu-line-height]',
-					'section'     => 'section-primary-header-typo',
-					'transport'   => 'postMessage',
-					'required'    => array( ASTRA_THEME_SETTINGS . '[header-display-outside-menu]', '==', '1' ),
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'type'        => 'control',
-					'control'     => 'ast-slider',
-					'default'     => '',
-					'priority'    => 20,
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[outside-menu-line-height]',
+					'section'           => 'section-primary-header-typo',
+					'transport'         => 'postMessage',
+					'required'          => array( ASTRA_THEME_SETTINGS . '[header-display-outside-menu]', '==', '1' ),
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'type'              => 'control',
+					'control'           => 'ast-slider',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'priority'          => 35,
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 10,

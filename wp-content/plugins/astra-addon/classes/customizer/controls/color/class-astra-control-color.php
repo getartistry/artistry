@@ -100,17 +100,18 @@ if ( ! class_exists( 'Astra_Control_Color' ) && class_exists( 'WP_Customize_Cont
 				}
 				defaultValueAttr = ' data-default-color=' + defaultValue; // Quotes added automatically.
 			} #>
-			<label>
-				<# if ( data.label ) { #>
+
+			<# if ( data.label ) { #>
+				<label>
 					<span class="customize-control-title">{{{ data.label }}}</span>
-				<# } #>
-				<# if ( data.description ) { #>
-					<span class="description customize-control-description">{{{ data.description }}}</span>
-				<# } #>
-				<div class="customize-control-content">
-					<input class="ast-color-picker-alpha color-picker-hex" type="text" maxlength="7" data-alpha="true" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} value="{{data.value}}" />
-				</div>
-			</label>
+				</label>
+			<# } #>
+			<# if ( data.description ) { #>
+				<span class="description customize-control-description">{{{ data.description }}}</span>
+			<# } #>
+			<div class="customize-control-content">
+				<input class="ast-color-picker-alpha color-picker-hex" type="text" maxlength="7" data-alpha="true" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} value="{{data.value}}" />
+			</div>
 
 			<?php
 		}

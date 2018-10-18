@@ -21,7 +21,7 @@ class Pro_Settings {
 
     public function handle_custom_redirects() {
 
-        $active_theme = $this->get_installed_theme();
+        $theme_name = Premium_Admin_Notices::get_installed_theme();
 
         if ( empty( $_GET['page'] ) ) {
             return;
@@ -29,7 +29,7 @@ class Pro_Settings {
 
         if ( 'premium-addons-pro' === $_GET['page'] ) {
 
-            $url = sprintf('https://premiumaddons.com/pro/?utm_source=wp-menu&utm_medium=wp-dash&utm_campaign=get-pro&utm_term=%s', $active_theme );
+            $url = sprintf('https://premiumaddons.com/pro/?utm_source=wp-menu&utm_medium=wp-dash&utm_campaign=get-pro&utm_term=%s', $theme_name );
             
             wp_redirect( $url );
 
@@ -48,22 +48,6 @@ class Pro_Settings {
     public function on_admin_init() {
 
         $this->handle_custom_redirects();
-
-    }
-
-    public function get_installed_theme() {
-
-        $theme = wp_get_theme();
-
-        if( $theme->parent() ) {
-            $theme_name = $theme->parent()->get('Name');
-        } else {
-            $theme_name = $theme->get('Name');
-        }
-
-        $theme_name = sanitize_key( $theme_name );
-
-        return $theme_name;
 
     }
 

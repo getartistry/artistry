@@ -47,7 +47,7 @@ function wp_automatic_license_notice() {
 				$proxy = false;
 				
 				if($proxy == false){
-					$url='http://deandev.com/license/index.php?itm=1904470&domain='.$_SERVER['HTTP_HOST'].'&purchase='.$purchase;
+					$url='https://deandev.com/license/index.php?itm=1904470&domain='.$_SERVER['HTTP_HOST'].'&purchase='.$purchase;
 				}else{
 					$url='http://deandev-proxy.appspot.com/license/index.php?itm=1904470&domain='.$_SERVER['HTTP_HOST'].'&purchase='.$purchase;
 				}

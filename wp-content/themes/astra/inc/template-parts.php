@@ -178,7 +178,7 @@ if ( ! function_exists( 'astra_masthead_toggle_buttons_primary' ) ) {
 		<div class="ast-button-wrap">
 			<button type="button" class="menu-toggle main-header-menu-toggle <?php echo esc_attr( $menu_label_class ); ?>" rel="main-menu" aria-controls='primary-menu' aria-expanded='false'>
 				<span class="screen-reader-text"><?php echo esc_html( $screen_reader_title ); ?></span>
-				<i class="<?php echo esc_attr( $menu_icon ); ?>"></i>
+				<span class="<?php echo esc_attr( $menu_icon ); ?>"></span>
 				<?php if ( '' != $menu_title ) { ?>
 
 					<span class="mobile-menu-wrap">

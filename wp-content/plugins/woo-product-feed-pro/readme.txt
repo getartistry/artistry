@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Tags: Product Feed, Google Shopping, Google Shopping Feed, WooCommerce Product Feed, WooCommerce Product Feed PRO, Bing Shopping, Bing product feed, Bing remarking, Google Merchant Feed, Google DRM Feed, Google Dynamic Remarketing Feed, Facebook feed, Google feed, Bing feed, Facebook Product Feed, Facebook Dynamic remarketing, Data Feed, WooCommerce Feed, XML product feed, CSV product feed, TSV, TXT product feed, comparison shopping engines, comparison shopping websites, vergelijk.nl, vergelijk.be, vertaa.fi, beslist.nl, kieskeurig.nl, bol.com, raketten, pricerunner, pricegrabber, Buy, leGuide, Kelkoo, Twenga, Yandex, Etsy, Dealtime, Shopzilla, Billiger
 Requires at least: 4.5
 Tested up to: 4.9
-Stable tag: 3.4.8
+Stable tag: 3.6.8
 
 == Description ==
 
@@ -65,6 +65,9 @@ This plugin enables you to set the shipping zone (and shipping class) so the rig
 = Product variations / Variables =
 This plugin supports product variables so all your variations make it to product feeds as individual products too.
 
+= Product tags =
+Use the product tag information for your product feeds or to create filters and rules on
+
 = Product feed statistics =
 Product feed statistics showing you the amount of products in yor product feed after every update and refresh.
 
@@ -108,7 +111,8 @@ Our plugin supports WPML (WPML Multilingual CMS)
 * Google DRM / Dynamic remarketing
 * Google Merchant Promotions feed
 * Google DSA (Dynamic Search Ads)
-* Google Local Product Inventory
+* Google Local Products
+* Google Local Products Inventory
 * Facebook Dynamic Ad’s / remarketing
 * Bing Shopping
 * <a href="https://yandex.com/support/market-tech-requirements/index.html" target="_blank">Yandex</a>
@@ -167,7 +171,7 @@ Our plugin supports WPML (WPML Multilingual CMS)
 * Choozen
 * Domodi
 * Geizhals
-* Guenstiger
+* <a href="https://www.guenstiger.de" target="_blank" rel="nofollow">Guenstiger.de</a>
 * Hood.de
 * Ladenzeile.de
 * Livingo.de
@@ -259,6 +263,71 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 8. Set the basic configurations for your product feed
 
 === Changelog ===
+
+= 3.6.8 (2018-10-15) =
+* Completed the list of Google Shopping fields available. Also changed the g:adwords_redirect field to g:ads_redirect
+
+= 3.6.7 (2018-10-10) =
+* Fixed a bug: When the Yoast SEO plugin was active and products were placed inside a category but no primary category was defined the plugin would not put the category in the product feed. This has now been fixed.
+
+= 3.6.6 (2018-10-09) =
+* Added Google's g:cost_of_goods_sold field in the drop-downs so you can add it to your Google Shopping Merchant Center feeds
+* Added Yoast's custom attributes to the drop-downs so you can add those product values to your product feeds
+
+= 3.6.5 (2018-10-05) =
+* New feature: When the description of a variation product has been filled it will override the product description and product short description of the simple/mother product.
+
+= 3.6.4 (2018-10-05) =
+* Fixed a bug: the plugin was crashing for variation products that had a slash in their product name. This has now been fixed. (Thanks @cargoodrich for reporting this issue to us).
+
+= 3.6.3 (2018-10-03) =
+* The optimised title attribute field now also accepts alphanumeric characters
+* Fixed a dynamic attribute bug, it was putting the slug value in the prodicy feed instead of the proper value. This has now been fixed.
+
+= 3.6.2 (2018-10-03) =
+* Added the product feed template for Guenstiger.de
+
+= 3.6.1 (2018-10-02) =
+* Major custom (product) attribute update: apart from adding individual custom product attributes to the mapping and filtering/rules dropdowns we have also cleaned-up these drop-downs so only the relevant attributes show
+* Fixed a VAT bug that happened for plugin users that also use a caching plugin
+
+= 3.6.0 (2018-09-27) =
+* Added support for Facebooks content_type attribute. It is now possible to select the attribute 'Content Type' in the attribute mapping page.
+
+= 3.5.9 (2018-09-26) =
+* Fixed another additional image gallery bug, it was showing only two in the feed . Now it shows all.
+
+= 3.5.8 (2018-09-24) =
+* Fixed a bug: additional gallery images for variable products can now also be put in product feeds
+
+= 3.5.7 (2018-09-23) =
+* Fixed the validation check on MPN
+* Fixed a bug for empty rule sets on values a product doesn't have
+
+= 3.5.6 (2018-09-20) =
+* Fixed a bug for include_only and exclude rules and filters that were set on an attribute that were not present for certain products
+
+= 3.5.5 (2018-09-17) =
+* Change to the Google Local Products Inventory CSV. Google requires the CSV feed to not contain field enclosures (against official CSV requirements) so we have stripped them off
+
+= 3.5.4 (2018-09-15) =
+* Minor changes, fixing PHP log warnings
+
+= 3.5.3 (2018-09-10) =
+* Added a plugin setting: you can now override your variation main image with it's mother main image if you do not want your variation images to be your product feeds
+
+= 3.5.2 (2018-08-31) =
+* Added product tags support: you can now add product tags to your product feeds and create filters and rules on them
+
+= 3.5.1 (2018-08-28) =
+* Added a template for Google Local Products Feed (next to the already existing Local Products Inventory Feed template).
+* Fixed a bug: the field enclosure in Google's Local Products Inventory Feed was wrong. This issue has been fixed now.
+
+= 3.5.0 (2018-08-24) =
+* Fixed a bug: multiply rules on numeric values are now both working for European and US annotations.
+
+= 3.4.9 (2018-08-22) =
+* Fixed a bug: pieces of product XML or CSV still ended up for products that should have been filtered out. This issue has been fixed now.
 
 = 3.4.8 (2018-07-31) =
 * Added the possibility to create replace-rules giving you extra options to manipulate the information that ends up in your product feeds
@@ -1011,6 +1080,71 @@ Questions left or unanswered? Please do not hesitate to contact us at support@ad
 * Strip HTML from the (short) description attributes
 
 == Upgrade Notice ==
+
+= 3.6.8 =
+Completed the list of Google Shopping fields available. Also changed the g:adwords_redirect field to g:ads_redirect
+
+= 3.6.7 =
+Fixed a bug: When the Yoast SEO plugin was active and products were placed inside a category but no primary category was defined the plugin would not put the category in the product feed. This has now been fixed.
+
+= 3.6.6 =
+Added Google's g:cost_of_goods_sold field in the drop-downs so you can add it to your Google Shopping Merchant Center feeds
+Added Yoast's custom attributes to the drop-downs so you can add those product values to your product feeds
+
+= 3.6.5 =
+New feature: When the description of a variation product has been filled it will override the product description and product short description of the simple/mother product.
+
+= 3.6.4 =
+Fixed a bug: the plugin was crashing for variation products that had a slash in their product name. This has now been fixed. (Thanks @cargoodrich for reporting this issue to us).
+
+= 3.6.3 =
+The optimised title attribute field now also accepts alphanumeric characters
+Fixed a dynamic attribute bug, it was putting the slug value in the prodicy feed instead of the proper value. This has now been fixed.
+
+= 3.6.2 =
+Added the product feed template for Guenstiger.de
+
+= 3.6.1 =
+Major custom (product) attribute update: apart from adding individual custom product attributes to the mapping and filtering/rules dropdowns we have also cleaned-up these drop-downs so only the relevant attributes show
+Fixed a VAT bug that happened for plugin users that also use a caching plugin
+
+= 3.6.0 =
+Added support for Facebooks content_type attribute. It is now possible to select the attribute 'Content Type' in the attribute mapping page. 
+
+= 3.5.9 =
+Fixed another additional image gallery bug, it was showing only two in the feed . Now it shows all.
+
+= 3.5.8 =
+Fixed a bug: additional gallery images for variable products can now also be put in product feeds
+
+= 3.5.7 =
+Fixed the validation check on MPN
+Fixed a bug for empty rule sets on values a product doesn't have
+
+= 3.5.6 =
+Fixed a bug for include_only and exclude rules and filters that were set on an attribute that were not present for certain products
+
+= 3.5.5 =
+Change to the Google Local Products Inventory CSV. Google requires the CSV feed to not contain field enclosures (against official CSV requirements) so we have stripped them off
+
+= 3.5.4 =
+Minor changes, fixing PHP log warnings
+
+= 3.5.3 =
+Added a plugin setting: you can now override your variation main image with it's mother main image if you do not want your variation images to be your product feeds
+
+= 3.5.2 =
+Added product tags support: you can now add product tags to your product feeds and create filters and rules on them
+
+= 3.5.1 =
+Added a template for Google Local Products Feed (next to the already existing Local Products Inventory Feed template).
+Fixed a bug: the field enclosure in Google's Local Products Inventory Feed was wrong. This issue has been fixed now.
+
+= 3.5.0 =
+Fixed a bug: multiply rules on numeric values are now both working for European and US annotations.
+
+= 3.4.9 =
+Fixed a bug: pieces of product XML or CSV still ended up for products that should have been filtered out. This issue has been fixed now.
 
 = 3.4.8 =
 Added the possibility to create replace-rules giving you extra options to manipulate the information that ends up in your product feeds

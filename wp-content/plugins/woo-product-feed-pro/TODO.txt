@@ -1,28 +1,25 @@
-So you found my to-do list for future features in this plugin? Well, hope you enjoy the little sneak preview of what's coming. Missing some features you might like? Drop me a line at support@adtribes.io and we might just add it to the list. Thanks!
-
-MOST URGENT ISSUES:
-1. Remarketing and structured data fix, check if prices are correct (VAT issue)
-2. Remarketing tags not yet on thank-you purchase page
-3. Incomplete remarketing tag on cart-page
-4. Fix status update blinking percentage
-
+So you found my to-do list for this plugin? Well, hope you enjoy the little sneak preview of what's coming. 
+Missing some features you might like? Drop me a line at support@adtribes.io and we might just add it to the list. Thanks!
 
 TO-DO:
-4. Mapping and filters and rules based on tags
-5. attribute mapping werkt niet als er teveel attributen zijn. Pagina sneller maken!
-6. Tracking & conversion
+1. Add support for g:tax, see: https://support.google.com/merchants/answer/6324454?hl=en
+2. Remarketing and structured data fix, check if prices are correct (VAT issue) - on variation pages it shows prices without VAT in the structured data
+3. Remarketing tags not yet on thank-you purchase page
+4. Incomplete remarketing tag on cart-page
+5. Fix status update blinking percentage, it should update automatically
+6. Attribute mapping page sometimes freezes when there are too many attributes in the drop-down (make drop-downs smaller, remove non-relevant ones)
+7. Tracking & conversion
 	- dynamic dropdowns in GA / tracking page for values
-7. Add support for Composite products: https://woocommerce.com/products/composite-products/
-8. Add support for Bundled products: https://woocommerce.com/products/product-bundles/
-9. Add and option to create rules with formula's in them
+8. Add support for Composite products: https://woocommerce.com/products/composite-products/
+9. Add support for Bundled products: https://woocommerce.com/products/product-bundles/
 10. Add more complex rules based on more than just 1 condition (AND)
 11. Support Amazon templates
 12. Add possibility to copy/clone projects
-13. Add a link to 'visit page' on plugin section page
-14. Regular expression usage in category mapping and feed rules and filter settings
-15. Cron interval configurable for user (exact timing instead of just daily,twicedaily or hourly)
-16. Tabbed configuration of feed
-17. Add localisation (at least for nl_NL and nl_BE / fr_BE) - https://codex.wordpress.org/I18n_for_WordPress_Developers#Translating_Plugins_and_Themes
-
-DESIGN ISSUES:
-18. new unique grey menu icons for wordpress
+13. Cron interval configurable for user (exact timing instead of just daily,twicedaily or hourly)
+14. Add localisation (at least for nl_NL and nl_BE / fr_BE) - https://codex.wordpress.org/I18n_for_WordPress_Developers#Translating_Plugins_and_Themes
+15. Create unique grey icons for admin menu
+16. Add Feed for Google Shopping product reviews, see: https://developers.google.com/product-review-feeds/
+17. AMAZON integration:
+- requires a professional seller account, 39 dollar a month, before being able to create a developer account
+- only than we can use their AWS service needed to connect our plugin
+18. Add cloning feature for product feeds

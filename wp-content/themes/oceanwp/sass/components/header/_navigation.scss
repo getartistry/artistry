@@ -106,7 +106,7 @@
 	li.menu-item {
 		position: relative;
 		white-space: nowrap;
-		*white-space: normal;
+		white-space: normal;
 	}
 
 	li:hover,
@@ -337,6 +337,10 @@
 	    	display: inline-block;
     		line-height: 74px;
 	    }
+	}
+
+	.elementor {
+	    display: inline-block;
 	}
 }
 

@@ -48,9 +48,10 @@ private function get_dynamic_attributes(){
 	global $wpdb;
 	$list = array();
 
-        $no_taxonomies = array("element_category","template_category","portfolio_category","portfolio_skills","portfolio_tags","faq_category","slide-page","yst_prominent_words","category","post_tag","nav_menu","link_category","post_format","product_type","product_visibility","product_cat","product_shipping_class","product_tag");
+        $no_taxonomies = array("portfolio_category","portfolio_skills","portfolio_tags","nav_menu","post_format","slide-page","element_category","template_category","portfolio_category","portfolio_skills","portfolio_tags","faq_category","slide-page","yst_prominent_words","category","post_tag","nav_menu","link_category","post_format","product_type","product_visibility","product_cat","product_shipping_class","product_tag");
      	$taxonomies = get_taxonomies();
-      	$diff_taxonomies = array_diff($taxonomies, $no_taxonomies);
+ 
+     	$diff_taxonomies = array_diff($taxonomies, $no_taxonomies);
 
     	# get custom taxonomy values for a product
     	foreach($diff_taxonomies as $tax_diff){
@@ -77,17 +78,29 @@ private function get_dynamic_attributes(){
 private function get_custom_attributes() {
 	global $wpdb;
      	$list = array();
-
-    	$sql = "SELECT meta_key as name, meta_value as type FROM " . $wpdb->prefix . "postmeta" . "  group by meta_key";
-     	$data = $wpdb->get_results($sql);
-
+     	$sql = "SELECT meta.meta_id, meta.meta_key as name, meta.meta_value as type FROM " . $wpdb->prefix . "postmeta" . " AS meta, " . $wpdb->prefix . "posts" . " AS posts WHERE meta.post_id = posts.id AND posts.post_type LIKE '%product%'
+AND meta.meta_key NOT LIKE 'pyre%' AND meta.meta_key NOT LIKE 'sbg_%' AND meta.meta_key NOT LIKE 'wccaf_%' AND meta.meta_key NOT LIKE 'rp_%' AND (meta.meta_key NOT LIKE '\_%' OR meta.meta_key LIKE '\_woosea%' OR meta.meta_key LIKE '\_yoast%' OR meta.meta_key='_product_attributes') GROUP BY meta.meta_key ORDER BY meta.meta_key ASC;";
+	$data = $wpdb->get_results($sql);
 
       	if (count($data)) {
      		foreach ($data as $key => $value) {
-			if (!preg_match("/pyre|sbg|fusion/i",$value->name)){
+
+			if (!preg_match("/_product_attributes/i",$value->name)){
 				$value_display = str_replace("_", " ",$value->name);
                     		$list["custom_attributes_" . $value->name] = ucfirst($value_display);
-            		}
+            		} else {
+				$sql = "SELECT meta.meta_id, meta.meta_key as name, meta.meta_value as type FROM " . $wpdb->prefix . "postmeta" . " AS meta, " . $wpdb->prefix . "posts" . " AS posts WHERE meta.post_id = posts.id AND posts.post_type LIKE '%product%' AND meta.meta_key='_product_attributes';";
+				$data = $wpdb->get_results($sql);
+      				if (count($data)) {
+     					foreach ($data as $key => $value) {
+						$product_attr = unserialize($value->type);
+						foreach ($product_attr as $key => $arr_value) {
+							$value_display = str_replace("_", " ",$arr_value['name']);
+               	     					$list["custom_attributes_" . $key] = ucfirst($value_display);
+						}
+					}
+				}
+			}
              	}
               	return $list;
      	}
@@ -195,6 +208,7 @@ public function get_mapping_attributes_dropdown() {
             		"availability" => "Availability",
             		"quantity" => "Quantity [Stock]",
 			"product_type" => "Product Type",
+			"content_type" => "Content Type",
 			"publication_date" => "Publication date",
 			"item_group_id" => "Item group ID",
 			"weight" => "Weight",
@@ -265,6 +279,7 @@ public function get_mapping_attributes_dropdown() {
 		$dropdown .= "<option value='google_category'>Google category</option>";              
 		$dropdown .="</optgroup>";
 
+
                 /**
                  * Create dropdown with custom attributes
                  */
@@ -283,6 +298,14 @@ public function get_mapping_attributes_dropdown() {
 
                         $dropdown .="</optgroup>";
                 }
+
+		/**
+		 * Add the product tag field
+		 */
+		$dropdown .= "<optgroup label='Other fields'><strong>Other fields</strong>";
+		$dropdown .= "<option value='product_tag'>Product tags</option>";              
+		$dropdown .= "</optgroup>";
+
 		return $dropdown;
 	}
 
@@ -301,7 +324,8 @@ public function get_mapping_attributes_dropdown() {
 			"image" => "Main image",
 			"feature_image" => "Feature image",
                         "product_type" => "Product Type",
-                        "publication_date" => "Publication date",
+                        "content_type" => "Content Type",
+			"publication_date" => "Publication date",
 			"currency" => "Currency",
     			"categories" => "Category",
 			"raw_categories" => "Category (not used for mapping)",
@@ -368,6 +392,7 @@ public function get_mapping_attributes_dropdown() {
 			"installment" => "Installment",
             		"static_value" => "Static value",
 			"calculated" => "Plugin calculation",
+			"product_tag" => "Product tags",
         	);
 
 		$attributes = array_merge($attributes, $static);

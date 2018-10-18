@@ -34,6 +34,15 @@ class Single extends Theme_Page_Document {
 		return __( 'Single', 'elementor-pro' );
 	}
 
+	public static function get_editor_panel_config() {
+		$config = parent::get_editor_panel_config();
+		$config['widgets_settings']['theme-post-content'] = [
+			'show_in_panel' => true,
+		];
+
+		return $config;
+	}
+
 	protected static function get_editor_panel_categories() {
 		$categories = [
 			'theme-elements-single' => [

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Functions - Price and Currency
  *
- * @version 3.6.0
+ * @version 4.0.0
  * @since   2.7.0
  * @author  Algoritmika Ltd.
  */
@@ -26,15 +26,19 @@ if ( ! function_exists( 'wcj_get_module_price_hooks_priority' ) ) {
 	/**
 	 * wcj_get_module_price_hooks_priority.
 	 *
-	 * @version 3.5.1
+	 * @version 3.9.0
 	 * @since   3.2.2
 	 * @todo    add all corresponding modules
 	 */
 	function wcj_get_module_price_hooks_priority( $module_id ) {
 		$modules_priorities = array(
-			'price_by_country'       => PHP_INT_MAX - 1,
-			'multicurrency'          => PHP_INT_MAX - 1,
-			'price_by_user_role'     => PHP_INT_MAX - 200,
+			'price_by_user_role'         => PHP_INT_MAX - 200,
+			'product_addons'             => PHP_INT_MAX - 100,
+			'product_price_by_formula'   => PHP_INT_MAX - 100,
+			'multicurrency_base_price'   => PHP_INT_MAX - 10,
+			'multicurrency'              => PHP_INT_MAX - 1,
+			'price_by_country'           => PHP_INT_MAX - 1,
+			'global_discount'            => PHP_INT_MAX,
 		);
 		return ( 0 != ( $priority = get_option( 'wcj_' . $module_id . '_advanced_price_hooks_priority', 0 ) ) ? $priority : $modules_priorities[ $module_id ] );
 	}
@@ -358,12 +362,12 @@ if ( ! function_exists( 'wcj_update_products_price_by_country' ) ) {
 	/**
 	 * wcj_update_products_price_by_country - all products.
 	 *
-	 * @version 2.5.3
+	 * @version 4.0.0
 	 * @since   2.5.3
 	 */
 	function wcj_update_products_price_by_country() {
-		$offset = 0;
-		$block_size = 96;
+		$offset     = 0;
+		$block_size = 512;
 		while( true ) {
 			$args = array(
 				'post_type'      => 'product',
@@ -372,16 +376,17 @@ if ( ! function_exists( 'wcj_update_products_price_by_country' ) ) {
 				'offset'         => $offset,
 				'orderby'        => 'title',
 				'order'          => 'ASC',
+				'fields'         => 'ids',
 			);
 			$loop = new WP_Query( $args );
-			if ( ! $loop->have_posts() ) break;
-			while ( $loop->have_posts() ) : $loop->the_post();
-				$product_id = $loop->post->ID;
+			if ( ! $loop->have_posts() ) {
+				break;
+			}
+			foreach ( $loop->posts as $product_id ) {
 				wcj_update_products_price_by_country_for_single_product( $product_id );
-			endwhile;
+			}
 			$offset += $block_size;
 		}
-		wp_reset_postdata();
 	}
 }
 
@@ -407,7 +412,7 @@ if ( ! function_exists( 'wcj_get_currency_by_country' ) ) {
 	/**
 	 * wcj_get_currency_by_country.
 	 *
-	 * @version 2.5.4
+	 * @version 4.0.0
 	 * @since   2.5.4
 	 */
 	function wcj_get_currency_by_country( $country_code ) {
@@ -420,10 +425,16 @@ if ( ! function_exists( 'wcj_get_currency_by_country' ) ) {
 					$country_exchange_rate_group = explode( ',', $country_exchange_rate_group );
 					break;
 				case 'multiselect':
-					$country_exchange_rate_group = get_option( 'wcj_price_by_country_countries_group_' . $i );
+					$country_exchange_rate_group = get_option( 'wcj_price_by_country_countries_group_' . $i, '' );
+					if ( '' === $country_exchange_rate_group ) {
+						$country_exchange_rate_group = array();
+					}
 					break;
 				case 'chosen_select':
-					$country_exchange_rate_group = get_option( 'wcj_price_by_country_countries_group_chosen_select_' . $i );
+					$country_exchange_rate_group = get_option( 'wcj_price_by_country_countries_group_chosen_select_' . $i, '' );
+					if ( '' === $country_exchange_rate_group ) {
+						$country_exchange_rate_group = array();
+					}
 					break;
 			}
 			if ( in_array( $country_code, $country_exchange_rate_group ) ) {
@@ -493,79 +504,19 @@ if ( ! function_exists( 'wc_get_product_purchase_price' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wcj_get_currencies_names_and_symbols' ) ) {
+if ( ! function_exists( 'wcj_get_woocommerce_currencies_and_symbols' ) ) {
 	/**
-	 * wcj_get_currencies_names_and_symbols.
+	 * wcj_get_woocommerce_currencies_and_symbols.
 	 *
-	 * @version 2.4.4
+	 * @version 3.9.0
+	 * @since   3.9.0
 	 */
-	function wcj_get_currencies_names_and_symbols( $result = 'names_and_symbols', $scope = 'all' ) {
-		$currency_names_and_symbols = array();
-		/* if ( ! wcj_is_module_enabled( 'currency' ) ) {
-			return $currency_names_and_symbols;
-		} */
-		if ( 'all' === $scope || 'no_custom' === $scope ) {
-			$currencies = wcj_get_currencies_array();
-			foreach( $currencies as $data ) {
-				switch ( $result ) {
-					case 'names_and_symbols':
-						$currency_names_and_symbols[ $data['code'] ] = $data['name'] . ' (' . $data['symbol'] . ')';
-						break;
-					case 'names':
-						$currency_names_and_symbols[ $data['code'] ] = $data['name'];
-						break;
-					case 'symbols':
-						$currency_names_and_symbols[ $data['code'] ] = $data['symbol'];
-						break;
-				}
-			}
+	function wcj_get_woocommerce_currencies_and_symbols() {
+		$currencies_and_symbols = get_woocommerce_currencies();
+		foreach ( $currencies_and_symbols as $code => $name ) {
+			$currencies_and_symbols[ $code ] = $name . ' (' . get_woocommerce_currency_symbol( $code ) . ')';
 		}
-		if ( wcj_is_module_enabled( 'currency' ) && ( 'all' === $scope || 'custom_only' === $scope ) ) {
-			// Custom currencies
-			$custom_currency_total_number = apply_filters( 'booster_option', 1, get_option( 'wcj_currency_custom_currency_total_number', 1 ) );
-			for ( $i = 1; $i <= $custom_currency_total_number; $i++) {
-				$custom_currency_code   = get_option( 'wcj_currency_custom_currency_code_'   . $i );
-				$custom_currency_name   = get_option( 'wcj_currency_custom_currency_name_'   . $i );
-				$custom_currency_symbol = get_option( 'wcj_currency_custom_currency_symbol_' . $i );
-				if ( '' != $custom_currency_code && '' != $custom_currency_name /* && '' != $custom_currency_symbol */ ) {
-					switch ( $result ) {
-						case 'names_and_symbols':
-							$currency_names_and_symbols[ $custom_currency_code ] = $custom_currency_name . ' (' . $custom_currency_symbol . ')';
-							break;
-						case 'names':
-							$currency_names_and_symbols[ $custom_currency_code ] = $custom_currency_name;
-							break;
-						case 'symbols':
-							$currency_names_and_symbols[ $custom_currency_code ] = $custom_currency_symbol;
-							break;
-					}
-				}
-			}
-		}
-		return $currency_names_and_symbols;
-	}
-}
-
-if ( ! function_exists( 'wcj_get_currency_symbol' ) ) {
-	/**
-	 * wcj_get_currency_symbol.
-	 *
-	 * @version 2.4.4
-	 */
-	function wcj_get_currency_symbol( $currency_code ) {
-		$return = '';
-		$currencies = wcj_get_currencies_names_and_symbols( 'symbols', 'no_custom' );
-		if ( isset( $currencies[ $currency_code ] ) ) {
-			if ( wcj_is_module_enabled( 'currency' ) ) {
-				$return = apply_filters( 'booster_option', $currencies[ $currency_code ], get_option( 'wcj_currency_' . $currency_code, $currencies[ $currency_code ] ) );
-			} else {
-				$return = $currencies[ $currency_code ];
-			}
-		} else {
-			$currencies = wcj_get_currencies_names_and_symbols( 'symbols', 'custom_only' );
-			$return = isset( $currencies[ $currency_code ] ) ? $currencies[ $currency_code ] : '';
-		}
-		return ( '' != $return ) ? $return : false;
+		return $currencies_and_symbols;
 	}
 }
 

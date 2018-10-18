@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Shortcodes - General
  *
- * @version 3.7.0
+ * @version 4.0.0
  * @author  Algoritmika Ltd.
  */
 
@@ -15,7 +15,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.6.0
+	 * @version 3.9.0
 	 */
 	function __construct() {
 
@@ -42,10 +42,13 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 			'wcj_customer_total_spent',
 			'wcj_empty_cart_button',
 			'wcj_get_left_to_free_shipping',
+			'wcj_get_option',
+			'wcj_image',
 			'wcj_product_category_count',
 			'wcj_request_value',
 			'wcj_selector',
 			'wcj_session_value',
+			'wcj_shipping_costs_table',
 			'wcj_shipping_time_table',
 			'wcj_site_url',
 			'wcj_store_address',
@@ -59,7 +62,6 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 			'wcj_wp_option',
 			'wcj_wpml',
 			'wcj_wpml_translate',
-//			'wcj_image',
 		);
 
 		$this->the_atts = array(
@@ -67,7 +69,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 			'time_format'           => get_option( 'time_format' ),
 			'datetime_format'       => get_option( 'date_format' ) . ' ' . get_option( 'time_format' ),
 			'lang'                  => '',
-			'form_method'           => 'post',//'get',
+			'form_method'           => 'post',
 			'class'                 => '',
 			'style'                 => '',
 			'countries'             => '',
@@ -107,6 +109,67 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	}
 
 	/**
+	 * wcj_get_option.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 * @todo    [dev] handle multidimensional arrays
+	 * @todo    [dev] maybe also add `get_site_option()`
+	 */
+	function wcj_get_option( $atts ) {
+		$result = ( isset( $atts['name'] ) ? get_option( $atts['name'], ( isset( $atts['default'] ) ? $atts['default'] : false ) ) : '' );
+		return ( is_array( $result ) ?
+			( isset( $atts['field'] ) && isset( $result[ $atts['field'] ] ) ? $result[ $atts['field'] ] : implode( ', ', $result ) ) :
+			$result );
+	}
+
+	/**
+	 * wcj_shipping_costs_table.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 * @todo    [dev] sort `$table` before using
+	 * @todo    [feature] add `volume` prop
+	 * @todo    [feature] add `total` prop
+	 */
+	function wcj_shipping_costs_table( $atts ) {
+		if ( ! empty( $atts['table'] ) && ( $_cart = WC()->cart ) ) {
+			// E.g.: [wcj_shipping_costs_table cmp="max" prop="quantity" table="10-5|20-7.5|99999-10"]
+			// E.g.: [wcj_shipping_costs_table cmp="min" prop="quantity" table="1-5|11-7.5|21-10"]
+			if ( ! isset( $atts['cmp'] ) ) {
+				$atts['cmp'] = 'max';
+			}
+			if ( ! isset( $atts['prop'] ) ) {
+				$atts['prop'] = 'quantity';
+			}
+			switch ( $atts['prop'] ) {
+				case 'weight':
+					$param_value = $_cart->get_cart_contents_weight();
+					break;
+				default: // 'quantity'
+					$param_value = $_cart->get_cart_contents_count();
+			}
+			$table = array_map( 'trim', explode( '|', $atts['table'] ) );
+			if ( 'min' === $atts['cmp'] ) {
+				$table = array_reverse( $table );
+			}
+			foreach ( $table as $row ) {
+				$cells = array_map( 'trim', explode( '-', $row ) );
+				if ( 2 != count( $cells ) ) {
+					return '';
+				}
+				if (
+					( 'min' === $atts['cmp'] && $param_value >= $cells[0] ) ||
+					( 'max' === $atts['cmp'] && $param_value <= $cells[0] )
+				) {
+					return $cells[1];
+				}
+			}
+		}
+		return '';
+	}
+
+	/**
 	 * wcj_upsell_display.
 	 *
 	 * @version 3.6.0
@@ -125,10 +188,14 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_cross_sell_display.
 	 *
-	 * @version 3.6.0
+	 * @version 3.9.1
 	 * @since   3.6.0
 	 */
 	function wcj_cross_sell_display( $atts ) {
+
+		if ( ! function_exists( 'WC' ) || ! isset( WC()->cart ) ) {
+			return '';
+		}
 
 		$limit   = ( isset( $atts['limit'] )   ? $atts['limit']   : 2 );
 		$columns = ( isset( $atts['columns'] ) ? $atts['columns'] : 2 );
@@ -148,6 +215,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 		$limit       = apply_filters( 'woocommerce_cross_sells_total', $limit );
 		$cross_sells = $limit > 0 ? array_slice( $cross_sells, 0, $limit ) : $cross_sells;
 
+		ob_start();
 		wc_get_template( 'cart/cross-sells.php', array(
 			'cross_sells'    => $cross_sells,
 
@@ -156,6 +224,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 			'orderby'        => $orderby,
 			'columns'        => $columns,
 		) );
+		return ob_get_clean();
 	}
 
 	/**
@@ -282,6 +351,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	 *
 	 * @version 3.2.4
 	 * @since   3.2.4
+	 * @todo    (dev) different style/class for different tax state
 	 * @todo    (maybe) `get` instead of `post`
 	 */
 	function wcj_button_toggle_tax_display( $atts ) {
@@ -646,14 +716,14 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_currency_select_link_list.
 	 *
-	 * @version 3.4.0
+	 * @version 3.9.0
 	 * @since   2.4.5
 	 */
 	function wcj_currency_select_link_list( $atts, $content ) {
 		$html = '';
 		$shortcode_currencies = $this->get_shortcode_currencies( $atts );
 		// Options
-		$currencies = wcj_get_currencies_names_and_symbols( 'names' );
+		$currencies = get_woocommerce_currencies();
 		$selected_currency = '';
 		if ( null !== ( $session_value = wcj_session_get( 'wcj-currency' ) ) ) {
 			$selected_currency = $session_value;
@@ -677,7 +747,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 				$template_replaced_values = array(
 					'%currency_name%'   => $currencies[ $currency_code ],
 					'%currency_code%'   => $currency_code,
-					'%currency_symbol%' => wcj_get_currency_symbol( $currency_code ),
+					'%currency_symbol%' => get_woocommerce_currency_symbol( $currency_code ),
 				);
 				$currency_switcher_output = str_replace( array_keys( $template_replaced_values ), array_values( $template_replaced_values ), $switcher_template );
 				$the_link = '<a href="' . add_query_arg( 'wcj-currency', $currency_code ) . '">' . $currency_switcher_output . '</a>';
@@ -718,22 +788,22 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * get_currency_selector.
 	 *
-	 * @version 3.7.0
+	 * @version 3.9.0
 	 * @since   2.4.5
 	 */
 	private function get_currency_selector( $atts, $content, $type = 'select' ) {
 		// Start
+		$form_method   = $atts['form_method'];
+		$class         = $atts['class'];
+		$style         = $atts['style'];
 		$html = '';
-		$form_method  = $atts['form_method'];
-		$class = $atts['class'];
-		$style = $atts['style'];
 		$html .= '<form action="" method="' . $form_method . '">';
 		if ( 'select' === $type ) {
 			$html .= '<select name="wcj-currency" id="wcj-currency-select" style="' . $style . '" class="' . $class . '" onchange="this.form.submit()">';
 		}
 		$shortcode_currencies = $this->get_shortcode_currencies( $atts );
 		// Options
-		$currencies = wcj_get_currencies_names_and_symbols( 'names' );
+		$currencies = get_woocommerce_currencies();
 		$selected_currency = '';
 		if ( null !== ( $session_value = wcj_session_get( 'wcj-currency' ) ) ) {
 			$selected_currency = $session_value;
@@ -756,7 +826,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 				$template_replaced_values = array(
 					'%currency_name%'   => $currencies[ $currency_code ],
 					'%currency_code%'   => $currency_code,
-					'%currency_symbol%' => wcj_get_currency_symbol( $currency_code ),
+					'%currency_symbol%' => get_woocommerce_currency_symbol( $currency_code ),
 				);
 				$currency_switcher_output = str_replace( array_keys( $template_replaced_values ), array_values( $template_replaced_values ), $switcher_template );
 				if ( '' == $selected_currency ) {
@@ -800,75 +870,38 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_country_select_drop_down_list.
 	 *
-	 * @version 3.4.0
+	 * @version 4.0.0
 	 */
 	function wcj_country_select_drop_down_list( $atts, $content ) {
-
-		$html = '';
-
-		$form_method  = $atts['form_method']; // get_option( 'wcj_price_by_country_country_selection_box_method', 'get' );
-		$select_class = $atts['class'];       // get_option( 'wcj_price_by_country_country_selection_box_class', '' );
-		$select_style = $atts['style'];       // get_option( 'wcj_price_by_country_country_selection_box_style', '' );
-
-		$html .= '<form action="" method="' . $form_method . '">';
-
-		$html .= '<select name="wcj-country" id="wcj-country" style="' . $select_style . '" class="' . $select_class . '" onchange="this.form.submit()">';
-		$countries = wcj_get_countries();
-
-		/* $shortcode_countries = get_option( 'wcj_price_by_country_shortcode_countries', array() );
-		if ( '' == $shortcode_countries ) $shortcode_countries = array(); */
-		$shortcode_countries = $atts['countries'];
-		if ( '' == $shortcode_countries ) {
-			$shortcode_countries = array();
-		} else {
-			$shortcode_countries = str_replace( ' ', '', $shortcode_countries );
-			$shortcode_countries = trim( $shortcode_countries, ',' );
-			$shortcode_countries = explode( ',', $shortcode_countries );
-		}
-
-		/* if ( 'get' == $form_method ) {
-			$selected_country = ( isset( $_GET[ 'wcj-country' ] ) ) ? $_GET[ 'wcj-country' ] : '';
-		} else {
-			$selected_country = ( isset( $_POST[ 'wcj-country' ] ) ) ? $_POST[ 'wcj-country' ] : '';
-		} */
-		$selected_country = ( null !== ( $session_value = wcj_session_get( 'wcj-country' ) ) ? $session_value : '' );
-
+		$form_method           = $atts['form_method'];
+		$select_class          = $atts['class'];
+		$select_style          = $atts['style'];
+		$countries             = wcj_get_countries();
+		$shortcode_countries   = ( empty( $atts['countries'] ) ? array() : array_map( 'trim', explode( ',', $atts['countries'] ) ) );
+		$selected_country      = ( null !== ( $session_value = wcj_session_get( 'wcj-country' ) ) ? $session_value : '' );
 		if ( 'yes' === $atts['replace_with_currency'] ) {
-			$currencies_names_and_symbols = wcj_get_currencies_names_and_symbols();
+			$currencies_names_and_symbols = wcj_get_woocommerce_currencies_and_symbols();
 		}
-
+		$html = '';
+		$html .= '<form action="" method="' . $form_method . '">';
+		$html .= '<select name="wcj-country" id="wcj-country" style="' . $select_style . '" class="' . $select_class . '" onchange="this.form.submit()">';
 		if ( empty( $shortcode_countries ) ) {
 			foreach ( $countries as $country_code => $country_name ) {
-
-				$data_icon = '';
-				if ( 'yes' === get_option( 'wcj_price_by_country_jquery_wselect_enabled', 'no' ) ) {
-					$data_icon = ' data-icon="' . wcj_plugin_url() . '/assets/images/flag-icons/' . strtolower( $country_code ) . '.png"';
-				}
-
+				$data_icon    = ( 'yes' === get_option( 'wcj_price_by_country_jquery_wselect_enabled', 'no' ) ? ' data-icon="' . wcj_plugin_url() . '/assets/images/flag-icons/' . strtolower( $country_code ) . '.png"' : '' );
 				$option_label = ( 'yes' === $atts['replace_with_currency'] ) ? $currencies_names_and_symbols[ wcj_get_currency_by_country( $country_code ) ] : $country_name;
-
-				$html .= '<option' . $data_icon . ' value="' . $country_code . '" ' . selected( $country_code, $selected_country, false ) . '>' . $option_label . '</option>';
+				$html        .= '<option' . $data_icon . ' value="' . $country_code . '" ' . selected( $country_code, $selected_country, false ) . '>' . $option_label . '</option>';
 			}
 		} else {
 			foreach ( $shortcode_countries as $country_code ) {
 				if ( isset( $countries[ $country_code ] ) ) {
-
-					$data_icon = '';
-					if ( 'yes' === get_option( 'wcj_price_by_country_jquery_wselect_enabled', 'no' ) ) {
-						$data_icon = ' data-icon="' . wcj_plugin_url() . '/assets/images/flag-icons/' . strtolower( $country_code ) . '.png"';
-					}
-
+					$data_icon    = ( 'yes' === get_option( 'wcj_price_by_country_jquery_wselect_enabled', 'no' ) ? ' data-icon="' . wcj_plugin_url() . '/assets/images/flag-icons/' . strtolower( $country_code ) . '.png"' : '' );
 					$option_label = ( 'yes' === $atts['replace_with_currency'] ) ? $currencies_names_and_symbols[ wcj_get_currency_by_country( $country_code ) ] : $countries[ $country_code ];
-
-					$html .= '<option' . $data_icon . ' value="' . $country_code . '" ' . selected( $country_code, $selected_country, false ) . '>' . $option_label . '</option>';
+					$html        .= '<option' . $data_icon . ' value="' . $country_code . '" ' . selected( $country_code, $selected_country, false ) . '>' . $option_label . '</option>';
 				}
 			}
 		}
-
 		$html .= '</select>';
-
 		$html .= '</form>';
-
 		return $html;
 	}
 
@@ -878,7 +911,7 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	 * @since 2.2.9
 	 */
 	function wcj_text( $atts, $content ) {
-		return /* do_shortcode(  */ $content /* ) */;
+		return $content;
 	}
 
 	/**
@@ -887,8 +920,6 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 	 * @version 2.2.9
 	 */
 	function wcj_wpml( $atts, $content ) {
-		/* if ( '' == $atts['lang'] || ( defined( 'ICL_LANGUAGE_CODE' ) && ICL_LANGUAGE_CODE === $atts['lang'] ) ) return do_shortcode( $content );
-		else return ''; */
 		return do_shortcode( $content );
 	}
 
@@ -910,10 +941,19 @@ class WCJ_General_Shortcodes extends WCJ_Shortcodes {
 
 	/**
 	 * wcj_image.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
 	 */
-	/*function wcj_image( $atts ) {
-		return '<img src="' . $atts['url'] . '" class="' . $atts['class'] . '" width="' . $atts['width'] . '" height="' . $atts['height'] . '">';
-	}*/
+	function wcj_image( $atts ) {
+		return '<img' .
+			' src="'      . ( ! empty( $atts['src'] )    ? $atts['src']    : '' ) . '"' .
+			' class="'    . ( ! empty( $atts['class'] )  ? $atts['class']  : '' ) . '"' .
+			' style="'    . ( ! empty( $atts['style'] )  ? $atts['style']  : '' ) . '"' .
+			' width="'    . ( ! empty( $atts['width'] )  ? $atts['width']  : '' ) . '"' .
+			' height="'   . ( ! empty( $atts['height'] ) ? $atts['height'] : '' ) . '"' .
+		'>';
+	}
 }
 
 endif;

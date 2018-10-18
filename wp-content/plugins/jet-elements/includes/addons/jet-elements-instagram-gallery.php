@@ -52,7 +52,7 @@ class Jet_Elements_Instagram_Gallery extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-37';
+		return 'jetelements-icon-30';
 	}
 
 	public function get_categories() {
@@ -1088,7 +1088,10 @@ class Jet_Elements_Instagram_Gallery extends Jet_Elements_Base {
 
 		$url = $this->get_grab_url( $config );
 
-		$response = wp_remote_get( $url );
+		$response = wp_remote_get( $url, array(
+			'timeout'   => 60,
+			'sslverify' => false
+		) );
 
 		$response_code = wp_remote_retrieve_response_code( $response );
 

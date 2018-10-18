@@ -10,6 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 abstract class Base_Data_Tag extends Data_Tag {
 	public function get_group() {
-		return Module::WOOCOMMERCE_PRODUCT_GROUP;
+		return Module::WOOCOMMERCE_GROUP;
 	}
 }

@@ -1,7 +1,7 @@
 <div class="wpallimport-collapsed closed">
 	<div class="wpallimport-content-section">
 		<div class="wpallimport-collapsed-header">
-			<h3><?php _e('WooCommerce Add-On','wpai_woocommerce_addon_plugin');?></h3>	
+			<h3><?php _e('WooCommerce Add-On',PMWI_Plugin::TEXT_DOMAIN);?></h3>
 		</div>
 		<div class="wpallimport-collapsed-content" style="padding:0;">
 			<div class="wpallimport-collapsed-content-inner">
@@ -13,16 +13,16 @@
 									<span>
 										<div class="main_choise" style="padding:0px; margin-right:0px;">
 											<input type="radio" id="multiple_product_type_yes" class="switcher" name="is_multiple_product_type" value="yes" <?php echo 'no' != $post['is_multiple_product_type'] ? 'checked="checked"': '' ?>/>
-											<label for="multiple_product_type_yes"><?php _e('Product Type', 'wpai_woocommerce_addon_plugin' )?></label>
+											<label for="multiple_product_type_yes"><?php _e('Product Type', PMWI_Plugin::TEXT_DOMAIN )?></label>
 										</div>
 										<div class="switcher-target-multiple_product_type_yes"  style="float:left;">
 											<div class="input">
 												<?php
 													$product_type_selector = apply_filters( 'product_type_selector', array(
-														'simple'   => __( 'Simple product', 'wpai_woocommerce_addon_plugin' ),
-														'grouped'  => __( 'Grouped product', 'wpai_woocommerce_addon_plugin' ),
-														'external' => __( 'External/Affiliate product', 'wpai_woocommerce_addon_plugin' ),
-														'variable' => __( 'Variable product', 'wpai_woocommerce_addon_plugin' )
+														'simple'   => __( 'Simple product', PMWI_Plugin::TEXT_DOMAIN ),
+														'grouped'  => __( 'Grouped product', PMWI_Plugin::TEXT_DOMAIN ),
+														'external' => __( 'External/Affiliate product', PMWI_Plugin::TEXT_DOMAIN ),
+														'variable' => __( 'Variable product', PMWI_Plugin::TEXT_DOMAIN )
 													), false );
 												?>
 												<select name="multiple_product_type" id="product-type">
@@ -36,12 +36,12 @@
 										</div>
 										<div class="main_choise" style="padding:0px; margin-left:40px;">
 											<input type="radio" id="multiple_product_type_no" class="switcher" name="is_multiple_product_type" value="no" <?php echo 'no' == $post['is_multiple_product_type'] ? 'checked="checked"': '' ?>/>
-											<label for="multiple_product_type_no"><?php _e('Set Product Type With XPath', 'wpai_woocommerce_addon_plugin' )?></label>
+											<label for="multiple_product_type_no"><?php _e('Set Product Type With XPath', PMWI_Plugin::TEXT_DOMAIN )?></label>
 										</div>
 										<div class="switcher-target-multiple_product_type_no"  style="float:left;">
 											<div class="input">
 												<input type="text" class="smaller-text" name="single_product_type" style="width:300px;" value="<?php echo esc_attr($post['single_product_type']) ?>"/>
-												<a href="#help" class="wpallimport-help" style="top: -1px;" title="<?php _e('The value of presented XPath should be one of the following: (\'simple\', \'grouped\', \'external\', \'variable\').', 'wpai_woocommerce_addon_plugin') ?>">?</a>
+												<a href="#help" class="wpallimport-help" style="top: -1px;" title="<?php _e('The value of presented XPath should be one of the following: (\'simple\', \'grouped\', \'external\', \'variable\').', PMWI_Plugin::TEXT_DOMAIN) ?>">?</a>
 											</div>
 										</div>										
 									</span>
@@ -52,21 +52,21 @@
 
 										<ul style="" class="product_data_tabs wc-tabs">
 
-											<li class="general_options active"><a href="javascript:void(0);" rel="general_product_data"><?php _e('General','wpai_woocommerce_addon_plugin');?></a></li>
+											<li class="general_options active"><a href="javascript:void(0);" rel="general_product_data"><?php _e('General',PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="inventory_tab show_if_simple show_if_variable show_if_grouped inventory_options" style="display: block;"><a href="javascript:void(0);" rel="inventory_product_data"><?php _e('Inventory', 'wpai_woocommerce_addon_plugin');?></a></li>
+											<li class="inventory_tab show_if_simple show_if_variable show_if_grouped inventory_options" style="display: block;"><a href="javascript:void(0);" rel="inventory_product_data"><?php _e('Inventory', PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="shipping_tab shipping_options hide_if_grouped hide_if_external"><a href="javascript:void(0);" rel="shipping_product_data"><?php _e('Shipping', 'wpai_woocommerce_addon_plugin');?></a></li>
+											<li class="shipping_tab shipping_options hide_if_grouped hide_if_external"><a href="javascript:void(0);" rel="shipping_product_data"><?php _e('Shipping', PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="linked_product_tab linked_product_options"><a href="javascript:void(0);" rel="linked_product_data"><?php _e('Linked Products', 'wpai_woocommerce_addon_plugin');?></a></li>
+											<li class="linked_product_tab linked_product_options"><a href="javascript:void(0);" rel="linked_product_data"><?php _e('Linked Products', PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="attributes_tab attribute_options"><a href="javascript:void(0);" rel="woocommerce_attributes"><?php _e('Attributes','wpai_woocommerce_addon_plugin');?></a></li>
+											<li class="attributes_tab attribute_options"><a href="javascript:void(0);" rel="woocommerce_attributes"><?php _e('Attributes',PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="advanced_tab advanced_options"><a href="javascript:void(0);" rel="advanced_product_data"><?php _e('Advanced','wpai_woocommerce_addon_plugin');?></a></li>
+											<li class="advanced_tab advanced_options"><a href="javascript:void(0);" rel="advanced_product_data"><?php _e('Advanced',PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="variations_tab show_if_variable variation_options"><a title="Variations for variable products are defined here." href="javascript:void(0);" rel="variable_product_options"><?php _e('Variations','wpai_woocommerce_addon_plugin');?></a></li>
+											<li class="variations_tab show_if_variable variation_options"><a title="Variations for variable products are defined here." href="javascript:void(0);" rel="variable_product_options"><?php _e('Variations',PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
-											<li class="options_tab advanced_options"><a title="Variations for variable products are defined here." href="javascript:void(0);" rel="add_on_options"><?php _e('Add-On Options', 'wpai_woocommerce_addon_plugin');?></a></li>
+											<li class="options_tab advanced_options"><a title="Variations for variable products are defined here." href="javascript:void(0);" rel="add_on_options"><?php _e('Add-On Options', PMWI_Plugin::TEXT_DOMAIN);?></a></li>
 
 											<?php do_action('pmwi_tab_header'); ?>
 

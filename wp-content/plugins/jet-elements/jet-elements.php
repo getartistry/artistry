@@ -3,7 +3,7 @@
  * Plugin Name: Jet Elements For Elementor
  * Plugin URI:  http://jetelements.zemez.io/
  * Description: Brand new addon for Elementor Page builder. It provides the set of modules to create different kinds of content, adds custom modules to your website and applies attractive styles in the matter of several clicks!
- * Version:     1.9.3
+ * Version:     1.13.2
  * Author:      Zemez
  * Author URI:  https://zemez.io/wordpress/
  * Text Domain: jet-elements
@@ -13,7 +13,6 @@
  *
  * @package jet-elements
  * @author  Zemez
- * @version 1.9.3
  * @license GPL-2.0+
  * @copyright  2017, Zemez
  */
@@ -63,8 +62,7 @@ if ( ! class_exists( 'Jet_Elements' ) ) {
 		 *
 		 * @var string
 		 */
-
-		private $version = '1.9.3';
+		private $version = '1.13.2';
 
 		/**
 		 * Holder for base plugin path
@@ -174,9 +172,6 @@ if ( ! class_exists( 'Jet_Elements' ) ) {
 					'cherry5-assets-loader' => array(
 						'autoload' => false,
 					),
-					'cherry-handler' => array(
-						'autoload' => false,
-					),
 					'cherry-db-updater' => array(
 						'autoload' => false,
 					),
@@ -215,6 +210,7 @@ if ( ! class_exists( 'Jet_Elements' ) ) {
 
 			if ( is_admin() ) {
 
+				// Init plugin updater
 				require $this->plugin_path( 'includes/updater/class-jet-elements-plugin-update.php' );
 
 				jet_elements_updater()->init( array(
@@ -225,6 +221,11 @@ if ( ! class_exists( 'Jet_Elements' ) ) {
 				if ( ! $this->has_elementor() ) {
 					$this->required_plugins_notice();
 				}
+
+				// Init DB upgrader
+				require $this->plugin_path( 'includes/class-jet-elements-db-upgrader.php' );
+
+				new Jet_Elements_DB_Upgrader();
 
 			}
 

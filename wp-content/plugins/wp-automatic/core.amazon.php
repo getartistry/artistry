@@ -33,11 +33,16 @@ Class WpAutomaticAmazon extends wp_automatic{
 						update_post_meta($camp->camp_id, 'last_keyword', trim($keyword));
 						
 						// getting links from the db for that keyword
-						$query = "select * from {$this->wp_prefix}automatic_amazon_links where link_keyword='{$camp->camp_id}_$keyword' and link_status ='0'";
+						$query = "select * from {$this->wp_prefix}automatic_amazon_links where link_keyword='{$camp->camp_id}_$keyword' ";
 						$res = $this->db->get_results ( $query );
 						
 						// when no links lets get new links
 						if (count ( $res ) == 0) {
+							
+							//clean any old cache for this keyword
+							$query_delete = "delete from {$this->wp_prefix}automatic_amazon_links where link_keyword='{$camp->camp_id}_$keyword' ";
+							$this->db->query ( $query_delete );
+							
 							$this->amazon_fetch_links ( $keyword, $camp );
 
 							// getting links from the db for that keyword
@@ -220,8 +225,10 @@ Class WpAutomaticAmazon extends wp_automatic{
 								}else{ //valid returned item
 									
 									//delete non valid item
-									$query = "update {$this->wp_prefix}automatic_amazon_links set link_status='1' where link_id=$t_row->link_id";
+									$query = "delete from {$this->wp_prefix}automatic_amazon_links where link_id={$t_row->link_id}";
 									$this->db->query ( $query );
+									
+									
 									unset($res[$i]);
 									
 								}
@@ -229,7 +236,7 @@ Class WpAutomaticAmazon extends wp_automatic{
 							
 							
 						
-							if( $this->is_duplicate($t_link_url) ){
+							if( $this->is_duplicate($t_link_url) ){    
 									
 								//duplicated item let's delete
 								unset($res[$i]);
@@ -237,7 +244,7 @@ Class WpAutomaticAmazon extends wp_automatic{
 								  echo '<br>Amazon Item ('. $t_row->link_title .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
 									
 								//delete the item
-								$query = "update {$this->wp_prefix}automatic_amazon_links set link_status='1' where link_id=$t_row->link_id";
+								$query = "delete from {$this->wp_prefix}automatic_amazon_links where link_id={$t_row->link_id}";
 								$this->db->query ( $query );
 									
 							}else{
@@ -416,7 +423,7 @@ Class WpAutomaticAmazon extends wp_automatic{
 							$this->used_keyword = $ret->link_keyword;
 							
 							// update the link status to 1
-							$query = "update {$this->wp_prefix}automatic_amazon_links set link_status='1' where link_id=$ret->link_id";
+							$query = "delete from {$this->wp_prefix}automatic_amazon_links where link_id={$ret->link_id}";
 							$this->db->query ( $query );
 							
 							//fix imgSet
@@ -436,11 +443,7 @@ Class WpAutomaticAmazon extends wp_automatic{
 								}else{
 									$imgs = array_merge(array($lastImage),$imgs);
 								}
-								
-							
-					 
-								
-								
+								 
 								$temp['product_imgs'] = implode(',', $imgs);
 								$temp['product_img'] = $temp['offer_img'] = $imgs[0];
 								
@@ -477,11 +480,9 @@ Class WpAutomaticAmazon extends wp_automatic{
 								//no price
 								if(trim($temp['product_price']) == '' ) $temp['product_price'] = $temp['price_numeric'] ;
 								if(trim($temp['product_list_price']) == '' ) $temp['product_list_price'] = $temp['price_numeric'] ;
-								
-								
-							 
-								
+								 
 							return $temp;
+							
 						} else {
 							
 							//return false;

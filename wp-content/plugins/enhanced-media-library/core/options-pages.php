@@ -103,7 +103,7 @@ if ( ! function_exists( 'wpuxss_eml_admin_media_menu' ) ) {
 
         $eml_medialibrary_options_page = add_submenu_page(
             'options-general.php',
-            __('Media Library','enhanced-media-library'),
+            __('Media Library','enhanced-media-library') . ' &lsaquo; ' . __('Media Settings','enhanced-media-library'),
             __('Media Library','enhanced-media-library'),
             'manage_options',
             'media-library',
@@ -112,7 +112,7 @@ if ( ! function_exists( 'wpuxss_eml_admin_media_menu' ) ) {
 
         $eml_taxonomies_options_page = add_submenu_page(
             'options-general.php',
-            __('Taxonomies','enhanced-media-library'),
+            __('Media Taxonomies','enhanced-media-library') . ' &lsaquo; ' . __('Media Settings','enhanced-media-library'),
             __('Media Taxonomies','enhanced-media-library'),
             'manage_options',
             'media-taxonomies',
@@ -121,16 +121,13 @@ if ( ! function_exists( 'wpuxss_eml_admin_media_menu' ) ) {
 
         $eml_mimetype_options_page = add_submenu_page(
             'options-general.php',
-            __('MIME Types','enhanced-media-library'),
+            __('MIME Types','enhanced-media-library') . ' &lsaquo; ' . __('Media Settings','enhanced-media-library'),
             __('MIME Types','enhanced-media-library'),
             'manage_options',
             'mime-types',
             'wpuxss_eml_print_mimetypes_options'
         );
 
-
-        add_filter( 'custom_menu_order', 'wpuxss_eml_submenu_order' );
-        add_filter( 'admin_title', 'wpuxss_eml_admin_title_for_media_options_sub_pages', 10, 2 );
 
         add_action( 'load-' . $eml_media_options_page, 'wpuxss_eml_load_media_options_page' );
         add_action( $eml_media_options_page, 'wpuxss_eml_media_options_page' );
@@ -215,6 +212,8 @@ if ( ! function_exists( 'wpuxss_eml_network_admin_menu' ) ) {
  *  @since    2.6
  *  @created  04/03/18
  */
+
+add_action( 'admin_menu', 'wpuxss_eml_submenu_order', 12 );
 
 if ( ! function_exists( 'wpuxss_eml_submenu_order' ) ) {
 
@@ -320,48 +319,6 @@ if ( ! function_exists( 'wpuxss_eml_admin_title_for_media_options_page' ) ) {
     function wpuxss_eml_admin_title_for_media_options_page( $admin_title, $title ) {
 
         $admin_title = __('Media Settings','enhanced-media-library') . $admin_title;
-
-        return $admin_title;
-    }
-}
-
-
-
-/**
- *  wpuxss_eml_admin_title_for_media_options_sub_pages
- *
- *  @since    2.6
- *  @created  10/02/18
- */
-
-if ( ! function_exists( 'wpuxss_eml_admin_title_for_media_options_sub_pages' ) ) {
-
-    function wpuxss_eml_admin_title_for_media_options_sub_pages( $admin_title, $title ) {
-
-        global $pagenow;
-
-
-        if ( 'options-general.php' !== $pagenow ) {
-            return $admin_title;
-        }
-
-
-        $page = isset( $_GET['page'] ) && in_array( $_GET['page'], array('media','media-library','media-taxonomies','mime-types') ) ? $_GET['page'] : '';
-
-        switch ( $page ) {
-
-            case 'media-library' :
-                $admin_title = __('Media Library Settings', 'enhanced-media-library') . $admin_title;
-                break;
-
-            case 'media-taxonomies' :
-                $admin_title = __('Media Taxonomies Settings', 'enhanced-media-library') . $admin_title;
-                break;
-
-            case 'mime-types' :
-                $admin_title = __('MIME Types Settings', 'enhanced-media-library') . $admin_title;
-                break;
-        }
 
         return $admin_title;
     }
@@ -513,8 +470,8 @@ if ( ! function_exists( 'wpuxss_eml_print_media_settings' ) ) {
         <th scope="row"><label for="upload_path"><?php _e('Store uploads in this folder'); ?></label></th>
         <td><input name="upload_path" type="text" id="upload_path" value="<?php echo esc_attr(get_option('upload_path')); ?>" class="regular-text code" />
         <p class="description"><?php
-        	/* translators: %s: wp-content/uploads */
-        	printf( __( 'Default is %s' ), '<code>wp-content/uploads</code>' );
+            /* translators: %s: wp-content/uploads */
+            printf( __( 'Default is %s' ), '<code>wp-content/uploads</code>' );
         ?></p>
         </td>
         </tr>
@@ -730,7 +687,24 @@ if ( ! function_exists( 'wpuxss_eml_options_page_scripts' ) ) {
             'cleanup_warning_text_p2' => '<p>' . __( 'This operation cannot be canceled! Are you still sure?', 'enhanced-media-library') . '</p>',
             'cleanup_warning_yes' => __( 'Yes, delete all data', 'enhanced-media-library' ),
             'in_progress_cleanup_text' => __( 'Cleaning...', 'enhanced-media-library' ),
-            'cancel' => __( 'Cancel', 'enhanced-media-library' )
+            'cancel' => __( 'Cancel', 'enhanced-media-library' ),
+
+            'apply_to_network_nonce' => wp_create_nonce( 'eml-apply-to-network-nonce' ),
+            'applying_settings_title' => __( 'Unify Media Settings over Network', 'enhanced-media-library' ),
+            'applying_media_library_settings_text' => sprintf(
+                'ALL Media Library Settings on the Network %s with the settings of the main website.',
+                '<strong style="text-transform:uppercase">' . __( 'will be overwritten', 'enhanced-media-library' ) . '</strong>'
+            ),
+            'applying_media_taxonomies_settings_text' => sprintf(
+                'ALL Media Taxonomies Settings on the Network %s with the settings of the main website. If your websites have individual taxonomies registered, they will be overwritten with the taxonomies from the main website.',
+                '<strong style="text-transform:uppercase">' . __( 'will be overwritten', 'enhanced-media-library' ) . '</strong>'
+            ),
+            'applying_mime_types_settings_text' => sprintf(
+                'ALL MIME Types Settings on the Network %s with the settings of the main website.',
+                '<strong style="text-transform:uppercase">' . __( 'will be overwritten', 'enhanced-media-library' ) . '</strong>'
+            ),
+            'applying_settings_yes' => __( 'Apply', 'enhanced-media-library' ),
+            'in_progress_apply_setings_text' => __( 'Applying Settings...', 'enhanced-media-library' )
         );
 
         wp_localize_script(
@@ -1019,6 +993,73 @@ if ( ! function_exists( 'wpuxss_eml_print_network_settings' ) ) {
 
                         <div class="postbox">
 
+                            <h3 class="hndle"><?php _e('Unify Media Settings over Network','enhanced-media-library'); ?></h3>
+
+
+                            <div class="inside">
+
+                                <?php if ( ! is_plugin_active_for_network( wpuxss_get_eml_basename() ) ) : ?>
+
+                                    <p class="description"><?php _e( 'No settings available. The plugin is not network activated.', 'enhanced-media-library' ); ?></p>
+
+                                <?php else : ?>
+
+                                    <form method="post">
+
+                                        <table class="form-table">
+
+                                            <tr>
+                                                <th scope="row"><?php _e('Media Library Settings','enhanced-media-library'); ?></th>
+                                                <td>
+                                                    <fieldset>
+                                                        <legend class="screen-reader-text"><span><?php _e('Media Library Settings','enhanced-media-library'); ?></span></legend>
+                                                        <a class="add-new-h2 eml-apply-settings-to-network" data-settings="media-library" href="javascript:;"><?php _e( 'Apply to ALL Network websites', 'enhanced-media-library' ); ?></a>
+                                                        <p class="description"><?php printf(
+                                                            'Main website %s settings will be applied to all websites on the Network.',
+                                                            '<a href="' . admin_url('options-general.php?page=media-library') . '" target="_blank">' . __( 'Media Library', 'enhanced-media-library' ) . '</a>'
+                                                        ); ?></p>
+                                                    </fieldset>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="row"><?php _e('Media Taxonomies Settings','enhanced-media-library'); ?></th>
+                                                <td>
+                                                    <fieldset>
+                                                        <legend class="screen-reader-text"><span><?php _e('Media Taxonomies Settings','enhanced-media-library'); ?></span></legend>
+                                                        <a class="add-new-h2 eml-apply-settings-to-network" data-settings="media-taxonomies" href="javascript:;"><?php _e( 'Apply to ALL Network websites', 'enhanced-media-library' ); ?></a>
+                                                        <p class="description"><?php printf(
+                                                            'Main website %s settings will be applied to all websites on the Network.',
+                                                            '<a href="' . admin_url('options-general.php?page=media-taxonomies') . '" target="_blank">' . __( 'Media Taxonomies', 'enhanced-media-library' ) . '</a>'
+                                                        ); ?></p>
+                                                    </fieldset>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <th scope="row"><?php _e('MIME Types Settings','enhanced-media-library'); ?></th>
+                                                <td>
+                                                    <fieldset>
+                                                        <legend class="screen-reader-text"><span><?php _e('MIME Types Settings','enhanced-media-library'); ?></span></legend>
+                                                        <a class="add-new-h2 eml-apply-settings-to-network" data-settings="mime-types" href="javascript:;"><?php _e( 'Apply to ALL Network websites', 'enhanced-media-library' ); ?></a>
+                                                        <p class="description"><?php printf(
+                                                            'Main website %s settings will be applied to all websites on the Network.',
+                                                            '<a href="' . admin_url('options-general.php?page=mime-types') . '" target="_blank">' . __( 'MIME Types', 'enhanced-media-library' ) . '</a>'
+                                                        ); ?></p>
+                                                    </fieldset>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+
+                                    </form>
+
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="postbox">
+
                             <h3 class="hndle"><?php _e( 'Complete Cleanup', 'enhanced-media-library' ); ?></h3>
 
                             <div class="inside">
@@ -1085,6 +1126,66 @@ if ( ! function_exists( 'wpuxss_eml_print_network_settings' ) ) {
         </div>
 
     <?php
+    }
+}
+
+
+
+/**
+ *  wpuxss_eml_apply_settings_to_network
+ *
+ *  @since    2.7
+ *  @created  21/06/18
+ */
+
+add_action( 'wp_ajax_eml-apply-settings-to-network', 'wpuxss_eml_apply_settings_to_network' );
+
+if ( ! function_exists( 'wpuxss_eml_apply_settings_to_network' ) ) {
+
+    function wpuxss_eml_apply_settings_to_network() {
+
+        if ( ! isset( $_REQUEST['settings'] ) )
+            wp_send_json_error();
+
+        check_ajax_referer( 'eml-apply-to-network-nonce', 'nonce' );
+
+
+        $plugins = get_site_option( 'active_sitewide_plugins');
+
+        if ( is_multisite() && isset($plugins[wpuxss_get_eml_basename()]) ) {
+
+            switch_to_blog( get_main_site_id() );
+
+            $wpuxss_eml_taxonomies = get_option( 'wpuxss_eml_taxonomies', array() );
+            $wpuxss_eml_lib_options = get_option( 'wpuxss_eml_lib_options', array() );
+            $wpuxss_eml_tax_options = get_option( 'wpuxss_eml_tax_options', array() );
+            $wpuxss_eml_mimes = get_option( 'wpuxss_eml_mimes', array() );
+
+
+            foreach( get_sites( array( 'fields' => 'ids' ) ) as $site_id ) {
+
+                switch_to_blog( $site_id );
+
+                switch ( $_REQUEST['settings'] ) {
+                    case 'media-library':
+                        update_option( 'wpuxss_eml_lib_options', $wpuxss_eml_lib_options );
+                        break;
+
+                    case 'media-taxonomies':
+                        update_option( 'wpuxss_eml_taxonomies', $wpuxss_eml_taxonomies );
+                        update_option( 'wpuxss_eml_tax_options', $wpuxss_eml_tax_options );
+                        break;
+
+                    case 'mime-types':
+                        update_option( 'wpuxss_eml_mimes', $wpuxss_eml_mimes );
+                        break;
+                }
+
+                restore_current_blog();
+            }
+        }
+
+        wp_send_json_success();
     }
 }
 
@@ -1249,8 +1350,6 @@ if ( ! function_exists( 'wpuxss_eml_settings_import' ) ) {
         update_option( 'wpuxss_eml_tax_options', $settings['tax_options'] );
         update_option( 'wpuxss_eml_mimes', $settings['mimes'] );
 
-        do_action( 'wpuxss_eml_pro_set_settings', $settings );
-
         add_settings_error(
             'eml-settings',
             'eml_settings_imported',
@@ -1365,7 +1464,7 @@ if ( ! function_exists( 'wpuxss_eml_settings_cleanup' ) ) {
             wpuxss_eml_options_cleanup();
         }
 
-        wpuxss_eml_common_options_cleanup();
+        wpuxss_eml_site_options_cleanup();
         wpuxss_eml_transients_cleanup();
         deactivate_plugins( wpuxss_get_eml_basename(), false, is_multisite() );
 
@@ -1411,14 +1510,14 @@ if ( ! function_exists( 'wpuxss_eml_term_relationship_cleanup' ) ) {
                 $rows2remove_format = join( ', ', array_fill( 0, count( $term_pairs ), '%d' ) );
 
                 $results = $wpdb->get_results( $wpdb->prepare(
-                	"
+                    "
                         SELECT $wpdb->term_relationships.term_taxonomy_id, $wpdb->term_relationships.object_id
                         FROM $wpdb->term_relationships
                         INNER JOIN $wpdb->posts
                         ON $wpdb->term_relationships.object_id = $wpdb->posts.ID
                         WHERE $wpdb->posts.post_type = 'attachment'
                         AND $wpdb->term_relationships.term_taxonomy_id IN ($rows2remove_format)
-                	",
+                    ",
                     $term_pairs
                 ) );
 
@@ -1431,13 +1530,13 @@ if ( ! function_exists( 'wpuxss_eml_term_relationship_cleanup' ) ) {
                 }
 
                 $removed = $wpdb->query( $wpdb->prepare(
-                	"
+                    "
                         DELETE $wpdb->term_relationships.* FROM $wpdb->term_relationships
                         INNER JOIN $wpdb->posts
                         ON $wpdb->term_relationships.object_id = $wpdb->posts.ID
                         WHERE $wpdb->posts.post_type = 'attachment'
                         AND $wpdb->term_relationships.term_taxonomy_id IN ($rows2remove_format)
-                	",
+                    ",
                     $term_pairs
                 ) );
 
@@ -1486,25 +1585,26 @@ if ( ! function_exists( 'wpuxss_eml_options_cleanup' ) ) {
 
 
 /**
- *  wpuxss_eml_common_options_cleanup
+ *  wpuxss_eml_site_options_cleanup
  *
  *  @since    2.6
  *  @created  28/04/18
  */
 
-if ( ! function_exists( 'wpuxss_eml_common_options_cleanup' ) ) {
+if ( ! function_exists( 'wpuxss_eml_site_options_cleanup' ) ) {
 
-    function wpuxss_eml_common_options_cleanup() {
+    function wpuxss_eml_site_options_cleanup() {
 
         $options = array(
-            'wpuxss_eml_version'
+            'wpuxss_eml_version',
+            'wpuxss_eml_mimes_backup'
         );
 
         if ( is_multisite() ) {
             $options[] = 'wpuxss_eml_network_options';
         }
 
-        $options = apply_filters( 'wpuxss_eml_pro_add_common_options', $options );
+        $options = apply_filters( 'wpuxss_eml_pro_add_options', $options );
 
         foreach ( $options as $option ) {
             delete_site_option( $option );
@@ -1559,8 +1659,6 @@ if ( ! function_exists( 'wpuxss_eml_get_settings' ) ) {
             'tax_options' => $wpuxss_eml_tax_options,
             'mimes' => $wpuxss_eml_mimes,
         );
-
-        $settings = apply_filters( 'wpuxss_eml_pro_get_settings', $settings );
 
         return $settings;
     }
@@ -2163,7 +2261,7 @@ if ( ! function_exists( 'wpuxss_eml_print_mimetypes_options' ) ) {
 
 
         $wpuxss_eml_mimes = get_option('wpuxss_eml_mimes');
-        $wpuxss_eml_mimes_backup = get_option('wpuxss_eml_mimes_backup');
+
         $title = __('Media Settings'); ?>
 
         <div id="wpuxss-eml-global-options-wrap" class="wrap eml-options">
@@ -2389,12 +2487,13 @@ if ( ! function_exists( 'wpuxss_eml_plugin_row_meta' ) ) {
 
     function wpuxss_eml_plugin_row_meta( $links, $file ) {
 
-    	if ( wpuxss_get_eml_basename() == $file ) {
+        if ( wpuxss_get_eml_basename() !== $file ) {
+            return $links;
+        }
 
-    		$links[] = '<a href="https://wordpress.org/support/view/plugin-reviews/enhanced-media-library" target="_blank"><span class="dashicons dashicons-thumbs-up"></span> ' . __( 'Vote!', 'enhanced-media-library' ) . '</a>';
-    	}
+        $links[] = __( 'Rate us:', 'enhanced-media-library' ) . " <span class='rating-stars'><a href='//wordpress.org/support/plugin/enhanced-media-library/reviews/?rate=1#new-post' target='_blank' data-rating='1' title='" . __('Poor', 'enhanced-media-library') . "'><span class='dashicons dashicons-star-filled' style='color:#ffb900 !important;'></span></a><a href='//wordpress.org/support/plugin/enhanced-media-library/reviews/?rate=2#new-post' target='_blank' data-rating='2' title='" . __('Works', 'enhanced-media-library') . "'><span class='dashicons dashicons-star-filled' style='color:#ffb900 !important;'></span></a><a href='//wordpress.org/support/plugin/enhanced-media-library/reviews/?rate=3#new-post' target='_blank' data-rating='3' title='" . __('Good', 'enhanced-media-library') . "'><span class='dashicons dashicons-star-filled' style='color:#ffb900 !important;'></span></a><a href='//wordpress.org/support/plugin/enhanced-media-library/reviews/?rate=4#new-post' target='_blank' data-rating='4' title='" . __('Great', 'enhanced-media-library') . "'><span class='dashicons dashicons-star-filled' style='color:#ffb900 !important;'></span></a><a href='//wordpress.org/support/plugin/enhanced-media-library/reviews/?rate=5#new-post' target='_blank' data-rating='5' title='" . __('Fantastic!', 'enhanced-media-library') . "'><span class='dashicons dashicons-star-filled' style='color:#ffb900 !important;'></span></a><span>";
 
-    	return $links;
+        return $links;
     }
 }
 

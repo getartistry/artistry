@@ -37,7 +37,7 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-39';
+		return 'jetelements-icon-35';
 	}
 
 	public function get_categories() {
@@ -58,9 +58,9 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 		);
 
 		$this->start_controls_section(
-			'section_instagram_settings',
+			'section_subscribe_fields',
 			array(
-				'label' => esc_html__( 'Settings', 'jet-elements' ),
+				'label' => esc_html__( 'Fields', 'jet-elements' ),
 			)
 		);
 
@@ -79,7 +79,85 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 			array(
 				'label'       => esc_html__( 'Input Placeholder', 'jet-elements' ),
 				'type'        => Controls_Manager::TEXT,
-				'default'     => esc_html__( 'Enter Your Mail', 'jet-elements' ),
+				'default'     => esc_html__( 'E-Mail', 'jet-elements' ),
+			)
+		);
+
+		$this->add_control(
+			'use_additional_fields',
+			array(
+				'label'        => esc_html__( 'Use Additional Fields', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'yes',
+				'default'      => 'false',
+				'separator'    => 'before',
+			)
+		);
+
+		$repeater = new Repeater();
+
+		$repeater->add_control(
+			'type',
+			[
+				'label'   => esc_html__( 'Field Type', 'jet-elements' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'fname',
+				'options' => [
+					'fname'   => esc_html__( 'First Name', 'jet-elements' ),
+					'lname'   => esc_html__( 'Last Name', 'jet-elements' ),
+					'address' => esc_html__( 'Address', 'jet-elements' ),
+					'phone'   => esc_html__( 'Phone Number', 'jet-elements' ),
+				]
+			]
+		);
+
+		$repeater->add_control(
+			'placeholder',
+			array(
+				'label'   => esc_html__( 'Field Placeholder', 'jet-elements' ),
+				'type'    => Controls_Manager::TEXT,
+				'default' => esc_html__( 'Enter Value', 'jet-elements' ),
+			)
+		);
+
+		$this->add_control(
+			'additional_fields',
+			[
+				'type'        => Controls_Manager::REPEATER,
+				'fields'      => array_values( $repeater->get_controls() ),
+				'default'     => [
+					[
+						'type'        => 'fname',
+						'placeholder' => esc_html__( 'First Name', 'jet-elements' ),
+					],
+					[
+						'type'        => 'lname',
+						'placeholder' => esc_html__( 'Last Name', 'jet-elements' ),
+					],
+					[
+						'type'        => 'address',
+						'placeholder' => esc_html__( 'Address', 'jet-elements' ),
+					],
+					[
+						'type'        => 'phone',
+						'placeholder' => esc_html__( 'Phone Number', 'jet-elements' ),
+					],
+				],
+				'title_field' => '{{{ placeholder }}}',
+				'condition' => [
+					'use_additional_fields' => 'yes',
+				]
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'section_subscribe_settings',
+			array(
+				'label' => esc_html__( 'Settings', 'jet-elements' ),
 			)
 		);
 
@@ -105,6 +183,29 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 				'condition'   => array(
 					'use_redirect_url' => 'yes',
 				),
+			)
+		);
+
+		$this->add_control(
+			'use_target_list_id',
+			array(
+				'label'        => esc_html__( 'Use Target List Id?', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'yes',
+				'default'      => 'no',
+			)
+		);
+
+		$this->add_control(
+			'target_list_id',
+			array(
+				'label'     => esc_html__( 'Mailchimp list id', 'jet-elements' ),
+				'type'      => Controls_Manager::TEXT,
+				'condition' => [
+					'use_target_list_id' => 'yes',
+				]
 			)
 		);
 
@@ -589,7 +690,7 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 				'label_off'    => esc_html__( 'No', 'jet-elements' ),
 				'return_value' => 'yes',
 				'default'      => 'false',
-				'render_type' => 'template',
+				'render_type'  => 'template',
 			)
 		);
 
@@ -657,7 +758,6 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 			)
 		);
 
-
 		$this->add_responsive_control(
 			'button_width',
 			array(
@@ -719,17 +819,33 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 			)
 		);
 
-		$this->add_control(
-			'button_bg_color',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			array(
-				'label' => esc_html__( 'Background Color', 'jet-elements' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'name'     => 'button_bg',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['submit'],
+				'fields_options' => array(
+					'background' => array(
+						'default' => 'classic',
+					),
+					'color' => array(
+						'label'  => _x( 'Background Color', 'Background Control', 'jet-elements' ),
+						'scheme' => array(
+							'type'  => Scheme_Color::get_type(),
+							'value' => Scheme_Color::COLOR_1,
+						),
+					),
+					'color_b' => array(
+						'label' => _x( 'Second Background Color', 'Background Control', 'jet-elements' ),
+					),
 				),
-				'selectors' => array(
-					'{{WRAPPER}} ' . $css_scheme['submit'] => 'background-color: {{VALUE}}',
+				'exclude' => array(
+					'image',
+					'position',
+					'attachment',
+					'attachment_alert',
+					'repeat',
+					'size',
 				),
 			)
 		);
@@ -818,13 +934,29 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 			)
 		);
 
-		$this->add_control(
-			'button_hover_bg_color',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			array(
-				'label'     => esc_html__( 'Background Color', 'jet-elements' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} ' . $css_scheme['submit'] . ':hover' => 'background-color: {{VALUE}}',
+				'name'     => 'button_hover_bg',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['submit'] . ':hover',
+				'fields_options' => array(
+					'background' => array(
+						'default' => 'classic',
+					),
+					'color' => array(
+						'label' => _x( 'Background Color', 'Background Control', 'jet-elements' ),
+					),
+					'color_b' => array(
+						'label' => _x( 'Second Background Color', 'Background Control', 'jet-elements' ),
+					),
+				),
+				'exclude' => array(
+					'image',
+					'position',
+					'attachment',
+					'attachment_alert',
+					'repeat',
+					'size',
 				),
 			)
 		);
@@ -836,6 +968,20 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $css_scheme['submit'] . ':hover' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'button_icon_hover_color',
+			array(
+				'label'     => esc_html__( 'Icon Color', 'jet-elements' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} ' . $css_scheme['submit'] . ':hover ' . $css_scheme['submit_icon'] => 'color: {{VALUE}}',
+				),
+				'condition' => array(
+					'add_button_icon' => 'yes',
 				),
 			)
 		);
@@ -1154,8 +1300,10 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 		$module_settings = $this->get_settings();
 
 		$settings = array(
-			'redirect'     => filter_var( $module_settings['use_redirect_url'], FILTER_VALIDATE_BOOLEAN ),
-			'redirect_url' => $module_settings['redirect_url'],
+			'redirect'           => filter_var( $module_settings['use_redirect_url'], FILTER_VALIDATE_BOOLEAN ),
+			'redirect_url'       => $module_settings['redirect_url'],
+			'use_target_list_id' => filter_var( $module_settings['use_target_list_id'], FILTER_VALIDATE_BOOLEAN ),
+			'target_list_id'     => $module_settings['target_list_id'],
 		);
 
 		$settings = json_encode( $settings );
@@ -1163,6 +1311,75 @@ class Jet_Elements_Subscribe_Form extends Jet_Elements_Base {
 		return htmlspecialchars( $settings );
 	}
 
+	/**
+	 * [generate_additional_fields description]
+	 * @return [type] [description]
+	 */
+	public function generate_additional_fields() {
+		$module_settings = $this->get_settings();
+
+		$additional_filds = $module_settings['additional_fields'];
+
+		if ( ! filter_var( $module_settings['use_additional_fields'], FILTER_VALIDATE_BOOLEAN ) || empty( $additional_filds ) ) {
+			return false;
+		}
+
+		$default_fields_data = [
+			'fname' => [
+				'class'       => [
+					'jet-subscribe-form__input jet-subscribe-form__fname-field',
+				],
+				'type'        => 'text',
+				'name'        => 'fname',
+				'placeholder' => esc_html__( 'First Name', 'jet-elements' ),
+			],
+			'lname' => [
+				'class'       => [
+					'jet-subscribe-form__input jet-subscribe-form__fname-field',
+				],
+				'type'        => 'text',
+				'name'        => 'lname',
+				'placeholder' => esc_html__( 'Last Name', 'jet-elements' )
+			],
+			'address' => [
+				'class'       => [
+					'jet-subscribe-form__input jet-subscribe-form__address-field',
+				],
+				'type'        => 'text',
+				'name'        => 'address',
+				'placeholder' => esc_html__( 'Address', 'jet-elements' )
+			],
+			'phone' => [
+				'class'       => [
+					'jet-subscribe-form__input jet-subscribe-form__phone-field',
+				],
+				'type'        => 'tel',
+				'name'        => 'phone',
+				'placeholder' => esc_html__( 'Phone Number', 'jet-elements' )
+			],
+		];
+
+		foreach ( $additional_filds as $key => $data ) {
+
+			$type        = $data['type'];
+			$placeholder = $data['placeholder'];
+
+			$data = $default_fields_data[ $type ];
+
+			if ( ! empty( $placeholder ) ) {
+				$data['placeholder'] = $placeholder;
+			}
+
+			$this->add_render_attribute( $key, $data );?>
+				<input <?php echo $this->get_render_attribute_string( $key ); ?>><?php
+		}
+
+	}
+
+	/**
+	 * [render description]
+	 * @return [type] [description]
+	 */
 	protected function render() {
 
 		$this->__context = 'render';

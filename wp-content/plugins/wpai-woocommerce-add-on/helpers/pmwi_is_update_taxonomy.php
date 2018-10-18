@@ -1,17 +1,33 @@
 <?php
-function pmwi_is_update_taxonomy( $articleData, $options, $tx_name ){
 
-	if ( ! empty($articleData['ID']) ){
+/**
+ *
+ * Check is taxonomy needs to be updated.
+ *
+ * @param $articleData
+ * @param $options
+ * @param $tx_name
+ *
+ * @return bool
+ */
+function pmwi_is_update_taxonomy($articleData, $options, $tx_name) {
 
-		if ($options['update_all_data'] == 'yes') return true;
+    if (!empty($articleData['ID'])) {
 
-		if ( ! $options['is_update_categories'] ) return false;	
-		
-		if ($options['update_all_data'] == "no" and $options['update_categories_logic'] == "all_except" and !empty($options['taxonomies_list']) 
-			and is_array($options['taxonomies_list']) and in_array($tx_name, $options['taxonomies_list'])) return false;
-		if ($options['update_all_data'] == "no" and $options['update_categories_logic'] == "only" and ((!empty($options['taxonomies_list']) 
-			and is_array($options['taxonomies_list']) and ! in_array($tx_name, $options['taxonomies_list'])) or empty($options['taxonomies_list']))) return false;
-	}
-
-	return true;
+        if ($options['update_all_data'] == 'yes') {
+            return TRUE;
+        }
+        if (!$options['is_update_categories']) {
+            return FALSE;
+        }
+        if ($options['update_all_data'] == "no" and $options['update_categories_logic'] == "all_except" and !empty($options['taxonomies_list'])
+            and is_array($options['taxonomies_list']) and in_array($tx_name, $options['taxonomies_list'])) {
+            return FALSE;
+        }
+        if ($options['update_all_data'] == "no" and $options['update_categories_logic'] == "only" and ((!empty($options['taxonomies_list'])
+                    and is_array($options['taxonomies_list']) and !in_array($tx_name, $options['taxonomies_list'])) or empty($options['taxonomies_list']))) {
+            return FALSE;
+        }
+    }
+    return TRUE;
 }

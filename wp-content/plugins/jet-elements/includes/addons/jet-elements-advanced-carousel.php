@@ -30,7 +30,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-08';
+		return 'jetelements-icon-1';
 	}
 
 	public function get_categories() {
@@ -88,6 +88,18 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 		);
 
 		$repeater->add_control(
+			'item_link_target',
+			array(
+				'label'        => esc_html__( 'Open link in new window', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'return_value' => '_blank',
+				'condition'    => array(
+					'item_link!' => '',
+				),
+			)
+		);
+
+		$repeater->add_control(
 			'item_button_text',
 			array(
 				'label'   => esc_html__( 'Item Button Text', 'jet-elements' ),
@@ -109,6 +121,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 						'item_title' => esc_html__( 'Item #1', 'jet-elements' ),
 						'item_text'  => esc_html__( 'Item #1 Description', 'jet-elements' ),
 						'item_link'  => '#',
+						'item_link_target'  => '',
 					),
 				),
 				'title_field' => '{{{ item_title }}}',
@@ -317,7 +330,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 		$this->add_control(
 			'infinite',
 			array(
-				'label'        => esc_html__( 'Infinite Loop', 'elementor' ),
+				'label'        => esc_html__( 'Infinite Loop', 'jet-elements' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
 				'label_off'    => esc_html__( 'No', 'jet-elements' ),
@@ -365,6 +378,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 				'dot_active'     => '.jet-carousel.elementor-slick-slider .slick-dots .slick-active button:before',
 				'wrap'           => '.jet-carousel.elementor-slick-slider',
 				'column'         => '.jet-carousel.elementor-slick-slider .jet-carousel__item',
+				'image'          => '.jet-carousel__item-img',
 				'items'          => '.jet-carousel__content',
 				'items_title'    => '.jet-carousel__content .jet-carousel__item-title',
 				'items_text'     => '.jet-carousel__content .jet-carousel__item-text',
@@ -431,6 +445,46 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 				'label'      => esc_html__( 'Simple Items', 'jet-elements' ),
 				'tab'        => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
+				'condition'  => array(
+					'item_layout' => 'simple',
+				),
+			)
+		);
+
+		$this->add_control(
+			'item_image_heading',
+			array(
+				'label' => esc_html__( 'Image', 'jet-elements' ),
+				'type'  => Controls_Manager::HEADING,
+			)
+		);
+
+		$this->add_responsive_control(
+			'item_image_border_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'jet-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['image'] => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'name'     => 'item_image_box_shadow',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['image'],
+			)
+		);
+
+		$this->add_control(
+			'item_content_heading',
+			array(
+				'label'     => esc_html__( 'Content', 'jet-elements' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
 			)
 		);
 
@@ -513,11 +567,24 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 		$this->add_responsive_control(
 			'items_padding',
 			array(
-				'label'      => esc_html__( 'Items Padding', 'jet-elements' ),
+				'label'      => esc_html__( 'Padding', 'jet-elements' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['items'] => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+				'separator' => 'before',
+			)
+		);
+
+		$this->add_responsive_control(
+			'items_border_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'jet-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['items'] => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -525,7 +592,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 		$this->add_responsive_control(
 			'items_alignment',
 			array(
-				'label'   => esc_html__( 'Items Alignment', 'jet-elements' ),
+				'label'   => esc_html__( 'Alignment', 'jet-elements' ),
 				'type'    => Controls_Manager::CHOOSE,
 				'default' => 'left',
 				'options' => array(
@@ -556,10 +623,20 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 				'label'      => esc_html__( 'Banner Items', 'jet-elements' ),
 				'tab'        => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
+				'condition'  => array(
+					'item_layout' => 'banners',
+				),
 			)
 		);
 
 		$this->start_controls_tabs( 'tabs_background' );
+
+		$this->start_controls_tab(
+			'tab_background_normal',
+			array(
+				'label' => esc_html__( 'Normal', 'jet-elements' ),
+			)
+		);
 
 		$this->add_control(
 			'items_content_color',
@@ -581,13 +658,6 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 					'{{WRAPPER}} .jet-effect-sarah ' . $css_scheme['banner_title'] . '::after' => 'background-color: {{VALUE}}',
 					'{{WRAPPER}} .jet-effect-chico ' . $css_scheme['banner_content'] . '::before' => 'border-color: {{VALUE}}',
 				),
-			)
-		);
-
-		$this->start_controls_tab(
-			'tab_background_normal',
-			array(
-				'label' => esc_html__( 'Normal', 'jet-elements' ),
 			)
 		);
 
@@ -749,6 +819,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 				'separator'  => 'before',
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['items_title'] => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} ' . $css_scheme['banner_title'] => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -833,6 +904,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 				'separator'  => 'before',
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['items_text'] => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} ' . $css_scheme['banner_text'] => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -848,6 +920,9 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 				'label'      => esc_html__( 'Action Button', 'jet-elements' ),
 				'tab'        => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
+				'condition'  => array(
+					'item_layout' => 'simple',
+				),
 			)
 		);
 
@@ -1029,6 +1104,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'arrows_style',
+				'label'          => esc_html__( 'Arrows Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-carousel .jet-arrow',
 				'fields_options' => array(
 					'color' => array(
@@ -1054,6 +1130,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'arrows_hover_style',
+				'label'          => esc_html__( 'Arrows Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-carousel .jet-arrow:hover',
 				'fields_options' => array(
 					'color' => array(
@@ -1082,7 +1159,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 		$this->add_control(
 			'prev_vert_position',
 			array(
-				'label'   => esc_html__( 'Vertical Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Vertical Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'top',
 				'options' => array(
@@ -1153,7 +1230,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 		$this->add_control(
 			'prev_hor_position',
 			array(
-				'label'   => esc_html__( 'Horizontal Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Horizontal Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'left',
 				'options' => array(
@@ -1233,7 +1310,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 		$this->add_control(
 			'next_vert_position',
 			array(
-				'label'   => esc_html__( 'Vertical Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Vertical Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'top',
 				'options' => array(
@@ -1304,7 +1381,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 		$this->add_control(
 			'next_hor_position',
 			array(
-				'label'   => esc_html__( 'Horizontal Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Horizontal Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'right',
 				'options' => array(
@@ -1396,6 +1473,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-carousel .jet-slick-dots li span',
 				'fields_options' => array(
 					'color' => array(
@@ -1404,6 +1482,10 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_3,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -1421,6 +1503,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_hover',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-carousel .jet-slick-dots li span:hover',
 				'fields_options' => array(
 					'color' => array(
@@ -1429,6 +1512,10 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_1,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -1446,6 +1533,7 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_active',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-carousel .jet-slick-dots li.slick-active span',
 				'fields_options' => array(
 					'color' => array(
@@ -1454,6 +1542,10 @@ class Jet_Elements_Advanced_Carousel extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_4,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);

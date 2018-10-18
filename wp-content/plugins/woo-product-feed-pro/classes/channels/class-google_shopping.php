@@ -96,6 +96,11 @@ class WooSEA_google_shopping {
 					"feed_name" => "g:unit_pricing_base_measure",
 					"format" => "optional",
 				),
+				"Cost of goods sold" => array(
+					"name" => "cost_of_goods_sold",
+					"feed_name" => "g:cost_of_goods_sold",
+					"format" => "optional",
+				),
 				"Installment" => array(
 					"name" => "installment",
 					"feed_name" => "g:installment",
@@ -171,6 +176,16 @@ class WooSEA_google_shopping {
 					"feed_name" => "g:energy_efficiency_class",
 					"format" => "optional",
 				),
+				"Minimum energy efficiency class" => array(
+					"name" => "min_energy_efficiency_class",
+					"feed_name" => "g:min_energy_efficiency_class",
+					"format" => "optional",
+				),
+				"Maximum energy efficiency class" => array(
+					"name" => "max_energy_efficiency_class",
+					"feed_name" => "g:max_energy_efficiency_class",
+					"format" => "optional",
+				),
 				"Age group" => array(
 					"name" => "age_group",
 					"feed_name" => "g:age_group",
@@ -218,9 +233,14 @@ class WooSEA_google_shopping {
 				),
 			),
 			"Shopping campaigns" => array(
-				"Adwords redirect" => array(
+				"Adwords redirect (old)" => array(
 					"name" => "adwords_redirect",
 					"feed_name" => "g:adwords_redirect",
+					"format" => "optional",
+				),
+				"Ads redirect (new)" => array(
+					"name" => "ads_redirect",
+					"feed_name" => "g:ads_redirect",
 					"format" => "optional",
 				),
 				"Excluded destination" => array(
@@ -258,6 +278,16 @@ class WooSEA_google_shopping {
 					"feed_name" => "g:promotion_id",
 					"format" => "optional",
 				),
+				"Included destination" => array(
+					"name" => "included_destination",
+					"feed_name" => "included_destination",
+					"format" => "optional",
+				),
+				"Excluded destination" => array(
+					"name" => "excluded_destination",
+					"feed_name" => "g:excluded_destination",
+					"format" => "optional",
+				),
 			),
 			"Shipping" => array(
 				"Shipping" => array(
@@ -290,11 +320,26 @@ class WooSEA_google_shopping {
 					"feed_name" => "g:shipping_height",
 					"format" => "optional",
 				),
+				"Minimum handling time" => array(
+					"name" => "min_handling_time",
+					"feed_name" => "g:min_handling_time",
+					"format" => "optional",
+				),
+				"Maximum handling time" => array(
+					"name" => "max_handling_time",
+					"feed_name" => "g:max_handling_time",
+					"format" => "optional",
+				),
 			),
 			"Tax" => array(
 				"Tax" => array(
 					"name" => "tax",
 					"feed_name" => "g:tax",
+					"format" => "optional",
+				),
+				"Tax category" => array(
+					"name" => "tax_category",
+					"feed_name" => "g:tax_category",
 					"format" => "optional",
 				),
 			),

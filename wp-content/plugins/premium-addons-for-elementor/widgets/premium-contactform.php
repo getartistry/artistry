@@ -3,7 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_ContactForm7_Widget extends Widget_Base {
+class Premium_Contactform extends Widget_Base {
 
 	public function get_name() {
 		return 'premium-contact-form';
@@ -591,23 +591,20 @@ class Premium_ContactForm7_Widget extends Widget_Base {
         <div class="premium-elements-contact-form-container <?php echo $settings['premium_elements_input_focus_border_animation'] ?> ">
 
 			<?php echo do_shortcode( '[contact-form-7 id="' . $settings['premium_wpcf7_form'] . '" ]' );?>
-        </div><!-- close .premium-elements-contact-form-container -->
-<script>
-             jQuery(function($){
+        </div>
+        <script>
+            jQuery(function($){
               var linput = jQuery( 'body input[type="text"], body input[type="email"], body textarea , body input[type="password"], body input[type="date"], body input[type="number"], body input[type="tel"], body input[type="file"], body input[type="url"]');
    linput.wrap("<span class='wpcf7-span'>")
   
-
-    var linput = jQuery( 'body input[type="text"], body input[type="email"], body textarea , body input[type="password"], body input[type="date"], body input[type="number"], body input[type="tel"], body input[type="file"], body input[type="url"]');
+            var linput = jQuery( 'body input[type="text"], body input[type="email"], body textarea , body input[type="password"], body input[type="date"], body input[type="number"], body input[type="tel"], body input[type="file"], body input[type="url"]');
    linput.on("focus blur", function(){
-     $(this).closest(".wpcf7-span").toggleClass("is-focused");
-        });
-  });
-</script>
+                    $(this).closest(".wpcf7-span").toggleClass("is-focused");
+                });
+            });
+        </script>
 <?php
 		}
 
 	}
 }
-
-Plugin::instance()->widgets_manager->register_widget_type( new Premium_ContactForm7_Widget() );

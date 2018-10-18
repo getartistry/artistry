@@ -340,7 +340,7 @@ function Envato_fetch_items($keyword, $camp) {
 			$data = ( base64_encode( serialize ( $itm ) ) );
 			
 			 
-			$query = "INSERT INTO {$this->wp_prefix}automatic_general ( item_id , item_status , item_data ,item_type) values (  '$id', '0', '$data' ,'iu_{$camp->camp_id}_$keyword')  ";
+			$query = "INSERT INTO {$this->wp_prefix}automatic_general ( item_id , item_status , item_data ,item_type) values (  '$id', '0', '$data' ,'en_{$camp->camp_id}_$keyword')  ";
 			$this->db->query ( $query );
 			
 		} else {
@@ -374,12 +374,16 @@ function Envato_get_post($camp) {
 		if (trim ( $keyword ) != '') {
 
 			// getting links from the db for that keyword
-			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'iu_{$camp->camp_id}_$keyword' and item_status ='0'";
+			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'en_{$camp->camp_id}_$keyword' ";
 			$this->used_keyword=$keyword;
 			$res = $this->db->get_results ( $query );
 
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_general where item_type='en_{$camp->camp_id}_$keyword' ";
+				$this->db->query ( $query_delete );
 
 				// get new fresh items
 				$this->Envato_fetch_items ( $keyword, $camp );
@@ -409,7 +413,7 @@ function Envato_get_post($camp) {
 					  echo '<br>Envato item ('. $t_link_url .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
 						
 					//delete the item
-					$query = "delete from {$this->wp_prefix}automatic_general where item_id='{$t_row['item_id']}' and item_type=  'iu_{$camp->camp_id}_$keyword'";
+					$query = "delete from {$this->wp_prefix}automatic_general where id={$t_row->id} ";
 					$this->db->query ( $query );
 						
 				}else{
@@ -432,14 +436,15 @@ function Envato_get_post($camp) {
 				  echo '<br>Found Link:'.$temp['item_link'];
 				
 				// update the link status to 1
-				$query = "update {$this->wp_prefix}automatic_general set item_status='1' where item_id='$id' and item_type='iu_{$camp->camp_id}_$keyword' ";
+				 $query = "delete from {$this->wp_prefix}automatic_general where id={$ret->id}";
+				 $this->db->query ( $query );
 					
 				$this->db->query ( $query );
 					
 				// if cache not active let's delete the cached videos and reset indexes
 				if (! in_array ( 'OPT_EV_CACHE', $camp_opt )) {
 					  echo '<br>Cache disabled claring cache ...';
-					$query = "delete from {$this->wp_prefix}automatic_general where item_type='iu_{$camp->camp_id}_$keyword' and item_status ='0'";
+					$query = "delete from {$this->wp_prefix}automatic_general where item_type='en_{$camp->camp_id}_$keyword";
 					$this->db->query ( $query );
 
 					// reset index
@@ -449,12 +454,22 @@ function Envato_get_post($camp) {
 				}
 				
 				$wp_automatic_envato_user = get_option('wp_automatic_envato_user','');
+				$wp_automatic_envato_ir = get_option('wp_automatic_envato_ir' , ''); 
+				
 				$temp['affiliate_id'] = $wp_automatic_envato_user;
+				
+				$temp['live_site_affiliate'] = isset($temp['live_site']) ? $temp['live_site'] : '' ;
+				$temp['item_link_affiliate'] = $temp['item_link'] ;
+				
+				if(trim($wp_automatic_envato_ir) != ''  ){
+					$temp['item_link_affiliate'] = $wp_automatic_envato_ir . '?u=' . urlencode( $temp['item_link'] ) ;
+					$temp['live_site_affiliate'] = trim( $temp['live_site_affiliate'] ) != '' ?  $wp_automatic_envato_ir . '?u=' . urlencode( $temp['live_site'] ) : '' ;
+				}
 				
 				if(trim($wp_automatic_envato_user) == ''){
 					  echo '<br>Visit the plugin settings page and add your Envato ID for affiliate integration';
 				}
-
+				   
 				return $temp;
 				
 			} else {

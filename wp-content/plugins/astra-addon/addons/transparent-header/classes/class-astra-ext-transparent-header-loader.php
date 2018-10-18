@@ -38,10 +38,8 @@ if ( ! class_exists( 'Astra_Ext_Transparent_Header_Loader' ) ) {
 		public function __construct() {
 
 			add_filter( 'astra_theme_defaults', array( $this, 'theme_defaults' ) );
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ), 9 );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
 			add_action( 'customize_register', array( $this, 'customize_register' ), 2 );
-			add_action( 'customize_register', array( $this, 'customize_register_old' ) );
 
 		}
 
@@ -164,44 +162,18 @@ if ( ! class_exists( 'Astra_Ext_Transparent_Header_Loader' ) ) {
 		 */
 		function customize_register( $wp_customize ) {
 
-			if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
+			/**
+			 * Register Panel & Sections
+			 */
+			require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/class-astra-transparent-header-panels-and-sections.php';
 
-				/**
-				 * Register Panel & Sections
-				 */
-				require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/class-astra-transparent-header-panels-and-sections.php';
+			/**
+			 * Sections
+			 */
+			require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/sections/class-astra-customizer-colors-transparent-header-configs.php';
+			// Check Transparent Header is activated.
+			require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/sections/class-astra-customizer-transparent-header-configs.php';
 
-				/**
-				 * Sections
-				 */
-				require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/sections/class-astra-customizer-colors-transparent-header-configs.php';
-				// Check Transparent Header is activated.
-				require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/sections/class-astra-customizer-transparent-header-configs.php';
-
-			}
-		}
-
-		/**
-		 * Add postMessage support for site title and description for the Theme Customizer.
-		 *
-		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
-		 */
-		function customize_register_old( $wp_customize ) {
-
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
-
-				/**
-				 * Register Panel & Sections
-				 */
-				require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/customizer-panels-and-sections.php';
-
-				/**
-				 * Sections
-				 */
-				require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/sections/section-transparent-header.php';
-				// Check Transparent Header is activated.
-				require_once ASTRA_EXT_TRANSPARENT_HEADER_DIR . 'classes/sections/section-colors-transparent-header.php';
-			}
 		}
 
 		/**
@@ -209,23 +181,6 @@ if ( ! class_exists( 'Astra_Ext_Transparent_Header_Loader' ) ) {
 		 */
 		function preview_scripts() {
 			wp_enqueue_script( 'astra-transparent-header-customizer-preview-js', ASTRA_EXT_TRANSPARENT_HEADER_URI . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
-		}
-
-		/**
-		 * Customizer Controls
-		 *
-		 * @see 'ast-customizer-controls-js' panel in parent theme
-		 */
-		function controls_scripts() {
-
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
-
-				if ( SCRIPT_DEBUG ) {
-					wp_enqueue_script( 'astra-ext-transparent-header-customizer-toggles', ASTRA_EXT_TRANSPARENT_HEADER_URI . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
-				} else {
-					wp_enqueue_script( 'astra-ext-transparent-header-customizer-toggles', ASTRA_EXT_TRANSPARENT_HEADER_URI . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
-				}
-			}
 		}
 	}
 }

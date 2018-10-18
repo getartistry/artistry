@@ -95,7 +95,7 @@ function astra_ext_header_sections_colors_dynamic_css( $dynamic_css, $dynamic_cs
 			'.ast-header-sections-navigation div > li > ul' => array(
 				'border-color' => esc_attr( $primary_submenu_b_color ),
 			),
-			'.main-navigation ul ul, .ast-header-break-point .main-header-menu ul, .ast-header-sections-navigation div > li > ul, .ast-above-header-menu-items li > ul, .ast-below-header-menu-items li > ul' => array(
+			'.main-navigation .sub-menu, .ast-header-break-point .main-header-menu ul, .ast-header-sections-navigation div > li > ul, .ast-above-header-menu-items li > ul, .ast-below-header-menu-items li > ul' => array(
 				'background-color' => esc_attr( $primary_submenu_bg_color['desktop'] ),
 			),
 		);
@@ -143,7 +143,7 @@ function astra_ext_header_sections_colors_dynamic_css( $dynamic_css, $dynamic_cs
 				'color'            => esc_attr( $primary_submenu_a_color['tablet'] ),
 				'background-color' => esc_attr( $primary_submenu_a_bg_color['tablet'] ),
 			),
-			'.main-navigation ul ul, .ast-header-break-point .main-header-menu ul, .ast-header-sections-navigation div > li > ul, .ast-above-header-menu-items li > ul, .ast-below-header-menu-items li > ul' => array(
+			'.main-navigation .sub-menu, .ast-header-break-point .main-header-menu ul, .ast-header-sections-navigation div > li > ul, .ast-above-header-menu-items li > ul, .ast-below-header-menu-items li > ul' => array(
 				'background-color' => esc_attr( $primary_submenu_bg_color['tablet'] ),
 			),
 		);
@@ -191,7 +191,7 @@ function astra_ext_header_sections_colors_dynamic_css( $dynamic_css, $dynamic_cs
 				'color'            => esc_attr( $primary_submenu_a_color['mobile'] ),
 				'background-color' => esc_attr( $primary_submenu_a_bg_color['mobile'] ),
 			),
-			'.main-navigation ul ul, .ast-header-break-point .main-header-menu ul, .ast-header-sections-navigation div > li > ul, .ast-above-header-menu-items li > ul, .ast-below-header-menu-items li > ul' => array(
+			'.main-navigation .sub-menu, .ast-header-break-point .main-header-menu ul, .ast-header-sections-navigation div > li > ul, .ast-above-header-menu-items li > ul, .ast-below-header-menu-items li > ul' => array(
 				'background-color' => esc_attr( $primary_submenu_bg_color['mobile'] ),
 			),
 		);

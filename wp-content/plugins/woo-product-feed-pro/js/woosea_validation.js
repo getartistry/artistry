@@ -54,7 +54,7 @@ jQuery(document).ready(function($) {
 	// Validate woosea MPN field
         $( "#_woosea_mpn" ).blur("input", function(){
 		var input=$(this);
-		var re = /^[0-9]*$/;
+		var re = /^[a-zA-Z0-9-_]*$/;
 		var woosea_mpn=re.test(input.val());
 		// Check for allowed characters
 		if (!woosea_mpn){
@@ -153,7 +153,7 @@ jQuery(document).ready(function($) {
 	// Validate woosea Optimized title field
         $( "#_woosea_optimized_title" ).blur("input", function(){
 		var input=$(this);
-		var re = /^[a-zA-Z0-9-_. ]*$/;
+		var re = /^[a-zA-Z0-9-_.àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ]*$/;
 		var woosea_optimized_title=re.test(input.val());
 		// Check for allowed characters
 		if (!woosea_optimized_title){

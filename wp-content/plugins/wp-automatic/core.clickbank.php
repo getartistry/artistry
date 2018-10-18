@@ -159,15 +159,20 @@ function clickbank_get_post($camp) {
 			update_post_meta($camp->camp_id, 'last_keyword', trim($keyword));
 
 			// getting links from the db for that keyword
-			$query = "select * from {$this->wp_prefix}automatic_clickbank_links where link_keyword='$keyword' and link_status ='0'";
+			$query = "select * from {$this->wp_prefix}automatic_clickbank_links where link_keyword='$keyword' ";
 			$res = $this->db->get_results ( $query );
 
 			
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_clickbank_links where link_keyword='$keyword' ";
+				$this->db->query ( $query_delete );
+				
 				$this->clickbank_fetch_links ( $keyword, $camp );
 				// getting links from the db for that keyword
-				$query = "select * from {$this->wp_prefix}automatic_clickbank_links where link_keyword='$keyword' and link_status ='0'";
+				$query = "select * from {$this->wp_prefix}automatic_clickbank_links where link_keyword='$keyword' ";
 				$res = $this->db->get_results ( $query );
 			}
 
@@ -290,9 +295,11 @@ function clickbank_get_post($camp) {
 				//$temp ['product_img_src'] = 'http://pagepeeker.com/t/l/' . strtolower ( $tempo ) ;
 				$temp['product_img_src'] = "https://www.cbtrends.com/images/vendor-pages/$offer_id-x400-thumb.jpg";
 				$this->used_keyword = $ret->link_keyword ;
-					
-				$query = "update {$this->wp_prefix}automatic_clickbank_links set link_status='1' where link_id=$ret->link_id";
+				 
+				// update the link status to 1
+				$query = "delete from {$this->wp_prefix}automatic_clickbank_links where link_id={$ret->link_id}";
 				$this->db->query ( $query );
+				
 					
 				return $temp;
 			} else {

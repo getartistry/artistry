@@ -26,7 +26,7 @@ if (isset($_POST['submit-uaf-font'])){
 		@set_time_limit(0);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_URL, $uaf_font_convert_server_url.'/font-convertor/convertor/convert.php');
+		curl_setopt($ch, CURLOPT_URL, $uaf_font_convert_server_url.'/font-convertor/convertor/edd_convert.php');
 		curl_setopt($ch, CURLOPT_POST, true);
 		$post = array(
 			'fontfile' 		=> "@".$_FILES['font_file']['tmp_name'],

@@ -53,6 +53,11 @@ if($license_information['notice'] == "true"){
         <div class="woo-product-feed-pro-form-style-2">
                 <tbody class="woo-product-feed-pro-body">
                         <div class="woo-product-feed-pro-form-style-2-heading">Plugin settings</div>
+
+                        <div class="<?php _e($license_information['message_type']); ?>">
+                                <p><?php _e($license_information['message'], 'sample-text-domain' ); ?></p>
+                        </div>
+
 			<div class="woo-product-feed-pro-table-wrapper">
 				<div class="woo-product-feed-pro-table-left">
 			       		<table class="woo-product-feed-pro-table">
@@ -116,6 +121,28 @@ if($license_information['notice'] == "true"){
                                                 		</label>
 							</td>
 						</tr>
+
+						<tr>
+							<td>
+								<span>Use mother main image for variations</span>
+							</td>
+							<td>
+                                                		<label class="woo-product-feed-pro-switch">
+                                                        	<?php
+								$add_mother_image = get_option ('add_mother_image');
+                                                        	if($add_mother_image == "yes"){
+                                                                	print "<input type=\"checkbox\" id=\"add_mother_image\" name=\"add_mother_image\" class=\"checkbox-field\" checked>";
+							 	} else {
+                                                                	print "<input type=\"checkbox\" id=\"add_mother_image\" name=\"add_mother_image\" class=\"checkbox-field\">";
+                                                        	}
+                                                        	?>
+                                                        	<div class="woo-product-feed-pro-slider round"></div>
+                                                		</label>
+							</td>
+						</tr>
+
+
+
 
 						<tr id="remarketing">
 							<td>
@@ -196,10 +223,11 @@ if($license_information['notice'] == "true"){
                                         <tr>
                                                 <td>
                                                         <ul>
-                                                                <li><strong>1. <a href="https://adtribes.io/add-gtin-mpn-upc-ean-product-condition-optimised-title-and-brand-attributes/" target="_blank">Adding GTIN, Brand, MPN and more</a></strong></li>
-                                                                <li><strong>2. <a href="https://adtribes.io/woocommerce-structured-data-bug/" target="_blank">WooCommerce structured data markup bug</a></strong></li>
-                                                                <li><strong>3. <a href="https://adtribes.io/how-to-create-filters-for-your-product-feed/" target="_blank">How to create filters for your product feed</a></strong></li>
-                                                                <li><strong>4. <a href="https://adtribes.io/wpml-support/" target="_blank">Enable WPML support</a></strong></li>
+                                                                <li><strong>1. <a href="https://adtribes.io/can-i-add-mother-products-to-my-feed-and-leave-out-the-variations/" target="_blank">Can I leave out mother products?</a></strong></li>
+                                                                <li><strong>2. <a href="https://adtribes.io/add-gtin-mpn-upc-ean-product-condition-optimised-title-and-brand-attributes/" target="_blank">Adding GTIN, Brand, MPN and more</a></strong></li>
+                                                                <li><strong>3. <a href="https://adtribes.io/woocommerce-structured-data-bug/" target="_blank">WooCommerce structured data markup bug</a></strong></li>
+                                                                <li><strong>4. <a href="https://adtribes.io/how-to-create-filters-for-your-product-feed/" target="_blank">How to create filters for your product feed</a></strong></li>
+                                                                <li><strong>5. <a href="https://adtribes.io/wpml-support/" target="_blank">Enable WPML support</a></strong></li>
                                                         </ul>
                                                 </td>
                                         </tr>

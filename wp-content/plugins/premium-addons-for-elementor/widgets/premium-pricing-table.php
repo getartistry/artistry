@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Pricing_Table_Widget extends Widget_Base
-{
+class Premium_Pricing_Table extends Widget_Base {
     protected $templateInstance;
 
     public function getTemplateInstance() {
@@ -1818,8 +1817,7 @@ class Premium_Pricing_Table_Widget extends Widget_Base
         
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
         $this->add_inline_editing_attributes('premium_pricing_table_title_text');
@@ -1891,5 +1889,73 @@ class Premium_Pricing_Table_Widget extends Widget_Base
 
     <?php
     }
+    
+    protected function _content_template() {
+        ?>
+        <#
+            
+        view.addInlineEditingAttributes('premium_pricing_table_title_text');
+        
+        view.addInlineEditingAttributes('premium_pricing_table_description_text', 'advanced');
+        
+        view.addInlineEditingAttributes('premium_pricing_table_button_text');
+        
+        var titleTag = settings.premium_pricing_table_title_size,
+            linkType = settings.premium_pricing_table_button_url_type,
+            badgePosition = 'premium-badge-'  + settings.premium_pricing_table_badge_position,
+            linkURL = 'link' === linkType ? settings.premium_pricing_table_button_link_existing_content : settings.premium_pricing_table_button_link;
+        
+        #>
+        
+        <div class="premium-pricing-table-container">
+            <# if('yes' === settings.premium_pricing_table_badge_switcher ) { #>
+                <div class="premium-pricing-badge-container {{ badgePosition }}">
+                    <div class="corner"><span>{{{ settings.premium_pricing_table_badge_text }}}</span></div>
+                </div>
+            <# } #>
+            <# if('yes' === settings.premium_pricing_table_icon_switcher ) { #>
+            <div class="premium-pricing-icon-container"><i class="{{ settings.premium_pricing_table_icon_selection }}"></i></div>
+            <# } #>
+            <# if('yes' === settings.premium_pricing_table_title_switcher ) { #>
+                <{{{titleTag}}} class="premium-pricing-table-title"><span {{{ view.getRenderAttributeString('premium_pricing_table_title_text') }}}>{{{ settings.premium_pricing_table_title_text }}}</span></{{{titleTag}}}>
+            <# } #>
+            
+            <# if('yes' === settings.premium_pricing_table_price_switcher ) { #>
+                <div class="premium-pricing-price-container">
+                        <strike class="premium-pricing-slashed-price-value">{{{ settings.premium_pricing_table_slashed_price_value }}}</strike>
+                        <span class="premium-pricing-price-currency">{{{ settings.premium_pricing_table_price_currency }}}</span>
+                        <span class="premium-pricing-price-value">{{{ settings.premium_pricing_table_price_value }}}</span>
+                        <span class="premium-pricing-price-separator">{{{ settings.premium_pricing_table_price_separator }}}</span>
+                        <span class="premium-pricing-price-duration">{{{ settings.premium_pricing_table_price_duration }}}</span>
+                </div>
+            <# } #>
+            <# if('yes' === settings.premium_pricing_table_list_switcher ) { #>
+                <div class="premium-pricing-list-container">
+                    <ul class="premium-pricing-list">
+                    <# _.each( settings.premium_fancy_text_list_items, function( item ) { #>
+                        <li>
+                            <i class="{{ item.premium_pricing_list_item_icon }}"></i>
+                            <span class="premium-pricing-list-span">{{{ item.premium_pricing_list_item_text }}}</span>
+                        </li>
+                    <# } ); #>
+                    </ul>
+                </div>
+            <# } #>
+            <# if('yes' === settings.premium_pricing_table_description_switcher ) { #>
+                <div class="premium-pricing-description-container">
+                    <div {{{ view.getRenderAttributeString('premium_pricing_table_description_text') }}}>
+                        {{{ settings.premium_pricing_table_description_text }}}
+                    </div>
+                </div>
+            <# } #>
+            <# if('yes' === settings.premium_pricing_table_button_switcher ) { #>
+                <div class="premium-pricing-button-container">
+                    <a class="premium-pricing-price-button" target="_{{ settings.premium_pricing_table_button_link_target }}" href="{{ linkURL }}">
+                        <span {{{ view.getRenderAttributeString('premium_pricing_table_button_text') }}}>{{{ settings.premium_pricing_table_button_text }}}</span>
+                    </a>
+                </div>
+            <# } #>
+        </div>
+        <?php
+    }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Pricing_Table_Widget());

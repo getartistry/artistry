@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Multicurrency Product Base Price
  *
- * @version 3.7.0
+ * @version 3.9.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    (maybe) `if ( isset( $all_currencies[ $currency_from ] ) ) { unset( $all_currencies[ $currency_from ] ); }`
@@ -11,7 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $currency_from  = get_woocommerce_currency();
-$all_currencies = wcj_get_currencies_names_and_symbols();
+$all_currencies = wcj_get_woocommerce_currencies_and_symbols();
 $settings = array(
 	array(
 		'title'    => __( 'Options', 'woocommerce-jetpack' ),
@@ -62,6 +62,13 @@ $settings = array(
 		'id'       => 'wcj_multicurrency_base_price_save_prices',
 		'default'  => 'no',
 		'type'     => 'checkbox',
+	),
+	array(
+		'title'    => __( 'Advanced: Price Filters Priority', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Priority for all module\'s price filters. Set to zero to use default priority.' ),
+		'id'       => 'wcj_multicurrency_base_price_advanced_price_hooks_priority',
+		'default'  => 0,
+		'type'     => 'number',
 	),
 	array(
 		'type'     => 'sectionend',

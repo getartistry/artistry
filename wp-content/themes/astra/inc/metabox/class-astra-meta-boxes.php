@@ -104,7 +104,8 @@ if ( ! class_exists( 'Astra_Meta_Boxes' ) ) {
 			 * @see http://php.net/manual/en/filter.filters.sanitize.php
 			 */
 			self::$meta_option = apply_filters(
-				'astra_meta_box_options', array(
+				'astra_meta_box_options',
+				array(
 					'ast-main-header-display' => array(
 						'sanitize' => 'FILTER_DEFAULT',
 					),

@@ -1,12 +1,11 @@
 .jet-subscribe-form {
 	max-width: 100%;
 
-	&__input-group {
-
-	}
-
-	&__input {
-		max-width: 100%;
+	&__fields {
+		display: flex;
+		flex-flow: column nowrap;
+		justify-content: flex-start;
+		align-items: stretch;
 	}
 
 	&__submit {
@@ -19,6 +18,7 @@
 
 		i {
 			visibility: visible;
+			transition: inherit;
 		}
 
 		span {
@@ -77,11 +77,16 @@
 	.jet-subscribe-form__input-group {
 		display: flex;
 		flex-flow: row wrap;
-		justify-content: flex-end;
-		align-items: center;
+		justify-content: flex-start;
+		align-items: flex-start;
 
-		.jet-subscribe-form__input {
+		.jet-subscribe-form__fields {
 			flex: 1 1 auto;
+			width: auto;
+		}
+
+		.jet-subscribe-form__submit {
+			flex: 0 1 auto;
 			width: auto;
 		}
 	}
@@ -93,6 +98,10 @@
 		flex-flow: column wrap;
 		justify-content: flex-start;
 		align-items: center;
+
+		.jet-subscribe-form__fields {
+			width: 100%;
+		}
 	}
 }
 

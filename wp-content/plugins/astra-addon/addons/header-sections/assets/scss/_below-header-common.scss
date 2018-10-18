@@ -2,6 +2,10 @@
 @import "mixins";
 
 .ast-below-header {
+    z-index: 3;
+}
+
+.ast-below-header {
     border-bottom: 1px solid #ffffff;
     margin-left: auto;
     margin-right: auto;
@@ -27,7 +31,6 @@
 
     .ast-search-icon {
         display: block;
-        padding:0 1em;
     }
     /* Search widget. */
     .widget_search {
@@ -52,13 +55,11 @@
 }
 
 .below-header-section-1 {
-    .ast-search-icon{
-        padding: 0 .5em;
-    }
     .ast-search-menu-icon {
-        left: -.5em;
 
         .search-form {
+            right: auto;
+            left: -1em;
             padding-left: 3em;
             padding-right: 0;
         }
@@ -67,6 +68,7 @@
 
 .below-header-user-select {
     padding-top: 0;
+    align-items: center;
     .widget{
         margin: 0 .5em;
         display: inline-block;
@@ -257,18 +259,6 @@
             max-height: initial;
         }
 
-        .ast-search-menu-icon {
-            right: auto;
-            left: auto;
-        }
-
-        .search-form {
-            padding: 0;
-        }
-
-        .search-field {
-            padding-right: 5.5em;
-        }
         .widget{
             margin: .5em 0;
             display: block;

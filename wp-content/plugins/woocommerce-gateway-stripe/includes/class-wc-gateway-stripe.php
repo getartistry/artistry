@@ -111,13 +111,13 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 	 * Constructor
 	 */
 	public function __construct() {
-		$this->retry_interval       = 1;
-		$this->id                   = 'stripe';
-		$this->method_title         = __( 'Stripe', 'woocommerce-gateway-stripe' );
+		$this->retry_interval     = 1;
+		$this->id                 = 'stripe';
+		$this->method_title       = __( 'Stripe', 'woocommerce-gateway-stripe' );
 		/* translators: 1) link to Stripe register page 2) link to Stripe api keys page */
-		$this->method_description   = sprintf( __( 'Stripe works by adding payment fields on the checkout and then sending the details to Stripe for verification. <a href="%1$s" target="_blank">Sign up</a> for a Stripe account, and <a href="%2$s" target="_blank">get your Stripe account keys</a>.', 'woocommerce-gateway-stripe' ), 'https://dashboard.stripe.com/register', 'https://dashboard.stripe.com/account/apikeys' );
-		$this->has_fields           = true;
-		$this->supports             = array(
+		$this->method_description = sprintf( __( 'Stripe works by adding payment fields on the checkout and then sending the details to Stripe for verification. <a href="%1$s" target="_blank">Sign up</a> for a Stripe account, and <a href="%2$s" target="_blank">get your Stripe account keys</a>.', 'woocommerce-gateway-stripe' ), 'https://dashboard.stripe.com/register', 'https://dashboard.stripe.com/account/apikeys' );
+		$this->has_fields         = true;
+		$this->supports           = array(
 			'products',
 			'refunds',
 			'tokenization',
@@ -168,8 +168,8 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 		add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
-		add_action( 'woocommerce_admin_order_totals_after_total', array( $this, 'display_order_fee' ), 10, 1 );
-		add_action( 'woocommerce_admin_order_totals_after_total', array( $this, 'display_order_payout' ), 20, 1 );
+		add_action( 'woocommerce_admin_order_totals_after_total', array( $this, 'display_order_fee' ) );
+		add_action( 'woocommerce_admin_order_totals_after_total', array( $this, 'display_order_payout' ), 20 );
 		add_action( 'woocommerce_customer_save_address', array( $this, 'show_update_card_notice' ), 10, 2 );
 		add_action( 'woocommerce_receipt_stripe', array( $this, 'stripe_checkout_receipt_page' ) );
 		add_action( 'woocommerce_api_' . strtolower( get_class( $this ) ), array( $this, 'stripe_checkout_return_handler' ) );
@@ -264,7 +264,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 		$display_tokenization = $this->supports( 'tokenization' ) && is_checkout() && $this->saved_cards;
 		$total                = WC()->cart->total;
 		$user_email           = '';
-		$description          = $this->get_description() ? $this->get_description() : '';
+		$description          = ! empty( $this->get_description() ) ? $this->get_description() : '';
 		$firstname            = '';
 		$lastname             = '';
 
@@ -288,7 +288,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 
 		} elseif ( function_exists( 'wcs_order_contains_subscription' ) && isset( $_GET['change_payment_method'] ) ) {
 			$pay_button_text = __( 'Change Payment Method', 'woocommerce-gateway-stripe' );
-			$total        = '';
+			$total           = '';
 		} else {
 			$pay_button_text = '';
 		}
@@ -312,15 +312,14 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 			data-three-d-secure="' . esc_attr( $this->three_d_secure ? 'true' : 'false' ) . '"
 			data-allow-remember-me="' . esc_attr( apply_filters( 'wc_stripe_allow_remember_me', true ) ? 'true' : 'false' ) . '">';
 
-		if ( $description ) {
-			if ( $this->testmode ) {
-				/* translators: link to Stripe testing page */
-				$description .= ' ' . sprintf( __( 'TEST MODE ENABLED. In test mode, you can use the card number 4242424242424242 with any CVC and a valid expiration date or check the <a href="%s" target="_blank">Testing Stripe documentation</a> for more card numbers.', 'woocommerce-gateway-stripe' ), 'https://stripe.com/docs/testing' );
-				$description  = trim( $description );
-			}
-
-			echo apply_filters( 'wc_stripe_description', wpautop( wp_kses_post( $description ) ), $this->id );
+		if ( $this->testmode ) {
+			/* translators: link to Stripe testing page */
+			$description .= ' ' . sprintf( __( 'TEST MODE ENABLED. In test mode, you can use the card number 4242424242424242 with any CVC and a valid expiration date or check the <a href="%s" target="_blank">Testing Stripe documentation</a> for more card numbers.', 'woocommerce-gateway-stripe' ), 'https://stripe.com/docs/testing' );
 		}
+
+		$description = trim( $description );
+
+		echo apply_filters( 'wc_stripe_description', wpautop( wp_kses_post( $description ) ), $this->id );
 
 		if ( $display_tokenization ) {
 			$this->tokenization_script();
@@ -395,6 +394,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 
 			<!-- Used to display form errors -->
 			<div class="stripe-source-errors" role="alert"></div>
+			<br />
 			<?php do_action( 'woocommerce_credit_card_form_end', $this->id ); ?>
 			<div class="clear"></div>
 		</fieldset>
@@ -478,14 +478,16 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 			$order_id = wc_get_order_id_by_order_key( urldecode( $_GET['key'] ) );
 			$order    = wc_get_order( $order_id );
 
-			$stripe_params['billing_first_name'] = WC_Stripe_Helper::is_pre_30() ? $order->billing_first_name : $order->get_billing_first_name();
-			$stripe_params['billing_last_name']  = WC_Stripe_Helper::is_pre_30() ? $order->billing_last_name : $order->get_billing_last_name();
-			$stripe_params['billing_address_1']  = WC_Stripe_Helper::is_pre_30() ? $order->billing_address_1 : $order->get_billing_address_1();
-			$stripe_params['billing_address_2']  = WC_Stripe_Helper::is_pre_30() ? $order->billing_address_2 : $order->get_billing_address_2();
-			$stripe_params['billing_state']      = WC_Stripe_Helper::is_pre_30() ? $order->billing_state : $order->get_billing_state();
-			$stripe_params['billing_city']       = WC_Stripe_Helper::is_pre_30() ? $order->billing_city : $order->get_billing_city();
-			$stripe_params['billing_postcode']   = WC_Stripe_Helper::is_pre_30() ? $order->billing_postcode : $order->get_billing_postcode();
-			$stripe_params['billing_country']    = WC_Stripe_Helper::is_pre_30() ? $order->billing_country : $order->get_billing_country();
+			if ( is_a( $order, 'WC_Order' ) ) {
+				$stripe_params['billing_first_name'] = WC_Stripe_Helper::is_pre_30() ? $order->billing_first_name : $order->get_billing_first_name();
+				$stripe_params['billing_last_name']  = WC_Stripe_Helper::is_pre_30() ? $order->billing_last_name : $order->get_billing_last_name();
+				$stripe_params['billing_address_1']  = WC_Stripe_Helper::is_pre_30() ? $order->billing_address_1 : $order->get_billing_address_1();
+				$stripe_params['billing_address_2']  = WC_Stripe_Helper::is_pre_30() ? $order->billing_address_2 : $order->get_billing_address_2();
+				$stripe_params['billing_state']      = WC_Stripe_Helper::is_pre_30() ? $order->billing_state : $order->get_billing_state();
+				$stripe_params['billing_city']       = WC_Stripe_Helper::is_pre_30() ? $order->billing_city : $order->get_billing_city();
+				$stripe_params['billing_postcode']   = WC_Stripe_Helper::is_pre_30() ? $order->billing_postcode : $order->get_billing_postcode();
+				$stripe_params['billing_country']    = WC_Stripe_Helper::is_pre_30() ? $order->billing_country : $order->get_billing_country();
+			}
 		}
 
 		$stripe_params['no_prepaid_card_msg']                     = __( 'Sorry, we\'re not accepting prepaid cards at this time. Your credit card has not been charge. Please try with alternative payment method.', 'woocommerce-gateway-stripe' );
@@ -501,6 +503,8 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 		$stripe_params['stripe_nonce']                            = wp_create_nonce( '_wc_stripe_nonce' );
 		$stripe_params['statement_descriptor']                    = $this->statement_descriptor;
 		$stripe_params['elements_options']                        = apply_filters( 'wc_stripe_elements_options', array() );
+		$stripe_params['sepa_elements_options']                   = apply_filters( 'wc_stripe_sepa_elements_options', array( 'supportedCountries' => array( 'SEPA' ), 'placeholderCountry' => WC()->countries->get_base_country(), 'style' => array( 'base' => array( 'fontSize' => '15px' ) ) ) );
+		$stripe_params['invalid_owner_name']                      = __( 'Billing First Name and Last Name are required.', 'woocommerce-gateway-stripe' );
 		$stripe_params['is_stripe_checkout']                      = $this->stripe_checkout ? 'yes' : 'no';
 		$stripe_params['is_change_payment_page']                  = isset( $_GET['change_payment_method'] ) ? 'yes' : 'no';
 		$stripe_params['is_add_payment_page']                     = is_wc_endpoint_url( 'add-payment-method' ) ? 'yes' : 'no';
@@ -691,12 +695,11 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 			}
 
 			$prepared_source = $this->prepare_source( get_current_user_id(), $force_save_source );
-			$source_object   = $prepared_source->source_object;
 
 			// Check if we don't allow prepaid credit cards.
-			if ( ! apply_filters( 'wc_stripe_allow_prepaid_card', true ) && $this->is_prepaid_card( $source_object ) ) {
+			if ( ! apply_filters( 'wc_stripe_allow_prepaid_card', true ) && $this->is_prepaid_card( $prepared_source->source_object ) ) {
 				$localized_message = __( 'Sorry, we\'re not accepting prepaid cards at this time. Your credit card has not been charge. Please try with alternative payment method.', 'woocommerce-gateway-stripe' );
-				throw new WC_Stripe_Exception( print_r( $source_object, true ), $localized_message );
+				throw new WC_Stripe_Exception( print_r( $prepared_source->source_object, true ), $localized_message );
 			}
 
 			if ( empty( $prepared_source->source ) ) {
@@ -720,8 +723,8 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 				 * Note that if we need to save source, the original source must be first
 				 * attached to a customer in Stripe before it can be charged.
 				 */
-				if ( $this->is_3ds_required( $source_object ) ) {
-					$response = $this->create_3ds_source( $order, $source_object );
+				if ( $this->is_3ds_required( $prepared_source->source_object ) ) {
+					$response = $this->create_3ds_source( $order, $prepared_source->source_object );
 
 					if ( ! empty( $response->error ) ) {
 						$localized_message = $response->error->message;
@@ -750,6 +753,9 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 							'result'   => 'success',
 							'redirect' => esc_url_raw( $response->redirect->url ),
 						);
+					} elseif ( 'not_required' === $response->redirect->status && 'chargeable' === $response->status ) {
+						// Override the original source object with 3DS.
+						$prepared_source->source_object = $response;
 					}
 				}
 
@@ -758,7 +764,7 @@ class WC_Gateway_Stripe extends WC_Stripe_Payment_Gateway {
 				/* If we're doing a retry and source is chargeable, we need to pass
 				 * a different idempotency key and retry for success.
 				 */
-				if ( $this->need_update_idempotency_key( $source_object, $previous_error ) ) {
+				if ( $this->need_update_idempotency_key( $prepared_source->source_object, $previous_error ) ) {
 					add_filter( 'wc_stripe_idempotency_key', array( $this, 'change_idempotency_key' ), 10, 2 );
 				}
 

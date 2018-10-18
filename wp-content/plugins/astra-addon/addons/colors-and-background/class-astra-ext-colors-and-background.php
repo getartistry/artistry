@@ -39,7 +39,6 @@ if ( ! class_exists( 'Astra_Ext_Colors_And_Background' ) ) {
 		 */
 		public function __construct() {
 			require_once ASTRA_EXT_COLORS_DIR . 'classes/class-astra-ext-colors-loader.php';
-			require_once ASTRA_EXT_COLORS_DIR . 'classes/class-astra-ext-colors-markup.php';
 
 			// Include front end files.
 			if ( ! is_admin() ) {

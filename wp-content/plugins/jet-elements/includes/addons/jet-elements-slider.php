@@ -30,7 +30,7 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-09';
+		return 'jetelements-icon-7';
 	}
 
 	public function get_categories() {
@@ -63,201 +63,6 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 				'thumbnail_container' => '.jet-slider .sp-thumbnail-container',
 			)
 		);
-
-		$this->start_controls_section(
-			'section_settings',
-			array(
-				'label' => esc_html__( 'Settings', 'jet-elements' ),
-			)
-		);
-
-		$this->add_control(
-			'slider_navigation',
-			array(
-				'label'        => esc_html__( 'Use navigation?', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'true',
-			)
-		);
-
-		$this->add_control(
-			'slider_navigation_on_hover',
-			array(
-				'label'        => esc_html__( 'Indicates whether the arrows will fade in only on hover', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'false',
-				'condition' => array(
-					'slider_navigation' => 'true',
-				),
-			)
-		);
-
-		$this->add_control(
-			'slider_pagination',
-			array(
-				'label'        => esc_html__( 'Use pagination?', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'false',
-			)
-		);
-
-		$this->add_control(
-			'slider_autoplay',
-			array(
-				'label'        => esc_html__( 'Use autoplay?', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'true',
-			)
-		);
-
-		$this->add_control(
-			'slider_autoplay_delay',
-			array(
-				'label'   => esc_html__( 'Autoplay delay(ms)', 'jet-elements' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 5000,
-				'min'     => 2000,
-				'max'     => 10000,
-				'step'    => 100,
-				'condition' => array(
-					'slider_autoplay' => 'true',
-				),
-			)
-		);
-
-		$this->add_control(
-			'slider_fullScreen',
-			array(
-				'label'        => esc_html__( 'Display fullScreen button?', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'true',
-			)
-		);
-
-		$this->add_control(
-			'slider_shuffle',
-			array(
-				'label'        => esc_html__( 'Indicates if the slides will be shuffled', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'false',
-			)
-		);
-
-		$this->add_control(
-			'slider_loop',
-			array(
-				'label'        => esc_html__( 'Indicates if the slides will be looped', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'true',
-			)
-		);
-
-		$this->add_control(
-			'slider_fade_mode',
-			array(
-				'label'        => esc_html__( 'Use fade effect?', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'false',
-			)
-		);
-
-		$this->add_control(
-			'slide_distance',
-			array(
-				'label' => esc_html__( ' Between Slides Distance', 'jet-elements' ),
-				'type'  => Controls_Manager::SLIDER,
-				'range' => array(
-					'px' => array(
-						'min' => 0,
-						'max' => 100,
-					),
-				),
-				'default' => array(
-					'unit' => 'px',
-					'size' => 10,
-				),
-			)
-		);
-
-		$this->add_control(
-			'slide_duration',
-			array(
-				'label'   => esc_html__( 'Slide Duration(ms)', 'jet-elements' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 500,
-				'min'     => 100,
-				'max'     => 5000,
-				'step'    => 100,
-			)
-		);
-
-		$this->add_control(
-			'thumbnails',
-			array(
-				'label'        => esc_html__( 'Display thumbnails?', 'jet-elements' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
-				'label_off'    => esc_html__( 'No', 'jet-elements' ),
-				'return_value' => 'true',
-				'default'      => 'true',
-			)
-		);
-
-		$this->add_control(
-			'thumbnail_width',
-			array(
-				'label'   => esc_html__( 'Thumbnail width(px)', 'jet-elements' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 120,
-				'min'     => 20,
-				'max'     => 200,
-				'step'    => 1,
-				'condition' => array(
-					'thumbnails' => 'true',
-				),
-			)
-		);
-
-		$this->add_control(
-			'thumbnail_height',
-			array(
-				'label'   => esc_html__( 'Thumbnail height(px)', 'jet-elements' ),
-				'type'    => Controls_Manager::NUMBER,
-				'default' => 80,
-				'min'     => 20,
-				'max'     => 200,
-				'step'    => 1,
-				'condition' => array(
-					'thumbnails' => 'true',
-				),
-			)
-		);
-
-		$this->end_controls_section();
 
 		$this->start_controls_section(
 			'section_items_data',
@@ -400,6 +205,223 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 
 		$this->end_controls_section();
 
+		$this->start_controls_section(
+			'section_settings',
+			array(
+				'label' => esc_html__( 'Settings', 'jet-elements' ),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			array(
+				'name'    => 'slider_image', // Usage: `{name}_size` and `{name}_custom_dimension`, in this case `image_size` and `image_custom_dimension`.
+				'default' => 'large',
+			)
+		);
+
+		$this->add_control(
+			'slider_navigation',
+			array(
+				'label'        => esc_html__( 'Use navigation?', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'true',
+			)
+		);
+
+		$this->add_control(
+			'slider_navigation_on_hover',
+			array(
+				'label'        => esc_html__( 'Indicates whether the arrows will fade in only on hover', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'false',
+				'condition' => array(
+					'slider_navigation' => 'true',
+				),
+			)
+		);
+
+		$this->add_control(
+			'slider_pagination',
+			array(
+				'label'        => esc_html__( 'Use pagination?', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'false',
+			)
+		);
+
+		$this->add_control(
+			'slider_autoplay',
+			array(
+				'label'        => esc_html__( 'Use autoplay?', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'true',
+			)
+		);
+
+		$this->add_control(
+			'slider_autoplay_delay',
+			array(
+				'label'   => esc_html__( 'Autoplay delay(ms)', 'jet-elements' ),
+				'type'    => Controls_Manager::NUMBER,
+				'default' => 5000,
+				'min'     => 2000,
+				'max'     => 10000,
+				'step'    => 100,
+				'condition' => array(
+					'slider_autoplay' => 'true',
+				),
+			)
+		);
+
+		$this->add_control(
+			'slide_autoplay_on_hover',
+			array(
+				'label'   => esc_html__( 'Autoplay On Hover', 'jet-elements' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => 'pause',
+				'options' => array(
+					'none'  => esc_html__( 'None', 'jet-elements' ),
+					'pause' => esc_html__( 'Pause', 'jet-elements' ),
+					'stop'  => esc_html__( 'Stop', 'jet-elements' ),
+				),
+			)
+		);
+
+		$this->add_control(
+			'slider_fullScreen',
+			array(
+				'label'        => esc_html__( 'Display fullScreen button?', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'true',
+			)
+		);
+
+		$this->add_control(
+			'slider_shuffle',
+			array(
+				'label'        => esc_html__( 'Indicates if the slides will be shuffled', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'false',
+			)
+		);
+
+		$this->add_control(
+			'slider_loop',
+			array(
+				'label'        => esc_html__( 'Indicates if the slides will be looped', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'true',
+			)
+		);
+
+		$this->add_control(
+			'slider_fade_mode',
+			array(
+				'label'        => esc_html__( 'Use fade effect?', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'false',
+			)
+		);
+
+		$this->add_control(
+			'slide_distance',
+			array(
+				'label' => esc_html__( ' Between Slides Distance', 'jet-elements' ),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 100,
+					),
+				),
+				'default' => array(
+					'unit' => 'px',
+					'size' => 10,
+				),
+			)
+		);
+
+		$this->add_control(
+			'slide_duration',
+			array(
+				'label'   => esc_html__( 'Slide Duration(ms)', 'jet-elements' ),
+				'type'    => Controls_Manager::NUMBER,
+				'default' => 500,
+				'min'     => 100,
+				'max'     => 5000,
+				'step'    => 100,
+			)
+		);
+
+		$this->add_control(
+			'thumbnails',
+			array(
+				'label'        => esc_html__( 'Display thumbnails?', 'jet-elements' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => 'true',
+			)
+		);
+
+		$this->add_control(
+			'thumbnail_width',
+			array(
+				'label'   => esc_html__( 'Thumbnail width(px)', 'jet-elements' ),
+				'type'    => Controls_Manager::NUMBER,
+				'default' => 120,
+				'min'     => 20,
+				'max'     => 200,
+				'step'    => 1,
+				'condition' => array(
+					'thumbnails' => 'true',
+				),
+			)
+		);
+
+		$this->add_control(
+			'thumbnail_height',
+			array(
+				'label'   => esc_html__( 'Thumbnail height(px)', 'jet-elements' ),
+				'type'    => Controls_Manager::NUMBER,
+				'default' => 80,
+				'min'     => 20,
+				'max'     => 200,
+				'step'    => 1,
+				'condition' => array(
+					'thumbnails' => 'true',
+				),
+			)
+		);
+
+		$this->end_controls_section();
+
 		/**
 		 * General Style Section
 		 */
@@ -435,10 +457,17 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 			array(
 				'label' => esc_html__( 'Slider Height(px)', 'jet-elements' ),
 				'type'  => Controls_Manager::SLIDER,
+				'size_units' => array(
+					'px', 'vh',
+				),
 				'range' => array(
 					'px' => array(
 						'min' => 300,
 						'max' => 1000,
+					),
+					'vh' => array(
+						'min' => 10,
+						'max' => 100,
 					),
 				),
 				'default' => array(
@@ -482,9 +511,9 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 			array(
 				'label'   => esc_html__( 'Image Scale Mode', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
-				'default' => 'cover',
+				'default' => 'exact',
 				'options' => array(
-					'cover'   => esc_html__( 'Cover', 'jet-elements' ),
+					'exact'   => esc_html__( 'Cover', 'jet-elements' ),
 					'contain' => esc_html__( 'Contain', 'jet-elements' ),
 				),
 			)
@@ -909,11 +938,16 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'pagination_style',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['pagination'] . ' .sp-button',
 				'fields_options' => array(
 					'color' => array(
 						'default' => '#fff',
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -931,6 +965,7 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'pagination_style_hover',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['pagination'] . ' .sp-button:hover',
 				'fields_options' => array(
 					'color' => array(
@@ -939,6 +974,10 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_1,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -956,6 +995,7 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'pagination_style_active',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['pagination'] . ' .sp-button.sp-selected-button',
 				'fields_options' => array(
 					'color' => array(
@@ -964,6 +1004,10 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_1,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -981,13 +1025,14 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['pagination'] => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+				'separator' => 'before',
 			)
 		);
 
 		$this->add_responsive_control(
 			'pagination_dots_margin',
 			array(
-				'label'      => __( 'Dots Margin', 'jet-elements' ),
+				'label'      => __( 'Margin', 'jet-elements' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
@@ -1105,7 +1150,7 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 				'selector'  => '{{WRAPPER}} ' . $css_scheme['thumbnail_container'] . ':before',
 				'fields_options' => array(
 					'border' => array(
-						'default' => 'none',
+						'default' => '',
 					),
 					'width' => array(
 						'default' => array(
@@ -2266,27 +2311,28 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 		$module_settings = $this->get_settings();
 
 		$settings = array(
-			'sliderWidth'          => $module_settings['slider_width'],
-			'sliderHeight'         => $module_settings['slider_height'],
-			'sliderHeightTablet'   => $module_settings['slider_height_tablet'],
-			'sliderHeightMobile'   => $module_settings['slider_height_mobile'],
-			'sliderNavigation'     => filter_var( $module_settings['slider_navigation'], FILTER_VALIDATE_BOOLEAN ),
-			'sliderNavigationIcon' => $module_settings['slider_navigation_icon_arrow'],
-			'sliderNaviOnHover'    => filter_var( $module_settings['slider_navigation_on_hover'], FILTER_VALIDATE_BOOLEAN ),
-			'sliderPagination'     => filter_var( $module_settings['slider_pagination'], FILTER_VALIDATE_BOOLEAN ),
-			'sliderAutoplay'       => filter_var( $module_settings['slider_autoplay'], FILTER_VALIDATE_BOOLEAN ),
-			'sliderAutoplayDelay'  => $module_settings['slider_autoplay_delay'],
-			'sliderFullScreen'     => filter_var( $module_settings['slider_fullScreen'], FILTER_VALIDATE_BOOLEAN ),
-			'sliderFullscreenIcon' => $module_settings['slider_fullscreen_icon'],
-			'sliderShuffle'        => filter_var( $module_settings['slider_shuffle'], FILTER_VALIDATE_BOOLEAN ),
-			'sliderLoop'           => filter_var( $module_settings['slider_loop'], FILTER_VALIDATE_BOOLEAN ),
-			'sliderFadeMode'       => filter_var( $module_settings['slider_fade_mode'], FILTER_VALIDATE_BOOLEAN ),
-			'slideDistance'        => $module_settings['slide_distance'],
-			'slideDuration'        => $module_settings['slide_duration'],
-			'imageScaleMode'       => $module_settings['slide_image_scale_mode'],
-			'thumbnails'           => $module_settings['thumbnails'],
-			'thumbnailWidth'       => $module_settings['thumbnail_width'],
-			'thumbnailHeight'      => $module_settings['thumbnail_height'],
+			'sliderWidth'           => $module_settings['slider_width'],
+			'sliderHeight'          => $module_settings['slider_height'],
+			'sliderHeightTablet'    => $module_settings['slider_height_tablet'],
+			'sliderHeightMobile'    => $module_settings['slider_height_mobile'],
+			'sliderNavigation'      => filter_var( $module_settings['slider_navigation'], FILTER_VALIDATE_BOOLEAN ),
+			'sliderNavigationIcon'  => $module_settings['slider_navigation_icon_arrow'],
+			'sliderNaviOnHover'     => filter_var( $module_settings['slider_navigation_on_hover'], FILTER_VALIDATE_BOOLEAN ),
+			'sliderPagination'      => filter_var( $module_settings['slider_pagination'], FILTER_VALIDATE_BOOLEAN ),
+			'sliderAutoplay'        => filter_var( $module_settings['slider_autoplay'], FILTER_VALIDATE_BOOLEAN ),
+			'sliderAutoplayDelay'   => $module_settings['slider_autoplay_delay'],
+			'sliderAutoplayOnHover' => $module_settings['slide_autoplay_on_hover'],
+			'sliderFullScreen'      => filter_var( $module_settings['slider_fullScreen'], FILTER_VALIDATE_BOOLEAN ),
+			'sliderFullscreenIcon'  => $module_settings['slider_fullscreen_icon'],
+			'sliderShuffle'         => filter_var( $module_settings['slider_shuffle'], FILTER_VALIDATE_BOOLEAN ),
+			'sliderLoop'            => filter_var( $module_settings['slider_loop'], FILTER_VALIDATE_BOOLEAN ),
+			'sliderFadeMode'        => filter_var( $module_settings['slider_fade_mode'], FILTER_VALIDATE_BOOLEAN ),
+			'slideDistance'         => $module_settings['slide_distance'],
+			'slideDuration'         => $module_settings['slide_duration'],
+			'imageScaleMode'        => $module_settings['slide_image_scale_mode'],
+			'thumbnails'            => filter_var( $module_settings['thumbnails'], FILTER_VALIDATE_BOOLEAN ),
+			'thumbnailWidth'        => $module_settings['thumbnail_width'],
+			'thumbnailHeight'       => $module_settings['thumbnail_height'],
 		);
 
 		$settings = json_encode( $settings );
@@ -2294,6 +2340,12 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 		return sprintf( 'data-settings=\'%1$s\'', $settings );
 	}
 
+	/**
+	 * [__loop_button_item description]
+	 * @param  array  $keys   [description]
+	 * @param  string $format [description]
+	 * @return [type]         [description]
+	 */
 	protected function __loop_button_item( $keys = array(), $format = '%s' ) {
 		$item = $this->__processed_item;
 		$params = [];
@@ -2314,6 +2366,35 @@ class Jet_Elements_Slider extends Jet_Elements_Base {
 		return vsprintf( $format, $params );
 	}
 
+	/**
+	 * [__loop_item_image_tag description]
+	 * @return [type] [description]
+	 */
+	protected function __loop_item_image_tag( ) {
+		$item = $this->__processed_item;
+		$image = $item['item_image'];
+
+		if ( empty( $image['id'] ) ) {
+			return sprintf( '<img class="sp-image" src="%s" alt="">', Utils::get_placeholder_image_src() );
+		}
+
+		$image_sizes = get_intermediate_image_sizes();
+
+		$slider_image_size = $this->get_settings( 'slider_image_size' );
+
+		$slider_image_size = ! empty( $slider_image_size ) ? $slider_image_size : 'full';
+
+		$image_attr = array(
+			'class' => 'sp-image',
+		);
+
+		return wp_get_attachment_image( $image['id'], $slider_image_size, false, $image_attr );
+	}
+
+	/**
+	 * [render description]
+	 * @return [type] [description]
+	 */
 	protected function render() {
 
 		$this->__context = 'render';

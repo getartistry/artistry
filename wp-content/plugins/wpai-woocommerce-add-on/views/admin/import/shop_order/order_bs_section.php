@@ -1,7 +1,7 @@
 <div class="wpallimport-collapsed closed">
 	<div class="wpallimport-content-section">
 		<div class="wpallimport-collapsed-header">
-			<h3><?php _e('Billing & Shipping Details','wpai_woocommerce_addon_plugin');?></h3>	
+			<h3><?php _e('Billing & Shipping Details',PMWI_Plugin::TEXT_DOMAIN);?></h3>
 		</div>
 		<div class="wpallimport-collapsed-content" style="padding:0;">
 			<div class="wpallimport-collapsed-content-inner">
@@ -16,15 +16,15 @@
 										<ul class="product_data_tabs wc-tabs shop_order_tabs">
 
 											<li class="woocommerce-order-billing-data active">
-												<a href="javascript:void(0);" rel="billing_order_data"><?php _e('Billing','wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="billing_order_data"><?php _e('Billing',PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>
 
 											<li class="woocommerce-order-shipping-data">
-												<a href="javascript:void(0);" rel="shipping_order_data"><?php _e('Shipping', 'wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="shipping_order_data"><?php _e('Shipping', PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>
 
 											<li class="woocommerce-order-payment-data">
-												<a href="javascript:void(0);" rel="payment_order_data"><?php _e('Payment', 'wpai_woocommerce_addon_plugin');?></a>
+												<a href="javascript:void(0);" rel="payment_order_data"><?php _e('Payment', PMWI_Plugin::TEXT_DOMAIN);?></a>
 											</li>											
 
 										</ul>

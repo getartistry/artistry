@@ -108,7 +108,7 @@ function ewww_image_optimizer_bulk_head_output() {
 			</div>
 		</div>
 		<form class="ewww-bulk-form">
-			<p><label for="ewww-force" style="font-weight: bold"><?php esc_html_e( 'Force re-optimize', 'ewww-image-optimizer' ); ?></label>
+			<p><label for="ewww-force" style="font-weight: bold"><?php esc_html_e( 'Force re-optimize', 'ewww-image-optimizer' ); ?></label><?php echo ewwwio_help_link( 'https://docs.ewww.io/article/65-force-re-optimization', '5bb640a7042863158cc711cd' ); ?>
 				&emsp;<input type="checkbox" id="ewww-force" name="ewww-force"<?php echo ( get_transient( 'ewww_image_optimizer_force_reopt' ) ) ? ' checked' : ''; ?>>
 				&nbsp;<?php esc_html_e( 'Previously optimized images will be skipped by default, check this box before scanning to override.', 'ewww-image-optimizer' ); ?></p>
 			<p><label for="ewww-delay" style="font-weight: bold"><?php esc_html_e( 'Choose how long to pause between images (in seconds, 0 = disabled)', 'ewww-image-optimizer' ); ?></label>&emsp;<input type="text" id="ewww-delay" name="ewww-delay" value="<?php echo $delay; ?>"></p>
@@ -223,17 +223,22 @@ function ewww_image_optimizer_count_optimized( $gallery ) {
 				ewwwio_debug_message( 'we have received attachment ids via $_REQUEST' );
 				// Retrieve the attachment IDs that were pre-loaded in the database.
 				if ( 'scanning' == $resume ) {
+					ewwwio_debug_message( 'still scanning media - phase 1' );
 					$finished       = (array) get_option( 'ewww_image_optimizer_bulk_attachments' );
 					$remaining      = (array) get_option( 'ewww_image_optimizer_scanning_attachments' );
 					$attachment_ids = array_merge( $finished, $remaining );
 				} elseif ( $resume ) {
 					// This shouldn't ever happen, but doesn't hurt to account for the use case, just in case something changes in the future.
+					ewwwio_debug_message( 'this is the improbable, but it happened' );
 					$attachment_ids = get_option( 'ewww_image_optimizer_bulk_attachments' );
 				} else {
+					ewwwio_debug_message( 'we really did get attachments via $_REQUEST, or so we think' );
 					$attachment_ids = get_option( 'ewww_image_optimizer_scanning_attachments' );
 				}
 				if ( ! empty( $attachment_ids ) ) {
 					$full_count = count( $attachment_ids );
+				} else {
+					$full_count = $wpdb->get_var( "SELECT COUNT(ID) FROM $wpdb->posts WHERE (post_type = 'attachment' OR post_type = 'ims_image') AND (post_mime_type LIKE '%%image%%' OR post_mime_type LIKE '%%pdf%%')" );
 				}
 			} else {
 				$full_count = $wpdb->get_var( "SELECT COUNT(ID) FROM $wpdb->posts WHERE (post_type = 'attachment' OR post_type = 'ims_image') AND (post_mime_type LIKE '%%image%%' OR post_mime_type LIKE '%%pdf%%')" );
@@ -456,28 +461,32 @@ function ewww_image_optimizer_bulk_script( $hook ) {
 	$attachment_count = count( $attachments );
 	// Submit a couple variables for our javascript to work with.
 	$loading_image = plugins_url( '/images/wpspin.gif', __FILE__ );
-	wp_localize_script('ewwwbulkscript', 'ewww_vars', array(
-		'_wpnonce'              => wp_create_nonce( 'ewww-image-optimizer-bulk' ),
-		'attachments'           => ewww_image_optimizer_aux_images_table_count_pending(),
-		'image_count'           => $image_count,
-		/* translators: %d: number of images */
-		'count_string'          => sprintf( esc_html__( '%d images', 'ewww-image-optimizer' ), $image_count ),
-		'scan_fail'             => esc_html__( 'Operation timed out, you may need to increase the max_execution_time or memory_limit for PHP', 'ewww-image-optimizer' ),
-		'scan_incomplete'       => esc_html__( 'Scan did not complete, will try again', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' />",
-		'operation_stopped'     => esc_html__( 'Optimization stopped, reload page to resume.', 'ewww-image-optimizer' ),
-		'operation_interrupted' => esc_html__( 'Operation Interrupted', 'ewww-image-optimizer' ),
-		'temporary_failure'     => esc_html__( 'Temporary failure, attempts remaining:', 'ewww-image-optimizer' ),
-		'invalid_response'      => esc_html__( 'Received an invalid response from your website, please check for errors in the Developer Tools console of your browser.', 'ewww-image-optimizer' ),
-		'bad_attachment'        => esc_html__( 'Previous failure due to broken/missing metadata, skipped resizes for attachment:', 'ewww-image-optimizer' ),
-		'remove_failed'         => esc_html__( 'Could not remove image from table.', 'ewww-image-optimizer' ),
-		/* translators: used for Bulk Optimize progress bar, like so: Optimized 32/346 */
-		'optimized'             => esc_html__( 'Optimized', 'ewww-image-optimizer' ),
-		'last_image_header'     => esc_html__( 'Last Image Optimized', 'ewww-image-optimizer' ),
-		'time_remaining'        => esc_html__( 'remaining', 'ewww-image-optimizer' ),
-		'original_restored'     => esc_html__( 'Original Restored', 'ewww-image-optimizer' ),
-		'restoring'             => '<p>' . esc_html__( 'Restoring', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' /></p>",
-		'bulk_fail_more'        => '<a href="https://docs.ewww.io/article/39-bulk-optimizer-failure" target="_blank" data-beacon-article="596f84f72c7d3a73488b3ca7">' . esc_html__( 'more...', 'ewww-image-optimizer' ) . '</a>',
-	) );
+	wp_localize_script(
+		'ewwwbulkscript',
+		'ewww_vars',
+		array(
+			'_wpnonce'              => wp_create_nonce( 'ewww-image-optimizer-bulk' ),
+			'attachments'           => ewww_image_optimizer_aux_images_table_count_pending(),
+			'image_count'           => $image_count,
+			/* translators: %d: number of images */
+			'count_string'          => sprintf( esc_html__( '%d images', 'ewww-image-optimizer' ), $image_count ),
+			'scan_fail'             => esc_html__( 'Operation timed out, you may need to increase the max_execution_time or memory_limit for PHP', 'ewww-image-optimizer' ),
+			'scan_incomplete'       => esc_html__( 'Scan did not complete, will try again', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' />",
+			'operation_stopped'     => esc_html__( 'Optimization stopped, reload page to resume.', 'ewww-image-optimizer' ),
+			'operation_interrupted' => esc_html__( 'Operation Interrupted', 'ewww-image-optimizer' ),
+			'temporary_failure'     => esc_html__( 'Temporary failure, attempts remaining:', 'ewww-image-optimizer' ),
+			'invalid_response'      => esc_html__( 'Received an invalid response from your website, please check for errors in the Developer Tools console of your browser.', 'ewww-image-optimizer' ),
+			'bad_attachment'        => esc_html__( 'Previous failure due to broken/missing metadata, skipped resizes for attachment:', 'ewww-image-optimizer' ),
+			'remove_failed'         => esc_html__( 'Could not remove image from table.', 'ewww-image-optimizer' ),
+			/* translators: used for Bulk Optimize progress bar, like so: Optimized 32/346 */
+			'optimized'             => esc_html__( 'Optimized', 'ewww-image-optimizer' ),
+			'last_image_header'     => esc_html__( 'Last Image Optimized', 'ewww-image-optimizer' ),
+			'time_remaining'        => esc_html__( 'remaining', 'ewww-image-optimizer' ),
+			'original_restored'     => esc_html__( 'Original Restored', 'ewww-image-optimizer' ),
+			'restoring'             => '<p>' . esc_html__( 'Restoring', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' /></p>",
+			'bulk_fail_more'        => '<a href="https://docs.ewww.io/article/39-bulk-optimizer-failure" target="_blank" data-beacon-article="596f84f72c7d3a73488b3ca7">' . esc_html__( 'more...', 'ewww-image-optimizer' ) . '</a>',
+		)
+	);
 	// Load the stylesheet for the jquery progressbar.
 	wp_enqueue_style( 'jquery-ui-progressbar', plugins_url( '/includes/jquery-ui-1.10.1.custom.css', __FILE__ ) );
 	ewwwio_memory( __FUNCTION__ );
@@ -628,17 +637,13 @@ function ewww_image_optimizer_media_scan( $hook = '' ) {
 		ewwwio_debug_message( 'bailing no cli' );
 		ewww_image_optimizer_debug_log();
 		ewwwio_ob_clean();
-		die( ewwwio_json_encode( array(
-			'error' => esc_html__( 'Access denied.', 'ewww-image-optimizer' ),
-		) ) );
+		die( ewwwio_json_encode( array( 'error' => esc_html__( 'Access denied.', 'ewww-image-optimizer' ) ) ) );
 	}
 	if ( ! empty( $_REQUEST['ewww_scan'] ) && ( ! wp_verify_nonce( $_REQUEST['ewww_wpnonce'], 'ewww-image-optimizer-bulk' ) || ! current_user_can( $permissions ) ) ) {
 		ewwwio_debug_message( 'bailing no nonce' );
 		ewww_image_optimizer_debug_log();
 		ewwwio_ob_clean();
-		die( ewwwio_json_encode( array(
-			'error' => esc_html__( 'Access token has expired, please reload the page.', 'ewww-image-optimizer' ),
-		) ) );
+		die( ewwwio_json_encode( array( 'error' => esc_html__( 'Access token has expired, please reload the page.', 'ewww-image-optimizer' ) ) ) );
 	}
 	global $wpdb;
 	if ( strpos( $wpdb->charset, 'utf8' ) === false ) {
@@ -737,9 +742,7 @@ function ewww_image_optimizer_media_scan( $hook = '' ) {
 		} else {
 			ewwwio_debug_message( 'no array found' );
 			ewwwio_ob_clean();
-			die( ewwwio_json_encode( array(
-				'error' => esc_html__( 'List of attachment IDs not found.', 'ewww-image-optimizer' ),
-			) ) );
+			die( ewwwio_json_encode( array( 'error' => esc_html__( 'List of attachment IDs not found.', 'ewww-image-optimizer' ) ) ) );
 		}
 
 		$failsafe_selected_ids = $selected_ids;
@@ -896,7 +899,8 @@ function ewww_image_optimizer_media_scan( $hook = '' ) {
 							$optimized_list[ $ims_path ] = $optimized_list[ $ims_temp_path ];
 							ewwwio_debug_message( "updating record {$optimized_list[ $ims_temp_path ]['id']} with $ims_path" );
 							// Update our records so that we have the correct path going forward.
-							$ewwwdb->update( $ewwwdb->ewwwio_images,
+							$ewwwdb->update(
+								$ewwwdb->ewwwio_images,
 								array(
 									'path'    => ewww_image_optimizer_relative_path_remove( $ims_path ),
 									'updated' => $optimized_list[ $ims_temp_path ]['updated'],
@@ -1200,19 +1204,27 @@ function ewww_image_optimizer_media_scan( $hook = '' ) {
 	$notice        = ( 'low_memory' == get_transient( 'ewww_image_optimizer_low_memory_mode' ) ? esc_html__( "Increasing PHP's memory_limit setting will allow for faster scanning with fewer database queries. Please allow up to 10 minutes for changes to memory limit to be detected.", 'ewww-image-optimizer' ) : '' );
 	if ( count( $attachment_ids ) ) {
 		ewwwio_ob_clean();
-		die( ewwwio_json_encode( array(
-			/* translators: %d: number of images */
-			'remaining'      => sprintf( esc_html__( 'Stage 1, %d images left to scan.', 'ewww-image-optimizer' ), count( $attachment_ids ) ) . "&nbsp;<img src='$loading_image' />",
-			'notice'         => $notice,
-			'bad_attachment' => $bad_attachment,
-		) ) );
+		die(
+			ewwwio_json_encode(
+				array(
+					/* translators: %d: number of images */
+					'remaining'      => sprintf( esc_html__( 'Stage 1, %d images left to scan.', 'ewww-image-optimizer' ), count( $attachment_ids ) ) . "&nbsp;<img src='$loading_image' />",
+					'notice'         => $notice,
+					'bad_attachment' => $bad_attachment,
+				)
+			)
+		);
 	} else {
 		ewwwio_ob_clean();
-		die( ewwwio_json_encode( array(
-			'remaining'      => esc_html__( 'Stage 2, please wait.', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' />",
-			'notice'         => $notice,
-			'bad_attachment' => $bad_attachment,
-		) ) );
+		die(
+			ewwwio_json_encode(
+				array(
+					'remaining'      => esc_html__( 'Stage 2, please wait.', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' />",
+					'notice'         => $notice,
+					'bad_attachment' => $bad_attachment,
+				)
+			)
+		);
 	}
 }
 
@@ -1242,9 +1254,7 @@ function ewww_image_optimizer_bulk_initialize() {
 	$permissions = apply_filters( 'ewww_image_optimizer_bulk_permissions', '' );
 	if ( ! wp_verify_nonce( $_REQUEST['ewww_wpnonce'], 'ewww-image-optimizer-bulk' ) || ! current_user_can( $permissions ) ) {
 		ewwwio_ob_clean();
-		die( ewwwio_json_encode( array(
-			'error' => esc_html__( 'Access token has expired, please reload the page.', 'ewww-image-optimizer' ),
-		) ) );
+		die( ewwwio_json_encode( array( 'error' => esc_html__( 'Access token has expired, please reload the page.', 'ewww-image-optimizer' ) ) ) );
 	}
 	session_write_close();
 	$output      = array();
@@ -1265,16 +1275,24 @@ function ewww_image_optimizer_bulk_initialize() {
 		) {
 			if ( ewww_image_optimizer_function_exists( 'print_r' ) ) {
 				ewwwio_ob_clean();
-				die( ewwwio_json_encode( array(
-					'error' => esc_html__( 'Error retrieving list of images', 'ewww-image-optimizer' ),
-					'data'  => print_r( $attachments, true ),
-				) ) );
+				die(
+					ewwwio_json_encode(
+						array(
+							'error' => esc_html__( 'Error retrieving list of images', 'ewww-image-optimizer' ),
+							'data'  => print_r( $attachments, true ),
+						)
+					)
+				);
 			} else {
 				ewwwio_ob_clean();
-				die( ewwwio_json_encode( array(
-					'error' => esc_html__( 'Error retrieving list of images', 'ewww-image-optimizer' ),
-					'data'  => 'print_r disabled',
-				) ) );
+				die(
+					ewwwio_json_encode(
+						array(
+							'error' => esc_html__( 'Error retrieving list of images', 'ewww-image-optimizer' ),
+							'data'  => 'print_r disabled',
+						)
+					)
+				);
 			}
 		}
 	}
@@ -1477,9 +1495,7 @@ function ewww_image_optimizer_bulk_loop( $hook = '', $delay = 0 ) {
 	$permissions = apply_filters( 'ewww_image_optimizer_bulk_permissions', '' );
 	if ( 'ewww-image-optimizer-cli' !== $hook && ( ! wp_verify_nonce( $_REQUEST['ewww_wpnonce'], 'ewww-image-optimizer-bulk' ) || ! current_user_can( $permissions ) ) ) {
 		ewwwio_ob_clean();
-		die( ewwwio_json_encode( array(
-			'error' => esc_html__( 'Access token has expired, please reload the page.', 'ewww-image-optimizer' ),
-		) ) );
+		die( ewwwio_json_encode( array( 'error' => esc_html__( 'Access token has expired, please reload the page.', 'ewww-image-optimizer' ) ) ) );
 	}
 	session_write_close();
 	// Retrieve the time when the optimizer starts.
@@ -1512,10 +1528,14 @@ function ewww_image_optimizer_bulk_loop( $hook = '', $delay = 0 ) {
 	$image = new EWWW_Image( $attachment, 'media' );
 	if ( ! $image->file ) {
 		ewwwio_ob_clean();
-		die( ewwwio_json_encode( array(
-			'done'      => 1,
-			'completed' => 0,
-		) ) );
+		die(
+			ewwwio_json_encode(
+				array(
+					'done'      => 1,
+					'completed' => 0,
+				)
+			)
+		);
 	}
 
 	$output['results']   = '';

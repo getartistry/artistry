@@ -31,7 +31,7 @@ if (! function_exists ( 'deandev_add_dashboard_widgets' )) {
 					The plugin includes free support. Got a problem? Don’t worry, we have a help desk setup just for your help. Submit a <a href="http://deandev.com/me/support">support ticket</a> and we always happy to help make you happy choosing our plugin.
 				</p>
 				<p>
-					<a href="http://deandev.com/me/support" class="button"> Open a Support Ticket Now </a>
+					<a href="https://deandev.com/me/support" class="button"> Open a Support Ticket Now </a>
 				</p>
 
 			</td>

@@ -39,16 +39,16 @@
 			var canvasEnable = astraAddon.off_canvas_enable || '';
 			if ( canvasEnable ) {
 				$(document).on( 'click', '.' + astraAddon.off_canvas_trigger_class, {class: "ast-off-canvas-overlay"},AstraMenu._enable_offcanvas_overlay );
-				$(document).on( 'click', '.astra-off-canvas-sidebar-wrapper, .astra-off-canvas-sidebar-wrapper .ast-shop-filter-close',{class: "ast-off-canvas-overlay"}, AstraMenu._close_offcanvas );
+				$(document).on( 'click touchstart', '.astra-off-canvas-sidebar-wrapper, .astra-off-canvas-sidebar-wrapper .ast-shop-filter-close',{class: "ast-off-canvas-overlay"}, AstraMenu._close_offcanvas );
 			}
 
 			// Flyout above header menu.
 			$(document).on( 'click', '.ast-flyout-above-menu-enable .ast-above-header .menu-toggle', AstraMenu._open_above_offcanvas );
-			$(document).on( 'click', '.ast-flyout-above-menu-overlay .ast-above-header-navigation-wrap, .ast-flyout-above-menu-overlay .ast-above-header .ast-nav-close', AstraMenu._close_above_offcanvas );
+			$(document).on( 'click touchstart', '.ast-flyout-above-menu-overlay .ast-above-header-navigation-wrap, .ast-flyout-above-menu-overlay .ast-above-header .ast-nav-close', AstraMenu._close_above_offcanvas );
 
 			// Flyout above header menu.
 			$(document).on( 'click', '.ast-flyout-below-menu-enable .ast-below-header .menu-toggle', AstraMenu._open_below_offcanvas );
-			$(document).on( 'click', '.ast-flyout-below-menu-overlay .ast-below-header-navigation-wrap, .ast-flyout-below-menu-overlay .ast-below-header .ast-nav-close', AstraMenu._close_below_offcanvas );
+			$(document).on( 'click touchstart', '.ast-flyout-below-menu-overlay .ast-below-header-navigation-wrap, .ast-flyout-below-menu-overlay .ast-below-header .ast-nav-close', AstraMenu._close_below_offcanvas );
 
 			// Full Screen Below Header menu.
 			$(document).on( 'click', '.ast-fullscreen-below-menu-enable .ast-below-header .menu-toggle', AstraMenu._open_below_fullscreen  );
@@ -60,7 +60,7 @@
 
 			// Flyout menu.
 			$(document).on( 'click', '.ast-flyout-menu-enable .main-header-bar .menu-toggle', { class: 'ast-flyout-menu-overlay'}, AstraMenu._enable_primary_menu_overlay );
-			$(document).on( 'click', '.ast-flyout-menu-overlay .main-header-bar-navigation, .ast-flyout-menu-overlay .main-header-bar .ast-nav-close', { class: 'ast-flyout-menu-overlay' }, AstraMenu._close_offcanvas );
+			$(document).on( 'click touchstart', '.ast-flyout-menu-overlay .main-header-bar-navigation, .ast-flyout-menu-overlay .main-header-bar .ast-nav-close', { class: 'ast-flyout-menu-overlay' }, AstraMenu._close_offcanvas );
 			$(document).on( 'click', '.ast-flyout-menu-overlay .main-header-bar-navigation', { class: "toggled" }, AstraMenu._toggle_menu );
 
 			// Full Screen menu.

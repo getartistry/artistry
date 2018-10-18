@@ -181,7 +181,6 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 					//Code for handling the positioning of the columns
 					if ($field_nm == 'ID') {
 						$temp ['position'] = 1;
-						$temp ['key'] = true;
 						$temp ['editable'] = false;
 						$temp ['batch_editable'] = false;
 						$temp ['align'] = 'left';
@@ -203,7 +202,6 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 					$temp ['type'] = $type;
 
 					$temp ['values'] = array();
-					$temp['search_values'] = array();
 					if ($field_nm == 'post_status') {
 						$temp ['type'] = 'list';
 						$temp ['values'] = array('publish' => __('Publish', Smart_Manager::$text_domain),
@@ -211,6 +209,8 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 												 'draft' => __('Draft', Smart_Manager::$text_domain),
 												 'private' => __('Private', Smart_Manager::$text_domain),
 												 'future' => __('Scheduled', Smart_Manager::$text_domain));
+					
+						$temp['search_values'] = array();
 
 						$temp['search_values'][0] = array('key' => 'publish', 'value' =>  __('Publish',Smart_Manager::$text_domain));
 						$temp['search_values'][1] = array('key' => 'pending', 'value' =>  __('Pending Review',Smart_Manager::$text_domain));
@@ -307,8 +307,8 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 					$temp = array();
 					$type = 'string';
 
-					$meta_key = (!empty($postmeta_col['meta_key'])) ? $postmeta_col['meta_key'] : '';
-					$meta_value = (!empty($postmeta_col['meta_value'])) ? $postmeta_col['meta_value'] : '';
+					$meta_key = ( !empty( $postmeta_col['meta_key'] ) ) ? $postmeta_col['meta_key'] : '';
+					$meta_value = ( !empty( $postmeta_col['meta_value'] ) || $postmeta_col['meta_value'] == 0 ) ? $postmeta_col['meta_value'] : '';
 
 					$temp ['src'] = 'postmeta/meta_key='.$meta_key.'/meta_value='.$meta_key;
 					$temp ['index'] = sanitize_title(str_replace(array('/','='), '_', $temp ['src'])); // generate slug using the wordpress function if not given 
@@ -321,14 +321,14 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 					$temp ['width'] = 100;
 					$temp ['align'] = 'left';
 
-					if (is_numeric($meta_value)) {
+					if ( $meta_value == 'yes' || $meta_value == 'no' || $meta_value == 'true' || $meta_value == 'false' || ( is_numeric($meta_value) && ( $meta_value == 0 || $meta_value == 1 ) ) ) {
+						$type = 'toggle';
+						$temp ['width'] = 30;
+					} else if (is_numeric($meta_value)) {
 						$type = 'number';
 						$temp ['min'] = 0;
 						$temp ['width'] = 50;
 						$temp ['align'] = 'right';
-					} else if ($meta_value == 'yes' || $meta_value == 'no') {
-						$type = 'toggle';
-						$temp ['width'] = 30;
 					} else if (is_serialized($meta_value) === true) {
 						$type = 'longstring';
 						$temp ['width'] = 200;
@@ -336,7 +336,7 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 
 					$temp ['type'] = $type;
 					$temp ['values'] = array();
-					$temp ['search_values'] = array();
+					// $temp ['search_values'] = array();
 
 					$temp ['hidden'] = false;
 					$hidden_col_array = array('_edit_lock','_edit_last');
@@ -529,6 +529,9 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 																	'per_page_limit' 	=> '', // blank, 0, -1 all values refer to infinite scroll
 																	'treegrid'			=> false // flag for setting the treegrid
 										);
+
+			//Filter to modify the default dashboard model
+			$this->default_store_model = apply_filters('sm_default_dashboard_model', $this->default_store_model);
 		}
 
 
@@ -1070,75 +1073,16 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 
 			$data_model = array(); 
 
-			$start = (!empty($this->req_params['start'])) ? $this->req_params['start'] : '';
-			$limit = (!empty($this->req_params['limit'])) ? $this->req_params['limit'] : 50;
-			$current_page = (!empty($this->req_params['page'])) ? $this->req_params['page'] : '1';
-
-			$start_offset = ($current_page > 1) ? (($current_page - 1) * $limit) : $start;
-
-			$post_cond = (!empty($this->req_params['table_model']['posts']['where'])) ? $this->req_params['table_model']['posts']['where'] : array('post_type' => $this->dashboard_key);
-			$meta_query = (!empty($this->req_params['table_model']['postmeta']['where'])) ? $this->req_params['table_model']['postmeta']['where'] : '';
-			$tax_query = (!empty($this->req_params['table_model']['terms']['where'])) ? $this->req_params['table_model']['terms']['where'] : '';
-			$sort_params = (!empty($this->req_params['sort_params'])) ? $this->req_params['sort_params'] : '';
-			$order_by = (!empty($sort_params['orderby'])) ? $sort_params['orderby'] : '';
-			$order = (!empty($sort_params['order'])) ? $sort_params['order'] : '';
-
 			$current_store_model[$this->dashboard_key] = get_transient( 'sm_beta_'.$current_user->user_email.'_'.$this->dashboard_key );
-
-
-			//Code for advanced search
-			$search = "";
-	        $search_condn = "";
-
-	        
-	        //Code to clear the advanced search temp table
-	        if (empty($_POST['search_query']) || empty($_POST['search_query'][0]) || $_POST['search_query'][0] == '[]' || !empty($_POST['searchText']) ) {
-	            $wpdb->query("DELETE FROM {$wpdb->base_prefix}sm_advanced_search_temp");
-	            delete_option('sm_advanced_search_query');
-	        }        
-
-	        $sm_advanced_search_results_persistent = 0; //flag to handle persistent search results
-
-	        //Code fo handling advanced search functionality
-	        if ((!empty($_POST['search_query']) && !empty($_POST['search_query'][0]) && $_POST['search_query'][0] != '[]') || (!empty($_POST['searchText'])) ) {
-
-	            if (empty($_POST['searchText'])) {
-	                $search_query_diff = (get_option('sm_advanced_search_query') != '') ? array_diff($_POST['search_query'],get_option('sm_advanced_search_query')) : $_POST['search_query'];
-	            } else {
-	                $search_query_diff = '';
-	            }
-
-	            if (!empty($search_query_diff)) {
-
-					$this->process_search_cond(array( 'search_query' => (!empty($_POST['search_query'])) ? $_POST['search_query'] : '',
-	            									'SM_IS_WOO30' => (!empty($_POST['SM_IS_WOO30'])) ? $_POST['SM_IS_WOO30'] : '' ));
-
-	            }
-
-	        }
-
-			// Code for handling sorting of the postmeta
-
-			$sort_meta_key = '';
-
-			if ( !empty($this->req_params['sidx']) ) {			
-
-				if ( strpos($this->req_params['sidx'],'meta_key') !== false || strpos($this->req_params['sidx'],'_meta_value') !== false ) {
-					$start_pos = strpos($this->req_params['sidx'],'meta_key') + strlen('meta_key_');
-					$key_len = strpos($this->req_params['sidx'],'_meta_value') - $start_pos;
-					$sort_meta_key = substr($this->req_params['sidx'], $start_pos, $key_len);
-					$order = ( empty($this->req_params['sord']) ) ? 'ASC' : strtoupper($this->req_params['sord']);
-				}
-			}
-
 			$col_model = (!empty($current_store_model[$this->dashboard_key]['columns'])) ? $current_store_model[$this->dashboard_key]['columns'] : array();
 
 			//Code for getting the relevant columns
 			$data_cols_multilist = array();
+			$data_cols_serialized = array();
+
 			if (!empty($col_model)) {
 
 				$data_cols = array();
-				$data_cols_serialized = array();
 				$taxonomy_nm = array();
 
 				foreach ($col_model as $col) {
@@ -1176,142 +1120,206 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 				}
 			}
 
-			//WP_Query to get all the relevant post_ids
-			$args = array(
-				            'posts_per_page' => $this->req_params['limit'],
-				            'offset' => $start_offset,
-				            'meta_query' => array( $meta_query ),
-				            'tax_query' => array( $tax_query ),
-				            'orderby' => $order_by,
-				            'order' => $order
-			            );
+			$load_default_data_model = true;
+			$load_default_data_model = apply_filters('sm_beta_load_default_data_model', $load_default_data_model);
 
-			//Condition for sorting of postmeta_cols
-			if ( !empty($this->req_params['sidx']) &&  !empty($sort_meta_key) ) {
-				$args ['meta_key'] = $sort_meta_key;
-			}
+			if( $load_default_data_model ) { //condition to skip the default data model
+				$start = (!empty($this->req_params['start'])) ? $this->req_params['start'] : 0;
+				$limit = (!empty($this->req_params['limit'])) ? $this->req_params['limit'] : 50;
+				$current_page = (!empty($this->req_params['page'])) ? $this->req_params['page'] : '1';
 
-			$args = array_merge($args, $post_cond);
+				$start_offset = ($current_page > 1) ? (($current_page - 1) * $limit) : $start;
 
-        	$result_posts = new WP_Query( $args );
-        	
-        	$items = array();
-        	$post_ids = array();
+				$post_cond = (!empty($this->req_params['table_model']['posts']['where'])) ? $this->req_params['table_model']['posts']['where'] : array('post_type' => $this->dashboard_key);
+				$meta_query = (!empty($this->req_params['table_model']['postmeta']['where'])) ? $this->req_params['table_model']['postmeta']['where'] : '';
+				$tax_query = (!empty($this->req_params['table_model']['terms']['where'])) ? $this->req_params['table_model']['terms']['where'] : '';
+				$sort_params = (!empty($this->req_params['sort_params'])) ? $this->req_params['sort_params'] : '';
+				$order_by = (!empty($sort_params['orderby'])) ? $sort_params['orderby'] : '';
+				$order = (!empty($sort_params['order'])) ? $sort_params['order'] : '';
 
-        	$posts_data = $result_posts->posts;
-        	$total_count = $result_posts->found_posts;
+				//Code for advanced search
+				$search = "";
+		        $search_condn = "";
 
-        	$index = 0;
-        	$total_pages = 1;
+		        
+		        //Code to clear the advanced search temp table
+		        if (empty($_POST['search_query']) || empty($_POST['search_query'][0]) || $_POST['search_query'][0] == '[]' || !empty($_POST['searchText']) ) {
+		            $wpdb->query("DELETE FROM {$wpdb->base_prefix}sm_advanced_search_temp");
+		            delete_option('sm_advanced_search_query');
+		        }        
 
-        	if ($total_count > $limit) {
-        		$total_pages = ceil($total_count/$limit);
-        	}
+		        $sm_advanced_search_results_persistent = 0; //flag to handle persistent search results
 
-        	if (!empty($posts_data)) {
-        		foreach ($posts_data as $key => $value) {
+		        //Code fo handling advanced search functionality
+		        if ((!empty($_POST['search_query']) && !empty($_POST['search_query'][0]) && $_POST['search_query'][0] != '[]') || (!empty($_POST['searchText'])) ) {
 
-        			$post = (array) $value;
+		            if (empty($_POST['searchText'])) {
+		                $search_query_diff = (get_option('sm_advanced_search_query') != '') ? array_diff($_POST['search_query'],get_option('sm_advanced_search_query')) : $_POST['search_query'];
+		            } else {
+		                $search_query_diff = '';
+		            }
 
-        			foreach ($post as $post_key => $post_value) {
+		            if (!empty($search_query_diff)) {
 
-        				if (array_search($post_key, $data_cols) === false) continue; //cond for checking col in col model
+						$this->process_search_cond(array( 'search_query' => (!empty($_POST['search_query'])) ? $_POST['search_query'] : '',
+		            									'SM_IS_WOO30' => (!empty($_POST['SM_IS_WOO30'])) ? $_POST['SM_IS_WOO30'] : '' ));
 
-        				$key = 'posts_'.strtolower(str_replace(' ', '_', $post_key));
-        				$items [$index][$key] = $post_value;
-        			}
+		            }
 
-        			//Code for getting the postmeta data
-        			$postmeta_data = get_post_meta($value->ID);
+		        }
 
-        			if (!empty($postmeta_data)) {
-        				$items [$index]['postmeta_post_id'] = $value->ID;
+				// Code for handling sorting of the postmeta
 
-	        			if (!empty($postmeta_data)) {
-	        				foreach ($postmeta_data as $postmeta_key => $postmeta_value) {
+				$sort_meta_key = '';
 
-	        					if (array_search($postmeta_key, $data_cols) === false) continue; //cond for checking col in col model
+				if ( !empty($this->req_params['sidx']) ) {			
 
-	        					//Code for handling serialized data
-	        					if (array_search($postmeta_key, $data_cols_serialized) !== false) {
-									$postmeta_value[0] = maybe_unserialize($postmeta_value[0]);
-									if (!empty($postmeta_value[0])) {
-										$postmeta_value[0] = json_encode($postmeta_value[0]);	
-									}
-									
-		        				}
+					if ( strpos($this->req_params['sidx'],'meta_key') !== false || strpos($this->req_params['sidx'],'_meta_value') !== false ) {
+						$start_pos = strpos($this->req_params['sidx'],'meta_key') + strlen('meta_key_');
+						$key_len = strpos($this->req_params['sidx'],'_meta_value') - $start_pos;
+						$sort_meta_key = substr($this->req_params['sidx'], $start_pos, $key_len);
+						$order = ( empty($this->req_params['sord']) ) ? 'ASC' : strtoupper($this->req_params['sord']);
+					}
+				}
 
-		        				$postmeta_key = 'postmeta_meta_key_'.$postmeta_key.'_meta_value_'.$postmeta_key;
-		        				$items [$index][$postmeta_key] = (!empty($postmeta_value[0])) ? $postmeta_value[0] : '';
-		        			}
-	        			}	
-        			}
-        			
-        			$post_ids [] = $value->ID; //storing the post ids for fetching the terms
-        			$index++;
-        		}
-        	}
+				//WP_Query to get all the relevant post_ids
+				$args = array(
+					            'posts_per_page' => $this->req_params['limit'],
+					            'offset' => $start_offset,
+					            'meta_query' => array( $meta_query ),
+					            'tax_query' => array( $tax_query ),
+					            'orderby' => $order_by,
+					            'order' => $order
+				            );
 
-        	//Code to get the terms
+				//Condition for sorting of postmeta_cols
+				if ( !empty($this->req_params['sidx']) &&  !empty($sort_meta_key) ) {
+					$args ['meta_key'] = $sort_meta_key;
+				}
 
-        	//Code to get all relevant taxonomy for the post type
-			$taxonomy_nm = get_object_taxonomies($this->dashboard_key);
+				$args = array_merge($args, $post_cond);
 
-        	$terms_objects = wp_get_object_terms( $post_ids, $taxonomy_nm, 'orderby=none&fields=all_with_object_id' );
+	        	$result_posts = new WP_Query( $args );
+	        	
+	        	$items = array();
+	        	$post_ids = array();
 
-        	if ( ! empty( $terms_objects ) ) {
-				if ( ! is_wp_error( $terms_objects ) ) {
-					$terms_data = array();
+	        	$posts_data = $result_posts->posts;
+	        	$total_count = $result_posts->found_posts;
 
-					//Code for creating the terms data array
-					foreach ($terms_objects as $term_obj) {
-						if (empty($terms_data[$term_obj->object_id])) {
-							$terms_data[$term_obj->object_id] = array();
-						}
+	        	$index = 0;
+	        	$total_pages = 1;
 
-						$taxonomy_nm = $term_obj->taxonomy;
+	        	if ($total_count > $limit) {
+	        		$total_pages = ceil($total_count/$limit);
+	        	}
 
-						//Code for handling multilist data
-	        			if ( is_array($data_cols_multilist) && array_search($taxonomy_nm, $data_cols_multilist) !== false) {
-	        				if (empty($terms_data[$term_obj->object_id][$taxonomy_nm])) {
-	        					$terms_data[$term_obj->object_id][$taxonomy_nm] = $term_obj->name;
-	        				} else {
-	        					$terms_data[$term_obj->object_id][$taxonomy_nm] .= ", <br>" . $term_obj->name;
-	        				}
-	        			} else {
-	        				$terms_data[$term_obj->object_id][$taxonomy_nm] = $term_obj->name;
+	        	if (!empty($posts_data)) {
+	        		foreach ($posts_data as $key => $value) {
+
+	        			$post = (array) $value;
+
+	        			foreach ($post as $post_key => $post_value) {
+
+	        				if (array_search($post_key, $data_cols) === false) continue; //cond for checking col in col model
+
+	        				$key = 'posts_'.strtolower(str_replace(' ', '_', $post_key));
+	        				$items [$index][$key] = $post_value;
 	        			}
 
-						// $terms_data[$term_obj->object_id][$term_obj->taxonomy] = $term_obj->term_taxonomy_id;
-					}
+	        			//Code for getting the postmeta data
+	        			$postmeta_data = get_post_meta($value->ID);
 
-					//Code for merging the terms related data in $items array
-					foreach ($items as &$item) {
+	        			if (!empty($postmeta_data)) {
+	        				$items [$index]['postmeta_post_id'] = $value->ID;
 
-						$id = (!empty($item['posts_id'])) ? $item['posts_id'] : '';
-						if (empty($id)) continue;
+		        			if (!empty($postmeta_data)) {
+		        				foreach ($postmeta_data as $postmeta_key => $postmeta_value) {
 
-						$taxonomy_array = (!empty($terms_data[$id])) ? array_keys($terms_data[$id]) : array();
-						if(empty($taxonomy_array)) continue;
+		        					if (array_search($postmeta_key, $data_cols) === false) continue; //cond for checking col in col model
 
-						$item ['terms_object_id'] = $item['posts_id'];
+		        					//Code for handling serialized data
+		        					if (array_search($postmeta_key, $data_cols_serialized) !== false) {
+										$postmeta_value[0] = maybe_unserialize($postmeta_value[0]);
+										if (!empty($postmeta_value[0])) {
+											$postmeta_value[0] = json_encode($postmeta_value[0]);	
+										}
+										
+			        				}
 
-						foreach ($taxonomy_array as $taxonomy) {
-							$terms_key = 'terms_'.strtolower(str_replace(' ', '_', $taxonomy));
-							$item [$terms_key] = $terms_data[$id][$taxonomy];
+			        				$postmeta_key = 'postmeta_meta_key_'.$postmeta_key.'_meta_value_'.$postmeta_key;
+			        				$items [$index][$postmeta_key] = (!empty($postmeta_value[0])) ? $postmeta_value[0] : '';
+			        			}
+		        			}	
+	        			}
+	        			
+	        			$post_ids [] = $value->ID; //storing the post ids for fetching the terms
+	        			$index++;
+	        		}
+	        	}
+
+	        	//Code to get the terms
+
+	        	//Code to get all relevant taxonomy for the post type
+				$taxonomy_nm = get_object_taxonomies($this->dashboard_key);
+
+	        	$terms_objects = wp_get_object_terms( $post_ids, $taxonomy_nm, 'orderby=none&fields=all_with_object_id' );
+
+	        	if ( ! empty( $terms_objects ) ) {
+					if ( ! is_wp_error( $terms_objects ) ) {
+						$terms_data = array();
+
+						//Code for creating the terms data array
+						foreach ($terms_objects as $term_obj) {
+							if (empty($terms_data[$term_obj->object_id])) {
+								$terms_data[$term_obj->object_id] = array();
+							}
+
+							$taxonomy_nm = $term_obj->taxonomy;
+
+							//Code for handling multilist data
+		        			if ( is_array($data_cols_multilist) && array_search($taxonomy_nm, $data_cols_multilist) !== false) {
+		        				if (empty($terms_data[$term_obj->object_id][$taxonomy_nm])) {
+		        					$terms_data[$term_obj->object_id][$taxonomy_nm] = $term_obj->name;
+		        				} else {
+		        					$terms_data[$term_obj->object_id][$taxonomy_nm] .= ", <br>" . $term_obj->name;
+		        				}
+		        			} else {
+		        				$terms_data[$term_obj->object_id][$taxonomy_nm] = $term_obj->name;
+		        			}
+
+							// $terms_data[$term_obj->object_id][$term_obj->taxonomy] = $term_obj->term_taxonomy_id;
+						}
+
+						//Code for merging the terms related data in $items array
+						foreach ($items as &$item) {
+
+							$id = (!empty($item['posts_id'])) ? $item['posts_id'] : '';
+							if (empty($id)) continue;
+
+							$taxonomy_array = (!empty($terms_data[$id])) ? array_keys($terms_data[$id]) : array();
+							if(empty($taxonomy_array)) continue;
+
+							$item ['terms_object_id'] = $item['posts_id'];
+
+							foreach ($taxonomy_array as $taxonomy) {
+								$terms_key = 'terms_'.strtolower(str_replace(' ', '_', $taxonomy));
+								$item [$terms_key] = $terms_data[$id][$taxonomy];
+							}
 						}
 					}
 				}
+				
+	        	$data_model ['items'] = (!empty($items)) ? $items : '';
+	        	$data_model ['start'] = $start+$limit;
+	        	$data_model ['page'] = $current_page;
+	        	$data_model ['total_pages'] = $total_pages;
+	        	$data_model ['total_count'] = $total_count;
 			}
 			
-        	$data_model ['items'] = (!empty($items)) ? $items : '';
-        	$data_model ['start'] = $start+$limit;
-        	$data_model ['page'] = $current_page;
-        	$data_model ['total_pages'] = $total_pages;
-        	$data_model ['total_count'] = $total_count;
 
         	//Filter to modify the data model
-			$data_model = apply_filters('sm_data_model', $data_model);
+			$data_model = apply_filters('sm_data_model', $data_model, $data_cols, $data_cols_serialized);
 
 			echo json_encode ( $data_model );
 			unset($data_model);
@@ -1451,388 +1459,400 @@ if ( ! class_exists( 'Smart_Manager_Base' ) ) {
 
 			}
 
-			$update_params_meta = array(); // for all tables with meta_key = meta_value like structure for updating the values
-			$insert_params_meta = array(); // for all tables with meta_key = meta_value like structure for inserting the values
-			$meta_data_edited = array();
-			$meta_index = 0;
-			$old_post_id = '';
-			$meta_case_cond = 'CASE post_id ';
-			$meta_keys_edited = array(); // array for storing the edited meta_keys
+			$sm_default_inline_update = true;
 
-			foreach ($edited_data as $id => $edited_row) {
+			$data_col_params = array( 'data_cols_multiselect' => $data_cols_multiselect,
+									 'data_cols_multiselect_val' => $data_cols_multiselect_val,
+									 'data_cols_list' => $data_cols_list,
+									 'data_cols_list_val' => $data_cols_list_val );
 
-				$update_params_posts = array();
-				$update_params_custom = array(); // for custom tables
-				$where_cond = array();
-				$insert_post = 0;
+			$sm_default_inline_update = apply_filters('sm_beta_default_inline_update', $sm_default_inline_update);
 
-				//Code for inserting the post
-				if ( empty($id) ) {
-					$insert_params_posts = array();
+			if( !empty($sm_default_inline_update) ) {
+				$update_params_meta = array(); // for all tables with meta_key = meta_value like structure for updating the values
+				$insert_params_meta = array(); // for all tables with meta_key = meta_value like structure for inserting the values
+				$meta_data_edited = array();
+				$meta_index = 0;
+				$old_post_id = '';
+				$meta_case_cond = 'CASE post_id ';
+				$meta_keys_edited = array(); // array for storing the edited meta_keys
+
+				foreach ($edited_data as $id => $edited_row) {
+
+					$update_params_posts = array();
+					$update_params_custom = array(); // for custom tables
+					$where_cond = array();
+					$insert_post = 0;
+
+					//Code for inserting the post
+					if ( empty($id) ) {
+						$insert_params_posts = array();
+						foreach ($edited_row as $key => $value) {
+							$edited_value_exploded = explode("/", $key);
+							
+							if (empty($edited_value_exploded)) continue;
+
+							$update_table = $edited_value_exploded[0];
+							$update_column = $edited_value_exploded[1];
+
+							if ($update_table == 'posts') {
+								$insert_params_posts [$update_column] = $value;
+							}
+						}
+
+						if ( !empty($insert_params_posts) ) {
+							$inserted_id = wp_insert_post($insert_params_posts);
+
+							if ( !is_wp_error( $inserted_id ) && !empty($inserted_id) ) {
+								$id = $inserted_id;
+								$insert_post = 1; //Flag for determining whether post has been inserted	
+							} else {
+								continue;
+							}
+
+						} else {
+							continue;
+						}
+					}
+
+					// if (empty($edited_row['posts/ID'])) continue;
+
+					// $id = $edited_row['posts/ID'];
+
 					foreach ($edited_row as $key => $value) {
 						$edited_value_exploded = explode("/", $key);
-						
+
 						if (empty($edited_value_exploded)) continue;
+
+						$update_cond = array(); // for handling the where condition
+						$update_params_meta_flag = false; // flag for handling the query for meta_key = meta_value like structure
 
 						$update_table = $edited_value_exploded[0];
 						$update_column = $edited_value_exploded[1];
 
-						if ($update_table == 'posts') {
-							$insert_params_posts [$update_column] = $value;
-						}
-					}
-
-					if ( !empty($insert_params_posts) ) {
-						$inserted_id = wp_insert_post($insert_params_posts);
-
-						if ( !is_wp_error( $inserted_id ) && !empty($inserted_id) ) {
-							$id = $inserted_id;
-							$insert_post = 1; //Flag for determining whether post has been inserted	
-						} else {
-							continue;
+						if (empty($where_cond[$update_table])) {
+							$where_cond[$update_table] = (!empty($table_model[$update_table]['pkey']) && $update_column == $table_model[$update_table]['pkey']) ? 'WHERE '. $table_model[$update_table]['pkey'] . ' = ' . $value : '';
 						}
 
-					} else {
-						continue;
-					}
-				}
+						if ( sizeof($edited_value_exploded) > 2) {
+							$cond = explode("=",$edited_value_exploded[1]);
 
-				// if (empty($edited_row['posts/ID'])) continue;
-
-				// $id = $edited_row['posts/ID'];
-
-				foreach ($edited_row as $key => $value) {
-					$edited_value_exploded = explode("/", $key);
-
-					if (empty($edited_value_exploded)) continue;
-
-					$update_cond = array(); // for handling the where condition
-					$update_params_meta_flag = false; // flag for handling the query for meta_key = meta_value like structure
-
-					$update_table = $edited_value_exploded[0];
-					$update_column = $edited_value_exploded[1];
-
-					if (empty($where_cond[$update_table])) {
-						$where_cond[$update_table] = (!empty($table_model[$update_table]['pkey']) && $update_column == $table_model[$update_table]['pkey']) ? 'WHERE '. $table_model[$update_table]['pkey'] . ' = ' . $value : '';
-					}
-
-					if ( sizeof($edited_value_exploded) > 2) {
-						$cond = explode("=",$edited_value_exploded[1]);
-
-						if (sizeof($cond) == 2) {
-							$update_cond [$cond[0]] = $cond[1];
-						}
-
-						$update_column_exploded = explode("=",$edited_value_exploded[2]);
-						$update_column = $update_column_exploded[0];
-
-						$update_params_meta_flag = true;
-					}
-					
-					// handling the update array for posts table
-					if ( $update_table == 'posts' && $insert_post != 1 ) {
-
-						if ( empty($update_params_posts[$table_model[$update_table]['pkey']]) && !empty($id) ) {
-							$update_params_posts[$table_model[$update_table]['pkey']] = $id;
-						}
-
-						$update_params_posts [$update_column] = $value;
-
-					} else if ( $update_params_meta_flag === true ) {
-
-						if (empty($id) || empty($update_cond['meta_key'])) continue;
-
-						$meta_key = $update_cond['meta_key'];
-
-						//Code for handling serialized data
-    					if (array_search($meta_key, $data_cols_serialized) !== false) {
-							if (!empty($value)) {
-								$value = json_decode($value,true);
+							if (sizeof($cond) == 2) {
+								$update_cond [$cond[0]] = $cond[1];
 							}
-        				}
 
-						// update_post_meta($id, $meta_key, $value );
+							$update_column_exploded = explode("=",$edited_value_exploded[2]);
+							$update_column = $update_column_exploded[0];
 
-						//Code for forming the edited data array
-						if ( empty($meta_data_edited[$update_table]) ) {
-							$meta_data_edited[$update_table] = array();
+							$update_params_meta_flag = true;
 						}
+						
+						// handling the update array for posts table
+						if ( $update_table == 'posts' && $insert_post != 1 ) {
 
-						if ( empty($meta_data_edited[$update_table][$id]) ) {
-							$meta_data_edited[$update_table][$id] = array();
-						}
+							if ( empty($update_params_posts[$table_model[$update_table]['pkey']]) && !empty($id) ) {
+								$update_params_posts[$table_model[$update_table]['pkey']] = $id;
+							}
 
-						$meta_data_edited[$update_table][$id][$update_cond['meta_key']] = $value;
-						$meta_keys_edited [$update_cond['meta_key']] = '';
+							$update_params_posts [$update_column] = $value;
 
-					} else if($update_table == 'terms') {
-						//code for handling updates for terms
+						} else if ( $update_params_meta_flag === true ) {
 
-    					$term_ids = array();
+							if (empty($id) || empty($update_cond['meta_key'])) continue;
 
-						//Code for handling multiselect data
-    					if (array_search($update_column, $data_cols_multiselect) !== false) {
+							$meta_key = $update_cond['meta_key'];
 
-    						$actual_val = (!empty($data_cols_multiselect_val[$update_column])) ? $data_cols_multiselect_val[$update_column] : array();
-    						if(empty($value) || empty($actual_val)) continue;
-							$edited_values = explode(", ",$value);
-							if (empty($edited_values)) continue;
-
-    					} else if (array_search($update_column, $data_cols_list) !== false) {
-
-    						$actual_val = (!empty($data_cols_list_val[$update_column])) ? $data_cols_list_val[$update_column] : array();
-    						if(empty($value) || empty($actual_val)) continue;
-							$edited_values = explode(", ",$value);
-							if (empty($edited_values)) continue;
-    					}
-
-
-    					if (!empty($edited_values)) {
-    						foreach ($edited_values as $edited_value) {
-								$term_id = array_search($edited_value, $actual_val);
-								
-								if ( $term_id === false) continue;
-								$term_ids[] = $term_id;
-							}							
-    					}
-
-    					if (!empty($term_ids)) {
-    						wp_set_object_terms($id, $term_ids, $update_column);
-    					}
-					}
-				}
-
-				//Code for updating the posts table
-				if ( !empty($update_params_posts) ) {
-					wp_update_post($update_params_posts);
-				}
-			}
-
-			//Code for updating the meta tables
-			if (!empty($meta_data_edited)) {
-
-				foreach ($meta_data_edited as $update_table => $update_params) {
-
-					if (empty($update_params)) continue;
-
-					$post_ids = array_keys($update_params);
-					$meta_keys_edited = (!empty($meta_keys_edited)) ? array_keys($meta_keys_edited) : '';
-
-					$update_table_key = ''; //pkey for the update table
-
-					if ( $update_table == 'postmeta' ) {
-						$update_table_key = 'post_id';
-					}
-
-					//Code for getting the old values and meta_ids
-					$old_meta_data = $this->get_meta_data($post_ids, $meta_keys_edited, $update_table, $update_table_key);
-
-					$meta_data = array();
-
-					if (!empty($old_meta_data)) {
-						foreach ($old_meta_data as $key => $old_values) {
-							foreach ($old_values as $data) {
-								if ( empty($meta_data[$key]) ) {
-									$meta_data[$key] = array();
+							//Code for handling serialized data
+	    					if (array_search($meta_key, $data_cols_serialized) !== false) {
+								if (!empty($value)) {
+									$value = json_decode($value,true);
 								}
-								$meta_data[$key][$data['meta_key']] = array();
-								$meta_data[$key][$data['meta_key']]['meta_id'] = $data['meta_id'];
-								$meta_data[$key][$data['meta_key']]['meta_value'] = $data['meta_value'];
+	        				}
+
+							// update_post_meta($id, $meta_key, $value );
+
+							//Code for forming the edited data array
+							if ( empty($meta_data_edited[$update_table]) ) {
+								$meta_data_edited[$update_table] = array();
 							}
+
+							if ( empty($meta_data_edited[$update_table][$id]) ) {
+								$meta_data_edited[$update_table][$id] = array();
+							}
+
+							$meta_data_edited[$update_table][$id][$update_cond['meta_key']] = $value;
+							$meta_keys_edited [$update_cond['meta_key']] = '';
+
+						} else if($update_table == 'terms') {
+							//code for handling updates for terms
+
+	    					$term_ids = array();
+
+							//Code for handling multiselect data
+	    					if (array_search($update_column, $data_cols_multiselect) !== false) {
+
+	    						$actual_val = (!empty($data_cols_multiselect_val[$update_column])) ? $data_cols_multiselect_val[$update_column] : array();
+	    						if(empty($value) || empty($actual_val)) continue;
+								$edited_values = explode(", ",$value);
+								if (empty($edited_values)) continue;
+
+	    					} else if (array_search($update_column, $data_cols_list) !== false) {
+
+	    						$actual_val = (!empty($data_cols_list_val[$update_column])) ? $data_cols_list_val[$update_column] : array();
+	    						if(empty($value) || empty($actual_val)) continue;
+								$edited_values = explode(", ",$value);
+								if (empty($edited_values)) continue;
+	    					}
+
+
+	    					if (!empty($edited_values)) {
+	    						foreach ($edited_values as $edited_value) {
+									$term_id = array_search($edited_value, $actual_val);
+									
+									if ( $term_id === false) continue;
+									$term_ids[] = $term_id;
+								}							
+	    					}
+
+	    					if (!empty($term_ids)) {
+	    						wp_set_object_terms($id, $term_ids, $update_column);
+	    					}
 						}
 					}
 
-					$meta_index = 0;
-					$insert_meta_index = 0;
-					$index=0;
-					$insert_index=0;
-					$old_post_id = '';
-					$update_params_index = 0;
+					//Code for updating the posts table
+					if ( !empty($update_params_posts) ) {
+						wp_update_post($update_params_posts);
+					}
+				}
 
-					//Code for generating the query
-					foreach ($update_params as $id => $updated_data) {
+				//Code for updating the meta tables
+				if (!empty($meta_data_edited)) {
 
-						$updated_data_index = 0;
-						$update_params_index++;
+					foreach ($meta_data_edited as $update_table => $update_params) {
 
-						foreach ($updated_data as $key => $value) {
-							
-							$key = wp_unslash($key);
-		    				$value = wp_unslash($value);
-		    				$meta_type = 'post';
-		    				if ( $update_table == 'postmeta' ) {
-		    					$value = sanitize_meta( $key, $value, 'post' );	
-		    				}
-							
-							$updated_data_index++;
+						if (empty($update_params)) continue;
 
-							// Filter whether to update metadata of a specific type.
-							$check = apply_filters( "update_{$meta_type}_metadata", null, $id, $key, $value, '' );
-							if ( null !== $check ) {
-								continue;
+						$post_ids = array_keys($update_params);
+						$meta_keys_edited = (!empty($meta_keys_edited)) ? array_keys($meta_keys_edited) : '';
+
+						$update_table_key = ''; //pkey for the update table
+
+						if ( $update_table == 'postmeta' ) {
+							$update_table_key = 'post_id';
+						}
+
+						//Code for getting the old values and meta_ids
+						$old_meta_data = $this->get_meta_data($post_ids, $meta_keys_edited, $update_table, $update_table_key);
+
+						$meta_data = array();
+
+						if (!empty($old_meta_data)) {
+							foreach ($old_meta_data as $key => $old_values) {
+								foreach ($old_values as $data) {
+									if ( empty($meta_data[$key]) ) {
+										$meta_data[$key] = array();
+									}
+									$meta_data[$key][$data['meta_key']] = array();
+									$meta_data[$key][$data['meta_key']]['meta_id'] = $data['meta_id'];
+									$meta_data[$key][$data['meta_key']]['meta_value'] = $data['meta_value'];
+								}
 							}
+						}
 
-							// Code for handling if the meta key does not exist
-							if ( empty($meta_data[$id][$key] ) ) {
+						$meta_index = 0;
+						$insert_meta_index = 0;
+						$index=0;
+						$insert_index=0;
+						$old_post_id = '';
+						$update_params_index = 0;
 
-								// Filter whether to add metadata of a specific type.
-								$check = apply_filters( "add_{$meta_type}_metadata", null, $id, $key, $value, false );
+						//Code for generating the query
+						foreach ($update_params as $id => $updated_data) {
+
+							$updated_data_index = 0;
+							$update_params_index++;
+
+							foreach ($updated_data as $key => $value) {
+								
+								$key = wp_unslash($key);
+			    				$value = wp_unslash($value);
+			    				$meta_type = 'post';
+			    				if ( $update_table == 'postmeta' ) {
+			    					$value = sanitize_meta( $key, $value, 'post' );	
+			    				}
+								
+								$updated_data_index++;
+
+								// Filter whether to update metadata of a specific type.
+								$check = apply_filters( "update_{$meta_type}_metadata", null, $id, $key, $value, '' );
 								if ( null !== $check ) {
 									continue;
 								}
 
-								if ( empty($insert_params_meta[$update_table]) ) {
-									$insert_params_meta[$update_table] = array();
-									$insert_params_meta[$update_table][$insert_meta_index] = array();
-									$insert_params_meta[$update_table][$insert_meta_index]['values'] = array();
-								}
+								// Code for handling if the meta key does not exist
+								if ( empty($meta_data[$id][$key] ) ) {
 
-								if ( $insert_index >= 5 && $old_post_id != $id ) {
-									$insert_index=0;
-									$insert_meta_index++;							
-								}
+									// Filter whether to add metadata of a specific type.
+									$check = apply_filters( "add_{$meta_type}_metadata", null, $id, $key, $value, false );
+									if ( null !== $check ) {
+										continue;
+									}
 
-								if ( $old_post_id != $id ) {
-									$old_post_id = $id;
-									$insert_index++;
-								}
+									if ( empty($insert_params_meta[$update_table]) ) {
+										$insert_params_meta[$update_table] = array();
+										$insert_params_meta[$update_table][$insert_meta_index] = array();
+										$insert_params_meta[$update_table][$insert_meta_index]['values'] = array();
+									}
 
-								$insert_params_meta[$update_table][$insert_meta_index]['values'][] = array('id' => $id,
-																											'meta_key' => $key,
-																											'meta_value' => $value);
+									if ( $insert_index >= 5 && $old_post_id != $id ) {
+										$insert_index=0;
+										$insert_meta_index++;							
+									}
+
+									if ( $old_post_id != $id ) {
+										$old_post_id = $id;
+										$insert_index++;
+									}
+
+									$insert_params_meta[$update_table][$insert_meta_index]['values'][] = array('id' => $id,
+																												'meta_key' => $key,
+																												'meta_value' => $value);
+
+									$value = maybe_serialize( $value );
+
+									if ( empty($insert_params_meta[$update_table][$insert_meta_index]['query']) ) {
+										$insert_params_meta[$update_table][$insert_meta_index]['query'] = "(".$id.", '".$key."', '".$value."')";
+									} else {
+										$insert_params_meta[$update_table][$insert_meta_index]['query'] .= ", (".$id.", '".$key."', '".$value."')";
+									}
+
+									continue;
+
+								} else {
+									//Checking if edited value is same as old value
+									if ( $meta_data[$id][$key]['meta_value'] == $value ) {
+										unset($meta_data[$id][$key]);
+										if( empty($meta_data[$id]) ) {
+											unset($meta_data[$id]);
+										}
+										continue;
+									} else {
+										$meta_data[$id][$key]['meta_value'] = $value;
+									}
+								}
 
 								$value = maybe_serialize( $value );
 
-								if ( empty($insert_params_meta[$update_table][$insert_meta_index]['query']) ) {
-									$insert_params_meta[$update_table][$insert_meta_index]['query'] = "(".$id.", '".$key."', '".$value."')";
-								} else {
-									$insert_params_meta[$update_table][$insert_meta_index]['query'] .= ", (".$id.", '".$key."', '".$value."')";
+								if ( empty($update_params_meta[$update_table]) ) {
+									$update_params_meta[$update_table] = array();
+									$update_params_meta[$update_table][$meta_index] = array();
+									$update_params_meta[$update_table][$meta_index]['ids'] = array();
+									$update_params_meta[$update_table][$meta_index]['query'] = '';
 								}
 
-								continue;
+								if ( $index >= 5 && $old_post_id != $id ) {
+									$update_params_meta[$update_table][$meta_index]['query'] .= ' ELSE meta_value END END ';
+									$index=0;
+									$meta_index++;							
+								}					
 
-							} else {
-								//Checking if edited value is same as old value
-								if ( $meta_data[$id][$key]['meta_value'] == $value ) {
-									unset($meta_data[$id][$key]);
-									if( empty($meta_data[$id]) ) {
-										unset($meta_data[$id]);
+								if ( empty($update_params_meta[$update_table][$meta_index]['query']) ) {
+									$update_params_meta[$update_table][$meta_index]['query'] = ' CASE post_id ';
+								}
+
+								if ( $old_post_id != $id ) {
+									
+									if ( !empty($index) ) {
+										$update_params_meta[$update_table][$meta_index]['query'] .= ' ELSE meta_value END ';
 									}
-									continue;
-								} else {
-									$meta_data[$id][$key]['meta_value'] = $value;
-								}
-							}
 
-							$value = maybe_serialize( $value );
+									$update_params_meta[$update_table][$meta_index]['query'] .= " WHEN '".$id."' THEN 
+																						CASE meta_key ";
 
-							if ( empty($update_params_meta[$update_table]) ) {
-								$update_params_meta[$update_table] = array();
-								$update_params_meta[$update_table][$meta_index] = array();
-								$update_params_meta[$update_table][$meta_index]['ids'] = array();
-								$update_params_meta[$update_table][$meta_index]['query'] = '';
-							}
+									$old_post_id = $id;
+									$update_params_meta[$update_table][$meta_index]['ids'][] = $id;
 
-							if ( $index >= 5 && $old_post_id != $id ) {
-								$update_params_meta[$update_table][$meta_index]['query'] .= ' ELSE meta_value END END ';
-								$index=0;
-								$meta_index++;							
-							}					
-
-							if ( empty($update_params_meta[$update_table][$meta_index]['query']) ) {
-								$update_params_meta[$update_table][$meta_index]['query'] = ' CASE post_id ';
-							}
-
-							if ( $old_post_id != $id ) {
-								
-								if ( !empty($index) ) {
-									$update_params_meta[$update_table][$meta_index]['query'] .= ' ELSE meta_value END ';
+									$index++;
 								}
 
-								$update_params_meta[$update_table][$meta_index]['query'] .= " WHEN '".$id."' THEN 
-																					CASE meta_key ";
+								$update_params_meta[$update_table][$meta_index]['query'] .= " WHEN '".$key."' THEN '". $value ."' ";
 
-								$old_post_id = $id;
-								$update_params_meta[$update_table][$meta_index]['ids'][] = $id;
+								//Code for the last condition
+								if ( $update_params_index == sizeof($update_params) &&  $updated_data_index == sizeof($updated_data) ) {
+									$update_params_meta[$update_table][$meta_index]['query'] .= ' ELSE meta_value END END ';
+								}
 
-								$index++;
 							}
-
-							$update_params_meta[$update_table][$meta_index]['query'] .= " WHEN '".$key."' THEN '". $value ."' ";
-
-							//Code for the last condition
-							if ( $update_params_index == sizeof($update_params) &&  $updated_data_index == sizeof($updated_data) ) {
-								$update_params_meta[$update_table][$meta_index]['query'] .= ' ELSE meta_value END END ';
-							}
-
 						}
-					}
 
-					// Start here... update the actions and query in for loop
-					if ( !empty($insert_params_meta) ) {
-						foreach ($insert_params_meta as $insert_table => $data) {
+						// Start here... update the actions and query in for loop
+						if ( !empty($insert_params_meta) ) {
+							foreach ($insert_params_meta as $insert_table => $data) {
 
-							if ( empty($data) ) {
-								continue;
-							}
-
-							$insert_table_key = (empty($insert_table_key)) ? 'post_id' : $insert_table_key;
-
-							foreach ( $data as $insert_params ) {
-
-								if ( empty($insert_params['values']) || empty($insert_params['query']) ) {
+								if ( empty($data) ) {
 									continue;
 								}
 
-								$insert_meta_query = "INSERT INTO {$wpdb->prefix}".$insert_table." (".$insert_table_key.",meta_key,meta_value)
-														 VALUES ".$insert_params['query'];
+								$insert_table_key = (empty($insert_table_key)) ? 'post_id' : $insert_table_key;
 
-								if ( $insert_table == 'postmeta' ) {
-									// function to replicate wordpress add_metadata()
-									$this->sm_add_post_meta('post', $insert_params['values'], $insert_meta_query);
+								foreach ( $data as $insert_params ) {
 
-								} else {
-									$result_insert_meta = $wpdb -> query($insert_meta_query);
+									if ( empty($insert_params['values']) || empty($insert_params['query']) ) {
+										continue;
+									}
+
+									$insert_meta_query = "INSERT INTO {$wpdb->prefix}".$insert_table." (".$insert_table_key.",meta_key,meta_value)
+															 VALUES ".$insert_params['query'];
+
+									if ( $insert_table == 'postmeta' ) {
+										// function to replicate wordpress add_metadata()
+										$this->sm_add_post_meta('post', $insert_params['values'], $insert_meta_query);
+
+									} else {
+										$result_insert_meta = $wpdb -> query($insert_meta_query);
+									}
 								}
-							}
-						}	
-					}
+							}	
+						}
 
-					// Inline data updation for meta tables
-					if ( !empty($update_params_meta) ) {
-						foreach ($update_params_meta as $update_table => $data) {
+						// Inline data updation for meta tables
+						if ( !empty($update_params_meta) ) {
+							foreach ($update_params_meta as $update_table => $data) {
 
-							if ( empty($data) ) {
-								continue;
-							}
-
-							$update_table_key = (empty($update_table_key)) ? 'post_id' : $update_table_key;
-
-							foreach ( $data as $update_params ) {
-
-								if ( empty($update_params['ids']) || empty($update_params['query']) ) {
+								if ( empty($data) ) {
 									continue;
 								}
 
-								$update_meta_query = "UPDATE {$wpdb->prefix}$update_table
-													SET meta_value = ".$update_params['query']."
-													WHERE $update_table_key IN (".implode(',',$update_params['ids']).")";
+								$update_table_key = (empty($update_table_key)) ? 'post_id' : $update_table_key;
 
-								if ( $update_table == 'postmeta' ) {
-									// function to replicate wordpress update_postmeta()
-									$this->sm_update_post_meta('post', $update_params['ids'], $meta_data, $update_meta_query);
+								foreach ( $data as $update_params ) {
 
-								} else {
-									$result_update_meta = $wpdb -> query($update_meta_query);
+									if ( empty($update_params['ids']) || empty($update_params['query']) ) {
+										continue;
+									}
+
+									$update_meta_query = "UPDATE {$wpdb->prefix}$update_table
+														SET meta_value = ".$update_params['query']."
+														WHERE $update_table_key IN (".implode(',',$update_params['ids']).")";
+
+									if ( $update_table == 'postmeta' ) {
+										// function to replicate wordpress update_postmeta()
+										$this->sm_update_post_meta('post', $update_params['ids'], $meta_data, $update_meta_query);
+
+									} else {
+										$result_update_meta = $wpdb -> query($update_meta_query);
+									}
 								}
-							}
-						}	
+							}	
+						}
+						
 					}
-					
 				}
 			}
+			
 
-			do_action('sm_inline_update_post',$edited_data);
+			do_action('sm_inline_update_post',$edited_data, $data_col_params);
 
 			$msg_str = '';
 

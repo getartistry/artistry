@@ -1,49 +1,19 @@
 
 /* == Main Menu Styles == */
+
 #adminmenu .wp-submenu li.eml-media-submenu {
     padding-left: 20px;
 }
 
 
 
-/* == Single Attachment Inline Toolbar == */
+/* == Rating Star Styles == */
 
-.eml-attacment-inline-toolbar {
-    position: absolute;
-    z-index: 10;
-    left: 7px;
-    top: 7px;
-
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    transition: all 0.2s;
-
-    visibility: hidden;
-    opacity: 0;
-}
-.js--select-attachment:hover .eml-attacment-inline-toolbar {
-    visibility: visible;
-    opacity: 1;
-}
-.eml-attacment-inline-toolbar i {
-    margin: 0 5px 0 0;
-    padding: 2px;
-    width: 24px;
-    height: 24px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    background-color: #000;
-    background-color: rgba(0,0,0,0.9);
-    cursor: pointer;
-    color: white;
-    font-size: 24px;
-    line-height: 24px;
-}
-.eml-attacment-inline-toolbar i:hover {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.8);
-    background-color: #000;
-    color: #2ea2cc;
+.rating-stars a .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
 }
 
 
@@ -76,6 +46,12 @@
 }
 #eml-reset-filters-query-submit {
     margin: 1px 8px 0 0;
+}
+
+
+.wrap .eml-apply-settings-to-network:hover {
+    border-color: #d54e21;
+    background: #EC5F30;
 }
 
 

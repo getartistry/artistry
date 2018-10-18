@@ -10,9 +10,7 @@ function instagram_get_post($camp){
  
 	//sess required
 	$wp_automatic_ig_sess = trim(get_option('wp_automatic_ig_sess',''));
-	
-	
-	
+	 
 	//ini keywords
 	$camp_opt = unserialize ( $camp->camp_options );
 	$keywords = explode ( ',', $camp->camp_keywords );
@@ -40,11 +38,15 @@ function instagram_get_post($camp){
 			  }
 
 			// getting links from the db for that keyword
-			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'it_{$camp->camp_id}_$keyword' and item_status ='0'";
+			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'it_{$camp->camp_id}_$keyword' ";
 			$res = $this->db->get_results ( $query );
 
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_general where item_type='it_{$camp->camp_id}_$keyword' ";
+				$this->db->query ( $query_delete );
 
 				//get new links
 				$this->instagram_fetch_items( $keyword, $camp );
@@ -56,7 +58,7 @@ function instagram_get_post($camp){
 			//check if already duplicated
 			//deleting duplicated items
 
-				
+		 
 
 			$item_count =count($res);
 
@@ -79,7 +81,7 @@ function instagram_get_post($camp){
 						unset($res[$i]);
 						  echo '<--old post execluding...';
 							
-						$query = "delete from {$this->wp_prefix}automatic_general where item_id='{$t_row->item_id}' and item_type=  'it_{$camp->camp_id}_$keyword'";
+						$query = "delete from {$this->wp_prefix}automatic_general where id={$t_row->id}";
 						$this->db->query ( $query );
 							
 						continue;
@@ -96,7 +98,7 @@ function instagram_get_post($camp){
 					  echo '<br>Instagram pic ('. $t_data ['item_title'] .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
 						
 					//delete the item
-					$query = "delete from {$this->wp_prefix}automatic_general where item_id='{$t_row->item_id}' and item_type=  'it_{$camp->camp_id}_$keyword'";
+					$query = "delete from {$this->wp_prefix}automatic_general where id={$t_row->id}";
 					$this->db->query ( $query );
 						
 				}else{
@@ -168,7 +170,7 @@ function instagram_get_post($camp){
 				  echo '<br>Found Link:'.$temp['item_url'].' <-published:'.$t_data['item_created_date'] ;
 
 				// update the link status to 1
-				$query = "update {$this->wp_prefix}automatic_general set item_status='1' where item_id='$ret->item_id' and item_type='it_{$camp->camp_id}_$keyword' ";
+				$query = "delete from {$this->wp_prefix}automatic_general where id={$ret->id}";
 				$this->db->query ( $query );
 				
 				// Get item details if needed at three cases
@@ -206,7 +208,16 @@ function instagram_get_post($camp){
 					require_once 'inc/class.instagram.php';
 					$instaScrape = new InstaScrape($this->ch, $wp_automatic_ig_sess , true);
 					
-					$fullItemDetails = $instaScrape->getItemByID($t_data['item_id']);
+					try {
+						$fullItemDetails = $instaScrape->getItemByID($t_data['item_id']);
+					} catch (Exception $e) {
+						
+						echo 'Failed:'.$e->getMessage();
+						return;
+						
+					}
+					
+					
 					
 					// fresh item img
 					
@@ -323,7 +334,7 @@ function instagram_get_post($camp){
 				// if cache not active let's delete the cached videos and reset indexes
 				if (! in_array ( 'OPT_IT_CACHE', $camp_opt )) {
 					  echo '<br>Cache disabled claring cache ...';
-					$query = "delete from {$this->wp_prefix}automatic_general where item_type='it_{$camp->camp_id}_$keyword' and item_status ='0'";
+					$query = "delete from {$this->wp_prefix}automatic_general where item_type='it_{$camp->camp_id}_$keyword' ";
 					$this->db->query ( $query );
 						
 					// reset index
@@ -385,8 +396,6 @@ function instagram_get_post($camp){
 
 
 }
-	
-
 	
 function instagram_fetch_items($keyword,$camp ){
 		
@@ -526,12 +535,19 @@ function instagram_fetch_items($keyword,$camp ){
 			} catch (Exception $e) {
 				
 				  echo '<br>Exception:'.$e->getMessage();
+				  
+				  //execution failure
+				  if(stristr($e->getMessage(), 'execution failure')){
+				  		echo '<br>Execution failure, deleting next page token'; 
+					  	delete_post_meta($camp->camp_id, 'wp_instagram_next_max_id'.md5($keyword));
+				  }
+				  
 				return;
 			}
 			
 				
 		}else{
-			  echo '<br>can not find valid numeric id for the user .. exiting';
+			  echo '<br>Can not find valid numeric id for the user .. exiting';
 			return;
 		}
 
@@ -548,6 +564,13 @@ function instagram_fetch_items($keyword,$camp ){
 
 		} catch (Exception $e) {
 		
+			//execution failure
+			if(stristr($e->getMessage(), 'execution failure')){
+				echo '<br>Execution failure, deleting next page token';
+				delete_post_meta($camp->camp_id, 'wp_instagram_next_max_id'.md5($keyword));
+			}
+			
+			
 			  echo '<br>Exception:'.$e->getMessage();
 			return;
 		}
@@ -561,9 +584,7 @@ function instagram_fetch_items($keyword,$camp ){
 	//validating reply
 	if( isset($jsonArr->status) ){
 
-		//valid reply
-		$items = $jsonArr->media->nodes;
-		
+		 
 		if( in_array ( 'OPT_IT_USER' ,  $camp_opt ) ){
 			$items = $jsonArr->data->user->edge_owner_to_timeline_media->edges;
 			$page_info = $jsonArr->data->user->edge_owner_to_timeline_media->page_info;
@@ -591,7 +612,7 @@ function instagram_fetch_items($keyword,$camp ){
 		foreach ($items as $item){
 			
 			$item = $item->node;
-			 
+			
 			//clean itm
 			unset($itm);
 			
@@ -602,7 +623,8 @@ function instagram_fetch_items($keyword,$camp ){
 			$itm['item_id']  = $item->shortcode;
 			$itm['item_url'] = 'http://instagram.com/p/'.$item->shortcode;
 			$itm['item_description'] = $item->edge_media_to_caption->edges[0]->node->text;
-				
+			$itm['video_view_count'] = 0;
+			
 			//if video embed it
 			if( trim($item->is_video != '') && $item->is_video == 1  ){
 				
@@ -614,7 +636,7 @@ function instagram_fetch_items($keyword,$camp ){
 				}
 
 				$itm['is_video'] = 'yes';
-				
+				$itm['video_view_count'] = $item->video_view_count;
 				
 
 			}else{
@@ -643,22 +665,21 @@ function instagram_fetch_items($keyword,$camp ){
 			$itm['item_user_username'] = @$item->owner->username;
 			
 			//full name
-			$itm['item_user_name'] = $item->owner->full_name;
-			if(trim($item->owner->full_name) != ''){
+			$itm['item_user_name'] = '' ;
+			if( isset($item->owner->full_name) && trim($item->owner->full_name) != ''){
 				$itm['item_user_name'] = $item->owner->full_name;
 			}else{
-				$itm['item_user_name'] = $item->owner->username;
+				$itm['item_user_name'] = isset($item->owner->username) ? $item->owner->username : '';
 			}
 				
-			$itm['item_user_profile_pic'] = $item->owner->profile_pic_url;
-			
-				 
+			$itm['item_user_profile_pic'] = isset( $item->owner->profile_pic_url ) ?   $item->owner->profile_pic_url : '';
+			  	  
 			//comments postponed
 			$commentsArray = array();
 			$itm['item_comments'] = $commentsArray;
 
 			//item type 
-			$itm['item_type'] = $item->__typename ;
+			$itm['item_type'] = isset($item->__typename) ?  $item->__typename : '' ;
 			
 			$data = base64_encode( serialize ( $itm ) );
 			
@@ -687,6 +708,8 @@ function instagram_fetch_items($keyword,$camp ){
 			if ( ! $this->is_duplicate($itm['item_url']) )  {
 				$query = "INSERT INTO {$this->wp_prefix}automatic_general ( item_id , item_status , item_data ,item_type) values (    '{$itm['item_id']}', '0', '$data' ,'it_{$camp->camp_id}_$keyword')  ";
 				$this->db->query ( $query );
+				
+			
 			} else {
 				  echo ' <- duplicated <a href="'.get_edit_post_link($this->duplicate_id).'">#'.$this->duplicate_id.'</a>';
 			}
@@ -699,6 +722,7 @@ function instagram_fetch_items($keyword,$camp ){
 		  echo '</ol>';
 			
 		  echo '<br>Total '. $i .' pics found & cached';
+		  
 			
 		//check if nothing found so deactivate
 		if($i == 0 ){

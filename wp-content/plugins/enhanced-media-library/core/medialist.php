@@ -20,29 +20,20 @@ add_filter( 'shortcode_atts_slideshow', 'wpuxss_eml_shortcode_atts', 10, 3 );
 
 if ( ! function_exists( 'wpuxss_eml_shortcode_atts' ) ) {
 
-    function wpuxss_eml_shortcode_atts( $out, $pairs, $atts ) {
+    function wpuxss_eml_shortcode_atts( $output, $defaults, $atts ) {
 
-        $wpuxss_eml_lib_options = get_option('wpuxss_eml_lib_options');
+        $wpuxss_eml_lib_options = get_option( 'wpuxss_eml_lib_options', array() );
 
-        $is_filter_based = false;
+        $custom_query = false;
         $id = isset( $atts['id'] ) ? intval( $atts['id'] ) : 0;
+        unset( $atts['id'] );
+        unset( $defaults['id'] );
+
+        $atts = array_merge( $defaults, $atts );
 
 
-        // enforce order defaults
-        $pairs['order'] = 'ASC';
-        $pairs['orderby'] = 'menu_order ID';
-
-
-        foreach ( $pairs as $name => $default ) {
-            if ( array_key_exists( $name, $atts ) )
-                $out[$name] = $atts[$name];
-            else
-                $out[$name] = $default;
-        }
-
-
-        if ( isset( $atts['monthnum'] ) && isset( $atts['year'] ) ) {
-            $is_filter_based = true;
+        if ( ! empty( $atts['monthnum'] ) && ! empty( $atts['year'] ) ) {
+            $custom_query = true;
         }
 
 
@@ -50,50 +41,86 @@ if ( ! function_exists( 'wpuxss_eml_shortcode_atts' ) ) {
 
         foreach ( get_taxonomies_for_attachments( 'names' ) as $taxonomy ) {
 
-            if ( isset( $atts[$taxonomy] ) ) {
+            if ( ! empty( $atts[$taxonomy] ) ) {
 
                 $terms = explode( ',', $atts[$taxonomy] );
 
+                $field = ctype_digit( implode( '', $terms ) ) ? 'term_id' : 'slug';
+
                 $tax_query[] = array(
                     'taxonomy' => $taxonomy,
-                    'field' => 'term_id',
+                    'field' => $field,
                     'terms' => $terms,
                     'operator' => 'IN',
                     'include_children' => (bool) $wpuxss_eml_lib_options['include_children']
                 );
 
-                $is_filter_based = true;
+                unset( $atts[$taxonomy] );
+                $custom_query = true;
             }
         }
 
 
-        if ( ! $is_filter_based ) {
-            return $out;
+        if ( empty( $atts['ids'] ) || $custom_query ) {
+
+            if ( empty( $atts['orderby'] ) || 'post__in' === $atts['orderby'] ) {
+                $output['orderby'] = $atts['orderby'] = ( 'menuOrder' === $wpuxss_eml_lib_options['media_orderby'] ) ? 'menu_order' : esc_attr( $wpuxss_eml_lib_options['media_orderby'] );
+            }
+
+            if ( empty( $atts['order'] ) ) {
+                $output['order'] = $atts['order'] = esc_attr( $wpuxss_eml_lib_options['media_order'] );
+            }
         }
 
 
-        $ids = array();
+        if ( ! $custom_query ) {
+            return $output;
+        }
 
-        $mime_type = isset( $out['type'] ) && ( 'audio' === $out['type'] || 'video' === $out['type'] ) ? $out['type'] : 'image';
+
+        $mime_type_valuemap = array(
+            'pdf' => 'application/pdf',
+            'image' => 'image',
+            'audio' => 'audio',
+            'video' => 'video'
+        );
+
+        if ( ! empty( $atts['type'] ) ) {
+            $mime_type = $atts['type'];
+        }
+        // @todo
+        // elseif ( ! empty( $output['type'] ) ) {
+        //     $mime_type = $output['type'];
+        //     unset( $output['type'] );
+        // }
+        else {
+            $mime_type = 'image';
+        }
+
+        $mime_type = isset( $mime_type_valuemap[$mime_type] ) ? $mime_type_valuemap[$mime_type] : 'image';
+
+        $posts_per_page = isset( $atts['limit'] ) ? intval( $atts['limit'] ) : -1;
+        unset( $atts['limit'] );
 
         $query = array(
             'post_status' => 'inherit',
             'post_type' => 'attachment',
             'post_mime_type' => $mime_type,
-            'order' => $out['order'],
-            'orderby' => $out['orderby'],
-            'posts_per_page' => isset( $atts['limit'] ) ? intval( $atts['limit']  ) : -1, //TODO: add pagination
+            'order' => $atts['order'],
+            'orderby' => $atts['orderby'],
+            'posts_per_page' => $posts_per_page, // @TODO: add pagination
         );
 
-        if ( isset( $atts['monthnum'] ) && isset( $atts['year'] ) ) {
+
+        if ( ! empty( $atts['monthnum'] ) && ! empty( $atts['year'] ) ) {
 
             $query['monthnum'] = $atts['monthnum'];
             $query['year'] = $atts['year'];
+
+            unset( $atts['monthnum'] );
+            unset( $atts['year'] );
         }
 
-        if ( 'post__in' === $out['orderby'] ) {
-            $query['orderby'] = 'menu_order ID';
-        }
 
         if ( ! empty( $tax_query ) ) {
 
@@ -109,16 +136,24 @@ if ( ! function_exists( 'wpuxss_eml_shortcode_atts' ) ) {
         $get_posts = new WP_Query;
         $attachments = $get_posts->query($query);
 
+
+        $ids = array();
+
         foreach ( $attachments as $attachment ) {
             $ids[] = $attachment->ID;
         }
 
-        if ( ! empty( $ids ) ) {
-            $out['ids'] = $out['include'] = implode( ',', $ids );
-            $out['orderby'] = ( 'title' === $out['orderby'] && (bool) $wpuxss_eml_lib_options['natural_sort'] ) ? 'post__in' : $out['orderby'];
+
+        $output = $atts;
+        $output['id'] = $id; // shortcodes require it!
+
+
+        if ( $ids ) {
+            $output['ids'] = $output['include'] = implode( ',', $ids );
+            $output['orderby'] = ( 'title' === $output['orderby'] && (bool) $wpuxss_eml_lib_options['natural_sort'] ) ? 'post__in' : $output['orderby'];
         }
 
-        return $out;
+        return $output;
     }
 }
 

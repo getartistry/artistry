@@ -18,11 +18,16 @@
  * @package OceanWP WordPress theme
  */
 
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Core Constants
 define( 'OCEANWP_THEME_DIR', get_template_directory() );
 define( 'OCEANWP_THEME_URI', get_template_directory_uri() );
 
-class OCEANWP_Theme_Class {
+final class OCEANWP_Theme_Class {
 
 	/**
 	 * Main Theme Class Constructor
@@ -155,6 +160,8 @@ class OCEANWP_Theme_Class {
 		define( 'OCEANWP_ELEMENTOR_ACTIVE', class_exists( 'Elementor\Plugin' ) );
 		define( 'OCEANWP_BEAVER_BUILDER_ACTIVE', class_exists( 'FLBuilder' ) );
 		define( 'OCEANWP_WOOCOMMERCE_ACTIVE', class_exists( 'WooCommerce' ) );
+		define( 'OCEANWP_EDD_ACTIVE', class_exists( 'Easy_Digital_Downloads' ) );
+		define( 'OCEANWP_LIFTERLMS_ACTIVE', class_exists( 'LifterLMS' ) );
 
 	}
 
@@ -191,6 +198,11 @@ class OCEANWP_Theme_Class {
 		// WooCommerce
 		if ( OCEANWP_WOOCOMMERCE_ACTIVE ) {
 			require_once ( $dir .'woocommerce/woocommerce-config.php' );
+		}
+
+		// Easy Digital Downloads
+		if ( OCEANWP_EDD_ACTIVE ) {
+			require_once ( $dir .'edd/edd-config.php' );
 		}
 
 	}
@@ -390,6 +402,9 @@ class OCEANWP_Theme_Class {
 		// Register the lightbox style
 		wp_enqueue_style( 'magnific-popup', $dir .'third/magnific-popup.min.css', false, '1.0.0' );
 
+		// Register the slick style
+		wp_enqueue_style( 'slick', $dir .'third/slick.min.css', false, '1.6.0' );
+
 		// Main Style.css File
 		wp_enqueue_style( 'oceanwp-style', $dir .'style.min.css', false, $theme_version );
 
@@ -533,26 +548,29 @@ class OCEANWP_Theme_Class {
 	 */
 	public static function register_sidebars() {
 
-		// Right Sidebar
+		$heading = 'h4';
+		$heading = apply_filters( 'ocean_sidebar_heading', $heading );
+
+		// Default Sidebar
 		register_sidebar( array(
-			'name'			=> esc_html__( 'Right Sidebar', 'oceanwp' ),
+			'name'			=> esc_html__( 'Default Sidebar', 'oceanwp' ),
 			'id'			=> 'sidebar',
-			'description'	=> esc_html__( 'Widgets in this area are used in the right sidebar region.', 'oceanwp' ),
+			'description'	=> esc_html__( 'Widgets in this area will be displayed in the left or right sidebar area if you choose the Left or Right Sidebar layout.', 'oceanwp' ),
 			'before_widget'	=> '<div id="%1$s" class="sidebar-box %2$s clr">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<h4 class="widget-title">',
-			'after_title'	=> '</h4>',
+			'before_title'	=> '<'. $heading .' class="widget-title">',
+			'after_title'	=> '</'. $heading .'>',
 		) );
 
 		// Left Sidebar
 		register_sidebar( array(
 			'name'			=> esc_html__( 'Left Sidebar', 'oceanwp' ),
 			'id'			=> 'sidebar-2',
-			'description'	=> esc_html__( 'Widgets in this area are used in the left sidebar region.', 'oceanwp' ),
+			'description'	=> esc_html__( 'Widgets in this area are used in the left sidebar region if you use the Both Sidebars layout.', 'oceanwp' ),
 			'before_widget'	=> '<div id="%1$s" class="sidebar-box %2$s clr">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<h4 class="widget-title">',
-			'after_title'	=> '</h4>',
+			'before_title'	=> '<'. $heading .' class="widget-title">',
+			'after_title'	=> '</'. $heading .'>',
 		) );
 
 		// Search Results Sidebar
@@ -563,8 +581,8 @@ class OCEANWP_Theme_Class {
 				'description'	=> esc_html__( 'Widgets in this area are used in the search result page.', 'oceanwp' ),
 				'before_widget'	=> '<div id="%1$s" class="sidebar-box %2$s clr">',
 				'after_widget'	=> '</div>',
-				'before_title'	=> '<h4 class="widget-title">',
-				'after_title'	=> '</h4>',
+				'before_title'	=> '<'. $heading .' class="widget-title">',
+				'after_title'	=> '</'. $heading .'>',
 			) );
 		}
 
@@ -575,8 +593,8 @@ class OCEANWP_Theme_Class {
 			'description'	=> esc_html__( 'Widgets in this area are used in the first footer region.', 'oceanwp' ),
 			'before_widget'	=> '<div id="%1$s" class="footer-widget %2$s clr">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<h4 class="widget-title">',
-			'after_title'	=> '</h4>',
+			'before_title'	=> '<'. $heading .' class="widget-title">',
+			'after_title'	=> '</'. $heading .'>',
 		) );
 
 		// Footer 2
@@ -586,8 +604,8 @@ class OCEANWP_Theme_Class {
 			'description'	=> esc_html__( 'Widgets in this area are used in the second footer region.', 'oceanwp' ),
 			'before_widget'	=> '<div id="%1$s" class="footer-widget %2$s clr">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<h4 class="widget-title">',
-			'after_title'	=> '</h4>',
+			'before_title'	=> '<'. $heading .' class="widget-title">',
+			'after_title'	=> '</'. $heading .'>',
 		) );
 
 		// Footer 3
@@ -597,8 +615,8 @@ class OCEANWP_Theme_Class {
 			'description'	=> esc_html__( 'Widgets in this area are used in the third footer region.', 'oceanwp' ),
 			'before_widget'	=> '<div id="%1$s" class="footer-widget %2$s clr">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<h4 class="widget-title">',
-			'after_title'	=> '</h4>',
+			'before_title'	=> '<'. $heading .' class="widget-title">',
+			'after_title'	=> '</'. $heading .'>',
 		) );
 
 		// Footer 4
@@ -608,8 +626,8 @@ class OCEANWP_Theme_Class {
 			'description'	=> esc_html__( 'Widgets in this area are used in the fourth footer region.', 'oceanwp' ),
 			'before_widget'	=> '<div id="%1$s" class="footer-widget %2$s clr">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<h4 class="widget-title">',
-			'after_title'	=> '</h4>',
+			'before_title'	=> '<'. $heading .' class="widget-title">',
+			'after_title'	=> '</'. $heading .'>',
 		) );
 
 	}
@@ -1103,4 +1121,4 @@ class OCEANWP_Theme_Class {
 	}
 
 }
-$oceanwp_theme_class = new OCEANWP_Theme_Class;
+new OCEANWP_Theme_Class;

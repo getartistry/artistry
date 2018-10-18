@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Sidebar_Typo_Configs' ) ) {
@@ -116,15 +122,16 @@ if ( ! class_exists( 'Astra_Sidebar_Typo_Configs' ) ) {
 				 * Option: Widget Title Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[line-height-widget-title]',
-					'transport'   => 'postMessage',
-					'section'     => 'section-sidebar-typo',
-					'type'        => 'control',
-					'default'     => '',
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'control'     => 'ast-slider',
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[line-height-widget-title]',
+					'transport'         => 'postMessage',
+					'section'           => 'section-sidebar-typo',
+					'type'              => 'control',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'control'           => 'ast-slider',
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 5,
@@ -216,15 +223,16 @@ if ( ! class_exists( 'Astra_Sidebar_Typo_Configs' ) ) {
 				 * Option: Widget Content Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[line-height-widget-content]',
-					'section'     => 'section-sidebar-typo',
-					'type'        => 'control',
-					'transport'   => 'postMessage',
-					'default'     => '',
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'control'     => 'ast-slider',
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[line-height-widget-content]',
+					'section'           => 'section-sidebar-typo',
+					'type'              => 'control',
+					'transport'         => 'postMessage',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'control'           => 'ast-slider',
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 5,

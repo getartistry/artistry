@@ -306,6 +306,13 @@
 			else{
             	$('.ast-advanced-headers-row.ast-custom-menu-item-text-enabled').hide();
 			}
+
+			if( 'search' == custom_menu ) {
+            	$('#ast-advanced-headers-design-search-style').parents('.ast-advanced-headers-row').show();
+			}
+			else{
+            	$('#ast-advanced-headers-design-search-style').parents('.ast-advanced-headers-row').hide();
+			}
 		},
 
 		/**

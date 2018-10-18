@@ -369,12 +369,17 @@ if ( ! class_exists( 'Astra_Ext_Mobile_Header_Markup' ) ) {
 		 */
 		function add_scripts() {
 			/*** Start Path Logic */
+			$below_section_1     = astra_get_option( 'below-header-section-1' );
+			$below_section_2     = astra_get_option( 'below-header-section-2' );
 			$below_header_merged = astra_get_option( 'below-header-merge-menu' );
+			$above_section_1     = astra_get_option( 'above-header-section-1' );
+			$above_section_2     = astra_get_option( 'above-header-section-2' );
 			$above_header_merged = astra_get_option( 'above-header-merge-menu' );
 
-			$mobile_menu_style  = astra_get_option( 'mobile-menu-style' );
-			$above_header_style = astra_get_option( 'mobile-above-header-menu-style' );
-			$below_header_style = astra_get_option( 'mobile-below-header-menu-style' );
+			$disable_primary_nav = astra_get_option( 'disable-primary-nav' );
+			$mobile_menu_style   = astra_get_option( 'mobile-menu-style' );
+			$above_header_style  = astra_get_option( 'mobile-above-header-menu-style' );
+			$below_header_style  = astra_get_option( 'mobile-below-header-menu-style' );
 
 			/* Define Variables */
 			$uri  = ASTRA_EXT_MOBILE_HEADER_URL . 'assets/js/';
@@ -401,15 +406,15 @@ if ( ! class_exists( 'Astra_Ext_Mobile_Header_Markup' ) ) {
 			/*** End Path Logic */
 			Astra_Minify::add_dependent_js( 'jquery' );
 
-			if ( ! $above_header_merged && 'no-toggle' == $above_header_style ) {
+			if ( ! $above_header_merged && 'no-toggle' == $above_header_style && ( 'menu' === $above_section_1 || 'menu' === $above_section_2 ) ) {
 				Astra_Minify::add_js( $gen_path . 'above-menu-no-toggle' . $file_prefix . '.js' );
 			}
 
-			if ( ! $below_header_merged && 'no-toggle' == $below_header_style ) {
+			if ( ! $below_header_merged && 'no-toggle' == $below_header_style && ( 'menu' === $above_section_1 || 'menu' === $above_section_2 ) ) {
 				Astra_Minify::add_js( $gen_path . 'below-menu-no-toggle' . $file_prefix . '.js' );
 			}
 
-			if ( 'no-toggle' == $mobile_menu_style ) {
+			if ( 'no-toggle' == $mobile_menu_style && '1' != $disable_primary_nav ) {
 				Astra_Minify::add_js( $gen_path . 'primary-menu-no-toggle' . $file_prefix . '.js' );
 			}
 		}

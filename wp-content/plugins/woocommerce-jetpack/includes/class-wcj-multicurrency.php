@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Multicurrency (Currency Switcher)
  *
- * @version 3.8.0
+ * @version 4.0.0
  * @since   2.4.3
  * @author  Algoritmika Ltd.
  */
@@ -16,7 +16,7 @@ class WCJ_Multicurrency extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.4.5
+	 * @version 4.0.0
 	 * @todo    check if we can just always execute `init()` on `init` hook
 	 */
 	function __construct() {
@@ -25,10 +25,19 @@ class WCJ_Multicurrency extends WCJ_Module {
 		$this->short_desc = __( 'Multicurrency (Currency Switcher)', 'woocommerce-jetpack' );
 		$this->desc       = __( 'Add multiple currencies (currency switcher) to WooCommerce.', 'woocommerce-jetpack' );
 		$this->link_slug  = 'woocommerce-multicurrency-currency-switcher';
-		$this->extra_desc = sprintf( __( 'After setting currencies in the Currencies Options section below, use %s <strong>widget</strong>, or %s <strong>shortcode</strong>. If you want to insert switcher in your <strong>PHP code</strong>, just use %s code.', 'woocommerce-jetpack' ),
-			'<em>' . __( 'Booster - Multicurrency Switcher', 'woocommerce-jetpack' ) . '</em>',
-			'<code>[wcj_currency_select_drop_down_list]</code>',
-			'<code>echo&nbsp;do_shortcode(&nbsp;\'[wcj_currency_select_drop_down_list]\'&nbsp;);</code>' );
+		$this->extra_desc = sprintf( __( 'After setting currencies in the Currencies Options section below, you can add switcher to the frontend with: %s', 'woocommerce-jetpack' ),
+			'<ol>' .
+				'<li>' . sprintf( __( '<strong>Widget:</strong> "%s"', 'woocommerce-jetpack' ),
+					__( 'Booster - Multicurrency Switcher', 'woocommerce-jetpack' ) ) .
+				'</li>' .
+				'<li>' . sprintf( __( '<strong>Shortcodes:</strong> %s', 'woocommerce-jetpack' ),
+					'<code>[wcj_currency_select_drop_down_list]</code>, <code>[wcj_currency_select_radio_list]</code>, <code>[wcj_currency_select_link_list]</code>' ) .
+				'</li>' .
+				'<li>' . sprintf( __( '<strong>PHP code:</strong> by using %s function, e.g.: %s', 'woocommerce-jetpack' ),
+					'<code>do_shortcode()</code>',
+					'<code>echo&nbsp;do_shortcode(&nbsp;\'[wcj_currency_select_drop_down_list]\'&nbsp;);</code>' ) .
+				'</li>' .
+			'</ol>' );
 		parent::__construct();
 
 		if ( $this->is_enabled() ) {
@@ -59,7 +68,7 @@ class WCJ_Multicurrency extends WCJ_Module {
 	/**
 	 * add_hooks.
 	 *
-	 * @version 3.5.1
+	 * @version 3.9.0
 	 */
 	function add_hooks() {
 		if ( wcj_is_frontend() ) {
@@ -69,8 +78,7 @@ class WCJ_Multicurrency extends WCJ_Module {
 			add_filter( 'wc_epo_price',                     array( $this, 'change_price_by_currency_tm_extra_product_options_plugin' ),      $this->price_hooks_priority, 3 );
 
 			// Currency hooks
-			add_filter( 'woocommerce_currency_symbol', array( $this, 'change_currency_symbol' ), $this->price_hooks_priority, 2 );
-			add_filter( 'woocommerce_currency',        array( $this, 'change_currency_code' ),   $this->price_hooks_priority, 1 );
+			add_filter( 'woocommerce_currency', array( $this, 'change_currency_code' ), $this->price_hooks_priority, 1 );
 
 			// Add "Change Price" hooks
 			wcj_add_change_price_hooks( $this, $this->price_hooks_priority );
@@ -206,11 +214,20 @@ class WCJ_Multicurrency extends WCJ_Module {
 	/**
 	 * do_revert.
 	 *
-	 * @version 2.5.0
+	 * @version 3.9.0
 	 * @since   2.5.0
 	 */
 	function do_revert() {
-		return ( 'yes' === get_option( 'wcj_multicurrency_revert', 'no' ) && is_checkout() );
+		switch ( get_option( 'wcj_multicurrency_revert', 'no' ) ) {
+			case 'cart_only':
+				return is_cart();
+			case 'yes': // checkout only
+				return is_checkout();
+			case 'cart_and_checkout':
+				return ( is_cart() || is_checkout() );
+			default: // 'no'
+				return false;
+		}
 	}
 
 	/**
@@ -274,18 +291,6 @@ class WCJ_Multicurrency extends WCJ_Module {
 
 		// No changes
 		return $price;
-	}
-
-	/**
-	 * change_currency_symbol.
-	 *
-	 * @version 2.5.0
-	 */
-	function change_currency_symbol( $currency_symbol, $currency ) {
-		if ( $this->do_revert() ) {
-			return $currency_symbol;
-		}
-		return wcj_get_currency_symbol( $this->get_current_currency_code( $currency ) );
 	}
 
 	/**

@@ -24,8 +24,10 @@
   display: none;
 }
 
-.ast-above-header {
-  z-index: 5;
+.ast-primary-sticky-header-active li.ast-masthead-custom-menu-items a,
+.ast-primary-sticky-header-active li.ast-masthead-custom-menu-items a:hover,
+.ast-primary-sticky-header-active li.ast-masthead-custom-menu-items a:focus {
+  background: transparent;
 }
 
 .ast-offcanvas-active .ast-above-header,
@@ -36,14 +38,6 @@
 .ast-offcanvas-active .ast-above-header.ast-sticky-active,
 .ast-fullscreen-active .ast-above-header.ast-sticky-active {
   z-index: 0;
-}
-
-.main-header-bar {
-  z-index: 4;
-}
-
-.ast-below-header {
-  z-index: 3;
 }
 
 #ast-fixed-header {
@@ -97,11 +91,15 @@
   /* Mobile Header */
 }
 
-.ast-sticky-main-shrink .ast-sticky-shrunk .main-header-bar,
-.ast-sticky-main-shrink .ast-sticky-shrunk.main-header-bar {
+.ast-sticky-main-shrink .ast-sticky-shrunk.main-header-bar,
+.ast-sticky-main-shrink .ast-sticky-shrunk .main-header-bar {
+  line-height: 55px;
+}
+
+.ast-sticky-main-shrink .ast-sticky-shrunk.main-header-bar .ast-site-identity,
+.ast-sticky-main-shrink .ast-sticky-shrunk .main-header-bar .ast-site-identity {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  line-height: 55px;
 }
 
 .ast-sticky-main-shrink .ast-sticky-shrunk #site-navigation {
@@ -172,4 +170,13 @@
 
 .ast-fullscreen-menu-overlay #ast-fixed-header {
   z-index: 9;
+}
+
+/**
+ * Need to override the overflow-y which is given form the javascript
+ * To fix the rendering problem with the flyout menu
+ */
+.ast-flyout-menu-enable.ast-primary-sticky-enabled .main-header-bar,
+.ast-flyout-menu-enable.ast-primary-sticky-enabled .ast-stick-primary-below-wrapper {
+  overflow-y: unset !important;
 }

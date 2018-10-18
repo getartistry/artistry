@@ -13,7 +13,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 
 		public static function instance() {
 			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self;
+				self::$_instance = new self();
 			}
 
 			return self::$_instance;
@@ -49,16 +49,16 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 
 				/* license consent */
 				.bsf-license-consent-container {
-				    display: flex;
+					display: flex;
 				}
 
 				.bsf-license-consent-container label {
-				    padding-top: 0;
+					padding-top: 0;
 				}
 
 				.wp-admin p.bsf-license-consent-container input {
-				    margin-top: 2px;
-				    margin-right: 10px;
+					margin-top: 2px;
+					margin-right: 10px;
 				}
 			</style>
 
@@ -71,11 +71,11 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				return;
 			}
 
-			if ( ! isset( $_POST['bsf_license_manager']['license_key'] ) || $_POST['bsf_license_manager']['license_key'] == "" ) {
+			if ( ! isset( $_POST['bsf_license_manager']['license_key'] ) || $_POST['bsf_license_manager']['license_key'] == '' ) {
 				return;
 			}
 
-			if ( ! isset( $_POST['bsf_license_manager']['product_id'] ) || $_POST['bsf_license_manager']['product_id'] == "" ) {
+			if ( ! isset( $_POST['bsf_license_manager']['product_id'] ) || $_POST['bsf_license_manager']['product_id'] == '' ) {
 				return;
 			}
 
@@ -85,8 +85,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			// Check if the key is from EDD
 			$is_edd = $this->is_edd( $license_key );
 
-			// 
-			$path = get_api_url() . '?referer=deactivate-' . $product_id;
+						$path = get_api_url() . '?referer=deactivate-' . $product_id;
 
 			// Using Brainstorm API v2
 			$data = array(
@@ -95,24 +94,24 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				'product_id'   => $product_id,
 				'site_url'     => get_site_url(),
 				'is_edd'       => $is_edd,
-				'referer'      => 'customer'
+				'referer'      => 'customer',
 			);
 
 			$data     = apply_filters( 'bsf_deactivate_license_args', $data );
 			$response = wp_remote_post(
 				$path, array(
-					'body'      => $data,
-					'timeout'   => '30'
+					'body'    => $data,
+					'timeout' => '30',
 				)
 			);
 
 			// Try to make a second request to unsecure URL.
 			if ( is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) !== 200 ) {
-				$path = get_api_url( true ) . '?referer=deactivate-' . $product_id;
+				$path     = get_api_url( true ) . '?referer=deactivate-' . $product_id;
 				$response = wp_remote_post(
 					$path, array(
-						'body'      => $data,
-						'timeout'   => '30'
+						'body'    => $data,
+						'timeout' => '30',
 					)
 				);
 			}
@@ -145,24 +144,24 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				return;
 			}
 
-			if ( ! isset( $_POST['bsf_license_manager']['license_key'] ) || $_POST['bsf_license_manager']['license_key'] == "" ) {
+			if ( ! isset( $_POST['bsf_license_manager']['license_key'] ) || $_POST['bsf_license_manager']['license_key'] == '' ) {
 				return;
 			}
 
-			if ( ! isset( $_POST['bsf_license_manager']['product_id'] ) || $_POST['bsf_license_manager']['product_id'] == "" ) {
+			if ( ! isset( $_POST['bsf_license_manager']['product_id'] ) || $_POST['bsf_license_manager']['product_id'] == '' ) {
 				return;
-			}			
+			}
 
-			$license_key = esc_attr( $_POST['bsf_license_manager']['license_key'] );
-			$product_id  = esc_attr( $_POST['bsf_license_manager']['product_id'] );
-			$user_name   = isset( $_POST['bsf_license_manager']['user_name'] ) ? esc_attr( $_POST['bsf_license_manager']['user_name'] ) : '';
-			$user_email  = isset( $_POST['bsf_license_manager']['user_email'] ) ? esc_attr( $_POST['bsf_license_manager']['user_email'] ) : '';
-			$privacy_consent 			= ( isset( $_POST['bsf_license_manager']['privacy_consent'] ) && 'true' === $_POST['bsf_license_manager']['privacy_consent'] ) ? true : false;
-			$terms_conditions_consent 	= ( isset( $_POST['bsf_license_manager']['terms_conditions_consent'] ) && 'true' === $_POST['bsf_license_manager']['terms_conditions_consent'] ) ? true : false;
+			$license_key              = esc_attr( $_POST['bsf_license_manager']['license_key'] );
+			$product_id               = esc_attr( $_POST['bsf_license_manager']['product_id'] );
+			$user_name                = isset( $_POST['bsf_license_manager']['user_name'] ) ? esc_attr( $_POST['bsf_license_manager']['user_name'] ) : '';
+			$user_email               = isset( $_POST['bsf_license_manager']['user_email'] ) ? esc_attr( $_POST['bsf_license_manager']['user_email'] ) : '';
+			$privacy_consent          = ( isset( $_POST['bsf_license_manager']['privacy_consent'] ) && 'true' === $_POST['bsf_license_manager']['privacy_consent'] ) ? true : false;
+			$terms_conditions_consent = ( isset( $_POST['bsf_license_manager']['terms_conditions_consent'] ) && 'true' === $_POST['bsf_license_manager']['terms_conditions_consent'] ) ? true : false;
 
 			// update product license key
 			$args = array(
-				'purchase_key' => $license_key
+				'purchase_key' => $license_key,
 			);
 
 			$this->bsf_update_product_info( $product_id, $args );
@@ -171,45 +170,44 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$is_edd = $this->is_edd( $license_key );
 
 			// Server side check if the license key is valid
-
 			$path = get_api_url() . '?referer=activate-' . $product_id;
 
 			// Using Brainstorm API v2
 			$data = array(
-				'action'       				=> 'bsf_activate_license',
-				'purchase_key' 				=> $license_key,
-				'product_id'   				=> $product_id,
-				'user_name'    				=> $user_name,
-				'user_email'   				=> $user_email,
-				'privacy_consent'      		=> $privacy_consent,
-				'terms_conditions_consent'	=> $terms_conditions_consent,
-				'site_url'     				=> get_site_url(),
-				'is_edd'       				=> $is_edd,
-				'referer'      				=> 'customer'
+				'action'                   => 'bsf_activate_license',
+				'purchase_key'             => $license_key,
+				'product_id'               => $product_id,
+				'user_name'                => $user_name,
+				'user_email'               => $user_email,
+				'privacy_consent'          => $privacy_consent,
+				'terms_conditions_consent' => $terms_conditions_consent,
+				'site_url'                 => get_site_url(),
+				'is_edd'                   => $is_edd,
+				'referer'                  => 'customer',
 			);
 
 			$data     = apply_filters( 'bsf_activate_license_args', $data );
 			$response = wp_remote_post(
 				$path, array(
-					'body'      => $data,
-					'timeout'   => '30'
+					'body'    => $data,
+					'timeout' => '30',
 				)
 			);
 
 			// Try to make a second request to unsecure URL.
 			if ( is_wp_error( $response ) && wp_remote_retrieve_response_code( $response ) !== 200 ) {
-				$path = get_api_url( true ) . '?referer=activate-' . $product_id;
+				$path     = get_api_url( true ) . '?referer=activate-' . $product_id;
 				$response = wp_remote_post(
-				$path, array(
-						'body'      => $data,
-						'timeout'   => '30'
+					$path, array(
+						'body'    => $data,
+						'timeout' => '30',
 					)
 				);
 			}
 
 			if ( ! is_wp_error( $response ) || wp_remote_retrieve_response_code( $response ) === 200 ) {
 				$result = json_decode( wp_remote_retrieve_body( $response ), true );
-				
+
 				if ( isset( $result['success'] ) && $result['success'] == true ) {
 					// update license saus to the product
 					$_POST['bsf_license_activation']['success'] = $result['success'];
@@ -241,7 +239,6 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 		public function bsf_update_product_info( $product_id, $args ) {
 			$brainstrom_products = get_option( 'brainstrom_products', array() );
 
-
 			foreach ( $brainstrom_products as $type => $products ) {
 
 				foreach ( $products as $id => $product ) {
@@ -249,7 +246,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 					if ( $id == $product_id ) {
 						foreach ( $args as $key => $value ) {
 							$brainstrom_products[ $type ][ $id ][ $key ] = $value;
-							do_action( "bsf_product_update_{$value}", $product_id, $value  );
+							do_action( "bsf_product_update_{$value}", $product_id, $value );
 						}
 					}
 				}
@@ -267,7 +264,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$all_products = $brainstorm_plugins + $brainstorm_themes;
 
 			// If a product is marked as free, it is considered as active.
-			$is_free 	= self::is_product_free( $product_id );
+			$is_free = self::is_product_free( $product_id );
 			if ( 'true' == $is_free ) {
 				return true;
 			}
@@ -280,11 +277,10 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				if ( isset( $all_products[ $product_id ]['status'] ) && $all_products[ $product_id ]['status'] == 'registered' ) {
 					return true;
 				}
-
 			}
-			
+
 			if ( ! empty( $is_bundled ) ) {
-				
+
 				// The product is bundled
 				foreach ( $is_bundled as $key => $value ) {
 
@@ -304,8 +300,8 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 		}
 
 		public static function is_product_free( $product_id ) {
-			$license_manager 	= BSF_License_Manager::instance();
-			$is_free 			= $license_manager->bsf_get_product_info( $product_id, 'is_product_free' );
+			$license_manager = BSF_License_Manager::instance();
+			$is_free         = $license_manager->bsf_get_product_info( $product_id, 'is_product_free' );
 
 			return $is_free;
 		}
@@ -329,7 +325,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 		public function license_activation_form( $args ) {
 			$html = '';
 
-			$product_id             = ( isset( $args['product_id'] ) && ! is_null( $args['product_id'] ) ) ? $args['product_id'] : '';
+			$product_id = ( isset( $args['product_id'] ) && ! is_null( $args['product_id'] ) ) ? $args['product_id'] : '';
 
 			// bail out if product id is missing.
 			if ( $product_id == '' ) {
@@ -346,14 +342,14 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$license_active_class         = ( isset( $args['bsf_license_active_class'] ) && ! is_null( $args['bsf_license_active_class'] ) ) ? $args['bsf_license_active_class'] : '';
 			$license_not_activate_message = ( isset( $args['bsf_license_not_activate_message'] ) && ! is_null( $args['bsf_license_not_activate_message'] ) ) ? $args['bsf_license_not_activate_message'] : '';
 
-			$size                         = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
-			$button_text_activate         = ( isset( $args['button_text_activate'] ) && ! is_null( $args['button_text_activate'] ) ) ? $args['button_text_activate'] : 'Activate License';
-			$button_text_deactivate       = ( isset( $args['button_text_deactivate'] ) && ! is_null( $args['button_text_deactivate'] ) ) ? $args['button_text_deactivate'] : 'Deactivate License';
-			$placeholder                  = ( isset( $args['placeholder'] ) && ! is_null( $args['placeholder'] ) ) ? $args['placeholder'] : 'Enter your license key..';
-			$placeholder_name             = ( isset( $args['placeholder_name'] ) && ! is_null( $args['placeholder_name'] ) ) ? $args['placeholder_name'] : 'Your Name..';
-			$placeholder_email            = ( isset( $args['placeholder_email'] ) && ! is_null( $args['placeholder_email'] ) ) ? $args['placeholder_email'] : 'Your Email..';
-			$bsf_license_allow_email      = ( isset( $args['bsf_license_allow_email'] ) && ! is_null( $args['bsf_license_allow_email'] ) ) ? $args['bsf_license_allow_email'] : true;
-			$license_form_title           = ( isset( $args['license_form_title'] ) && ! is_null( $args['license_form_title'] ) ) ? $args['license_form_title'] : 'Updates & Support Registration - ';
+			$size                    = ( isset( $args['size'] ) && ! is_null( $args['size'] ) ) ? $args['size'] : 'regular';
+			$button_text_activate    = ( isset( $args['button_text_activate'] ) && ! is_null( $args['button_text_activate'] ) ) ? $args['button_text_activate'] : 'Activate License';
+			$button_text_deactivate  = ( isset( $args['button_text_deactivate'] ) && ! is_null( $args['button_text_deactivate'] ) ) ? $args['button_text_deactivate'] : 'Deactivate License';
+			$placeholder             = ( isset( $args['placeholder'] ) && ! is_null( $args['placeholder'] ) ) ? $args['placeholder'] : 'Enter your license key..';
+			$placeholder_name        = ( isset( $args['placeholder_name'] ) && ! is_null( $args['placeholder_name'] ) ) ? $args['placeholder_name'] : 'Your Name..';
+			$placeholder_email       = ( isset( $args['placeholder_email'] ) && ! is_null( $args['placeholder_email'] ) ) ? $args['placeholder_email'] : 'Your Email..';
+			$bsf_license_allow_email = ( isset( $args['bsf_license_allow_email'] ) && ! is_null( $args['bsf_license_allow_email'] ) ) ? $args['bsf_license_allow_email'] : true;
+			$license_form_title      = ( isset( $args['license_form_title'] ) && ! is_null( $args['license_form_title'] ) ) ? $args['license_form_title'] : 'Updates & Support Registration - ';
 
 			$is_active   = self::bsf_is_active_license( $product_id );
 			$license_key = $this->bsf_get_product_info( $product_id, 'purchase_key' );
@@ -375,7 +371,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 
 			$purchase_url = $this->bsf_get_product_info( $product_id, 'purchase_url' );
 			$product_name = apply_filters( "agency_updater_productname_{$product_id}", $this->bsf_get_product_info( $product_id, 'name' ) );
-			if( empty( $product_name ) ) {
+			if ( empty( $product_name ) ) {
 				$product_name = apply_filters( "agency_updater_productname_{$product_id}", $this->bsf_get_product_info( $product_id, 'product_name' ) );
 			}
 
@@ -383,13 +379,13 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$current_status = $current_message = '';
 
 			if ( isset( $_POST['bsf_license_activation']['success'] ) && isset( $_POST['bsf_license_manager']['product_id'] ) && $product_id == $_POST['bsf_license_manager']['product_id'] ) {
-				$current_status     = esc_attr( $_POST['bsf_license_activation']['success'] );
+				$current_status = esc_attr( $_POST['bsf_license_activation']['success'] );
 				if ( true == $current_status ) {
-					$current_status = "bsf-current-license-success bsf-current-license-success-" . $product_id;
-					$is_active 		= true;
+					$current_status = 'bsf-current-license-success bsf-current-license-success-' . $product_id;
+					$is_active      = true;
 				} else {
-					$current_status = "bsf-current-license-error bsf-current-license-error-" . $product_id;
-					$is_active 		= false;
+					$current_status = 'bsf-current-license-error bsf-current-license-error-' . $product_id;
+					$is_active      = false;
 				}
 			}
 
@@ -398,7 +394,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			}
 
 			$license_status       = 'Active!';
-			$license_status_class = "bsf-license-active-" . $product_id;
+			$license_status_class = 'bsf-license-active-' . $product_id;
 
 			$html .= '<div class="bsf-license-key-registration">';
 
@@ -406,19 +402,17 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$form_heading_status = '';
 			if ( $is_active == false ) {
 				$license_status       = 'Not Active!';
-				$license_status_class = "bsf-license-not-active-" . $product_id;
-				$not_activate = '';
-				$html .= apply_filters( "bsf_license_not_activate_message_{$product_id}", $not_activate, $license_status_class, $license_not_activate_message );
+				$license_status_class = 'bsf-license-not-active-' . $product_id;
+				$not_activate         = '';
+				$html                .= apply_filters( "bsf_license_not_activate_message_{$product_id}", $not_activate, $license_status_class, $license_not_activate_message );
 
 				if ( $bsf_license_allow_email == true ) {
 					$popup_license_subtitle = apply_filters( "bsf_license_key_form_inactive_subtitle_{$product_id}", __( '<p>Click on the button below to activate your license and subscribe to our newsletter.</p>', 'bsf' ) );
 				} else {
 					$popup_license_subtitle = apply_filters( "bsf_license_key_form_inactive_subtitle_{$product_id}", __( '<p>Enter your purchase key and activate automatic updates.</p>', 'bsf' ) );
 				}
-
-				
 			} else {
-				$form_class .= " form-submited-{$product_id}";
+				$form_class            .= " form-submited-{$product_id}";
 				$popup_license_subtitle = apply_filters( "bsf_license_key_form_active_subtitle_{$product_id}", '' );
 			}
 
@@ -426,7 +420,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 
 			$html .= '<form method="post" class="' . $form_class . '" action="' . $form_action . '">';
 
-			if( $popup_license_form ) {
+			if ( $popup_license_form ) {
 				$form_heading  = '<h3 class="' . $license_status_class . ' ' . $license_form_heading_class . '">' . $product_name . '</h3>';
 				$form_heading .= $popup_license_subtitle;
 			} else {
@@ -437,7 +431,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 
 			if ( $current_status !== '' && $current_message !== '' ) {
 				$current_message = '<span class="' . $current_status . '">' . $current_message . '</span>';
-				$html .= apply_filters( "bsf_license_current_message_{$product_id}", $current_message );
+				$html           .= apply_filters( "bsf_license_current_message_{$product_id}", $current_message );
 			}
 
 			if ( $is_active == true ) {
@@ -474,7 +468,6 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 
 					$html .= '<span class="license-form-field">';
 					$html .= '</span>';
-					
 
 				} else {
 					$html .= '<span class="license-form-field">';
@@ -499,7 +492,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				}
 
 				$html .= apply_filters( "bsf_get_license_message_{$product_id}", $get_license_message, $purchase_url );
-				$html .= "</div>";
+				$html .= '</div>';
 			}
 
 			$html .= '</form>';
@@ -509,7 +502,6 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			$html = apply_filters( 'bsf_inlne_license_envato_after_form', $html, $product_id );
 
 			$html .= '</div> <!-- envato-license-registration -->';
-
 
 			if ( isset( $_GET['debug'] ) ) {
 				$html .= get_bsf_systeminfo();
@@ -531,9 +523,9 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 		function load_scripts( $hook = '' ) {
 
 			if ( 'plugins.php' === $hook ) {
-				wp_register_script( 'bsf-core-jquery-history', plugins_url( 'assets/js/jquery-history.js', __FILE__ ), array( 'jquery' ),BSF_UPDATER_VERSION, true );
-				wp_enqueue_style( 'bsf-core-license-form', plugins_url( 'assets/css/license-form-popup.css', __FILE__ ), array(),BSF_UPDATER_VERSION, 'all' );
-				wp_enqueue_script( 'bsf-core-license-form', plugins_url( 'assets/js/license-form-popup.js', __FILE__ ), array( 'jquery', 'bsf-core-jquery-history' ),BSF_UPDATER_VERSION, true );
+				wp_register_script( 'bsf-core-jquery-history', plugins_url( 'assets/js/jquery-history.js', __FILE__ ), array( 'jquery' ), BSF_UPDATER_VERSION, true );
+				wp_enqueue_style( 'bsf-core-license-form', plugins_url( 'assets/css/license-form-popup.css', __FILE__ ), array(), BSF_UPDATER_VERSION, 'all' );
+				wp_enqueue_script( 'bsf-core-license-form', plugins_url( 'assets/js/license-form-popup.js', __FILE__ ), array( 'jquery', 'bsf-core-jquery-history' ), BSF_UPDATER_VERSION, true );
 			}
 
 		}
@@ -545,13 +537,13 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 
 			$product_id = $args['product_id'];
 
-			if( ! isset( $product_id ) ) {
+			if ( ! isset( $product_id ) ) {
 				return $links;
 			}
 
 			if ( is_multisite() && ! is_network_admin() && false == apply_filters( "bsf_core_popup_license_form_per_network_site_{$product_id}", false ) ) {
 				return $links;
-			}			
+			}
 
 			$status         = 'inactive';
 			$license_string = __( 'Activate License', 'bsf-core' );
@@ -582,7 +574,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				'size'                             => 'regular',
 				'bsf_license_allow_email'          => false,
 				'popup_license_form'               => ( isset( $args['popup_license_form'] ) ) ? $args['popup_license_form'] : false,
-				'license_from_type'				   => $license_from_type
+				'license_from_type'                => $license_from_type,
 			);
 
 			$form_args = wp_parse_args( $args, $form_args );
@@ -590,7 +582,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 			self::$inline_form_products[ $product_id ] = $form_args;
 
 			$action_links = array(
-				'license' => '<a plugin-slug="'.esc_attr( $product_id ).'" class="bsf-core-plugin-link bsf-core-license-form-btn ' . esc_attr( $status ) . '" aria-label="' . esc_attr( $license_string ) . '">' . esc_html( $license_string ) . '</a>',
+				'license' => '<a plugin-slug="' . esc_attr( $product_id ) . '" class="bsf-core-plugin-link bsf-core-license-form-btn ' . esc_attr( $status ) . '" aria-label="' . esc_attr( $license_string ) . '">' . esc_html( $license_string ) . '</a>',
 			);
 
 			return array_merge( $links, $action_links );
@@ -602,14 +594,14 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 		public function render_popup_form_markup() {
 
 			// Bail if not on plugins.php screen.
-			if( 'plugins' !== get_current_screen()->id && 'plugins-network' !== get_current_screen()->id ) {
+			if ( 'plugins' !== get_current_screen()->id && 'plugins-network' !== get_current_screen()->id ) {
 				return;
 			}
 
 			foreach ( self::$inline_form_products as $product_id => $product ) {
 				?>
 
-			 	<div plugin-slug="<?php echo esc_attr( $product_id ); ?>" class="bsf-core-license-form" style="display: none;">
+				 <div plugin-slug="<?php echo esc_attr( $product_id ); ?>" class="bsf-core-license-form" style="display: none;">
 					<div class="bsf-core-license-form-overlay"></div>
 					<div class="bsf-core-license-form-inner">
 						<button type="button" class="bsf-core-license-form-close-btn">
@@ -618,13 +610,13 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 						</button>
 
 						<?php
-							if( 'edd' === $product[ 'license_from_type' ] ) {
-								echo bsf_license_activation_form( $product );
-							}
+						if ( 'edd' === $product['license_from_type'] ) {
+							echo bsf_license_activation_form( $product );
+						}
 
-							if( 'envato' === $product[ 'license_from_type' ] ) {
-								echo bsf_envato_register( $product );
-							}
+						if ( 'envato' === $product['license_from_type'] ) {
+							echo bsf_envato_register( $product );
+						}
 
 							do_action( "bsf_inlne_license_form_footer_{$product[ 'license_from_type' ]}", $product_id );
 
@@ -637,7 +629,7 @@ if ( ! class_exists( 'BSF_License_Manager' ) ) {
 				</div>
 
 				<?php
-			} 
+			}
 
 		}
 

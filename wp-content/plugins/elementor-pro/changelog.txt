@@ -1,5 +1,66 @@
 # Elementor Pro - by Elementor.com
 
+#### 2.1.10 - 2018-10-09
+* Tweak: Added responsive alignment control for Share Buttons widget ([#5821](https://github.com/pojome/elementor/issues/5821))
+* Tweak: Added link control to Animated Headline widget
+* Fix: Mobile nav menu jump on RTL ([#5711](https://github.com/pojome/elementor/issues/5711))
+* Fix: Responsive alignment control in Add to Cart widget ([#5830](https://github.com/pojome/elementor/issues/5830))
+* Fix: Added IE compatibility for Animated Headline widget
+* Fix: Post Content widget is now shown only on `Single` templates
+* Fix: Query Control Pagination with offset
+
+#### 2.1.9 - 2018-09-17
+* Tweak: Added Centered Slides option for Slideshow carousel
+* Fix: Allow only public CPT for Manual Selection in Query Control ([#5091](https://github.com/pojome/elementor/issues/5091))
+* Fix: ACF Gallery option support ([#5344](https://github.com/pojome/elementor/issues/5344))
+* Fix: Page scrolling on resize when sticky is active ([#5740](https://github.com/pojome/elementor/issues/5740))
+* Fix: Edit custom name for Global Widget in the Navigator ([#5689](https://github.com/pojome/elementor/issues/5689))
+* Fix: Coverflow transition effect in Carousel
+* Fix: Weird mobile behavior with Cube effect in Carousel
+* Fix: Show the first thumbnail in the Slideshow carousel correctly
+
+#### 2.1.8 - 2018-09-12
+* Tweak: Added styling options for WC Additional Information widget
+* Tweak: Added styling options for 'View Cart' link in Products widget
+* Fix: 3rd party plugin support for WC single product template ([#5338](https://github.com/pojome/elementor/issues/5338))
+* Fix: Layout of Related Product widget with WC native style
+
+#### 2.1.7 - 2018-09-03
+* New: WC Archive Description widget
+* Tweak: Added blend mode to Slides widget background overlay ([#5555](https://github.com/pojome/elementor/issues/5555))
+* Tweak: Added 'Current Subcategories' option to Product Categories widget
+* Fix: Added default vertical alignment in Author Box widget ([#5589](https://github.com/pojome/elementor/issues/5589))
+* Tweak: Added more blend mode options for CTA widget
+* Tweak: Improved plugin updater method based on WordPress version
+* Fix: Improved IE compatibility for Posts and Portfolio widgets
+* Fix: Added default gap for products pagination
+* Fix: Post thumbnail flickering in Safari browser
+* Fix: Close mobile nav menu on click only in full-width mode
+* Fix: Added trailing slash to pagination links in Posts widget
+
+#### 2.1.6 - 2018-08-28
+* New: WC Product Category Image widget and Dynamic tag ([#5117](https://github.com/pojome/elementor/issues/5117))
+* Tweak: Allow HTML in Excerpt widget ([#5491](https://github.com/pojome/elementor/issues/5491))
+* Tweak: Added compatibility for the upcoming release of Elementor v2.2
+* Tweak: Deprecated Follow option in the Facebook Button widget
+* Fix: Posts widget grid in Safari & IE11 (Depended on Elementor v2.2)
+* Fix: Posts widget CSS when using cards skin in masonry mode
+* Fix: ACF Image & ACF URL option support ([#5344](https://github.com/pojome/elementor/issues/5344))
+* Fix: WC product gallery links in RTL
+* Fix: Dynamic tags in Call To Action widget
+
+#### 2.1.5 - 2018-08-21
+* Tweak: Added compatibility for the upcoming release of Elementor v2.2
+* Fix: Posts Widget layout theme compatibility
+* Fix: Added compatibility for WooCommerce native style
+
+#### 2.1.4 - 2018-08-19
+* Fix: Layout issue compatibility with themes caused by v2.1 ([#5442](https://github.com/pojome/elementor/issues/5442))
+* Fix: Dynamic setting in Pricing Table widget ([#5460](https://github.com/pojome/elementor/issues/5460))
+* Fix: Hide Target URL control if is not necessary in Blockquote widget
+* Fix: Selector specificity for WooCommerce Products widget
+* Fix: WooCommerce conflicts in the editor in edge cases
+
 #### 2.1.3 - 2018-08-15
 * Fix: Thumbnails in the Posts widget jumping ([#5350](https://github.com/pojome/elementor/issues/5350))
 * Fix: Responsive grid in the Share Buttons widget ([#5375](https://github.com/pojome/elementor/issues/5375))

@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Maps_Widget extends Widget_Base
-{
+class Premium_Maps extends Widget_Base {
     public function get_name() {
         return 'premium-addon-maps';
     }
@@ -27,7 +26,10 @@ class Premium_Maps_Widget extends Widget_Base
     }
     
     public function get_script_depends() {
-        return ['premium-maps-api-js' , 'premium-maps-js'];
+        return [
+            'premium-maps-api-js' ,
+            'premium-maps-js'
+        ];
     }
 
     // Adding the controls fields for the premium maps
@@ -42,8 +44,8 @@ class Premium_Maps_Widget extends Widget_Base
                 );
         
         $map_api = get_option( 'pa_maps_save_settings' )['premium-map-api'];
-        $map_api_disable = get_option( 'pa_maps_save_settings' )['premium-map-disable-api'];
-        if( ! isset( $map_api ) || empty( $map_api ) || $map_api_disable ){
+        
+        if( ! isset( $map_api ) || empty( $map_api ) ){
             $this->add_control('premium_maps_api_url',
                 [
                     'label'         => '<span style="line-height: 1.4em;">Premium Maps requires an API key. Get your API key from <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key">here</a> and add it to Premium Addons admin page. Go to Dashboard -> Premium Addons for Elementor -> Google Maps API</span>',
@@ -52,12 +54,22 @@ class Premium_Maps_Widget extends Widget_Base
             );
         }
         
+        $this->add_control('premium_map_location_finder',
+            [
+                'label'         => esc_html__( 'Latitude & Longitude Finder', 'premium-addons-for-elementor' ),
+                'type'          => Controls_Manager::SWITCHER,
+            ]
+        );
+        
         $this->add_control('premium_map_notice',
 		    [
 			    'label' => __( 'Find Latitude & Longitude', 'elementor' ),
 			    'type'  => Controls_Manager::RAW_HTML,
 			    'raw'   => '<form onsubmit="getAddress(this);" action="javascript:void(0);"><input type="text" id="premium-map-get-address" class="premium-map-get-address" style="margin-top:10px; margin-bottom:10px;"><input type="submit" value="Search" class="elementor-button elementor-button-default" onclick="getAddress(this)"></form><div class="premium-address-result" style="margin-top:10px; line-height: 1.3; font-size: 12px;"></div>',
 			    'label_block' => true,
+                'condition'     => [
+                    'premium_map_location_finder'   => 'yes'
+                ]
 		    ]
 	    );
         
@@ -89,8 +101,23 @@ class Premium_Maps_Widget extends Widget_Base
                 'label'         => esc_html__('Markers', 'premium-addons-for-elementor'),
             ]
         );
+        
+        $this->add_control('premium_maps_markers_width',
+                [
+                    'label'         => esc_html__('Max Width', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::NUMBER,
+                    'title'         => esc_html__('Set the Maximum width for markers description box','premium-addons-for-elementor'),
+                    ]
+                );
          
         $repeater = new REPEATER();
+        
+        $repeater->add_control('premium_map_pin_location_finder',
+            [
+                'label'         => esc_html__( 'Latitude & Longitude Finder', 'premium-addons-for-elementor' ),
+                'type'          => Controls_Manager::SWITCHER,
+            ]
+        );
         
         $repeater->add_control('premium_map_pin_notice',
 		    [
@@ -98,6 +125,9 @@ class Premium_Maps_Widget extends Widget_Base
 			    'type'  => Controls_Manager::RAW_HTML,
 			    'raw'   => '<form onsubmit="getPinAddress(this);" action="javascript:void(0);"><input type="text" id="premium-map-get-address" class="premium-map-get-address" style="margin-top:10px; margin-bottom:10px;"><input type="submit" value="Search" class="elementor-button elementor-button-default" onclick="getPinAddress(this)"></form><div class="premium-address-result" style="margin-top:10px; line-height: 1.3; font-size: 12px;"></div>',
 			    'label_block' => true,
+                'condition' => [
+                    'premium_map_pin_location_finder'   => 'yes'
+                ]
 		    ]
 	    );
         
@@ -142,6 +172,7 @@ class Premium_Maps_Widget extends Widget_Base
             [
                 'label'         => esc_html__('Custom Icon', 'premium-addons-for-elementor'),
                 'type'          => Controls_Manager::MEDIA,
+                'dynamic'       => [ 'active' => true ],
             ]
         );
 
@@ -536,8 +567,7 @@ class Premium_Maps_Widget extends Widget_Base
         
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
         
@@ -606,6 +636,8 @@ class Premium_Maps_Widget extends Widget_Base
         $centerlat = !empty($settings['premium_maps_center_lat']) ? $settings['premium_maps_center_lat'] : 18.591212;
         $centerlong = !empty($settings['premium_maps_center_long']) ? $settings['premium_maps_center_long'] : 73.741261;
         
+        $marker_width = !empty($settings['premium_maps_markers_width']) ? $settings['premium_maps_markers_width'] : 1000;
+        
         $map_settings = [
             'zoom'                  => $settings['premium_maps_map_zoom']['size'],
             'maptype'               => $settings['premium_maps_map_type'],
@@ -632,7 +664,7 @@ class Premium_Maps_Widget extends Widget_Base
 			<?php
         	foreach($map_pins as $pin){
 				?>
-		        <div class="premium-pin" data-lng="<?php echo $pin['map_longitude']; ?>" data-lat="<?php echo $pin['map_latitude']; ?>" data-icon="<?php echo $pin['pin_icon']['url']; ?>">
+		        <div class="premium-pin" data-lng="<?php echo $pin['map_longitude']; ?>" data-lat="<?php echo $pin['map_latitude']; ?>" data-icon="<?php echo $pin['pin_icon']['url']; ?>" data-max-width="<?php echo $marker_width; ?>">
                     <?php if(!empty($pin['pin_title'])|| !empty($pin['pin_desc'])):?>
                     
 			        <div class='premium-maps-info-container'><p class='premium-maps-info-title'><?php echo $pin['pin_title']; ?></p><div class='premium-maps-info-desc'><?php echo $pin['pin_desc']; ?></div></div>
@@ -650,4 +682,3 @@ class Premium_Maps_Widget extends Widget_Base
     <?php
     }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Maps_Widget());

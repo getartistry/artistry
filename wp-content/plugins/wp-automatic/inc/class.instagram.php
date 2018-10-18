@@ -26,6 +26,9 @@ Class InstaScrape{
 		//session required starting from 8 April 2018
 		curl_setopt($this->ch,CURLOPT_COOKIE, 'sessionid='.$sess.'; csrftoken=eqYUPd3nV0gDSWw43IYZjydziMndrn4l;' );
 		
+		//redirect
+		curl_setopt($this->ch, CURLOPT_MAXREDIRS, 3); // Good leeway for redirections.
+		 
 		
 	}
 	
@@ -40,7 +43,7 @@ Class InstaScrape{
 	 */
 	function getUserItems($usrID,$itemsCount = 12,$index = 0){
 		
-		  if($debug) echo 'index'.$index;
+		  if($this->debug) echo 'index'.$index;
 		
 		
 		if($index === 0) {
@@ -58,21 +61,25 @@ Class InstaScrape{
 		curl_setopt($this->ch, CURLOPT_URL, $url);
 		$exec = curl_exec($this->ch);
 		$x=curl_error($this->ch);
+		$cuinfo =   curl_getinfo($this->ch);
 		
 		
 		// Curl error check
 		if(trim($exec) == ''){
+			
+			if( isset($cuinfo['url']) && stristr($cuinfo['url'], 'accounts/login') ){
+				throw new Exception('<br><span style="color:red">Added session is not correct or expired. Please visit the plugin settings page and add a fresh session. Also make sure not to logout of your account for the session to stay alive.</span>');
+			}
+			
+			
 			throw new Exception('Empty results from instagram call with possible curl error:'.$x);
 		}
 		
 	 
 		// Verify returned result
 		if(! ( stristr($exec, 'status": "ok') || stristr( $exec ,'status":"ok' ) ) ){
-			
-			echo $exec;
-			exit;
-			
-			throw new Exception('Unexpected page content from instagram'.$x);
+			 
+			throw new Exception('Unexpected page content from instagram'.$x.$exec);
 		}
 		
 		$jsonArr = json_decode( $exec );
@@ -111,17 +118,24 @@ Class InstaScrape{
 		if( $this->debug ) echo '<br>URL:'.$url;
 
 		$exec = curl_exec($this->ch);
+		$cuinfo =   curl_getinfo($this->ch);
 		$x=curl_error($this->ch);
 		
 		 
 		// Curl error check
 		if(trim($exec) == ''){
+			
+			if( isset($cuinfo['url']) && stristr($cuinfo['url'], 'accounts/login') ){
+				throw new Exception('<br><span style="color:red">Added session is not correct or expired. Please visit the plugin settings page and add a fresh session. Also make sure not to logout of your account for the session to stay alive.</span>');
+			}
+			
+			
 			throw new Exception('Empty results from instagram call with possible curl error:'.$x);
 		}
 			
 		// Verify returned result
 		if(! stristr($exec, 'status": "ok') && ! stristr($exec, 'media"')){
-			throw new Exception('Unexpected page content from instagram, Visit the plugin settings page and renew the Session ID Cookie'.$x);
+			throw new Exception('Unexpected page content from instagram, Visit the plugin settings page and renew the Session ID Cookie'.$x.$exec);
 		}
 		
 		$jsonArr = json_decode( $exec );
@@ -164,10 +178,14 @@ Class InstaScrape{
  		$cuinfo =   curl_getinfo($this->ch);
  		$http_code = $cuinfo['http_code'];
  		$x=curl_error($this->ch);
- 		
- 		 
+ 		  
  		// Curl error check
  		if(trim($exec) == ''){
+ 			
+ 			if( isset($cuinfo['url']) && stristr($cuinfo['url'], 'accounts/login') ){
+ 				throw new Exception('<br><span style="color:red">Added session is not correct or expired. Please visit the plugin settings page and add a fresh session. Also make sure not to logout of your account for the session to stay alive.</span>');
+ 			}
+ 			
  			throw new Exception('Empty results from instagram call with possible curl error:'.$x);
  		}
  		
@@ -215,6 +233,17 @@ Class InstaScrape{
  		 
  		$exec=curl_exec($this->ch);
  		$x=curl_error($this->ch);
+ 		$cuinfo =   curl_getinfo($this->ch);
+ 		
+ 		// Curl error check
+ 		if(trim($exec) == ''){
+ 			
+ 			if( isset($cuinfo['url']) && stristr($cuinfo['url'], 'accounts/login') ){
+ 				throw new Exception('<br><span style="color:red">Added session is not correct or expired. Please visit the plugin settings page and add a fresh session. Also make sure not to logout of your account for the session to stay alive.</span>');
+ 			}
+ 			
+ 			throw new Exception('Empty results from instagram call with possible curl error:'.$x);
+ 		}
  		
  		return json_decode( $exec ) ;
  		 

@@ -33,8 +33,8 @@
  * PLUGINS
  * - GENERAL
  * - MAGNIFIC POPUP
- * - SLICK
  * - SIDR
+ * - SLICK
  *
  * RESPONSIVE
  */
@@ -1116,11 +1116,14 @@ body.separate-blog.separate-layout .blog-entry.grid-entry .thumbnail {
   /* full width content and sidebar */
   .content-area,
   .content-left-sidebar .content-area {
-    float: none;
+    float: none !important;
     width: 100%;
     margin-bottom: 40px;
-    padding: 0;
     border: 0;
+  }
+  body:not(.separate-layout) .content-area,
+  .content-left-sidebar:not(.separate-layout) .content-area {
+    padding: 0 !important;
   }
   .no-margins .content-area,
   .no-margins.content-left-sidebar .content-area {
@@ -1129,9 +1132,9 @@ body.separate-blog.separate-layout .blog-entry.grid-entry .thumbnail {
   .widget-area.sidebar-primary,
   .widget-area.sidebar-secondary,
   .content-left-sidebar .widget-area {
-    float: none;
+    float: none !important;
     width: 100%;
-    padding: 0;
+    padding: 0 !important;
     border: 0;
   }
   body.has-composer.has-sidebar #primary {
@@ -1200,7 +1203,7 @@ body.separate-blog.separate-layout .blog-entry.grid-entry .thumbnail {
   .boxed-layout #top-bar-social.top-bar-left {
     left: auto;
   }
-  .col, .blog-entry {
+  .col:not(.slick-slide), .blog-entry {
     width: 100% !important;
     margin-bottom: 25px;
   }
@@ -1222,6 +1225,7 @@ body.separate-blog.separate-layout .blog-entry.grid-entry .thumbnail {
 *------------------------------------*/
 figure > img {
   display: block;
+  margin: 0 auto;
 }
 
 img {
@@ -1701,7 +1705,6 @@ hr.whiteborder {
  */
 @media print {
   * {
-    color: #000 !important;
     background: transparent !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
@@ -1835,7 +1838,7 @@ input[type="checkbox"] {
   width: 16px;
   min-width: 16px;
   height: 16px;
-  margin: -3px 10px 0 0 !important;
+  margin: -3px 10px 0 0;
   outline: 0;
   text-align: center;
   vertical-align: middle;
@@ -1998,7 +2001,6 @@ form select[multiple] {
 }
 
 form label {
-  display: block;
   margin-bottom: 3px;
 }
 
@@ -2022,7 +2024,10 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 button[type="submit"],
-.button {
+.button,
+body div.wpforms-container-full .wpforms-form input[type=submit],
+body div.wpforms-container-full .wpforms-form button[type=submit],
+body div.wpforms-container-full .wpforms-form .wpforms-page-button {
   display: inline-block;
   font-family: inherit;
   background-color: #13aff0;
@@ -2049,7 +2054,10 @@ input[type="button"]:focus,
 input[type="reset"]:focus,
 input[type="submit"]:focus,
 button[type="submit"]:focus,
-.button:hover {
+.button:hover,
+body div.wpforms-container-full .wpforms-form input[type=submit]:hover,
+body div.wpforms-container-full .wpforms-form button[type=submit]:hover,
+body div.wpforms-container-full .wpforms-form .wpforms-page-button:hover {
   background-color: #0b7cac;
   color: #fff;
 }
@@ -2095,6 +2103,16 @@ a.pure-button-primary,
 a.pure-button-selected {
   color: #fff;
   background-color: #0078e7;
+}
+
+/* Comment checkbox */
+.comment-form-cookies-consent {
+  display: inline-block;
+  width: 100%;
+}
+
+.comment-form-cookies-consent label {
+  display: inline-block;
 }
 
 /*------------------------------------*
@@ -3004,7 +3022,10 @@ a.pure-button-selected {
 }
 
 #site-header.full_screen-header .fs-dropdown-menu li > a .nav-arrow {
+  display: inline-block;
+  width: 26px;
   padding-left: 5px;
+  text-align: center;
 }
 
 #site-header.full_screen-header .fs-dropdown-menu li > a .nav-arrow:before {
@@ -3328,10 +3349,10 @@ a.pure-button-selected {
 }
 
 #site-header.medium-header .top-col {
-  -webkit-flex: 1 0 0;
+  -webkit-flex: 1 0 0%;
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 0;
-          flex: 1 0 0;
+      -ms-flex: 1 0 0%;
+          flex: 1 0 0%;
 }
 
 #site-header.medium-header .top-col.col-1 {
@@ -4115,7 +4136,7 @@ body.vertical-header-style.vh-closed #site-header.vertical-header #site-navigati
 .sf-menu li.menu-item {
   position: relative;
   white-space: nowrap;
-  *white-space: normal;
+  white-space: normal;
 }
 
 .sf-menu li:hover,
@@ -4338,6 +4359,10 @@ body.vertical-header-style.vh-closed #site-header.vertical-header #site-navigati
 .after-header-content .after-header-content-inner > div > a {
   display: inline-block;
   line-height: 74px;
+}
+
+.after-header-content .elementor {
+  display: inline-block;
 }
 
 /*------------------------------------*
@@ -5798,7 +5823,8 @@ body.vertical-header-style.vh-closed #site-header.vertical-header #site-navigati
   text-align: left;
 }
 
-#mobile-dropdown ul li a i {
+#mobile-dropdown ul li a i,
+#mobile-dropdown ul li a img {
   margin-right: 10px;
 }
 
@@ -6008,7 +6034,8 @@ body.vertical-header-style.vh-closed #site-header.vertical-header #site-navigati
   color: #929292;
 }
 
-#mobile-fullscreen ul li a i {
+#mobile-fullscreen ul li a i,
+#mobile-fullscreen ul li a img {
   margin-right: 10px;
 }
 
@@ -6018,7 +6045,10 @@ body.vertical-header-style.vh-closed #site-header.vertical-header #site-navigati
 }
 
 #mobile-fullscreen ul li .dropdown-toggle {
+  display: inline-block;
+  width: 26px;
   padding-left: 5px;
+  text-align: center;
 }
 
 #mobile-fullscreen ul li .dropdown-toggle:before {
@@ -6421,9 +6451,6 @@ body.breadcrumbs-position-default .page-header-title {
   margin-top: 0;
 }
 
-/**
- * Breadcrumbs Hide
- */
 .background-image-page-header .site-breadcrumbs {
   display: block;
   position: inherit;
@@ -6444,6 +6471,12 @@ body.breadcrumbs-position-default .page-header-title {
   color: #ddd;
 }
 
+/* compatibility with SEOPress */
+.site-breadcrumbs nav,
+.site-breadcrumbs ol {
+  margin: 0;
+}
+
 /*------------------------------------*
   All Devices under 960px
 *------------------------------------*/
@@ -6458,13 +6491,14 @@ body.breadcrumbs-position-default .page-header-title {
 /*------------------------------------*
   Tablet Portrait
 *------------------------------------*/
-@media only screen and (min-width: 768px) and (max-width: 959px) {
+@media only screen and (max-width: 959px) {
   /* page header */
   .site-breadcrumbs {
     position: inherit;
     top: auto;
     left: auto;
     right: auto;
+    max-width: 100%;
     margin-top: 0;
   }
 }
@@ -6498,9 +6532,6 @@ body.breadcrumbs-position-default .page-header-title {
   body.has-breadcrumbs .page-header-title {
     max-width: 100%;
     width: 100%;
-  }
-  .site-breadcrumbs {
-    display: none;
   }
 }
 
@@ -8312,7 +8343,7 @@ span.required {
   cursor: pointer;
   border-radius: 2px;
   text-align: center;
-  z-index: 10;
+  z-index: 100;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
@@ -8324,6 +8355,11 @@ span.required {
 
 #scroll-top:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+#scroll-top.scroll-top-left {
+  left: 20px;
+  right: auto;
 }
 
 /*------------------------------------*
@@ -8392,19 +8428,14 @@ span.required {
 *------------------------------------*/
 /* Fix for the tabs under the header in the edit mode */
 .fl-builder-edit #site-header,
-.fl-builder-edit.has-transparent-header #site-header {
+.fl-builder-edit.has-transparent-header #site-header,
+.elementor-editor-active #site-header {
   z-index: 1;
 }
 
 .fl-builder-edit #main,
-.et_fb_desktop_mode #main,
-.et_fb_preview_active #main {
+.elementor-editor-active #main {
   z-index: inherit !important;
-}
-
-/* Hide the transparent heade in the Elementor edit mode to avoid conflicts */
-body.elementor-editor-active.has-transparent-header #site-header {
-  display: none;
 }
 
 /* Fix the height automatically in the custom header style */
@@ -8428,12 +8459,6 @@ body.elementor-editor-active.has-transparent-header #site-header {
   background-color: transparent;
 }
 
-/* Fix bug with overlay in Chrome */
-.elementor-background-overlay,
-.background-image-page-header-overlay {
-  -webkit-transform: translateZ(0);
-}
-
 /* Fix bug with MotoPress */
 div.motopress-bootstrap-dropdown .dropdown-menu {
   display: block !important;
@@ -8443,6 +8468,31 @@ div.motopress-bootstrap-dropdown .dropdown-menu {
 /* Fix problem with Geolocation addon of Caldera form in the Ocean Modal Window */
 .pac-container {
   z-index: 100003;
+}
+
+/* Remove the Elementor section min height if the no-height class is added */
+.no-height .elementor-column {
+  min-height: 0;
+}
+
+/* WooCommerce issues with Elementor Pro */
+body .elementor-element.elementor-wc-products ul.products li.product .onsale {
+  padding: 8px 12px;
+}
+
+body .elementor-element.elementor-wc-products ul.products li.product.circle-sale .onsale {
+  padding: 0;
+}
+
+@media only screen and (max-width: 959px) {
+  .elementor-element.elementor-wc-products ul.products li.product {
+    width: auto !important;
+  }
+}
+
+/* Fix parallax footer issue in the Elementor editor */
+.elementor-editor-active .parallax-footer {
+  z-index: -1;
 }
 
 /*------------------------------------*
@@ -8519,111 +8569,6 @@ div.motopress-bootstrap-dropdown .dropdown-menu {
 
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
   opacity: 0;
-}
-
-/*------------------------------------*
-	$SLICK
-*------------------------------------*/
-/* Slider */
-.slick-slider {
-  position: relative;
-  display: block;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -ms-touch-action: pan-y;
-  touch-action: pan-y;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.slick-list {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
-.slick-list:focus {
-  outline: none;
-}
-
-.slick-list.dragging {
-  cursor: pointer;
-  cursor: hand;
-}
-
-.slick-slider .slick-track,
-.slick-slider .slick-list {
-  -webkit-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.slick-track {
-  position: relative;
-  left: 0;
-  top: 0;
-  display: block;
-}
-
-.slick-track:before, .slick-track:after {
-  content: "";
-  display: table;
-}
-
-.slick-track:after {
-  clear: both;
-}
-
-.slick-loading .slick-track {
-  visibility: hidden;
-}
-
-.slick-slide {
-  float: left;
-  height: 100%;
-  min-height: 1px;
-  display: none;
-}
-
-[dir="rtl"] .slick-slide {
-  float: right;
-}
-
-.slick-slide img {
-  display: block;
-}
-
-.slick-slide.slick-loading img {
-  display: none;
-}
-
-.slick-slide.dragging img {
-  pointer-events: none;
-}
-
-.slick-initialized .slick-slide {
-  display: block;
-}
-
-.slick-loading .slick-slide {
-  visibility: hidden;
-}
-
-.slick-vertical .slick-slide {
-  display: block;
-  height: auto;
-  border: 1px solid transparent;
-}
-
-.slick-arrow.slick-hidden {
-  display: none;
 }
 
 /*------------------------------------*
@@ -8918,15 +8863,9 @@ a.sidr-class-toggle-sidr-close i {
   padding: 12px 10px;
 }
 
-/* Icons */
-@font-face {
-  font-family: "slick";
-  src: url("../fonts/slick/slick.eot");
-  src: url("../fonts/slick/slick.eot?#iefix") format("embedded-opentype"), url("../fonts/slick/slick.woff") format("woff"), url("../fonts/slick/slick.ttf") format("truetype"), url("../fonts/slick/slick.svg#slick") format("svg");
-  font-weight: normal;
-  font-style: normal;
-}
-
+/*------------------------------------*
+	$SLICK
+*------------------------------------*/
 /* Arrows */
 .slick-prev,
 .slick-next {
@@ -9040,7 +8979,7 @@ a.sidr-class-toggle-sidr-close i {
   width: 20px;
   height: 20px;
   font-family: "slick";
-  font-size: 6px;
+  font-size: 20px;
   line-height: 20px;
   text-align: center;
   color: black;
@@ -9163,20 +9102,6 @@ a.sidr-class-toggle-sidr-close i {
   }
   body.default-breakpoint .owp-cart-overlay {
     display: none !important;
-  }
-  .alignleft,
-  .alignright,
-  .single-post.content-max-width .wp-block-image.alignleft,
-  .single-post.content-max-width .wp-block-image.alignright {
-    float: none;
-    margin: 0 auto;
-    padding: 0;
-  }
-  .alignleft img,
-  .alignright img,
-  .single-post.content-max-width .wp-block-image.alignleft img,
-  .single-post.content-max-width .wp-block-image.alignright img {
-    margin: 0 auto;
   }
 }
 

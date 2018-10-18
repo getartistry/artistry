@@ -20,7 +20,7 @@ class Categories extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Woo - Categories', 'elementor-pro' );
+		return __( 'Product Categories', 'elementor-pro' );
 	}
 
 	public function get_icon() {
@@ -86,6 +86,7 @@ class Categories extends Widget_Base {
 					'' => __( 'Show All', 'elementor-pro' ),
 					'by_id' => __( 'Manual Selection', 'elementor-pro' ),
 					'by_parent' => __( 'By Parent', 'elementor-pro' ),
+					'current_subcategories' => __( 'Current Subcategories', 'elementor-pro' ),
 				],
 				'label_block' => true,
 			]
@@ -381,6 +382,8 @@ class Categories extends Widget_Base {
 			$attributes['ids'] = implode( ',', $settings['categories'] );
 		} elseif ( 'by_parent' === $settings['source'] ) {
 			$attributes['parent'] = $settings['parent'];
+		} elseif ( 'current_subcategories' === $settings['source'] ) {
+			$attributes['parent'] = get_queried_object_id();
 		}
 
 		$this->add_render_attribute( 'shortcode', $attributes );

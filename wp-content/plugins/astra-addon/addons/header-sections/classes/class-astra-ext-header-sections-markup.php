@@ -80,8 +80,25 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 			add_filter( 'astra_meta_box_options', array( $this, 'add_options' ) );
 			add_action( 'astra_meta_box_markup_disable_sections_after', array( $this, 'add_options_markup' ) );
 
+			add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts' ) );
+
 		}
 
+		/**
+		 * Load page builder scripts and styles.
+		 *
+		 * @access public
+		 * @return void
+		 */
+		public function load_scripts() {
+
+			$above_menu_animation = astra_get_option( 'above-header-submenu-container-animation' );
+			$below_menu_animation = astra_get_option( 'below-header-submenu-container-animation' );
+
+			if ( ! empty( $above_menu_animation ) || ! empty( $below_menu_animation ) ) {
+				wp_enqueue_style( 'astra-menu-animation' );
+			}
+		}
 
 		/**
 		 * Header toggle buttons
@@ -117,7 +134,7 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 			<div class="ast-button-wrap">
 			<button type="button" class="menu-toggle main-header-menu-toggle <?php echo esc_attr( $menu_label_class ); ?>" rel="main-menu" aria-controls='primary-menu' aria-expanded='false'>
 				<span class="screen-reader-text"><?php echo esc_html( $screen_reader_title ); ?></span>
-				<i class="<?php echo esc_attr( $menu_icon ); ?>"></i>
+				<span class="<?php echo esc_attr( $menu_icon ); ?>"></span>
 				<?php if ( '' != $menu_title ) { ?>
 
 					<div class="mobile-menu-wrap">
@@ -216,7 +233,8 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 					$below_header_markup = $this->astra_get_below_header_items();
 
 					$nav_wrap       = apply_filters(
-						'astra_merge_header_custom_menu_item_wrap', '<div class="main-header-bar-navigation ast-header-sections-navigation">
+						'astra_merge_header_custom_menu_item_wrap',
+						'<div class="main-header-bar-navigation ast-header-sections-navigation">
 						<nav itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" id="site-navigation" class="ast-flex-grow-1" role="navigation" aria-label="' . esc_attr( 'Site Navigation', 'astra-addon' ) . '">'
 					);
 					$nav_wrap_close = apply_filters( 'astra_merge_header_before_custom_menu_item', '</div></nav>' );
@@ -734,17 +752,28 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 		 */
 		public static function above_header_menu( $option ) {
 
-			$above_header_nav_class = 'ast-above-header-menu ast-flex ast-justify-content-flex-start';
+			/**
+			 * Filter the classes(array) for Above Header Menu (<ul>).
+			 *
+			 * @since  1.6.0
+			 * @var Array
+			 */
+			$above_header_menu_classes = apply_filters( 'astra_above_header_menu_classes', array( 'ast-above-header-menu', 'ast-nav-menu', 'ast-flex' ) );
+
+			// Menu Animation.
+			$menu_animation = astra_get_option( 'above-header-submenu-container-animation' );
+			if ( ! empty( $menu_animation ) ) {
+				$above_header_menu_classes[] = 'astra-menu-animation-' . esc_html( $menu_animation );
+			}
 
 			if ( 'above-header-section-2' == $option ) {
-				$above_header_nav_class = 'ast-above-header-menu ast-flex ast-justify-content-flex-end';
+				$above_header_menu_classes[] = 'ast-justify-content-flex-end';
+			} else {
+				$above_header_menu_classes[] = 'ast-justify-content-flex-start';
 			}
-			$submenu_border = astra_get_option( 'above-header-submenu-border' );
 
-			$extra_class = '';
-			if ( $submenu_border ) {
-				$extra_class = ' submenu-with-border';
-			}
+			// Submenu with border class.
+			$above_header_menu_classes[] = 'submenu-with-border';
 
 			ob_start();
 
@@ -765,7 +794,7 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 						'container_class' => 'ast-above-header-navigation',
 						'theme_location'  => 'above_header_menu',
 						'id'              => 'above_header-menu',
-						'menu_class'      => $above_header_nav_class . $extra_class,
+						'menu_class'      => esc_attr( implode( ' ', $above_header_menu_classes ) ),
 						'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
 					)
 				);
@@ -798,14 +827,31 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 		public static function get_below_header_section( $section, $layout = '' ) {
 
 			$section_class = $section . ' ast-flex ast-justify-content-center';
+			/**
+			 * Filter the classes(array) for Below Header Menu (<ul>).
+			 *
+			 * @since  1.6.0
+			 * @var Array
+			 */
+			$below_header_menu_classes = apply_filters( 'astra_below_header_menu_classes', array( 'ast-below-header-menu', 'ast-nav-menu', 'ast-flex' ) );
+
+			// Menu Animation.
+			$menu_animation = astra_get_option( 'below-header-submenu-container-animation' );
+			if ( ! empty( $menu_animation ) ) {
+				$below_header_menu_classes[] = 'astra-menu-animation-' . esc_html( $menu_animation );
+			}
 
 			if ( 'below-header-1' == $layout ) {
 
-				$section_class = $section . ' ast-flex ast-justify-content-flex-start';
+				$section_class               = $section . ' ast-flex ast-justify-content-flex-start';
+				$below_header_menu_classes[] = 'ast-justify-content-flex-start';
 
 				if ( 'below-header-section-2' == $section ) {
-					$section_class = $section . ' ast-flex ast-justify-content-flex-end';
+					$section_class               = $section . ' ast-flex ast-justify-content-flex-end';
+					$below_header_menu_classes[] = 'ast-justify-content-flex-end';
 				}
+			} else {
+				$below_header_menu_classes[] = 'ast-justify-content-center';
 			}
 
 			$value = astra_get_option( $section );
@@ -815,12 +861,8 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 			if ( 'below-header-section-2' == $section ) {
 				$below_header_widget = 'below-header-widget-2';
 			}
-			$submenu_border = astra_get_option( 'below-header-submenu-border' );
-
-			$extra_class = '';
-			if ( $submenu_border ) {
-				$extra_class = ' submenu-with-border';
-			}
+			// Submenu with border class.
+			$below_header_menu_classes[] = 'submenu-with-border';
 
 			switch ( $value ) {
 				case 'menu':
@@ -844,7 +886,7 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 								'container_id'    => 'ast-below-header-navigation',
 								'theme_location'  => 'below_header_menu',
 								'menu_id'         => 'below_header-menu',
-								'menu_class'      => 'ast-below-header-menu ' . $section_class . $extra_class,
+								'menu_class'      => esc_attr( implode( ' ', $below_header_menu_classes ) ),
 							)
 						);
 
@@ -924,6 +966,15 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 			$above_header_font_family = astra_get_option( 'above-header-font-family' );
 			$above_header_font_weight = astra_get_option( 'above-header-font-weight' );
 			Astra_Fonts::add_font( $above_header_font_family, $above_header_font_weight );
+
+			// Above Sub Menu Header.
+			$above_header_sub_menu_font_family = astra_get_option( 'font-family-above-header-dropdown-menu' );
+			$above_header_sub_menu_font_weight = astra_get_option( 'font-weight-above-header-dropdown-menu' );
+			Astra_Fonts::add_font( $above_header_sub_menu_font_family, $above_header_sub_menu_font_weight );
+
+			$above_font_family_dropdown = astra_get_option( 'font-family-below-header-dropdown-menu' );
+			$above_font_weight_dropdown = astra_get_option( 'font-weight-below-header-dropdown-menu' );
+			Astra_Fonts::add_font( $above_font_family_dropdown, $above_font_weight_dropdown );
 		}
 
 		/**
@@ -1013,7 +1064,7 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 				?>
 				<div class="ast-button-wrap">
 					<span class="screen-reader-text"><?php esc_html_e( 'Below Header', 'astra-addon' ); ?></span>
-					<button class="menu-toggle menu-below-header-toggle <?php echo implode( ' ', $below_header_toggle_class ); ?>" rel="below-header"><i class="<?php echo esc_attr( apply_filters( 'astra_below_header_menu_toggle_icon', 'menu-toggle-icon' ) ); ?>"></i>
+					<button class="menu-toggle menu-below-header-toggle <?php echo implode( ' ', $below_header_toggle_class ); ?>" rel="below-header"><span class="<?php echo esc_attr( apply_filters( 'astra_below_header_menu_toggle_icon', 'menu-toggle-icon' ) ); ?>"></span>
 					<?php if ( '' !== $below_menu_title ) { ?>
 						<span class="mobile-menu-wrap"><span class="mobile-menu"><?php echo esc_html( $below_menu_title ); ?></span></span>
 					<?php } ?>
@@ -1058,7 +1109,7 @@ if ( ! class_exists( 'Astra_Ext_Header_Sections_Markup' ) ) {
 				?>
 				<div class="ast-button-wrap">
 					<span class="screen-reader-text"><?php esc_html_e( 'Above Header', 'astra-addon' ); ?></span>
-					<button class="menu-toggle menu-above-header-toggle <?php echo implode( ' ', $above_header_toggle_class ); ?>" rel="above-header"><i class="<?php echo esc_attr( apply_filters( 'astra_above_header_menu_toggle_icon', 'menu-toggle-icon' ) ); ?>"></i>
+					<button class="menu-toggle menu-above-header-toggle <?php echo implode( ' ', $above_header_toggle_class ); ?>" rel="above-header"><span class="<?php echo esc_attr( apply_filters( 'astra_above_header_menu_toggle_icon', 'menu-toggle-icon' ) ); ?>"></span>
 					<?php if ( '' !== $above_menu_title ) { ?>
 						<span class="mobile-menu-wrap"><span class="mobile-menu"><?php echo esc_html( $above_menu_title ); ?></span></span>
 					<?php } ?>

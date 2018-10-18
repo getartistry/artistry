@@ -9,6 +9,7 @@
   font-style: normal;
 }
 
+
 [class^="jetelements-icon-"], [class*=" jetelements-icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'jetelements' !important;
@@ -17,45 +18,44 @@
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  height: 38px;
-  display: block;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="jetelements-icon-"]:before, [class*=" jetelements-icon-"]:before {
-  font-size: 58px;
+.elementor-panel [class^="jetelements-icon-"]:before,
+.elementor-panel [class*=" jetelements-icon-"]:before {
   display: block;
-  margin-top: -10px;
+  font-size: 48px;
+  line-height: 28px;
 }
 
-.jetelements-icon-01:before {
+.jetelements-icon-1:before {
   content: "\e900";
 }
-.jetelements-icon-02:before {
+.jetelements-icon-2:before {
   content: "\e901";
 }
-.jetelements-icon-03:before {
+.jetelements-icon-3:before {
   content: "\e902";
 }
-.jetelements-icon-04:before {
+.jetelements-icon-4:before {
   content: "\e903";
 }
-.jetelements-icon-05:before {
+.jetelements-icon-5:before {
   content: "\e904";
 }
-.jetelements-icon-06:before {
+.jetelements-icon-6:before {
   content: "\e905";
 }
-.jetelements-icon-07:before {
+.jetelements-icon-7:before {
   content: "\e906";
 }
-.jetelements-icon-08:before {
+.jetelements-icon-8:before {
   content: "\e907";
 }
-.jetelements-icon-09:before {
+.jetelements-icon-9:before {
   content: "\e908";
 }
 .jetelements-icon-10:before {
@@ -168,16 +168,4 @@
 }
 .jetelements-icon-46:before {
   content: "\e92d";
-}
-.jetelements-icon-47:before {
-  content: "\e92e";
-}
-.jetelements-icon-48:before {
-  content: "\e92f";
-}
-.jetelements-icon-49:before {
-  content: "\e930";
-}
-.jetelements-icon-50:before {
-  content: "\e931";
 }

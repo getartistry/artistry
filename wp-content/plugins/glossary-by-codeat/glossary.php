@@ -13,7 +13,7 @@
  * Plugin Name:       Glossary
  * Plugin URI:        http://codeat.co/glossary
  * Description:       Easily add and manage a glossary with auto-link, tooltips and more. Improve your internal link building for a better SEO.
- * Version:           1.6.5
+ * Version:           1.6.8
  * Author:            Codeat
  * Author URI:        http://codeat.co
  * Text Domain:       glossary-by-codeat
@@ -30,7 +30,7 @@ if ( !defined( 'WPINC' ) ) {
 }
 
 if ( !function_exists( 'gt_fs' ) ) {
-    define( 'GT_VERSION', '1.6.5' );
+    define( 'GT_VERSION', '1.6.8' );
     define( 'GT_SETTINGS', 'glossary' );
     define( 'GT_NAME', 'Glossary' );
     define( 'GT_TEXTDOMAIN', 'glossary-by-codeat' );
@@ -66,6 +66,16 @@ if ( !function_exists( 'gt_fs' ) ) {
             ),
                 'is_live'        => true,
             ) );
+            
+            if ( $gt_fs->is_premium() ) {
+                $gt_fs->add_filter( 'support_forum_url', 'gt_premium_support_forum_url' );
+                function gt_premium_support_forum_url( $wp_org_support_forum_url )
+                {
+                    return 'http://support.codeat.co/';
+                }
+            
+            }
+        
         }
         
         return $gt_fs;

@@ -1,9 +1,0 @@
-{
-  "require": {
-    "lusitanian/oauth": "~0.3",
-    "j0k3r/php-imgur-api-client": "^2.0.0",
-    "liamcottle/instagram-sdk-php": "^1.0",
-    "seregazhuk/pinterest-bot": "^5.4",
-    "j7mbo/twitter-api-php": "^1.0"
-  }
-}

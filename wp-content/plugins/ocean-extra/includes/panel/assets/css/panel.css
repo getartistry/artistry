@@ -45,6 +45,9 @@ body .oceanwp-bloc .button.owp-button { margin: 22px 0 10px; }
 .oceanwp-bloc p.bottom-text { color: #5a5a5a; font-size: 12px; font-weight: 600; font-style: italic; margin: 0; }
 .oceanwp-bloc i { position: absolute; bottom: -30px; right: -26px; width: auto; height: auto; font-size: 120px; opacity: .07; z-index: 1; }
 
+.oceanwp-bloc.oceanwp-review h3 { position: relative; }
+.oceanwp-bloc.oceanwp-review h3 a { position: absolute; top: 50%; right: 8px; margin-top: -10px; color: #fff; text-decoration: none; }
+
 .oceanwp-bundle { background-color: #2794da; background: -moz-linear-gradient(4deg,#2386c5 58%,#2386c5 58%,#2386c5 58%); background: -webkit-linear-gradient(4deg,#2386c5 58%,#2386c5 58%,#2794da 58%); background: linear-gradient(4deg,#2386c5 58%,#2386c5 58%,#2794da 58%); color: #fff; }
 .oceanwp-bundle .owp-text { text-align: center; margin: 0; padding: 25px 10px; }
 .oceanwp-bundle a.logo-text { display: inline-block; font-size: 38px; line-height: 1; color: #fff; text-decoration: none; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -o-transition: all .3s ease; -ms-transition: all .3s ease; transition: all .3s ease; }

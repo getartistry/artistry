@@ -74,6 +74,45 @@
 } )( jQuery );
 ;
 /**
+	@brief		Handle the new currency / wallet form.
+	@since		2018-09-21 17:49:39
+**/
+;(function( $ )
+{
+    $.fn.extend(
+    {
+        mycryptocheckout_new_currency : function()
+        {
+            return this.each( function()
+            {
+                var $this = $(this);
+
+                if ( $this.hasClass( 'mycryptocheckout_new_currency' ) )
+                	return;
+                $this.addClass( 'mycryptocheckout_new_currency' );
+
+                // Find the currency selector.
+                $this.$currency_id = $( '.currency_id', $this );
+
+               	var $currencies = $( '.only_for_currency', $this );
+               	$currencies.parentsUntil( 'tr' ).parent().hide();
+
+                $this.$currency_id.change( function()
+                {
+                	// Hide all currencies.
+                	$currencies.parentsUntil( 'tr' ).parent().hide();
+                	// And show only the selected one.
+                	var currency_id = $this.$currency_id.val();
+                	var selector = '.only_for_currency.' + currency_id;
+                	$( selector, $this ).parentsUntil( 'tr' ).parent().show();
+                } )
+                .change();
+            } ); // return this.each( function()
+        } // plugin: function()
+    } ); // $.fn.extend({
+} )( jQuery );
+;
+/**
 	@brief		Convert the form fieldsets in a form2 table to ajaxy tabs.
 	@since		2015-07-11 19:47:46
 **/
@@ -319,6 +358,7 @@ var mycryptocheckout_checkout_javascript = function( data )
 	$$.data = data;
 	$$.$div = $( '.mcc.online_payment_instructions' );
 	$$.$online_pay_box = $( '.mcc_online_pay_box', $$.$div );
+	$$.mycryptocheckout_checkout_data = false;
 
 	/**
 		@brief		Check to see whether the order was paid, and cleanup in that case.
@@ -340,13 +380,18 @@ var mycryptocheckout_checkout_javascript = function( data )
 			{
 				// Something went wrong.
 				document.location = url;
+				return;
 			}
 
-			var mycryptocheckout_checkout_data = $mycryptocheckout_checkout_data.data( 'mycryptocheckout_checkout_data' );
-			mycryptocheckout_checkout_data = atob( mycryptocheckout_checkout_data );
-			mycryptocheckout_checkout_data = jQuery.parseJSON( mycryptocheckout_checkout_data );
+			var mycryptocheckout_checkout_data = $$.extract_data( $mycryptocheckout_checkout_data );
 			if ( mycryptocheckout_checkout_data[ 'paid' ] === undefined )
 				return;
+
+			if ( mycryptocheckout_checkout_data[ 'paid' ] === false )
+			{
+				document.location = url;
+				return;
+			}
 
 			// Stop the countdown and show the paid div.
 			clearInterval( $$.payment_timer.timeout_interval );
@@ -355,16 +400,31 @@ var mycryptocheckout_checkout_javascript = function( data )
 		} );
 	}
 
+	/**
+		@brief		Extract and convert the checkout data into a json object.
+		@since		2018-08-27 20:54:33
+	**/
+	$$.extract_data = function( $div )
+	{
+		var data = $div.data( 'mycryptocheckout_checkout_data' );
+		data = atob( data );
+		data = jQuery.parseJSON( data );
+		return data;
+	}
+
 	$$.init = function()
 	{
 		if ( $$.$div.length < 1 )
 			return;
 		$$.$div.addClass( 'mycryptocheckout' );
+		$$.mycryptocheckout_checkout_data = $$.extract_data( $( '#mycryptocheckout_checkout_data' ) );
+		console.log( 'MCC checkout data', $$.mycryptocheckout_checkout_data );
 		$$.clipboard_inputs();
 		$$.maybe_hide_woocommerce_order_overview();
 		$$.maybe_upgrade_divs();
 		$$.maybe_generate_qr_code();
 		$$.maybe_generate_payment_timer();
+		$$.maybe_metamask();
 	}
 
 	/**
@@ -472,6 +532,83 @@ var mycryptocheckout_checkout_javascript = function( data )
 	}
 
 	/**
+		@brief		Maybe generate a metamask payment link.
+		@since		2018-08-27 20:42:19
+	**/
+	$$.maybe_metamask = function()
+	{
+		if ( $$.$online_pay_box.length < 1 )
+			return;
+
+		// web3 must be supported.
+		if ( typeof web3 === 'undefined' )
+			return;
+
+		// The data must support metamask.
+		if( typeof $$.mycryptocheckout_checkout_data.supports === 'undefined' )
+			return;
+
+		var contractInstance = false;
+		if( typeof $$.mycryptocheckout_checkout_data.supports.metamask_abi !== 'undefined' )
+		{
+			var Contract = web3.eth.contract( JSON.parse( $$.mycryptocheckout_checkout_data.supports.metamask_abi ) );
+			contractInstance = Contract.at( $$.mycryptocheckout_checkout_data.currency.contract )
+		}
+
+		if ( contractInstance === false )
+			if( typeof $$.mycryptocheckout_checkout_data.supports.metamask_currency === 'undefined' )
+				return;
+
+		var $div = $( '<div class="metamask_payment"></div>' );
+		$div.appendTo( $$.$online_pay_box );
+
+		$div.click( function()
+		{
+			if ( contractInstance === false )
+			{
+				web3.eth.sendTransaction(
+				{
+					// From is not necessary.
+					to: $$.mycryptocheckout_checkout_data.to,
+					value: web3.toWei(
+						$$.mycryptocheckout_checkout_data.amount,
+						$$.mycryptocheckout_checkout_data.supports.metamask_currency
+					),
+				}, function (err, transactionHash )
+				{
+					// No error logging for now.
+				}
+				);
+			}
+			else
+			{
+				var amount = $$.mycryptocheckout_checkout_data.amount;
+				// If there is a divider, use it.
+				if ( typeof $$.mycryptocheckout_checkout_data.currency.divider !== 'undefined' )
+					amount *= $$.mycryptocheckout_checkout_data.currency.divider;
+				else
+					amount *= 1000000000000000000;		// This is ETH's decimal system.
+
+				contractInstance.transfer(
+					$$.mycryptocheckout_checkout_data.to,
+					amount,
+					{
+						'from' : web3.eth.accounts[0],		// First available.
+					},
+					( function(err,result)
+					{
+						if( ! err )
+						{
+							console.log( result )
+						}
+					}
+					)
+				);
+			}
+		} );
+	}
+
+	/**
 		@brief		Maybe add some extra divs to bring old instructions up to date.
 		@since		2018-04-25 22:03:08
 	**/
@@ -554,6 +691,8 @@ mycryptocheckout_convert_data( 'mycryptocheckout_checkout_data', function( data 
 } );
 $( 'form.plainview_form_auto_tabs' ).plainview_form_auto_tabs();
 $( '.mcc_donations' ).mycryptocheckout_donations_javascript();
+
+$( 'form#currencies' ).mycryptocheckout_new_currency();
 
 /**
 	@brief		Make these texts into clipboard inputs.

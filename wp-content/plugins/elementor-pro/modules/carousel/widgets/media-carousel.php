@@ -126,6 +126,7 @@ class Media_Carousel extends Base {
 		$this->end_controls_section();
 
 		$this->add_injections();
+
 		$this->update_controls();
 	}
 
@@ -664,6 +665,15 @@ class Media_Carousel extends Base {
 				'condition' => [
 					'skin' => 'slideshow',
 				],
+			]
+		);
+
+		$this->add_control(
+			'centered_slides',
+			[
+				'label' => __( 'Centered Slides', 'elementor-pro' ),
+				'type' => Controls_Manager::SWITCHER,
+				'frontend_available' => true,
 			]
 		);
 

@@ -124,7 +124,7 @@ function astra_woocommerce_dynamic_css( $dynamic_css, $dynamic_css_filtered = ''
 		 * Sale Bubble Styles.
 		 */
 		// Outline.
-		'.woocommerce .ast-woocommerce-container ul.products li.product .onsale.circle-outline, .woocommerce .ast-woocommerce-container ul.products li.product .onsale.square-outline, .woocommerce div.product .onsale.circle-outline, .woocommerce div.product .onsale.square-outline' => array(
+		'.woocommerce ul.products li.product .onsale.circle-outline, .woocommerce ul.products li.product .onsale.square-outline, .woocommerce div.product .onsale.circle-outline, .woocommerce div.product .onsale.square-outline' => array(
 			'background' => '#ffffff',
 			'border'     => '2px solid ' . $link_color,
 			'color'      => $link_color,

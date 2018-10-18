@@ -31,7 +31,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 </script>
 
 <script type="text/template" id="tmpl-elementor-theme-builder-button-preview">
-<div id="elementor-panel-footer-theme-builder-button-preview-wrapper" class="elementor-panel-footer-tool">
 	<i class="fa fa-eye tooltip-target" aria-hidden="true"  data-tooltip="<?php esc_attr_e( 'Preview Changes', 'elementor-pro' ); ?>"></i>
 	<span class="elementor-screen-only">
 		<?php echo __( 'Preview Changes', 'elementor-pro' ); ?>
@@ -48,5 +47,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</div>
 		</div>
 	</div>
-</div>
 </script>

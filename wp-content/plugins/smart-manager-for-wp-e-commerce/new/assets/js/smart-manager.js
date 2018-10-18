@@ -287,7 +287,7 @@ var load_dashboard = function () {
     var sm_top_bar = "<div id='sm_top_bar' style='font-weight:400 !important;'>"+
                         "<div id='sm_top_bar_left'>"+
                             "<label id=sm_dashboard_select_lbl style='float:left'> <select id='sm_dashboard_select' style='height:20px!important;'> </select> </label>"+
-                            "<div id='sm_advanced_search_content' style='float:left; width:60%; margin-top:0.2em;'>"+
+                            "<div id='sm_advanced_search_content' style='float:left; width:62%; margin-top:0.2em;'>"+
                             "<div style='width: 100%;'> <div id='sm_advanced_search_box' style='float:left;width:82%' > <div id='sm_advanced_search_box_0' style='width:100%;margin-left:0.8em;margin-bottom:0.5em;'> </div>"+
                             "<input type='text' id='sm_advanced_search_box_value_0' name='sm_advanced_search_box_value_0' hidden> </div>"+ 
                             "<input type='text' id='sm_advanced_search_query' hidden>"+
@@ -313,6 +313,10 @@ var load_dashboard = function () {
     jQuery('#sm_dashboard_select').width(jQuery('#sm_dashboard_select').width()+16); //Code for dynamically increasing the width of the select-box
 
     col_model_search = Object.keys(col_model).map(function(k) { if(col_model[k].hasOwnProperty('searchable') && col_model[k]['searchable'] == 1 ) { return col_model[k]; } });
+
+    col_model_search = col_model_search.filter(function( element ) {
+       return element !== undefined;
+    });
 
     var visualsearch_params = {},
         search_count = 1;
@@ -359,7 +363,7 @@ var load_dashboard = function () {
         // var rowId = grid.jqGrid('getGridParam', 'selrow');
         var row_ids = grid.jqGrid('getGridParam', 'selarrrow');
 
-        if (row_ids.length == 0) {
+        if( typeof row_ids == "undefined" || row_ids.length == 0) {
             inline_edit_dlg('Please, select row','Warning',150,50);
             return;
         }
@@ -443,9 +447,11 @@ var load_dashboard = function () {
             id = edited_ids[edited_id].id;
             edited_rowData = jQuery('#sm_editor_grid').jqGrid('getRowData', id);
 
+            var id_key = ( sm.dashboard_key == 'user' ) ? 'users_id' : 'posts_id';
+
             for (var row_data_key in edited_rowData) {
 
-                if ( row_data_key == 'posts_id' ) {
+                if ( row_data_key == id_key ) {
                     id = edited_rowData[row_data_key];
                 }
 
@@ -496,7 +502,6 @@ var load_dashboard = function () {
                                                         modal: true,
                                                         done : function (perm) {
                                                             if (perm) {
-
                                                                 sm_refresh_dashboard_states();
                                                                 sm.state_apply = true;
                                                                 jQuery("#sm_editor_grid").jqGrid("remapColumns", perm, true);
@@ -539,7 +544,7 @@ var load_dashboard = function () {
 
             var row_ids = grid.jqGrid('getGridParam', 'selarrrow');
 
-            if (row_ids.length == 0) { //if no row is selected
+            if( typeof row_ids == "undefined" || row_ids.length == 0) {
                 inline_edit_dlg('Please select atleast 1 record','Warning',250,50);    
             } else {
                 // jQuery("#sm_advanced_search_or").removeAttr('disabled');
@@ -661,8 +666,15 @@ var load_dashboard = function () {
 var sm_refresh_dashboard_states = function() {
 
     var new_col_model = jQuery("#sm_editor_grid").jqGrid("getGridParam", "colModel");
-    sm.dashboard_model[sm.dashboard_key].columns = new_col_model;
 
+    var updated_col_model = new Array();
+    for( var i in new_col_model ) {
+        // if( new_col_model[i].hasOwnProperty('src') ) {
+            updated_col_model.push(new_col_model[i]);
+        // }
+    }
+
+    sm.dashboard_model[sm.dashboard_key].columns = updated_col_model;
     sm.dashboard_states[sm.dashboard_key] = JSON.stringify(sm.dashboard_model[sm.dashboard_key]);
 }
 
@@ -1332,202 +1344,6 @@ var jqgrid_custom_func = function() {
             });
         },
 
-        // columnChooser : function(opts) {
-        //     var self = this;
-        //     if(jQuery("#colchooser_"+jQuery.jgrid.jqID(self[0].p.id)).length ) { return; }
-        //     var selector = jQuery('<div id="colchooser_'+self[0].p.id+'" style="position:relative;overflow:hidden"><div><select multiple="multiple"></select></div></div>');
-        //     var select = jQuery('select', selector);
-
-        //     function insert(perm,i,v) {
-        //         if(i>=0){
-        //             var a = perm.slice();
-        //             var b = a.splice(i,Math.max(perm.length-i,i));
-        //             if(i>perm.length) { i = perm.length; }
-        //             a[i] = v;
-        //             return a.concat(b);
-        //         }
-        //     }
-        //     opts = jQuery.extend({
-        //         "width" : 420,
-        //         "height" : 240,
-        //         "classname" : null,
-        //         "done" : function(perm) { if (perm) { self.jqGrid("remapColumns", perm, true); } },
-        //         /* msel is either the name of a ui widget class that
-        //            extends a multiselect, or a function that supports
-        //            creating a multiselect object (with no argument,
-        //            or when passed an object), and destroying it (when
-        //            passed the string "destroy"). */
-        //         "msel" : "multiselect",
-        //         /* "msel_opts" : {}, */
-
-        //         /* dlog is either the name of a ui widget class that 
-        //            behaves in a dialog-like way, or a function, that
-        //            supports creating a dialog (when passed dlog_opts)
-        //            or destroying a dialog (when passed the string
-        //            "destroy")
-        //            */
-        //         "dlog" : "dialog",
-
-        //         /* dlog_opts is either an option object to be passed 
-        //            to "dlog", or (more likely) a function that creates
-        //            the options object.
-        //            The default produces a suitable options object for
-        //            ui.dialog */
-        //         "dlog_opts" : function(opts) {
-        //             var buttons = {};
-        //             buttons[opts.bSubmit] = function() {
-        //                 opts.apply_perm();
-        //                 opts.cleanup(false);
-        //             };
-        //             buttons[opts.bCancel] = function() {
-        //                 opts.cleanup(true);
-        //             };
-        //             return jQuery.extend(true, {
-        //                 "buttons": buttons,
-        //                 "close": function() {
-        //                     opts.cleanup(true);
-        //                 },
-        //                 "modal" : opts.modal ? opts.modal : false,
-        //                 "resizable": opts.resizable ? opts.resizable : true,
-        //                 "width": opts.width+20,
-        //                 resize: function (e, ui) {
-        //                     var jQuerycontainer = jQuery(this).find('>div>div.ui-multiselect'),
-        //                         containerWidth = jQuerycontainer.width(),
-        //                         containerHeight = jQuerycontainer.height(),
-        //                         jQueryselectedContainer = jQuerycontainer.find('>div.selected'),
-        //                         jQueryavailableContainer = jQuerycontainer.find('>div.available'),
-        //                         jQueryselectedActions = jQueryselectedContainer.find('>div.actions'),
-        //                         jQueryavailableActions = jQueryavailableContainer.find('>div.actions'),
-        //                         jQueryselectedList = jQueryselectedContainer.find('>ul.connected-list'),
-        //                         jQueryavailableList = jQueryavailableContainer.find('>ul.connected-list'),
-        //                         dividerLocation = opts.msel_opts.dividerLocation || jQuery.ui.multiselect.defaults.dividerLocation;
-
-        //                     jQuerycontainer.width(containerWidth); // to fix width like 398.96px                     
-        //                     jQueryavailableContainer.width(Math.floor(containerWidth*(1-dividerLocation)));
-        //                     jQueryselectedContainer.width(containerWidth - jQueryavailableContainer.outerWidth() - (jQuery.browser.webkit ? 1: 0));
-
-        //                     jQueryavailableContainer.height(containerHeight);
-        //                     jQueryselectedContainer.height(containerHeight);
-        //                     jQueryselectedList.height(Math.max(containerHeight-jQueryselectedActions.outerHeight()-1,1));
-        //                     jQueryavailableList.height(Math.max(containerHeight-jQueryavailableActions.outerHeight()-1,1));
-        //                 }
-        //             }, opts.dialog_opts || {});
-        //         },
-        //         /* Function to get the permutation array, and pass it to the
-        //            "done" function */
-        //         "apply_perm" : function() {
-        //             jQuery('option',select).each(function(i) {
-        //                 if (this.selected) {
-        //                     self.jqGrid("showCol", colModel[this.value].name);
-        //                 } else {
-        //                     self.jqGrid("hideCol", colModel[this.value].name);
-        //                 }
-        //             });
-
-        //             var perm = [];
-        //             //fixedCols.slice(0);
-        //             jQuery('option:selected',select).each(function() { perm.push(parseInt(this.value,10)); });
-        //             jQuery.each(perm, function() { delete colMap[colModel[parseInt(this,10)].name]; });
-        //             jQuery.each(colMap, function() {
-        //                 var ti = parseInt(this,10);
-        //                 perm = insert(perm,ti,ti);
-        //             });
-        //             if (opts.done) {
-        //                 opts.done.call(self, perm);
-        //             }
-        //         },
-        //         /* Function to cleanup the dialog, and select. Also calls the
-        //            done function with no permutation (to indicate that the
-        //            columnChooser was aborted */
-        //         "cleanup" : function(calldone) {
-        //             call(opts.dlog, selector, 'destroy');
-        //             call(opts.msel, select, 'destroy');
-        //             selector.remove();
-        //             if (calldone && opts.done) {
-        //                 opts.done.call(self);
-        //             }
-        //         },
-        //         "msel_opts" : {}
-        //     }, jQuery.jgrid.col, opts || {});
-        //     if(jQuery.ui) {
-        //         if (jQuery.ui.multiselect ) {
-        //             if(opts.msel == "multiselect") {
-        //                 if(!jQuery.jgrid._multiselect) {
-        //                     // should be in language file
-        //                     alert("Multiselect plugin loaded after jqGrid. Please load the plugin before the jqGrid!");
-        //                     return;
-        //                 }
-        //                 opts.msel_opts = jQuery.extend(jQuery.ui.multiselect.defaults,opts.msel_opts);
-        //             }
-        //         }
-        //     }
-        //     if (opts.caption) {
-        //         selector.attr("title", opts.caption);
-        //     }
-        //     if (opts.classname) {
-        //         selector.addClass(opts.classname);
-        //         select.addClass(opts.classname);
-        //     }
-        //     if (opts.width) {
-        //         jQuery(">div",selector).css({"width": opts.width,"margin":"0 auto"});
-        //         select.css("width", opts.width);
-        //     }
-        //     if (opts.height) {
-        //         jQuery(">div",selector).css("height", opts.height);
-        //         select.css("height", opts.height - 10);
-        //     }
-        //     var colModel = self.jqGrid("getGridParam", "colModel");
-        //     var colNames = self.jqGrid("getGridParam", "colNames");
-        //     var colMap = {}, fixedCols = [];
-
-        //     select.empty();
-        //     jQuery.each(colModel, function(i) {
-        //         colMap[this.name] = i;
-        //         if (this.hidedlg) {
-        //             if (!this.hidden) {
-        //                 fixedCols.push(i);
-        //             }
-        //             return;
-        //         }
-
-        //         select.append("<option value='"+i+"' "+
-        //                       (this.hidden?"":"selected='selected'")+">"+colNames[i]+"</option>");
-        //     });
-        //     function call(fn, obj) {
-        //         if (!fn) { return; }
-        //         if (typeof fn == 'string') {
-        //             if (jQuery.fn[fn]) {
-        //                 jQuery.fn[fn].apply(obj, jQuery.makeArray(arguments).slice(2));
-        //             }
-        //         } else if (jQuery.isFunction(fn)) {
-        //             fn.apply(obj, jQuery.makeArray(arguments).slice(2));
-        //         }
-        //     }
-
-        //     var dopts = jQuery.isFunction(opts.dlog_opts) ? opts.dlog_opts.call(self, opts) : opts.dlog_opts;
-        //     call(opts.dlog, selector, dopts);
-        //     var mopts = jQuery.isFunction(opts.msel_opts) ? opts.msel_opts.call(self, opts) : opts.msel_opts;
-        //     call(opts.msel, select, mopts);
-        //     // fix height of elements of the multiselect widget
-        //     var resizeSel = "#colchooser_"+jQuery.jgrid.jqID(self[0].p.id),
-        //         jQuerycontainer = jQuery(resizeSel + '>div>div.ui-multiselect'),
-        //         jQueryselectedContainer = jQuery(resizeSel + '>div>div.ui-multiselect>div.selected'),
-        //         jQueryavailableContainer = jQuery(resizeSel + '>div>div.ui-multiselect>div.available'),
-        //         containerHeight,
-        //         jQueryselectedActions = jQueryselectedContainer.find('>div.actions'),
-        //         jQueryavailableActions = jQueryavailableContainer.find('>div.actions'),
-        //         jQueryselectedList = jQueryselectedContainer.find('>ul.connected-list'),
-        //         jQueryavailableList = jQueryavailableContainer.find('>ul.connected-list');
-        //     jQuerycontainer.height(jQuerycontainer.parent().height()); // increase the container height
-        //     containerHeight = jQuerycontainer.height();
-        //     jQueryselectedContainer.height(containerHeight);
-        //     jQueryavailableContainer.height(containerHeight);
-        //     jQueryselectedList.height(Math.max(containerHeight-jQueryselectedActions.outerHeight()-1,1));
-        //     jQueryavailableList.height(Math.max(containerHeight-jQueryavailableActions.outerHeight()-1,1));
-        //     // extend the list of components which will be also-resized
-        //     selector.data('dialog').uiDialog.resizable("option", "alsoResize",
-        //         resizeSel + ',' + resizeSel +'>div' + ',' + resizeSel + '>div>div.ui-multiselect');
-        // }
     });
 
     jQuery('a#sm_beta_pro_feedback').on('click', function() {

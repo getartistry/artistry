@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.1.3 - 15-08-2018 */
+/*! elementor-pro - v2.1.10 - 09-10-2018 */
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var EditorModule = function() {
 	var self = this;
@@ -1401,7 +1401,7 @@ module.exports = ElementEditorModule.extend( {
 },{"elementor-pro/editor/element-editor-module":3}],25:[function(require,module,exports){
 var EditorModule = require( 'elementor-pro/editor/editor-module' );
 
-module.exports =  EditorModule.extend( {
+module.exports = EditorModule.extend( {
 	globalModels: {},
 
 	panelWidgets: null,
@@ -1557,7 +1557,6 @@ module.exports =  EditorModule.extend( {
 	},
 
 	requestGlobalModelSettings: function( globalModel, callback ) {
-		var self = this;
 		elementor.templates.requestTemplateContent( 'local', globalModel.get( 'id' ), {
 			success: function( data ) {
 				globalModel.set( 'settingsLoadedStatus', 'loaded' ).trigger( 'settings:loaded' );
@@ -1778,11 +1777,12 @@ module.exports = elementor.modules.elements.models.Element.extend( {
 	},
 
 	initSettings: function() {
-		var globalModel = this.getGlobalModel();
+		var globalModel = this.getGlobalModel(),
+			settingsModel = globalModel.get( 'settings' );
 
-		this.set( 'settings', new elementor.modules.elements.models.BaseSettings( {}, {} ) );
+		this.set( 'settings', settingsModel );
 
-		elementorFrontend.config.elements.data[ this.cid ] = globalModel.get( 'settings' );
+		elementorFrontend.config.elements.data[ this.cid ] = settingsModel;
 
 		elementorFrontend.config.elements.editSettings[ this.cid ] = globalModel.get( 'editSettings' );
 	},
@@ -1796,7 +1796,17 @@ module.exports = elementor.modules.elements.models.Element.extend( {
 	},
 
 	getTitle: function() {
-		return this.getGlobalModel().getTitle() + ' (' + elementorPro.translate( 'global' ) + ')';
+		var title = this.getSetting( '_title' );
+
+		if ( ! title ) {
+			title = this.getGlobalModel().get( 'title' );
+		}
+
+		var global = elementorPro.translate( 'global' );
+
+		title = title.replace( new RegExp( '\\(' + global + '\\)$' ), '' );
+
+		return title + ' (' + global + ')';
 	},
 
 	getIcon: function() {
@@ -1900,12 +1910,10 @@ GlobalWidgetView = WidgetView.extend( {
 	unlink: function() {
 		var globalModel = this.getGlobalModel();
 
-		if ( elementor.history ) {
-			elementor.history.history.startItem( {
-				title: globalModel.getTitle(),
-				type: elementorPro.translate( 'unlink_widget' )
-			} );
-		}
+		elementor.history.history.startItem( {
+			title: globalModel.getTitle(),
+			type: elementorPro.translate( 'unlink_widget' )
+		} );
 
 		var newModel = new elementor.modules.elements.models.Element( {
 			elType: 'widget',
@@ -2169,7 +2177,6 @@ module.exports = SaverBehavior.extend( {
 		var ui = SaverBehavior.prototype.ui.apply( this, arguments );
 
 		ui.menuConditions = '#elementor-pro-panel-saver-conditions';
-		ui.previewWrapper = '#elementor-panel-footer-theme-builder-button-preview-wrapper';
 		ui.buttonPreviewSettings = '#elementor-panel-footer-theme-builder-button-preview-settings';
 		ui.buttonOpenPreview = '#elementor-panel-footer-theme-builder-button-open-preview';
 
@@ -2179,7 +2186,8 @@ module.exports = SaverBehavior.extend( {
 	events: function() {
 		var events = SaverBehavior.prototype.events.apply( this, arguments );
 
-		events[ 'click @ui.previewWrapper' ] = 'onClickPreviewWrapper';
+		delete events[ 'click @ui.buttonPreview' ];
+
 		events[ 'click @ui.menuConditions' ] = 'onClickMenuConditions';
 		events[ 'click @ui.buttonPreviewSettings' ] = 'onClickButtonPreviewSettings';
 		events[ 'click @ui.buttonOpenPreview' ] = 'onClickButtonPreview';
@@ -2196,7 +2204,7 @@ module.exports = SaverBehavior.extend( {
 	onRender: function() {
 		SaverBehavior.prototype.onRender.apply( this, arguments );
 
-		var $menuConditions = jQuery( '<div />', {
+		var $menuConditions = jQuery( '<div>', {
 			id: 'elementor-pro-panel-saver-conditions',
 			'class': 'elementor-panel-footer-sub-menu-item',
 			html: '<i class="elementor-icon fa fa-paper-plane"></i>' +
@@ -2211,7 +2219,10 @@ module.exports = SaverBehavior.extend( {
 
 		this.ui.saveTemplate.before( $menuConditions );
 
-		this.ui.buttonPreview.replaceWith( jQuery( '#tmpl-elementor-theme-builder-button-preview' ).html() );
+		this.ui.buttonPreview
+		    .tipsy( 'disable' )
+		    .html( jQuery( '#tmpl-elementor-theme-builder-button-preview' ).html() )
+			.addClass( 'elementor-panel-footer-theme-builder-buttons-wrapper elementor-toggle-state' );
 	},
 
 	toggleMenuConditions: function() {
@@ -2223,24 +2234,6 @@ module.exports = SaverBehavior.extend( {
 			elementorPro.config.theme_builder.settings.location = settings.changed.location;
 			this.toggleMenuConditions();
 		}
-	},
-
-	onClickPreviewWrapper: function( event ) {
-		var $target = jQuery( event.target ),
-			$tool = $target.closest( '.elementor-panel-footer-tool' ),
-			isClickInsideOfTool = $target.closest( '.elementor-panel-footer-sub-menu-wrapper' ).length;
-
-		if ( isClickInsideOfTool ) {
-			$tool.removeClass( 'elementor-open' );
-			return;
-		}
-
-		this.ui.menuButtons.filter( ':not(.elementor-leave-open)' ).removeClass( 'elementor-open' );
-
-		var isClosedTool = $tool.length && ! $tool.hasClass( 'elementor-open' );
-		$tool.toggleClass( 'elementor-open', isClosedTool );
-
-		event.stopPropagation();
 	},
 
 	onClickMenuConditions: function() {

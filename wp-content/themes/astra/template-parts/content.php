@@ -31,7 +31,8 @@
 				sprintf(
 					wp_kses(
 						/* translators: %s: Name of current post. */
-						__( 'Continue reading %s', 'astra' ) . ' <span class="meta-nav">&rarr;</span>', array(
+						__( 'Continue reading %s', 'astra' ) . ' <span class="meta-nav">&rarr;</span>',
+						array(
 							'span' => array(
 								'class' => array(),
 							),

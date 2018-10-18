@@ -1,4 +1,4 @@
-/*! elementor-pro - v2.1.3 - 15-08-2018 */
+/*! elementor-pro - v2.1.10 - 09-10-2018 */
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var ElementorProFrontend = function( $ ) {
 	var self = this;
@@ -23,6 +23,19 @@ var ElementorProFrontend = function( $ ) {
         woocommerce: require( 'modules/woocommerce/assets/js/frontend/frontend' )
     };
 
+	var addIeCompatibility = function() {
+		var isIE = jQuery( 'body' ).hasClass( 'elementor-msie' );
+
+		if ( ! isIE ) {
+			return;
+		}
+
+		var $frontendCss = jQuery( '#elementor-pro-css' ),
+			msieCss = $frontendCss[0].outerHTML.replace( 'css/frontend', 'css/frontend-msie' ).replace( 'elementor-pro-css', 'elementor-pro-msie-css' );
+
+		$frontendCss.after( msieCss );
+	};
+
 	var initModules = function() {
 		self.modules = {};
 
@@ -32,6 +45,7 @@ var ElementorProFrontend = function( $ ) {
 	};
 
 	this.init = function() {
+		addIeCompatibility();
 		$( window ).on( 'elementor/frontend/init', initModules );
 	};
 
@@ -455,21 +469,7 @@ module.exports = elementorFrontend.Module.extend( {
 	},
 
 	getSwiperOptions: function() {
-		var elementSettings = this.getElementSettings(),
-			breakpointsSettings = {},
-			breakpoints = elementorFrontend.config.breakpoints;
-
-		breakpointsSettings[ breakpoints.lg - 1 ] = {
-			slidesPerView: this.getTabletSlidesPerView(),
-            slidesPerGroup: this.getTabletSlidesToScroll(),
-			spaceBetween: this.getSpaceBetween( 'tablet' )
-		};
-
-		breakpointsSettings[ breakpoints.md - 1 ] = {
-			slidesPerView: this.getMobileSlidesPerView(),
-            slidesPerGroup: this.getMobileSlidesToScroll(),
-			spaceBetween: this.getSpaceBetween( 'mobile' )
-		};
+		var elementSettings = this.getElementSettings();
 
 		var swiperOptions = {
 			navigation: {
@@ -488,9 +488,27 @@ module.exports = elementorFrontend.Module.extend( {
 			spaceBetween: this.getSpaceBetween(),
 			loop: 'yes' === elementSettings.loop,
 			speed: elementSettings.speed,
-			effect: this.getEffect(),
-			breakpoints: breakpointsSettings
+			effect: this.getEffect()
 		};
+
+		if ( 'cube' !== this.getEffect() ) {
+			var breakpointsSettings = {},
+				breakpoints = elementorFrontend.config.breakpoints;
+
+			breakpointsSettings[ breakpoints.lg - 1 ] = {
+				slidesPerView: this.getTabletSlidesPerView(),
+				slidesPerGroup: this.getTabletSlidesToScroll(),
+				spaceBetween: this.getSpaceBetween( 'tablet' )
+			};
+
+			breakpointsSettings[ breakpoints.md - 1 ] = {
+				slidesPerView: this.getMobileSlidesPerView(),
+				slidesPerGroup: this.getMobileSlidesToScroll(),
+				spaceBetween: this.getSpaceBetween( 'mobile' )
+			};
+
+			swiperOptions.breakpoints = breakpointsSettings;
+		}
 
 		if ( ! this.isEdit && elementSettings.autoplay ) {
 			swiperOptions.autoplay = {
@@ -648,14 +666,17 @@ MediaCarousel = Base.extend( {
 	onInit: function() {
 		Base.prototype.onInit.apply( this, arguments );
 
-		if ( ! this.isSlideshow() || 1 >= this.getSlidesCount() ) {
+		var slidesCount = this.getSlidesCount();
+
+		if ( ! this.isSlideshow() || 1 >= slidesCount ) {
 			return;
 		}
 
 		var elementSettings = this.getElementSettings(),
 			loop = 'yes' === elementSettings.loop,
 			breakpointsSettings = {},
-			breakpoints = elementorFrontend.config.breakpoints;
+			breakpoints = elementorFrontend.config.breakpoints,
+			desktopSlidesPerView = this.getDeviceSlidesPerView( 'desktop' );
 
 		breakpointsSettings[ breakpoints.lg - 1 ] = {
 			slidesPerView: this.getDeviceSlidesPerView( 'tablet' ),
@@ -668,12 +689,12 @@ MediaCarousel = Base.extend( {
 		};
 
 		var thumbsSliderOptions = {
-			slidesPerView: this.getDeviceSlidesPerView( 'desktop' ),
+			slidesPerView: desktopSlidesPerView,
 			initialSlide: this.getInitialSlide(),
-			centeredSlides: true,
+			centeredSlides: elementSettings.centered_slides,
 			slideToClickedSlide: true,
 			spaceBetween: this.getSpaceBetween(),
-			loopedSlides: this.getSlidesCount(),
+			loopedSlides: slidesCount,
 			loop: loop,
 			onSlideChangeEnd: function( swiper ) {
 				if ( loop ) {
@@ -1152,7 +1173,9 @@ var MenuHandler = elementorFrontend.Module.extend( {
 
 		this.elements.$menuToggle.on( 'click', this.toggleMenu.bind( this ) );
 
-		this.elements.$dropdownMenuFinalItems.on( 'click', this.toggleMenu.bind( this, false ) );
+		if ( this.getElementSettings( 'full_width' ) ) {
+			this.elements.$dropdownMenuFinalItems.on( 'click', this.toggleMenu.bind( this, false ) );
+		}
 
 		elementorFrontend.addListenerOnce( this.$element.data( 'model-cid' ), 'resize', this.stretchMenu );
 	},
@@ -1162,8 +1185,7 @@ var MenuHandler = elementorFrontend.Module.extend( {
 	},
 
 	toggleMenu: function( show ) {
-		var $dropdownMenu = this.elements.$dropdownMenu,
-			isDropdownVisible =  this.elements.$menuToggle.hasClass( 'elementor-active' );
+		var isDropdownVisible = this.elements.$menuToggle.hasClass( 'elementor-active' );
 
 		if ( 'boolean' !== typeof show ) {
 			show = ! isDropdownVisible;
@@ -1171,18 +1193,8 @@ var MenuHandler = elementorFrontend.Module.extend( {
 
 		this.elements.$menuToggle.toggleClass( 'elementor-active', show );
 
-		if ( show ) {
-			$dropdownMenu.hide().slideDown( 250, function() {
-				$dropdownMenu.css( 'display', '' );
-			} );
-
-			if ( this.getElementSettings( 'full_width' ) ) {
-				this.stretchElement.stretch();
-			}
-		} else {
-			$dropdownMenu.show().slideUp( 250, function() {
-				$dropdownMenu.css( 'display', '' );
-			} );
+		if ( show && this.getElementSettings( 'full_width' ) ) {
+			this.stretchElement.stretch();
 		}
 	},
 
@@ -1659,11 +1671,19 @@ module.exports = elementorFrontend.Module.extend( {
 			return;
 		}
 
+		/* The `verticalSpaceBetween` variable is setup in a way that supports older versions of the portfolio widget */
+
+		var verticalSpaceBetween = this.getElementSettings( this.getSkinPrefix() + 'row_gap.size' );
+
+		if ( '' === this.getSkinPrefix() && '' === verticalSpaceBetween ) {
+			verticalSpaceBetween = this.getElementSettings( this.getSkinPrefix() + 'item_gap.size' );
+		}
+
 		var masonry = new elementorFrontend.modules.Masonry( {
 			container: elements.$postsContainer,
 			items: elements.$posts.filter( ':visible' ),
 			columnsCount: this.getSettings( 'colsCount' ),
-			verticalSpaceBetween: this.getElementSettings( this.getSkinPrefix() + 'row_gap.size' )
+			verticalSpaceBetween: verticalSpaceBetween
 		} );
 
 		masonry.run();
@@ -1994,7 +2014,7 @@ var StickyHandler = elementorFrontend.Module.extend( {
 			activeDevices = this.getElementSettings( 'sticky_on' );
 
 		if ( -1 !== activeDevices.indexOf( currentDeviceMode ) ) {
-			if ( refresh ) {
+			if ( true === refresh ) {
 				this.reactivate();
 			} else if ( ! this.isActive() ) {
 				this.activate();

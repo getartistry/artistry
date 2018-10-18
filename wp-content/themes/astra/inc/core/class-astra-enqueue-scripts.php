@@ -116,8 +116,7 @@ if ( ! class_exists( 'Astra_Enqueue_Scripts' ) ) {
 			wp_script_add_data( 'astra-flexibility', 'conditional', 'IE' );
 
 			// Polyfill for CustomEvent for IE.
-			wp_enqueue_script( 'astra-customevent', $js_uri . 'custom-events-polyfill' . $file_prefix . '.js', array(), ASTRA_THEME_VERSION );
-			wp_script_add_data( 'astra-customevent', 'conditional', 'IE' );
+			wp_register_script( 'astra-customevent', $js_uri . 'custom-events-polyfill' . $file_prefix . '.js', array(), ASTRA_THEME_VERSION );
 
 			// All assets.
 			$all_assets = self::theme_assets();
@@ -154,6 +153,16 @@ if ( ! class_exists( 'Astra_Enqueue_Scripts' ) ) {
 				}
 			}
 
+			wp_script_add_data(
+				'astra-theme-js',
+				'data',
+				astra_get_script_polyfill(
+					array(
+						'typeof window.CustomEvent === "function"' => 'astra-customevent',
+					)
+				)
+			);
+
 			// Fonts - Render Fonts.
 			Astra_Fonts::render_fonts();
 
@@ -165,6 +174,7 @@ if ( ! class_exists( 'Astra_Enqueue_Scripts' ) ) {
 
 			$astra_localize = array(
 				'break_point' => astra_header_break_point(),    // Header Break Point.
+				'isRtl'       => is_rtl(),
 			);
 
 			wp_localize_script( 'astra-theme-js', 'astra', apply_filters( 'astra_theme_js_localize', $astra_localize ) );
@@ -172,6 +182,13 @@ if ( ! class_exists( 'Astra_Enqueue_Scripts' ) ) {
 			// Comment assets.
 			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 				wp_enqueue_script( 'comment-reply' );
+			}
+
+			// Submenu Container Animation.
+			$menu_animation = astra_get_option( 'header-main-submenu-container-animation' );
+			wp_register_style( 'astra-menu-animation', $css_uri . 'menu-animation' . $file_prefix . '.css', null, ASTRA_THEME_VERSION, 'all' );
+			if ( ! empty( $menu_animation ) ) {
+				wp_enqueue_style( 'astra-menu-animation' );
 			}
 		}
 

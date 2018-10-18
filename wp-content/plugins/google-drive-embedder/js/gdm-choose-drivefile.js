@@ -256,6 +256,28 @@ var gdmDriveMgr = (function($) {
                     }
                 }
 
+                /*var a = ('[google-drive-embed url="' + url + '" title="'
+                    + this.escapeHTML(links.title) + '"'
+                    + ' icon="' + icon + '"'
+                    + extraattrs
+                    + ' style="' + linkStyle + '"]');               
+                
+				var b = '"' + a + '"';*/
+					
+				var latest_classname = document.getElementById("gde_ins_btn_gb");
+										
+				if(latest_classname){
+					var latest_classname = document.getElementById("gde_ins_btn_gb").className;
+					var latest_classname = 'p.'+latest_classname;
+					
+					//alert(latest_classname);
+					jQuery( latest_classname ).text( '[google-drive-embed url="' + url + '" title="'
+                    + this.escapeHTML(links.title) + '"'
+                    + ' icon="' + icon + '"'
+                    + extraattrs
+                    + ' style="' + linkStyle + '"]');
+				}
+				
                 // Send to editor
                 window.send_to_editor('[google-drive-embed url="' + url + '" title="'
                     + this.escapeHTML(links.title) + '"'
@@ -263,6 +285,7 @@ var gdmDriveMgr = (function($) {
                     + extraattrs
                     + ' style="' + linkStyle + '"]');
 
+			
                 // Set file parent/owner in Enterprise version
                 if (this.getServiceHandler().allowSetEmbedOwnerParent()) {
                     gdmSetEmbedSAOwnerParent(id);
@@ -591,6 +614,5 @@ jQuery(document).ready(function () {
 
     // Will only go ahead if client lib is also loaded
     gdmDriveMgr.init(gdmGetActiveTabName());
-
+	
 });
-

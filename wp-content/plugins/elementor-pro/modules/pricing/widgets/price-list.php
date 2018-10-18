@@ -126,7 +126,7 @@ class Price_List extends Base_Widget {
 		$this->start_controls_section(
 			'section_list_style',
 			[
-				'label' => __( 'List Style', 'elementor-pro' ),
+				'label' => __( 'List', 'elementor-pro' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -289,7 +289,7 @@ class Price_List extends Base_Widget {
 		$this->start_controls_section(
 			'section_image_style',
 			[
-				'label' => __( 'Image Style', 'elementor-pro' ),
+				'label' => __( 'Image', 'elementor-pro' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]
@@ -342,7 +342,7 @@ class Price_List extends Base_Widget {
 		$this->start_controls_section(
 			'section_item_style',
 			[
-				'label' => __( 'Item Style', 'elementor-pro' ),
+				'label' => __( 'Item', 'elementor-pro' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'show_label' => false,
 			]

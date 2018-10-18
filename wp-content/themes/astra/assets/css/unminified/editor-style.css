@@ -1456,7 +1456,7 @@ big {
 
 mark,
 ins {
-  background: #fff9c0;
+  background: transparent;
   text-decoration: none;
 }
 
@@ -1902,17 +1902,29 @@ input[type="submit"]:focus {
   color: #999;
 }
 
-.ast-header-break-point .main-header-bar .main-header-bar-navigation .ast-search-icon {
+.search-form .search-field {
+  outline: none;
+}
+
+.ast-search-menu-icon {
+  position: relative;
+}
+
+.ast-header-break-point.ast-header-custom-item-outside .main-header-bar .ast-search-icon {
+  margin-right: 1em;
+}
+
+.ast-header-break-point.ast-header-custom-item-inside .main-header-bar .main-header-bar-navigation .ast-search-icon {
   display: none;
 }
 
-.ast-header-break-point .ast-search-menu-icon .search-field,
-.ast-header-break-point .ast-search-menu-icon.ast-inline-search .search-field {
+.ast-header-break-point.ast-header-custom-item-inside .main-header-bar .ast-search-menu-icon .search-field,
+.ast-header-break-point.ast-header-custom-item-inside .main-header-bar .ast-search-menu-icon.ast-inline-search .search-field {
   width: 100%;
   padding-right: 5.5em;
 }
 
-.ast-header-break-point .ast-search-menu-icon .search-submit {
+.ast-header-break-point.ast-header-custom-item-inside .main-header-bar .ast-search-menu-icon .search-submit {
   display: block;
   position: absolute;
   height: 100%;
@@ -1923,7 +1935,7 @@ input[type="submit"]:focus {
   border-radius: 0;
 }
 
-.ast-header-break-point .ast-search-menu-icon .search-form {
+.ast-header-break-point.ast-header-custom-item-inside .main-header-bar .ast-search-menu-icon .search-form {
   padding: 0;
   display: block;
   overflow: hidden;
@@ -1976,7 +1988,7 @@ textarea {
 }
 
 .site-title a {
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .site-header .site-description {
@@ -2094,22 +2106,16 @@ p {
 
 h1,
 .entry-content h1,
-.entry-content h1 a,
 h2,
 .entry-content h2,
-.entry-content h2 a,
 h3,
 .entry-content h3,
-.entry-content h3 a,
 h4,
 .entry-content h4,
-.entry-content h4 a,
 h5,
 .entry-content h5,
-.entry-content h5 a,
 h6,
-.entry-content h6,
-.entry-content h6 a {
+.entry-content h6 {
   color: #3a3a3a;
 }
 

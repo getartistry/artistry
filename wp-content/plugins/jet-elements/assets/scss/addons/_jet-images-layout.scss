@@ -9,7 +9,7 @@
 		&.image-loaded {
 			.jet-images-layout__inner {
 				opacity: 1;
-				transition: opacity 0.3 ease;
+				transition: opacity 0.3s ease;
 			}
 
 			.jet-images-layout__image-instance {
@@ -114,10 +114,14 @@
 		z-index: 1;
 
 		span {
-			width: 32px;
-			height: 32px;
-			display: block;
-			background: url( '../images/spinner-32.svg' ) no-repeat;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			border-top-color: transparent;
+			border-left-color: transparent;
+			border-right-color: transparent;
+			box-shadow: 2px 2px 1px rgb(255,255,255);
+			animation: jet-images-layout-load-spin 690ms infinite linear;
 		}
 	}
 
@@ -358,4 +362,8 @@
 			}
 		}
 	}
+}
+
+@keyframes jet-images-layout-load-spin {
+	100%{transform: rotate(360deg); transform: rotate(360deg); }
 }

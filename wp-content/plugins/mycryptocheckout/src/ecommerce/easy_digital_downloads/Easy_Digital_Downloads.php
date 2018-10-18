@@ -26,6 +26,7 @@ class Easy_Digital_Downloads
 		$this->add_filter( 'do_shortcode_tag', 10, 4 );
 		$this->add_action( 'edd_add_email_tags' );
 		$this->add_action( 'edd_gateway_' . static::$gateway_id );
+		$this->add_filter( 'edd_gateway_checkout_label', 10, 2 );
 		$this->add_action( 'edd_mycryptocheckout_cc_form' );
 		$this->add_filter( 'edd_payment_gateways' );
 		$this->add_filter( 'edd_settings_gateways' );
@@ -33,6 +34,7 @@ class Easy_Digital_Downloads
 		$this->add_action( 'edd_view_order_details_billing_after' );
 		$this->add_action( 'mycryptocheckout_cancel_payment' );
 		$this->add_action( 'mycryptocheckout_complete_payment' );
+		$this->add_action( 'mycryptocheckout_generate_checkout_javascript_data' );
 		$this->add_action( 'mycryptocheckout_hourly' );
 	}
 
@@ -60,18 +62,30 @@ class Easy_Digital_Downloads
 
 		// No key found
 		if ( ! isset( $payment_key ) )
-			return;
+			return $output;
+
+		if ( $session[ 'gateway' ] != 'mycryptocheckout' )
+			return $output;
+
+		$payment_id    = edd_get_purchase_id_by_key( $payment_key );
 
 		MyCryptoCheckout()->enqueue_js();
 		MyCryptoCheckout()->enqueue_css();
 
-		$payment_id    = edd_get_purchase_id_by_key( $payment_key );
-
 		$instructions = $this->get_option_or_default( 'online_payment_instructions' );
+
 		$payment = MyCryptoCheckout()->api()->payments()->generate_payment_from_order( $payment_id );
+
+		$edd_payment = new \EDD_Payment( $payment_id );
+		if ( $edd_payment->status == 'publish' )
+			$payment->paid = true;
+
+		$this->__current_payment = $payment;		// For the javascript later.
+
 		$instructions = $payment->replace_shortcodes( $instructions );
 
 		$output = wpautop( $instructions ) . $output;
+		$output .= MyCryptoCheckout()->generate_checkout_js();
 		return $output;
 	}
 
@@ -108,6 +122,17 @@ class Easy_Digital_Downloads
 	}
 
 	/**
+		@brief		edd_gateway_checkout_label
+		@since		2018-10-04 16:42:32
+	**/
+	public function edd_gateway_checkout_label( $label, $gateway )
+	{
+		if ( $gateway != static::$gateway_id )
+			return $label;
+		return $this->get_option_or_default( 'gateway_name' );
+	}
+
+	/**
 		@brief		edd_gateway_mycryptocheckout
 		@since		2018-01-02 16:51:54
 	**/
@@ -131,7 +156,7 @@ class Easy_Digital_Downloads
 		$wallet->use_it();
 		$mcc->wallets()->save();
 
-		$payment_data = array(
+		$edd_payment_data = array(
 			'price'         => $purchase_data['price'],
 			'date'          => $purchase_data['date'],
 			'user_email'    => $purchase_data['user_email'],
@@ -144,14 +169,12 @@ class Easy_Digital_Downloads
 			'status'        => 'pending',
 		);
 
-		$payment_id = edd_insert_payment( $payment_data );
+		$payment_id = edd_insert_payment( $edd_payment_data );
 
-		edd_update_payment_meta( $payment_id, '_mcc_amount', $amount );
-		edd_update_payment_meta( $payment_id, '_mcc_currency_id', $currency_id  );
-		edd_update_payment_meta( $payment_id, '_mcc_confirmations', $wallet->confirmations );
-		edd_update_payment_meta( $payment_id, '_mcc_created_at', time() );
-		$payment_timeout_hours = edd_get_option( 'mcc_payment_timeout_hours' );
-		edd_update_payment_meta( $payment_id, '_mcc_payment_timeout_hours', $payment_timeout_hours );
+		$payment = MyCryptoCheckout()->api()->payments()->create_new( $payment_id );
+		$payment->amount = $amount;
+		$payment->currency_id = $currency_id;
+		$payment->timeout_hours = edd_get_option( 'mcc_payment_timeout_hours' );
 
 		$test_mode = edd_get_option( 'mcc_test_mode' );
 		if ( $test_mode )
@@ -163,7 +186,10 @@ class Easy_Digital_Downloads
 			$mcc_payment_id = 0;
 
 		edd_update_payment_meta( $payment_id, '_mcc_payment_id', $mcc_payment_id );
-		edd_update_payment_meta( $payment_id, '_mcc_to', $wallet->get_address() );
+
+		$wallet->apply_to_payment( $payment );
+
+		$payment->save( $payment_id );
 
 		// Only send it if we are not in test mode.
 		if ( $mcc_payment_id < 1 )
@@ -513,6 +539,19 @@ class Easy_Digital_Downloads
 		if ( $r == '' )
 			$r = static::get_gateway_string( $key );
 		return $r;
+	}
+
+	/**
+		@brief		mycryptocheckout_generate_checkout_javascript_data
+		@since		2018-09-04 09:45:31
+	**/
+	public function mycryptocheckout_generate_checkout_javascript_data( $action )
+	{
+		if ( ! isset( $this->__current_payment ) )
+			return;
+		$payment = $this->__current_payment;
+		$payment->add_to_checkout_javascript_data( $action );
+		return $action;
 	}
 
 	/**

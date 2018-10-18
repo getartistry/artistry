@@ -23,11 +23,10 @@ $instance_data = json_encode( $instance_data );
 $this->add_render_attribute( 'form-input',
 	array(
 		'class'       => array(
-			'jet-subscribe-form__input',
+			'jet-subscribe-form__input jet-subscribe-form__mail-field',
 		),
 		'type'               => 'email',
-		'name'               => 'jet-subscribe-mail',
-		'value'              => '',
+		'name'               => 'email',
 		'placeholder'        => $submit_placeholder,
 		'data-instance-data' => htmlspecialchars( $instance_data ),
 	)
@@ -43,7 +42,10 @@ if ( filter_var( $use_icon, FILTER_VALIDATE_BOOLEAN ) ) {
 <div <?php echo $this->get_render_attribute_string( 'main-container' ); ?>>
 	<form method="POST" action="#" class="jet-subscribe-form__form">
 		<div class="jet-subscribe-form__input-group">
-			<input <?php echo $this->get_render_attribute_string( 'form-input' ); ?>>
+			<div class="jet-subscribe-form__fields">
+				<input <?php echo $this->get_render_attribute_string( 'form-input' ); ?>><?php
+					$this->generate_additional_fields();
+				?></div>
 			<?php echo sprintf( '<a class="jet-subscribe-form__submit elementor-button elementor-size-md" href="#">%s<span class="jet-subscribe-form__submit-text">%s</span></a>', $icon_html, $submit_button_text ); ?>
 		</div>
 		<div class="jet-subscribe-form__message"><div class="jet-subscribe-form__message-inner"><span></span></div></div>

@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Footer_Typo_Configs' ) ) {
@@ -109,16 +115,17 @@ if ( ! class_exists( 'Astra_Footer_Typo_Configs' ) ) {
 				 * Option: Footer Content Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[line-height-footer-content]',
-					'section'     => 'section-footer-typo',
-					'default'     => '',
-					'required'    => array( ASTRA_THEME_SETTINGS . '[footer-sml-layout]', '!=', 'disabled' ),
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'transport'   => 'postMessage',
-					'type'        => 'control',
-					'control'     => 'ast-slider',
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[line-height-footer-content]',
+					'section'           => 'section-footer-typo',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'required'          => array( ASTRA_THEME_SETTINGS . '[footer-sml-layout]', '!=', 'disabled' ),
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'transport'         => 'postMessage',
+					'type'              => 'control',
+					'control'           => 'ast-slider',
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 5,

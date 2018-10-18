@@ -11,63 +11,21 @@ Class WpAutomaticFacebook extends wp_automatic{
 	 */
 	function fb_get_post($camp){
  	
+		$wp_automatic_fb_cuser = trim(get_option('wp_automatic_fb_cuser','') );
+		$wp_automatic_fb_xs = trim( get_option('wp_automatic_fb_xs') );
+		
+		if( trim($wp_automatic_fb_cuser) == '' || trim($wp_automatic_fb_xs) == '' ){
+			echo '<br><span style="color:red">Please visit the plugin settings page and add the required Facebook cookies values</span>';
+			return   false;
+		}
+		
 		//get page id
 		$camp_general=unserialize(base64_decode($camp->camp_general));
 		$camp_opt = unserialize ( $camp->camp_options );
 	
-		  echo '<br>Processing FB page:'.$camp_general['cg_fb_page'];
+		echo '<br>Processing FB page:'.$camp_general['cg_fb_page'];
 	
-		//getting access tocken
-		$cg_fb_access = get_option('wp_automatic_fb_token','');
-	
-		 
-		
-		if(trim($cg_fb_access ) == ''){
-			
-			echo '<br><span style="color:red">Please visit the plugin settings page and add the required Facebook access token.</span>';
-			return false;
-	
-			  echo '<br>Getting a FB access token..';
-	
-			$wp_automatic_fb_app = trim( get_option('wp_automatic_fb_app','') );
-			$wp_automatic_fb_secret = trim( get_option('wp_automatic_fb_secret','') );
-	
-			if(trim($wp_automatic_fb_app) == '' || trim($wp_automatic_fb_secret) == ''){
-				  echo '<br>NO APP ID FOUND, PLEASE VISIT THE PLUGIN SETTING AND ADD THE FACEBOOK APP ID/SECRET';
-				return false;
-			}
-	
-			//get token
-			//curl get
-			$x='error';
-			$url="https://graph.facebook.com/oauth/access_token?client_id=$wp_automatic_fb_app&client_secret=$wp_automatic_fb_secret&grant_type=client_credentials";
-			curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
-			curl_setopt($this->ch, CURLOPT_URL, trim($url));
-	
-			$exec=curl_exec($this->ch);
-			$x=curl_error($this->ch);
-	
-			if(stristr($exec, 'access_token":')){
-	
-				//found
-				  echo '<br>Successfully got an access token';
-				
-				$jsonR = json_decode($exec);
-				
-				$cg_fb_access = $jsonR->access_token;
-	
-				update_option('wp_automatic_fb_token', $cg_fb_access);
-	
-			}else{
-	
-				  echo '<br>Can not find access token at content after requesting it'.$x.$exec;
-				return false;
-	
-			}
-	
-	
-		}
-	
+		  
 	
 		// PAGE ID
 		$cg_fb_page_id = get_post_meta($camp->camp_id,'cg_fb_page_id',1);
@@ -83,7 +41,7 @@ Class WpAutomaticFacebook extends wp_automatic{
 	
 		//get page id if not still extracted
 		if(trim($cg_fb_page_id) == ''){
-			  echo '<br>Extracting page id from original page link';
+			  echo '<br>Extracting page ID from original page link';
 	
 			//getting page name from url
 				
@@ -92,87 +50,107 @@ Class WpAutomaticFacebook extends wp_automatic{
 			$url= $camp_general['cg_fb_page'] ;
 			curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
 			curl_setopt($this->ch, CURLOPT_URL, trim($url));
+	
+			//authorization
+			curl_setopt($this->ch,CURLOPT_COOKIE,'xs='.$wp_automatic_fb_xs.';c_user='.$wp_automatic_fb_cuser  );
+			
+			
 			$exec=curl_exec($this->ch);
 			$x  = curl_error($this->ch);
 	
+		  
+		 	
+		 	//entity_id if the fb page validation check
+		 	if(stristr($exec, 'entity_id')){
+		 		echo '<br>entity_id found getting id from it';
 		 		
-			if(stristr($exec, 'PageComposerPagelet_')){
-	
-				//extracting
-				preg_match_all('{PageComposerPagelet_(\d*?)"}', $exec,$matches);
-				$smatch =  $matches[1];
-				$cg_fb_page_id = $smatch[0];
-					
-				if(trim($cg_fb_page_id) !=''){
-					  echo '<br>Successfully extracted  :'.$cg_fb_page_id;
-					update_post_meta($camp->camp_id, 'cg_fb_page_id', $cg_fb_page_id);
-				}else{
-					  echo '<br>Can not find numeric entityID';
-				}
-	
-			}else{
-	
-				//entity_id if the fb page validation check
-				if(stristr($exec, 'entity_id')){
-					  echo '<br>entity_id found getting id from it';
-						
-					preg_match_all('{entity_id":"(\d*?)"}', $exec,$matches);
-					$smatch =  $matches[1];
-					$cg_fb_page_id = $smatch[0];
-	
-					if(trim($cg_fb_page_id) !=''){
-						  echo '<br>Successfully extracted entityID:'.$cg_fb_page_id;
-						update_post_meta($camp->camp_id, 'cg_fb_page_id', $cg_fb_page_id);
-					}else{
-						  echo '<br>Can not find numeric entityID';
-					}
-						
-						
-						
-				}else{
-					  echo '<br>entity_id does not exists either ';
-					  echo '<br>Can not find valid FB reply.';
-				}
-			}
+		 		preg_match_all('{entity_id":"(\d*?)"}', $exec,$matches);
+		 		$smatch =  $matches[1];
+		 		$cg_fb_page_id = $smatch[0];
+		 		
+		 		if(trim($cg_fb_page_id) !=''){
+		 			echo '<br>Successfully extracted entityID:'.$cg_fb_page_id;
+		 			update_post_meta($camp->camp_id, 'cg_fb_page_id', $cg_fb_page_id);
+		 		}else{
+		 			echo '<br>Can not find numeric entityID';
+		 		}
+		 		
+		 		
+		 		
+		 	}else{
+		 		
+		 		if(stristr($exec, 'PageComposerPagelet_')){
+		 			
+		 			//extracting
+		 			preg_match_all('{PageComposerPagelet_(\d*?)"}', $exec,$matches);
+		 			$smatch =  $matches[1];
+		 			$cg_fb_page_id = $smatch[0];
+		 			
+		 			if(trim($cg_fb_page_id) !=''){
+		 				echo '<br>Successfully extracted  :'.$cg_fb_page_id;
+		 				update_post_meta($camp->camp_id, 'cg_fb_page_id', $cg_fb_page_id);
+		 			}else{
+		 				echo '<br>Can not find numeric entityID';
+		 			}
+		 		}else{
+		 			echo '<br>entity_id does not exists either ';
+		 			echo '<br>Can not find valid FB reply.';
+		 		}
+		 	}
 		}
 	
 	
 		//building feed
-		if(  (trim($cg_fb_page_id) !='' ) &&  (trim($cg_fb_access) !='' )  ){
+		if(  (trim($cg_fb_page_id) != '' )   ){
 								
 			$cg_fb_source = $camp_general['cg_fb_source'];
+			
 			$cg_fb_from     = $camp_general['cg_fb_from'] ;
 			
-			if(trim($cg_fb_from) == '') $cg_fb_from = 'posts';
+			if(trim($cg_fb_from) != 'events') $cg_fb_from = 'posts';
+	 	
+			//mbasic page URL
+			$cg_fb_page_feed2 = 	$cg_fb_page_feed = "https://mbasic.facebook.com/" . $cg_fb_page_id ;
 			
-			if($cg_fb_source == 'group'){
-	
-				$cg_fb_page_feed = "https://graph.facebook.com/v2.7/$cg_fb_page_id/feed?access_token=$cg_fb_access&limit=100&fields=message,likes.limit(0).summary(true),story,attachments{title,media,type,subattachments.limit(100)},created_time,id,type,picture,link,name,description,from";
-				$cg_fb_page_feed2 = "https://graph.facebook.com/v2.7/$cg_fb_page_id/feed?access_token=[token]";
-				//$cg_fb_page_feed2 = $cg_fb_page_feed;
-				
-			}else{
-	
-				$cg_fb_page_feed = "https://graph.facebook.com/v2.7/$cg_fb_page_id/$cg_fb_from?access_token=$cg_fb_access&limit=100&fields=message,likes.limit(0).summary(true),story,attachments{title,media,type,subattachments.limit(100)},created_time,id,type,picture,link,name,description,from";
-				$cg_fb_page_feed2 = "https://graph.facebook.com/v2.7/$cg_fb_page_id/$cg_fb_from?access_token=[token]";
-	
-				
-				
+			//personal profiles
+			if($cg_fb_source == 'profile'){
+				$cg_fb_page_feed.='?v=timeline';
 			}
 			
 			//events endpoint
 			if($cg_fb_from == 'events'){
-				$cg_fb_page_feed = "https://graph.facebook.com/v2.7/$cg_fb_page_id/$cg_fb_from?access_token=$cg_fb_access&limit=100&fields=description,end_time,name,place,start_time,id,picture,type,updated_time,cover";
-				$cg_fb_page_feed2 ="https://graph.facebook.com/v2.7/$cg_fb_page_id/$cg_fb_from?access_token=[token]";
+				
+				if($cg_fb_source == 'group'){
+					
+					$cg_fb_page_feed2 = 	$cg_fb_page_feed = "https://mbasic.facebook.com/" . $cg_fb_page_id . "/?view=events&refid=18" ;
+					
+				}else{
+					$cg_fb_page_feed2 = 	$cg_fb_page_feed = "https://mbasic.facebook.com/" . $cg_fb_page_id . "/events?locale=en_US" ;
+				}
+				
+				
 			}
 			
 			//locale
 			if(in_array('OPT_OPT_FB_LANG', $camp_opt)){
 				$cg_fb_lang = trim($camp_general['cg_fb_lang']);
-			    $cg_fb_page_feed.='&locale='.$cg_fb_lang;
-			    $cg_fb_page_feed2.='&locale='.$cg_fb_lang;
-			}
+			    
+				if(! stristr($cg_fb_page_feed, 'locale') ){
+					
+					if(stristr($cg_fb_feed, '?')){
+						$cg_fb_page_feed.='&locale='.$cg_fb_lang;
+						$cg_fb_page_feed2.='&locale='.$cg_fb_lang;
+					}else{
+						$cg_fb_page_feed.='?locale='.$cg_fb_lang;
+						$cg_fb_page_feed2.='?locale='.$cg_fb_lang;
+					}
+					
+				}
 				
+				
+				
+			}
+			
 			echo '<br>FB URL:'.$cg_fb_page_feed2;
 				
 			//load feed
@@ -181,6 +159,10 @@ Class WpAutomaticFacebook extends wp_automatic{
 			$url=$cg_fb_page_feed;
 			curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
 			curl_setopt($this->ch, CURLOPT_URL, trim($url));
+			
+			//authorization
+			curl_setopt($this->ch,CURLOPT_COOKIE,'xs='.$wp_automatic_fb_xs.';c_user='.$wp_automatic_fb_cuser  );
+			
 				
 			//CACHE
 			$saveCache = false;
@@ -190,56 +172,23 @@ Class WpAutomaticFacebook extends wp_automatic{
 				$temp = get_post_meta($camp->camp_id,'wp_automatic_cache',true);
 				@$temp = base64_decode($temp);
 	
-				if(stristr($temp, '"data"')){
+				if(stristr($temp, 'messages')){
 						
 					  echo '<br>Results loaded from the cache';
 					$exec = $temp;
 					
 	
 				}else{
-					  echo '<br>No valid cache found requesting facebook';
+					echo '<br>No valid cache found requesting facebook';
 					$saveCache = true;
 					
 					//nextpage if available 
 					$nextPageUrl = get_post_meta($camp->camp_id,'nextPageUrl',true);
-					if(trim($nextPageUrl != '') && in_array('OPT_FB_OLD', $camp_opt)){
+					if(trim($nextPageUrl != '') && in_array('OPT_FB_OLD', $camp_opt)  && ! stristr($nextPageUrl, 'graph.') ){
 
 						  echo '<br>Pagination url:'.$nextPageUrl;
-						
-						// Current Until in the next page URL
-						preg_match('{until\=(\d*)}', $nextPageUrl,$untilMatchs);
-						$currentUntil = $untilMatchs[1] ;
-						  echo '<br>CurrentUntil:'.$currentUntil;
-						
-						// Maximum until reached 
-						$maximumUntil = get_post_meta($camp->camp_id,'maximumUntil',1);
-						if(trim($maximumUntil) == '') $maximumUntil = 0 ;
-						
-						// Check if current until > max until and if larger set it at the max until
-						if($currentUntil > $maximumUntil){
-							update_post_meta($camp->camp_id, 'maximumUntil', $currentUntil);
-							$maximumUntil = $currentUntil;
-						}
-						  echo '<br>MaxUntil'.$maximumUntil;
-						
-						// Max until when end reached
-						$maximumUntilEndReached = get_post_meta($camp->camp_id,'maximumUntilEndReached',1);
-						if(trim($maximumUntilEndReached) == '') $maximumUntilEndReached = 0 ;
-						  echo '<br>maximumUntilEndReached:'.$maximumUntilEndReached;
-						
-						
-						if($currentUntil <= $maximumUntilEndReached ){
-							  echo '<br>Not valid until below maximumUntilEndReached getting first 100 items';
+						  curl_setopt($this->ch, CURLOPT_URL, trim($nextPageUrl));
 
-							//new end reach 
-							update_post_meta($camp->camp_id, 'maximumUntilEndReached' , $maximumUntil);
-							delete_post_meta($camp->camp_id	, 'nextPageUrl');
-							  
-						}else{
-						
-							curl_setopt($this->ch, CURLOPT_URL, trim($nextPageUrl));
-
-						}
 						 
 					}
 					
@@ -253,60 +202,121 @@ Class WpAutomaticFacebook extends wp_automatic{
 	
 			$x=curl_error($this->ch);
 	
-			if ( stristr($exec, '"data"') ){ // Checks that the object is created correctly
-					
+			if (  (stristr($exec, 'logout.php')  && stristr($exec, $cg_fb_page_id)) || ( stristr($exec, 'logout.php') && $cg_fb_from == 'events' )  ){ // Checks that the object is created correctly
+				 
+				$exec = str_replace('&amp;' ,'&' ,$exec);
+			 
 				//if save cache enbaled
 				if($saveCache){
 					  echo '<br>Caching the results..';
 					update_post_meta($camp->camp_id, 'wp_automatic_cache', base64_encode($exec));
 				}
-	
-				$fb_json =json_decode($exec);
-	
-				$items = $fb_json->data;
-					
-					
-				// Loop through each feed item and display each item as a hyperlink.
-				$i = 0;
-	
-				  echo ' items:'.count($items);
-	
-				foreach ( $items as $item ){
-	 
-					// txt content for title generation
-					$txtContent = '' ;
-	
-					// building the link
-					$item_id = $item->id;
-					$isEvent = false; //ini
-					
-					if(stristr($item_id, '_')){
-						$id_parts = explode('_', $item_id);
-						$url = "https://www.facebook.com/{$id_parts[0]}/posts/{$id_parts[1]}";
-						$lastItemUntil = strtotime( $item->created_time);
-					}else{
-						//events
-						$id_parts = array( $cg_fb_page_id , $item_id);
-						$url = "https://www.facebook.com/$item_id";
-						$lastItemUntil = strtotime( $item->updated_time);
-						$item->created_time = $item->updated_time;
-						$item->type = 'event';
-						$isEvent = true;
-					}
+				
+				if($cg_fb_from != 'events'){
+				
+					require_once 'inc/class.dom.php';
+					$wpAutomaticDom = new  wpAutomaticDom($exec) ;
+					$items = $wpAutomaticDom->getContentByXPath('//*[@role="article"]' , false );
 					
 					 
-					  echo '<br>Link:'.$url ;
+					// Loop through each feed item and display each item as a hyperlink.
+				 
+					
+					//delete embeded articles 
+					$i=0;
+					foreach ( $items as $item ){
+						
+						if(stristr($item, 'og_action_id')){
+							//remove feeling action "og_action_id":"1872937199467035",
+							$item = preg_replace('{"og_action_id":"\d*?",}', '', $item);
+						}
+						 
+					 
+						  
+						
+						if(  ( ! stristr($item, 'data-ft=\'{"top_level_post_id') && !  stristr($item, 'data-ft=\'{"qid')  ) || ! stristr( $item, 'top_level_post_id')    ) {
+							unset( $items[$i] );
+						}
+						
+						$i++;
+						
+					}
+					
+				}else{
+					//extract events
+					preg_match_all( '{<a href="/events/(\d+)}' , $exec , $events_matches);
+					
+					if( isset( $events_matches[1] ) ){
+						$items = $events_matches[1] ;
+					}else{
+						$items = array();
+					}
+					 
+				}
+	
+				echo ' items:'.count($items);  
+ 
+				
+				$i = 0;
+				foreach ( $items as $item ){
+					  
+					if($cg_fb_from == 'events' ){
+
+						echo '<br>Event:'.$item;
+						
+					}
+					 
+					 //remove image emoji
+					$item = preg_replace('{<img class="\w*?" height="16".*?>}s' , '' , $item);
+					$imgsrc = ''; // ini 
+					
+					// txt content for title generation ini 
+					$txtContent = '' ;
+					
+					//get the post ID
+				
+					if( $cg_fb_from != 'events'  ){
+						
+						preg_match( '{top_level_post_id":"(.*?)"}' , $item , $pMatches );
+						$item_id = $cg_fb_page_id . '_' . $pMatches[1] ; 
+						$single_id =  $pMatches[1];
+		 
+						$isEvent = false; //ini
+						$id_parts = explode('_', $item_id);
+						$url = "https://www.facebook.com/{$id_parts[0]}/posts/{$id_parts[1]}";
+						 
+					}else{
+						//events
+						$id_parts = array( $cg_fb_page_id , $item);
+						$url = "https://www.facebook.com/$item";
+						$isEvent = true;
+						
+						$item_id  = $single_id = $item;
+						
+					}
+					 
+					echo '<br>Link:'.$url ;
+					 
 	
 					//check if execluded link due to exact match does not exists
 					if( $this->is_execluded($camp->camp_id, $url)){
 						  echo '<-- Excluded link';
 						continue;
 					}
-						
-					//check if old
+					
+					//get created time
+					if( $cg_fb_from != 'events'  ){
+						$created_time = ''; 
+						preg_match('{publish_time":(\d*)}', $item,$tMatches);
+						if(isset($tMatches[1]) ) $created_time =  $tMatches[1];
+					}else{
+						$created_time = time('now');
+					}
+					
+					//check if old before loading original page if created_time exists in page
 					$foundOldPost = false;
-					if(in_array('OPT_YT_DATE', $camp_opt)     ){
-						if($this->is_link_old($camp->camp_id,  strtotime(  $item->created_time  ) )){
+					if(in_array('OPT_YT_DATE', $camp_opt)   && trim($created_time) != ''   ){
+						if($this->is_link_old($camp->camp_id,  (  $created_time  ) )){
 							  echo '<--old post execluding...';
 							$foundOldPost = true;
 							continue;
@@ -315,58 +325,76 @@ Class WpAutomaticFacebook extends wp_automatic{
 						
 					if (! $this->is_duplicate($url) ) {
 						  echo '<-- new link';
-	
-						/*
-						   echo '<pre>';
-						 print_r($item);
-						   echo '</pre>';
-						 */
-							
-						//hyperlinking
-						if(isset($item->message) ){
-	
-							$item->message = preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '<a href="$1" target="_blank">$0</a>', $item->message);
-	
-							//hyperlinking the message links
-							if( isset($item->message) && trim($item->message) != '' ){
-									
-								//extracting  hashtags
-								$item->message = preg_replace('/#(\w+)/u', ' <a href="https://www.facebook.com/hashtag/$1">#$1</a>', $item->message);
-	
-							}
-								
-						}else{
-							$item->message = '';
-						}
-	
-							
-						$i ++;
-						// posting content to emails
-						$created_time  = $item->created_time;	
-						$created_time_parts = explode('+', $created_time);
-						$created_time = $created_time_parts[0];
-						$created_time = str_replace('T', ' ', $created_time);
-	
-						//utc convert
-						$created_time = get_date_from_gmt($created_time);
-						$wpdate = $date = $created_time;
-	
-	
+						  $i ++;
+						
 					}else{
 						  echo '<-- duplicate in post <a href="'.get_edit_post_link($this->duplicate_id).'">#'.$this->duplicate_id.'</a>';
 						continue;
 	
 					}
 						
-					//check if older than minimum date
-					if($this->is_link_old($camp->camp_id,  strtotime($wpdate) )){
-						  echo '<--old post execluding...';
-						continue;
+					//real item html if event. now the $item contains the event id only
+					if( $cg_fb_from == 'events'  ){
+						
+						$mbasic_event_url = "https://mbasic.facebook.com/events/".$item . '?locale=en_US' ;
+						
+						echo '<br>Basic event URL:'.$mbasic_event_url;
+						 
+						//curl get
+						$x='error';
+						curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
+						curl_setopt($this->ch, CURLOPT_URL, trim($mbasic_event_url));
+						$item=curl_exec($this->ch);
+						$x=curl_error($this->ch);
+						
+						//remove emojis
+						$item = preg_replace('{<img class="\w*?" height="16".*?>}s' , '' , $item);
+						 
 					}
+					
+				 
+					
+					//found images
+					preg_match_all (	'{<img src=".*?>}' ,  str_replace('&amp;', '&', $item)  , $imgMatchs  );
+					$all_imgs =$imgMatchs[0];
+					
+					$i= 0 ;
+					foreach ($all_imgs as $single_img){
+						if(stristr($single_img, 'static')){
+							
+							unset($all_imgs[$i]);
+							
+						}
+						
+						$i++;
+					}
+						
+					$all_imgs = array_values($all_imgs);
+					
 	
-					//building content
-					$type = $item->type; 
-					  echo '<br>Item Type:'.$type;
+					// Finding the post type 
+					if( $cg_fb_from == 'events' ){
+						$type = 'event';
+					}elseif(stristr($item, 'video_redirect') || stristr($item, 'youtube.com%2Fwatch')){
+						$type = "video";
+
+					}elseif(stristr($item, '<a href="/notes')){
+						$type = "note";					
+					}elseif(stristr($item, 'events/feed')){
+						$type = "event";
+					}elseif(stristr($item, 'offerx_')){
+						$type = "offer";
+					}elseif(stristr($item, 'l.php?')){
+						$type = "link";
+					}elseif(count($all_imgs) >1){
+						$type = "photo";
+					}elseif(count($all_imgs) >0){
+						$type = "photo";
+					}else{
+						$type = 'status';
+					}
+					
+				     echo '<br>Item Type:'.$type;
 						
 					//type check
 					if(in_array('OPT_FB_POST_FILTER', $camp_opt)){
@@ -384,204 +412,364 @@ Class WpAutomaticFacebook extends wp_automatic{
 					
 					 
 					
-					if($type == 'link'){
+					//textual content tn":"*s"}'><span>
+					if( $cg_fb_from == 'events' ){
 						
-						//If shared a fb post sharing a link
-				 		
-						if( isset( $item->attachments->data[0]->type )){
-							if($item->attachments->data[0]->type == 'share' ){
-								if(isset($item->attachments->data[0]->title )){
-									$item->name = $item->attachments->data[0]->title;
-								}
+						$temp_event_cnt = explode('unit_id_', $item);
+						preg_match_all('!</div></div></div><div class=".*?">(.*?)</div>!s', $temp_event_cnt[1] ,$contMatches);
+					
+					}elseif( stristr($item, '*s"}\'></div>' ) && stristr($item, 'tn":"H"')  ){
+
+						//possible sell post
+						preg_match_all('!(<p>.*?</p>)!s', $item,$contMatches);
+						
+						//<span class="co">(Sold)</span><span>bla bla title</span>
+						preg_match('!<span class="\w+?">\(.*?\)</span><span>(.*?)</span>!s', $item,$title_matches);
+						
+						if( isset($title_matches[1]) && trim($title_matches[1]) != '' ){
+							 $title = $title_matches[1];
+						}
+						 
+					}elseif(stristr($item, '</p></span>')){
+						preg_match_all('!tn":"\*s"}\'>[\s]*<span[^<]*?>(<p>.*?)</span>.?</?div!s', $item,$contMatches);
+						
+					}else{
+						preg_match_all('!tn":"\*s"}\'>[\s]*<span[^<]*?>(.*?)</span>.?</?div!s', $item,$contMatches);
+					}
+					  
+					$contMatches = $contMatches[1];
+					
+				
+					
+					if(count($contMatches) == 2){
+						if($contMatches[0] === $contMatches[1]){
+							unset($contMatches[1]);
+						}
+					}
+					 
+					if(isset($contMatches[0])) {
+						
+						$matched_text_content = implode('<br>', $contMatches) ;
+						
+						if(stristr($matched_text_content, 'background-image') || stristr($matched_text_content, 'color:rgba') || stristr($matched_text_content, 'font-size')){
+							$matched_text_content = strip_tags($matched_text_content);
+						}
+						
+						$txtContent =  $matched_text_content ;
+						if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)){
+							
+							if( stristr($matched_text_content, '<p>') ){
+								$content =  $matched_text_content ;
+							}else{
+								$content =  '<p>'.$matched_text_content.'</p>';
+							}
+							
+						}  
+					}
+					
+				
+					 
+					//If shared, find original post id
+					$original_post_url = $url; //ini
+					
+					// removed 					
+					if( false &&  stristr($item, 'original_content_id')){
+						preg_match('{"original_content_id":"(\d*?)"}s',$item,$original_id_matches);
+						
+						if(isset($original_id_matches[1]) && trim( $original_id_matches[1] ) != ''){
+							$original_post_url = 'https://www.facebook.com/'. $original_id_matches[1];
+							
+							echo '<br>Original post URL:'.$original_post_url;
+						
+						}
+						
+					}
+					 
+					
+					//load original fb post permalinkPost
+					//curl get
+					$x='error';
+					curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
+					curl_setopt($this->ch, CURLOPT_URL, trim($original_post_url));
+					$exec2=curl_exec($this->ch);
+					$exec2_raw = $exec2 = str_replace('&amp;', '&', $exec2);
+					$x=curl_error($this->ch);
+					
+					
+					//publish date again if does not exist 
+					if(trim($created_time) == ''){
+						
+						//get the created time  data-utime="1533445159"
+						preg_match('{data-utime\="(.*?)"}' , $exec2 , $time_matches);
+						
+						if(isset($time_matches[1]) && trim( $time_matches[1] ) != '' ){
+							$created_time = $time_matches[1];
+						}
+					 
+						 						
+						//check if old before loading original page if created_time exists in page
+						$foundOldPost = false;
+						if(in_array('OPT_YT_DATE', $camp_opt)   && trim($created_time) != ''   ){
+							if($this->is_link_old($camp->camp_id,  (  $created_time  ) )){
+								echo '<--old post execluding...';
+								$foundOldPost = true;
+								continue;
 							}
 						}
-						 
-						$title = $item->name;
 						
-						$txtContent = $item->message;
+					}
+					
+					//utc convert
+					$created_time  =  date( 'Y-m-d H:i:s' , $created_time );
+					$created_time = get_date_from_gmt($created_time);
+					$wpdate = $date = $created_time;
+					
+					$shares_count = 0;
+					
+					//reading share count
+					preg_match('{sharecountreduced":"(\d*?)","sharefbid":"'.$single_id.'}s', $exec2,$share_matches); // pages share matches
+					if(! isset( $share_matches[1] )) preg_match('{sharecountreduced:"(\d*?)",sharefbid:"'.$single_id.'}s', $exec2,$share_matches); // groups share matches
+					if(isset($share_matches[1]) && trim($share_matches[1]) != '' ) $shares_count = $share_matches[1];
+					
+					if(stristr($exec2,'permalinkPost')){
 						
-						if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content = $item->message; 
-						 
-						$link = $item->link;
+						preg_match( '{permalinkPost">.*?<div class="_4-u2 _4-u8}s', $exec2,$post_matches);
 						
-					 
-					 
-						if( isset( $item->attachments->data[0]->media->image->src ) ){
-							
-							$content .= '<p><a href="'.$link.'"><img title="'.$title.'" src="'.  $item->attachments->data[0]->media->image->src  .'" /></a> </p>';
-							$imgsrc = $item->picture;
-							
-						}elseif ( trim( $item->picture )  != '' ){
-							
-							$content .= '<p><a href="'.$link.'"><img title="'.$title.'" src="'. $item->picture .'" /></a> </p>';
-							$imgsrc = $item->picture;
-							
+						if( isset( $post_matches[0] ) &&  trim($post_matches[0]) != '' ){
+							$exec2 = $post_matches[0] ;
 						}
 						
+					}
+					
+					
+					
+					//if truncated text
+					if(    ! stristr($item, '</p></span>') && trim($txtContent) != ''  ){
+						
+						echo '<br>Finiding full textual content';
+						
+						//<div class="_5pbx
+						preg_match('!<div class="_5pbx.*?>(.*?)</div>!s' , str_replace('&amp;','&', $exec2),$full_text_matches);
+						
+						if(isset($full_text_matches[1]) && trim($full_text_matches[1]) != ''){
+									echo '<--found';
+								 
+									
+									//remove image emoji
+									$full_text_matches[1] = preg_replace('{<img class="\w*?" height="16".*?>}s' , '' , $full_text_matches[1]);
+									
+									$txtContent =  $full_text_matches[1] ;
+									if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content =  $full_text_matches[1]; 
+									
+						}
 						 	
-						//link
-						$content .= '<p><a href="'.$link.'">'.@$item->name.'</a></p>';
+					}
+					
+			
+					
+					//remove recent photos widget from sidebar
+					$exec2 = preg_replace('{<ul class="_5ks4.*?ul>}s', '', $exec2);
+					
+					//full sized images urls
+					$full_imgs_srcs = array(); //ini
+					
+					//empty attachement removal
+					$exec2 = str_replace('attachments_info:{}', '', $exec2);
+					
+				 
+					
+					if( stristr($exec2, 'attachments_info') ){
+						
+						preg_match( '!attachments_info:{.*?}}!s', $exec2,$full_imgs_html );
+						
+						if( isset( $full_imgs_html[0]) && stristr($full_imgs_html[0], 'url')  ){
+							preg_match_all('!url:"(.*?)"!s',$full_imgs_html[0] , $full_imgs_matches );
 							
-						if( trim(@$item->description) !=''){
-								
-							$txtContent.= $item->description;
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content.= $item->description;
-							
+							if(isset($full_imgs_matches[1]) && count($full_imgs_matches[1]) > 0 ){
+								$full_imgs_srcs = $full_imgs_matches[1];
+							}
+							 
 						}
-						
-	
-					}elseif($type == 'photo'  || ( $type == 'status'  && isset( $item->attachments->data[0]->type) &&  $item->attachments->data[0]->type == 'album' ) ){
-	
-						if(trim($item->message) != ''){
-							
-							$txtContent = $item->message;
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content = $item->message;
-						
-						}elseif( isset($item->attachments->data[0]->description) &&  trim($item->attachments->data[0]->description) != ''){
-								
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt))  $content = $item->attachments->data[0]->description;
-							$txtContent = $item->attachments->data[0]->description;
-						
-						}elseif( trim(@$item->description) =='' ){
-								
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt))  $content = @$item->story;
-							$txtContent = @$item->story;
-							
-						}
-	
-						$content.='<br>';
-	
-						$link = $item->link;
-							
-						$attachment_type = $item->attachments->data[0]->type;
-						  echo '<br>Attachment Type:'. $attachment_type;
-	
-						  if($attachment_type == 'album' || $attachment_type == 'new_album'){
-							
-							$allImgs = $item->attachments->data[0]->subattachments->data ;
-							
-							if( trim($txtContent) == '' && isset($item->attachments->data[0]->title)){
-								
-								if(! in_array('OPT_FB_TXT_SKIP', $camp_opt))  $content = $item->attachments->data[0]->title;
-								$txtContent = $item->attachments->data[0]->title;
-								
-								
-							} 
 						 
+					}elseif(stristr($exec2, 'data-ploi="')){
+						
+						
+						
+						preg_match_all( '!data-ploi="(.*?)"!s' , $exec2 , $poly_matches  );
+						
+						if(isset($poly_matches[1]) && count($poly_matches[1]) > 0 ){
+							$full_imgs_srcs = $poly_matches[1];
+						}
+						
+					}elseif(stristr($exec2, 'data-plsi="')){
+						
+						preg_match_all( '!data-plsi="(.*?)"!s' , $exec2 , $poly_matches  );
+						
+						if(isset($poly_matches[1]) && count($poly_matches[1]) > 0 ){
+							$full_imgs_srcs = $poly_matches[1];
+						}
+						
+					}elseif(stristr($exec2, 'scaledImageFit')){
+						
+						preg_match('{<img class="scaledImageFit.*?src="(.*?)"}s' , $exec2 , $poly_matches );
+						
+						if(isset($poly_matches[1]) &&  count($poly_matches[1]) > 0 ){
+							$full_imgs_srcs = $poly_matches[1];
+						}
+						
+					}
+					
+			  
+					 
+					if($type == 'link' ){
+						
+						preg_match('{l.php\?u=(.*?)&}s', $item,$linkMatches);
+						$foundLink = $linkMatches[1];
+						$link = urldecode($foundLink);
+						print_r( '<br>Found Link:'. $link);
+						
+						//get link title h3 class=
+						preg_match('!<h3 class="[^<]*?">([^<]*?)</h3>!s' , $item , $linkTMatches );
+						  
+						$title = $linkTitle = $linkTMatches[1];
+						echo '<br>Link title:'.$linkTitle;
+						
+						//get image url
+						
+						if(isset($all_imgs[0]) && trim($all_imgs[0]) != '') $imgsrc=$link_img =  str_replace('&amp;', '&', $all_imgs[0] );
+						  
+						
+						if(stristr( $link_img , 'url=' ) && ! stristr($link_img, 'fbcdn.net%2F')){
+							$link_img_prts = explode('url=', $link_img);
+							$link_img = $link_img_prts[1];
+							$link_img_prts = explode('&', $link_img);
+							$link_img = urldecode( $link_img_prts[0] );
+							
+							$imgsrc = $link_img;
 							
 						}else{
-							$allImgs = $item->attachments->data;
-						}
-	
-						if(count($allImgs) > 0){
-								
-							foreach ($allImgs as $singleImage ){
-								
-								$imgsrc = $singleImage->media->image->src;
-								
-								if( in_array('OPT_FB_IMG_LNK_DISABLE', $camp_opt) ){
-									$content .= '<br><img class="wp_automatic_fb_img" title="'.$title.'" src="'. $singleImage->media->image->src .'" />';
-								}else{
-									$content .= '<br><a href="'.$link.'"><img class="wp_automatic_fb_img" title="'.$title.'" src="'. $singleImage->media->image->src .'" /></a>';
-								}
-								
+							
+							//get the image from the loaded page 
+							preg_match('{<img class="scaledImageFit.*?src="(.*?)"}s' , $exec2 , $scaled_matches );
+							if(isset($scaled_matches[1]) && trim($scaled_matches[1]) != ''){
+								$imgsrc=$link_img =  str_replace('&amp;', '&', $scaled_matches[1] );
+								 
 							}
-	
-						}
-
-						
-						
-						//description
-						if(trim(@$item->description) !=''){
 							
-							if(! stristr($content, $item->description)){
-							
-								$txtContent.= '<br>'.$item->description;
-								if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content.= '<br>'.$item->description;
-							
-							}
 						}
 						
+					
+						
+						//add imge to the content
+						if(trim($link_img) != '')
+						$content .= '<p><a href="'.$link.'"><img title="'.$title.'" src="'.  $link_img  .'" /></a> </p>';
+						
+						//add link to the content
+						$content .= '<p><a href="'.$link.'">'.$linkTitle.'</a></p>';
+						
+						//description is no more existing getting it  _6m7 _3bt9
 					  
-					}elseif($type == 'status'){
+						 preg_match('{_6m7 _3bt9">(.*?)</div>}s',$exec2 , $description_matches );
+						 if( isset($description_matches[1]) && trim($description_matches[1]) != ''  ){
+						 	
+						 	$txtContent.= $description_matches[1];
+						 	if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content.= $description_matches[1];
+						 	
+						 }
+						  
 						
-						if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content = $item->message;
-						$txtContent = $item->message.' ';
+					}elseif($type == 'video'){
 						
-						//check attachment
-						$attachment = @$item->attachments->data[0];
-						
-						if(trim(@$attachment->type) != ''){
-							
-							$attach_img = $attachment->media->image->src;
-							$imgsrc = $attach_img;
-							
-							if( in_array('OPT_FB_IMG_LNK_DISABLE', $camp_opt) ){
-								$content .= '<br><img class="wp_automatic_fb_img" title="'.$attachment->title.'" src="'. $attach_img .'" />';
-							}else{
-								$content .= '<br><a href="'.$link.'"><img class="wp_automatic_fb_img" title="'.$attachment->title.'" src="'. $attach_img .'" /></a>';
-							}
-							
-						}
-						
-						//attachment description
-						if(@$attachment->description != ''){
-							$txtContent.= $attachment->description;
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content.= ' <br>'.$attachment->description;
-						}
-						
-						
-						if(trim($content) == ''){
-							echo '<-- skip status, no content';
-							$this->link_execlude( $camp->camp_id, $url );
-							continue;
-						}
-							
-					}elseif( $type == 'video'  ){
-	
-						if(isset($item->attachments->data[0]->title)){
-							$title = $item->attachments->data[0]->title;
-						}
-						
-						if(isset($item->name) && trim($item->name) != '' && trim($title) == ''){
-							$title = $item->name;
-						}
-							
 						$style='';
-	
+						
 						if (in_array('OPT_FB_VID_IMG_HIDE', $camp_opt) ){
 							$style = ' style="display:none" ';
 						}
-	
-						$imgsrc = '';
-						$imgsrc = $item->attachments->data[0]->media->image->src;
-				 
-						//if video with pics 
-						if(trim($imgsrc) == ''){
-							echo ' empty vid';
-							$imgsrc =  $item->attachments->data[0]->subattachments->data[0]->media->image->src;
-						}
 						
-						$content = '<img '.$style.' title="'.$title.'" src="'. $imgsrc .'" /></a><br>';
-	
-						if(trim($item->message) != ''){
+						if(stristr($item, 'youtube.com%2Fwatch')){
 							
-							$txtContent .= $item->message;
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content .= $item->message;
+							preg_match('{l.php\?u=(.*?)&}s', $item,$linkMatches);
+							$foundLink = $linkMatches[1];
+							$link = urldecode($foundLink);
+							print_r( '<br>Found Link:'. $link);
 							
-						}
-	
-						$vidurl = $item->link;
-	
-	
-						if( stristr($vidurl, '/videos/') ){
-							$vi_parts = explode('/videos/', $vidurl);
-							$vid_id = $vi_parts[1];
-								
-							$vid_id = str_replace('/', '', $vid_id);
-							  echo '<br>Found video id:'. $vid_id;
-							  
-							  $ret['vid_embed'] = '<div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, \'script\', \'facebook-jssdk\'));</script><div class="fb-video" data-autoplay="'.$autoplay.'" data-allowfullscreen="true" data-href="https://www.facebook.com/video.php?v='.$vid_id.'&amp;set=vb.500808182&amp;type=1"><div class="fb-xfbml-parse-ignore"></div></div>';
+							//get link title
+							preg_match('!<h3 class="[^<]*?">([^<]*?)</h3>!s' , $item , $linkTMatches );
+							$title = $linkTitle = $linkTMatches[1];
+							echo '<br>Link title:'.$linkTitle;
+							
+							
+							//get image url
+							preg_match (	'{<img src="(.*?)".*?>}' , $item , $imgMatch  );
+							$link_img =  str_replace('&amp;', '&', $imgMatch[1] );
+							
+							if(stristr( $link_img , 'url=' )){
+								$link_img_prts = explode('url=', $link_img);
+								$link_img = $link_img_prts[1];
+								$link_img_prts = explode('&', $link_img);
+								$link_img = urldecode( $link_img_prts[0] );
+							}
+							
+							$imgsrc = $link_img;
+							
+							$content = '<img '.$style.' title="'.$title.'" src="'. $imgsrc .'" /></a><br>' .$content;
+							
+							$content.= '<br><br>[embed]'.$link.'[/embed]';
+							
+							$ret['vid_embed'] = $link;
+							
+							$vidurl = $link;
+							
+						}else{
+							
+							//vid title
+							preg_match('{aria-label="(.*?)"}s', $item,$vid_title_match);
+							$title = $vid_title_match[1];
+							
+							$title = str_replace('Watch video', '', $title);
+							$title = preg_replace('{^Watch}', '', $title);
+							
+							echo '<br>Video title:'.$title;
+							//vid img
+							//get image url 
+							if(stristr($exec2, '_3chq')){
+								preg_match (	'{<img class="_3chq" src="(.*?)".*?>}' , $exec2 , $imgMatch  );
+							}else{
+								preg_match (	'{<img src="(.*?)".*?>}' , $item , $imgMatch  );
+							}
+							
+							$link_img =  str_replace('&amp;', '&', $imgMatch[1] );
+							echo '<br>Video img:'.$link_img;
+							 
+							
+							$imgsrc = $link_img;
+							 
+							$content = '<img '.$style.' title="'.$title.'" src="'. $imgsrc .'" /></a><br>' .$content;
+							 
+							
+							//vid id photo_id":"
+							preg_match('{photo_id":"(.*?)"}s', $item,$id_match);
+							$vid_id = $id_match[1];
+							echo '<br>Video ID:'.$vid_id;
+							
+							//vid url
+							$vidurl ="https://www.facebook.com/video.php?v=$vid_id";
+							echo '<br>Video URL:'.$vidurl;
+							
+							//embed code
+							$vidAuto = '';
+							if(in_array('OPT_FB_VID_AUTO', $camp_opt)){
+								$vidAuto = ' autoplay= "true" ';
+								$autoplay = 'true';
+							}else{
+								$autoplay = 'false';
+							}
+							
+							$vid_mute = in_array( 'OPT_FB_VID_MUTE', $camp_opt) ? ' mute=1 '  : '';
+							
+							$js_mute =  ! in_array( 'OPT_FB_VID_MUTE', $camp_opt) ?  "window.fbAsyncInit = function() {FB.init({appId      : '',xfbml      : true,version    : 'v2.5'});var my_video_player;FB.Event.subscribe('xfbml.ready', function(msg) {if (msg.type === 'video') {my_video_player = msg.instance; my_video_player.unmute();}});};" : '' ;
+							
+							$ret['vid_embed'] = '<div id="fb-root"></div><script>' . $js_mute . '(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, \'script\', \'facebook-jssdk\'));</script><div class="fb-video" data-autoplay="'.$autoplay.'" data-allowfullscreen="true" data-href="https://www.facebook.com/video.php?v='.$vid_id.'&amp;set=vb.500808182&amp;type=1"><div class="fb-xfbml-parse-ignore"></div></div>';
 							
 							if( (defined('PARENT_THEME') &&  (PARENT_THEME =='truemag' || PARENT_THEME =='newstube'))  || class_exists('Cactus_video') ){
 								
@@ -589,185 +777,147 @@ Class WpAutomaticFacebook extends wp_automatic{
 								
 								if(! in_array('OPT_FB_VID_SKIP', $camp_opt)){
 									
-									$vidAuto = '';
-									if(in_array('OPT_FB_VID_AUTO', $camp_opt)){
-										$vidAuto = ' autoplay= "true" ';
-									}
+									$content.= '[fb_vid '. $vid_mute . $vidAuto.' id="'.$vid_id.'"]';
 									
-									$content.= '[fb_vid '.$vidAuto.' id="'.$vid_id.'"]';
-									
-									
-								}	
-								
-							
-							}
-							
- 							
-						}elseif(stristr($vidurl, 'youtube.com')){
-								
-							$content.= '<br><br>[embed]'.$vidurl.'[/embed]';
-								
-						}
-	
-						$txtContent .= $item->description;
-						
-						
-						if( $type == 'video' && in_array( 'OPT_FB_VID_TXT_SKIP' , $camp_opt) ){
-							  echo ' skipinning video description......';
-						}else{
-						
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt))  $content .= $item->description;
-						
-						}
-					
-					}elseif($type == 'event' && $isEvent == true){
-						
-					 
-						
-						$content = '';
-						 
-						
-						//event name
-						if(isset($item->name)){
-							$title = $item->name;
-						}
-						
-						//description check
-						if(isset($item->description)){
-							$txtContent.= $item->description.' ';
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content.= $item->description.' ';
-						}
-						
-						//cover pic
-						$imgsrc ='';
-						
-						if(isset($item->cover->source)){
-							$attach_img = $item->cover->source ;
-							if( in_array('OPT_FB_IMG_LNK_DISABLE', $camp_opt) ){
-								$content = '<img class="wp_automatic_fb_img"   src="'. $attach_img .'" /><br>' . $content;
-							}else{
-								$content = '<a href="'.$url.'"><img class="wp_automatic_fb_img"  src="'. $attach_img .'" /></a><br>' . $content;
-							}
-						}
-						
-					
-					}elseif($type == 'event' || $type == 'offer' || $type == ''){
-						
-						$content = '';
-						if(! in_array('OPT_FB_TXT_SKIP', $camp_opt))  @$content = $item->message.' ';
-						@$txtContent = $item->message.' ';
-						
-						//event name
-						if(isset($item->name)){
-							$title = $item->name;
-						}
-						
-						//description check
-						if(isset($item->description) && $item->description != $item->message){
-							$txtContent.= $item->description.' ';
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt)) $content.= $item->description.' ';
-						}
-						
-						//check attachment
-						$attachment = $item->attachments->data[0];
-						
-						if(trim($attachment->type) != ''){
-						
-							$attach_img = $attachment->media->image->src;
-							
-							//event cover img
-							if($type == 'event'){
-								
-								  echo '<br>Getting event cover...';
-								
-								$eventID = $attachment->target->id;
-								
-								if( trim( $eventID )  != '' ){
-									
-									$cg_fb_event = "https://graph.facebook.com/v2.7/$eventID?fields=cover&access_token=$cg_fb_access";
-									
-									//curl get
-									$x='error';
-									curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
-									curl_setopt($this->ch, CURLOPT_URL, trim($cg_fb_event));
-									$exec=curl_exec($this->ch);
-									$x=curl_error($this->ch);
-									
-									if( trim($exec) != '' ){
-										
-										$eventJson = json_decode($exec);
-										$coverPic = $eventJson->cover->source;
-										
-										if(trim($coverPic) != ''){
-											$attach_img = $coverPic;
-										}
-										
-									}
 								}
 								
-							}
-							
-							$imgsrc = $attach_img; 
-							
-							if( in_array('OPT_FB_IMG_LNK_DISABLE', $camp_opt) ){
-								$content .= '<br><img class="wp_automatic_fb_img" title="'.$attachment->title.'" src="'. $attach_img .'" />';
-							}else{
-								$content .= '<br><a href="'.$link.'"><img class="wp_automatic_fb_img" title="'.$attachment->title.'" src="'. $attach_img .'" /></a>';
+								
 							}
 							
 						}
 						
-						//attachment description
-						if($attachment->description != ''){
-
-							$txtContent.='<br>'.$attachment->description;
-						 		
-								if(! in_array('OPT_FB_TXT_SKIP', $camp_opt) )  $content.='<br>'.$attachment->description;
-								 
-						}
 						
-						if(trim($content) == ''){
-							  echo '<-- skip status, no content';
-							$this->link_execlude( $camp->camp_id, $url );
-							continue;
-						}
+						
 						
 					}elseif($type == 'note'){
 						
-						//shared note 
-						$content = '';
+						//title
+						preg_match('!<div class="\w{2}">([^<]+?)</div>!s', $item,$title_matches);
+						$title = $title_matches[1];
 						
-						//message
-						if(! in_array('OPT_FB_TXT_SKIP', $camp_opt))  @$content = $item->message.'<br>';
-						@$txtContent = $item->message.'<br>';
+						//get image url <div class="_30q-" style="background-image: url
 						
-						//note title
-						if(isset($item->attachments->data[0]->title)){
-							$title = $item->attachments->data[0]->title;
+						if(stristr($exec2, '_30q-')){
+							
+							preg_match('{<div class="_30q-" style="background-image: url\((.*?)\)}s', $exec2 , $full_img_matches);
+							
+							if( isset($full_img_matches[1]) && trim($full_img_matches[1]) != '' ){
+								$imgsrc=$link_img =  str_replace('&amp;', '&', $full_img_matches[1] );
+								$content = '<img   title="'.$title.'" src="'. $link_img .'" /></a><br>' .$content;
+							}
+							  
+							
+						}elseif(isset($all_imgs[0])){
+							preg_match (	'{<img src="(.*?)".*?>}' , $all_imgs[0] , $imgMatch  );
+							
+							if(isset($imgMatch[1]) && trim($imgMatch[1]) != '' ){
+								$imgsrc=$link_img =  str_replace('&amp;', '&', $imgMatch[1] );
+								$content = '<img   title="'.$title.'" src="'. $link_img .'" /></a><br>' .$content;
+							}
 						}
 						
-						//note description
-						if(isset($item->attachments->data[0]->description)){
-							if(! in_array('OPT_FB_TXT_SKIP', $camp_opt))  @$content.=$item->attachments->data[0]->description.' ';
-							@$txtContent.= $item->attachments->data[0]->description.' ';
+						//description
+						preg_match('!<div class="\w{2} \w{2}">([^<]+)</div>!s', $item,$content_matches);
+						$content = $content . $content_matches[1];
+						
+						 
+					}elseif($type == 'event' ){
+						
+						//missing image, event description
+						
+						//event title 
+						
+						if($cg_fb_from == 'events'){
+							//<title id="pageTitle">Decor ideas discussion</title>
+							preg_match('!<title id\="pageTitle">(.*?)</title>!s', $exec2,$title_matches);
+						}else{
+							preg_match('!<h3 class="\w{2} \w{2} \w{2}">([^<]+?)</h3>!s', $item,$title_matches);
 						}
 						
-						//picture
-						if($item->picture){
-							$content .= '<p><a href="'.$link.'"><img title="'.$title.'" src="'. $item->picture .'" /></a> </p>';
-							$imgsrc = $item->picture;
+						$title = $title_matches[1];
+
+						if(stristr($exec2, 'scaledImageFit')){
+							preg_match('{<img class="scaledImageFit.*?src="(.*?)"}s' , $exec2 , $scaled_matches );
+						}elseif(stristr($exec2, '<video')){
+							preg_match('{margin-top:0px;" src="(.*?)"}s' , $exec2 , $scaled_matches );
+						}
+					 	
+					 	if(isset($scaled_matches[1]) && trim($scaled_matches[1]) != ''){
+					 		$imgsrc=$link_img =  str_replace('&amp;', '&', $scaled_matches[1] );
+					 		$content = '<img   title="'.$title.'" src="'. $link_img .'" /></a><br>' .$content;
+					 	}
+					 	 
+						
+					}elseif($type == 'offer'){
+						
+						//offer title
+						preg_match('!<h3 class="\w{2} \w{2} \w{2}">([^<]+?)</h3>!s', $item,$title_matches);
+						$title = $title_matches[1];
+						
+						if(trim($content) == '') $content = $title;
+						
+						preg_match('{<img class="scaledImageFit.*?src="(.*?)"}s' , $exec2 , $scaled_matches );
+						if(isset($scaled_matches[1]) && trim($scaled_matches[1]) != ''){
+							$imgsrc=$link_img =  str_replace('&amp;', '&', $scaled_matches[1] );
+							$content = '<img   title="'.$title.'" src="'. $link_img .'" /></a><br>' .$content;
 						}
 						
+					}elseif($type == 'photo'){
+						
+						if(count($full_imgs_srcs) > 0 ){
+
+							//full sized images found
+							foreach ($full_imgs_srcs as $single_img_src){
+							
+								if(  in_array('OPT_FB_IMG_LNK_DISABLE', $camp_opt ) ){
+									$content .= '<br><img class="wp_automatic_fb_img" title="'.$title.'" src="'. $single_img_src .'" />';
+								}else{
+									$content .= '<br><a href="'. $single_img_src .'"><img class="wp_automatic_fb_img" title="'.$title.'" src="'. $single_img_src .'" /></a>';
+								}
+							
+							}
+							 
+						}else{
+							//small sized images
+							$content = $content . implode( '' , $all_imgs );
+						}
+						
+						
+						preg_match('{src="(.*?)"}', $content , $src_matches) ;
+						
+						if(isset( $src_matches[1] ) && trim($src_matches[1])  != ''){
+							$imgsrc = str_replace('&amp;', '&', $src_matches[1] ) ;
+						}
+						 
 						
 					}
+					
+				 
+					
+				 
 	
 					//check if title exits or generate it
 					if(trim($title) == '' && in_array('OPT_GENERATE_FB_TITLE', $camp_opt) ){
 	
 						  echo '<br>No title generating...';
 						
+						  if(! function_exists('wp_staticize_emoji')){
+						  	
+						  }else{
+						  	
+						  }
+						  
+						  //line breaks for title generation stop at line breaks
+						  $tempContent = str_replace('</p><p>', "\n", $txtContent);
+						  $tempContent = str_replace('<br />', "\n", $tempContent);
+						  $tempContent = str_replace('<br >', "\n", $tempContent);
+						  $tempContent = str_replace('<br>', "\n", $tempContent);
+						  $tempContent = str_replace('<br/>', "\n", $tempContent);
+					 
+						  
+						  $tempContent = $this->removeEmoji( strip_tags(strip_shortcodes($tempContent)));
 						
-						$tempContent = $this->removeEmoji( strip_tags(strip_shortcodes($txtContent)));
+						
 						$tempContent = preg_replace('@(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-]*(\?\S+)?[^\.\s])?)?)@', '', $tempContent);
 	
 						
@@ -776,16 +926,28 @@ Class WpAutomaticFacebook extends wp_automatic{
 						if(! is_numeric($charsCount)) $charsCount = 80;
 	
 						if(function_exists('mb_substr')){
+							
+							 
 							$newTitle =  mb_substr($tempContent, 0,$charsCount) ;
 							 
 							if( in_array( 'OPT_GENERATE_FB_RETURN' , $camp_opt ) && stristr($newTitle, "\n") ){
 
 								$suggestedTitle =  preg_replace("{\n.*}", '', $newTitle);
 								if(trim($suggestedTitle) != '') {
-									$newTitle = $suggestedTitle;
+									$newTitle = trim($suggestedTitle);
 									
 									if(in_array('OPT_FB_STRIP_TITLE', $camp_opt)){
-										$content = str_replace($suggestedTitle . "\n", '', $content);
+										$before_title_removal = $content;
+										$content = str_replace($suggestedTitle . "<br />", '', $content);
+										
+										if($content == $before_title_removal){
+											$content = str_replace('<p>'. $suggestedTitle . "</p>", '', $content);
+										}
+										
+										if($content == $before_title_removal){
+											$content = str_replace( $suggestedTitle , '', $content);
+										}
+										
 									}
 									
 								}
@@ -805,7 +967,7 @@ Class WpAutomaticFacebook extends wp_automatic{
 						}else{
 								
 							$title = $newTitle;
-								
+							 
 							if( ! in_array('OPT_GENERATE_FB_DOT', $camp_opt)  && $title != $tempContent  ){
 								$title.= '...';
 							}
@@ -817,6 +979,7 @@ Class WpAutomaticFacebook extends wp_automatic{
 					}
 						
 	
+			 
 					if(trim($title) == '' && in_array('OPT_FB_TITLE_SKIP', $camp_opt)){
 						  echo '<-- No title skiping.';
 						continue;
@@ -1031,35 +1194,220 @@ Class WpAutomaticFacebook extends wp_automatic{
 						$ret['original_link'] = $url;
 						$ret['matched_content'] = $content;
 						$ret['original_date'] = $wpdate;
-						$ret['image_src'] =$attach_img;
+						$ret['image_src'] =$imgsrc;
 						$ret['post_id'] = $item_id;
-						$ret['place_name'] = $item->place->name;
-						$ret['place_city'] = $item->place->location->city;
-						$ret['place_country'] = $item->place->location->country;
-						$ret['place_latitude'] = $item->place->location->latitude;
-						$ret['place_longitude'] = $item->place->location->longitude;
-						$ret['place_street'] = $item->place->location->street;
-						$ret['place_zip'] = $item->place->location->zip;
-						$ret['start_time'] = get_date_from_gmt( gmdate(  'Y-m-d H:i:s' ,  strtotime($item->start_time)));
-						$ret['end_time'] = isset($item->end_time) ? get_date_from_gmt( gmdate(  'Y-m-d H:i:s' ,  strtotime($item->end_time))) : '';
-						$ret['place_map'] = isset($item->place->location->latitude) ? '<iframe src = "https://maps.google.com/maps?q='.$item->place->location->latitude . ',' . $item->place->location->longitude. '&hl=es;z=14&amp;output=embed"></iframe>' : '';
-						$ret['event_description'] = $item->description;
+						
+						// lat and long
+						$lat = '';
+						$long = '';
+						
+						if(stristr($exec2, 'center=')){
+						
+							//center=40.02876458946%2C18.019080162048&
+							preg_match('{center\=([\d|\.]*?|)%2C([\d|\.]*?|)&}', $exec2,$loc_matches);
+							
+							if(isset($loc_matches[1]) && isset($loc_matches[2])){
+								$lat =  $loc_matches[1];
+								$long = $loc_matches[2];
+							}
+						}
+						
+						$ret['place_latitude'] = $lat;
+						$ret['place_longitude'] = $long;
+						
+						$ret['place_map'] = isset($loc_matches[1]) ? '<iframe src = "https://maps.google.com/maps?q='.$lat . ',' . $long . '&hl=es;z=14&amp;output=embed"></iframe>' : '';
+						$ret['event_description'] = $txtContent;
+
+						//start, end time  content="2018-06-16T07:00:00-07:00 to 2018-08-16T11:00:00-07:00">
+						
+						$start_time = '';
+						$end_time  = '';
+
+						preg_match( '{content\="(20\d{2}-\d{2}-.*?)to(.*?)">}' ,  $exec2 ,  $date_matches );
+						
+						if( isset($date_matches[1]) && isset($date_matches[2]) ){
+						
+							$start_time =   $date_matches[1] ; 
+							$end_time = $date_matches[2] ;
+							
+					
+							$ret['start_time'] = get_date_from_gmt( gmdate(  'Y-m-d H:i:s' ,  strtotime($start_time)));
+							$ret['start_time_timestamp'] = strtotime( $ret['start_time'] );
+							
+							$ret['end_time'] =   get_date_from_gmt( gmdate(  'Y-m-d H:i:s' ,  strtotime($end_time))) ;
+							$ret['end_time_timestamp'] = strtotime( $ret['end_time'] );
+							
+						
+						}else{
+							
+							$ret['start_time'] = '';
+							$ret['end_time'] =   '' ;
+							
+							
+						}
+						
+						
+						
+						
+						// <a class="_5xhk" href="https://www.facebook.com/carlitocafe/" data-hovercard="/ajax/hovercard/page.php?id=468266406591543" data-hovercard-prefer-more-content-show="1" id="u_0_1n">Carlito</a><div class="_5xhp fsm fwn fcg _5wj-" dir="rtl">
+						$place_name = '';
+						preg_match('{<a class="_5xhk".*?>(.*?)</a>}', $exec2, $place_matches );
+						
+						if( isset($place_matches[1]) ){
+							$place_name = $place_matches[1] ;
+						}else{
+							
+							//location with no fb page <span class="_5xhk">test location</span>
+							preg_match('{<span class="_5xhk">(.*?)</span>}', $exec2, $place_matches );
+							
+							if( isset($place_matches[1]) ){
+								$place_name = $place_matches[1] ;
+							}
+							
+						}
+						
+						$ret['place_name'] = $place_name;
+						
+						//address </a><div class="_5xhp fsm fwn fcg">5216 Montrose Blvd, Houston, Texas 77006</div>
+						$place_address = '';
+						
+						preg_match('{</a><div class="_5xhp.*?>(.*?)</div>}', $exec2 , $address_matches);
+						 
+						
+						if( isset($address_matches[1])  &&  trim( $address_matches[1] ) != ''    ) {
+							$place_address = $address_matches[1];
+						}
+						
+						$ret['place_address'] = $place_address;
+						
+						$place_zip = '';
+						
+						$place_address_parts = array();
+						if(trim($place_address) != ''){
+							$place_address_parts = explode(',', $place_address);
+						}
+						
+						foreach ($place_address_parts as $single_part){
+							
+							if( is_numeric( trim($single_part) ) && strlen($single_part) > 3 ){
+								$place_zip = $single_part ;
+								break;
+							}
+							
+							if(trim($place_zip) == '' ){
+								$last_part = $place_address_parts[  count($place_address_parts) - 1 ];
+								
+								if( stristr($last_part, ' ' ) ){
+									
+									$last_part_parts = explode(' ', $last_part);
+									
+									$final_part = $last_part_parts[ count($last_part_parts) -1 ];
+									
+									if( is_numeric( trim($final_part) ) && strlen($final_part) > 3 ){
+										$place_zip = $final_part ;
+									}
+
+								}
+								  
+							}
+							
+						}
+						
+						
+						
+						$ret['place_zip'] = $place_zip;
+						
+						//street 
+						$place_street = '';
+						
+						if(count($place_address_parts) > 2){
+							$place_street = $place_address_parts[0];
+						}
+						 
+						$ret['place_street'] = $place_street;
+						
+						$place_city = '';
+						$place_country = '';
+						
+						if(count( $place_address_parts ) > 2 ){
+							
+							if(! is_numeric( $place_address_parts[ count($place_address_parts) -1 ] )){
+								$place_city = str_replace($place_zip, '', $place_address_parts[ count($place_address_parts) -1 ]);
+							}else{
+								$place_city =  $place_address_parts[ count($place_address_parts) -2 ];
+							}
+						
+						}elseif(count($place_address_parts) > 1){
+							$place_city = $place_address_parts[0];
+							$place_country = $place_address_parts[1];
+						}
+						 
+						$ret['place_city'] = $place_city;
+						$ret['place_country'] = $place_country;
+						
+						  
+						
 					}else{
 						
-						//likes
+						//likes: width="13" height="13" class="r"></span>1</a>
 						$item_likes = 0 ;
-						$item_likes = @$item->likes->summary->total_count;
+						
+						preg_match( '{width="13" height="13" class=".*?"></span>(.*?)</a>}s' , $item , $likes_count_matches);
+						if(isset($likes_count_matches[1]) && is_numeric(  $likes_count_matches[1]  )){
+							$item_likes = $likes_count_matches[1] ;
+						}
+						
+					 	 
+					
+					 
 						
 						$ret['original_title'] = $title;
 						$ret['original_link'] = $url;
 						$ret['matched_content'] = $content;
 						$ret['original_date'] = $wpdate;
-						$ret['from_name'] = $item->from->name;
-						$ret['from_id'] = $item->from->id;
-						$ret['from_url'] = 'https://facebook.com/'.$item->from->id;
-						$ret['from_thumbnail'] = 'https://graph.facebook.com/'.$item->from->id.'/picture?type=large';
+						
+						//get from info
+						preg_match('{<a href=".*?">(.*?)</a>}', $item,$from_matches);
+						$from_name = $from_matches[1];
+						$ret['from_name'] = $from_name;
+						
+						
+						//from ID  actor_id%22%3A100026923221457%
+						$sharer_id = $cg_fb_page_id;
+						if(stristr($exec2, 'sharer_id')){
+
+							preg_match('{sharer_id=(.*?)&}s', $exec2,$from_matches);
+							 
+							if( isset($from_matches[1]) && trim($from_matches[1]) != '' ){
+								$sharer_id = $from_matches[1];
+							}
+							
+						
+							//from_name ownerName:"Gamal M. Elkomy"
+							preg_match('{ownerName:"(.*?)"}s', $exec2,$from_name_matches);
+							if( isset($from_name_matches[1]) && trim($from_name_matches[1]) != '' ){
+								$ret['from_name'] = $from_name_matches[1];
+							}
+							
+						}else{
+							
+							//closed group content_owner_id_new":"100002936112728"
+							preg_match('{content_owner_id_new":"(.*?)"}s', $item,$from_matches2);
+							
+							if( isset($from_matches2[1]) && trim($from_matches2[1]) != '' ){
+								$sharer_id = $from_matches2[1];
+							}
+							
+						}
+						 
+						
+						$ret['from_id'] = $sharer_id;
+						$ret['from_url'] = 'https://facebook.com/'.$sharer_id;
+						$ret['from_thumbnail'] = 'https://graph.facebook.com/'.$sharer_id.'/picture?type=large';
+						
+						
 						$ret['post_id'] = $item_id;
-						$ret['post_id_single'] =  $id_parts[1] ;
+						$ret['post_id_single'] =  $single_id ;
 						$ret['image_src'] =$imgsrc;
 						$ret['likes_count'] = $item_likes;
 						
@@ -1070,21 +1418,10 @@ Class WpAutomaticFacebook extends wp_automatic{
 							$ret['external_url'] = '';
 						}
 						
-						//video url
-						if(stristr($item->link, '/videos/')){
-							$ret['vid_url'] = $item->link;
-						}else{
-							$ret['vid_embed'] = '';
-							$ret['vid_url']= '';
-						}
+						   
 						
-						
-						//shares
-						$shares_count = 0;
-						$shares_count = @$item->shares->count;
-						
+						//shares  
 						if(!is_numeric($shares_count)) $shares_count = 0 ;
-						
 						$ret['shares_count'] = $shares_count;
 						
 						if(trim($title) == '') $ret['original_title']= '(notitle)';
@@ -1102,7 +1439,7 @@ Class WpAutomaticFacebook extends wp_automatic{
     fjs.parentNode.insertBefore(js, fjs);
 }(document, \'script\', \'facebook-jssdk\'));
 </script>
-<div class="fb-post" data-href="https://www.facebook.com/'.$ret['from_id'].'/posts/'. $id_parts[1] .'"></div>';
+<div class="fb-post" data-href="https://www.facebook.com/'.$cg_fb_page_id.'/posts/'. $single_id .'"></div>';
 						
 						//hashtags >#support</a>
 						//echo $ret['matched_content'];
@@ -1112,7 +1449,7 @@ Class WpAutomaticFacebook extends wp_automatic{
 							preg_match_all('{>#(.*?)</a>}', $ret['matched_content'] , $hash_matchs);
 							$hash_matchs = $hash_matchs[1];
 							$hash_tags = implode(',', $hash_matchs);
-							$ret['item_tags'] = $hash_tags;
+							$ret['item_tags'] = strip_tags( $hash_tags ) ;
 							
 						}else{
 							$ret['item_tags'] = '';
@@ -1121,7 +1458,110 @@ Class WpAutomaticFacebook extends wp_automatic{
 					}
 					
 					$ret['source_link']= $ret['original_link'];
+					
+					// comments   {"comments":[{"body..... }],"pinnedcomments
+					if(in_array('OPT_FB_COMMENT', $camp_opt)){
+						
+						$correct_comment_part = '' ; //ini
+						 
+						if( stristr($exec2_raw, '{"comments"' ) ){
+							preg_match_all('/({"comments":\[\{"body.*?\}\]),"pinnedcomments/s', $exec2_raw , $comments_parts  );
+						}else{
+							//{comments:[{body:{text
+							preg_match_all('/({comments:\[\{body.*?\}\]),pinnedcomments/s', $exec2_raw , $comments_parts  );
+						}
+						
 					 
+						 
+						if( isset($comments_parts[1] ) && count($comments_parts[1]) >0   ){
+							
+							foreach ($comments_parts[1] as $comment_part){
+								
+								if( stristr($comment_part, $single_id . '_') ){
+									
+									$correct_comment_part = $comment_part;
+									break;
+									
+								}
+								
+							}
+							 
+							if(trim($correct_comment_part) != ''){
+								
+								$correct_comment_part.= '}';
+								
+								
+								//fix json text 
+								if(stristr($correct_comment_part, '{comments:[')){
+									$correct_comment_part =	preg_replace(  '/(\s*?{\s*?|\s*?,\s*?)([\'"])?([a-zA-Z0-9_]+)([\'"])?:/' , '$1"$3":' , $correct_comment_part);
+								}
+								 
+								
+								$comments_json = json_decode($correct_comment_part);
+								 
+								
+								if( isset( $comments_json->comments ) && count( $comments_json->comments  ) > 0 ){
+									
+									$a_comment = array();
+									$all_comments = array();
+									foreach($comments_json->comments as $comment_obj ){
+										
+										$a_comment = array();
+										$commment_txt= '';
+										
+										//no child
+										if(trim($comment_obj->parentcommentid) != '') continue;
+										
+										if( isset($comment_obj->attachment->metadata->source_uri)  ){
+											
+											$commment_txt = '<img src="'. $comment_obj->attachment->metadata->source_uri .'" /><br>';
+											
+										}
+										
+										//body 
+										$commment_txt.= $comment_obj->body->text;
+										
+										if( trim($commment_txt) == '' ) continue;
+										
+										$a_comment['text'] = $commment_txt ;
+										$a_comment['time'] = $comment_obj->timestamp->time;
+										$a_comment['author_id'] = $comment_obj->author;
+										
+										//name extraction from exec2_raw
+										preg_match('/{"?id"?:"'. $a_comment['author_id'] .'","?name"?:"(.*?)"/s', $exec2_raw , $comment_name_matches);
+										
+										if ( isset($comment_name_matches[1] ) && trim($comment_name_matches[1]) != '' ){
+											$a_comment['author_name'] = $comment_name_matches[1] ;
+										}else{
+											$a_comment['author_name'] =  $a_comment['author_id']  ;
+										}
+										
+										$all_comments[] = $a_comment;
+										
+										 
+									}
+									
+									if(count($all_comments) >0) $ret['comments'] = array_reverse( $all_comments );
+									
+								}
+								
+							 
+							 
+							}
+							
+						}
+						 
+					}
+					
+				 	//fix  hashtags
+					if( stristr($ret['matched_content'], 'hash')){
+						
+						//<span class="es et">#</span><span class="eu">emergencias</span>
+						$ret['matched_content'] = preg_replace('{>#</span><span class="[^<]*?">}s', '>#', $ret['matched_content'] );
+					}
+				 
+					
+					
 					return $ret;
 	
 	
@@ -1137,41 +1577,68 @@ Class WpAutomaticFacebook extends wp_automatic{
 					
 					//Setting next page url 
 					$nextPageUrl = '';
-					if(isset($fb_json->paging->next)){
+				 
+					
+					if(preg_match( '{<div class="\w"><a href="/}' , $exec) || stristr($exec, '"/groups/'. $cg_fb_page_id .'?bacr=') || stristr($exec, '/profile/timeline/stream/')  ||  (stristr($exec,'serialized_cursor') && $cg_fb_from == 'events' )  ){
 						
-						$nextPageUrl = $fb_json->paging->next;
-						
-						//if not until parameter in v2.10 of the api
-						if(! stristr($nextPageUrl, 'until')){
-							$nextPageUrl.= '&until='.$lastItemUntil;
+						if(  (stristr($exec,'serialized_cursor') && $cg_fb_from == 'events' ) ){
+
+							//<a href="/DuplexRooftopVenuePrague?v=events&amp;is_past&amp;serialized_cursor=AQHRbC1iSbVP7ovwPg2wTaw5UAntzEpVELbhs73QLHTkfFLA6biRLa8kZiUjo0VJWvnM8-1mPKTORyPdaim_hkPYNw&amp;has_more=1"><span>See More Events
+					
+							preg_match('{<a href="([^"]*?serialized_cursor.*?)"><span>}s', $exec,$next_page_matches);
+							
+						}elseif(stristr($exec, '/groups/'.$cg_fb_page_id.'?bacr')){
+	
+							// <a href="/groups/432181060188911?bacr=1533379292%3A2126534660753534%3A2126534660753534%2C0%3A7%3A&amp;multi_permalinks&amp;refid=18"
+							preg_match('{<a href\="(/groups/'.$cg_fb_page_id.'\?bacr\=.*?)"}s', $exec,$next_page_matches);
+					
+						}elseif( preg_match(  '{<div class="\w"><a href="/}' , $exec  ) ){
+							
+							preg_match('{<div class="\w"><a href="(.*?)"}s', $exec,$next_page_matches);
+							
+							
+						}else{
+							
+							//profile <div class="bj ez" id="u_0_2"><a href="/profile/timeline/stream/?cursor=tmln_strm%3A1532370640%3A-6901330163514402029%3A1&amp;profile_id=1475120237&amp;replace_id=u_0_2&amp;refid=17"><span>See More Stories
+							preg_match('{<a href\="(/profile/timeline/stream/\?cursor\=tmln_strm.*?)"}s', $exec,$next_page_matches);
+						 
+							
+						}
+						 
+						if( isset($next_page_matches[1]) && trim($next_page_matches[1]) != '' && ! stristr($next_page_matches[1], 'v=timeline' ) ){
+							
+							$nextPageUrl = "https://mbasic.facebook.com/" .  $next_page_matches[1] ;
+							echo '<br>Next page:' . $nextPageUrl ;
+							
+							update_post_meta($camp->camp_id, 'nextPageUrl', $nextPageUrl);
+							
+						}else{
+							// no next 
+							echo '<br>No next page available';
+							delete_post_meta($camp->camp_id, 'nextPageUrl');
 						}
 						
-						echo '<br>Next Page url:'.$nextPageUrl;
-						
-						//if old reached disable nextpage
-						if($foundOldPost) $nextPageUrl = '';
+					 
 						
 					}else{
-						
-						  echo '<br>No Next page, Mark this page as reached end';
-						
-						if(! isset($maximumUntil)){
-							$maximumUntil = get_post_meta($camp->camp_id,'maximumUntil',1);
-							if(trim($maximumUntil) == '') $maximumUntil = 0 ;
-						}   
-
-						update_post_meta($camp->camp_id, 'maximumUntilEndReached' , $maximumUntil);
+					 
+						echo '<br>No next page available';
+						delete_post_meta($camp->camp_id, 'nextPageUrl');
 						
 					}
 					
 					
-					update_post_meta($camp->camp_id, 'nextPageUrl', $nextPageUrl);
+					
 						
 				}
 	
 			}else{
-				  echo '<br>Unexpected api response: '.$x.$exec;
+				  
+				echo '<br><span style="color:red">Unexpected response, Please make sure the added Facebook cookies added to the settings page are correct.</span> '  ;
 	
+				echo $exec;
+				
+				  
 			}//wp error
 				
 		}//trim pageid

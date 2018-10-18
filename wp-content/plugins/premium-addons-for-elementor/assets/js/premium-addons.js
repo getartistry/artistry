@@ -12,7 +12,7 @@
     };
     //Premium Progress Bar on Scroll Handler
     var PremiumProgressBarScrollWidgetHandler = function ($scope,$){
-      $scope.waypoint(function (direction) {
+        elementorFrontend.waypoint($scope, function (direction) {
             PremiumProgressBarWidgetHandler($(this), $);
         }, {
             offset: $.waypoints('viewportHeight') - 150,
@@ -21,7 +21,9 @@
     };
     //Premium Video Box Handler
     var PremiumVideoBoxWidgetHandler = function($scope,$){
-        var videoBoxElement = $scope.find('.premium-video-box-container');
+        var videoBoxElement = $scope.find('.premium-video-box-container'),
+            vidSrc,
+            checkRel;
         videoBoxElement.on( "click", function(){
             $( this ).children( ".premium-video-box-video-container" ).css(
                 {
@@ -29,12 +31,19 @@
                     'visibility': 'visible'
                 } );
             setTimeout(function(){
-            videoBoxElement.find("iframe").attr('src', videoBoxElement.find("iframe").attr('src') + '?autoplay=1');
+            vidSrc = videoBoxElement.find("iframe").attr('src');
+            checkRel = vidSrc.indexOf('rel=0');
+            if( -1 !== checkRel ) {
+                videoBoxElement.find("iframe").attr('src', videoBoxElement.find("iframe").attr('src') + '&autoplay=1');
+            } else {
+                videoBoxElement.find("iframe").attr('src', videoBoxElement.find("iframe").attr('src') + '?autoplay=1');
+            }
+            
             },600);
         });
     };
     //Premium Grid Handler
-    var PremiumGridWidgetHandler = function($scope,$){    
+    var PremiumGridWidgetHandler = function($scope,$){ 
         if ($().isotope === undefined) {
             return;
         }
@@ -56,7 +65,10 @@
                 }
             });
             htmlContent.imagesLoaded(function () {
-                htmlContent.isotope({layoutMode: 'masonry'});
+                setTimeout(function(){
+                    htmlContent.isotope({layoutMode: 'masonry'});    
+                }, 1000);
+                
             });
         } else if(isotopeOptions['img_size'] === 'one_size'){
             
@@ -70,8 +82,14 @@
                     queue: false
                 }
             });
-            htmlContent.imagesLoaded(function () {
+            setTimeout(function() {
                 htmlContent.isotope({layoutMode: 'fitRows'});
+            }, 1000);
+//            htmlContent.isotope({layoutMode: 'fitRows'});
+            $(window).on('load', function(){
+                setTimeout(function() {
+                    htmlContent.isotope({layoutMode: 'fitRows'});
+                }, 1000);
             });
         }
         $scope.find('.premium-gallery-cats-container li a').click(function(e){
@@ -243,7 +261,6 @@
     var PremiumCarouselHandler = function ($scope,$){
         var carouselElement = $scope.find('.premium-carousel-wrapper').each(function(){
             var carouselSettings = $(this).data('settings');
-            console.log(carouselSettings['responsive']);
             function slideToShow( slick ) {
                 slidesToShow = slick.options.slidesToShow;
                 
@@ -288,7 +305,7 @@
                 nextArrow       : carouselSettings['nextArrow'],
                 prevArrow       : carouselSettings['prevArrow'],
                 dots            : carouselSettings['dots'],
-                customPaging    : function(slider, i) {return '<i class="' + carouselSettings['customPaging'] + '"></i>';}, 
+                customPaging    : function(slider, i) {return '<i class="' + carouselSettings['customPaging'] + '"></i>';}
             });
             $(this).on('afterChange', function (event, slick, currentSlide, nextSlide) {
                 slidesScrolled = slick.options.slidesToScroll;
@@ -361,16 +378,19 @@
     };
     //Premium Modal Box Handler
     var PremiumModalBoxHandler = function ($scope,$){
-        var modalBoxElement = $scope.find('.premium-modal-box-container');
-        var modalBoxSettings = modalBoxElement.data('settings');
-        if(modalBoxSettings['trigger'] === 'pageload'){
-            $(document).ready(function($){
+        var modalBoxElement = $scope.find('.premium-modal-box-container'),
+            modalBoxSettings = modalBoxElement.data('settings');
+        
+        if(modalBoxElement.length > 0) {
+            if(modalBoxSettings['trigger'] === 'pageload'){
+                $(document).ready(function($){
                   setTimeout( function(){
                       modalBoxElement.find('.premium-modal-box-modal').modal();
                   }, modalBoxSettings['delay'] * 1000);
                 });
             }
-        };
+        }
+    };
         //Premium Blog Handler
         var PremiumBlogHandler = function ($scope,$){
             var blogElement = $scope.find('.premium-blog-wrap'),

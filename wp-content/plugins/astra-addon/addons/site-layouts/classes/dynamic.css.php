@@ -163,10 +163,10 @@ function astra_ext_site_layouts_dynamic_css( $dynamic_css, $dynamic_css_filtered
 				'padding-left'   => astra_responsive_spacing( $padded_layout_padding, 'left', 'desktop' ),
 			),
 			'body.ast-padded-layout::before' => array(
-				'height' => astra_responsive_spacing( $padded_layout_padding, 'top', 'desktop' ),
+				'padding-top' => astra_responsive_spacing( $padded_layout_padding, 'top', 'desktop' ),
 			),
 			'body.ast-padded-layout::after'  => array(
-				'height' => astra_responsive_spacing( $padded_layout_padding, 'bottom', 'desktop' ),
+				'padding-bottom' => astra_responsive_spacing( $padded_layout_padding, 'bottom', 'desktop' ),
 			),
 		);
 
@@ -184,10 +184,10 @@ function astra_ext_site_layouts_dynamic_css( $dynamic_css, $dynamic_css_filtered
 
 			),
 			'body.ast-padded-layout::before' => array(
-				'height' => astra_responsive_spacing( $padded_layout_padding, 'top', 'tablet' ),
+				'padding-top' => astra_responsive_spacing( $padded_layout_padding, 'top', 'tablet' ),
 			),
 			'body.ast-padded-layout::after'  => array(
-				'height' => astra_responsive_spacing( $padded_layout_padding, 'bottom', 'tablet' ),
+				'padding-bottom' => astra_responsive_spacing( $padded_layout_padding, 'bottom', 'tablet' ),
 			),
 		);
 
@@ -202,10 +202,10 @@ function astra_ext_site_layouts_dynamic_css( $dynamic_css, $dynamic_css_filtered
 				'padding-left'   => astra_responsive_spacing( $padded_layout_padding, 'left', 'mobile' ),
 			),
 			'body.ast-padded-layout::before' => array(
-				'height' => astra_responsive_spacing( $padded_layout_padding, 'top', 'mobile' ),
+				'padding-top' => astra_responsive_spacing( $padded_layout_padding, 'top', 'mobile' ),
 			),
 			'body.ast-padded-layout::after'  => array(
-				'height' => astra_responsive_spacing( $padded_layout_padding, 'bottom', 'mobile' ),
+				'padding-bottom' => astra_responsive_spacing( $padded_layout_padding, 'bottom', 'mobile' ),
 			),
 		);
 

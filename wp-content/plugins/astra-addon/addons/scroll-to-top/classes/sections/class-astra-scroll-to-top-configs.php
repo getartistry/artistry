@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Scroll_To_Top_Configs' ) ) {
@@ -38,8 +44,8 @@ if ( ! class_exists( 'Astra_Scroll_To_Top_Configs' ) ) {
 				array(
 					'name'    => ASTRA_THEME_SETTINGS . '[scroll-to-top-on-devices]',
 					'default' => astra_get_option( 'scroll-to-top-on-devices' ),
-					'type'    => 'cpntrol',
-					'cpntrol' => 'select',
+					'type'    => 'control',
+					'control' => 'select',
 					'section' => 'section-scroll-to-top',
 					'title'   => __( 'Display On', 'astra-addon' ),
 					'choices' => array(

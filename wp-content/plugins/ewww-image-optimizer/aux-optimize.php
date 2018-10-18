@@ -307,7 +307,8 @@ function ewww_image_optimizer_aux_images_table_count_pending_media() {
 function ewww_image_optimizer_delete_pending() {
 	global $wpdb;
 	$wpdb->query( "DELETE from $wpdb->ewwwio_images WHERE pending=1 AND (image_size IS NULL OR image_size = 0)" );
-	$wpdb->update( $wpdb->ewwwio_images,
+	$wpdb->update(
+		$wpdb->ewwwio_images,
 		array(
 			'pending' => 0,
 		),
@@ -383,7 +384,8 @@ function ewww_image_optimizer_image_scan( $dir, $started = 0 ) {
 		if ( $started && ! empty( $_REQUEST['ewww_scan'] ) && 0 === $file_counter % 100 && microtime( true ) - $started > apply_filters( 'ewww_image_optimizer_timeout', 15 ) ) {
 			if ( ! empty( $reset_images ) ) {
 				array_walk( $reset_images, 'intval' );
-				$wpdb->query( "UPDATE $wpdb->ewwwio_images SET pending = 1 WHERE id IN (" . implode( ',', $reset_images ) . ')' ); // WPCS: unprepared SQL ok.
+				$reset_images_sql = '(' . implode( ',', $reset_images ) . ')';
+				$wpdb->query( "UPDATE $wpdb->ewwwio_images SET pending = 1 WHERE id IN $reset_images_sql" ); // WPCS: unprepared SQL ok.
 			}
 			if ( ! empty( $images ) ) {
 				ewww_image_optimizer_mass_insert( $wpdb->ewwwio_images, $images, array( '%s', '%d', '%d' ) );
@@ -391,22 +393,31 @@ function ewww_image_optimizer_image_scan( $dir, $started = 0 ) {
 			set_transient( 'ewww_image_optimizer_aux_iterator', $file_counter - 20, 300 ); // Keep track of where we left off, minus 20 to be safe.
 			$loading_image = plugins_url( '/images/wpspin.gif', __FILE__ );
 			ewwwio_ob_clean();
-			die( ewwwio_json_encode( array(
-				'remaining' => '<p>' . esc_html__( 'Stage 2, please wait.', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' /></p>",
-				'notice'    => '',
-			) ) );
+			die(
+				ewwwio_json_encode(
+					array(
+						'remaining' => '<p>' . esc_html__( 'Stage 2, please wait.', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' /></p>",
+						'notice'    => '',
+					)
+				)
+			);
 		}
 		// TODO: can we tailor this for scheduled opt also?
 		if ( ! empty( $_REQUEST['ewww_scan'] ) && 0 === $file_counter % 100 && ! ewwwio_check_memory_available( 2097000 ) ) {
 			if ( $file_counter < 100 ) {
 				ewwwio_ob_clean();
-				die( ewwwio_json_encode( array(
-					'error' => esc_html__( 'Stage 2 unable to complete due to memory restrictions. Please increase the memory_limit setting for PHP and try again.', 'ewww-image-optimizer' ),
-				) ) );
+				die(
+					ewwwio_json_encode(
+						array(
+							'error' => esc_html__( 'Stage 2 unable to complete due to memory restrictions. Please increase the memory_limit setting for PHP and try again.', 'ewww-image-optimizer' ),
+						)
+					)
+				);
 			}
 			if ( ! empty( $reset_images ) ) {
 				array_walk( $reset_images, 'intval' );
-				$wpdb->query( "UPDATE $wpdb->ewwwio_images SET pending = 1 WHERE id IN (" . implode( ',', $reset_images ) . ')' ); // WPCS: unprepared SQL ok.
+				$reset_images_sql = '(' . implode( ',', $reset_images ) . ')';
+				$wpdb->query( "UPDATE $wpdb->ewwwio_images SET pending = 1 WHERE id IN $reset_images_sql" ); // WPCS: unprepared SQL ok.
 			}
 			if ( ! empty( $images ) ) {
 				ewww_image_optimizer_mass_insert( $wpdb->ewwwio_images, $images, array( '%s', '%d', '%d' ) );
@@ -414,10 +425,14 @@ function ewww_image_optimizer_image_scan( $dir, $started = 0 ) {
 			set_transient( 'ewww_image_optimizer_aux_iterator', $file_counter - 20, 300 ); // Keep track of where we left off, minus 20 to be safe.
 			$loading_image = plugins_url( '/images/wpspin.gif', __FILE__ );
 			ewwwio_ob_clean();
-			die( ewwwio_json_encode( array(
-				'remaining' => '<p>' . esc_html__( 'Stage 2, please wait.', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' /></p>",
-				'notice'    => '',
-			) ) );
+			die(
+				ewwwio_json_encode(
+					array(
+						'remaining' => '<p>' . esc_html__( 'Stage 2, please wait.', 'ewww-image-optimizer' ) . "&nbsp;<img src='$loading_image' /></p>",
+						'notice'    => '',
+					)
+				)
+			);
 		}
 		$file_counter++;
 		if ( $file->isFile() ) {
@@ -425,7 +440,11 @@ function ewww_image_optimizer_image_scan( $dir, $started = 0 ) {
 			if ( preg_match( '/(\/|\\\\)\./', $path ) && apply_filters( 'ewww_image_optimizer_ignore_hidden_files', true ) ) {
 				continue;
 			}
-			$mime = ewww_image_optimizer_quick_mimetype( $path );
+			if ( defined( 'EWWW_IMAGE_OPTIMIZER_REAL_MIME' ) && EWWW_IMAGE_OPTIMIZER_REAL_MIME ) {
+				$mime = ewww_image_optimizer_mimetype( $path, 'i' );
+			} else {
+				$mime = ewww_image_optimizer_quick_mimetype( $path );
+			}
 			if ( ! in_array( $mime, $enabled_types ) ) {
 				continue;
 			}
@@ -499,7 +518,8 @@ function ewww_image_optimizer_image_scan( $dir, $started = 0 ) {
 	}
 	if ( ! empty( $reset_images ) ) {
 		array_walk( $reset_images, 'intval' );
-		$wpdb->query( "UPDATE $wpdb->ewwwio_images SET pending = 1 WHERE id IN (" . implode( ',', $reset_images ) . ')' ); // WPCS: unprepared SQL ok.
+		$reset_images_sql = '(' . implode( ',', $reset_images ) . ')';
+		$wpdb->query( "UPDATE $wpdb->ewwwio_images SET pending = 1 WHERE id IN $reset_images_sql" ); // WPCS: unprepared SQL ok.
 	}
 	delete_transient( 'ewww_image_optimizer_aux_iterator' );
 	$end = microtime( true ) - $start;
@@ -526,7 +546,8 @@ function ewww_image_optimizer_aux_images_convert() {
 		$image_md5      = md5_file( $record['path'] );
 		if ( $image_md5 === $record['image_md5'] ) {
 			$filesize = filesize( $record['path'] );
-			$wpdb->update( $wpdb->ewwwio_images,
+			$wpdb->update(
+				$wpdb->ewwwio_images,
 				array(
 					'image_md5'  => null,
 					'image_size' => $filesize,
@@ -536,7 +557,8 @@ function ewww_image_optimizer_aux_images_convert() {
 				)
 			);
 		} else {
-			$wpdb->delete( $wpdb->ewwwio_images,
+			$wpdb->delete(
+				$wpdb->ewwwio_images,
 				array(
 					'id' => $record['id'],
 				)
@@ -710,10 +732,14 @@ function ewww_image_optimizer_aux_images_script( $hook = '' ) {
 			$ready_msg .= ' <a href="https://docs.ewww.io/article/20-why-do-i-have-so-many-images-on-my-site" target="_blank" data-beacon-article="58598744c697912ffd6c3eb4">' . esc_html__( 'Why are there so many images?', 'ewww-image-optimizer' ) . '</a>';
 		}
 		ewwwio_ob_clean();
-		die( ewwwio_json_encode( array(
-			'ready'   => $image_count,
-			'message' => $ready_msg,
-		) ) );
+		die(
+			ewwwio_json_encode(
+				array(
+					'ready'   => $image_count,
+					'message' => $ready_msg,
+				)
+			)
+		);
 	}
 	ewwwio_memory( __FUNCTION__ );
 	return $image_count;

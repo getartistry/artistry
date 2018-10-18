@@ -349,6 +349,8 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-posts-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
+					'.elementor-msie {{WRAPPER}} .elementor-post' => 'padding-right: calc( {{SIZE}}{{UNIT}}/2 ); padding-left: calc( {{SIZE}}{{UNIT}}/2 );',
+					'.elementor-msie {{WRAPPER}} .elementor-posts-container' => 'margin-left: calc( -{{SIZE}}{{UNIT}}/2 ); margin-right: calc( -{{SIZE}}{{UNIT}}/2 );',
 				],
 			]
 		);
@@ -370,6 +372,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 				'frontend_available' => true,
 				'selectors' => [
 					'{{WRAPPER}} .elementor-posts-container' => 'grid-row-gap: {{SIZE}}{{UNIT}}',
+					'.elementor-msie {{WRAPPER}} .elementor-post' => 'padding-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -942,7 +945,7 @@ abstract class Skin_Base extends Elementor_Skin_Base {
 			if ( is_singular() && ! is_front_page() ) {
 				global $wp_rewrite;
 				if ( $wp_rewrite->using_permalinks() ) {
-					$paginate_args['base'] = get_permalink() . '%_%';
+					$paginate_args['base'] = trailingslashit( get_permalink() ) . '%_%';
 					$paginate_args['format'] = user_trailingslashit( '%#%', 'single_paged' );
 				} else {
 					$paginate_args['format'] = '?page=%#%';

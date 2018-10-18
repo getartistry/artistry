@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Dual_Header_Widget extends Widget_Base
-{
+class Premium_Dual_Header extends Widget_Base {
     protected $templateInstance;
 
     public function getTemplateInstance(){
@@ -483,8 +482,7 @@ class Premium_Dual_Header_Widget extends Widget_Base
        
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
 
@@ -531,5 +529,62 @@ class Premium_Dual_Header_Widget extends Widget_Base
 
     <?php
     }
+    
+    protected function _content_template()
+    {
+        ?>
+        <#
+        
+            view.addInlineEditingAttributes('premium_dual_header_first_header_text');
+
+            view.addInlineEditingAttributes('premium_dual_header_second_header_text');
+
+            var firstTag = settings.premium_dual_header_first_header_tag,
+
+            firstText = settings.premium_dual_header_first_header_text + ' ',
+
+            secondText = settings.premium_dual_header_second_header_text,
+
+            firstClip = '',
+
+            secondClip = '';
+
+            if( 'clipped' === settings.premium_dual_header_first_back_clip )
+                firstClip = "premium-dual-header-first-clip"; 
+
+            if( 'clipped' === settings.premium_dual_header_second_back_clip )
+                secondClip = "premium-dual-header-second-clip";
+
+            var firstGrad = 'yes' === settings.premium_dual_header_first_animated  ? ' gradient' : '',
+
+                secondGrad = 'yes' === settings.premium_dual_header_second_animated ? ' gradient' : '';
+            
+                view.addRenderAttribute('first_title', 'class', ['premium-dual-header-first-header', firstClip, firstGrad ] );
+                view.addRenderAttribute('second_title', 'class', ['premium-dual-header-second-header', secondClip, secondGrad ] );
+        
+            if( 'yes' == settings.premium_dual_header_link_switcher && 'link' == settings.premium_dual_heading_link_selection ) {
+                var link = settings.premium_dual_heading_existing_link;
+            } else if( 'yes' == settings.premium_dual_header_link_switcher && 'url' == settings.premium_dual_heading_link_selection ){
+                var link = settings.premium_dual_heading_link.url;
+            }
+        
+        #>
+        
+        <div class="premium-dual-header-container">
+            <# if( 'yes' == settings.premium_dual_header_link_switcher && ( '' != settings.premium_dual_heading_link.url || '' != settings.premium_dual_heading_existing_link ) ) { #>
+                <a href="{{ link }}">
+            <# } #>
+            <div class="premium-dual-header-first-container">
+                <{{{firstTag}}} {{{ view.getRenderAttributeString('first_title') }}}>
+                <span class="premium-dual-header-first-span">{{{ firstText }}}</span><span {{{ view.getRenderAttributeString('second_title') }}}>{{{ secondText }}}</span>
+                </{{{firstTag}}}>
+                
+            </div>
+            <# if( 'yes' == settings.premium_dual_header_link_switcher && ( '' != settings.premium_dual_heading_link.url || '' != settings.premium_dual_heading_existing_link ) ) { #>
+                </a>
+            <# } #>
+        </div>
+        
+        <?php
+    }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Dual_Header_Widget());

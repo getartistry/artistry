@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Product Addons
  *
- * @version 3.8.0
+ * @version 4.0.0
  * @since   2.5.3
  * @author  Algoritmika Ltd.
  * @todo    admin order view (names)
@@ -17,10 +17,11 @@ class WCJ_Product_Addons extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.7.0
+	 * @version 3.9.0
 	 * @since   2.5.3
 	 * @todo    (maybe) add "in progress" ajax message
 	 * @todo    (maybe) for variable products - show addons only if variation is selected (e.g. move to addons from `woocommerce_before_add_to_cart_button` to variation description)
+	 * @todo    (maybe) add `product_addons` to `wcj_get_module_price_hooks_priority()`
 	 */
 	function __construct() {
 
@@ -55,8 +56,8 @@ class WCJ_Product_Addons extends WCJ_Module {
 				add_filter( 'woocommerce_get_cart_item_from_session',     array( $this, 'get_cart_item_addons_price_from_session' ), PHP_INT_MAX, 3 );
 				add_filter( 'woocommerce_add_to_cart_validation',         array( $this, 'validate_on_add_to_cart' ), PHP_INT_MAX, 2 );
 				// Prices
-				add_filter( WCJ_PRODUCT_GET_PRICE_FILTER,                 array( $this, 'change_price' ), PHP_INT_MAX - 100, 2 );
-				add_filter( 'woocommerce_product_variation_get_price',    array( $this, 'change_price' ), PHP_INT_MAX - 100, 2 );
+				add_filter( WCJ_PRODUCT_GET_PRICE_FILTER,                 array( $this, 'change_price' ), wcj_get_module_price_hooks_priority( 'product_addons' ), 2 );
+				add_filter( 'woocommerce_product_variation_get_price',    array( $this, 'change_price' ), wcj_get_module_price_hooks_priority( 'product_addons' ), 2 );
 				// Show details at cart, order details, emails
 				add_filter( 'woocommerce_cart_item_name',                 array( $this, 'add_info_to_cart_item_name' ), PHP_INT_MAX, 3 );
 				add_filter( 'woocommerce_order_item_name',                array( $this, 'add_info_to_order_item_name' ), PHP_INT_MAX, 2 );
@@ -186,19 +187,24 @@ class WCJ_Product_Addons extends WCJ_Module {
 	/**
 	 * maybe_convert_currency.
 	 *
-	 * @version 3.7.0
+	 * @version 3.9.0
 	 * @since   2.8.0
 	 */
 	function maybe_convert_currency( $price, $product = null ) {
 		$apply_price_filters = get_option( 'wcj_product_addons_apply_price_filters', 'by_module' );
 		if ( 'by_module' === $apply_price_filters ) {
+			$modules_to_apply = get_option( 'wcj_product_addons_apply_price_filters_by_module', array() );
 			// Multicurrency Product Base Price module
-			if ( WCJ()->modules['multicurrency_base_price']->is_enabled() ) {
+			if ( ( empty( $modules_to_apply ) || in_array( 'multicurrency_base_price', $modules_to_apply ) ) && WCJ()->modules['multicurrency_base_price']->is_enabled() ) {
 				$price = WCJ()->modules['multicurrency_base_price']->change_price( $price, $product );
 			}
 			// Multicurrency (Currency Switcher) module
-			if ( WCJ()->modules['multicurrency']->is_enabled() ) {
+			if ( ( empty( $modules_to_apply ) || in_array( 'multicurrency',            $modules_to_apply ) ) && WCJ()->modules['multicurrency']->is_enabled() ) {
 				$price = WCJ()->modules['multicurrency']->change_price( $price, null );
+			}
+			// Global Discount module
+			if ( ( empty( $modules_to_apply ) || in_array( 'global_discount',          $modules_to_apply ) ) && WCJ()->modules['global_discount']->is_enabled() ) {
+				$price = WCJ()->modules['global_discount']->add_global_discount( $price, $product, 'price' );
 			}
 		} elseif ( 'yes' === $apply_price_filters ) {
 			$price = apply_filters( WCJ_PRODUCT_GET_PRICE_FILTER, $price, $product );
@@ -530,7 +536,7 @@ class WCJ_Product_Addons extends WCJ_Module {
 	/**
 	 * add_addons_to_frontend.
 	 *
-	 * @version 3.8.0
+	 * @version 4.0.0
 	 * @since   2.5.3
 	 */
 	function add_addons_to_frontend() {
@@ -611,7 +617,11 @@ class WCJ_Product_Addons extends WCJ_Module {
 								), get_option( 'wcj_product_addons_template_type_radio',
 									'<p>%addon_input% <label for="%addon_id%">%addon_label% (%addon_price%)</label>%addon_tooltip%</p>' ) );
 						} else {
-							$select_options .= '<option value="' . $label . '"' . $is_checked . '>' . $labels[ $i ] . ' ('. wc_price( wcj_get_product_display_price( $_product, $this->maybe_convert_currency( $prices[ $i ], $_product ) ) ) . ')' . '</option>';
+							$select_option = wcj_handle_replacements( array(
+									'%addon_label%'   => $labels[ $i ],
+									'%addon_price%'   => wc_price( wcj_get_product_display_price( $_product, $this->maybe_convert_currency( $prices[ $i ], $_product ) ) ),
+								), get_option( 'wcj_product_addons_template_type_select_option', '%addon_label% (%addon_price%)' ) );
+							$select_options .= '<option value="' . $label . '"' . $is_checked . '>' . $select_option . '</option>';
 						}
 					}
 					if ( 'select' === $addon['type'] ) {

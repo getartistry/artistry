@@ -52,22 +52,22 @@ class Facebook_Button extends Widget_Base {
 				'options' => [
 					'like' => __( 'Like', 'elementor-pro' ),
 					'recommend' => __( 'Recommend', 'elementor-pro' ),
-					'follow' => __( 'Follow', 'elementor-pro' ),
+					/* TODO: remove on 2.3 */
+					'follow' => __( 'Follow', 'elementor-pro' ) . ' (' . __( 'Deprecated', 'elementor-pro' ) . ')',
 				],
 			]
 		);
 
+		/* TODO: remove on 2.3 */
 		$this->add_control(
-			'follow_url',
+			'follow_description',
 			[
-				'label' => __( 'URL', 'elementor-pro' ),
-				'placeholder' => __( 'https://your-link.com', 'elementor-pro' ),
-				'default' => 'https://www.facebook.com/elemntor/',
-				'label_block' => true,
+				'type' => Controls_Manager::RAW_HTML,
+				'raw' => __( 'The Follow button has been deprecated by Facebook and will no longer work.', 'elementor-pro' ),
+				'content_classes' => 'elementor-descriptor',
 				'condition' => [
 					'type' => 'follow',
 				],
-				'description' => __( 'Paste the URL of the Facebook page or profile.', 'elementor-pro' ),
 			]
 		);
 
@@ -187,17 +187,13 @@ class Facebook_Button extends Widget_Base {
 
 		// Validate URL
 		switch ( $settings['type'] ) {
+			/* TODO: remove on 2.3 */
 			case 'follow':
-				$facebook_url_pattern = '/^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.)]*\/?$/';
+				if ( Plugin::elementor()->editor->is_edit_mode() ) {
+					echo __( 'The Follow button has been deprecated by Facebook and will no longer work.', 'elementor-pro' );
 
-				if ( ! preg_match( $facebook_url_pattern, $settings['follow_url'] ) ) {
-					if ( Plugin::elementor()->editor->is_edit_mode() ) {
-						echo $this->get_title() . ': ' . esc_html__( 'Please enter a valid Facebook User/Page URL', 'elementor-pro' ); // XSS ok.
-					}
-
-					return;
 				}
-				break;
+				return;
 			case 'like':
 			case 'recommend':
 				if ( Module::URL_TYPE_CUSTOM === $settings['url_type'] && ! filter_var( $settings['url'], FILTER_VALIDATE_URL ) ) {
@@ -220,10 +216,6 @@ class Facebook_Button extends Widget_Base {
 		];
 
 		switch ( $settings['type'] ) {
-			case 'follow':
-				$attributes['data-href'] = $settings['follow_url'];
-				$attributes['class'] = 'elementor-facebook-widget fb-follow';
-				break;
 			case 'like':
 			case 'recommend':
 				if ( Module::URL_TYPE_CURRENT_PAGE === $settings['url_type'] ) {

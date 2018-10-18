@@ -42,11 +42,15 @@ function sound_get_post($camp){
 
 
 			// getting links from the db for that keyword
-			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'sc_{$camp->camp_id}_$keyword' and item_status ='0'";
+			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'sc_{$camp->camp_id}_$keyword' ";
 			$res = $this->db->get_results ( $query );
 
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_general where item_type='sc_{$camp->camp_id}_$keyword' ";
+				$this->db->query ( $query_delete );
 
 				//get new links
 				$this->sound_fetch_items ( $keyword, $camp );
@@ -75,7 +79,7 @@ function sound_get_post($camp){
 					  echo '<br>SoundCloud item  ('. $t_data ['item_title'] .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
 						
 					//delete the item
-					$query = "delete from {$this->wp_prefix}automatic_general where item_id='{$t_row->item_id}' and item_type=  'sc_{$camp->camp_id}_$keyword'";
+					$query = "delete from {$this->wp_prefix}automatic_general where id={$t_row->id} ";
 					$this->db->query ( $query );
 						
 				}else{
@@ -96,16 +100,16 @@ function sound_get_post($camp){
 
 
 				//report link
-				  echo '<br>Found Link:'.$temp['item_url'] ;
+				echo '<br>Found Link:'.$temp['item_url'] ;
 
 				// update the link status to 1
-				$query = "update {$this->wp_prefix}automatic_general set item_status='1' where item_id='$ret->item_id' and item_type='sc_{$camp->camp_id}_$keyword' ";
+				$query = "delete from {$this->wp_prefix}automatic_general where id={$ret->id}";
 				$this->db->query ( $query );
 
 				// if cache not active let's delete the cached items and reset indexes
 				if (! in_array ( 'OPT_SC_CACHE', $camp_opt )) {
 					  echo '<br>Cache disabled claring cache ...';
-					$query = "delete from {$this->wp_prefix}automatic_general where item_type='sc_{$camp->camp_id}_$keyword' and item_status ='0'";
+					$query = "delete from {$this->wp_prefix}automatic_general where item_type='sc_{$camp->camp_id}_$keyword' ";
 					$this->db->query ( $query );
 
 					// reset index

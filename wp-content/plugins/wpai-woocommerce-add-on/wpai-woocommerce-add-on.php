@@ -3,9 +3,9 @@
 Plugin Name: WP All Import - WooCommerce Add-On Pro
 Plugin URI: http://www.wpallimport.com/
 Description: Import to WooCommerce. Adds a section to WP All Import that looks just like WooCommerce. Requires WP All Import.
-Version: 2.4.1
+Version: 3.0.5
 Author: Soflyy
-WC tested up to: 3.4.0
+WC tested up to: 3.4.5
 */
 /**
  * Plugin root dir with forward slashes as directory separator regardless of actuall DIRECTORY_SEPARATOR value
@@ -25,7 +25,7 @@ define('PMWI_ROOT_URL', rtrim(plugin_dir_url(__FILE__), '/'));
  */
 define('PMWI_PREFIX', 'pmwi_');
 
-define('PMWI_VERSION', '2.4.1');
+define('PMWI_VERSION', '3.0.5');
 
 if ( class_exists('PMWI_Plugin') and PMWI_EDITION == "free"){
 
@@ -33,7 +33,7 @@ if ( class_exists('PMWI_Plugin') and PMWI_EDITION == "free"){
 		
 		?>
 		<div class="error"><p>
-			<?php printf(__('Please de-activate and remove the free version of the WooCommere add-on before activating the paid version.', 'wpai_woocommerce_addon_plugin'));
+			<?php printf(__('Please de-activate and remove the free version of the WooCommere add-on before activating the paid version.', PMWI_Plugin::TEXT_DOMAIN));
 			?>
 		</p></div>
 		<?php				
@@ -88,7 +88,12 @@ else {
 		 * Plugin file path
 		 * @var string
 		 */
-		const FILE = __FILE__;	
+		const FILE = __FILE__;
+        /**
+         * Plugin text domain
+         * @var string
+         */
+		const TEXT_DOMAIN = 'wpai_woocommerce_addon_plugin';
 
 		/**
 		 * Return singletone instance
@@ -101,7 +106,10 @@ else {
 			return self::$instance;
 		}
 
-		static public function getEddName(){
+        /**
+         * @return string
+         */
+        static public function getEddName(){
 			return 'WooCommerce Add-On';
 		}
 
@@ -188,6 +196,10 @@ else {
 				require_once $filePath;
 			}
 
+            if (is_dir(self::ROOT_DIR . '/libraries')) foreach (PMWI_Helper::safe_glob(self::ROOT_DIR . '/libraries/*.php', PMWI_Helper::GLOB_RECURSE | PMWI_Helper::GLOB_PATH | PMWI_Helper::GLOB_NOSORT) as $filePath) {
+                require_once $filePath;
+            }
+
 			// init plugin options
 			$option_name = get_class($this) . '_Options';
 			$options_default = PMWI_Config::createFromFile(self::ROOT_DIR . '/config/options.php')->toArray();
@@ -238,7 +250,11 @@ else {
 
 		}
 
-		public function migrate_options(){
+        /**
+         * @return bool
+         * @throws \Exception
+         */
+        public function migrate_options(){
 
 			$installed_ver = get_option( "wp_all_import_woocommerce_addon_db_version" );
 
@@ -272,7 +288,11 @@ else {
 			update_option( "wp_all_import_woocommerce_addon_db_version", PMWI_VERSION );
 		}
 
-		private function migrate(&$options, $version){
+        /**
+         * @param $options
+         * @param $version
+         */
+        private function migrate(&$options, $version){
 
 			// Update _featured, _visibility and _stock_status options according to WooCommerce 3.0
 			if ( version_compare($version, '2.3.7-beta-2.1') < 0  ){
@@ -330,8 +350,10 @@ else {
 			}
 		}
 
-		public function init()
-		{
+        /**
+         *  Load plugin text domain.
+         */
+        public function init() {
 			$this->load_plugin_textdomain();
 		}
 
@@ -345,9 +367,9 @@ else {
 		 */
 		public function load_plugin_textdomain() {
 			
-			$locale = apply_filters( 'plugin_locale', get_locale(), 'wpai_woocommerce_addon_plugin' );							
+			$locale = apply_filters( 'plugin_locale', get_locale(), self::TEXT_DOMAIN );
 			
-			load_plugin_textdomain( 'wpai_woocommerce_addon_plugin', false, dirname( plugin_basename( __FILE__ ) ) . "/i18n/languages" );
+			load_plugin_textdomain( self::TEXT_DOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . "/i18n/languages" );
 		}	
 
 		/**
@@ -358,7 +380,7 @@ else {
 			$page = strtolower($input->getpost('page', ''));
 			if (preg_match('%^' . preg_quote(str_replace('_', '-', self::PREFIX), '%') . '([\w-]+)$%', $page)) {
 				$this->adminDispatcher($page, strtolower($input->getpost('action', 'index')));
-			}			
+			}
 		}
 
 		/**
@@ -380,7 +402,11 @@ else {
 			return ob_get_clean();
 		}
 
-		public function replace_callback($matches){
+        /**
+         * @param $matches
+         *
+         * @return string
+         */public function replace_callback($matches){
 			return strtoupper($matches[0]);
 		}
 
@@ -452,8 +478,15 @@ else {
 			}
 		}
 
-		protected $_admin_current_screen = NULL;
-		public function getAdminCurrentScreen()
+        /**
+         * @var null
+         */
+        protected $_admin_current_screen = NULL;
+
+        /**
+         * @return null
+         */
+        public function getAdminCurrentScreen()
 		{
 			return $this->_admin_current_screen;
 		}
@@ -529,7 +562,7 @@ else {
 		public function activation() {
 
 			// uncaught exception doesn't prevent plugin from being activated, therefore replace it with fatal error so it does
-			set_exception_handler(function($e){trigger_error($e->getMessage(), E_USER_ERROR);});
+            set_exception_handler(function($e){trigger_error($e->getMessage(), E_USER_ERROR);});
 
 			// create plugin options
 			$option_name = get_class($this) . '_Options';

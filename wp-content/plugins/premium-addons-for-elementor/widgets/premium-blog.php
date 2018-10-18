@@ -5,8 +5,7 @@ use Elementor\Core\Responsive\Responsive;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Blog_Widget extends Widget_Base
-{
+class Premium_Blog extends Widget_Base {
     public function get_name() {
         return 'premium-addon-blog';
     }
@@ -838,8 +837,7 @@ class Premium_Blog_Widget extends Widget_Base
         
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         
         if ( get_query_var('paged') ) { $paged = get_query_var('paged'); } else if ( get_query_var('page') ) {   $paged = get_query_var('page'); } else {  $paged = 1; }
         
@@ -983,16 +981,12 @@ if(count($posts)){
                 }
             ?>
 </div>
-<?php endif; ?>
-<?php 
+<?php
+    endif;
     echo $this->get_blog_responsive_style();
     wp_reset_postdata();
     
-} ?>
+}
 
-
-
-    <?php
     }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Blog_Widget());

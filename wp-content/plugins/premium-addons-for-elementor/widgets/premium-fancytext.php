@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Fancy_Text_Widget extends Widget_Base
-{
+class Premium_Fancytext extends Widget_Base {
     public function get_name() {
         return 'premium-addon-fancy-text';
     }
@@ -463,6 +462,7 @@ class Premium_Fancy_Text_Widget extends Widget_Base
                 'typeSpeed' => $settings['premium_fancy_text_type_speed'],
                 'backSpeed' => $settings['premium_fancy_text_back_speed'],
                 'startDelay'=> $settings['premium_fancy_text_start_delay'],
+                'backDelay' => $settings['premium_fancy_text_back_delay'],
                 'showCursor'=> $show_cursor,
                 'cursorChar'=> $cursor_text,
                 'loop'      => $loop,
@@ -497,4 +497,3 @@ class Premium_Fancy_Text_Widget extends Widget_Base
     <?php
     }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Fancy_Text_Widget());

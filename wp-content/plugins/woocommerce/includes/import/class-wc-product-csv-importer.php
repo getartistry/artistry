@@ -63,6 +63,10 @@ class WC_Product_CSV_Importer extends WC_Product_Importer {
 	 * Read file.
 	 */
 	protected function read_file() {
+		if ( ! WC_Product_CSV_Importer_Controller::is_file_valid_csv( $this->file ) ) {
+			wp_die( __( 'Invalid file type. The importer supports CSV and TXT file formats.', 'woocommerce' ) );
+		}
+
 		$handle = fopen( $this->file, 'r' ); // @codingStandardsIgnoreLine.
 
 		if ( false !== $handle ) {
@@ -364,6 +368,9 @@ class WC_Product_CSV_Importer extends WC_Product_Importer {
 
 				if ( is_array( $term ) ) {
 					$term_id = $term['term_id'];
+					// Don't allow users without capabilities to create new categories.
+				} elseif ( ! current_user_can( 'manage_product_terms' ) ) {
+					break;
 				} else {
 					$term = wp_insert_term( $_term, 'product_cat', array( 'parent' => intval( $parent ) ) );
 

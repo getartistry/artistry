@@ -41,7 +41,7 @@ class Jet_Group_Control_Box_Style extends Elementor\Group_Control_Base {
 		);
 
 		$fields['color'] = array(
-			'label'     => _x( 'Color', 'Background Control', 'jet-elements' ),
+			'label'     => _x( 'Background Color', 'Background Control', 'jet-elements' ),
 			'type'      => Controls_Manager::COLOR,
 			'default'   => '',
 			'title'     => _x( 'Background Color', 'Background Control', 'jet-elements' ),
@@ -69,7 +69,7 @@ class Jet_Group_Control_Box_Style extends Elementor\Group_Control_Base {
 		);
 
 		$fields['color_b'] = array(
-			'label'       => _x( 'Second Color', 'Background Control', 'jet-elements' ),
+			'label'       => _x( 'Second Background Color', 'Background Control', 'jet-elements' ),
 			'type'        => Controls_Manager::COLOR,
 			'default'     => '#f2295b',
 			'render_type' => 'ui',
@@ -285,5 +285,25 @@ class Jet_Group_Control_Box_Style extends Elementor\Group_Control_Base {
 		);
 
 		return $fields;
+	}
+
+	protected function prepare_fields( $fields ) {
+		array_walk( $fields, function ( &$field, $field_name ) {
+			if ( in_array( $field_name, array( 'popover_toggle' ) ) ) {
+				return;
+			}
+
+			$condition = array(
+				'popover_toggle!' => '',
+			);
+
+			if( isset( $field['condition'] ) ) {
+				$field['condition'] = array_merge( $field['condition'], $condition );
+			} else {
+				$field['condition'] = $condition;
+			}
+		} );
+
+		return parent::prepare_fields( $fields );
 	}
 }

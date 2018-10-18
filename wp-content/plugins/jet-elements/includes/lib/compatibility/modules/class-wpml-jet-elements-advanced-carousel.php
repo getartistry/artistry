@@ -16,7 +16,7 @@ class WPML_Jet_Elements_Advanced_Carousel extends WPML_Elementor_Module_With_Ite
 	 * @return array
 	 */
 	public function get_fields() {
-		return array( 'item_title', 'item_text' );
+		return array( 'item_title', 'item_text', 'item_button_text' );
 	}
 
 	/**
@@ -31,6 +31,9 @@ class WPML_Jet_Elements_Advanced_Carousel extends WPML_Elementor_Module_With_Ite
 
 			case 'item_text':
 				return esc_html__( 'Advanced Carousel: Item Description', 'jet-elements' );
+
+			case 'item_button_text':
+				return esc_html__( 'Advanced Carousel: Item Button Text', 'jet-elements' );
 
 			default:
 				return '';
@@ -49,6 +52,9 @@ class WPML_Jet_Elements_Advanced_Carousel extends WPML_Elementor_Module_With_Ite
 
 			case 'item_text':
 				return 'VISUAL';
+
+			case 'item_button_text':
+				return 'LINE';
 
 			default:
 				return '';

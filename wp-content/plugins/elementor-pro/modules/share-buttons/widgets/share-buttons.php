@@ -214,7 +214,7 @@ class Share_Buttons extends Base_Widget {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'alignment',
 			[
 				'label' => __( 'Alignment', 'elementor-pro' ),
@@ -237,7 +237,7 @@ class Share_Buttons extends Base_Widget {
 						'icon' => 'fa fa-align-justify',
 					],
 				],
-				'prefix_class' => 'elementor-share-buttons--align-',
+				'prefix_class' => 'elementor-share-buttons%s--align-',
 				'condition' => [
 					'columns' => '0',
 				],

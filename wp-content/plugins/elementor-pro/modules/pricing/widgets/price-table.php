@@ -1383,7 +1383,7 @@ class Price_Table extends Base_Widget {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 		$symbol = '';
 
 		if ( ! empty( $settings['currency_symbol'] ) ) {

@@ -174,6 +174,9 @@ Class WpAutomaticReddit extends wp_automatic{
 			$item = array();
 			
 			// match title
+			$item['item_title'] ='';
+			
+			if(isset($itemTxt->data->title))
 			$item['item_title'] = $itemTxt->data->title;
 
 			// match description
@@ -307,7 +310,7 @@ Class WpAutomaticReddit extends wp_automatic{
 			if (trim ( $keyword ) != '') {
 
 				// getting links from the db for that keyword
-				$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'rd_{$camp->camp_id}_$keyword' and item_status ='0'";
+				$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'rd_{$camp->camp_id}_$keyword' ";
 				$this->used_keyword=$keyword;
 				$res = $this->db->get_results ( $query );
 
@@ -315,6 +318,10 @@ Class WpAutomaticReddit extends wp_automatic{
 				
 				// when no links lets get new links
 				if (count ( $res ) == 0) {
+					
+					//clean any old cache for this keyword
+					$query_delete = "delete from {$this->wp_prefix}automatic_general where item_type='rd_{$camp->camp_id}_$keyword' ";
+					$this->db->query ( $query_delete );
 
 					// get new fresh items
 					$this->reddit_fetch_items ( $keyword, $camp );
@@ -345,7 +352,7 @@ Class WpAutomaticReddit extends wp_automatic{
 						  echo '<br>reddit item ('. $t_data ['item_title'] .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
 
 						//delete the item
-						$query = "delete from {$this->wp_prefix}automatic_general where item_id='{$t_row->item_id}' and item_type=  'rd_{$camp->camp_id}_$keyword'";
+						$query = "delete from {$this->wp_prefix}automatic_general where id='{$t_row->id}' ";
 						$this->db->query ( $query );
 
 					}else{
@@ -363,7 +370,7 @@ Class WpAutomaticReddit extends wp_automatic{
 					$data = unserialize ( base64_decode( $ret->item_data )  );
 
 					$temp = $data;
-				 	
+				 	 
 					  echo '<br>Found Link:'.$temp['item_link'];
 					
 					// empty item_description fix
@@ -400,8 +407,8 @@ Class WpAutomaticReddit extends wp_automatic{
 						$temp['item_embed'] = $temp['item_mp4_embed'] =  '<video '.$loop. ' ' . $autoPlay . '    controls="controls"><source src="'.$temp['item_mp4'].'" type="video/mp4"></video>';
 					
 					}
-					 
 					
+				  
 					// author link
 					$temp['item_author_link'] =  '<a href="'.$temp['item_author'].'">'.$temp['item_author'].'</a>'; 
 					
@@ -409,13 +416,13 @@ Class WpAutomaticReddit extends wp_automatic{
 					$temp['item_link'] = 'https://reddit.com'.$temp['item_link'];
 					 
 					// update the link status to 1
-					$query = "update {$this->wp_prefix}automatic_general set item_status='1' where item_id='$ret->item_id' and item_type='rd_{$camp->camp_id}_$keyword' ";
+					$query = "delete from {$this->wp_prefix}automatic_general where id={$ret->id}";
 					$this->db->query ( $query );
 						
 					// if cache not active let's delete the cached videos and reset indexes
 					if (! in_array ( 'OPT_RD_CACHE', $camp_opt )) {
 						  echo '<br>Cache disabled claring cache ...';
-						$query = "delete from {$this->wp_prefix}automatic_general where item_type='rd_{$camp->camp_id}_$keyword' and item_status ='0'";
+						$query = "delete from {$this->wp_prefix}automatic_general where item_type='rd_{$camp->camp_id}_$keyword' ";
 						$this->db->query ( $query );
 
 						// reset index
@@ -425,7 +432,8 @@ Class WpAutomaticReddit extends wp_automatic{
 					
 					//item_date timestamp to date
 					$temp['item_date_formated'] = get_date_from_gmt(  gmdate ( 'Y-m-d H:i:s' , ($temp['item_date']) )  );
- 						
+ 					
+					
 					return $temp;
 				} else {
 						

@@ -13,6 +13,21 @@
 final class Astra_Ext_Extension {
 
 	/**
+	 * Default Extensions
+	 *
+	 * @since 1.4.8
+	 * @return array
+	 */
+	static public function get_default_addons() {
+		return apply_filters(
+			'astra_ext_default_addons',
+			array(
+				'advanced-search' => 'advanced-search',
+			)
+		);
+	}
+
+	/**
 	 * Provide Extension array().
 	 *
 	 * @return array()
@@ -37,6 +52,7 @@ final class Astra_Ext_Extension {
 			'transparent-header'    => array(),
 			'typography'            => array(),
 			'woocommerce'           => array(),
+			'nav-menu'              => array(),
 		);
 
 		return apply_filters( 'astra_get_addons', $extensions );

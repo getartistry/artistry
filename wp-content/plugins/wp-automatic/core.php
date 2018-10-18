@@ -25,7 +25,7 @@
 			public $cached_file_path = '';
 			public $minimum_post_timestamp = '';
 			public $minimum_post_timestamp_camp = '';
-			public $debug = true;
+			public $debug = false;
 			public $translationSuccess ;
 			public $currentCampID ;
 			
@@ -45,6 +45,9 @@
 			
 			// Link sufix
 			public $isLinkSuffixed;
+			
+			//link once
+			public $isLinkOnce;
 			
 			//proxy connected or not 
 			public  $isProxified;
@@ -105,6 +108,9 @@
 				
 				// Link suffix
 				$this->isLinkSuffixed = false;
+				
+				// Link once
+				$this->isLinkOnce = false;
 				
 				// Call Limit 
 				$this->sourceCallLimit = 2 ;
@@ -288,6 +294,11 @@
 				//link suffix
 				if(in_array('OPT_LINK_PREFIX', $camp_opt)){
 					$this->isLinkSuffixed = true;
+				}
+				
+				//never post same link flag
+				if (in_array('OPT_LINK_ONCE', $camp_opt)){
+					$this->isLinkOnce = true;
 				}
 				
 				// reading keywords that need to be processed
@@ -694,6 +705,8 @@
 					$titleCharsCount = $this->chars_count($title);
 					
 					if( $camp_general['cg_title_limit'] < $titleCharsCount ){
+						
+						$non_truncated_title =$title;
 					
 						if(function_exists('mb_substr')){
 							$title = mb_substr($title, 0,$camp_general['cg_title_limit']);
@@ -703,14 +716,49 @@
 						}
 						
 						$title = $this->removeEmoji($title);
-						$title = $title . '...';
+						
+						
+						// remove last truncated word
+						if( in_array( 'OPT_LIMIT_NO_TRUN', $camp_opt) ){
+							
+							//get last truncated word
+							$truncated_title_parts = explode(' ', $title);
+							$last_truncated_word = $truncated_title_parts[count($truncated_title_parts) - 1];
+							
+							//check if really truncated 
+							$non_truncated_title_parts =explode(' ', $non_truncated_title);
+						 
+							foreach ($non_truncated_title_parts as $non_truncated_word){
+								
+								if($non_truncated_word === $last_truncated_word){
+									
+									//last truncated word is not truncated 
+									break;
+									
+								}
+								
+							}
+							
+							if($non_truncated_word === $last_truncated_word){
+								
+							}else{
+								unset($truncated_title_parts[count($truncated_title_parts) - 1] );
+								$title = implode(' ', $truncated_title_parts); 
+							}
+							
+							
+						}
+							
+						if( ! in_array( 'OPT_LIMIT_NO_DOT', $camp_opt) )
+							$title = $title . '...';
+							 
 						
 					}
 		
 				}
 				 
 				
-				// check if valid content fetched
+				// check if valid content fetched before filling the template
 				if (trim ( $title ) != '') {
 					
 					// Validate if the content contains wanted or execluded texts
@@ -722,9 +770,11 @@
 					$execr = '';
 					$execr = @$camp_general['cg_camp_post_regex_exact'];
 					$excludeRegex = @$camp_general['cg_camp_post_regex_exclude'];
-					
+
 					$valid = $this->validate_exacts($abcont, $title, $camp_opt, $camp,false,$camp_general);
-					 
+					
+					
+					
 					// duplicate title check
 					if($valid == true){
 						//check if there is a post published with the same title
@@ -1660,16 +1710,21 @@
 						}
 					}
 					
-					// Exact match check 
+					// Exact match check  after filling the template
 					// validating exact
 					$valid = true;
+					
+					
 					$valid = $this->validate_exacts($my_post['post_content'], $title, $camp_opt, $camp,true,$camp_general);
+					
+					 
 					
 					// if not valid process the campaign again and exit
 					if ($valid == false) {
 					
 						//blacklisting the link so we don'g teg it again and cause a loop
 						$this->link_execlude($camp->camp_id, $source_link);
+						 
 						$this->process_campaign ( $camp );
 						exit ();
 					}
@@ -1762,6 +1817,7 @@
 						
 					}
 					
+				 
 					// filter 
 					$my_post= apply_filters( 'wp_automatic_before_insert', $my_post);
 					
@@ -1790,7 +1846,27 @@
 						  echo '<br>Error:Post Insertion failure';
 						//print_r($my_post);
 					}
-					 
+					
+					if( function_exists('icl_object_id')){
+						$this->log( 'icl_object_id' ,  'icl_object_id exist '  );
+					}else{
+						$this->log( 'icl_object_id' ,  'icl_object_id no exist'  );
+					}
+					
+					//wpml internal cron patch
+					if(   ! stristr( $_SERVER['REQUEST_URI']  , 'wp_automatic') && function_exists('icl_object_id')  ){
+						
+						$wpml_options = get_option( 'icl_sitepress_settings' );
+						$default_lang = $wpml_options['default_language'];
+						
+						$args['element_id'] = $id;
+						$args['element_type'] = 'post_'.$camp->camp_post_type;
+						$args['language_code'] = $default_lang;
+						
+						do_action( 'wpml_set_element_language_details',   $args );
+						
+					}
+					
 					//wpml integration
 					if(in_array('OPT_WPML', $camp_opt)  && function_exists('icl_object_id') ){
 						include_once( WP_PLUGIN_DIR . '/sitepress-multilingual-cms/inc/wpml-api.php' );
@@ -1798,7 +1874,9 @@
 						
 						echo '<br>Setting WPML language to: '.$language_code;
 						if(function_exists('wpml_update_translatable_content')){
-							wpml_update_translatable_content('post_'.$camp->camp_post_type, $id, ($language_code) );
+							  wpml_update_translatable_content('post_'.$camp->camp_post_type, $id, ($language_code) );
+							 
+							
 							echo '<--Done';
 							
 							//find if there is a previous instance in another language
@@ -1960,9 +2038,15 @@
 					$post_id = $id;
 					
 					
-					add_post_meta ( $id, 'original_title', $title );
-					if(isset($source_link) )  add_post_meta ( $id, 'original_link', $source_link );
-					add_post_meta($id , 'wp_automatic_camp',$camp->camp_id);
+					
+					add_post_meta ( $id, 'wp_automatic_camp' , $camp->camp_id );
+					
+					if(isset($source_link) ){
+						
+						add_post_meta ( $id, md5($source_link) , $post_title );
+						add_post_meta ( $id, 'original_link', $source_link );
+						
+					}  
 					
 					// Record link if posted before
 					if (in_array('OPT_LINK_ONCE', $camp_opt)){
@@ -2210,7 +2294,7 @@
 								}
 								
 							 	
-									
+								 
 								if(trim($image_data) != ''    ){
 									
 									//let's save the file
@@ -2250,7 +2334,7 @@
 								$n++;
 							}
 						
-						}		
+						} //width check		
 						
 						 
 						// Setting the thumb
@@ -2363,15 +2447,27 @@
 									curl_setopt($this->ch, CURLOPT_URL, trim( html_entity_decode($image_url) ) );
 									$image_data=$this->curl_exec_follow($this->ch);
 									$contentType = curl_getinfo($this->ch, CURLINFO_CONTENT_TYPE);
-									  echo '<br>Content type:'.$contentType;
+									echo '<br>Content type:'.$contentType;
 									$x=curl_error($this->ch);
-									
+									$http_code = curl_getinfo($this->ch  , CURLINFO_HTTP_CODE );
 									
 								}
 								 
 								// do not validate content type option
 								if(in_array('OPT_THUM_NOTYPE', $camp_opt)){
 									$contentType = 'image';
+								}
+								
+								if( trim($image_data) != '' && $http_code == 200 && !stristr($contentType,'image')){
+									
+									//possibly correct image get it's size
+									$width = $this->get_image_width($image_data);
+									
+									if($width != 0){
+										echo '<br>Regardless of this content type header, It still seems a valid image with width = ' .$width;
+										$contentType = 'image';
+									}
+									 
 								}
 								 
 								if(trim($image_data) != ''  &&     stristr($contentType	, 'image')    ){
@@ -2647,10 +2743,11 @@
 							if(trim($exec) !=''){
 								
 								if( stristr($exec, 'items')){
+									
+									$exec = str_replace('s28-', 's90-', $exec);
+									
 									$comments_array=json_decode($exec);
-
-									
-									
+ 
 									$entry=$comments_array->items ;
 									
 									if(count($entry) == 0){
@@ -2669,8 +2766,15 @@
 											$profileImage = $comment->authorProfileImageUrl;
 											
 											$commentUri='';
-											if(! in_array('OPT_NO_COMMENT_LINK', $camp_opt))
-											$commentUri= $comment->authorChannelUrl;
+											$comment_author_url ='';
+											
+											if(! in_array('OPT_NO_COMMENT_LINK', $camp_opt)){
+												$comment_author_url = $profileImage .'|'. $comment->authorChannelId->value;
+												$commentUri= $comment->authorChannelUrl;
+											}else{
+												$comment_author_url = $profileImage.'|';
+											}
+											
 											
 											if(in_array('OPT_YT_ORIGINAL_TIME', $camp_opt)){
 												$time = $comment->publishedAt;
@@ -2682,22 +2786,38 @@
 											 
 		 									
 		 									if(trim($commentText) != '' ){
-												$data = array(
-														'comment_post_ID' => $id,
-														'comment_author' => $commentAuthor,
-														'comment_author_email' => '',
-														'comment_author_url' => $profileImage .'|'. $comment->authorChannelId->value,
-														'comment_content' => $commentText,
-														'comment_type' => '',
-														'comment_parent' => 0,
-														 
-														'comment_author_IP' => '127.0.0.1',
-														'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
-														'comment_date' => $time,
-														'comment_approved' => 1,
-												);
-												
-												wp_insert_comment($data);
+		 										
+		 										//bb replies
+		 										if($camp->camp_post_type == 'topic' && function_exists('bbp_insert_reply') ){
+		 											
+		 											$post_parent = $post_topic_id = $id;
+		 											$comment_author_url = "https://www.youtube.com/channel/". $comment->authorChannelId->value ;
+		 											 
+		 											$reply_data = array('post_parent'=>$post_parent, 'post_content' =>$commentText , 'post_author' => false ,'post_date' => $time );
+		 											$reply_meta = array( 'topic_id' => $post_topic_id , 'anonymous_name' =>$commentAuthor  , 'anonymous_email' => $profileImage  , 'anonymous_website' => $comment_author_url );
+		 											$ret = bbp_insert_reply($reply_data,$reply_meta);
+		 											
+		 											
+		 										}else{
+		 										
+													$data = array(
+															'comment_post_ID' => $id,
+															'comment_author' => $commentAuthor,
+															'comment_author_email' => '',
+															'comment_author_url' => $comment_author_url,
+															'comment_content' => $commentText,
+															'comment_type' => '',
+															'comment_parent' => 0,
+															 
+															'comment_author_IP' => '127.0.0.1',
+															'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
+															'comment_date' => $time,
+															'comment_approved' => 1,
+													);
+													
+													wp_insert_comment($data);
+													
+		 										}
 		 									}
 		 									
 										}
@@ -2847,22 +2967,37 @@
 											if(! in_array('OPT_NO_COMMENT_LINK', $camp_opt))
 											$commentUri=$new_comment->user->permalink_url;
 											
-											$data = array(
-													'comment_post_ID' => $id,
-													'comment_author' => $new_comment->user->username,
-													'comment_author_email' => '',
-													'comment_author_url' => $commentUri,
-													'comment_content' => $new_comment->body,
-													'comment_type' => '',
-													'comment_parent' => 0,
 											
-													'comment_author_IP' => '127.0.0.1',
-													'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
-													'comment_date' => $time,
-													'comment_approved' => 1,
-											);
+											//bb replies
+											if($camp->camp_post_type == 'topic' && function_exists('bbp_insert_reply') ){
 												
-											wp_insert_comment($data);
+												$post_parent = $post_topic_id = $id;
+												
+												$reply_data = array('post_parent'=>$post_parent, 'post_content' =>$new_comment->body , 'post_author' => false ,'post_date' => $time );
+												$reply_meta = array( 'topic_id' => $post_topic_id , 'anonymous_name' =>$new_comment->user->username  , 'anonymous_website' => $commentUri );
+												$ret = bbp_insert_reply($reply_data,$reply_meta);
+												
+												
+											}else{
+											
+												$data = array(
+														'comment_post_ID' => $id,
+														'comment_author' => $new_comment->user->username,
+														'comment_author_email' => '',
+														'comment_author_url' => $commentUri,
+														'comment_content' => $new_comment->body,
+														'comment_type' => '',
+														'comment_parent' => 0,
+												
+														'comment_author_IP' => '127.0.0.1',
+														'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
+														'comment_date' => $time,
+														'comment_approved' => 1,
+												);
+													
+												wp_insert_comment($data);
+												
+											}
 											
 											
 										}
@@ -2898,79 +3033,77 @@
 						
 						
 						// comments
-						if(in_array('OPT_FB_COMMENT', $camp_opt)){
+						if( in_array('OPT_FB_COMMENT', $camp_opt) && isset(	$img['comments'] ) ){
 							
 							//trying to post FB comments
 							  echo '<br>Posting FB comments as comments :'.$img['post_id'];
 							
-							$cg_fb_access = get_option('wp_automatic_fb_token','');
+						 
 							
-							//curl get
-							$x='error';
-							$url='https://graph.facebook.com/v2.5/'.$img['post_id'].'/comments?access_token='.$cg_fb_access.'&summary=1&filter=toplevel&fields=message,id,from,message_tags,created_time,attachment';
-							
-							
-							curl_setopt($this->ch, CURLOPT_HTTPGET, 1);
-							curl_setopt($this->ch, CURLOPT_URL, trim($url));
- 							$exec=curl_exec($this->ch);
-							$x=curl_error($this->ch);
-							
-							if(stristr($exec, 'data')){
+							  if( isset( $img['comments'] )  ) {
+								 
+							  	$comments = array_slice($img['comments'], 0 , rand(25,50)) ;
 								
-								$comments_json = json_decode($exec);
-								$comments = $comments_json->data;
-								
+							  	 
 								
 								$added = 0 ;
 								$time = current_time('mysql');
 								
 								foreach($comments as $comment){
-									
 									 
-									
-									if(! is_array($comment->message_tags)){
+									if( trim($comment['text']) != '' ){
 										
 										
-										$commentText= $comment->message;
-										
-										$commentImg = '';
-										$commentImg = @$comment->attachment->media->image->src;
-										
-										
-										if(trim($commentImg) != '') $commentText.='<img src="'.$commentImg.'"/>';
-										
-										$commentAuthor= $comment->from->name;
-										 	
-										$commentAuthorID= $comment->from->id;
-										
+										$commentText= $comment['text'];
+										 
+										$commentAuthor= $comment['author_name'];
+										$commentAuthorID= $comment['author_id'];
 										$commentUri='';
+
 										if(! in_array('OPT_NO_COMMENT_LINK', $camp_opt))
 										$commentUri= "https://facebook.com/". $commentAuthorID;
 										
 										
 										if(in_array('OPT_ORIGINAL_FB_TIME', $camp_opt) ){
 											
-											$time = date('Y-m-d H:i:s', strtotime($comment->created_time) );
+											$time = date('Y-m-d H:i:s', ( $comment['time'] ) );
 										}
 											
 										
 										if(trim($commentText) != '' ){
-											$data = array(
-													'comment_post_ID' => $id,
-													'comment_author' => $commentAuthor,
-													'comment_author_email' => $commentAuthorID.'@fb.com',
-													'comment_author_url' => $commentUri,
-													'comment_content' => $commentText,
-													'comment_type' => '',
-													'comment_parent' => 0,
-														
-													'comment_author_IP' => '127.0.0.1',
-													'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
-													'comment_date' => $time,
-													'comment_approved' => 1,
-											);
 										
-											wp_insert_comment($data);
+											//bb replies
+											if($camp->camp_post_type == 'topic' && function_exists('bbp_insert_reply') ){
+												
+												$post_parent = $post_topic_id = $id;
+												 
+												
+												$reply_data = array('post_parent'=>$post_parent, 'post_content' =>$commentText , 'post_author' => false ,'post_date' => $time );
+												$reply_meta = array( 'topic_id' => $post_topic_id , 'anonymous_name' =>$commentAuthor , 'anonymous_email' => $commentAuthorID.'@fb.com' , 'anonymous_website' => $commentUri );
+												$ret = bbp_insert_reply($reply_data,$reply_meta);
+												
+												
+											}else{
+											
+												$data = array(
+														'comment_post_ID' => $id,
+														'comment_author' => $commentAuthor,
+														'comment_author_email' => $commentAuthorID.'@fb.com',
+														'comment_author_url' => $commentUri,
+														'comment_content' => $commentText,
+														'comment_type' => '',
+														'comment_parent' => 0,
+															
+														'comment_author_IP' => '127.0.0.1',
+														'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
+														'comment_date' => $time,
+														'comment_approved' => 1,
+												);
+											
+												wp_insert_comment($data);
+											
+											}
+										
 										}
 										
 										
@@ -2981,13 +3114,13 @@
 								}
 								
 								
-								  echo '<br>'.$added . ' comments to post';
+								echo '<br>'.$added . ' comments to post';
 								
 								 
 								
 								
 							}else{
-								  echo '<br>No valid reply for the comments request';
+								  echo '<br>No comments found';
 							}
  
 							
@@ -3115,22 +3248,35 @@
 											 
 												
 											if(trim($commentText) != '' ){
-												$data = array(
-														'comment_post_ID' => $id,
-														'comment_author' => $commentAuthor,
-														'comment_author_email' => '',
-														'comment_author_url' => $commentUri,
-														'comment_content' => $commentText,
-														'comment_type' => '',
-														'comment_parent' => 0,
-															
-														'comment_author_IP' => '127.0.0.1',
-														'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
-														'comment_date' => $time,
-														'comment_approved' => 1,
-												);
-						
-												wp_insert_comment($data);
+												
+												//bb replies
+												if($camp->camp_post_type == 'topic' && function_exists('bbp_insert_reply') ){
+													
+													$post_parent = $post_topic_id = $id;
+													$reply_data = array('post_parent'=>$post_parent, 'post_content' =>$commentText , 'post_author' => false ,'post_date' => $time );
+													$reply_meta = array( 'topic_id' => $post_topic_id , 'anonymous_name' =>$commentAuthor , 'anonymous_website' => $commentUri );
+													$ret = bbp_insert_reply($reply_data,$reply_meta);
+													
+													
+												}else{
+												
+													$data = array(
+															'comment_post_ID' => $id,
+															'comment_author' => $commentAuthor,
+															'comment_author_email' => '',
+															'comment_author_url' => $commentUri,
+															'comment_content' => $commentText,
+															'comment_type' => '',
+															'comment_parent' => 0,
+																
+															'comment_author_IP' => '127.0.0.1',
+															'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
+															'comment_date' => $time,
+															'comment_approved' => 1,
+													);
+							
+													wp_insert_comment($data);
+												}
 											}
 						
 										}
@@ -3183,6 +3329,8 @@
 								$commentsJson = json_decode($exec);
 								$commentsJson = $commentsJson[1]->data->children;
 								
+								$commentsJson = array_slice($commentsJson	, 0 , rand(25,50));
+								
 								  echo '<br>Found '.count($commentsJson) . ' comments ';
 								$time = current_time('mysql');
 								
@@ -3196,24 +3344,39 @@
 									if(! in_array('OPT_NO_COMMENT_LINK', $camp_opt))
 										
 										$commentUri='https://www.reddit.com/'.$newComment->data->author;
+										
+										if(trim($newComment->data->body) != ''){
+										
+											//bb replies
+											if($camp->camp_post_type == 'topic' && function_exists('bbp_insert_reply') ){
+												
+												$post_parent = $post_topic_id = $id;
+												
+												$reply_data = array('post_parent'=>$post_parent, 'post_content' =>$newComment->data->body , 'post_author' => false ,'post_date' => $time );
+												$reply_meta = array( 'topic_id' => $post_topic_id , 'anonymous_name' =>$newComment->data->author  , 'anonymous_website' => $commentUri );
+												$ret = bbp_insert_reply($reply_data,$reply_meta);
+												
+												
+											}else{
 											
-										$data = array(
-												'comment_post_ID' => $id,
-												'comment_author' => $newComment->data->author,
-												'comment_author_email' => '',
-												'comment_author_url' => $commentUri,
-												'comment_content' => $newComment->data->body,
-												'comment_type' => '',
-												'comment_parent' => 0,
-													
-												'comment_author_IP' => '127.0.0.1',
-												'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
-												'comment_date' => $time,
-												'comment_approved' => 1,
-										);
-									
-										wp_insert_comment($data);
+												$data = array(
+														'comment_post_ID' => $id,
+														'comment_author' => $newComment->data->author,
+														'comment_author_email' => '',
+														'comment_author_url' => $commentUri,
+														'comment_content' => $newComment->data->body,
+														'comment_type' => '',
+														'comment_parent' => 0,
+															
+														'comment_author_IP' => '127.0.0.1',
+														'comment_agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.10) Gecko/2009042316 Firefox/3.0.10 (.NET CLR 3.5.30729)',
+														'comment_date' => $time,
+														'comment_approved' => 1,
+												);
 											
+												wp_insert_comment($data);
+											}
+										}
 									
 								}
 								
@@ -3527,6 +3690,21 @@
 						}
 							
 						wp_set_object_terms ($id, 'external', 'product_type');
+					
+					}elseif($camp_type == 'Envato' && $camp->camp_post_type == 'product'){
+						
+						 
+						
+						$camp_post_custom_k = array_merge ( array('product_price_updated','product_upc','product_price','product_list_price','_regular_price','_price','_sale_price','_visibility', '_product_url','_button_text','_product_type'),$camp_post_custom_k);
+						
+						$wp_automatic_woo_buy = get_option('wp_automatic_woo_buy','Buy Now');
+						if(trim($wp_automatic_woo_buy) == '') $wp_automatic_woo_buy = 'Buy Now' ;
+						
+						$buyShortCode = '[item_link]?ref=[affiliate_id]';
+						
+						$camp_post_custom_v = array_merge ( array( $now , '[item_upc]','$[item_price]','$[item_price]','[item_price]','[item_price]','[item_price]','visible',$buyShortCode,$wp_automatic_woo_buy,'external'),$camp_post_custom_v);
+						 
+						wp_set_object_terms ($id, 'external', 'product_type');
 						
 					}elseif( $camp->camp_post_type == 'product' ){
 						
@@ -3740,6 +3918,10 @@
 											$key_val = rand($val_parts[1],$val_parts[2]);
 										}
 										
+									}
+									
+									if(stristr($key_val, 'formated_date')){
+										$key_val = do_shortcode($key_val);
 									}
 									
 									update_post_meta ( $id, $key, $key_val );
@@ -3990,6 +4172,7 @@
 							}
 						}
 						
+					 
 						
 						// exclude if match a specific REGEX
 						if( $valid == true ){
@@ -4345,6 +4528,7 @@
 				
 				// Fix alt tags
 				$imgFoundsSeparated = array();
+				$new_imgFoundsSeparated = array();
 				foreach($htmlfounds as $key => $currentFound){
 					
 					if(stristr($currentFound, '<img') && stristr($currentFound, 'alt')){
@@ -4381,6 +4565,7 @@
 							
 							$currentFoundParts = explode($altSeparator, $currentFound);
 							
+							//post alt
 							$preAlt = $currentFoundParts[1];
 							$preAltParts = explode($colonSeparator, $preAlt);
 							$altText = $preAltParts[0];
@@ -4388,9 +4573,14 @@
 							if(trim($altText) != ''){
 								
 								unset($preAltParts[0]);
+								
+								//before alt text part
 								$imgFoundsSeparated[] = $currentFoundParts[0].$altSeparator;
+								
+								//after alt text
 								$imgFoundsSeparated[] = str_replace($altText, '', $currentFoundParts[1] );
-								$imgFoundsSeparated[] = $colonSeparator.implode($colonSeparator, $preAltParts);
+								
+								//$imgFoundsSeparated[] = $colonSeparator.implode($colonSeparator, $preAltParts);
 								
 								/*
 								  echo ' ImageFound:'.$in.' '.$currentFound;
@@ -4404,8 +4594,38 @@
 					}
 				}
 				
-				if(count($imgFoundsSeparated) != 0){
-					$htmlfounds = array_merge($htmlfounds,$imgFoundsSeparated);
+				//title tag separation
+				
+				$title_separator = str_replace('alt', 'title', $altSeparator);
+				
+				foreach ($imgFoundsSeparated as  $img_part){
+					
+					if(stristr($img_part, ' title')){
+						
+						$img_part_parts = explode($title_separator, $img_part);
+						
+						//before title text
+						$pre_title_part = $img_part_parts[0] . $title_separator;
+						
+						 $post_title_parts = explode($colonSeparator, $img_part_parts[1]);
+						 $found_title = $post_title_parts[0];
+						 
+						 //after title text
+						 $post_title_part = str_replace($found_title, '', $img_part_parts[1]);
+						 
+						 $new_imgFoundsSeparated[] = $pre_title_part;
+						 $new_imgFoundsSeparated[] =  $post_title_part;
+						 
+						 
+					}else{
+						$new_imgFoundsSeparated[] = $img_part;
+					}
+					
+				}
+				
+				
+				if(count($new_imgFoundsSeparated) != 0){
+					$htmlfounds = array_merge($htmlfounds,$new_imgFoundsSeparated);
 				}
 				
 				//<!-- <br> -->
@@ -4921,6 +5141,7 @@
 			 */
 			function is_duplicate($link_url){
 				
+				$md5 = md5($link_url);
 				$duplicate=false;
 				
 				// link suffix
@@ -4953,7 +5174,7 @@
 				// Find items with meta = this url
 				if( ! $duplicate ){
 					
-					$query = "SELECT post_id from {$this->wp_prefix}postmeta where meta_key ='original_link' and meta_value='$link_url' ";
+					$query = "SELECT post_id from {$this->wp_prefix}postmeta where meta_key ='$md5' ";
 					$pres = $this->db->get_results ( $query );
 					
 					/*double check again
@@ -4986,17 +5207,18 @@
 				}
 				
 				// Check if completely deleted
-				if( ! $duplicate ){
-				
-					$md5 = md5($link_url);
-					$query = "SELECT link_url from {$this->wp_prefix}automatic_links where link_url='$md5' ";
-					$pres = $this->db->get_results ( $query );
-					
-					if ( count($pres) != 0){
-						$duplicate = true;
-						$this->duplicate_id = 'Deleted' ;
+				if( $this->isLinkOnce ){
+					if( ! $duplicate ){
+					 
+						$query = "SELECT link_url from {$this->wp_prefix}automatic_links where link_url='$md5' ";
+						$pres = $this->db->get_results ( $query );
+						
+						if ( count($pres) != 0){
+							$duplicate = true;
+							$this->duplicate_id = 'Deleted' ;
+						}
+						
 					}
-					
 				}
 				
 				// Update Duplicate cache 
@@ -5050,7 +5272,7 @@
 					$this->campExcludedLinks = $execluded_links;
 					$this->campExcludedLinksFetched = true;
 				}
-		 
+		  
 				if(stristr(','.$execluded_links, $link )){
 					return true;
 				}else{
@@ -5716,29 +5938,40 @@
 			//remove emoji from instagram 
 			 function removeEmoji($text) {
 			
-				$clean_text = "";
-			
-				// Match Emoticons
-				$regexEmoticons = '/[\x{1F600}-\x{1F64F}]/u';
-				$clean_text = preg_replace($regexEmoticons, '', $text);
-			
-				// Match Miscellaneous Symbols and Pictographs
-				$regexSymbols = '/[\x{1F300}-\x{1F5FF}]/u';
-				$clean_text = preg_replace($regexSymbols, '', $clean_text);
-			
-				// Match Transport And Map Symbols
-				$regexTransport = '/[\x{1F680}-\x{1F6FF}]/u';
-				$clean_text = preg_replace($regexTransport, '', $clean_text);
-			
-				// Match Miscellaneous Symbols
-				$regexMisc = '/[\x{2600}-\x{26FF}]/u';
-				$clean_text = preg_replace($regexMisc, '', $clean_text);
-			
-				// Match Dingbats
-				$regexDingbats = '/[\x{2700}-\x{27BF}]/u';
-				$clean_text = preg_replace($regexDingbats, '', $clean_text);
-			
-				return $clean_text;
+			 	if(function_exists('wp_staticize_emoji')){
+			 		
+			 		$text= wp_staticize_emoji($text);
+			 		$text =  preg_replace ( '{<img src="https://s.w.org.*?>}s', '', $text);
+			 		return $text;
+			 		
+			 	}else{
+			 	
+					$clean_text = "";
+				
+					// Match Emoticons
+					$regexEmoticons = '/[\x{1F600}-\x{1F64F}]/u';
+					$clean_text = preg_replace($regexEmoticons, '', $text);
+				
+					// Match Miscellaneous Symbols and Pictographs
+					$regexSymbols = '/[\x{1F300}-\x{1F5FF}]/u';
+					$clean_text = preg_replace($regexSymbols, '', $clean_text);
+				
+					// Match Transport And Map Symbols
+					$regexTransport = '/[\x{1F680}-\x{1F6FF}]/u';
+					$clean_text = preg_replace($regexTransport, '', $clean_text);
+				
+					// Match Miscellaneous Symbols
+					$regexMisc = '/[\x{2600}-\x{26FF}]/u';
+					$clean_text = preg_replace($regexMisc, '', $clean_text);
+				
+					// Match Dingbats
+					$regexDingbats = '/[\x{2700}-\x{27BF}]/u';
+					$clean_text = preg_replace($regexDingbats, '', $clean_text);
+				
+					return $clean_text;
+				
+			 	}
+				
 			}
 
 			//function for hyperlinking
@@ -6179,6 +6412,38 @@ return trim($arrAgents[$rand]);
 				
 			}
 		
+			/**
+			 * return width of an image
+			 */
+			function get_image_width($image_data){
+				
+				$upload_dir = wp_upload_dir ();
+				
+				//let's save the file
+				if (wp_mkdir_p ( $upload_dir ['path'] ))
+					$file = $upload_dir ['path'] . '/' . 'temp_wp_automatic';
+					else
+						$file = $upload_dir ['basedir'] . '/' . 'temp_wp_automatic';
+						
+						file_put_contents ( $file, $image_data );
+						
+						$size = getimagesize($file);
+						
+						if($size != false){
+							 
+							return $size[0] ;
+							
+						}else{
+							return 0;
+						}
+						
+			}
+			
+			
+			
+			
+			
+			
 		} // End
 		
 ?>

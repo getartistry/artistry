@@ -4,14 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       Astra 1.4.3
  */
 
-// No direct access, please.
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 /**
@@ -60,7 +65,6 @@ if ( ! class_exists( 'Astra_Customizer_Transparent_Header_Configs' ) ) {
 					'type'        => 'control',
 					'section'     => 'section-transparent-header',
 					'title'       => __( 'Force Disable on Special Pages?', 'astra-addon' ),
-					'required'    => array( ASTRA_THEME_SETTINGS . '[transparent-header-enable]', '==', true ),
 					'description' => __( 'This setting is generally not recommended on special pages such as archive, search, 404, etc. If you would like to enable it, uncheck this option', 'astra-addon' ),
 					'priority'    => 25,
 					'control'     => 'checkbox',
@@ -70,7 +74,6 @@ if ( ! class_exists( 'Astra_Customizer_Transparent_Header_Configs' ) ) {
 					'name'     => ASTRA_THEME_SETTINGS . '[different-transparent-logo]',
 					'default'  => astra_get_option( 'different-transparent-logo', false ),
 					'type'     => 'control',
-					'required' => array( ASTRA_THEME_SETTINGS . '[transparent-header-enable]', '==', true ),
 					'section'  => 'section-transparent-header',
 					'title'    => __( 'Different Logo for Transparent Header?', 'astra-addon' ),
 					'priority' => 25,
@@ -150,7 +153,6 @@ if ( ! class_exists( 'Astra_Customizer_Transparent_Header_Configs' ) ) {
 					'type'        => 'control',
 					'transport'   => 'postMessage',
 					'control'     => 'number',
-					'required'    => array( ASTRA_THEME_SETTINGS . '[transparent-header-enable]', '==', true ),
 					'section'     => 'section-transparent-header',
 					'priority'    => 25,
 					'title'       => __( 'Bottom Border Size', 'astra-addon' ),
@@ -170,7 +172,6 @@ if ( ! class_exists( 'Astra_Customizer_Transparent_Header_Configs' ) ) {
 					'type'      => 'control',
 					'transport' => 'postMessage',
 					'control'   => 'ast-color',
-					'required'  => array( ASTRA_THEME_SETTINGS . '[transparent-header-enable]', '==', true ),
 					'section'   => 'section-transparent-header',
 					'priority'  => 30,
 					'title'     => __( 'Bottom Border Color', 'astra-addon' ),
@@ -185,4 +186,4 @@ if ( ! class_exists( 'Astra_Customizer_Transparent_Header_Configs' ) ) {
 /**
  * Kicking this off by calling 'get_instance()' method
  */
-new Astra_Customizer_Transparent_Header_Configs;
+new Astra_Customizer_Transparent_Header_Configs();

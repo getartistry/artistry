@@ -2,12 +2,58 @@
 /**
  * Booster for WooCommerce - Functions - General
  *
- * @version 3.7.0
+ * @version 4.0.0
  * @author  Algoritmika Ltd.
  * @todo    add `wcj_add_actions()` and `wcj_add_filters()`
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
+
+if ( ! function_exists( 'wcj_range_match' ) ) {
+	/**
+	 * wcj_range_match.
+	 *
+	 * @version 4.0.0
+	 * @since   3.4.0
+	 */
+	function wcj_range_match( $postcode_range, $postcode_to_check ) {
+		$postcode_range = explode( '...', $postcode_range );
+		return ( 2 === count( $postcode_range ) && $postcode_to_check >= $postcode_range[0] && $postcode_to_check <= $postcode_range[1] );
+	}
+}
+
+if ( ! function_exists( 'wcj_check_postcode' ) ) {
+	/**
+	 * wcj_check_postcode.
+	 *
+	 * @version 4.0.0
+	 * @since   3.4.0
+	 */
+	function wcj_check_postcode( $postcode_to_check, $postcodes ) {
+		foreach ( $postcodes as $postcode ) {
+			if (
+				( $postcode === $postcode_to_check ) ||
+				( false !== strpos( $postcode, '*' )   && fnmatch( $postcode, $postcode_to_check ) ) ||
+				( false !== strpos( $postcode, '...' ) && wcj_range_match( $postcode, $postcode_to_check ) )
+			) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
+if ( ! function_exists( 'wcj_help_tip' ) ) {
+	/**
+	 * wcj_help_tip.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 */
+	function wcj_help_tip( $text ) {
+		return ' <img style="display:inline;" class="wcj-question-icon" src="' . wcj_plugin_url() . '/assets/images/question-icon.png' . '" title="' . esc_html( $text ) . '">';
+	}
+}
 
 if ( ! function_exists( 'wcj_get_wpml_default_language' ) ) {
 	/**
@@ -323,11 +369,13 @@ if ( ! function_exists( 'wcj_wrap_in_wc_email_template' ) ) {
 	/**
 	 * wcj_wrap_in_wc_email_template.
 	 *
-	 * @version 3.1.0
+	 * @version 3.9.0
 	 * @since   3.1.0
 	 */
 	function wcj_wrap_in_wc_email_template( $content, $email_heading = '' ) {
-		return wcj_get_wc_email_part( 'header', $email_heading ) . $content . wcj_get_wc_email_part( 'footer' );
+		return wcj_get_wc_email_part( 'header', $email_heading ) .
+			$content .
+		str_replace( '{site_title}', wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ), wcj_get_wc_email_part( 'footer' ) );
 	}
 }
 
@@ -438,11 +486,11 @@ if ( ! function_exists( 'wcj_is_bot' ) ) {
 	/**
 	 * wcj_is_bot.
 	 *
-	 * @version 2.5.7
+	 * @version 3.9.0
 	 * @since   2.5.6
 	 */
 	function wcj_is_bot() {
-		return ( isset( $_SERVER['HTTP_USER_AGENT'] ) && preg_match( '/Google-Structured-Data-Testing-Tool|bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT'] ) ) ? true : false;
+		return ( isset( $_SERVER['HTTP_USER_AGENT'] ) && preg_match( '/Google-Structured-Data-Testing-Tool|bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT'] ) );
 	}
 }
 
@@ -688,13 +736,21 @@ if ( ! function_exists( 'wcj_get_select_options' ) ) {
 
 if ( ! function_exists( 'wcj_is_frontend' ) ) {
 	/*
-	 * is_frontend()
+	 * wcj_is_frontend()
 	 *
-	 * @since  2.2.6
+	 * @since  4.0.0
 	 * @return boolean
 	 */
 	function wcj_is_frontend() {
-		return ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) );
+		if ( ! is_admin() ) {
+			return true;
+		} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+			return ( ! isset( $_REQUEST['action'] ) || ! is_string( $_REQUEST['action'] ) || ! in_array( $_REQUEST['action'], array(
+					'woocommerce_load_variations',
+				) ) );
+		} else {
+			return false;
+		}
 	}
 }
 
@@ -702,23 +758,23 @@ if ( ! function_exists( 'wcj_get_wcj_uploads_dir' ) ) {
 	/**
 	 * wcj_get_wcj_uploads_dir.
 	 *
-	 * @version 2.9.0
+	 * @version 3.9.0
 	 * @todo    no need to `mkdir` after `wcj_get_wcj_uploads_dir`
 	 */
-	function wcj_get_wcj_uploads_dir( $subdir = '' ) {
+	function wcj_get_wcj_uploads_dir( $subdir = '', $do_mkdir = true ) {
 		$upload_dir = wp_upload_dir();
 		$upload_dir = $upload_dir['basedir'];
 		$upload_dir = $upload_dir . '/woocommerce_uploads';
-		if ( ! file_exists( $upload_dir ) ) {
+		if ( $do_mkdir && ! file_exists( $upload_dir ) ) {
 			mkdir( $upload_dir, 0755, true );
 		}
 		$upload_dir = $upload_dir . '/wcj_uploads';
-		if ( ! file_exists( $upload_dir ) ) {
+		if ( $do_mkdir && ! file_exists( $upload_dir ) ) {
 			mkdir( $upload_dir, 0755, true );
 		}
 		if ( '' != $subdir ) {
 			$upload_dir = $upload_dir . '/' . $subdir;
-			if ( ! file_exists( $upload_dir ) ) {
+			if ( $do_mkdir && ! file_exists( $upload_dir ) ) {
 				mkdir( $upload_dir, 0755, true );
 			}
 		}

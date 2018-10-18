@@ -50,7 +50,7 @@ if ( ! class_exists( 'BSF_Core_Update' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		static public function init() {
+		public static function init() {
 			do_action( 'astra_update_before' );
 
 			// Get auto saved version number.

@@ -24,7 +24,7 @@ class Jet_Elements_Contact_Form7 extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-14';
+		return 'jetelements-icon-13';
 	}
 
 	public function get_categories() {
@@ -39,12 +39,31 @@ class Jet_Elements_Contact_Form7 extends Jet_Elements_Base {
 			)
 		);
 
+		$avaliable_forms = $this->get_availbale_forms();
+
+		$active_form = '';
+
+		if ( ! empty( $avaliable_forms ) ) {
+			$active_form = array_keys( $avaliable_forms )[0];
+		}
+
 		$this->add_control( 'form_shortcode', array(
 			'label'   => esc_html__( 'Select Form', 'jet-elements' ),
 			'type'    => Controls_Manager::SELECT,
-			'default' => '',
-			'options' => $this->get_availbale_forms(),
+			'default' => $active_form,
+			'options' => $avaliable_forms,
 		) );
+
+		$this->add_control(
+			'custom_layout',
+			array(
+				'type' => Controls_Manager::RAW_HTML,
+				'raw'  => sprintf(
+					esc_html__( 'In case you want to create the more complex contact form layout, please, feel free to use %s tool', 'jet-elements' ),
+					'<a target="_blank" href="https://crocoblock.com/contact-form-7-layout-builder/">' . esc_html__( 'Contact Form 7 Layout Builder', 'jet-elements' ) . '</a>'
+				)
+			)
+		);
 
 		$this->end_controls_section();
 
@@ -373,9 +392,8 @@ class Jet_Elements_Contact_Form7 extends Jet_Elements_Base {
 				'type'        => Controls_Manager::NUMBER,
 				'default'     => '',
 				'selectors'   => array(
-					'{{WRAPPER}} .wpcf7 .wpcf7-form-control.wpcf7-textarea' => 'height: {{VALUE}}px;',
+					'{{WRAPPER}} .wpcf7 .wpcf7-form-control.wpcf7-textarea' => 'height: {{VALUE}}px; min-height: {{VALUE}}px;',
 				),
-
 			)
 		);
 
@@ -433,6 +451,9 @@ class Jet_Elements_Contact_Form7 extends Jet_Elements_Base {
 				'title'     => _x( 'Background Color', 'Background Control', 'jet-elements' ),
 				'selectors' => array(
 					'{{WRAPPER}} .wpcf7 input.wpcf7-submit' => 'background-color: {{VALUE}};',
+				),
+				'condition' => array(
+					'submit_bg' => array( 'color', 'gradient' ),
 				),
 			)
 		);
@@ -682,6 +703,9 @@ class Jet_Elements_Contact_Form7 extends Jet_Elements_Base {
 				'selectors' => array(
 					'{{WRAPPER}} .wpcf7 input.wpcf7-submit:hover' => 'background-color: {{VALUE}};',
 				),
+				'condition' => array(
+					'submit_hover_bg' => array( 'color', 'gradient' ),
+				),
 			)
 		);
 
@@ -929,6 +953,9 @@ class Jet_Elements_Contact_Form7 extends Jet_Elements_Base {
 				'title'     => _x( 'Background Color', 'Background Control', 'jet-elements' ),
 				'selectors' => array(
 					'{{WRAPPER}} .wpcf7 input.wpcf7-submit:focus' => 'background-color: {{VALUE}};',
+				),
+				'condition' => array(
+					'submit_focus_bg' => array( 'color', 'gradient' ),
 				),
 			)
 		);
@@ -1474,6 +1501,11 @@ class Jet_Elements_Contact_Form7 extends Jet_Elements_Base {
 		return $result;
 	}
 
+	/**
+	 * [render description]
+	 *
+	 * @return [type] [description]
+	 */
 	protected function render() {
 
 		$settings = $this->get_settings();
@@ -1482,8 +1514,15 @@ class Jet_Elements_Contact_Form7 extends Jet_Elements_Base {
 
 		$this->__open_wrap();
 
+		$avaliable_forms = $this->get_availbale_forms();
+
 		$shortcode = $this->get_settings( 'form_shortcode' );
-		$data      = explode( '::', $shortcode );
+
+		if ( ! array_key_exists( $shortcode, $avaliable_forms ) ) {
+			$shortcode = array_keys( $avaliable_forms )[0];
+		}
+
+		$data = explode( '::', $shortcode );
 
 		if ( ! empty( $data ) && 2 === count( $data ) ) {
 			echo do_shortcode( sprintf( '[contact-form-7 id="%1$d" title="%2$s"]', $data[0], $data[1] ) );

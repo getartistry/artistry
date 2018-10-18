@@ -14,7 +14,7 @@ class Toolset_Date extends Toolset_Base {
 	}
 
 	public function get_title() {
-		return __( 'Toolset Date Field', 'elementor-pro' );
+		return __( 'Toolset', 'elementor-pro' ) . ' ' . __( 'Date Field', 'elementor-pro' );
 	}
 
 	public function render() {

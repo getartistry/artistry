@@ -16,7 +16,7 @@ class Toolset_Gallery extends Data_Tag {
 	}
 
 	public function get_title() {
-		return __( 'Toolset Gallery Field', 'elementor-pro' );
+		return __( 'Toolset', 'elementor-pro' ) . ' ' . __( 'Gallery Field', 'elementor-pro' );
 	}
 
 	public function get_categories() {

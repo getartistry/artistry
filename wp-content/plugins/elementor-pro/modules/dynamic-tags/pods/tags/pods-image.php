@@ -16,7 +16,7 @@ class Pods_Image extends Data_Tag {
 	}
 
 	public function get_title() {
-		return __( 'Pods Image Field', 'elementor-pro' );
+		return __( 'Pods', 'elementor-pro' ) . ' ' . __( 'Image Field', 'elementor-pro' );
 	}
 
 	public function get_group() {

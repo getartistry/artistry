@@ -1,6 +1,0 @@
-{
-    "require": {
-        "mautic/api-library": "^2.10",
-        "automattic/woocommerce": "^1.3"
-    }
-}

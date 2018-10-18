@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Image_Button_Widget extends Widget_Base
-{
+class Premium_Image_Button extends Widget_Base {
     public function get_name() {
         return 'premium-addon-image-button';
     }
@@ -722,10 +721,10 @@ class Premium_Image_Button_Widget extends Widget_Base
         $this->end_controls_section();
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
+        
         $this->add_inline_editing_attributes( 'premium_image_button_text' );
         
         if($settings['premium_image_button_link_selection'] == 'url'){
@@ -754,16 +753,97 @@ class Premium_Image_Button_Widget extends Widget_Base
             $style_dir = 'premium-image-button-overlap-effect-' . $settings['premium_image_button_style5_dir'];
         }
 
-?>
-<div class="premium-image-button-container">
-    <a class="premium-image-button  <?php echo esc_attr($button_size); ?> <?php echo esc_attr($style_dir); ?>" <?php if(!empty($image_link)) : ?>href="<?php echo esc_url($image_link); ?>"<?php endif; ?><?php if(!empty($settings['premium_image_button_link']['is_external'])) : ?>target="_blank"<?php endif; ?><?php if(!empty($settings['premium_image_button_link']['nofollow'])) : ?>rel="nofollow"<?php endif; ?><?php if(!empty($settings['premium_image_button_event_function']) && $settings['premium_image_button_event_switcher']) : ?> onclick="<?php echo esc_js($image_event); ?>"<?php endif ?>><div class="premium-image-button-text-icon-wrapper"><?php if($settings['premium_image_button_icon_switcher'] && $settings['premium_image_button_hover_effect'] != 'style4' &&$settings['premium_image_button_icon_position'] == 'before' &&!empty($settings['premium_image_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?><span <?php echo $this->get_render_attribute_string( 'premium_image_button_text' ); ?>><?php echo $button_text; ?></span><?php if($settings['premium_image_button_icon_switcher'] && $settings['premium_image_button_hover_effect'] != 'style4' &&$settings['premium_image_button_icon_position'] == 'after' && !empty($settings['premium_image_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?></div>
-    <?php if($settings['premium_image_button_hover_effect'] == 'style4') : ?><div class="premium-image-button-style4-icon-wrapper <?php echo esc_attr($settings['premium_image_button_style4_dir']); ?>"><i class="fa <?php echo esc_attr($settings['premium_image_button_style4_icon_selection']); ?>"></i></div><?php endif; ?>
-    </a>
+    ?>
+    <div class="premium-image-button-container">
+        <a class="premium-image-button <?php echo esc_attr( $button_size ); ?> <?php echo esc_attr( $style_dir ); ?>" 
+            <?php if( ! empty( $image_link ) ) : ?> href="<?php echo esc_url( $image_link ); ?>" <?php endif; ?>
+            <?php if( ! empty( $settings['premium_image_button_link']['is_external'] ) ) : ?> target="_blank" <?php endif; ?>
+            <?php if( ! empty( $settings['premium_image_button_link']['nofollow'] ) ) : ?> rel="nofollow" <?php endif; ?>
+            <?php if( ! empty( $settings['premium_image_button_event_function'] ) && $settings['premium_image_button_event_switcher'] ) : ?> onclick="<?php echo $image_event; ?>"<?php endif ?>>
+        <div class="premium-image-button-text-icon-wrapper">
+            <?php if( $settings['premium_image_button_icon_switcher'] &&
+                $settings['premium_image_button_hover_effect'] != 'style4' &&
+                $settings['premium_image_button_icon_position'] == 'before' &&
+                ! empty( $settings['premium_image_button_icon_selection'] ) ) :
+            ?>
+                <i class="fa <?php echo esc_attr( $button_icon ); ?>"></i>
+            <?php endif; ?>
+                <span <?php echo $this->get_render_attribute_string( 'premium_image_button_text' ); ?>>
+                    <?php echo $button_text; ?>
+                </span>
+            <?php if( $settings['premium_image_button_icon_switcher'] &&
+                $settings['premium_image_button_hover_effect'] != 'style4' && 
+                $settings['premium_image_button_icon_position'] == 'after' &&
+                ! empty( $settings['premium_image_button_icon_selection'] ) ) :
+            ?>
+                <i class="fa <?php echo esc_attr( $button_icon ); ?>"></i>
+            <?php endif; ?>
+        </div>
+        <?php if( $settings['premium_image_button_hover_effect'] == 'style4') : ?>
+            <div class="premium-image-button-style4-icon-wrapper <?php echo esc_attr( $settings['premium_image_button_style4_dir'] ); ?>">
+                <i class="fa <?php echo esc_attr($settings['premium_image_button_style4_icon_selection']); ?>"></i>
+            </div>
+        <?php endif; ?>
+        </a>
+    </div>
     
-</div>
-    
-
     <?php
     }
+    
+    protected function _content_template() {
+        ?>
+        <#
+        
+        view.addInlineEditingAttributes( 'premium_image_button_text' );
+        
+        var buttonText = settings.premium_image_button_text,
+            buttonUrl,
+            styleDir,
+            slideIcon,
+            buttonSize = 'premium-image-button-' + settings.premium_image_button_size,
+            buttonEvent = settings.premium_image_button_event_function,
+            buttonIcon = settings.premium_image_button_icon_selection;
+        
+        if( 'url' == settings.premium_image_button_link_selection ) {
+            buttonUrl = settings.premium_image_button_link.url;
+        } else {
+            buttonUrl = settings.premium_image_button_existing_link;
+        }
+        
+        if ( 'none' == settings.premium_image_button_hover_effect ) {
+            styleDir = 'premium-button-none';
+        } else if( 'style1' == settings.premium_image_button_hover_effect ) {
+            styleDir = 'premium-image-button-style1-' + settings.premium_image_button_style1_dir;
+        } else if ( 'style3' == settings.premium_image_button_hover_effect ) {
+            styleDir = 'premium-image-button-diagonal-effect-' + settings.premium_image_button_style3_dir;
+        } else if ( 'style4' == settings.premium_image_button_hover_effect ) {
+            styleDir = 'premium-image-button-style4-' + settings.premium_image_button_style4_dir;
+            slideIcon = settings.premium_image_button_style4_icon_selection;
+        } else if ( 'style5' == settings.premium_image_button_hover_effect ){
+            styleDir = 'premium-image-button-overlap-effect-' + settings.premium_image_button_style5_dir;
+        }
+        
+        #>
+        
+        <div class="premium-image-button-container">
+            <a class="premium-image-button  {{ buttonSize }} {{ styleDir }}" href="{{ buttonUrl }}" onclick="{{ buttonEvent }}">
+                <div class="premium-image-button-text-icon-wrapper">
+                    <# if( settings.premium_image_button_icon_switcher && 'before' == settings.premium_image_button_icon_position &&  'style4' != settings.premium_image_button_hover_effect && '' != settings.premium_image_button_icon_selection ) { #>
+                        <i class="fa {{ buttonIcon }}"></i>
+                    <# } #>
+                    <span {{{ view.getRenderAttributeString('premium_image_button_text') }}}>{{{ buttonText }}}</span>
+                    <# if( settings.premium_image_button_icon_switcher && 'after' == settings.premium_image_button_icon_position &&  'style4' != settings.premium_image_button_hover_effect && '' != settings.premium_image_button_icon_selection ) { #>
+                        <i class="fa {{ buttonIcon }}"></i>
+                    <# } #>
+                </div>
+                <# if( 'style4' == settings.premium_image_button_hover_effect ) { #>
+                    <div class="premium-image-button-style4-icon-wrapper {{ settings.premium_image_button_style4_dir }}">
+                        <i class="fa {{ slideIcon }}"></i>
+                    </div>
+                <# } #>
+            </a>
+        </div>
+        
+        <?php
+    }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Image_Button_Widget());

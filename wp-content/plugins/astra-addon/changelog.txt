@@ -1,3 +1,78 @@
+v1.6.1
+- Improvement: Remove link pointer animation styles. We will work on these to get better animations that can be provided from the theme.
+- Add option to set border color for submenu item.
+
+v1.6.0
+- New: Introducing advanced Nav Menu addon. Check out the changelog of 1.6.0-beta/rc for all the new changes.
+- Fix: Transition delay different for nav menu hover colors.
+- Fix: Page Header logo width not working.
+- Fix: Duplicate border for a full-width mega menu.
+- Fix: Horizontal scroll appears for a full-width mega menu.
+
+v1.6.0-rc.3
+- New: Link for product title in WooCommerce quick view
+- Fix: Sub menu border not working 
+- Fix: Menu sortable not working 
+- Fix: Full-width mega menu not working
+- Fix: Top border getting applied to all the four sides of submenu container
+- Fix: 100% Width not getting applied for the Mega Menu in IE10 
+- Fix: Horizontal scroll on the page when the Mega Menu is enabled
+- Fix: WooCommerce product Quick view accepts order value more than stock value
+- Fix: Center header layout with custom header breaks on IE11
+- Fix: Mega Menu content width not getting applied in IE11
+
+v1.6.0-rc.2
+- Fix: Enable Mega Menu option not visible in popup.
+- Fix: Megamenu not working correctly in sticky header "hide when scrolling down" option is selected.
+- Fix: Custom menu item is not center aligned when using submenu below header filter.
+- Fix: PHP Notice due to link pointer style CSS not loaded in correct WordPress action.
+- Fix: WooCommerce - External/Affiliate product issue with Ajax Add to Cart.
+- Fix: Background image displayed twice for fullwidth mega menu.
+- Fix: Highlighted label should be center aligned
+
+v1.6.0-rc.1
+- Improvement: updated design of the navigation menu settings popup.
+- Fix: Elementor does not work if `no-toggle` menu style is selected and the section 1/section 2 is not set for Header Sections.
+- Fix: Sale bubble styling is not working with woocommerce shortcode.
+- Fix: Mobile menu submenu icon alignment is missing when we set label to the main menu in mobile devices.
+
+v1.6.0-beta.5
+- Fix: PHP Fatal error if beta version of the addon is updated before the theme is udpated due to missing frunction from theme.
+
+v1.6.0-beta.4
+- New: Added widget support for Mega Menu.
+- Improvement: Primary Submenu, Header Sections Submenu border option moved from Colors and Backgrounds to Layout section.
+- Fix: Space Outside Body given in % for top not working with Sticky Header.
+
+v1.6.0-beta.2
+- New: Convert menu item into heading option for Mega Menu.
+- New: Spacing, Typography, Color options for the mega menu headings.
+- Improvement: Categorized the admin options for mega menu in WP Admin -> Menus.
+- Fix: Color options compatibility with Mega Menu.
+
+v1.6.0-beta.1
+- New: Introducing advanced Nav Menu addon. Create Mega Menus natively from Astra Pro.
+- New: Mega Menu support for above and below header.
+
+v1.5.2
+- Fix: Hide notice displayed for activating the license for Astra Theme.
+- Fix: Sticky header mobile and tablet colors not woking when transparent header is enabled.
+
+v1.5.1
+- New: Support for automatic beta updates for Astra Pro and Astra Theme. Read more about here.
+- Fix: Header Cover search when main header menu is opened would cover header and menu together. Now it only covers the header.
+- Fix: Flyout menu not taking full window height on some mobile devices.
+- Fix: Target rules in custom layouts and page headers not displaying post types without taxanomies.
+
+v1.5.0
+- New: Search styles - Slide search, Fullscreen Search, Header Cover Search, Search Box.
+- New: Blog Pro - Image size control for blog archive and single post
+- New: Added filter `astra_addon_get_white_labels` to change the white label settings.
+- Fix: Transparent Header makes the search bar transparent.
+- Fix: Font size and line height for h2 not working.
+- Fix: Mobile flyout Menu Hiding on Safari iOS when sticky header is activated.
+- Fix: Brizy page builder not working when creating layouts in custom layouts addon.
+
 v1.4.7
 - Fix: Correctly sanitize the font-weight control in the Astra Customizer.
 

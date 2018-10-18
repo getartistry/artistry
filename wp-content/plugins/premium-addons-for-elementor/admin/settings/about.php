@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 class PA_About {
 
     public function create_about_menu(){
-        if ( ! Helper_Functions::is_show_about()){
+        if ( ! Helper_Functions::is_show_about() ) {
                 add_submenu_page(
                 'premium-addons',
                 '',
@@ -20,15 +20,7 @@ class PA_About {
 
 	public function pa_about_page(){
         
-        $theme = wp_get_theme();
-        
-        if( $theme->parent() ) {
-            $theme_name = $theme->parent()->get('Name');
-        } else {
-            $theme_name = $theme->get('Name');
-        }
-        
-        $theme_name = sanitize_key( $theme_name );
+        $theme_name = Premium_Admin_Notices::get_installed_theme();
         
         $url = sprintf('https://premiumaddons.com/pro/?utm_source=about-page&utm_medium=wp-dash&utm_campaign=get-pro&utm_term=%s', $theme_name );
         
@@ -42,7 +34,7 @@ class PA_About {
          <h1 class="pa-title-main"><?php echo Helper_Functions::name(); ?></h1>
          <h3 class="pa-title-sub"><?php echo sprintf(__('Thank you for using %s. This plugin has been developed by %s and we hope you enjoy using it.','premium-addons-for-elementor'), Helper_Functions::name(),Helper_Functions::author()); ?></h3>
       </div>
-      <?php if( ! Helper_Functions::is_show_logo()) : ?>
+      <?php if( ! Helper_Functions::is_show_logo() ) : ?>
         <div class="pa-title-right">
             <img class="pa-logo" src="<?php echo PREMIUM_ADDONS_URL . 'admin/images/premium-addons-logo.png';?>">
         </div>
@@ -60,7 +52,7 @@ class PA_About {
                      <h4>What is Premium Addons?</h4>
                      <p>Premium Addons for Elementor extends Elementor Page Builder capabilities with many fully customizable widgets and addons that help you to build impressive websites with no coding required.</p>
                      <?php if( !defined('PREMIUM_PRO_ADDONS_VERSION') ) : ?>
-                     <p>Get more widgets and addons with <strong>Premium Addons Pro</strong> <a href="<?php echo esc_url( $url ); ?>" target="_blank" >Click Here</a> to know more.</p>
+                        <p>Get more widgets and addons with <strong>Premium Addons Pro</strong> <a href="<?php echo esc_url( $url ); ?>" target="_blank" >Click Here</a> to know more.</p>
                      <?php endif; ?>
                   </div>
                </div>

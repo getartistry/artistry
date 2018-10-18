@@ -28,9 +28,9 @@ class Elements_Plus extends \Elementor\Settings {
 		);
 
 		add_settings_field(
-			'checkbox_label',
-			__( 'Label <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_label_render' ],
+			'checkbox_audioigniter',
+			__( 'AudioIgniter <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_audioigniter_render' ],
 			'ElementsPlus',
 			'elements_plus_settings_section'
 		);
@@ -44,81 +44,9 @@ class Elements_Plus extends \Elementor\Settings {
 		);
 
 		add_settings_field(
-			'checkbox_justified',
-			__( 'Gallery <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_justified_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-
-		add_settings_field(
 			'checkbox_cta',
 			__( 'Call to Action <em>Plus!</em>', 'elements-plus' ),
 			[ $this, 'checkbox_cta_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-
-		add_settings_field(
-			'checkbox_maps',
-			__( 'Google Maps <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_maps_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-
-		add_settings_field(
-			'checkbox_audioigniter',
-			__( 'AudioIgniter <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_audioigniter_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-
-		add_settings_field(
-			'checkbox_video_slider',
-			__( 'YouTube Slideshow <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_video_slider_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-
-		add_settings_field(
-			'checkbox_preloader',
-			__( 'Preloader <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_preloader_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-
-		add_settings_field(
-			'checkbox_instagram',
-			__( 'Instagram <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_instagram_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-
-		add_settings_field(
-			'checkbox_tooltip',
-			__( 'Tooltip <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_tooltip_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-		
-		add_settings_field(
-			'checkbox_scheduled',
-			__( 'Scheduled <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_scheduled_render' ],
-			'ElementsPlus',
-			'elements_plus_settings_section'
-		);
-
-		add_settings_field(
-			'checkbox_icon',
-			__( 'Icon <em>Plus!</em>', 'elements-plus' ),
-			[ $this, 'checkbox_icon_render' ],
 			'ElementsPlus',
 			'elements_plus_settings_section'
 		);
@@ -132,9 +60,97 @@ class Elements_Plus extends \Elementor\Settings {
 		);
 
 		add_settings_field(
+			'checkbox_justified',
+			__( 'Gallery <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_justified_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_maps',
+			__( 'Google Maps <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_maps_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
 			'api_maps',
 			__( 'Google Maps API Key', 'elements-plus' ),
 			[ $this, 'api_maps_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_icon',
+			__( 'Icon <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_icon_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_image_comparison',
+			__( 'Image Comparison <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_image_comparison_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_image_hover_effects',
+			__( 'Image Hover Effects <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_image_hover_effects_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_instagram',
+			__( 'Instagram <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_instagram_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_label',
+			__( 'Label <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_label_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_preloader',
+			__( 'Preloader <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_preloader_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_scheduled',
+			__( 'Scheduled <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_scheduled_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+
+		add_settings_field(
+			'checkbox_tooltip',
+			__( 'Tooltip <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_tooltip_render' ],
+			'ElementsPlus',
+			'elements_plus_settings_section'
+		);
+	
+		add_settings_field(
+			'checkbox_video_slider',
+			__( 'YouTube Slideshow <em>Plus!</em>', 'elements-plus' ),
+			[ $this, 'checkbox_video_slider_render' ],
 			'ElementsPlus',
 			'elements_plus_settings_section'
 		);
@@ -148,22 +164,6 @@ class Elements_Plus extends \Elementor\Settings {
 			<input type='checkbox' name='elements_plus_settings[<?php echo esc_attr( $id ); ?>]' <?php checked( $options[ $id ] ); ?> value='1'>
 		<?php
 
-	}
-
-	function checkbox_label_render() {
-		$this->checkbox( 'checkbox_label' );
-	}
-
-	function checkbox_dual_input_render() {
-		$this->checkbox( 'checkbox_dual_input' );
-	}
-
-	function checkbox_justified_render() {
-		$this->checkbox( 'checkbox_justified' );
-	}
-
-	function checkbox_maps_render() {
-		$this->checkbox( 'checkbox_maps' );
 	}
 
 	function checkbox_audioigniter_render() {
@@ -181,12 +181,39 @@ class Elements_Plus extends \Elementor\Settings {
 		}
 	}
 
-	function checkbox_video_slider_render() {
-		$this->checkbox( 'checkbox_video_slider' );
+	function checkbox_dual_input_render() {
+		$this->checkbox( 'checkbox_dual_input' );
 	}
 
-	function checkbox_preloader_render() {
-		$this->checkbox( 'checkbox_preloader' );
+	function checkbox_cta_render() {
+		$this->checkbox( 'checkbox_cta' );
+	}
+
+	function checkbox_flipclock_render() {
+		$this->checkbox( 'checkbox_flipclock' );
+	}
+
+	function checkbox_justified_render() {
+		$this->checkbox( 'checkbox_justified' );
+	}
+
+	function checkbox_maps_render() {
+		$this->checkbox( 'checkbox_maps' );
+	}
+
+	function checkbox_icon_render() {
+		$this->checkbox( 'checkbox_icon' );
+	}
+
+	function checkbox_image_comparison_render() {
+		$this->checkbox( 'checkbox_image_comparison' );
+	}
+
+	function checkbox_image_hover_effects_render() {
+		$this->checkbox( 'checkbox_image_hover_effects' );
+	?>
+	<span><?php echo wp_kses(__('Caution: These effects are WebGL based and may hurt the performance of your pages. Do not use more than 4 - 5 instances of this widget in any given page. ', 'elements-plus'), ''); ?></span>
+	<?php		
 	}
 
 	function checkbox_instagram_render() {
@@ -204,26 +231,30 @@ class Elements_Plus extends \Elementor\Settings {
 		}
 	}
 
-	function checkbox_tooltip_render() {
-			$this->checkbox( 'checkbox_tooltip' );
-		?>
-			<span><?php echo wp_kses( __( 'This option will enable a tooltip section in the following Elementor default widgets: Heading, Button, Icon, and Icon Box.', 'elements-plus'), '' ); ?></span>
-		<?php
+	function checkbox_label_render() {
+		$this->checkbox( 'checkbox_label' );
 	}
-	
+
+	function checkbox_preloader_render() {
+		$this->checkbox( 'checkbox_preloader' );
+	}
+
 	function checkbox_scheduled_render() {
-			$this->checkbox( 'checkbox_scheduled' );
-		?>
-			<span><?php echo wp_kses( __( 'With this module you can set date/time-based display restrictions on every module available. Check the "Schedule" section in the "Advanced" tab of your modules.', 'elements-plus'), '' ); ?></span>
-		<?php
+		$this->checkbox( 'checkbox_scheduled' );
+	?>
+		<span><?php echo wp_kses( __( 'With this module you can set date/time-based display restrictions on every module available. Check the "Schedule" section in the "Advanced" tab of your modules.', 'elements-plus'), '' ); ?></span>
+	<?php
 	}
 
-	function checkbox_icon_render() {
-		$this->checkbox( 'checkbox_icon' );
+	function checkbox_tooltip_render() {
+		$this->checkbox( 'checkbox_tooltip' );
+	?>
+		<span><?php echo wp_kses( __( 'This option will enable a tooltip section in the following Elementor default widgets: Heading, Button, Icon, and Icon Box.', 'elements-plus'), '' ); ?></span>
+	<?php
 	}
 
-	function checkbox_flipclock_render() {
-		$this->checkbox( 'checkbox_flipclock' );
+	function checkbox_video_slider_render() {
+		$this->checkbox( 'checkbox_video_slider' );
 	}
 
 	function api_maps_render() {
@@ -246,10 +277,6 @@ class Elements_Plus extends \Elementor\Settings {
 		<input type='text' style="min-width: 350px;" name='elements_plus_settings[api_maps]' value="<?php echo esc_attr( $api_key ); ?>">
 		<?php
 
-	}
-
-	function checkbox_cta_render() {
-		$this->checkbox( 'checkbox_cta' );
 	}
 
 	function settings_section_callback() {
@@ -279,8 +306,8 @@ class Elements_Plus extends \Elementor\Settings {
 				</form>
 			</div><!-- /elements-plus-content -->
 			<div class="elements-plus-sidebar">
-				<a href="https://www.cssigniter.com/elementorism/"><img
-							src="<?php echo esc_url( ELEMENTS_PLUS_URL . 'assets/images/banner.png' ); ?>"
+				<a href="https://www.cssigniter.com/"><img
+							src="<?php echo esc_url( ELEMENTS_PLUS_URL . 'assets/images/banner2.jpg' ); ?>"
 							class="elements-plus-banner"/></a>
 			</div>
 

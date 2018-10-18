@@ -75,13 +75,27 @@ if ( ! class_exists( 'Jet_Elements_Assets' ) ) {
 				'1.3.0'
 			);
 
-			// Register vendor twentytwenty-css styles
+			// Register vendor juxtapose-css styles
 			wp_enqueue_style(
 				'jet-juxtapose-css',
 				jet_elements()->plugin_url( 'assets/css/lib/juxtapose/juxtapose.css' ),
 				false,
 				'1.3.0'
 			);
+
+			// Register vendor masonry.pkgd.min.js script
+			wp_register_script(
+				'jet-masonry-js',
+				jet_elements()->plugin_url( 'assets/js/lib/masonry-js/masonry.pkgd.min.js' ),
+				array(),
+				'4.2.1',
+				true
+			);
+
+			if ( jet_elements_integration()->in_elementor() ) {
+				// Enqueue mediaelement css only in the editor.
+				wp_enqueue_style( 'mediaelement' );
+			}
 		}
 
 		/**
@@ -117,7 +131,7 @@ if ( ! class_exists( 'Jet_Elements_Assets' ) ) {
 				true
 			);
 
-			// Register vendor isotope.js script (https://github.com/rnmp/salvattore)
+			// Register vendor salvattore.js script (https://github.com/rnmp/salvattore)
 			wp_register_script(
 				'jet-salvattore',
 				jet_elements()->plugin_url( 'assets/js/lib/salvattore/salvattore.min.js' ),
@@ -135,12 +149,21 @@ if ( ! class_exists( 'Jet_Elements_Assets' ) ) {
 				true
 			);
 
-			// Register vendor jquery.twentytwenty.js script
+			// Register vendor juxtapose.js script
 			wp_register_script(
 				'jet-juxtapose',
 				jet_elements()->plugin_url( 'assets/js/lib/juxtapose/juxtapose.min.js' ),
 				array(),
 				'1.3.0',
+				true
+			);
+
+			// Register vendor tablesorter.js script (https://github.com/Mottie/tablesorter)
+			wp_register_script(
+				'jquery-tablesorter',
+				jet_elements()->plugin_url( 'assets/js/lib/tablesorter/jquery.tablesorter.min.js' ),
+				array( 'jquery' ),
+				'2.30.7',
 				true
 			);
 		}

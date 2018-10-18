@@ -104,7 +104,7 @@ $server_message = get_option('uaf_server_msg');
                 <tr>
                 	<td>
                     	<ol>
-                        	<li>Get API key from <a href="http://dnesscarkey.com/font-convertor/api/" target="_blank">here</a>. Offer your contribution (Free for 1 font, $20 to $100) and get the API key. All API key comes with lifetime validity.<br/>
+                        	<li>Get the premium key from <a href="https://dineshkarki.com.np/use-any-font/api-key" target="_blank">here</a>. You can also generate Lite / Test API key from button above. <strong>Note : </strong> Lite / Test API only allow single font conversion.<br/>
                             <em><strong>Note:</strong> API key is needed to connect to our server for font conversion.</em> 
                             </li>
                             

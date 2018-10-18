@@ -101,6 +101,7 @@
 			$( document ).delegate( ".clear-cache", "click", ASTExtAdmin._clear_assets_cache );
 
 			$(document).on("change", "#ast-wl-hide-branding",ASTExtAdmin._enable_white_label );
+			$(document).on('click', '#astra_beta_updates', ASTExtAdmin._astra_beta_updates);
 
 			$( "#search-astra-addon" ).focus();
 			$( "#search-astra-addon" ).bind( "keyup input", ASTExtAdmin._search_modules );
@@ -121,6 +122,41 @@
 				show: {
 					duration: 200,
 				},
+			});
+		},
+
+		_astra_beta_updates: function(e)
+		{
+			var _this = $(this)
+			var status = _this.data('value');
+
+			if ( status == 'disable' ) {
+				newString = astraAddonModules.disableBetaUpdates;
+				newStatus = 'enable';
+			} else {
+				newString = astraAddonModules.enableBetaUpdates;
+				newStatus = 'disable';
+			}
+
+			_this.removeClass('install-now installed button-disabled updated-message')
+				.addClass('updating-message');
+
+			$.ajax({
+				url: astra.ajaxUrl,
+				type: 'POST',
+				data: {
+					'action': 'astra_beta_updates',
+					'status': newStatus,
+					'nonce': astraAddonModules.ajax_nonce,
+				},
+			})
+			.done(function(result) {
+				if (result.success) {
+					_this.html(newString).data('value', newStatus).removeClass('updating-message');
+				} else {
+					_this.removeClass('updating-message');
+
+				}
 			});
 		},
 

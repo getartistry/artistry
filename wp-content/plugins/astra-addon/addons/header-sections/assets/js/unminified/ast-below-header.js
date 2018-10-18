@@ -58,16 +58,19 @@
 				}
 		    }, false);
 			
-			var parentList = __main_header_all[i].querySelectorAll( 'ul.ast-below-header-menu li' );
-			AstraNavigationMenu( parentList );
-		 	
-		 	if ( document.querySelector("header.site-header").classList.contains("ast-menu-toggle-link") ) {
-		 	 	var astra_menu_toggle = __main_header_all[i].querySelectorAll( '.ast-header-break-point .ast-below-header-menu .ast-menu-toggle, .ast-header-break-point .ast-below-header-menu .menu-item-has-children > a' );
-		 	} else {
-		 	  	var astra_menu_toggle = __main_header_all[i].querySelectorAll( 'ul.ast-below-header-menu .ast-menu-toggle' );
-		 	}
+			if( 'undefined' !== typeof __main_header_all[i] ) {
 
-			AstraToggleMenu( astra_menu_toggle );
+				var parentList = __main_header_all[i].querySelectorAll( 'ul.ast-below-header-menu li' );
+				AstraNavigationMenu( parentList );
+			 	
+			 	if ( document.querySelector("header.site-header").classList.contains("ast-menu-toggle-link") ) {
+			 	 	var astra_menu_toggle = __main_header_all[i].querySelectorAll( '.ast-header-break-point .ast-below-header-menu .ast-menu-toggle, .ast-header-break-point .ast-below-header-menu .menu-item-has-children > a' );
+			 	} else {
+			 	  	var astra_menu_toggle = __main_header_all[i].querySelectorAll( 'ul.ast-below-header-menu .ast-menu-toggle' );
+			 	}
+
+				AstraToggleMenu( astra_menu_toggle );
+			}
 
 
 		};

@@ -19,7 +19,9 @@ global $post, $product, $woocommerce;
 		$attachment_ids = $product->get_gallery_image_ids();
 		$props          = wc_get_product_attachment_props( get_post_thumbnail_id(), $post );
 		$image          = get_the_post_thumbnail(
-			$post->ID, 'shop_single', array(
+			$post->ID,
+			'shop_single',
+			array(
 				'title' => $props['title'],
 				'alt'   => $props['alt'],
 			)

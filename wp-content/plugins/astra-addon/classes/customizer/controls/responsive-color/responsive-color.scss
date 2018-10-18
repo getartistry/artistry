@@ -1,4 +1,15 @@
 .customize-control-ast-responsive-color{
+
+	.wp-picker-container {
+	    float: left;
+	}
+	.ast-responsive-color.wp-color-picker {
+        width: 96px !important;
+        line-height: 17px;
+    }
+    .wp-picker-clear {
+		margin-left: 2%;
+	}
 	.customize-control-content {
 		.wp-picker-container{
 			display: none;

@@ -106,6 +106,38 @@ class Smart_Manager_Admin_Welcome {
 				.sm-welcome.about-wrap .feature-section {
 					padding-bottom: 5px;
 				}
+				#sm_promo_msg_content a {
+					color: #A3B745 !important;
+				}
+
+				#sm_promo_msg_content .button-primary {
+					background: #a3b745 !important;
+					border-color: #829237 #727f30 #727f30 !important;
+					color: #fff !important;
+					box-shadow: 0 1px 0 #727f30 !important;
+					text-shadow: 0 -1px 1px #727f30, 1px 0 1px #727f30, 0 1px 1px #727f30, -1px 0 1px #727f30 !important;
+
+					animation-duration: 5s;
+					animation-iteration-count: infinite;
+					animation-name: shake-hv;
+					animation-timing-function: ease-in-out;
+				}
+
+				@keyframes shake-hv {
+					0%, 80% {
+						transform: translate(0, 0) rotate(0); }
+					60%, 70% {
+						transform: translate(0, -0.5px) rotate(2.5deg); }
+					62%, 72% {
+						transform: translate(0, 1.5px) rotate(-0.5deg); }
+					65%, 75% {
+						transform: translate(0, -1.5px) rotate(2.5deg); }
+					67%, 77% {
+						transform: translate(0, 2.5px) rotate(-1.5deg); } }
+
+				#sm_promo_msg_content input[type=checkbox]:checked:before {
+					color: #A3B745 !important;
+				}
 				#sm_promo_valid_msg {
 					text-align: center;
 					padding-left: 0.5em;
@@ -113,7 +145,7 @@ class Smart_Manager_Admin_Welcome {
 					float: left;
 					padding-top: 0.25em;
 					font-style: italic;
-					color: #E34F4C;
+					color: #A3B745;
 				}
 				/*]]>*/
 			</style>
@@ -146,12 +178,12 @@ class Smart_Manager_Admin_Welcome {
             	add_thickbox();
         	}
 
-            if ( ! method_exists( 'StoreApps_Upgrade_2_8', 'support_ticket_content' ) ) return;
+            if ( ! method_exists( 'StoreApps_Upgrade_3_0', 'support_ticket_content' ) ) return;
 
             $plugin_data = get_plugin_data( self::$plugin_file );
             $license_key = get_site_option( self::$prefix.'_license_key' );
 
-            StoreApps_Upgrade_2_8::support_ticket_content( self::$prefix, self::$sku, $plugin_data, $license_key, self::$text_domain );
+            StoreApps_Upgrade_3_0::support_ticket_content( self::$prefix, self::$sku, $plugin_data, $license_key, self::$text_domain );
     }
 
 	/**

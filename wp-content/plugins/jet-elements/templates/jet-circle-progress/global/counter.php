@@ -18,7 +18,7 @@ $labels_position = $this->get_settings( 'labels_position' );
 	<?php if ( $labels_position === $this->__processed_item ) { ?>
 	<div class="circle-counter__content">
 		<?php $this->__html( 'title', '<div class="circle-counter__title">%s</div>' ); ?>
-		<?php $this->__html( 'subtitle', '<span class="circle-counter__subtitle">%s</span>' ); ?>
+		<?php $this->__html( 'subtitle', '<div class="circle-counter__subtitle">%s</div>' ); ?>
 	</div>
 	<?php } ?>
 </div>

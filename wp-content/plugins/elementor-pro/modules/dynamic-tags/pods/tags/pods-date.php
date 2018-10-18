@@ -14,7 +14,7 @@ class Pods_Date extends Pods_Base {
 	}
 
 	public function get_title() {
-		return __( 'Pods Date Field', 'elementor-pro' );
+		return __( 'Pods', 'elementor-pro' ) . ' ' . __( 'Date Field', 'elementor-pro' );
 	}
 
 	public function render() {

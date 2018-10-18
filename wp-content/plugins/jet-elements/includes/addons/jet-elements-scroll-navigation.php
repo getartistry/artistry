@@ -29,7 +29,7 @@ class Jet_Elements_Scroll_Navigation extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-35';
+		return 'jetelements-icon-32';
 	}
 
 	public function get_categories() {
@@ -158,6 +158,15 @@ class Jet_Elements_Scroll_Navigation extends Jet_Elements_Base {
 				'label'   => esc_html__( 'Scroll Speed', 'jet-elements' ),
 				'type'    => Controls_Manager::NUMBER,
 				'default' => 500,
+			)
+		);
+
+		$this->add_control(
+			'offset',
+			array(
+				'label'   => esc_html__( 'Scroll Offset', 'jet-elements' ),
+				'type'    => Controls_Manager::NUMBER,
+				'default' => 1,
 			)
 		);
 
@@ -492,6 +501,7 @@ class Jet_Elements_Scroll_Navigation extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['item'] . ' ' . $css_scheme['dots'],
 				'fields_options' => array(
 					'color' => array(
@@ -517,6 +527,7 @@ class Jet_Elements_Scroll_Navigation extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_invert',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['item'] . '.invert ' . $css_scheme['dots'],
 				'fields_options' => array(
 					'color' => array(
@@ -542,6 +553,7 @@ class Jet_Elements_Scroll_Navigation extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_hover',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['item'] . ':hover ' . $css_scheme['dots'],
 				'fields_options' => array(
 					'color' => array(
@@ -567,6 +579,7 @@ class Jet_Elements_Scroll_Navigation extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_active',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['item'] . '.active ' . $css_scheme['dots'],
 				'fields_options' => array(
 					'color' => array(
@@ -586,12 +599,13 @@ class Jet_Elements_Scroll_Navigation extends Jet_Elements_Base {
 		$this->add_responsive_control(
 			'dots_padding',
 			array(
-				'label'      => __( 'Padding', 'jet-elements' ),
+				'label'      => __( 'Dots Padding', 'jet-elements' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['dots'] => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+				'separator' => 'before',
 			)
 		);
 
@@ -629,9 +643,10 @@ class Jet_Elements_Scroll_Navigation extends Jet_Elements_Base {
 		$settings = $this->get_settings();
 
 		$instance_settings = array(
-			'position'         => $settings['position'],
-			'speed'            => absint( $settings['speed'] ),
-			'sectionSwitch'    => filter_var( $settings['full_section_switch'], FILTER_VALIDATE_BOOLEAN ),
+			'position'      => $settings['position'],
+			'speed'         => absint( $settings['speed'] ),
+			'offset'        => absint( $settings['offset'] ),
+			'sectionSwitch' => filter_var( $settings['full_section_switch'], FILTER_VALIDATE_BOOLEAN ),
 		);
 
 		$instance_settings = json_encode( $instance_settings );

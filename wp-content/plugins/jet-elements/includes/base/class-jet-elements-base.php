@@ -76,6 +76,7 @@ abstract class Jet_Elements_Base extends Widget_Base {
 	public function __get_render_looped_template( $templates = array(), $setting = null ) {
 
 		$loop = $this->get_settings( $setting );
+		$loop = apply_filters( 'jet-elements/widget/loop-items', $loop, $setting, $this );
 
 		if ( empty( $loop ) ) {
 			return;

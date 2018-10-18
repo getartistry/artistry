@@ -334,10 +334,7 @@ body #quiz_list > div:nth-of-type(odd) {
 body #course_list > div h4 > a,
 body #lessons_list > div h4 > a,
 body #quiz_list > div h4 > a {
-  padding: 8px 2.5em;
-  margin-right: -2.5em;
-  margin-right: -webkit-calc( -2.5em - 1px);
-  margin-right: calc( -2.5em - 1px);
+  padding: 8px 0 8px 2.5em;
   position: relative;
 }
 

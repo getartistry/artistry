@@ -151,7 +151,8 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 			$atts = shortcode_atts(
 				array(
 					'direction' => 'bottom left',
-				), $atts
+				),
+				$atts
 			);
 
 			$output                     = '';
@@ -209,8 +210,14 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 		 * @return array
 		 */
 		function shop_js_localize( $localize ) {
-
 			global $wp_query;
+
+			$single_ajax_add_to_cart = astra_get_option( 'single-product-ajax-add-to-cart' );
+			$product                 = wc_get_product( get_the_id() );
+			if ( is_singular( 'product' ) && false !== $product && $product->is_type( 'external' ) ) {
+				// Disable Ajax Add to Cart feature for External/Affiliate product.
+				$single_ajax_add_to_cart = false;
+			}
 
 			$shop_pagination            = astra_get_option( 'shop-pagination' );
 			$shop_infinite_scroll_event = astra_get_option( 'shop-infinite-scroll-event' );
@@ -231,7 +238,7 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 			$localize['show_comments'] = __( 'Show Comments', 'astra-addon' );
 
 			$localize['shop_quick_view_enable']          = astra_get_option( 'shop-quick-view-enable' );
-			$localize['single_product_ajax_add_to_cart'] = astra_get_option( 'single-product-ajax-add-to-cart' );
+			$localize['single_product_ajax_add_to_cart'] = $single_ajax_add_to_cart;
 			$localize['is_cart']                         = is_cart();
 			$localize['is_single_product']               = is_product();
 			$localize['view_cart']                       = esc_attr__( 'View cart', 'astra-addon' );
@@ -239,6 +246,7 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 
 			return $localize;
 		}
+
 
 		/**
 		 * Infinite Posts Show on scroll
@@ -581,6 +589,25 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 		}
 
 		/**
+		 * Show the product title in the product loop.
+		 *
+		 * @param string $product_type product type.
+		 */
+		public function astra_woo_woocommerce_template_product_title( $product_type ) {
+
+			if ( 'quick-view' === $product_type ) {
+				echo '<a href="' . esc_url( get_the_permalink() ) . '" class="ast-loop-product__link">';
+			}
+
+			woocommerce_template_single_title();
+
+			if ( 'quick-view' === $product_type ) {
+				echo '</a>';
+			}
+
+		}
+
+		/**
 		 * Show the product title in the product loop. By default this is an H2.
 		 *
 		 * @param string $product_type product type.
@@ -599,7 +626,7 @@ if ( ! class_exists( 'ASTRA_Ext_WooCommerce_Markup' ) ) {
 							 * Add Product Title on single product page for all products.
 							 */
 							do_action( 'astra_woo_single_title_before' );
-							woocommerce_template_single_title();
+							$this->astra_woo_woocommerce_template_product_title( $product_type );
 							do_action( 'astra_woo_single_title_after' );
 							break;
 						case 'price':

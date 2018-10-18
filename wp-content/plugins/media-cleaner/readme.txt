@@ -3,7 +3,7 @@ Contributors: TigrouMeow, amekusa
 Tags: clean, delete, file, files, images, image, media, library, upload, clean, acf
 Requires at least: 4.8
 Tested up to: 4.9.8
-Stable tag: 5.0.0
+Stable tag: 5.0.2
 
 Clean your WordPress (broken media, unused media, files). It has its own trash and recovery features. Please read the description.
 
@@ -13,7 +13,7 @@ Clean your Media Library from the media which aren't used in any of your posts, 
 
 A tutorial is available on the official website, here: [Media Cleaner](https://meowapps.com/media-cleaner).
 
-**This tool is a knife. Do not use it if you don't have any backup, or if you don't know what it does. For backup, you can use such a plugin as [UpdraftPlus](https://updraftplus.com/?afref=460).**
+**This tool is a knife. Do not use it if you don't have any backup, or if you don't know what it does. For backup, I recommend use the excellent service called [BlogVault](https://meow.click/blogvault).**
 
 **SPECIAL PLUGIN**. Such a plugin is difficult to create and to maintain. If you understand WordPress, you probably know why. This plugin does its best to help you. Learn how to use it and you will get awesome results.
 
@@ -42,7 +42,8 @@ The official FAQ is [here](https://meowapps.com/media-cleaner/faq/).
 
 == Changelog ==
 
-= 5.0.0 =
+= 5.0.2 =
+* Update: Remove UpdraftPlus.
 * Update: Slight code cleaning.
 * Update: Checkboxes are updated dynamically.
 * Info: Media Cleaner is better than ever by going through so many improvements and optimizations this year. The plugin has also been perfectly stable for a few weeks, so I have decided to change its version number. Please help this plugin survive by giving me a nice review, here: https://wordpress.org/support/plugin/meow-lightbox/reviews/?rate=5#new-post. Thank you :)

@@ -269,12 +269,10 @@ add_shortcode( 'oceanwp_current_user', 'oceanwp_current_user_shortcode' );
 if ( ! function_exists( 'oceanwp_woo_fragments' ) ) {
 
 	function oceanwp_woo_fragments( $fragments ) {
-		$text = oceanwp_tm_translation( 'owp_popup_bottom_text', get_theme_mod( 'owp_popup_bottom_text', '[oceanwp_woo_free_shipping_left]' ) );
 		$fragments['.wcmenucart-shortcode .wcmenucart-total'] = '<span class="wcmenucart-total">'. WC()->cart->get_cart_total() .'</span>';
 		$fragments['.wcmenucart-shortcode .wcmenucart-count'] = '<span class="wcmenucart-count">'. WC()->cart->get_cart_contents_count() .'</span>';
 		$fragments['.oceanwp-woo-total'] 			= '<span class="oceanwp-woo-total">' . WC()->cart->get_cart_total() . '</span>';
 	    $fragments['.oceanwp-woo-cart-count'] 		= '<span class="oceanwp-woo-cart-count">' . WC()->cart->get_cart_contents_count() . '</span>';
-	    $fragments['.oceanwp-woo-free-shipping'] 	= '<span class="oceanwp-woo-free-shipping">' . do_shortcode( $text ) . '</span>';
 	    return $fragments;
 	}
 
@@ -299,7 +297,7 @@ if ( ! function_exists( 'oceanwp_woo_cart_icon_shortcode' ) ) {
 		// Return if is in the Elementor edit mode, to avoid error
 		if ( class_exists( 'Elementor\Plugin' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-			return;
+			return esc_html__( 'This shortcode only works in front end', 'ocean-extra' );
 		}
 
 		extract( shortcode_atts( array(
@@ -449,7 +447,7 @@ if ( ! function_exists( 'oceanwp_woo_total_cart_shortcode' ) ) {
 		// Return if is in the Elementor edit mode, to avoid error
 		if ( class_exists( 'Elementor\Plugin' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-			return;
+			return esc_html__( 'This shortcode only works in front end', 'ocean-extra' );
 		}
 
 		$html  = '<span class="oceanwp-woo-total">';
@@ -481,7 +479,7 @@ if ( ! function_exists( 'oceanwp_woo_cart_items_shortcode' ) ) {
 		// Return if is in the Elementor edit mode, to avoid error
 		if ( class_exists( 'Elementor\Plugin' )
 			&& \Elementor\Plugin::$instance->editor->is_edit_mode() ) {
-			return;
+			return esc_html__( 'This shortcode only works in front end', 'ocean-extra' );
 		}
 
 		$html  = '<span class="oceanwp-woo-cart-count">';
@@ -504,9 +502,8 @@ if ( ! function_exists( 'oceanwp_woo_free_shipping_left' ) ) {
 
 	function oceanwp_woo_free_shipping_left( $content, $content_reached, $multiply_by = 1 ) {
 
-		// Return if WooCommerce is not enabled or if admin to avoid error
-		if ( ! class_exists( 'WooCommerce' )
-			|| is_admin() ) {
+		// Return if WooCommerce is not enabled
+		if ( ! class_exists( 'WooCommerce' ) ) {
 			return;
 		}
 
@@ -573,24 +570,83 @@ if ( ! function_exists( 'oceanwp_woo_free_shipping_left_shortcode' ) ) {
 
 	function oceanwp_woo_free_shipping_left_shortcode( $atts, $content ) {
 
-		// Return if WooCommerce is not enabled or if admin to avoid error
-		if ( ! class_exists( 'WooCommerce' )
-			|| is_admin() ) {
+		// Return if WooCommerce is not enabled
+		if ( ! class_exists( 'WooCommerce' ) ) {
 			return;
 		}
 
-		extract( shortcode_atts( array(
-			'content' 			=> esc_html__( 'Buy for %left_to_free% more and get free shipping', 'ocean-extra' ),
-			'content_reached' 	=> esc_html__( 'You have Free delivery!', 'ocean-extra' ),
-			'multiply_by' 		=> 1,
-		), $atts ) );
+		// Call the script
+		wp_enqueue_script( 'owp-free-shipping' );
 
-		return oceanwp_woo_free_shipping_left( '<span class="oceanwp-woo-free-shipping">'. $content .'</span>', '<span class="oceanwp-woo-free-shipping">'. $content_reached .'</span>', $multiply_by );
+        // Initiation data on data attr on span
+        $content_data     = '';
+        $content_reached  = '';
+        if ( ! empty( $atts ) ) {
+            if ( isset( $atts['content'] ) ) {
+                $content_data       = $atts['content'];
+            }
+            if ( isset( $atts['content_reached'] ) ) {
+                $content_reached  = $atts['content_reached'];
+            }
+        }
+
+        $x = str_replace( '%', '+', $content_data );
+
+        extract( shortcode_atts( array(
+            'content'           => esc_html__( 'Buy for %left_to_free% more and get free shipping', 'ocean-extra' ),
+            'content_reached'   => esc_html__( 'You have Free delivery!', 'ocean-extra' ),
+            'multiply_by'       => 1,
+        ), $atts ) );
+
+        return oceanwp_woo_free_shipping_left( "<span class='oceanwp-woo-free-shipping' data-content='$x' data-reach='$content_reached'>". $content .'</span>', '<span class="oceanwp-woo-free-shipping">'. $content_reached .'</span>', $multiply_by );
 
 	}
 
 }
 add_shortcode( 'oceanwp_woo_free_shipping_left', 'oceanwp_woo_free_shipping_left_shortcode' );
+
+/**
+ * Ajax replay the refresh fragemnt
+ *
+ * @since 1.4.24
+ */
+if ( ! function_exists( 'update_oceanwp_woo_free_shipping_left_shortcode' ) ) {
+
+	function update_oceanwp_woo_free_shipping_left_shortcode() {
+	    $atts = array();
+	   
+	    if ( ( isset( $_POST['content'] )
+	    	&& ( $_POST['content'] !== '' ) )
+	    		|| ( isset( $_POST['content_rech_data'] )
+	    			&& ( $_POST['content_rech_data'] !== '' ) ) ) {
+
+	        $atts['content_reached'] 	= $_POST['content_rech_data'];
+	        $content 					= str_replace( '+', '%', $_POST['content'] );
+	        $atts['content'] 			= $content;
+	        $returnShortCodeValue 		= oceanwp_woo_free_shipping_left_shortcode( $atts, '' );
+	        wp_send_json( $returnShortCodeValue );
+
+	    } else {
+
+	        $returnShortCodeValue 		= oceanwp_woo_free_shipping_left_shortcode( $atts, '' );
+	        wp_send_json( $returnShortCodeValue );
+
+	    }
+	}
+
+}
+add_action( 'wp_ajax_update_oceanwp_woo_free_shipping_left_shortcode', 'update_oceanwp_woo_free_shipping_left_shortcode' );
+add_action( 'wp_ajax_nopriv_update_oceanwp_woo_free_shipping_left_shortcode', 'update_oceanwp_woo_free_shipping_left_shortcode' );
+
+/**
+ * Add js code 
+ *
+ * @since 1.4.24
+ */
+function oceanwp_woo_free_shipping_left_script() {
+	wp_register_script( 'owp-free-shipping', plugins_url( '/js/shortcode.min.js', __FILE__ ), false, true );
+}
+add_action( 'wp_enqueue_scripts', 'oceanwp_woo_free_shipping_left_script' );
 
 /**
  * Breadcrumb shortcode

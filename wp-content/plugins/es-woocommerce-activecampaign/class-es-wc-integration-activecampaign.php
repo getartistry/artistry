@@ -293,7 +293,7 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 				$default_ac_key = "";
 			}
 
-			$list_help = 'All customers will be added to this list.';
+			$list_help = 'All customers will be added to this list. <a href="admin.php?'.http_build_query(array_merge($_GET, array("reset"=>"yes"))).'">Click here to reset lists and tags</a>.';
 			if (empty($this->activecampaign_lists)) {
 				$list_help .= '<br /><strong>NOTE: If this dowpdown list is empty AND you have entered the API URL and Key correctly, please save your settings and reload the page. <a href="'.$_SERVER['REQUEST_URI'].'">[Click Here]</a></strong>';
 			}
@@ -390,6 +390,9 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 
 	public function get_ac_lists() {
 		if ( is_admin() && $this->has_api_info() ) {
+			if (isset($_REQUEST["reset"]) && $_REQUEST["reset"] == "yes") {
+				delete_transient( 'es_wc_activecampaign_list_' . md5( $this->activecampaign_key ) );
+			}
 			if ( ! get_transient( 'es_wc_activecampaign_list_' . md5( $this->activecampaign_key ) ) ) {
 
 				$this->activecampaign_lists = array();
@@ -455,7 +458,10 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 
 	public function get_ac_tags_list() {
 		if ( is_admin() && $this->has_api_info() ) {
-			if ( ! get_transient( 'XXes_wc_activecampaign_tags_list_' . md5( $this->activecampaign_key ) ) ) {
+			if (isset($_REQUEST["reset"]) && $_REQUEST["reset"] == "yes") {
+				delete_transient( 'es_wc_activecampaign_tags_list_' . md5( $this->activecampaign_key ) );
+			}
+			if ( ! get_transient( 'es_wc_activecampaign_tags_list_' . md5( $this->activecampaign_key ) ) ) {
 
 				$this->activecampaign_tags_list = array();
 				$this->activecampaign_tags_list[""] = "Do not apply a tag";
@@ -561,7 +567,6 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 				    );
 
 				$retval = $api->api("contact/sync", $post);
-				//error_log("Line: ".__LINE__." retval->success = ".$retval->success." ".print_r($retval, true), 1, 'mdurst@equalserving.com');
 				if ( $retval->success == 1 ) {
 
 					if (isset($listid) && $listid != "") {
@@ -587,81 +592,58 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 
 					}
 
-					//error_log("Line: ".__LINE__, 1, 'mdurst@equalserving.com');
 					if ( !empty($this->contact_tag) ) {
-						//error_log("Line: ".__LINE__, 1, 'mdurst@equalserving.com');
 						$tags[] = $this->contact_tag;
 					}
 
-					//error_log("Line: ".__LINE__, 1, 'mdurst@equalserving.com');
-					//if ( $this->tag_purchased_products == 'yes' || ( !empty( trim( $this->purchased_product_tag_add))) ) {
 					if ( $this->tag_purchased_products == 'yes' ) {
-						//error_log("Line: ".__LINE__, 1, 'mdurst@equalserving.com');
 						if ( !empty($items) ) {
-							//error_log("Line: ".__LINE__." ".print_r($items, true), 1, 'mdurst@equalserving.com');
 
-							//if ( !empty( trim( $this->purchased_product_tag_add)) || !empty( trim( $this->purchased_product_tag_prefix )) ) {
-
-								//error_log("Line: ".__LINE__, 1, 'mdurst@equalserving.com');
-
-								foreach ( $items as $item ) {
-								//error_log("Line: ".__LINE__." ".$item, 1, 'mdurst@equalserving.com');
-								    $purchased_product_id = $item['product_id'];
-								    if ($item['variation_id']) {
-										if ( $this->tag_purchased_products == 'yes') { 
-									    	$tags[] = $this->purchased_product_tag_prefix." ".$item['product_id']." / ".$item['variation_id'];
-									    }
-										$product_details = wc_get_product( $item['variation_id'] );
-									} else {
-										if ( $this->tag_purchased_products == 'yes') { 
-									    	$tags[] = $this->purchased_product_tag_prefix." ".$item['product_id'];
-										}
-										$product_details = wc_get_product( $item['product_id'] );
+							foreach ( $items as $item ) {
+								$purchased_product_id = $item['product_id'];
+								if ($item['variation_id']) {
+									if ( $this->tag_purchased_products == 'yes') { 
+										$tags[] = $this->purchased_product_tag_prefix." ".$item['product_id']." / ".$item['variation_id'];
 									}
-									//error_log(print_r($product_details, true), 1, 'mdurst@equalserving.com');
-
-									$tag_formats = explode(",", $this->purchased_product_tag_add);
-									if (!empty($tag_formats) ) {
-
-										foreach ($tag_formats as $tag_format) {
-
-											$spos = strpos($tag_format, "#SKU#");
-											if ($spos !== false) {
-												$tag_format = str_replace("#SKU#", $product_details->get_sku(), $tag_format);
-											}
-											$cpos = strpos($tag_format, "#CAT#");
-											if ($cpos !== false) {
-
-											   $terms = wp_get_post_terms( $item['product_id'], 'product_cat', array( 'fields' => 'names' ) );
-												foreach ($terms as $term) {
-													$tags[] = str_replace("#CAT#", $term, $tag_format);
-												} 
-											}
-											if ($cpos === FALSE) {
-												$tags[] = $tag_format;
-											}
-										}
+									$product_details = wc_get_product( $item['variation_id'] );
+								} else {
+									if ( $this->tag_purchased_products == 'yes') { 
+										$tags[] = $this->purchased_product_tag_prefix." ".$item['product_id'];
 									}
-
-									$email_text = 'Product id: '.$item['product_id'].' sku: '.$product_details->get_sku().' categories: ';
-
-								   $terms = wp_get_post_terms( $item['product_id'], 'product_cat', array( 'fields' => 'names' ) );
-									foreach ($terms as $term) {
-										$email_text .= $term.', ';
-									} 
-
-									//error_log("Line: ".__LINE__." ".print_r(wc_get_product_category_list($item['product_id']), true), 1, 'mdurst@equalserving.com');
-
-									//$cat_ids = $product_details->get_category_ids();
-									//error_log(print_r($cat_ids, true), 1, 'mdurst@equalserving.com');
-
-									//foreach ($cat_ids as $cat_id) {
-									//	$email_text .= get_term( $cat_id, 'product_cat' ).', ';
-									//} 
-
-									//error_log("Line: ".__LINE__." ".$email_text, 1, 'mdurst@equalserving.com');
+									$product_details = wc_get_product( $item['product_id'] );
 								}
-							//}
+
+								$tag_formats = explode(",", $this->purchased_product_tag_add);
+								if (!empty($tag_formats) ) {
+
+									foreach ($tag_formats as $tag_format) {
+
+										$spos = strpos($tag_format, "#SKU#");
+										if ($spos !== false) {
+											$tag_format = str_replace("#SKU#", $product_details->get_sku(), $tag_format);
+										}
+										$cpos = strpos($tag_format, "#CAT#");
+										if ($cpos !== false) {
+
+											$terms = wp_get_post_terms( $item['product_id'], 'product_cat', array( 'fields' => 'names' ) );
+											foreach ($terms as $term) {
+												$tags[] = str_replace("#CAT#", $term, $tag_format);
+											} 
+										}
+										if ($cpos === FALSE) {
+											$tags[] = $tag_format;
+										}
+									}
+								}
+
+								$email_text = 'Product id: '.$item['product_id'].' sku: '.$product_details->get_sku().' categories: ';
+
+								$terms = wp_get_post_terms( $item['product_id'], 'product_cat', array( 'fields' => 'names' ) );
+								foreach ($terms as $term) {
+									$email_text .= $term.', ';
+								} 
+
+							}
 						}
 					}
 
@@ -774,11 +756,8 @@ class ES_WC_Integration_ActiveCampaign extends WC_Integration {
 	 */
 
 	function maybe_save_checkout_fields( $order_id ) {
-		//if ( 'yes' == $this->display_opt_in ) {
-			$opt_in = isset( $_POST['es_wc_activecampaign_opt_in'] ) ? 'yes' : 'no';
-			//error_log("maybe_save_checkout_fields() :: opt_in = ".$opt_in, 1, "michele.durst@gmail.com");
-			update_post_meta( $order_id, 'es_wc_activecampaign_opt_in', $opt_in );
-		//}
+		$opt_in = isset( $_POST['es_wc_activecampaign_opt_in'] ) ? 'yes' : 'no';
+		update_post_meta( $order_id, 'es_wc_activecampaign_opt_in', $opt_in );
 	}
 
 	/**

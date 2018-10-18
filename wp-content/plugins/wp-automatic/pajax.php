@@ -443,7 +443,8 @@ function wp_automatic_iframe_callback() {
 				$maxitems = $rss->get_item_quantity ();
 				$rss_items = $rss->get_items ( rand(0,$maxitems - 1 ), 1);
 			}else{
-				echo '<br>Error parsing feed';
+				echo '<br>Error parsing the feed';
+			 
 				die();
 			}
 			

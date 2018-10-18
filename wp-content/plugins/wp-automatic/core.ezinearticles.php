@@ -288,15 +288,19 @@ function articlebase_get_post($camp) {
 			  echo '<br><b>Getting article for Keyword:</b>' . $keyword;
 				
 			// get links to fetch and post on the blogs
-			$query = "select * from {$this->wp_prefix}automatic_articles_links where keyword = '$keyword' and status =0 and link like '%ezinearticles.com%'";
+			$query = "select * from {$this->wp_prefix}automatic_articles_links where keyword = '$keyword' ";
 			$links = $this->db->get_results ( $query );
 				
 			// when no links available get some links
 			if (count ( $links ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_articles_links where  keyword = '$keyword'  ";
+				$this->db->query ( $query_delete );
 
 				$this->article_base_getlinks ( $keyword, $camp );
+				
 				// get links to fetch and post on the blogs
-				$query = "select * from {$this->wp_prefix}automatic_articles_links where keyword = '$keyword' and status =0 and link like '%ezinearticles.com%'";
 				$links = $this->db->get_results ( $query );
 			}
 				
@@ -304,9 +308,9 @@ function articlebase_get_post($camp) {
 			if (count ( $links ) != 0) {
 
 				foreach ( $links as $link ) {
-						
-					// updating status of the link to posted or 1
-					$query = "update {$this->wp_prefix}automatic_articles_links set status = '1' where id = '$link->id'";
+					 
+					// update the link status to 1
+					$query = "delete from {$this->wp_prefix}automatic_articles_links where id={$link->id}";
 					$this->db->query ( $query );
 						
 					// processing page and getting content

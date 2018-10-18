@@ -342,7 +342,9 @@ class wpAutomaticDom {
 				//better results are here lets find the odd result if any
 				$values = array_count_values($changeIndexArr);
 				arsort($values);
-				$correctNodeIndex = (array_keys($values)[0]);
+				
+				//fix this line
+				//$correctNodeIndex = (array_keys($values) )[0];
 				
 				if(is_numeric($correctNodeIndex) ){
 					foreach ($changeIndexArr as $changeKey => $changeValue){

@@ -4,7 +4,7 @@
  *
  * @package     Astra
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       Astra 1.0.0
  */
@@ -110,21 +110,31 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 */
 		function enqueue_scripts() {
 
-			$css_url = self::get_css_url();
-			$js_url  = self::get_js_url();
+			/**
+			 * Filters to disable all the styles and scripts added from addon.
+			 *
+			 * @since 1.5.0
+			 *
+			 * @param bool true | false enable/disable all styels,scripts of astra addon.
+			 */
+			if ( apply_filters( 'astra_addon_enqueue_assets', true ) ) {
 
-			if ( false != $css_url ) {
-				wp_enqueue_style( 'astra-addon-css', $css_url, array(), ASTRA_EXT_VER, 'all' );
+				$css_url = self::get_css_url();
+				$js_url  = self::get_js_url();
+
+				if ( false != $css_url ) {
+					wp_enqueue_style( 'astra-addon-css', $css_url, array(), ASTRA_EXT_VER, 'all' );
+				}
+
+				// Scripts - Register & Enqueue.
+				if ( false != $js_url ) {
+					wp_enqueue_script( 'astra-addon-js', $js_url, self::get_dependent_js(), ASTRA_EXT_VER, true );
+				}
+
+				wp_add_inline_style( 'astra-addon-css', apply_filters( 'astra_dynamic_css', '' ) );
+
+				wp_localize_script( 'astra-addon-js', 'astraAddon', apply_filters( 'astra_addon_js_localize', array() ) );
 			}
-
-			// Scripts - Register & Enqueue.
-			if ( false != $js_url ) {
-				wp_enqueue_script( 'astra-addon-js', $js_url, self::get_dependent_js(), ASTRA_EXT_VER, true );
-			}
-
-			wp_add_inline_style( 'astra-addon-css', apply_filters( 'astra_dynamic_css', '' ) );
-
-			wp_localize_script( 'astra-addon-js', 'astraAddon', apply_filters( 'astra_addon_js_localize', array() ) );
 		}
 
 		/**
@@ -133,13 +143,13 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		static public function load_filesystem() {
+		public static function load_filesystem() {
 
 			if ( null === self::$astra_filesystem ) {
 
 				global $wp_filesystem;
 				if ( empty( $wp_filesystem ) ) {
-					require_once( ABSPATH . '/wp-admin/includes/file.php' );
+					require_once ABSPATH . '/wp-admin/includes/file.php';
 					WP_Filesystem();
 				}
 
@@ -155,7 +165,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @param boolean $handle Script handle.
 		 * @return void
 		 */
-		static public function add_css( $src = null, $handle = false ) {
+		public static function add_css( $src = null, $handle = false ) {
 			if ( false != $handle ) {
 				self::$css_files[ $handle ] = $src;
 			} else {
@@ -171,7 +181,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @param boolean $handle Script handle.
 		 * @return void
 		 */
-		static public function add_js( $src = null, $handle = false ) {
+		public static function add_js( $src = null, $handle = false ) {
 
 			if ( false != $handle ) {
 				self::$js_files[ $handle ] = $src;
@@ -188,7 +198,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @param string  $src    Source URL.
 		 * @return void
 		 */
-		static public function add_dependent_js( $handle, $src = null ) {
+		public static function add_dependent_js( $handle, $src = null ) {
 			self::$dependent_js_files[ $handle ] = $src;
 		}
 
@@ -198,7 +208,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return array()
 		 */
-		static public function get_http2_css_files() {
+		public static function get_http2_css_files() {
 
 			// Get the css key.
 			$css_slug  = self::_asset_slug();
@@ -220,7 +230,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return array()
 		 */
-		static public function get_css_files() {
+		public static function get_css_files() {
 
 			if ( 1 > count( self::$css_files ) ) {
 				do_action( 'astra_get_css_files' );
@@ -235,7 +245,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return array()
 		 */
-		static public function get_http2_js_files() {
+		public static function get_http2_js_files() {
 
 			// Get the js key.
 			$js_slug  = self::_asset_slug();
@@ -259,7 +269,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return array()
 		 */
-		static public function get_js_files() {
+		public static function get_js_files() {
 
 			if ( 1 > count( self::$js_files ) ) {
 				do_action( 'astra_get_js_files' );
@@ -274,7 +284,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return array()
 		 */
-		static public function get_dependent_js_files() {
+		public static function get_dependent_js_files() {
 			return apply_filters( 'astra_add_dependent_js_file', self::$dependent_js_files );
 		}
 
@@ -284,7 +294,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return bool
 		 */
-		static public function astra_is_ssl() {
+		public static function astra_is_ssl() {
 			if ( is_ssl() ) {
 
 				return true;
@@ -305,7 +315,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return array
 		 */
-		static public function get_cache_dir() {
+		public static function get_cache_dir() {
 
 			if ( null != self::$_dir_info ) {
 				return self::$_dir_info;
@@ -341,7 +351,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return bool
 		 */
-		static public function is_customizer_preview() {
+		public static function is_customizer_preview() {
 			return self::$_in_customizer_preview;
 		}
 
@@ -352,7 +362,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @access private
 		 * @return string
 		 */
-		static private function _asset_slug() {
+		private static function _asset_slug() {
 			if ( self::is_customizer_preview() ) {
 				$slug = 'ast-customizer';
 			} else {
@@ -368,7 +378,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		static public function refresh_assets() {
+		public static function refresh_assets() {
 			self::clear_assets_cache();
 			self::render_assets();
 		}
@@ -381,7 +391,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return boolean Returns True if files were successfull deleted,  False If files could not be deleted.
 		 */
-		static public function clear_assets_cache() {
+		public static function clear_assets_cache() {
 
 			// Make sure the filesystem is loaded.
 			self::load_filesystem();
@@ -430,7 +440,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		static public function render_assets() {
+		public static function render_assets() {
 			if ( defined( 'ASTRA_THEME_HTTP2' ) && ASTRA_THEME_HTTP2 ) {
 				self::render_http2_css();
 				self::render_http2_js();
@@ -446,7 +456,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return string
 		 */
-		static public function get_css_url() {
+		public static function get_css_url() {
 
 			if ( defined( 'ASTRA_THEME_HTTP2' ) && ASTRA_THEME_HTTP2 ) {
 
@@ -487,7 +497,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return string
 		 */
-		static public function get_http2_dynamic_css() {
+		public static function get_http2_dynamic_css() {
 
 			// Get the css key.
 			$css_slug = self::_asset_slug();
@@ -508,7 +518,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return string
 		 */
-		static public function get_dynamic_css() {
+		public static function get_dynamic_css() {
 
 			// Get the cache dir and css key.
 			$cache_dir = self::get_cache_dir();
@@ -530,7 +540,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return string
 		 */
-		static public function get_js_url() {
+		public static function get_js_url() {
 			if ( defined( 'ASTRA_THEME_HTTP2' ) && ASTRA_THEME_HTTP2 ) {
 
 				self::enqueue_http2_js();
@@ -574,7 +584,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		static public function enqueue_dependent_js() {
+		public static function enqueue_dependent_js() {
 
 			$dependent_js_files = self::get_dependent_js_files();
 
@@ -597,7 +607,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return array()
 		 */
-		static public function get_dependent_js() {
+		public static function get_dependent_js() {
 
 			$dependent_js_files = self::get_dependent_js_files();
 
@@ -625,7 +635,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @access private
 		 * @return void
 		 */
-		static private function render_http2_css() {
+		private static function render_http2_css() {
 
 			$css_slug  = self::_asset_slug();
 			$css_files = self::get_css_files();
@@ -641,7 +651,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @access private
 		 * @return void|false Checks early if cache directory was emptied before generating the new files
 		 */
-		static private function render_css() {
+		private static function render_css() {
 
 			self::load_filesystem();
 
@@ -700,7 +710,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @access private
 		 * @return void
 		 */
-		static private function enqueue_http2_css() {
+		private static function enqueue_http2_css() {
 
 			$css_files   = self::get_http2_css_files();
 			$files_count = count( $css_files );
@@ -733,7 +743,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @access private
 		 * @return void
 		 */
-		static private function render_fallback_css() {
+		private static function render_fallback_css() {
 
 			$css_files   = self::get_css_files();
 			$files_count = count( $css_files );
@@ -773,7 +783,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		static public function render_http2_js() {
+		public static function render_http2_js() {
 
 			$js_slug      = self::_asset_slug();
 			$js_files     = self::get_js_files();
@@ -790,7 +800,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void|false Checks early if cache directory was emptied before generating the new files
 		 */
-		static public function render_js() {
+		public static function render_js() {
 
 			self::load_filesystem();
 
@@ -852,7 +862,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		static public function enqueue_http2_js() {
+		public static function enqueue_http2_js() {
 			$js_files    = self::get_http2_js_files();
 			$files_count = count( $js_files );
 
@@ -889,7 +899,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		static public function render_fallback_js() {
+		public static function render_fallback_js() {
 
 			$js_files    = self::get_js_files();
 			$files_count = count( $js_files );
@@ -930,7 +940,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @since 1.0
 		 * @return void
 		 */
-		static public function preview_init() {
+		public static function preview_init() {
 			self::$_in_customizer_preview = true;
 
 			self::refresh_assets();
@@ -943,7 +953,7 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		 * @param string $css CSS content to trim.
 		 * @return string
 		 */
-		static public function trim_css( $css = '' ) {
+		public static function trim_css( $css = '' ) {
 
 			// Trim white space for faster page loading.
 			if ( ! empty( $css ) ) {
@@ -956,5 +966,5 @@ if ( ! class_exists( 'Astra_Minify' ) ) {
 		}
 	}
 
-	new Astra_Minify;
+	new Astra_Minify();
 }

@@ -54,21 +54,21 @@ function ewww_image_optimizer_exec_init() {
 	if ( EWWW_IMAGE_OPTIMIZER_CLOUD ) {
 		ewwwio_debug_message( 'cloud options enabled, shutting off binaries' );
 		ewww_image_optimizer_disable_tools();
-		// Check if this is an unsupported OS (not Linux or Mac OSX or FreeBSD or Windows or SunOS).
-	} elseif ( defined( 'WPCOMSH_VERSION' ) ) {
+	} elseif ( defined( 'WPCOMSH_VERSION' ) || ! empty( $_ENV['PANTHEON_ENVIRONMENT'] ) ) {
 		if (
 			! ewww_image_optimizer_get_option( 'ewww_image_optimizer_cloud_key' ) &&
 			empty( $_POST['ewww_image_optimizer_cloud_key'] ) &&
 			( ! is_object( $exactdn ) || ! $exactdn->get_exactdn_domain() )
 		) {
-			add_action( 'network_admin_notices', 'ewww_image_optimizer_notice_wpcom' );
-			add_action( 'admin_notices', 'ewww_image_optimizer_notice_wpcom' );
+			add_action( 'network_admin_notices', 'ewww_image_optimizer_notice_hosting_requires_api' );
+			add_action( 'admin_notices', 'ewww_image_optimizer_notice_hosting_requires_api' );
 		}
 		if ( ! defined( 'EWWW_IMAGE_OPTIMIZER_NOEXEC' ) ) {
 			define( 'EWWW_IMAGE_OPTIMIZER_NOEXEC', true );
 		}
 		ewwwio_debug_message( 'wp.com site, disabling tools' );
 		ewww_image_optimizer_disable_tools();
+		// Check if this is an unsupported OS (not Linux or Mac OSX or FreeBSD or Windows or SunOS).
 	} elseif ( 'Linux' != PHP_OS && 'Darwin' != PHP_OS && 'FreeBSD' != PHP_OS && 'WINNT' != PHP_OS && 'SunOS' != PHP_OS ) {
 		// Call the function to display a notice.
 		add_action( 'network_admin_notices', 'ewww_image_optimizer_notice_os' );
@@ -115,7 +115,7 @@ function ewww_image_optimizer_set_defaults() {
 	add_site_option( 'ewww_image_optimizer_disable_pngout', true );
 	add_site_option( 'ewww_image_optimizer_optipng_level', 2 );
 	add_site_option( 'ewww_image_optimizer_pngout_level', 2 );
-	add_site_option( 'ewww_image_optimizer_jpegtran_copy', true );
+	add_site_option( 'ewww_image_optimizer_metadata_remove', true );
 	add_site_option( 'ewww_image_optimizer_jpg_level', '10' );
 	add_site_option( 'ewww_image_optimizer_png_level', '10' );
 	add_site_option( 'ewww_image_optimizer_gif_level', '10' );
@@ -123,9 +123,9 @@ function ewww_image_optimizer_set_defaults() {
 }
 
 /**
- * Let the user know the plugin requires API/ExactDN to operate at wp.com.
+ * Let the user know the plugin requires API/ExactDN to operate at their webhost.
  */
-function ewww_image_optimizer_notice_wpcom() {
+function ewww_image_optimizer_notice_hosting_requires_api() {
 	if ( ! function_exists( 'is_plugin_active_for_network' ) && is_multisite() ) {
 		// Need to include the plugin library for the is_plugin_active function.
 		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -135,9 +135,17 @@ function ewww_image_optimizer_notice_wpcom() {
 	} else {
 		$options_page = 'options-general.php';
 	}
+	if ( defined( 'WPCOMSH_VERSION' ) ) {
+		$webhost = 'WordPress.com';
+	} elseif ( ! empty( $_ENV['PANTHEON_ENVIRONMENT'] ) ) {
+		$webhost = 'Pantheon';
+	} else {
+		return;
+	}
 	$settings_url = admin_url( "$options_page?page=" . plugin_basename( EWWW_IMAGE_OPTIMIZER_PLUGIN_FILE ) );
 	echo "<div id='ewww-image-optimizer-cloud-key-required' class='error'><p><strong>" .
-		esc_html__( 'The EWWW Image Optimizer requires an API key or an ExactDN subscription to optimize images on WordPress.com sites.', 'ewww-image-optimizer-cloud' ) .
+		/* translators: %s: Name of a web host, like WordPress.com or Pantheon. */
+		sprintf( esc_html__( 'The EWWW Image Optimizer requires an API key or an ExactDN subscription to optimize images on %s sites.', 'ewww-image-optimizer-cloud' ), $webhost ) .
 		"</strong> <a href='https://ewww.io/plans/'>" . esc_html__( 'Purchase a subscription.', 'ewww-image-optimizer-cloud' ) .
 		"</a> <a href='$settings_url'>" . esc_html__( 'Then, activate it on the settings page.', 'ewww-image-optimizer-cloud' ) . '</a></p></div>';
 }
@@ -1474,6 +1482,87 @@ function ewww_image_optimizer_find_nix_binary( $binary, $switch ) {
 }
 
 /**
+ * Resizes an image with gifsicle to preserve animations.
+ *
+ * @param string   $file The file to resize.
+ * @param int|null $max_w Desired image width.
+ * @param int|null $max_h Desired image height.
+ * @param bool     $crop Optional. Scale by default, crop if true.
+ * @return string|WP_Error The image contents or the error message.
+ */
+function ewww_image_optimizer_gifsicle_resize( $file, $max_w, $max_h, $crop = false ) {
+	ewwwio_debug_message( '<b>' . __FUNCTION__ . '()</b>' );
+	$tools = ewww_image_optimizer_path_check(
+		false,
+		false,
+		true,
+		false,
+		false,
+		false
+	);
+	if ( empty( $tools['GIFSICLE'] ) ) {
+		return new WP_Error(
+			'image_resize_error',
+			/* translators: %s: name of a tool like jpegtran */
+			sprintf( __( '%s is missing', 'ewww-image-optimizer' ), '<em>gifsicle</em>' )
+		);
+	}
+	ewwwio_debug_message( "file: $file " );
+	ewwwio_debug_message( "width: $max_w" );
+	ewwwio_debug_message( "height: $max_h" );
+	$orig_dimensions = getimagesize( $file );
+	if ( empty( $orig_dimensions ) ) {
+		return new WP_Error( 'image_resize_error', __( 'Invalid image dimensions.', 'ewww-image-optimizer' ) );
+	}
+	$orig_w = $orig_dimensions[0];
+	$orig_h = $orig_dimensions[1];
+
+	$outfile = "$file.tmp";
+	// Run gifsicle.
+	if ( $crop ) {
+		$dims = ewwwio_crop_dimensions( $orig_w, $orig_h, $max_w, $max_h );
+		if ( ! $dims ) {
+			return new WP_Error( 'error_getting_dimensions', __( 'Could not calculate resized image dimensions' ), $file );
+		}
+		ewwwio_debug_message( implode( ',', $dims ) );
+		list( $src_x, $src_y, $dst_w, $dst_h ) = $dims;
+
+		list( $new_w, $new_h ) = wp_constrain_dimensions( $dst_w, $dst_h, $max_w, $max_h );
+
+		$dim_string  = $new_w . 'x' . $new_h;
+		$crop_string = $src_x . ',' . $src_y . '+' . $dst_w . 'x' . $dst_h;
+		ewwwio_debug_message( "resize to $dim_string" );
+		ewwwio_debug_message( "crop to $crop_string" );
+		exec( "{$tools['GIFSICLE']} --crop $crop_string  -o " . ewww_image_optimizer_escapeshellarg( $outfile ) . ' ' . ewww_image_optimizer_escapeshellarg( $file ) );
+		exec( "{$tools['GIFSICLE']} --resize-fit $dim_string  -b " . ewww_image_optimizer_escapeshellarg( $outfile ) );
+	} else {
+		list( $new_w, $new_h ) = wp_constrain_dimensions( $orig_w, $orig_h, $max_w, $max_h );
+
+		$dim_string = $new_w . 'x' . $new_h;
+		exec( "{$tools['GIFSICLE']} --resize-fit $dim_string  -o " . ewww_image_optimizer_escapeshellarg( $outfile ) . ' ' . ewww_image_optimizer_escapeshellarg( $file ) );
+	}
+	ewwwio_debug_message( "$file resized to $outfile" );
+
+	if ( file_exists( $outfile ) ) {
+		$new_type = ewww_image_optimizer_mimetype( $outfile, 'i' );
+		// Check the filesize of the new JPG.
+		$new_size = filesize( $outfile );
+		ewwwio_debug_message( "$outfile exists, testing type and size" );
+	} else {
+		return new WP_Error( 'image_resize_error', 'file does not exist' );
+	}
+
+	if ( 0 == $new_size || 'image/gif' != $new_type ) {
+		unlink( $outfile );
+		return new WP_Error( 'image_resize_error', 'wrong type or zero bytes' );
+	}
+	ewwwio_debug_message( 'resize success' );
+	$image = file_get_contents( $outfile );
+	unlink( $outfile );
+	return $image;
+}
+
+/**
  * Automatically corrects JPG rotation using local jpegtran tool.
  *
  * @param string $file Name of the file to fix.
@@ -1842,8 +1931,8 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 				ewwwio_debug_message( 'attempting to optimize JPG...' );
 				// Generate temporary file-name.
 				$progfile = $file . '.prog';
-				// Check to see if we are supposed to strip metadata (badly named).
-				if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_jpegtran_copy' ) && ! $keep_metadata ) {
+				// Check to see if we are supposed to strip metadata.
+				if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_metadata_remove' ) && ! $keep_metadata ) {
 					// Don't copy metadata.
 					$copy_opt = 'none';
 				} else {
@@ -1934,7 +2023,7 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 				if ( $tools['OPTIPNG'] ) {
 					// Retrieve the optipng optimization level.
 					$optipng_level = (int) ewww_image_optimizer_get_option( 'ewww_image_optimizer_optipng_level' );
-					if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_jpegtran_copy' ) && preg_match( '/0.7/', ewww_image_optimizer_tool_found( $tools['OPTIPNG'], 'o' ) ) && ! $keep_metadata ) {
+					if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_metadata_remove' ) && preg_match( '/0.7/', ewww_image_optimizer_tool_found( $tools['OPTIPNG'], 'o' ) ) && ! $keep_metadata ) {
 						$strip = '-strip all ';
 					} else {
 						$strip = '';
@@ -2133,7 +2222,7 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 				if ( $tools['OPTIPNG'] ) {
 					// Retrieve the optimization level for optipng.
 					$optipng_level = (int) ewww_image_optimizer_get_option( 'ewww_image_optimizer_optipng_level' );
-					if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_jpegtran_copy' ) && preg_match( '/0.7/', ewww_image_optimizer_tool_found( $tools['OPTIPNG'], 'o' ) ) && ! $keep_metadata ) {
+					if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_metadata_remove' ) && preg_match( '/0.7/', ewww_image_optimizer_tool_found( $tools['OPTIPNG'], 'o' ) ) && ! $keep_metadata ) {
 						$strip = '-strip all ';
 					} else {
 						$strip = '';
@@ -2255,8 +2344,8 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 				if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_jpg_level' ) == 10 && file_exists( $jpgfile ) ) {
 					// Generate temporary file-name.
 					$progfile = $jpgfile . '.prog';
-					// Check to see if we are supposed to strip metadata (badly named).
-					if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_jpegtran_copy' ) && ! $keep_metadata ) {
+					// Check to see if we are supposed to strip metadata.
+					if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_metadata_remove' ) && ! $keep_metadata ) {
 						// Don't copy metadata.
 						$copy_opt = 'none';
 					} else {
@@ -2423,7 +2512,7 @@ function ewww_image_optimizer( $file, $gallery_type = 4, $converted = false, $ne
 				if ( $tools['OPTIPNG'] ) {
 					// Retrieve the optipng optimization level.
 					$optipng_level = (int) ewww_image_optimizer_get_option( 'ewww_image_optimizer_optipng_level' );
-					if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_jpegtran_copy' ) && preg_match( '/0.7/', ewww_image_optimizer_tool_found( $tools['OPTIPNG'], 'o' ) ) && ! $keep_metadata ) {
+					if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_metadata_remove' ) && preg_match( '/0.7/', ewww_image_optimizer_tool_found( $tools['OPTIPNG'], 'o' ) ) && ! $keep_metadata ) {
 						$strip = '-strip all ';
 					} else {
 						$strip = '';
@@ -2561,8 +2650,8 @@ function ewww_image_optimizer_webp_create( $file, $orig_size, $type, $tool, $rec
 	} else {
 		// Check to see if 'nice' exists.
 		$nice = ewww_image_optimizer_find_nix_binary( 'nice', 'n' );
-		// Check to see if we are supposed to strip metadata (badly named).
-		if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_jpegtran_copy' ) ) {
+		// Check to see if we are supposed to strip metadata.
+		if ( ewww_image_optimizer_get_option( 'ewww_image_optimizer_metadata_remove' ) ) {
 			// Don't copy metadata.
 			$copy_opt = 'none';
 		} else {

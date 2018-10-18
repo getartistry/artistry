@@ -20,16 +20,24 @@ class Jet_Posts_Shortcode extends Jet_Elements_Shortcode_Base {
 	 */
 	public function get_atts() {
 
-		$columns = jet_elements_tools()->get_select_range( 6 );
+		$columns           = jet_elements_tools()->get_select_range( 6 );
+		$custom_query_link = sprintf(
+			'<a href="https://crocoblock.com/wp-query-generator/" target="_blank">%s</a>',
+			__( 'Generate custom query', 'jet-elements' )
+		);
 
 		return apply_filters( 'jet-elements/shortcodes/jet-posts/atts', array(
 			'number' => array(
-				'type'       => 'number',
-				'label'      => esc_html__( 'Posts Number', 'jet-elements' ),
-				'default'    => 3,
-				'min'        => -1,
-				'max'        => 30,
-				'step'       => 1,
+				'type'      => 'number',
+				'label'     => esc_html__( 'Posts Number', 'jet-elements' ),
+				'default'   => 3,
+				'min'       => -1,
+				'max'       => 30,
+				'step'      => 1,
+				'condition' => array(
+					'use_custom_query!'    => 'true',
+					'is_archive_template!' => 'true',
+				),
 			),
 			'columns' => array(
 				'type'       => 'select',
@@ -52,11 +60,23 @@ class Jet_Posts_Shortcode extends Jet_Elements_Shortcode_Base {
 				'return_value' => 'true',
 				'default'      => '',
 			),
+			'is_archive_template' => array(
+				'label'        => esc_html__( 'Is archive template', 'jet-elements' ),
+				'type'         => 'switcher',
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => '',
+			),
 			'post_type'   => array(
-				'type'       => 'select',
-				'label'      => esc_html__( 'Post Type', 'jet-elements' ),
-				'default'    => 'post',
-				'options'    => jet_elements_tools()->get_post_types(),
+				'type'      => 'select',
+				'label'     => esc_html__( 'Post Type', 'jet-elements' ),
+				'default'   => 'post',
+				'options'   => jet_elements_tools()->get_post_types(),
+				'condition' => array(
+					'use_custom_query!'    => 'true',
+					'is_archive_template!' => 'true',
+				),
 			),
 			'posts_query' => array(
 				'type'       => 'select',
@@ -64,20 +84,62 @@ class Jet_Posts_Shortcode extends Jet_Elements_Shortcode_Base {
 				'default'    => 'latest',
 				'options'    => array(
 					'latest'   => esc_html__( 'Latest Posts', 'jet-elements' ),
-					'category' => esc_html__( 'From Category', 'jet-elements' ),
+					'category' => esc_html__( 'From Category (for Posts only)', 'jet-elements' ),
 					'ids'      => esc_html__( 'By Specific IDs', 'jet-elements' ),
+					'related'  => esc_html__( 'Related to current', 'jet-elements' ),
 				),
 				'condition' => array(
-					'post_type' => array( 'post' ),
+					'use_custom_query!'    => 'true',
+					'is_archive_template!' => 'true',
+				),
+			),
+			'related_by' => array(
+				'type'       => 'select',
+				'label'      => esc_html__( 'Query related by', 'jet-elements' ),
+				'default'    => 'taxonomy',
+				'options'    => array(
+					'taxonomy' => esc_html__( 'Taxonomy', 'jet-elements' ),
+					'keyword'  => esc_html__( 'Keyword', 'jet-elements' ),
+				),
+				'condition' => array(
+					'use_custom_query!'    => 'true',
+					'posts_query'          => 'related',
+					'is_archive_template!' => 'true',
+				),
+			),
+			'related_tax' => array(
+				'type'      => 'select',
+				'label'     => esc_html__( 'Select taxonomy to get related from', 'jet-elements' ),
+				'default'   => '',
+				'options'   => jet_elements_tools()->get_taxonomies_for_options(),
+				'condition' => array(
+					'use_custom_query!'    => 'true',
+					'posts_query'          => 'related',
+					'related_by'           => 'taxonomy',
+					'is_archive_template!' => 'true',
+				),
+			),
+			'related_keyword' => array(
+				'type'        => 'text',
+				'label_block' => true,
+				'label'       => esc_html__( 'Keyword for related search', 'jet-elements' ),
+				'description' => esc_html__( 'Use macros %meta_field_key% to get keyword from specific meta field', 'jet-elements' ),
+				'default'     => '',
+				'condition'   => array(
+					'use_custom_query!'    => 'true',
+					'posts_query'          => 'related',
+					'related_by'           => 'keyword',
+					'is_archive_template!' => 'true',
 				),
 			),
 			'post_ids' => array(
 				'type'      => 'text',
-				'label'     => esc_html__( 'Set comma seprated IDs list (10, 22, 19 etc.)', 'jet-elements' ),
+				'label'     => esc_html__( 'Set comma separated IDs list (10, 22, 19 etc.)', 'jet-elements' ),
 				'default'   => '',
 				'condition' => array(
-					'posts_query' => array( 'ids' ),
-					'post_type'   => array( 'post' ),
+					'use_custom_query!'    => 'true',
+					'posts_query'          => array( 'ids' ),
+					'is_archive_template!' => 'true',
 				),
 			),
 			'post_cat' => array(
@@ -87,8 +149,53 @@ class Jet_Posts_Shortcode extends Jet_Elements_Shortcode_Base {
 				'multiple'   => true,
 				'options'    => jet_elements_tools()->get_categories(),
 				'condition' => array(
-					'posts_query' => array( 'category' ),
-					'post_type'   => array( 'post' ),
+					'use_custom_query!'    => 'true',
+					'posts_query'          => array( 'category' ),
+					'post_type'            => 'post',
+					'is_archive_template!' => 'true',
+				),
+			),
+			'post_offset' => array(
+				'type'      => 'number',
+				'label'     => esc_html__( 'Post offset', 'jet-elements' ),
+				'default'   => 0,
+				'min'       => 0,
+				'max'       => 100,
+				'step'      => 1,
+				'separator' => 'before',
+				'condition' => array(
+					'use_custom_query!'    => 'true',
+					'is_archive_template!' => 'true',
+				),
+			),
+			'use_custom_query_heading' => array(
+				'label'     => esc_html__( 'Custom Query', 'jet-elements' ),
+				'type'      => 'heading',
+				'separator' => 'before',
+				'condition' => array(
+					'is_archive_template!' => 'true',
+				),
+
+			),
+			'use_custom_query' => array(
+				'label'        => esc_html__( 'Use Custom Query', 'jet-elements' ),
+				'type'         => 'switcher',
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
+				'return_value' => 'true',
+				'default'      => '',
+				'condition' => array(
+					'is_archive_template!' => 'true',
+				),
+			),
+			'custom_query' => array(
+				'type'        => 'textarea',
+				'label'       => esc_html__( 'Set custom query', 'jet-elements' ),
+				'default'     => '',
+				'description' => $custom_query_link,
+				'condition'   => array(
+					'use_custom_query' => 'true',
+					'is_archive_template!' => 'true',
 				),
 			),
 			'show_title' => array(
@@ -98,6 +205,7 @@ class Jet_Posts_Shortcode extends Jet_Elements_Shortcode_Base {
 				'label_off'    => esc_html__( 'No', 'jet-elements' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
+				'separator'    => 'before',
 			),
 
 			'title_trimmed' => array(
@@ -174,15 +282,15 @@ class Jet_Posts_Shortcode extends Jet_Elements_Shortcode_Base {
 				'label_block' => true,
 				'default'     => 'center center',
 				'options'     => array(
-					'center center' => esc_html__( 'Center Center', 'Background Control', 'jet-elements' ),
-					'center left'   => esc_html__( 'Center Left', 'Background Control', 'jet-elements' ),
-					'center right'  => esc_html__( 'Center Right', 'Background Control', 'jet-elements' ),
-					'top center'    => esc_html__( 'Top Center', 'Background Control', 'jet-elements' ),
-					'top left'      => esc_html__( 'Top Left', 'Background Control', 'jet-elements' ),
-					'top right'     => esc_html__( 'Top Right', 'Background Control', 'jet-elements' ),
-					'bottom center' => esc_html__( 'Bottom Center', 'Background Control', 'jet-elements' ),
-					'bottom left'   => esc_html__( 'Bottom Left', 'Background Control', 'jet-elements' ),
-					'bottom right'  => esc_html__( 'Bottom Right', 'Background Control', 'jet-elements' ),
+					'center center' => esc_html_x( 'Center Center', 'Background Control', 'jet-elements' ),
+					'center left'   => esc_html_x( 'Center Left', 'Background Control', 'jet-elements' ),
+					'center right'  => esc_html_x( 'Center Right', 'Background Control', 'jet-elements' ),
+					'top center'    => esc_html_x( 'Top Center', 'Background Control', 'jet-elements' ),
+					'top left'      => esc_html_x( 'Top Left', 'Background Control', 'jet-elements' ),
+					'top right'     => esc_html_x( 'Top Right', 'Background Control', 'jet-elements' ),
+					'bottom center' => esc_html_x( 'Bottom Center', 'Background Control', 'jet-elements' ),
+					'bottom left'   => esc_html_x( 'Bottom Left', 'Background Control', 'jet-elements' ),
+					'bottom right'  => esc_html_x( 'Bottom Right', 'Background Control', 'jet-elements' ),
 				),
 				'condition'   => array(
 					'show_image'    => array( 'yes' ),
@@ -309,11 +417,11 @@ class Jet_Posts_Shortcode extends Jet_Elements_Shortcode_Base {
 	}
 
 	/**
-	 * Query posts by attributes
+	 * Get default query args
 	 *
-	 * @return object
+	 * @return array
 	 */
-	public function query() {
+	public function get_default_query_args() {
 
 		$query_args = array(
 			'post_type'           => 'post',
@@ -330,30 +438,140 @@ class Jet_Posts_Shortcode extends Jet_Elements_Shortcode_Base {
 
 		$query_args['post_type'] = $post_type;
 
-		if ( 'post' === $post_type ) {
-			switch ( $this->get_attr( 'posts_query' ) ) {
+		$offset = $this->get_attr( 'post_offset' );
+		$offset = ! empty( $offset ) ? absint( $offset ) : 0;
 
-				case 'category':
-
-					if ( '' !== $this->get_attr( 'post_cat' ) ) {
-						$query_args['category__in'] = explode( ',', $this->get_attr( 'post_cat' ) );
-					}
-
-					break;
-
-				case 'ids':
-
-					if ( '' !== $this->get_attr( 'post_ids' ) ) {
-						$query_args['post__in'] = explode(
-							',',
-							str_replace( ' ', '', $this->get_attr( 'post_ids' ) )
-						);
-					}
-					break;
-			}
+		if ( $offset ) {
+			$query_args['offset'] = $offset;
 		}
 
-		return new WP_Query( $query_args );
+		switch ( $this->get_attr( 'posts_query' ) ) {
+
+			case 'category':
+
+				if ( '' !== $this->get_attr( 'post_cat' ) ) {
+					$query_args['category__in'] = explode( ',', $this->get_attr( 'post_cat' ) );
+				}
+
+				break;
+
+			case 'ids':
+
+				if ( '' !== $this->get_attr( 'post_ids' ) ) {
+					$query_args['post__in'] = explode(
+						',',
+						str_replace( ' ', '', $this->get_attr( 'post_ids' ) )
+					);
+				}
+				break;
+
+			case 'related':
+
+				$query_args = array_merge( $query_args, $this->get_related_query_args() );
+
+				break;
+		}
+
+		return $query_args;
+
+	}
+
+	/**
+	 * Get related query arguments
+	 *
+	 * @return [type] [description]
+	 */
+	public function get_related_query_args() {
+
+		$args = array(
+			'post__not_in' => array( get_the_ID() ),
+		);
+
+		$related_by = $this->get_attr( 'related_by' );
+
+		switch ( $related_by ) {
+
+			case 'taxonomy':
+
+				$related_tax = $this->get_attr( 'related_tax' );
+
+				if ( $related_tax ) {
+
+					$terms = wp_get_post_terms( get_the_ID(), $related_tax, array( 'fields' => 'ids' ) );
+
+					if ( $terms ) {
+						$args['tax_query'] = array(
+							array(
+								'taxonomy' => $related_tax,
+								'field'    => 'term_id',
+								'terms'    => $terms,
+								'operator' => 'IN',
+							),
+						);
+					}
+
+				}
+
+				break;
+
+			case 'keyword':
+
+				$keyword = $this->get_attr( 'related_keyword' );
+
+				preg_match( '/%(.*?)%/', $keyword, $matches );
+
+				if ( empty( $matches ) ) {
+					$args['s'] = $keyword;
+				} else {
+					$args['s'] = get_post_meta( get_the_ID(), $matches[1], true );
+				}
+
+				break;
+		}
+
+		return $args;
+
+	}
+
+	/**
+	 * Get custom query args
+	 *
+	 * @return array
+	 */
+	public function get_custom_query_args() {
+
+		$query_args = $this->get_attr( 'custom_query' );
+		$query_args = json_decode( $query_args, true );
+
+		if ( ! $query_args ) {
+			$query_args = array();
+		}
+
+		return $query_args;
+	}
+
+	/**
+	 * Query posts by attributes
+	 *
+	 * @return object
+	 */
+	public function query() {
+
+		if ( 'true' === $this->get_attr( 'is_archive_template' ) ) {
+			global $wp_query;
+			$query = $wp_query;
+			return $query;
+		}
+
+		if ( 'true' === $this->get_attr( 'use_custom_query' ) ) {
+			$query_args = $this->get_custom_query_args();
+		} else {
+			$query_args = $this->get_default_query_args();
+		}
+
+		$query = new WP_Query( $query_args );
+
+		return $query;
 	}
 
 	/**

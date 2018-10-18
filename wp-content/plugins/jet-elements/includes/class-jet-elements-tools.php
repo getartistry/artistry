@@ -366,6 +366,22 @@ if ( ! class_exists( 'Jet_Elements_Tools' ) ) {
 		}
 
 		/**
+		 * Get post taxonomies for options.
+		 *
+		 * @return array
+		 */
+		public function get_taxonomies_for_options() {
+
+			$args = array(
+				'public'   => true,
+			);
+
+			$taxonomies = get_taxonomies( $args, 'objects', 'and' );
+
+			return wp_list_pluck( $taxonomies, 'label', 'name' );
+		}
+
+		/**
 		 * Returns the instance.
 		 *
 		 * @since  1.0.0

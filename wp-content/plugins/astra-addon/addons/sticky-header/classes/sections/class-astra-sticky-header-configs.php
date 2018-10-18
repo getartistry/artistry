@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Sticky_Header_Configs' ) ) {
@@ -51,7 +57,6 @@ if ( ! class_exists( 'Astra_Sticky_Header_Configs' ) ) {
 					'title'    => __( 'Different Logo for Sticky Header?', 'astra-addon' ),
 					'priority' => 15,
 					'control'  => 'checkbox',
-					'required' => array( ASTRA_THEME_SETTINGS . '[header-main-stick]', '==', 1 ),
 				),
 
 				/**
@@ -135,7 +140,6 @@ if ( ! class_exists( 'Astra_Sticky_Header_Configs' ) ) {
 					'title'    => __( 'Enable Shrink Effect', 'astra-addon' ),
 					'priority' => 35,
 					'control'  => 'checkbox',
-					'required' => array( ASTRA_THEME_SETTINGS . '[header-main-stick]', '==', 1 ),
 				),
 
 				/**
@@ -167,14 +171,6 @@ if ( ! class_exists( 'Astra_Sticky_Header_Configs' ) ) {
 					'section'  => 'section-sticky-header',
 					'title'    => __( 'Hide when scrolling down', 'astra-addon' ),
 					'priority' => 45,
-					'required' => array(
-						'conditions' => array(
-							array( ASTRA_THEME_SETTINGS . '[header-above-stick]', '==', 1 ),
-							array( ASTRA_THEME_SETTINGS . '[header-main-stick]', '==', 1 ),
-							array( ASTRA_THEME_SETTINGS . '[header-below-stick]', '==', 1 ),
-						),
-						'operator'   => 'OR',
-					),
 					'control'  => 'checkbox',
 				),
 
@@ -189,14 +185,6 @@ if ( ! class_exists( 'Astra_Sticky_Header_Configs' ) ) {
 					'priority' => 50,
 					'title'    => __( 'Enable On', 'astra-addon' ),
 					'control'  => 'select',
-					'required' => array(
-						'conditions' => array(
-							array( ASTRA_THEME_SETTINGS . '[header-above-stick]', '==', 1 ),
-							array( ASTRA_THEME_SETTINGS . '[header-main-stick]', '==', 1 ),
-							array( ASTRA_THEME_SETTINGS . '[header-below-stick]', '==', 1 ),
-						),
-						'operator'   => 'OR',
-					),
 					'choices'  => array(
 						'desktop' => __( 'Desktop', 'astra-addon' ),
 						'mobile'  => __( 'Mobile', 'astra-addon' ),

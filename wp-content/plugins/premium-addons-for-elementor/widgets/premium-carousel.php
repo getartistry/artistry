@@ -2,7 +2,7 @@
 namespace Elementor;
 if( !defined( 'ABSPATH' ) ) exit; // No access of directly access
 
-class Premium_Carousel_Widget extends Widget_Base {
+class Premium_Carousel extends Widget_Base {
 
     protected $templateInstance;
 
@@ -963,4 +963,3 @@ class Premium_Carousel_Widget extends Widget_Base {
 		<?php
 	}
 }
-Plugin::instance()->widgets_manager->register_widget_type( new Premium_Carousel_Widget() );

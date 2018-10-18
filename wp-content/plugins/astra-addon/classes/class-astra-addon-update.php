@@ -145,6 +145,20 @@ if ( ! class_exists( 'Astra_Addon_Update' ) ) {
 				self::v_1_4_1();
 			}
 
+			if ( version_compare( $saved_version, '1.4.8', '<' ) ) {
+				self::v_1_4_8();
+			}
+
+			if ( version_compare( $saved_version, '1.6.0-beta.4', '<' ) ) {
+				self::v_1_6_0_beta_4();
+			}
+			if ( version_compare( $saved_version, '1.6.0', '<' ) ) {
+				self::v_1_6_0();
+			}
+			if ( version_compare( $saved_version, '1.6.1', '<' ) ) {
+				self::v_1_6_1();
+			}
+
 			// Refresh Astra Addon CSS and JS Files on update.
 			Astra_Minify::refresh_assets();
 
@@ -1536,6 +1550,136 @@ if ( ! class_exists( 'Astra_Addon_Update' ) ) {
 				}
 			}
 
+		}
+
+		/**
+		 * Update options when updating to v1.4.8
+		 *
+		 * Typography addon don't include typography CSS for annchors inside headings.
+		 *
+		 * @return void
+		 */
+		public static function v_1_4_8() {
+			$theme_options = get_option( 'astra-settings' );
+
+			// Set flag to use anchors CSS selectors in the CSS for headings.
+			if ( ! isset( $theme_options['include-headings-in-typography'] ) ) {
+				$theme_options['include-headings-in-typography'] = true;
+				update_option( 'astra-settings', $theme_options );
+			}
+		}
+
+		/**
+		 * Update options when updating to v1.6.0-beta.4
+		 * Header Sections Submenu Border width
+		 * Header Sections Pointer animation default value
+		 *
+		 * @return void
+		 */
+		public static function v_1_6_0_beta_4() {
+
+			$border_disabled_values        = array(
+				'top'    => '0',
+				'bottom' => '0',
+				'left'   => '0',
+				'right'  => '0',
+			);
+			$inside_border_disabled_values = array(
+				'bottom' => '0',
+			);
+			$border_enabled_values         = array(
+				'top'    => '1',
+				'bottom' => '1',
+				'left'   => '1',
+				'right'  => '1',
+			);
+			$inside_border_enabled_values  = array(
+				'bottom' => '1',
+			);
+
+			$theme_options = get_option( 'astra-settings' );
+
+			$above_submenu_border = isset( $theme_options['above-header-submenu-border'] ) ? $theme_options['above-header-submenu-border'] : true;
+			$below_submenu_border = isset( $theme_options['below-header-submenu-border'] ) ? $theme_options['below-header-submenu-border'] : true;
+
+			// Above Header.
+			if ( $above_submenu_border ) {
+				$theme_options['above-header-submenu-border']      = $border_enabled_values;
+				$theme_options['above-header-submenu-item-border'] = $inside_border_enabled_values;
+			} else {
+				$theme_options['above-header-submenu-border']      = $border_disabled_values;
+				$theme_options['above-header-submenu-item-border'] = $inside_border_disabled_values;
+			}
+			// Below Header.
+			if ( $below_submenu_border ) {
+				$theme_options['below-header-submenu-border']      = $border_enabled_values;
+				$theme_options['below-header-submenu-item-border'] = $inside_border_enabled_values;
+			} else {
+				$theme_options['below-header-submenu-border']      = $border_disabled_values;
+				$theme_options['below-header-submenu-item-border'] = $inside_border_disabled_values;
+			}
+
+			update_option( 'astra-settings', $theme_options );
+		}
+
+		/**
+		 * Set Above Header submenu border color 'above-header-submenu-border-color' to '#eaeaea' for old users who doesn't set any color and set the theme color who install the fresh v_1_6_0 plugin.
+		 *
+		 * @return void
+		 */
+		public static function v_1_6_0() {
+
+			$theme_options = get_option( 'astra-settings' );
+
+			// Set the default #eaeaea sub menu border color who doesn't set any color.
+			if ( ! isset( $theme_options['above-header-submenu-border-color'] ) || empty( $theme_options['above-header-submenu-border-color'] ) ) {
+				$theme_options['above-header-submenu-border-color'] = '#eaeaea';
+			}
+
+			// Set above and below header sub menu animation option to default for existing users.
+			if ( ! isset( $theme_options['below-header-submenu-container-animation'] ) || empty( $theme_options['below-header-submenu-container-animation'] ) ) {
+				$theme_options['below-header-submenu-container-animation'] = '';
+			}
+
+			if ( ! isset( $theme_options['above-header-submenu-container-animation'] ) ) {
+				$theme_options['above-header-submenu-container-animation'] = '';
+			}
+
+			update_option( 'astra-settings', $theme_options );
+		}
+
+		/**
+		 * Change the Above Header and Below Header submenu option to be checkbpx rather than border selection.
+		 * Apply the submenu border color to the submenu item border color for Above and Below Header.
+		 *
+		 * @return void
+		 */
+		public static function v_1_6_1() {
+			$theme_options                    = get_option( 'astra-settings', array() );
+			$above_header_submenu_otem_border = isset( $theme_options['above-header-submenu-item-border'] ) ? $theme_options['above-header-submenu-item-border'] : array();
+			$below_header_submenu_otem_border = isset( $theme_options['below-header-submenu-item-border'] ) ? $theme_options['below-header-submenu-item-border'] : array();
+
+			if ( ( is_array( $above_header_submenu_otem_border ) && '0' != $above_header_submenu_otem_border['bottom'] ) ) {
+				$theme_options['above-header-submenu-item-border'] = 1;
+			} else {
+				$theme_options['above-header-submenu-item-border'] = 0;
+			}
+
+			if ( ( is_array( $below_header_submenu_otem_border ) && '0' != $below_header_submenu_otem_border['bottom'] ) ) {
+				$theme_options['below-header-submenu-item-border'] = 1;
+			} else {
+				$theme_options['below-header-submenu-item-border'] = 0;
+			}
+
+			if ( isset( $theme_options['above-header-submenu-border-color'] ) && ! empty( $theme_options['above-header-submenu-border-color'] ) ) {
+				$theme_options['above-header-submenu-item-b-color'] = $theme_options['above-header-submenu-border-color'];
+			}
+
+			if ( isset( $theme_options['below-header-submenu-border-color'] ) && ! empty( $theme_options['below-header-submenu-border-color'] ) ) {
+				$theme_options['below-header-submenu-item-b-color'] = $theme_options['below-header-submenu-border-color'];
+			}
+
+			update_option( 'astra-settings', $theme_options );
 		}
 	}
 }

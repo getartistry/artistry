@@ -159,19 +159,22 @@ if ( ! class_exists( 'Astra_Customizer_Sanitizes' ) ) {
 				$spacing['desktop'] = array_map(
 					function ( $value ) {
 							return ( is_numeric( $value ) && $value >= 0 ) ? $value : '';
-					}, $val['desktop']
+					},
+					$val['desktop']
 				);
 
 				$spacing['tablet'] = array_map(
 					function ( $value ) {
 							return ( is_numeric( $value ) && $value >= 0 ) ? $value : '';
-					}, $val['tablet']
+					},
+					$val['tablet']
 				);
 
 				$spacing['mobile'] = array_map(
 					function ( $value ) {
 							return ( is_numeric( $value ) && $value >= 0 ) ? $value : '';
-					}, $val['mobile']
+					},
+					$val['mobile']
 				);
 
 				if ( isset( $val['desktop-unit'] ) ) {

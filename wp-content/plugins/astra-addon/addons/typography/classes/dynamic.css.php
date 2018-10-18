@@ -278,7 +278,7 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		/**
 		 * Primary Submenu
 		 */
-		'.main-header-menu > li > .sub-menu:first-of-type, .main-header-menu > li > .children:first-of-type' => array(
+		'.main-header-menu > li > .sub-menu:first-of-type, .main-header-menu > li > .children:first-of-type, .main-header-menu > li > .astra-full-megamenu-wrapper:first-of-type' => array(
 			'font-size'   => astra_responsive_font( $primary_dropdown_menu_font_size, 'desktop' ),
 			'font-weight' => astra_get_css_value( $primary_dropdown_menu_font_weight, 'font' ),
 			'font-family' => astra_get_css_value( $primary_dropdown_menu_font_family, 'font' ),
@@ -374,7 +374,10 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		/**
 		 * Heading - <h1>
 		 */
-		'h1, .entry-content h1, .entry-content h1 a'   => array(
+		astra_addon_typography_conditional_headings_css_selectors(
+			'h1, .entry-content h1, .entry-content h1 a',
+			'h1, .entry-content h1'
+		)                                              => array(
 			'font-weight'    => astra_get_css_value( $h1_font_weight, 'font' ),
 			'font-family'    => astra_get_css_value( $h1_font_family, 'font' ),
 			'line-height'    => esc_attr( $h1_line_height ),
@@ -384,7 +387,10 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		/**
 		 * Heading - <h2>
 		 */
-		'h2, .entry-content h2, .entry-content h2 a'   => array(
+		astra_addon_typography_conditional_headings_css_selectors(
+			'h2, .entry-content h2, .entry-content h2 a',
+			'h2, .entry-content h2'
+		)                                              => array(
 			'font-weight'    => astra_get_css_value( $h2_font_weight, 'font' ),
 			'font-family'    => astra_get_css_value( $h2_font_family, 'font' ),
 			'line-height'    => esc_attr( $h2_line_height ),
@@ -394,7 +400,10 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		/**
 		 * Heading - <h3>
 		 */
-		'h3, .entry-content h3, .entry-content h3 a'   => array(
+		astra_addon_typography_conditional_headings_css_selectors(
+			'h3, .entry-content h3, .entry-content h3 a',
+			'h3, .entry-content h3'
+		)                                              => array(
 			'font-weight'    => astra_get_css_value( $h3_font_weight, 'font' ),
 			'font-family'    => astra_get_css_value( $h3_font_family, 'font' ),
 			'line-height'    => esc_attr( $h3_line_height ),
@@ -404,7 +413,10 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		/**
 		 * Heading - <h4>
 		 */
-		'h4, .entry-content h4, .entry-content h4 a'   => array(
+		astra_addon_typography_conditional_headings_css_selectors(
+			'h4, .entry-content h4, .entry-content h4 a',
+			'h4, .entry-content h4'
+		)                                              => array(
 			'font-weight'    => astra_get_css_value( $h4_font_weight, 'font' ),
 			'font-family'    => astra_get_css_value( $h4_font_family, 'font' ),
 			'line-height'    => esc_attr( $h4_line_height ),
@@ -414,7 +426,10 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		/**
 		 * Heading - <h5>
 		 */
-		'h5, .entry-content h5, .entry-content h5 a'   => array(
+		astra_addon_typography_conditional_headings_css_selectors(
+			'h5, .entry-content h5, .entry-content h5 a',
+			'h5, .entry-content h5'
+		)                                              => array(
 			'font-weight'    => astra_get_css_value( $h5_font_weight, 'font' ),
 			'font-family'    => astra_get_css_value( $h5_font_family, 'font' ),
 			'line-height'    => esc_attr( $h5_line_height ),
@@ -424,7 +439,10 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 		/**
 		 * Heading - <h6>
 		 */
-		'h6, .entry-content h6, .entry-content h6 a'   => array(
+		astra_addon_typography_conditional_headings_css_selectors(
+			'h6, .entry-content h6, .entry-content h6 a',
+			'h6, .entry-content h6'
+		)                                              => array(
 			'font-weight'    => astra_get_css_value( $h6_font_weight, 'font' ),
 			'font-family'    => astra_get_css_value( $h6_font_family, 'font' ),
 			'line-height'    => esc_attr( $h6_line_height ),
@@ -455,7 +473,7 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 			'font-size' => astra_responsive_font( $primary_menu_font_size, 'tablet' ),
 		),
 
-		'.main-header-menu > li > .sub-menu:first-of-type, .main-header-menu > li > .children:first-of-type' => array(
+		'.main-header-menu > li > .sub-menu:first-of-type, .main-header-menu > li > .children:first-of-type, .main-header-menu > li > .astra-full-megamenu-wrapper:first-of-type' => array(
 			'font-size' => astra_responsive_font( $primary_dropdown_menu_font_size, 'tablet' ),
 		),
 
@@ -496,7 +514,7 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 			'font-size' => astra_responsive_font( $primary_menu_font_size, 'mobile' ),
 		),
 
-		'.main-header-menu > li > .sub-menu:first-of-type, .main-header-menu > li > .children:first-of-type' => array(
+		'.main-header-menu > li > .sub-menu:first-of-type, .main-header-menu > li > .children:first-of-type, .main-header-menu > li > .astra-full-megamenu-wrapper:first-of-type' => array(
 			'font-size' => astra_responsive_font( $primary_dropdown_menu_font_size, 'mobile' ),
 		),
 
@@ -601,5 +619,54 @@ function astra_typography_dynamic_css( $dynamic_css, $dynamic_css_filtered = '' 
 	}
 
 	return $dynamic_css . $css_output;
+
+}
+
+
+/**
+ * Conditionally iclude CSS Selectors with anchors in the typography settings.
+ *
+ * Historically Astra adds Colors/Typography CSS for headings and anchors for headings but this causes irregularities with the expected output.
+ * For eg Link color does not work for the links inside headings.
+ *
+ * If filter `astra_include_achors_in_headings_typography` is set to true or Astra Option `include-headings-in-typography` is set to true, This will return selectors with anchors. Else This will return selectors without anchors.
+ *
+ * @access Private.
+ *
+ * @since 1.5.0
+ * @param String $selectors_with_achors CSS Selectors with anchors.
+ * @param String $selectors_without_achors CSS Selectors withour annchors.
+ *
+ * @return String CSS Selectors based on the condition of filters.
+ */
+function astra_addon_typography_conditional_headings_css_selectors( $selectors_with_achors, $selectors_without_achors ) {
+
+	if ( true == astra_addon_typography_anchors_in_css_selectors_heading() ) {
+		return $selectors_with_achors;
+	} else {
+		return $selectors_without_achors;
+	}
+
+}
+
+/**
+ * Check if CSS selectors in Headings should use anchors.
+ *
+ * @since 1.5.0
+ * @return boolean true if it should include anchors, False if not.
+ */
+function astra_addon_typography_anchors_in_css_selectors_heading() {
+
+	if ( true == astra_get_option( 'include-headings-in-typography' ) &&
+		true === apply_filters(
+			'astra_include_achors_in_headings_typography',
+			true
+		) ) {
+
+			return true;
+	} else {
+
+		return false;
+	}
 
 }

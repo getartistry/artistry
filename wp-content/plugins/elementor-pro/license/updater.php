@@ -69,6 +69,13 @@ class Updater {
 			return $_transient_data;
 		}
 
+		// include an unmodified $wp_version
+		include( ABSPATH . WPINC . '/version.php' );
+
+		if ( version_compare( $wp_version, $version_info['requires'], '<' ) ) {
+			return $_transient_data;
+		}
+
 		if ( version_compare( $this->plugin_version, $version_info['new_version'], '<' ) ) {
 			$plugin_info = (object) $version_info;
 			unset( $plugin_info->sections );
@@ -140,6 +147,8 @@ class Updater {
 			$api_request_transient->slug = $this->plugin_slug;
 			$api_request_transient->author = '<a href="https://elementor.com/">Elementor.com</a>';
 			$api_request_transient->homepage = 'https://elementor.com/';
+			$api_request_transient->requires = $api_response['requires'];
+			$api_request_transient->tested = $api_response['tested'];
 
 			$api_request_transient->version = $api_response['new_version'];
 			$api_request_transient->last_updated = $api_response['last_updated'];

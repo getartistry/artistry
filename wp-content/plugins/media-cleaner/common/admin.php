@@ -19,7 +19,6 @@ if ( !class_exists( 'MeowApps_Admin' ) ) {
 					add_action( 'admin_menu', array( $this, 'admin_menu_start' ) );
 					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 					add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
-					add_filter( 'updraftplus_com_link', array( $this, 'updraftplus_com_link' ) );
 				}
 				MeowApps_Admin::$loaded = true;
 			}
@@ -43,11 +42,6 @@ if ( !class_exists( 'MeowApps_Admin' ) ) {
 					}
 				}
 			}
-		}
-
-		function updraftplus_com_link( $url ) {
-			$url = $url . "?afref=460";
-			return $url;
 		}
 
 		function show_meowapps_create_rating_date() {
@@ -400,7 +394,7 @@ if ( !class_exists( 'MeowApps_Admin' ) ) {
 					</div>
 				</div>
 
-			
+
 				<?php
 
 			}

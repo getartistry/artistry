@@ -61,6 +61,18 @@ body.eml-media-css .compat-item .eml-tax-field {
 .media-frame.mode-eml-grid.mode-edit .media-toolbar-secondary .media-button {
     margin: 8px 10px 8px 0;
     vertical-align: middle;
+
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: visibility 0.2s linear, opacity 0.2s linear;
+    -moz-transition: visibility 0.2s linear, opacity 0.2s linear;
+    -o-transition: visibility 0.2s linear, opacity 0.2s linear;
+}
+
+.media-frame.mode-eml-grid.mode-edit .media-toolbar-secondary .media-button.hidden {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .media-frame.mode-eml-grid.mode-edit .media-toolbar-secondary .search {
@@ -142,13 +154,12 @@ body.upload-php.eml-grid #wpbody-content > #screen-meta {
     z-index: 10;
 }
 .media-frame.mode-eml-grid .media-frame-title,
-.media-frame.mode-eml-grid .media-frame-menu,
-.media-frame.mode-eml-grid .media-frame-toolbar {
+.media-frame.mode-eml-grid .media-frame-menu {
     display: none;
 }
 .media-frame.mode-eml-grid .media-frame-content {
     top: 0;
-    bottom: 10px;
+    bottom: 60px;
     border: none;
     background: none;
     overflow: hidden;
@@ -239,6 +250,128 @@ body.upload-php.eml-grid #wpbody-content > #screen-meta {
     padding: 40px 0 0;
     margin: 0 300px 0 0;
     color: #777;
+}
+
+
+
+/* == Media Selection == */
+
+.media-frame-toolbar .media-toolbar {
+    bottom: -60px;
+    height: 60px;
+}
+.media-frame.mode-eml-grid .media-frame-toolbar {
+    bottom: 0;
+    height: 60px;
+}
+.media-frame .media-frame-toolbar .media-toolbar-primary {
+    position: relative;
+    width: auto;
+    min-height: 45px;
+}
+.media-frame.mode-eml-grid .media-frame-toolbar .media-toolbar {
+    padding: 0;
+    bottom: 0;
+    height: 60px;
+}
+.media-frame.mode-eml-grid .media-frame-toolbar .media-toolbar-secondary {
+    float: none;
+    position: absolute;
+    right: 320px;
+    left: 0;
+}
+.media-frame.mode-eml-grid .media-frame-toolbar .media-toolbar-secondary .media-button {
+    float: left;
+    margin: 10px 10px 0 0;
+}
+.media-frame.mode-eml-grid .media-frame-toolbar .media-toolbar-secondary .media-selection {
+    position: relative;
+}
+.media-frame.mode-eml-grid .media-frame-toolbar .media-toolbar-secondary .media-selection:after {
+    background-image: none;
+}
+
+@media only screen and (max-width: 640px) {
+
+    .media-frame.mode-eml-grid .media-frame-toolbar .media-toolbar-primary {
+        display: none;
+    }
+}
+
+
+
+/* == Single Attachment Inline Toolbar == */
+
+.eml-attacment-inline-toolbar {
+    position: absolute;
+    z-index: 10;
+    left: 7px;
+    top: 7px;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+
+    visibility: hidden;
+    opacity: 0;
+}
+.js--select-attachment:hover .eml-attacment-inline-toolbar {
+    visibility: visible;
+    opacity: 1;
+}
+.eml-attacment-inline-toolbar i {
+    margin: 0 5px 0 0;
+    padding: 2px;
+    width: 24px;
+    height: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    background-color: #000;
+    background-color: rgba(0,0,0,0.9);
+    cursor: pointer;
+    color: white;
+    font-size: 24px;
+    line-height: 24px;
+}
+.eml-attacment-inline-toolbar i:hover {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    background-color: #000;
+    color: #2ea2cc;
+}
+
+
+
+/* == Attachment(s) Details == */
+
+.media-sidebar .eml-toggle-collapse {
+    text-decoration: none;
+    height: 14px;
+    line-height: 14px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    padding: 3px 10px;
+    background: #fff;
+    display: inline-block;
+    margin: 10px 0 0;
+}
+
+
+
+/* == Attachment(s) Details Saving Styles == */
+
+.media-frame .media-frame-toolbar #eml-save-changes-button {
+    float: right;
+}
+.media-frame .media-frame-toolbar #eml-save-changes-button {
+    margin: 14px 0 0 10px;
+
+}
+.media-frame .media-frame-toolbar #eml-save-changes-message {
+    white-space: nowrap;
+    float: right;
+    margin: 10px 0 0 0;
+    display: none;
 }
 
 

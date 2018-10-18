@@ -1,1645 +1,2451 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Smart Manager for e-Commerce v3.4.1\n"
+"Project-Id-Version: Smart Manager 3.20.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-10-28 09:32+0200\n"
-"Last-Translator: admin <naresh.vachhani@magnettechnologies.com>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2018-05-23 11:50+0000\n"
+"PO-Revision-Date: Mon Oct 08 2018 14:33:04 GMT+0530 (IST)\n"
+"Last-Translator: admin <tarun.parswani@storeapps.org>\n"
+"Language-Team: StoreApps <support@storeapps.org>, Icegram <hello@icegram."
+"com>\n"
+"Language: Romanian\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 :(((n%100>19)||(( n%100==0)&&(n!"
+"=0)))? 2 : 1))\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
 "X-Poedit-Basepath: ../\n"
 "X-Textdomain-Support: yes\n"
-"Language: en_US\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Loco-Target-Locale: ro_RO"
 
-# @ smart-manager
-#: pro/sm-privilege.php:29
-msgid "Smart Manager Settings <b>Updated</b>"
-msgstr "Smart Manager Setari <b>Modificate cu succes!</b>"
-
-# @ smart-manager
-#: pro/sm-privilege.php:149
-msgid "Privileges for different System Roles"
-msgstr "Privilegii pentru diferite roluri in site"
-
-# @ smart-manager
-#: pro/sm-privilege.php:155
-msgid "Can Manage Products?"
-msgstr "Poate administra produsele?"
-
-# @ smart-manager
-#: pro/sm-privilege.php:156
-msgid "Can Manage Customers & Orders?"
-msgstr "Poate administra clientii si ordinele?"
-
-# @ smart-manager
-#: pro/sm-privilege.php:171
-msgid "Print Order Settings"
-msgstr "Setarile de printare"
-
-# @ smart-manager
-#: pro/sm-privilege.php:176
-msgid "Company logo:"
-msgstr "Logo-ul firmei:"
-
-# @ smart-manager
-#: pro/sm-privilege.php:181 sm/manager-console.php:762
-msgid "Upload Image"
-msgstr "Incarca Imagine"
-
-# @ default
-#: pro/sm-privilege.php:186
-msgid "Back to Smart Manager"
-msgstr "Inapoi la Smart Manager"
-
-# @ smart-manager
-#: pro/sm37.php:553 pro/sm38.php:1061 pro/woo.php:1848 pro/woo.php:1911
-#: sm/json37.php:656 sm/json38.php:1697 sm/woo-json.php:2059
-msgid "Records Updated Successfully"
-msgstr "Modificari salvate cu succes"
-
-# @ smart-manager
-#: pro/sm37.php:555
-msgid "No Records Updated"
-msgstr "Nici o modificare salvata"
-
-# @ smart-manager
-#: pro/sm37.php:640
-msgid "Incomplete Sale"
-msgstr "Vanzare incompleta"
-
-# @ smart-manager
-#: pro/sm37.php:644
-msgid "Order Received"
-msgstr "Comanda primita"
-
-# @ smart-manager
-#: pro/sm37.php:648
-msgid "Accepted Payment"
-msgstr "Plata acceptata"
-
-# @ smart-manager
-#: pro/sm37.php:652
-msgid "Job Dispatched"
-msgstr "Comanda Expediata"
-
-# @ smart-manager
-#: pro/sm37.php:656
-msgid "Closed Order"
-msgstr "Comenzi inchise"
-
-# @ smart-manager
-#: pro/sm37.php:660
-msgid "Payment Declined"
-msgstr "Plata neacceptata"
-
-# @ wpsc
-#: pro/sm38.php:63 pro/sm38.php:71
-msgid "State"
-msgstr "Judet"
-
-# @ wpsc
-# @ smart-manager
-#: pro/sm38.php:109 pro/upgrade.php:394 sm/manager-console.php:228
-#: sm/manager-console.php:797
-msgid "Name"
-msgstr "Nume"
-
-# @ wpsc
-# @ smart-manager
-#: pro/sm38.php:110 sm/json38.php:1001 sm/manager-console.php:777
-#: sm/woo-json.php:1566
-msgid "Address"
-msgstr "Adresa"
-
-# @ wpsc
-#: pro/sm38.php:111
-msgid "Phone"
-msgstr "Telefon"
-
-# @ wpsc
-# @ smart-manager
-#: pro/sm38.php:112 sm/manager-console.php:775
-msgid "Email"
-msgstr "Email"
-
-# @ wpsc
-#: pro/sm38.php:125
-msgid "Manual Payment"
-msgstr "Plata manuala"
-
-# @ wpsc
-#: pro/sm38.php:228
+#: ../new/classes/class-smart-manager-admin-welcome.php:202
 #, php-format
-msgid "Packing Slip for Order #%s"
-msgstr "Packing Slip pentru comanda  #%s"
-
-# @ wpsc
-#: pro/sm38.php:233
-msgctxt "packing slip"
-msgid "Ship To:"
-msgstr "Expediata catre:"
-
-# @ wpsc
-#: pro/sm38.php:241
-msgctxt "packing slip"
-msgid "Bill To:"
-msgstr "Platita de:"
-
-# @ wpsc
-#: pro/sm38.php:252
-msgctxt "packing slip"
-msgid "Order Date"
-msgstr "Data comanda"
-
-# @ wpsc
-#: pro/sm38.php:253
-msgctxt "packing slip"
-msgid "Order ID"
-msgstr "ID comanda"
-
-# @ wpsc
-#: pro/sm38.php:254
-msgctxt "packing slip"
-msgid "Shipping Method"
-msgstr "Metoda de livrare"
-
-# @ wpsc
-#: pro/sm38.php:255
-msgctxt "packing slip"
-msgid "Payment Method"
-msgstr "Metoda de plata"
-
-# @ wpsc
-#: pro/sm38.php:270
-msgid "Item Name"
-msgstr "Nume produs"
-
-# @ wpsc
-# @ smart-manager
-#: pro/sm38.php:271 pro/woo.php:244 sm/json38.php:982
-#: sm/manager-console.php:248 sm/manager-console.php:717 sm/woo-json.php:1550
-msgid "SKU"
-msgstr "SKU"
-
-# @ wpsc
-# @ smart-manager
-#: pro/sm38.php:272 pro/woo.php:245
-msgid "Quantity"
-msgstr "Cantitate"
-
-# @ wpsc
-# @ smart-manager
-#: pro/sm38.php:273 pro/woo.php:245 sm/json38.php:979
-#: sm/manager-console.php:233 sm/manager-console.php:712 sm/woo-json.php:1358
-#: sm/woo-json.php:1398 sm/woo-json.php:1545
-msgid "Price"
-msgstr "Pret"
-
-# @ wpsc
-#: pro/sm38.php:274
-msgid "Item Shipping"
-msgstr "Livrare produs"
-
-# @ wpsc
-#: pro/sm38.php:275
-msgid "Item Tax"
-msgstr "Taxa produs"
-
-# @ wpsc
-#: pro/sm38.php:276
-msgid "Item Total"
-msgstr "Total produs"
-
-# @ wpsc
-#: pro/sm38.php:312
-msgid "Coupon Code"
-msgstr "Cod cupon"
-
-# @ wpsc
-#: pro/sm38.php:315
-msgid "Discount"
-msgstr "Reducere"
-
-# @ wpsc
-#: pro/sm38.php:322
-msgid "Taxes"
-msgstr "Taxe"
-
-# @ wpsc
-# @ smart-manager
-#: pro/sm38.php:329 pro/woo.php:264
-msgid "Shipping"
-msgstr "Livrare"
-
-# @ wpsc
-# @ smart-manager
-#: pro/sm38.php:334 pro/woo.php:278
-msgid "Total"
-msgstr "Total"
-
-# @ smart-manager
-#: pro/sm38.php:1058 pro/woo.php:1908 sm/json37.php:654 sm/json38.php:1695
-#: sm/woo-json.php:2057
-msgid "Record Updated Successfully"
-msgstr "Modificari salvate cu succes"
-
-# @ smart-manager
-#: pro/upgrade.php:130
-msgid "Name License Key"
-msgstr "Nume cheie de licenta"
-
-# @ smart-manager
-#: pro/upgrade.php:133 pro/upgrade.php:477
-msgid "Validate"
-msgstr "Valideaza"
-
-# @ smart-manager
-#: pro/upgrade.php:177
-msgid "Support query has been successfully submitted"
-msgstr "Intrebarea de suport a fost trimisa cu succes"
-
-# @ default
-#: pro/upgrade.php:177
-msgid "View sent query"
-msgstr "Vezi intrebarea trimisa"
-
-# @ default
-#: pro/upgrade.php:178
-msgid "Hide this Message"
-msgstr "Ascunde acest mesaj"
-
-# @ smart-manager
-#: pro/upgrade.php:185
-msgid "Query submission failed"
-msgstr "Trimitere mesaj esuata"
-
-# @ smart-manager
-#: pro/upgrade.php:185
-msgid "Reason: message"
-msgstr "Motiv: mesaj"
-
-# @ smart-manager
-#: pro/upgrade.php:398
-msgid "E-mail"
-msgstr "Email"
-
-# @ smart-manager
-#: pro/upgrade.php:402
-msgid "Subject"
-msgstr "Subiect"
-
-# @ smart-manager
-#: pro/upgrade.php:406
-msgid "Message"
-msgstr "Mesaj"
-
-# @ smart-manager
-#: pro/upgrade.php:457
-msgid "Your key is valid. Automatic Upgrades and support are now activated."
+msgid "Welcome to Smart Manager %s"
 msgstr ""
-"Cheia de licenta este valida. Reinoirile automate si suportul a fost activat."
 
-# @ smart-manager
-#: pro/upgrade.php:463
-msgid "Please enter license key"
-msgstr "Te rugam introdu cheia de licenta"
+#: ../new/classes/class-smart-manager-admin-welcome.php:204
+msgid "Thanks for installing! We hope you enjoy using Smart Manager."
+msgstr ""
 
-# @ smart-manager
-#: pro/upgrade.php:472
-msgid "Smart Manager Pro Settings"
-msgstr "Setari Smart Manager Pro"
+#: ../new/classes/class-smart-manager-admin-welcome.php:209
+msgid "Go To Smart Manager"
+msgstr ""
 
-# @ smart-manager
-#: pro/upgrade.php:473
+#: ../new/classes/class-smart-manager-admin-welcome.php:228
+msgid "Questions? Need Help?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:232
+msgid "Settings"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:234 ../pro/sa-
+#: includes/class-storeapps-upgrade-3-0.php:930
+msgid "Docs"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:241
+msgid "Know Smart Manager"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:244
+msgid "FAQ's"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:247
+msgid "Smart Manager Beta"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:263
 msgid ""
-"Your Smart Manager Pro license key is used to verify your support package, "
-"enable automatic updates and receive support."
+"Smart Manager is a unique, revolutionary tool that gives you the power to "
+"<b> boost your productivity by 10x </b> in managing your store by using a "
+"using a <b>familiar, single page, spreadsheet like interface</b>. "
 msgstr ""
-"Cheia ta de licenta Smart Manager Pro este pentru verificarea pachetului "
-"tau, pentru reinoiri automate si pentru suport tehnic."
 
-# @ smart-manager
-#: pro/upgrade.php:475
-msgid "License key:"
-msgstr "Cheie de licenta:"
-
-# @ smart-manager
-#: pro/woo.php:226 sm/manager-console.php:778
-msgid "Billing Address"
-msgstr "Adresa de facturare"
-
-# @ smart-manager
-#: pro/woo.php:233 sm/json38.php:1029 sm/manager-console.php:809
-#: sm/woo-json.php:1599
-msgid "Shipping Address"
-msgstr "Adresa de livrare"
-
-# @ smart-manager
-#: pro/woo.php:240
-msgid "Email id"
-msgstr "Email id"
-
-# @ smart-manager
-#: pro/woo.php:241
-msgid "Tel"
-msgstr "Tel"
-
-# @ smart-manager
-#: pro/woo.php:244
-msgid "Product"
-msgstr "Produs"
-
-# @ smart-manager
-#: pro/woo.php:262 sm/json38.php:1026 sm/manager-console.php:881
-#: sm/woo-json.php:1604
-msgid "Order Notes"
-msgstr "Notite comanda"
-
-# @ smart-manager
-#: pro/woo.php:267 sm/manager-console.php:874 sm/woo-json.php:1587
-msgid "Cart Discount"
-msgstr "Reducere cos"
-
-# @ smart-manager
-#: pro/woo.php:273 sm/manager-console.php:873 sm/woo-json.php:1586
-msgid "Order Discount"
-msgstr "Reducere comanda"
-
-# @ smart-manager
-#: pro/woo.php:277
-msgid "Tax"
-msgstr "Taxa"
-
-# @ smart-manager
-#: pro/woo.php:1697
-msgid "Batch Updation of Region not successful"
-msgstr "Salvarea lotului pe regiune a esuat"
-
-# @ default
-#: pro/woo.php:1756 pro/woo.php:1769
-msgid "Success"
-msgstr "Succes"
-
-# @ smart-manager
-#: pro/woo.php:1824 sm/json38.php:1102 sm/woo-json.php:2117
-msgid "s were not duplicated"
-msgstr "s unde nu e duplicat"
-
-# @ smart-manager
-#: pro/woo.php:1966 sm/manager-console.php:862 sm/woo-json.php:95
-msgid "Taxable"
-msgstr "Taxabil"
-
-# @ smart-manager
-#: pro/woo.php:1967 sm/manager-console.php:863 sm/woo-json.php:96
-msgid "Shipping only"
-msgstr "Doar livrare"
-
-# @ smart-manager
-#: pro/woo.php:1968 sm/manager-console.php:864 sm/woo-json.php:97
-msgid "None"
-msgstr "Nici unul"
-
-# @ smart-manager
-#: pro/woo.php:1972 sm/manager-console.php:848
-msgid "Catalog & Search"
-msgstr "Catalog & Cautare"
-
-# @ smart-manager
-#: pro/woo.php:1973 sm/manager-console.php:849
-msgid "Catalog"
-msgstr "Catalog"
-
-# @ smart-manager
-#: pro/woo.php:1974 sm/manager-console.php:747 sm/manager-console.php:850
-msgid "Search"
-msgstr "Cautare"
-
-# @ smart-manager
-#: pro/woo.php:1975 sm/manager-console.php:851
-msgid "Hidden"
-msgstr "Ascuns"
-
-# @ smart-manager
-#: sm/json37.php:127 sm/json37.php:302 sm/json37.php:427 sm/json38.php:281
-#: sm/json38.php:598 sm/json38.php:839 sm/woo-json.php:426 sm/woo-json.php:738
-#: sm/woo-json.php:1219
-msgid "No Records Found"
-msgstr "Nici un rezultat gasit"
-
-# @ smart-manager
-#: sm/json37.php:571
-msgid "Product deleted Successfully"
-msgstr "Produs sters cu succes"
-
-# @ smart-manager
-#: sm/json37.php:574
-msgid "Products deleted Successfully"
-msgstr "Produse sterse cu succes"
-
-# @ smart-manager
-#: sm/json37.php:578 sm/json38.php:1227
-msgid "Products removed from the grid"
-msgstr "Produse sterse de pe lista"
-
-# @ smart-manager
-#: sm/json37.php:589 sm/json38.php:1239
-msgid "Purchase Log deleted Successfully"
-msgstr "Achizitionare Log sters cu succes"
-
-# @ smart-manager
-#: sm/json37.php:592 sm/json38.php:1242
-msgid "Purchase Logs deleted Successfully"
-msgstr "Achizitionarea Loguri stearsa cu succes"
-
-# @ default
-#: sm/json37.php:596
-msgid "Purchase Logs removed from the gridsmart-manager"
-msgstr "Achizitionare Log-uri a fost sters din lista smart-manager"
-
-# @ smart-manager
-#: sm/json37.php:644 sm/json37.php:646 sm/json38.php:1684 sm/json38.php:1686
-#: sm/woo-json.php:2046 sm/woo-json.php:2048
-msgid "Record Updated and"
-msgstr "Registru actualizat si"
-
-# @ smart-manager
-#: sm/json37.php:644 sm/json37.php:648 sm/json38.php:1684 sm/json38.php:1688
-#: sm/json38.php:1703 sm/woo-json.php:2046 sm/woo-json.php:2050
-#: sm/woo-json.php:2064
-msgid "New Record Inserted Successfully"
-msgstr "O noua modificare introdusa cu succes"
-
-# @ smart-manager
-#: sm/json37.php:646 sm/json37.php:650 sm/json37.php:661 sm/json37.php:663
-#: sm/json38.php:1686 sm/json38.php:1690 sm/woo-json.php:2048
-#: sm/woo-json.php:2052 sm/woo-json.php:2066
-msgid "New Records Inserted Successfully"
-msgstr "Noi modificari introduse cu succes"
-
-# @ smart-manager
-#: sm/json37.php:648 sm/json37.php:650 sm/json38.php:1688 sm/json38.php:1690
-#: sm/woo-json.php:2050 sm/woo-json.php:2052
-msgid "Records Updated and"
-msgstr "Modificari salvate si"
-
-# @ smart-manager
-#: sm/json38.php:976 sm/woo-json.php:1542
-msgid "Post ID"
-msgstr "Post ID"
-
-# @ smart-manager
-#: sm/json38.php:977 sm/woo-json.php:1543
-msgid "Product Image"
-msgstr "Imagine produs"
-
-# @ smart-manager
-#: sm/json38.php:978 sm/manager-console.php:711 sm/woo-json.php:1544
-msgid "Product Name"
-msgstr "Nume produs"
-
-# @ smart-manager
-#: sm/json38.php:980 sm/manager-console.php:238 sm/manager-console.php:713
-#: sm/woo-json.php:1546
-msgid "Sale Price"
-msgstr "Pret de vanzare"
-
-# @ smart-manager
-#: sm/json38.php:981 sm/woo-json.php:1549
-msgid "Inventory / Stock"
-msgstr "Inventar / stoc"
-
-# @ smart-manager
-#: sm/json38.php:983 sm/woo-json.php:1551
-msgid "Category / Group"
-msgstr "Categorie / grup"
-
-# @ smart-manager
-#: sm/json38.php:984 sm/manager-console.php:259 sm/manager-console.php:720
-#: sm/woo-json.php:1553
-msgid "Weight"
-msgstr "Greutate"
-
-# @ smart-manager
-#: sm/json38.php:985 sm/manager-console.php:844
-msgid "Weight Unit"
-msgstr "Unitatea de greutate"
-
-# @ smart-manager
-#: sm/json38.php:986 sm/manager-console.php:278 sm/manager-console.php:724
-#: sm/woo-json.php:1554
-msgid "Height"
-msgstr "Inaltime"
-
-# @ smart-manager
-#: sm/json38.php:987 sm/manager-console.php:845
-msgid "Height Unit"
-msgstr "Unitate de inaltime"
-
-# @ smart-manager
-#: sm/json38.php:988 sm/manager-console.php:282 sm/manager-console.php:725
-#: sm/woo-json.php:1555
-msgid "Width"
-msgstr "Latime"
-
-# @ smart-manager
-#: sm/json38.php:989 sm/manager-console.php:846
-msgid "Width Unit"
-msgstr "Unitate de latime"
-
-# @ smart-manager
-#: sm/json38.php:990 sm/manager-console.php:286 sm/manager-console.php:726
-#: sm/woo-json.php:1556
-msgid "Length"
-msgstr "Lungime"
-
-# @ smart-manager
-#: sm/json38.php:991 sm/manager-console.php:847
-msgid "Length Unit"
-msgstr "Unitate de lungime"
-
-# @ smart-manager
-#: sm/json38.php:992 sm/manager-console.php:305 sm/manager-console.php:842
-msgid "Local Shipping Fee"
-msgstr "Livrare locala gratuita"
-
-# @ smart-manager
-#: sm/json38.php:993 sm/manager-console.php:310 sm/manager-console.php:843
-msgid "International Shipping Fee"
-msgstr "Livrare internationala gratuita"
-
-# @ smart-manager
-#: sm/json38.php:997 sm/woo-json.php:1562
-msgid "User ID"
-msgstr "ID user"
-
-# @ smart-manager
-#: sm/json38.php:998 sm/manager-console.php:771 sm/woo-json.php:1563
-msgid "First Name"
-msgstr "Nume"
-
-# @ smart-manager
-#: sm/json38.php:999 sm/manager-console.php:773 sm/woo-json.php:1564
-msgid "Last Name"
-msgstr "Prenume"
-
-# @ smart-manager
-#: sm/json38.php:1000 sm/woo-json.php:1565
-msgid "E-mail ID"
-msgstr "ID email"
-
-# @ smart-manager
-#: sm/json38.php:1002 sm/woo-json.php:1567
-msgid "Postcode"
-msgstr "Cod postal"
-
-# @ smart-manager
-#: sm/json38.php:1003 sm/manager-console.php:781 sm/woo-json.php:1568
-msgid "City"
-msgstr "Oras"
-
-# @ smart-manager
-#: sm/json38.php:1004 sm/woo-json.php:1569
-msgid "State / Region"
-msgstr "Judet / Regiune"
-
-# @ smart-manager
-#: sm/json38.php:1005 sm/manager-console.php:785 sm/woo-json.php:1570
-msgid "Country"
-msgstr "Tara"
-
-# @ smart-manager
-#: sm/json38.php:1006 sm/woo-json.php:1573
-msgid "Phone / Mobile"
-msgstr "Fix / Mobil"
-
-# @ smart-manager
-#: sm/json38.php:1007 sm/manager-console.php:789
-msgid "Last Order Total"
-msgstr "Totalul ultimei comenzi"
-
-# @ smart-manager
-#: sm/json38.php:1008 sm/woo-json.php:1571
-msgid "Last Order Date"
-msgstr "Data ultimei comenzi"
-
-# @ smart-manager
-#: sm/json38.php:1009 sm/manager-console.php:792 sm/woo-json.php:1574
-msgid "Total Number Of Orders"
-msgstr "Numarul total de comenzi"
-
-# @ smart-manager
-#: sm/json38.php:1010
-msgid "Total Purchased Till Date (By Customer)"
-msgstr "Total cumparaturi pana la data (de catre client)"
-
-# @ smart-manager
-#: sm/json38.php:1015 sm/woo-json.php:1579
-msgid "Order ID"
-msgstr "ID comanda"
-
-# @ smart-manager
-#: sm/json38.php:1016 sm/woo-json.php:1580
-msgid "Order Date"
-msgstr "Data comenzii"
-
-# @ smart-manager
-#: sm/json38.php:1017 sm/manager-console.php:772 sm/woo-json.php:1581
-msgid "Billing First Name"
-msgstr "Nume de facturare"
-
-# @ smart-manager
-#: sm/json38.php:1018 sm/manager-console.php:774 sm/woo-json.php:1582
-msgid "Billing Last Name"
-msgstr "Prenume de facturare"
-
-# @ smart-manager
-#: sm/json38.php:1019 sm/woo-json.php:1583
-msgid "Billing E-mail ID"
-msgstr "ID Email de facturare"
-
-# @ smart-manager
-#: sm/json38.php:1020 sm/woo-json.php:1584
-msgid "Billing Phone Number"
-msgstr "Numar Telefon de facturare"
-
-# @ smart-manager
-#: sm/json38.php:1021 sm/woo-json.php:1572 sm/woo-json.php:1591
-msgid "Order Total"
-msgstr "Total comanda"
-
-# @ smart-manager
-#: sm/json38.php:1022
-msgid "Total No. of Items"
-msgstr "Numarul total de bucati"
-
-# @ smart-manager
-#: sm/json38.php:1023
-msgid "Order Items (Product Name[SKU])"
-msgstr "Produse Comanda (Nume produs[SKU])"
-
-# @ smart-manager
-#: sm/json38.php:1024 sm/manager-console.php:804 sm/woo-json.php:1595
-msgid "Order Status"
-msgstr "Status comanda"
-
-# @ smart-manager
-#: sm/json38.php:1025
-msgid "Track ID"
-msgstr "ID de urmarire"
-
-# @ smart-manager
-#: sm/json38.php:1027 sm/manager-console.php:807 sm/woo-json.php:1597
-msgid "Shipping First Name"
-msgstr "Nume de livrare"
-
-# @ smart-manager
-#: sm/json38.php:1028 sm/manager-console.php:808 sm/woo-json.php:1598
-msgid "Shipping Last Name"
-msgstr "Prenume de livrare"
-
-# @ smart-manager
-#: sm/json38.php:1030 sm/woo-json.php:1600
-msgid "Shipping Postcode"
-msgstr "Cod Postal de livrare"
-
-# @ smart-manager
-#: sm/json38.php:1031 sm/manager-console.php:811 sm/woo-json.php:1601
-msgid "Shipping City"
-msgstr "Oras de livrare"
-
-# @ smart-manager
-#: sm/json38.php:1032 sm/woo-json.php:1602
-msgid "Shipping State / Region"
-msgstr "Regiune / Judet de livrare"
-
-# @ smart-manager
-#: sm/json38.php:1033 sm/woo-json.php:1603
-msgid "Shippping Country"
-msgstr "Tara de livrare"
-
-# @ smart-manager
-#: sm/json38.php:1174 sm/woo-json.php:2187
-msgid " Duplicated Successfully"
-msgstr "Duplicat cu Succes"
-
-# @ smart-manager
-#: sm/json38.php:1183 sm/woo-json.php:2196
-msgid "s Duplicated Successfully"
-msgstr "s Duplicat cu Succes"
-
-# @ smart-manager
-#: sm/json38.php:1218
-msgid "Product Deleted Successfully"
-msgstr "Produs Sters cu Succes"
-
-# @ smart-manager
-#: sm/json38.php:1221
-msgid "Products Deleted Successfully"
-msgstr "Produse Sterse cu Succes"
-
-# @ smart-manager
-#: sm/json38.php:1225
-msgid "Products were not deleted"
-msgstr "Produse care nu au fost sterse"
-
-# @ smart-manager
-#: sm/json38.php:1246
-msgid "Purchase Logs removed from the grid"
-msgstr "Logurile de cumparaturi sterse din lista"
-
-# @ smart-manager
-#: sm/json38.php:1705
-msgid " New Records Inserted Successfully"
-msgstr "Noi modificari introduse cu succes."
-
-# @ smart-manager
-#: sm/manager-console.php:71 sm/manager-console.php:865
-msgid "Pounds"
-msgstr "Banuti"
-
-# @ smart-manager
-#: sm/manager-console.php:71 sm/manager-console.php:866
-msgid "Ounces"
-msgstr "Uncii"
-
-# @ smart-manager
-#: sm/manager-console.php:71 sm/manager-console.php:867
-msgid "Grams"
-msgstr "Grame"
-
-# @ smart-manager
-#: sm/manager-console.php:71 sm/manager-console.php:868
-msgid "Kilograms"
-msgstr "Kilograme"
-
-# @ smart-manager
-#: sm/manager-console.php:223
-msgid "Image"
-msgstr "Imagine"
-
-# @ smart-manager
-#: sm/manager-console.php:243 sm/manager-console.php:716
-msgid "Inventory"
-msgstr "Inventar"
-
-# @ smart-manager
-#: sm/manager-console.php:253 sm/manager-console.php:540
-msgid "Group"
-msgstr "Grup"
-
-# @ smart-manager
-#: sm/manager-console.php:263
-msgid "Publish"
-msgstr "Public"
-
-# @ smart-manager
-#: sm/manager-console.php:268 sm/manager-console.php:722
-msgid "Description"
-msgstr "Descriere"
-
-# @ smart-manager
-#: sm/manager-console.php:273 sm/manager-console.php:723
-msgid "Additional Description"
-msgstr "Descriere aditionala"
-
-# @ smart-manager
-#: sm/manager-console.php:300 sm/manager-console.php:841
-msgid "Disregard Shipping"
-msgstr "Nu ia in considerare transportul"
-
-# @ smart-manager
-#: sm/manager-console.php:320 sm/manager-console.php:325
-#: sm/manager-console.php:330 sm/manager-console.php:335
-msgid "Unit"
-msgstr "Unitate"
-
-# @ smart-manager
-#: sm/manager-console.php:340
-msgid "Stock: Quantity Limited"
-msgstr "Stoc: Cantitate limitata"
-
-# @ smart-manager
-#: sm/manager-console.php:345
-msgid "Stock: Inform When Out Of Stock"
-msgstr "Stoc: Informeaza cand stocul este terminat"
-
-# @ smart-manager
-#: sm/manager-console.php:440
-msgid "From"
-msgstr "De la"
-
-# @ smart-manager
-#: sm/manager-console.php:446
-msgid "To"
-msgstr "Pana la"
-
-# @ smart-manager
-#: sm/manager-console.php:457 sm/woo-json.php:1557
-msgid "Tax Status"
-msgstr "Status Taxa"
-
-# @ smart-manager
-#: sm/manager-console.php:463 sm/manager-console.php:861 sm/woo-json.php:1558
-msgid "Visibility"
-msgstr "Vizibilitate"
-
-# @ smart-manager
-#: sm/manager-console.php:469 sm/manager-console.php:719 sm/woo-json.php:1552
-msgid "Attributes"
-msgstr "Atribute"
-
-# @ smart-manager
-#: sm/manager-console.php:579
-msgid "Variation: "
-msgstr "Variatii:"
-
-# @ smart-manager
-#: sm/manager-console.php:603
-msgid "Add Attribute"
-msgstr "Adauga Atribut"
-
-# @ smart-manager
-#: sm/manager-console.php:609
-msgid "Change Attribute"
-msgstr "Schimba Atribut"
-
-# @ smart-manager
-#: sm/manager-console.php:615
-msgid "Remove Attribute"
-msgstr "Sterge Atribut"
-
-# @ smart-manager
-#: sm/manager-console.php:694
-msgid "Products"
-msgstr "Produse"
-
-# @ smart-manager
-#: sm/manager-console.php:695
-msgid "Customers"
-msgstr "Clienti"
-
-# @ smart-manager
-#: sm/manager-console.php:696
-msgid "Orders"
-msgstr "Comenzi"
-
-# @ smart-manager
-#: sm/manager-console.php:697
-msgid "Add Product"
-msgstr "Adauga Produs"
-
-# @ smart-manager
-#: sm/manager-console.php:698
-msgid "Add a new product"
-msgstr "Adauga produs nou"
-
-# @ smart-manager
-#: sm/manager-console.php:699
-msgid "Duplicate Product"
-msgstr "Produs Duplicat"
-
-# @ smart-manager
-#: sm/manager-console.php:700
-msgid "Selected Products"
-msgstr "Produse Selectate"
-
-# @ smart-manager
-#: sm/manager-console.php:701
-msgid "Duplicate Store"
-msgstr "Duplicare Magazin"
-
-# @ smart-manager
-#: sm/manager-console.php:702 smart-manager.php:225 smart-manager.php:496
-#: smart-manager.php:512 smart-manager.php:527 smart-manager.php:531
-msgid "Smart Manager"
-msgstr "Smart Manager"
-
-# @ smart-manager
-#: sm/manager-console.php:703
-msgid "Add product feature is available only in Pro version"
-msgstr "Adaugare produs este disponibila doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:704
-msgid "Print"
-msgstr "Printeaza"
-
-# @ smart-manager
-#: sm/manager-console.php:705
-msgid "Print Order"
-msgstr "Printeaza comanda"
-
-# @ smart-manager
-#: sm/manager-console.php:706
-msgid "Print Preview feature is available only in Pro version"
-msgstr "Print Preview este disponibila doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:707
-msgid "Delete"
-msgstr "Sterge"
-
-# @ smart-manager
-#: sm/manager-console.php:708
-msgid "Delete the selected items"
-msgstr "Sterge obiectele selectate"
-
-# @ smart-manager
-#: sm/manager-console.php:709
-msgid "Type"
-msgstr "Tip"
-
-# @ smart-manager
-#: sm/manager-console.php:710
-msgid "Product Images"
-msgstr "Imagini Produs"
-
-# @ smart-manager
-#: sm/manager-console.php:714
-msgid "Sale Price From"
-msgstr "Pret vanzare de la"
-
-# @ smart-manager
-#: sm/manager-console.php:715
-msgid "Sale Price To"
-msgstr "Pret vanzare pana la"
-
-# @ smart-manager
-#: sm/manager-console.php:718
-msgid "Category"
-msgstr "Categorie"
-
-# @ smart-manager
-#: sm/manager-console.php:721
-msgid "Product Status"
-msgstr "Status Produs"
-
-# @ smart-manager
-#: sm/manager-console.php:727
-msgid "Edit"
-msgstr "Editeaza"
-
-# @ smart-manager
-#: sm/manager-console.php:728
-msgid "Product Info"
-msgstr "Info Produs"
-
-# @ smart-manager
-#: sm/manager-console.php:729
+#: ../new/classes/class-smart-manager-admin-welcome.php:270
+msgid "What is possible"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:273
+msgid "One Stop Dashboard"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:275
+msgid ""
+"You can easily and efficiently manage <b>products, product variations, "
+"customers and orders</b> from a single page."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:279
+msgid "Inline Editing"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:281
+#, php-format
+msgid ""
+"You can quickly update your products, customers and orders in the grid "
+"itself. This facilitates editing of multiple rows at a time instead of "
+"editing and sacing each row separately, %s."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:281 ../new/classes/class-
+#: smart-manager-admin-welcome.php:287 ../new/classes/class-smart-manager-admin-
+#: welcome.php:303 ../new/classes/class-smart-manager-admin-welcome.php:317
+msgid "see how"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:285
+msgid "Filter/Search Records"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:287
+#, php-format
+msgid ""
+"If you would like to filter the records, you can easily do the same by "
+"simply entering keyword in the “Search” field at the top of the grid (%s). "
+"If you need to have a more specific search result, then you can switch to "
+"“%s“ and then search."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:287
+msgid "Advanced Search"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:298
+#, php-format
+msgid "Batch Update (only in %s)"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:298 ../new/classes/class-
+#: smart-manager-admin-welcome.php:312 ../new/classes/class-smart-manager-admin-
+#: welcome.php:325
+msgid "Pro"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:303
+#, php-format
+msgid ""
+"You can change / update multiple fields of the entire store OR for selected "
+"items by selecting multiple records and then simply click on “Batch Update”, "
+"%s."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:310
+msgid "Duplicate Products"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:312
+#, php-format
+msgid "Duplicate Products (only in %s)"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:317
+#, php-format
+msgid ""
+"You can duplicate products of the entire store OR selected products by "
+"simply selecting products and then click on “Duplicate Products”, %s."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:325
+#, php-format
+msgid "Export CSV (only in %s)"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:330
+msgid ""
+"You can export all the records OR filtered records (<i>filtered using "
+"“Search” or “Advanced Search”</i>) by simply clicking on the “Export CSV” "
+"button at the bottom right of the grid."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:336
+msgid "Do check out Some of our other products!"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:337
+msgid "Let me take you to product catalog"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:355
+msgid "Introducing Smart Manager Beta"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:359
+msgid ""
+"Smart Manager Beta is nothing but a transformed more bigger version of the "
+"previous Smart Manager. It has ton’s of functionality and only promises to "
+"be better than what Smart Manager ever was."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:361
+msgid "Digging Deeper into Smart Manager Beta..."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:364
+msgid "Everything Wordpress"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:366
+#, php-format
+msgid ""
+"Unlike previous Smart Manager, Smart Manager gives you the power to manage "
+"%s and %s."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:370
+msgid "Infinite Scrolling"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:372
+#, php-format
+msgid ""
+"Unlike the older version of Smart Manager that displayed records in various "
+"pages, with Smart Manager Beta all the records are in one single page itself "
+"enabling %s and %s."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:376
+msgid "Improved Performance"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:378
+msgid ""
+"We've worked on every inch of the coding to make Smart Manager Beta way "
+"faster and the performance a lot smoother."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:382
+msgid "Try Smart Manager Beta"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:397
+msgid "FAQ / Common Problems"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:402
+msgid "Smart Manager grid is empty?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:403
+msgid ""
+"Make sure you are using latest version of Smart Manager. If still the issue "
+"persist, deactivate all plugins except WooCommerce/WPeCommerce & Smart "
+"Manager. Recheck the issue, if the issue still persists, contact us. If the "
+"issue goes away, re-activate other plugins one-by-one & re-checking the "
+"fields, to find out which plugin is conflicting. Inform us about this issue."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:406
+msgid "Can I import using Smart Manager?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:407
+msgid "Sorry! currently you cannot import using Smart Manager."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:410
+msgid "Smart Manager search functionality not working"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:411
+msgid ""
+"Request you to kindly deactivate and activate the Smart Manager plugin once "
+"and then have a recheck with the Smart Manager search functionality."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:414
+msgid "How do I upgrade a Lite version to a Pro version?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:415
+msgid ""
+"Request you to kindly first delete and deactivate the Smart Manager Lite "
+"plugin from your site and then upload and activate the Smart Manager Pro "
+"plugin on your site once and you are done."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:418
+msgid "Updating variation parent price/sales price not working?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:419
+msgid ""
+"Smart Manager is based on WooCommerce and WPeCommerce and the same e-"
+"commerce plugins sets the price/sales price of the variation parents "
+"automatically based on the price/sales price of its variations."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:422
+msgid "Is Smart Manager, WPML compatible?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:423
+msgid ""
+"Smart Manager is not fully WPML compatible. In other words, Smart Manager "
+"will display and let you manage the different translations of the product, "
+"however, it will not update all the translations on updation of any one of "
+"the translations for a given product."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:426
+msgid "How to manage any custom field of any custom plugin using Smart Manager?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:427
+#, php-format
+msgid ""
+"Smart Manager by default considers all the product custom fields that are "
+"stored in the wordpress postmeta table. So, if any plugin adds custom fields "
+"to wordpress %s table then only Smart Manager lets you manage the same else "
+"managing the same is currently not possible. Also, you can have a check "
+"whether you are able to manage the same custom field using Smart Manager "
+"Beta (a complete revamped version of Smart Manager)"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:430
+msgid "How can I increase the number of rows per page?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:431
+#, php-format
+msgid ""
+"You can modify number of records to be shown in the Smart Manager on one "
+"page.\n"
+"														For that, you'll have to make manual change in your wordpress "
+"database and also maintain the same changes whenever you update your Smart "
+"Manager copy.\n"
+"														%s Go to your database, open table wp_options & look for the "
+"row having '%s' as '%s'.\n"
+"														%s Enter '%s' as number of records you want to display in the "
+"Smart Manager on one page and click on save. That's it!\n"
+"														%s: Updating the '%s' option to a larger value can hamper some "
+"processes like loading & updating data."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:438
+msgid "How to add columns to Smart Manager dashboard?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:439
+#, php-format
+msgid ""
+"To show/hide columns from the Smart Manager dashboard, click the %s next to "
+"any of the column headers and simply check/uncheck the columns from the '%s' "
+"sub-menu. %s."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:439
+msgid "See how"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:442
+msgid "How to sort on the entire database in Smart Manager?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:443
+msgid ""
+"Currently, Smart Manager sorts only the records visible on a particular page "
+"and not on the entire database. However, we do have same functionality in "
+"the roadmap for Smart Manager Beta and would be implemented soon."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:446
+msgid "How to reset the sort in Smart Manager?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:447
+#, php-format
+msgid ""
+"Currently, for resetting the sort, you would need to make changes at the "
+"databse level.\n"
+"		            									%s Search for '%s' option_name in the wordpress %s "
+"table and simply delete the same and then refresh Smart Manager and the sort "
+"should be resetted.\n"
+"		            									%s So, for example, if the login_email is '%s' and "
+"you want to reset the sort for '%s' dashboard then you would need to search "
+"for '%s' in the options table and delete the same."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:452
+msgid "How can I batch update entire search result spread across multiple pages?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:453
+#, php-format
+msgid ""
+"For batch updating the entire search result, you need to select the checkbox "
+"on the header row and then select the '%s' option in the batch update "
+"wibndow and clicking on update button will update all the records in the "
+"search result"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:456
+msgid "How to get rid of smart manager pro advertising in backend?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:457
+#, php-format
+msgid ""
+"In order to get rid of the advertising, you would need to make some code "
+"level changes and also maintain the same whenever you update your copy of "
+"Smart Manager\n"
+"            									%s To remove the same, please follow the below steps:\n"
+"            									%s Go to your Smart Manager folder, open smart-manager."
+"php file. \n"
+"            									%s Find the '%s' line of code.\n"
+"            									%s Comment that particular html span element. Save the "
+"file.\n"
+"            									%s Refresh your Smart Manager dashboard page. The ad "
+"won't be visible now."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:465
+msgid "How to get increase the product thumbnail image size in Smart Manager?"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:466
+#, php-format
+msgid ""
+"In order to increase the product thumbnail image size, you would need to "
+"make some code level changes and also maintain the same whenever you update "
+"your copy of Smart Manager\n"
+"            									%s To remove the same, please follow the below steps:\n"
+"            									%s Go to your Smart Manager folder, open 'smart-manager-"
+"for-wp-e-commerce/sm/smart-manager-woo.js' file. \n"
+"            									%s Find the '%s' line of code.\n"
+"            									%s Make changes to the '%s' and '%s' CSS property "
+"values in the line of code. Save the file.\n"
+"            									%s Refresh your Smart Manager dashboard page."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:478
+msgid "I can't find a way to do X..."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:479
+#, php-format
+msgid ""
+"Smart Manager is actively developed. If you can't find your favorite feature "
+"(or have a suggestion) %s. We'd love to hear from you."
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:479
+msgid "Submit your query"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:479
+msgid "contact us"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-admin-welcome.php:490 ../pro/sa-
+#: includes/class-storeapps-upgrade-3-0.php:1052 ../pro/sa-includes/class-
+#: storeapps-upgrade-3-0.php:1392
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-base.php:208 ../new/classes/class-smart-
+#: manager-base.php:216 ../sm/manager-console.php:1004 ../sm/manager-console.php:
+#: 1716
+msgid "Pending Review"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-base.php:209 ../new/classes/class-smart-
+#: manager-base.php:217 ../sm/manager-console.php:1005 ../sm/manager-console.php:
+#: 1717
+msgid "Draft"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-base.php:210 ../new/classes/class-smart-
+#: manager-base.php:218 ../sm/manager-console.php:1006 ../sm/manager-console.php:
+#: 1718
+msgid "Private"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-base.php:211 ../new/classes/class-smart-
+#: manager-base.php:219
+msgid "Scheduled"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:576 ../new/classes/class-smart-
+#: manager-product.php:581 ../sm/manager-console.php:1358
+msgid "In stock"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:577 ../new/classes/class-smart-
+#: manager-product.php:582 ../sm/manager-console.php:1359
+msgid "Out of stock"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:587 ../new/classes/class-smart-
+#: manager-product.php:593 ../sm/manager-console.php:1367 ../sm/manager-console.
+#: php:1372
+msgid "Standard"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:588 ../new/classes/class-smart-
+#: manager-product.php:594 ../sm/manager-console.php:1368 ../sm/manager-console.
+#: php:1373
+msgid "Reduced Rate"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:589 ../new/classes/class-smart-
+#: manager-product.php:595 ../sm/manager-console.php:1369 ../sm/manager-console.
+#: php:1374
+msgid "Zero Rate"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:601 ../new/classes/class-smart-
+#: manager-product.php:607 ../sm/manager-console.php:1382
+msgid "Do Not Allow"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:602 ../new/classes/class-smart-
+#: manager-product.php:608 ../sm/manager-console.php:1383
+msgid "Allow, but notify customer"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:603 ../new/classes/class-smart-
+#: manager-product.php:609 ../sm/manager-console.php:1384
+msgid "Allow"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:621 ../new/classes/class-smart-
+#: manager-product.php:623
+msgid "No shipping class"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:724
+msgid "Attributes: custom"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:787 ../new/classes/class-smart-
+#: manager-product.php:795 ../sm/manager-console.php:1702
+msgid "Visible"
+msgstr ""
+
+#: ../new/classes/class-smart-manager-product.php:810 ../sm/manager-console.php:
+#: 666 ../sm/manager-console.php:1722 ../sm/woo-json.php:2697
+msgid "Featured"
+msgstr ""
+
+#: ../new/smart-manager.php:362
+msgid "Submit your feedback"
+msgstr ""
+
+#: ../new/smart-manager.php:362
+msgid "We would love to hear your feedback"
+msgstr ""
+
+#: ../new/smart-manager.php:367 ../new/smart-manager.php:367
+msgid "Switch back to Smart Manager"
+msgstr ""
+
+#: ../new/smart-manager.php:388 ../smart-manager.php:1138
+#, php-format
+msgid "%1s%2s<a href=\"%3s\" target=\"_blank\">Docs</a>"
+msgstr ""
+
+#: ../new/smart-manager.php:411 ../smart-manager.php:1276
+msgid ""
+"Upgrade to Pro to get features like '<i>Batch Update</i>' , '<i>Export "
+"CSV</i>' , '<i>Duplicate Products</i>' &amp; many more..."
+msgstr ""
+
+#: ../new/smart-manager.php:411 ../smart-manager.php:763 ../smart-manager.php:1276
+msgid "Learn more about Pro version"
+msgstr ""
+
+#: ../new/smart-manager.php:411 ../smart-manager.php:763 ../smart-manager.php:1276
+msgid "Live Demo"
+msgstr ""
+
+#: ../new/smart-manager.php:456
+#, php-format
+msgid ""
+"If you like <strong>Smart Manager</strong> please leave us a %s&#9733;&#9733;"
+"&#9733;&#9733;&#9733;%s rating. A huge thank you from StoreApps in advance!"
+msgstr ""
+
+#: ../new/smart-manager.php:456
+msgid "Thanks :)"
+msgstr ""
+
+#: ../new/pro/libraries/wp-background-process.php:421
+#, php-format
+msgid "Every %d minutes"
+msgstr ""
+
+#: ../new/pro/templates/email.php:6
+msgid "Updated"
+msgstr ""
+
+#: ../new/pro/templates/email.php:34
+msgid "Hi there!"
+msgstr ""
+
+#: ../new/pro/templates/email.php:35
+msgid "Smart Manager successfully completed Batch Update on"
+msgstr ""
+
+#: ../new/pro/templates/email.php:35
+msgid "Below are the lists of updates done."
+msgstr ""
+
+#: ../new/pro/templates/email.php:38
+msgid "Field"
+msgstr ""
+
+#: ../new/pro/templates/email.php:39
+msgid "Action"
+msgstr ""
+
+#: ../new/pro/templates/email.php:40
+msgid "Value"
+msgstr ""
+
+#: ../new/pro/templates/email.php:41
+msgid "Records Updated"
+msgstr ""
+
+#: ../new/pro/templates/email.php:55
+msgid "If you like"
+msgstr ""
+
+#: ../new/pro/templates/email.php:55
+msgid "please leave us a"
+msgstr ""
+
+#: ../new/pro/templates/email.php:55
+msgid "rating"
+msgstr ""
+
+#: ../new/pro/templates/email.php:55
+msgid "A huge thank you from StoreApps in advance!"
+msgstr ""
+
+#: ../new/pro/classes/class-smart-manager-pro-base.php:182
+msgid "records"
+msgstr ""
+
+#: ../new/pro/classes/class-smart-manager-pro-base.php:182
+msgid "record"
+msgstr ""
+
+#: ../new/pro/classes/class-smart-manager-pro-base.php:183
+msgid "entire store"
+msgstr ""
+
+#: ../new/pro/classes/class-smart-manager-pro-base.php:185
+msgid "Smart Manager completed your Batch Update!!!"
+msgstr ""
+
+#: ../sm/manager-console.php:300
+msgid "ID"
+msgstr ""
+
+#: ../sm/manager-console.php:336
+msgid "Categories"
+msgstr ""
+
+#: ../sm/manager-console.php:409
+msgid "Dimensions Unit"
+msgstr ""
+
+#: ../sm/manager-console.php:858
+msgid "pounds"
+msgstr ""
+
+#: ../sm/manager-console.php:859
+msgid "ounces"
+msgstr ""
+
+#: ../sm/manager-console.php:860
+msgid "grams"
+msgstr ""
+
+#: ../sm/manager-console.php:861
+msgid "kilograms"
+msgstr ""
+
+#: ../sm/manager-console.php:1159 ../sm/manager-console.php:1207 ../sm/manager-
+#: console.php:1559 ../sm/woo-json.php:2627
+msgid "Product Type"
+msgstr ""
+
+#: ../sm/manager-console.php:1371
+msgid "Same as parent"
+msgstr ""
+
+#: ../sm/manager-console.php:1392
+msgid "Other Meta"
+msgstr ""
+
+#: ../sm/manager-console.php:1536
+msgid "Duplicate"
+msgstr ""
+
+#: ../sm/manager-console.php:1537
+msgid "Duplicate Product / Store"
+msgstr ""
+
+#: ../sm/manager-console.php:1549
+msgid "Product Id"
+msgstr ""
+
+#: ../sm/manager-console.php:1593
+msgid "Enter Meta Key"
+msgstr ""
+
+#: ../sm/manager-console.php:1594
+msgid "Enter Meta Value"
+msgstr ""
+
+#: ../sm/manager-console.php:1601
+msgid "Enter only single value"
+msgstr ""
+
+#: ../sm/manager-console.php:1605
+msgid ""
+"Caution: It is critical to put valid data in the expected format otherwise "
+"it can wreak havoc"
+msgstr ""
+
+#: ../sm/manager-console.php:1622 ../sm/woo-json.php:2641
+msgid "Address 1"
+msgstr ""
+
+#: ../sm/manager-console.php:1623 ../sm/woo-json.php:2642
+msgid "Address 2"
+msgstr ""
+
+#: ../sm/manager-console.php:1625 ../sm/manager-console.php:1635 ../sm/woo-json.
+#: php:2661
+msgid "Billing Address 1"
+msgstr ""
+
+#: ../sm/manager-console.php:1626 ../sm/manager-console.php:1636 ../sm/woo-json.
+#: php:2662
+msgid "Billing Address 2"
+msgstr ""
+
+#: ../sm/manager-console.php:1637 ../sm/woo-json.php:2688
+msgid "Customer ID"
+msgstr ""
+
+#: ../sm/manager-console.php:1645
+msgid "Filter through Date feature is available only in Pro version"
+msgstr ""
+
+#: ../sm/manager-console.php:1661 ../sm/woo-json.php:2679
+msgid "Shipping Address 1"
+msgstr ""
+
+#: ../sm/manager-console.php:1662 ../sm/woo-json.php:2680
+msgid "Shipping Address 2"
+msgstr ""
+
+#: ../sm/manager-console.php:1713
+msgid "Pending payment"
+msgstr ""
+
+#: ../sm/manager-console.php:1743 ../sm/woo-json.php:2687
+msgid "Customer Provided Note"
+msgstr ""
+
+#: ../sm/woo-json.php:2684
+msgid "Shipping State / Region Code"
+msgstr ""
+
+#: ../sm/woo-json.php:2686
+msgid "Shippping Country Code"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://www.storeapps.org/product/smart-manager"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"<strong>Pro Version Installed</strong> The most popular store admin plugin "
+"for WooCommerce. 10x faster, inline updates. Price, inventory, variations "
+"management. 200+ features."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "StoreApps"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.storeapps.org"
+msgstr ""
+
+#: ../smart-manager.php:672 ../smart-manager.php:706
+msgctxt "timezone date format"
+msgid "Y-m-d H:i:s"
+msgstr ""
+
+#: ../smart-manager.php:722
+msgid "Congratulations!!!"
+msgstr ""
+
+#: ../smart-manager.php:722
+msgid "Kindly check your mail to avail the discount"
+msgstr ""
+
+#: ../smart-manager.php:723
+msgid "*Only For Today*"
+msgstr ""
+
+#: ../smart-manager.php:724
+msgid "No, I don't like offers..."
+msgstr ""
+
+#: ../smart-manager.php:727
+msgid "Big Savings!!!"
+msgstr ""
+
+#: ../smart-manager.php:727
+msgid "15% OFF "
+msgstr ""
+
+#: ../smart-manager.php:727
+msgid "on Smart Manager Pro"
+msgstr ""
+
+#: ../smart-manager.php:730
+msgid "Offer Ends Today!!!"
+msgstr ""
+
+#: ../smart-manager.php:730
+msgid "10% OFF "
+msgstr ""
+
+#: ../smart-manager.php:730
+msgid "on Smart Manager Pro!"
+msgstr ""
+
+#: ../smart-manager.php:733
+msgid "Sign up to get updates, insights & tips..."
+msgstr ""
+
+#: ../smart-manager.php:735
+msgid "Thank you for Subscribing!!!"
+msgstr ""
+
+#: ../smart-manager.php:737
+msgid "No, I don't need help..."
+msgstr ""
+
+#: ../smart-manager.php:1111
+msgid "We finally have it!"
+msgstr ""
+
+#: ../smart-manager.php:1111
+msgid "Batch Update is now available in Beta."
+msgstr ""
+
+#: ../smart-manager.php:1111
+msgid "Go to Smart Manager Beta"
+msgstr ""
+
+#: ../smart-manager.php:1111
+msgid "Try it out now"
+msgstr ""
+
+#: ../smart-manager.php:1114 ../smart-manager.php:1114
+msgid "Try out Smart Manager Beta"
+msgstr ""
+
+#: ../smart-manager.php:1193 ../smart-manager.php:1227
+msgid "Upgraded Successfully!!!"
+msgstr ""
+
+#: ../smart-manager.php:1212
+msgid "Upgrading to Smart Manager Pro..."
+msgstr ""
+
+#: ../smart-manager.php:1265
+msgid "Oops!"
+msgstr ""
+
+#: ../smart-manager.php:1265
+msgid "seems like your Smart Manager copy has downgraded to Lite. "
+msgstr ""
+
+#: ../smart-manager.php:1265
+msgid "Click here"
+msgstr ""
+
+#: ../smart-manager.php:1265
+msgid "to"
+msgstr ""
+
+#: ../smart-manager.php:1265
+msgid "convert it back to Pro"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:477
+#, php-format
+msgid "Your license for %s %s. Please %s to continue receiving updates & support"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:477 ../pro/sa-
+#: includes/class-storeapps-upgrade-3-0.php:1104
+msgid "has expired"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:477 ../pro/sa-
+#: includes/class-storeapps-upgrade-3-0.php:479 ../pro/sa-includes/class-
+#: storeapps-upgrade-3-0.php:1104 ../pro/sa-includes/class-storeapps-upgrade-3-0.
+#: php:1106
+msgid "renew your license now"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:479
+#, php-format
+msgid ""
+"Your license for %s %swill expire in %d %s%s. Please %s to get %s50%% "
+"discount%s"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:479 ../pro/sa-
+#: includes/class-storeapps-upgrade-3-0.php:1106
+msgid "day"
+msgid_plural "days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:516
+msgid "Disconnected"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:621
+#, php-format
+msgid "Error at %s"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:875
+msgid "Include plugins / environment details to help solve issue faster"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:883
+msgid "Send"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:930
+msgid "Documentation"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:954
+msgid "Disconnect from StoreApps.org"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:954
+msgid "Disconnect StoreApps.org"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:956
+msgid "Connect to StoreApps.org"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:956
+msgid "Connect StoreApps.org"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1049
+#, php-format
+msgid "A %1$s of %2$s is available. %3$s"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1049
+msgid "new version"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1049
+msgid "Update now"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1052
+msgid "Important"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1104
+#, php-format
+msgid ""
+"Your license for %1$s %2$s. Please %3$s to continue receiving updates & "
+"support"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1106
+#, php-format
+msgid ""
+"Your license for %1$s %2$swill expire in %3$d %4$s%5$s. Please %6$s to get "
+"%7$sdiscount 50%%%s"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1109 ../pro/sa-
+#: includes/class-storeapps-upgrade-3-0.php:1122
+msgid "Dismiss"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1121
+#, php-format
+msgid "%1$s for %2$s is not found. Please %3$s to get automatic updates."
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1121
+msgid "License Key"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1121
+msgid "enter & validate license key"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1391
+msgid "You are one step away from receiving updates & support for plugin "
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1400
+msgid ""
+"To continue using this plugin, you need to connect with your <b style=\"color:"
+"#753d81;\">StoreApps.org account</b>."
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1402
+msgid "No need to remember license keys"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1403
+msgid "One time setup"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1404
+msgid "Quick Help on settings page of plugin"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1405
+msgid "Instant notification about critical updates & security releases"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1406
+msgid "Automatic install of all your purchased StoreApps plugins [Coming Soon]"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1410
+msgid "I agree to the"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1410
+msgid "privacy policy"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1413
+msgid "Connect "
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1418
+msgid "We respect your privacy"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1421
+msgid "Don't have a StoreApps account<br>"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1422
+msgid "My developer bought it."
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1564
+msgid "Please tick the 'Agree to Privacy Policy' box if you want to proceed"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1623
+msgid "Congratulations!"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1624
+msgid "Account connected successfully."
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1681
+msgid "Empty access token"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1686
+msgid "Empty token expiry"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1689
+msgid "Response body empty"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1692 ../pro/sa-
+#: includes/class-storeapps-upgrade-3-0.php:1797
+msgid "Response code, message mismatch"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1794
+msgid "Empty response data"
+msgstr ""
+
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:1899
+msgid "404 Not Found"
+msgstr ""
+
+# @ smart-manager
+#: ../new/classes/class-smart-manager-admin-welcome.php:296 ../sm/manager-console.
+#: php:1569
 msgid "Batch Update"
 msgstr "Modificare multipla"
 
 # @ smart-manager
-#: sm/manager-console.php:730
-msgid "Update selected items"
-msgstr "Modifica obiectele selectate"
-
-# @ smart-manager
-#: sm/manager-console.php:731
-msgid "Save"
-msgstr "Salveaza"
-
-# @ smart-manager
-#: sm/manager-console.php:732
-msgid "Save all Changes"
-msgstr "Salveaza toate schimbarile"
-
-# @ smart-manager
-#: sm/manager-console.php:733
+#: ../new/classes/class-smart-manager-admin-welcome.php:323 ../sm/manager-console.
+#: php:1573
 msgid "Export CSV"
 msgstr "Exporta CSV"
 
 # @ smart-manager
-#: sm/manager-console.php:734
-msgid "Download CSV file"
-msgstr "Downloadeaza CSV"
+#: ../new/classes/class-smart-manager-base.php:207 ../new/classes/class-smart-
+#: manager-base.php:215 ../sm/manager-console.php:346 ../sm/manager-console.php:
+#: 1003 ../sm/manager-console.php:1715
+msgid "Publish"
+msgstr "Public"
 
 # @ smart-manager
-#: sm/manager-console.php:735
-msgid "Export CSV feature is available only in Pro version"
-msgstr "Exportarea CSV este disponibila doar in versiunea Pro"
+#: ../new/classes/class-smart-manager-product.php:546 ../new/classes/class-smart-
+#: manager-product.php:553 ../sm/manager-console.php:1040 ../sm/manager-console.
+#: php:1701 ../pro/woo.php:2477
+msgid "Catalog & Search"
+msgstr "Catalog & Cautare"
 
 # @ smart-manager
-#: sm/manager-console.php:736
-msgid "Duplicate Product feature is available only in Pro version"
-msgstr "Duplicarea Produselor este disponibila doar in versiunea Pro"
+#: ../new/classes/class-smart-manager-product.php:547 ../new/classes/class-smart-
+#: manager-product.php:554 ../new/classes/class-smart-manager-product.php:788 ..
+#: new/classes/class-smart-manager-product.php:796 ../sm/manager-console.php:
+#: 1041 ../sm/manager-console.php:1703 ../pro/woo.php:2478
+msgid "Catalog"
+msgstr "Catalog"
 
 # @ smart-manager
-#: sm/manager-console.php:737
-msgid "Duplicate Store feature is available only in Pro version"
-msgstr "Duplicarea magazinului este disponibila doar in versiunea Pro"
+#: ../new/classes/class-smart-manager-product.php:548 ../new/classes/class-smart-
+#: manager-product.php:555 ../new/classes/class-smart-manager-product.php:789 ..
+#: new/classes/class-smart-manager-product.php:797 ../sm/manager-console.php:
+#: 1042 ../sm/manager-console.php:1587 ../sm/manager-console.php:1704 ../pro/woo.
+#: php:2479
+msgid "Search"
+msgstr "Cautare"
 
 # @ smart-manager
-#: sm/manager-console.php:738
-msgid "Are you sure you want to delete the selected record?"
-msgstr "Esti sigur ca vrei sa stergi campul selectat?"
+#: ../new/classes/class-smart-manager-product.php:549 ../new/classes/class-smart-
+#: manager-product.php:556 ../new/classes/class-smart-manager-product.php:790 ..
+#: new/classes/class-smart-manager-product.php:798 ../sm/manager-console.php:
+#: 1043 ../sm/manager-console.php:1705 ../pro/woo.php:2480
+msgid "Hidden"
+msgstr "Ascuns"
 
 # @ smart-manager
-#: sm/manager-console.php:739
-msgid "Are you sure you want to delete the selected records?"
-msgstr "Esti sigur ca vrei sa stergi campurile selectate?"
+#: ../new/classes/class-smart-manager-product.php:562 ../new/classes/class-smart-
+#: manager-product.php:568 ../sm/manager-console.php:996 ../sm/manager-console.
+#: php:1723 ../sm/woo-json.php:130 ../pro/woo.php:2471
+msgid "Taxable"
+msgstr "Taxabil"
 
 # @ smart-manager
-#: sm/manager-console.php:740
-msgid "Are you sure you want to duplicate the selected product?"
-msgstr "Esti sigur ca vrei sa duplici produsul selectat?"
+#: ../new/classes/class-smart-manager-product.php:563 ../new/classes/class-smart-
+#: manager-product.php:569 ../sm/manager-console.php:997 ../sm/manager-console.
+#: php:1724 ../sm/woo-json.php:131 ../pro/woo.php:2472
+msgid "Shipping only"
+msgstr "Doar livrare"
 
 # @ smart-manager
-#: sm/manager-console.php:741
-msgid "Are you sure you want to duplicate the selected products?"
-msgstr "Esti sigur ca vrei sa duplici produsele selectate?"
+#: ../new/classes/class-smart-manager-product.php:564 ../new/classes/class-smart-
+#: manager-product.php:570 ../sm/manager-console.php:998 ../sm/manager-console.
+#: php:1725 ../sm/woo-json.php:132 ../pro/woo.php:2473
+msgid "None"
+msgstr "Nici unul"
 
 # @ smart-manager
-#: sm/manager-console.php:742
-msgid "Are you sure you want to duplicate the entire store?"
-msgstr "Esti sigur ca vrei sa duplici intregul magazin?"
+#: ../new/classes/class-smart-manager-product.php:693 ../sm/manager-console.php:
+#: 654 ../sm/manager-console.php:1558 ../sm/woo-json.php:2626
+msgid "Attributes"
+msgstr "Atribute"
 
 # @ smart-manager
-#: sm/manager-console.php:743
-msgid "Confirm File Delete"
-msgstr "Confirm stergere fisier"
+#: ../new/classes/class-smart-manager-product.php:767 ../sm/manager-console.php:
+#: 648 ../sm/manager-console.php:1721 ../sm/woo-json.php:2633 ../sm/woo-json.php:
+#: 2696
+msgid "Visibility"
+msgstr "Vizibilitate"
 
 # @ smart-manager
-#: sm/manager-console.php:744
-msgid "list is empty"
-msgstr "lista este goala"
-
-# @ smart-manager
-#: sm/manager-console.php:745
-msgid "Confirm Save"
-msgstr "Confirm Salvare"
-
-# @ smart-manager
-#: sm/manager-console.php:746
-msgid "Do you want to save the modified records?"
-msgstr "Vrei sa salvezi modificarile facute?"
-
-# @ smart-manager
-#: sm/manager-console.php:748
-msgid "Search feature is available only in Pro version"
-msgstr "Functia de cautare este disponibila doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:749
-msgid "Please wait"
-msgstr "Te rugam asteapta"
-
-# @ smart-manager
-#: sm/manager-console.php:750
-msgid "Select a field"
-msgstr "Selecteaza un camp"
-
-# @ smart-manager
-#: sm/manager-console.php:751
-msgid "Only numbers are allowed"
-msgstr "Doar numere sunt acceptate"
-
-# @ smart-manager
-#: sm/manager-console.php:752
-msgid "Enter Attribute Name"
-msgstr "Introdu Numele Atributului"
-
-# @ smart-manager
-#: sm/manager-console.php:753
-msgid "Select an action"
-msgstr "Selecteaza o actiune"
-
-# @ smart-manager
-#: sm/manager-console.php:754
-msgid "Select a value"
-msgstr "Selecteaza o valoare"
-
-# @ smart-manager
-#: sm/manager-console.php:755
-msgid "Enter the value"
-msgstr "Introdu o valoare"
-
-# @ smart-manager
-#: sm/manager-console.php:756
-msgid "Select a Value"
-msgstr "Selectati o valoare"
-
-# @ smart-manager
-#: sm/manager-console.php:757
-msgid "Select a Visibility"
-msgstr "Selectati o vizibilitate"
-
-# @ smart-manager
-#: sm/manager-console.php:758
-msgid "Enter values"
-msgstr "Introdu valorile"
-
-# @ smart-manager
-#: sm/manager-console.php:759 smart-manager.php:461
-msgid "Important:"
-msgstr "Important:"
-
-# @ smart-manager
-#: sm/manager-console.php:760
-msgid "For more than one values, use pipe (|) as delimiter"
-msgstr "Pentru mai multe de o valoare, foloseste (|) ca delimitare"
-
-# @ smart-manager
-#: sm/manager-console.php:761
-msgid "Delete Row"
-msgstr "Sterge rand"
-
-# @ smart-manager
-#: sm/manager-console.php:763
-msgid "Add Row"
-msgstr "Adauga rand"
-
-# @ smart-manager
-#: sm/manager-console.php:764
-msgid "Add a new row"
-msgstr "Adauga rand nou"
-
-# @ smart-manager
-#: sm/manager-console.php:765
-msgid "Update"
-msgstr "Update"
-
-# @ smart-manager
-#: sm/manager-console.php:766
-msgid "Apply all changes"
-msgstr "Aplica toate schimbarile"
-
-# @ smart-manager
-#: sm/manager-console.php:767
-msgid "Reset"
-msgstr "Reseteaza"
-
-# @ smart-manager
-#: sm/manager-console.php:768
-msgid "Reset all fields"
-msgstr "Reseteaza toate campurile"
-
-# @ smart-manager
-#: sm/manager-console.php:769
-msgid "Batch Update - available only in Pro version"
-msgstr "Modificari multiple - disponibile doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:770
-msgid "Your browser does not support iframes."
-msgstr "Bowser-ul dumneavoastra nu suporta iframes."
-
-# @ smart-manager
-#: sm/manager-console.php:776
-msgid "Email Address"
-msgstr "Adresa de email"
-
-# @ smart-manager
-#: sm/manager-console.php:779
-msgid "Postal Code"
-msgstr "Codul Postal"
-
-# @ smart-manager
-#: sm/manager-console.php:780
-msgid "Billing Postal Code"
-msgstr "Codul postal de facturare"
-
-# @ smart-manager
-#: sm/manager-console.php:782
-msgid "Billing City"
-msgstr "Orasul de facturare"
-
-# @ smart-manager
-#: sm/manager-console.php:783
-msgid "Region"
-msgstr "Regiune/Judet"
-
-# @ smart-manager
-#: sm/manager-console.php:784
-msgid "Billing Region"
-msgstr "Regiunea/Judetul de facturare"
-
-# @ smart-manager
-#: sm/manager-console.php:786
-msgid "Billing Country"
-msgstr "Tara de facturare"
-
-# @ smart-manager
-#: sm/manager-console.php:787 sm/manager-console.php:870 sm/woo-json.php:1575
-msgid "Total Purchased"
-msgstr "Total cumparaturi"
-
-# @ smart-manager
-#: sm/manager-console.php:788
-msgid "Last Order"
-msgstr "Ultima comanda"
-
-# @ smart-manager
-#: sm/manager-console.php:790
-msgid "Last Order Details"
-msgstr "Detaliile ultimei comenzi"
-
-# @ smart-manager
-#: sm/manager-console.php:791
-msgid "Phone Number"
-msgstr "Numar de telefon"
-
-# @ smart-manager
-#: sm/manager-console.php:793
-msgid "Total Orders Amount"
-msgstr "Valoarea totala a comenzilor"
-
-# @ smart-manager
-#: sm/manager-console.php:794
-msgid "Filter through Date feature is available only in Pro versionLast Name"
-msgstr "Filtreaza dupa Data este disponibil doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:795
-msgid "Order Id"
-msgstr "Id comanda"
-
-# @ smart-manager
-#: sm/manager-console.php:796
-msgid "Date / Time"
-msgstr "Data / Timp"
-
-# @ smart-manager
-#: sm/manager-console.php:798
-msgid "Customer Name"
-msgstr "Nume client"
-
-# @ smart-manager
-#: sm/manager-console.php:799
-msgid "Amount"
-msgstr "Valoare"
-
-# @ smart-manager
-#: sm/manager-console.php:800
-msgid "Details"
-msgstr "Detalii"
-
-# @ smart-manager
-#: sm/manager-console.php:801
-msgid "Track Id"
-msgstr "Id de urmarire"
-
-# @ smart-manager
-#: sm/manager-console.php:802 sm/woo-json.php:1594
-msgid "Payment Method"
-msgstr "Metoda de plata"
-
-# @ smart-manager
-#: sm/manager-console.php:803
-msgid "Status"
-msgstr "Status"
-
-# @ smart-manager
-#: sm/manager-console.php:805
-msgid "Orders Notes"
-msgstr "Notite comenzi"
-
-# @ smart-manager
-#: sm/manager-console.php:806 sm/woo-json.php:1596
-msgid "Shipping Method"
-msgstr "Metoda livrare"
-
-# @ smart-manager
-#: sm/manager-console.php:810
-msgid "Shipping Postal Code"
-msgstr "Cod Postal livrare"
-
-# @ smart-manager
-#: sm/manager-console.php:812
-msgid "Shipping Region"
-msgstr "Livrare Judet / Regiune"
-
-# @ smart-manager
-#: sm/manager-console.php:813
-msgid "Shipping Country"
-msgstr "Livrare Tara"
-
-# @ smart-manager
-#: sm/manager-console.php:814
-msgid "Customer Phone Number"
-msgstr "Numar de telefon client"
-
-# @ smart-manager
-#: sm/manager-console.php:815
-msgid "Show Variations feature is available only in Pro version"
-msgstr "Arata variatiile este disponibila doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:816
-msgid "Show Variations feature is available only for WPeC 3.8+"
-msgstr "Arata variatiile este disponibila doar pentru WPeC 3.8+"
-
-# @ smart-manager
-#: sm/manager-console.php:817
-msgid "Show Variations"
-msgstr "Arata Variatiile"
-
-# @ smart-manager
-#: sm/manager-console.php:818
-msgid "Access Denied"
-msgstr "Acces nepermis"
-
-# @ smart-manager
-#: sm/manager-console.php:819
-msgid "You dont have sufficient permission to view this page"
-msgstr "Nu ai suficiente drepturi de a vedea aceasta pagina"
-
-# @ smart-manager
-#: sm/manager-console.php:820
-msgid "This feature is available only in Pro version"
-msgstr "Aceasta optiune este disponibila doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:821
-msgid "Products Details"
-msgstr "Detalii produse"
-
-# @ smart-manager
-#: sm/manager-console.php:822
-msgid "Manage your Product Images"
-msgstr "Administreaza imaginile de produs"
-
-# @ smart-manager
-#: sm/manager-console.php:823
-msgid "Manage your Product Images - Available only in Pro version"
-msgstr "Administrarea imaginilor de produs - Disponibila doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:824
-msgid "Batch Update feature is available only in Pro version"
-msgstr "Actualizare in grup este disponibila doar in versiunea Pro"
-
-# @ smart-manager
-#: sm/manager-console.php:825
-msgid "set to"
-msgstr "setat la"
-
-# @ smart-manager
-#: sm/manager-console.php:826
-msgid "append"
-msgstr "adauga"
-
-# @ smart-manager
-#: sm/manager-console.php:827
-msgid "prepend"
-msgstr "prefixul"
-
-# @ smart-manager
-#: sm/manager-console.php:828
-msgid "increase by %"
-msgstr "creste dupa %"
-
-# @ smart-manager
-#: sm/manager-console.php:829
-msgid "decrease by %"
-msgstr "scade dupa %"
-
-# @ smart-manager
-#: sm/manager-console.php:830
-msgid "increase by number"
-msgstr "creste dupa numar"
-
-# @ smart-manager
-#: sm/manager-console.php:831
-msgid "decrease by number"
-msgstr "scade dupa numar"
-
-# @ smart-manager
-#: sm/manager-console.php:832
-msgid "set to sales price"
-msgstr "seteaza la pretul de vanzare"
-
-# @ smart-manager
-#: sm/manager-console.php:833
-msgid "set to regular price"
-msgstr "seteaza un pret normal"
-
-# @ smart-manager
-#: sm/manager-console.php:834
-msgid "Yes"
-msgstr "Da"
-
-# @ smart-manager
-#: sm/manager-console.php:835
-msgid "No"
-msgstr "Nu"
-
-# @ smart-manager
-#: sm/manager-console.php:836
-msgid "add to"
-msgstr "adauga la"
-
-# @ smart-manager
-#: sm/manager-console.php:837
-msgid "remove from"
-msgstr "sterge de la"
-
-# @ smart-manager
-#: sm/manager-console.php:838
-msgid "inches"
-msgstr "inci"
-
-# @ smart-manager
-#: sm/manager-console.php:839
-msgid "cm"
-msgstr "cm"
-
-# @ smart-manager
-#: sm/manager-console.php:840
-msgid "meter"
-msgstr "metru"
-
-# @ smart-manager
-#: sm/manager-console.php:852
-msgid "Pending"
-msgstr "Pending"
-
-# @ smart-manager
-#: sm/manager-console.php:853
-msgid "Failed"
-msgstr "Esuat"
-
-# @ smart-manager
-#: sm/manager-console.php:854
-msgid "On Hold"
-msgstr "In asteptare"
-
-# @ smart-manager
-#: sm/manager-console.php:855
-msgid "Processing"
-msgstr "Procesat"
-
-# @ smart-manager
-#: sm/manager-console.php:856
-msgid "Completed"
-msgstr "Complet"
-
-# @ smart-manager
-#: sm/manager-console.php:857
-msgid "Refunded"
-msgstr "Returnat"
-
-# @ smart-manager
-#: sm/manager-console.php:858
-msgid "Cancelled"
-msgstr "Anulat"
-
-# @ smart-manager
-#: sm/manager-console.php:860
-msgid "Product Visibility"
-msgstr "Vizibilitate produs"
-
-# @ smart-manager
-#: sm/manager-console.php:869
-msgid "Sum Total Of All Orders"
-msgstr "Suma totala a tuturor comenzilor"
-
-# @ smart-manager
-#: sm/manager-console.php:872 sm/woo-json.php:1585
-msgid "Order Shipping"
-msgstr "Livrare comanda"
-
-# @ smart-manager
-#: sm/manager-console.php:875 sm/woo-json.php:1589
-msgid "Order Tax"
-msgstr "Taxe comanda"
-
-# @ smart-manager
-#: sm/manager-console.php:876 sm/woo-json.php:1590
-msgid "Order Shipping Tax"
-msgstr "Taxe de livrare comanda"
-
-# @ smart-manager
-#: sm/manager-console.php:877 sm/woo-json.php:1592
-msgid "Order Currency"
-msgstr "Moneda comenzii"
-
-# @ smart-manager
-#: sm/manager-console.php:878 sm/woo-json.php:1588
-msgid "Coupons Used"
-msgstr "Cupoane folosite"
-
-# @ smart-manager
-#: sm/manager-console.php:879
-msgid "Order Excluding Tax"
-msgstr "Comanda fara taxe"
-
-# @ smart-manager
-#: sm/manager-console.php:880
-msgid "Order Total Excluding Tax"
-msgstr "Total comanda fara taxe"
-
-# @ smart-manager
-#: sm/woo-json.php:1358 sm/woo-json.php:1398
-msgid "Qty"
-msgstr "Cantitate"
-
-# @ smart-manager
-#: sm/woo-json.php:1547
-msgid "Sale Price Dates (From)"
-msgstr "Data pret de vazare(de la)"
-
-# @ smart-manager
-#: sm/woo-json.php:1548
-msgid "Sale Price Dates (To)"
-msgstr "Data pretului de vanzare (pana la)"
-
-# @ smart-manager
-#: sm/woo-json.php:1593
-msgid "Order Items (Product Name [SKU][Qty][Price])"
-msgstr "Detalii Comanda (Nume Produs [SKU][Qty][Pret])"
-
-# @ smart-manager
-#: sm/woo-json.php:2234
-msgid " Deleted Successfully"
-msgstr "Sters cu succes"
-
-# @ smart-manager
-#: sm/woo-json.php:2237
-msgid "s Deleted Successfully"
-msgstr "s Sters cu succes"
-
-# @ smart-manager
-#: sm/woo-json.php:2241
-msgid "s were not deleted"
-msgstr "s nu a fost sters"
-
-# @ smart-manager
-#: sm/woo-json.php:2243
-msgid "s removed from the grid"
-msgstr "s sters de pe lista"
-
-# @ smart-manager
-#: smart-manager.php:225 smart-manager.php:496 smart-manager.php:531
-msgid "add-on requires"
-msgstr "add-on necesare"
-
-# @ smart-manager
-#: smart-manager.php:225 smart-manager.php:496 smart-manager.php:531
-msgid "WP e-Commerce"
-msgstr "WP e-Commerce"
-
-# @ smart-manager
-#: smart-manager.php:225 smart-manager.php:496 smart-manager.php:531
-msgid "plugin or"
-msgstr "plugin sau"
-
-# @ smart-manager
-#: smart-manager.php:225 smart-manager.php:496 smart-manager.php:531
-msgid "WooCommerce"
-msgstr "WooCommerce"
-
-# @ smart-manager
-#: smart-manager.php:225 smart-manager.php:496 smart-manager.php:531
-msgid "plugin. Please install and activate it."
-msgstr "plugin. Te rugam instaleaza-l si activeaza-l."
-
-# @ smart-manager
-#: smart-manager.php:332
-msgid "A required Smart Manager file is missing. Can't continue. "
-msgstr "Un fisier cerut de Smart Manager lipseste. Nu poate continua."
-
-# @ smart-manager
-#: smart-manager.php:422
-#, php-format
-msgid "%1s<a href=\"%4s\" target=\"_blank\">Docs</a>"
-msgstr "%1s<a href=\"%4s\" target=\"_blank\">Docs</a>"
-
-# @ smart-manager
-#: smart-manager.php:425
-msgid ""
-"10x productivity gains with store administration. Quickly find and update "
-"products, orders and customers"
-msgstr ""
-"De 10x mai multa productivitate cu administrarea magazinului. Gasirea si "
-"editarea rapida a produselor, comenzilor si clientilor."
-
-# @ smart-manager
-#: smart-manager.php:431
+#: ../new/smart-manager.php:399 ../smart-manager.php:1147
 msgid "An upgrade for Smart Manager Pro"
 msgstr "Un update pentru Smart Manager Pro"
 
 # @ smart-manager
-#: smart-manager.php:431
+#: ../new/smart-manager.php:399 ../smart-manager.php:1147
 msgid "is available."
 msgstr "este disponibil."
 
 # @ smart-manager
-#: smart-manager.php:431
+#: ../new/smart-manager.php:399 ../smart-manager.php:1147
 msgid "Click to upgrade."
 msgstr "Click pentru upgrade."
 
 # @ smart-manager
-#: smart-manager.php:448
+#: ../new/smart-manager.php:411 ../sm/manager-console.php:1602 ../smart-manager.
+#: php:1276
+msgid "Important:"
+msgstr "Important:"
+
+# @ smart-manager
+#: ../new/smart-manager.php:411 ../smart-manager.php:763 ../smart-manager.php:1276
+msgid "or take a"
+msgstr "sau i-a o versiune"
+
+# @ smart-manager
+#: ../new/smart-manager.php:480 ../smart-manager.php:999
+msgid "A required Smart Manager file is missing. Can't continue. "
+msgstr "Un fisier cerut de Smart Manager lipseste. Nu poate continua."
+
+# @ smart-manager
+#: ../new/smart-manager.php:521 ../smart-manager.php:1376
+msgid "Error:"
+msgstr "Eroare:"
+
+# @ smart-manager
+#: ../new/pro/templates/email.php:55 ../sm/manager-console.php:1540 ../smart-
+#: manager.php:861 ../smart-manager.php:1311 ../smart-manager.php:1327 ../smart-
+#: manager.php:1342 ../smart-manager.php:1346
+msgid "Smart Manager"
+msgstr "Smart Manager"
+
+# @ smart-manager
+#: ../sm/json37.php:147 ../sm/json37.php:322 ../sm/json37.php:447 ../sm/json38.
+#: php:818 ../sm/json38.php:1236 ../sm/json38.php:1481 ../sm/woo-json.php:1096 ..
+#: sm/woo-json.php:1603 ../sm/woo-json.php:2095
+msgid "No Records Found"
+msgstr "Nici un rezultat gasit"
+
+# @ smart-manager
+#: ../sm/json37.php:596
+msgid "Product deleted Successfully"
+msgstr "Produs sters cu succes"
+
+# @ smart-manager
+#: ../sm/json37.php:599
+msgid "Products deleted Successfully"
+msgstr "Produse sterse cu succes"
+
+# @ smart-manager
+#: ../sm/json37.php:603 ../sm/json38.php:1898
+msgid "Products removed from the grid"
+msgstr "Produse sterse de pe lista"
+
+# @ smart-manager
+#: ../sm/json37.php:614 ../sm/json38.php:1910
+msgid "Purchase Log deleted Successfully"
+msgstr "Achizitionare Log sters cu succes"
+
+# @ smart-manager
+#: ../sm/json37.php:617 ../sm/json38.php:1913
+msgid "Purchase Logs deleted Successfully"
+msgstr "Achizitionarea Loguri stearsa cu succes"
+
+# @ smart-manager
+#: ../sm/json37.php:671 ../sm/json37.php:673 ../sm/json38.php:2391 ../sm/json38.
+#: php:2393 ../sm/woo-json.php:3465 ../sm/woo-json.php:3467
+msgid "Record Updated and"
+msgstr "Registru actualizat si"
+
+# @ smart-manager
+#: ../sm/json37.php:671 ../sm/json37.php:675 ../sm/json38.php:2391 ../sm/json38.
+#: php:2395 ../sm/json38.php:2410 ../sm/woo-json.php:3465 ../sm/woo-json.php:3469
+#: ../sm/woo-json.php:3483
+msgid "New Record Inserted Successfully"
+msgstr "O noua modificare introdusa cu succes"
+
+# @ smart-manager
+#: ../sm/json37.php:673 ../sm/json37.php:677 ../sm/json37.php:688 ../sm/json37.
+#: php:690 ../sm/json38.php:2393 ../sm/json38.php:2397 ../sm/woo-json.php:3467 ..
+#: sm/woo-json.php:3471 ../sm/woo-json.php:3485
+msgid "New Records Inserted Successfully"
+msgstr "Noi modificari introduse cu succes"
+
+# @ smart-manager
+#: ../sm/json37.php:675 ../sm/json37.php:677 ../sm/json38.php:2395 ../sm/json38.
+#: php:2397 ../sm/woo-json.php:3469 ../sm/woo-json.php:3471
+msgid "Records Updated and"
+msgstr "Modificari salvate si"
+
+# @ smart-manager
+#: ../sm/json37.php:681 ../sm/json38.php:2402 ../sm/woo-json.php:3476 ../pro/sm38.
+#: php:1089 ../pro/woo.php:2401
+msgid "Record Updated Successfully"
+msgstr "Modificari salvate cu succes"
+
+# @ smart-manager
+#: ../sm/json37.php:683 ../sm/json38.php:2404 ../sm/woo-json.php:3478 ../pro/sm37.
+#: php:572 ../pro/sm38.php:1092 ../pro/woo.php:2302 ../pro/woo.php:2404
+msgid "Records Updated Successfully"
+msgstr "Modificari salvate cu succes"
+
+# @ smart-manager
+#: ../sm/json38.php:1629 ../sm/woo-json.php:2616
+msgid "Post ID"
+msgstr "Post ID"
+
+# @ smart-manager
+#: ../sm/json38.php:1630 ../sm/woo-json.php:2617
+msgid "Product Image"
+msgstr "Imagine produs"
+
+# @ smart-manager
+#: ../sm/json38.php:1631 ../sm/manager-console.php:1550 ../sm/woo-json.php:2618
+msgid "Product Name"
+msgstr "Nume produs"
+
+# @ wpsc
+# @ smart-manager
+#: ../sm/json38.php:1632 ../sm/manager-console.php:315 ../sm/manager-console.php:
+#: 1551 ../sm/woo-json.php:2338 ../sm/woo-json.php:2387 ../sm/woo-json.php:2619 ..
+#: pro/sm38.php:273 ../pro/woo.php:260
+msgid "Price"
+msgstr "Pret"
+
+# @ smart-manager
+#: ../sm/json38.php:1633 ../sm/manager-console.php:320 ../sm/manager-console.php:
+#: 1552 ../sm/woo-json.php:2620
+msgid "Sale Price"
+msgstr "Pret de vanzare"
+
+# @ smart-manager
+#: ../sm/json38.php:1634 ../sm/woo-json.php:2623
+msgid "Inventory / Stock"
+msgstr "Inventar / stoc"
+
+# @ wpsc
+# @ smart-manager
+#: ../sm/json38.php:1635 ../sm/manager-console.php:330 ../sm/manager-console.php:
+#: 1556 ../sm/woo-json.php:2624 ../pro/sm38.php:271 ../pro/woo.php:259
+msgid "SKU"
+msgstr "SKU"
+
+# @ smart-manager
+#: ../sm/json38.php:1636 ../sm/woo-json.php:2625
+msgid "Category / Group"
+msgstr "Categorie / grup"
+
+# @ smart-manager
+#: ../sm/json38.php:1637 ../sm/manager-console.php:342 ../sm/manager-console.php:
+#: 1560 ../sm/woo-json.php:2628
+msgid "Weight"
+msgstr "Greutate"
+
+# @ smart-manager
+#: ../sm/json38.php:1638 ../sm/manager-console.php:823 ../sm/manager-console.php:
+#: 1697
+msgid "Weight Unit"
+msgstr "Unitatea de greutate"
+
+# @ smart-manager
+#: ../sm/json38.php:1639 ../sm/manager-console.php:362 ../sm/manager-console.php:
+#: 1564 ../sm/woo-json.php:2629
+msgid "Height"
+msgstr "Inaltime"
+
+# @ smart-manager
+#: ../sm/json38.php:1640 ../sm/manager-console.php:825 ../sm/manager-console.php:
+#: 1698
+msgid "Height Unit"
+msgstr "Unitate de inaltime"
+
+# @ smart-manager
+#: ../sm/json38.php:1641 ../sm/manager-console.php:366 ../sm/manager-console.php:
+#: 1565 ../sm/woo-json.php:2630
+msgid "Width"
+msgstr "Latime"
+
+# @ smart-manager
+#: ../sm/json38.php:1642 ../sm/manager-console.php:827 ../sm/manager-console.php:
+#: 1699
+msgid "Width Unit"
+msgstr "Unitate de latime"
+
+# @ smart-manager
+#: ../sm/json38.php:1643 ../sm/manager-console.php:370 ../sm/manager-console.php:
+#: 1566 ../sm/woo-json.php:2631
+msgid "Length"
+msgstr "Lungime"
+
+# @ smart-manager
+#: ../sm/json38.php:1644 ../sm/manager-console.php:829 ../sm/manager-console.php:
+#: 1700
+msgid "Length Unit"
+msgstr "Unitate de lungime"
+
+# @ smart-manager
+#: ../sm/json38.php:1645 ../sm/manager-console.php:389 ../sm/manager-console.php:
+#: 1695
+msgid "Local Shipping Fee"
+msgstr "Livrare locala gratuita"
+
+# @ smart-manager
+#: ../sm/json38.php:1646 ../sm/manager-console.php:394 ../sm/manager-console.php:
+#: 1696
+msgid "International Shipping Fee"
+msgstr "Livrare internationala gratuita"
+
+# @ smart-manager
+#: ../sm/json38.php:1650 ../sm/woo-json.php:2637
+msgid "User ID"
+msgstr "ID user"
+
+# @ smart-manager
+#: ../sm/json38.php:1651 ../sm/manager-console.php:1615 ../sm/woo-json.php:2638
+msgid "First Name"
+msgstr "Nume"
+
+# @ smart-manager
+#: ../sm/json38.php:1652 ../sm/manager-console.php:1617 ../sm/woo-json.php:2639
+msgid "Last Name"
+msgstr "Prenume"
+
+# @ smart-manager
+#: ../sm/json38.php:1653 ../sm/woo-json.php:2640
+msgid "E-mail ID"
+msgstr "ID email"
+
+# @ wpsc
+# @ smart-manager
+#: ../sm/json38.php:1654 ../sm/manager-console.php:1621 ../pro/sm38.php:110
+msgid "Address"
+msgstr "Adresa"
+
+# @ smart-manager
+#: ../sm/json38.php:1655 ../sm/woo-json.php:2643
+msgid "Postcode"
+msgstr "Cod postal"
+
+# @ smart-manager
+#: ../sm/json38.php:1656 ../sm/manager-console.php:1629 ../sm/woo-json.php:2644
+msgid "City"
+msgstr "Oras"
+
+# @ smart-manager
+#: ../sm/json38.php:1657 ../sm/woo-json.php:2645
+msgid "State / Region"
+msgstr "Judet / Regiune"
+
+# @ smart-manager
+#: ../sm/json38.php:1658 ../sm/manager-console.php:1633 ../sm/woo-json.php:2646
+msgid "Country"
+msgstr "Tara"
+
+# @ smart-manager
+#: ../sm/json38.php:1659 ../sm/woo-json.php:2649
+msgid "Phone / Mobile"
+msgstr "Fix / Mobil"
+
+# @ smart-manager
+#: ../sm/json38.php:1660 ../sm/manager-console.php:1640
+msgid "Last Order Total"
+msgstr "Totalul ultimei comenzi"
+
+# @ smart-manager
+#: ../sm/json38.php:1661 ../sm/woo-json.php:2647
+msgid "Last Order Date"
+msgstr "Data ultimei comenzi"
+
+# @ smart-manager
+#: ../sm/json38.php:1662 ../sm/manager-console.php:1643 ../sm/woo-json.php:2650
+msgid "Total Number Of Orders"
+msgstr "Numarul total de comenzi"
+
+# @ smart-manager
+#: ../sm/json38.php:1663
+msgid "Total Purchased Till Date (By Customer)"
+msgstr "Total cumparaturi pana la data (de catre client)"
+
+# @ smart-manager
+#: ../sm/json38.php:1668 ../sm/woo-json.php:2655
+msgid "Order ID"
+msgstr "ID comanda"
+
+# @ smart-manager
+#: ../sm/json38.php:1669 ../sm/woo-json.php:2656
+msgid "Order Date"
+msgstr "Data comenzii"
+
+# @ smart-manager
+#: ../sm/json38.php:1670 ../sm/manager-console.php:1616 ../sm/woo-json.php:2657
+msgid "Billing First Name"
+msgstr "Nume de facturare"
+
+# @ smart-manager
+#: ../sm/json38.php:1671 ../sm/manager-console.php:1618 ../sm/woo-json.php:2658
+msgid "Billing Last Name"
+msgstr "Prenume de facturare"
+
+# @ smart-manager
+#: ../sm/json38.php:1672 ../sm/woo-json.php:2659
+msgid "Billing E-mail ID"
+msgstr "ID Email de facturare"
+
+# @ smart-manager
+#: ../sm/json38.php:1673 ../sm/woo-json.php:2660
+msgid "Billing Phone Number"
+msgstr "Numar Telefon de facturare"
+
+# @ smart-manager
+#: ../sm/json38.php:1674 ../sm/woo-json.php:2648 ../sm/woo-json.php:2670
+msgid "Order Total"
+msgstr "Total comanda"
+
+# @ smart-manager
+#: ../sm/json38.php:1675
+msgid "Total No. of Items"
+msgstr "Numarul total de bucati"
+
+# @ smart-manager
+#: ../sm/json38.php:1676
+msgid "Order Items (Product Name[SKU])"
+msgstr "Produse Comanda (Nume produs[SKU])"
+
+# @ smart-manager
+#: ../sm/json38.php:1677 ../sm/manager-console.php:1655 ../sm/woo-json.php:2675
+msgid "Order Status"
+msgstr "Status comanda"
+
+# @ smart-manager
+#: ../sm/json38.php:1678
+msgid "Track ID"
+msgstr "ID de urmarire"
+
+# @ smart-manager
+#: ../sm/json38.php:1679 ../sm/manager-console.php:1742 ../pro/woo.php:292
+msgid "Order Notes"
+msgstr "Notite comanda"
+
+# @ smart-manager
+#: ../sm/json38.php:1680 ../sm/manager-console.php:1658 ../sm/woo-json.php:2677
+msgid "Shipping First Name"
+msgstr "Nume de livrare"
+
+# @ smart-manager
+#: ../sm/json38.php:1681 ../sm/manager-console.php:1659 ../sm/woo-json.php:2678
+msgid "Shipping Last Name"
+msgstr "Prenume de livrare"
+
+# @ smart-manager
+#: ../sm/json38.php:1682 ../sm/manager-console.php:1660 ../pro/woo.php:248
+msgid "Shipping Address"
+msgstr "Adresa de livrare"
+
+# @ smart-manager
+#: ../sm/json38.php:1683 ../sm/woo-json.php:2681
+msgid "Shipping Postcode"
+msgstr "Cod Postal de livrare"
+
+# @ smart-manager
+#: ../sm/json38.php:1684 ../sm/manager-console.php:1664 ../sm/woo-json.php:2682
+msgid "Shipping City"
+msgstr "Oras de livrare"
+
+# @ smart-manager
+#: ../sm/json38.php:1685 ../sm/woo-json.php:2683
+msgid "Shipping State / Region"
+msgstr "Regiune / Judet de livrare"
+
+# @ smart-manager
+#: ../sm/json38.php:1686 ../sm/woo-json.php:2685
+msgid "Shippping Country"
+msgstr "Tara de livrare"
+
+# @ smart-manager
+#: ../sm/json38.php:1760 ../sm/woo-json.php:3579 ../pro/woo.php:2276
+msgid "s were not duplicated"
+msgstr "s unde nu e duplicat"
+
+# @ smart-manager
+#: ../sm/json38.php:1836 ../sm/woo-json.php:3661
+msgid " Duplicated Successfully"
+msgstr "Duplicat cu Succes"
+
+# @ smart-manager
+#: ../sm/json38.php:1845 ../sm/woo-json.php:3670
+msgid "s Duplicated Successfully"
+msgstr "s Duplicat cu Succes"
+
+# @ smart-manager
+#: ../sm/json38.php:1889
+msgid "Product Deleted Successfully"
+msgstr "Produs Sters cu Succes"
+
+# @ smart-manager
+#: ../sm/json38.php:1892
+msgid "Products Deleted Successfully"
+msgstr "Produse Sterse cu Succes"
+
+# @ smart-manager
+#: ../sm/json38.php:1896
+msgid "Products were not deleted"
+msgstr "Produse care nu au fost sterse"
+
+# @ smart-manager
+#: ../sm/json38.php:1917
+msgid "Purchase Logs removed from the grid"
+msgstr "Logurile de cumparaturi sterse din lista"
+
+# @ smart-manager
+#: ../sm/json38.php:2412
+msgid " New Records Inserted Successfully"
+msgstr "Noi modificari introduse cu succes."
+
+# @ smart-manager
+#: ../sm/manager-console.php:101 ../sm/manager-console.php:1726
+msgid "Pounds"
+msgstr "Banuti"
+
+# @ smart-manager
+#: ../sm/manager-console.php:101 ../sm/manager-console.php:1727
+msgid "Ounces"
+msgstr "Uncii"
+
+# @ smart-manager
+#: ../sm/manager-console.php:101 ../sm/manager-console.php:1728
+msgid "Grams"
+msgstr "Grame"
+
+# @ smart-manager
+#: ../sm/manager-console.php:101 ../sm/manager-console.php:1729
+msgid "Kilograms"
+msgstr "Kilograme"
+
+# @ smart-manager
+#: ../sm/manager-console.php:305
+msgid "Image"
+msgstr "Imagine"
+
+# @ wpsc
+# @ smart-manager
+#: ../sm/manager-console.php:310 ../sm/manager-console.php:1648 ../pro/sm38.php:
+#: 109 ../pro/sa-includes/class-storeapps-upgrade-3-0.php:854
+msgid "Name"
+msgstr "Nume"
+
+# @ smart-manager
+#: ../sm/manager-console.php:325 ../sm/manager-console.php:1555
+msgid "Inventory"
+msgstr "Inventar"
+
+# @ smart-manager
+#: ../sm/manager-console.php:352 ../sm/manager-console.php:1562
+msgid "Description"
+msgstr "Descriere"
+
+# @ smart-manager
+#: ../sm/manager-console.php:357 ../sm/manager-console.php:1563
+msgid "Additional Description"
+msgstr "Descriere aditionala"
+
+# @ smart-manager
+#: ../sm/manager-console.php:384 ../sm/manager-console.php:1694
+msgid "Disregard Shipping"
+msgstr "Nu ia in considerare transportul"
+
+# @ smart-manager
+#: ../sm/manager-console.php:404 ../sm/manager-console.php:414 ../sm/manager-
+#: console.php:419 ../sm/manager-console.php:424
+msgid "Unit"
+msgstr "Unitate"
+
+# @ smart-manager
+#: ../sm/manager-console.php:429
+msgid "Stock: Quantity Limited"
+msgstr "Stoc: Cantitate limitata"
+
+# @ smart-manager
+#: ../sm/manager-console.php:434
+msgid "Stock: Inform When Out Of Stock"
+msgstr "Stoc: Informeaza cand stocul este terminat"
+
+# @ smart-manager
+#: ../sm/manager-console.php:625
+msgid "From"
+msgstr "De la"
+
+# @ smart-manager
+#: ../sm/manager-console.php:631
+msgid "To"
+msgstr "Pana la"
+
+# @ smart-manager
+#: ../sm/manager-console.php:642 ../sm/woo-json.php:2632
+msgid "Tax Status"
+msgstr "Status Taxa"
+
+# @ smart-manager
+#: ../sm/manager-console.php:752
+msgid "Group"
+msgstr "Grup"
+
+# @ smart-manager
+#: ../sm/manager-console.php:799
+msgid "Variation: "
+msgstr "Variatii:"
+
+# @ smart-manager
+#: ../sm/manager-console.php:846 ../sm/manager-console.php:1018 ../sm/manager-
+#: console.php:1347 ../sm/manager-console.php:1687
+msgid "Yes"
+msgstr "Da"
+
+# @ smart-manager
+#: ../sm/manager-console.php:847 ../sm/manager-console.php:1019 ../sm/manager-
+#: console.php:1348 ../sm/manager-console.php:1688
+msgid "No"
+msgstr "Nu"
+
+# @ smart-manager
+#: ../sm/manager-console.php:852 ../sm/manager-console.php:1691
+msgid "inches"
+msgstr "inci"
+
+# @ smart-manager
+#: ../sm/manager-console.php:853 ../sm/manager-console.php:1692
+msgid "cm"
+msgstr "cm"
+
+# @ smart-manager
+#: ../sm/manager-console.php:854 ../sm/manager-console.php:1693
+msgid "meter"
+msgstr "metru"
+
+# @ smart-manager
+#: ../sm/manager-console.php:923 ../sm/manager-console.php:1145 ../sm/manager-
+#: console.php:1557
+msgid "Category"
+msgstr "Categorie"
+
+# @ smart-manager
+#: ../sm/manager-console.php:956
+msgid "Add Attribute"
+msgstr "Adauga Atribut"
+
+# @ smart-manager
+#: ../sm/manager-console.php:962
+msgid "Change Attribute"
+msgstr "Schimba Atribut"
+
+# @ smart-manager
+#: ../sm/manager-console.php:968
+msgid "Remove Attribute"
+msgstr "Sterge Atribut"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1531
+msgid "Products"
+msgstr "Produse"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1532
+msgid "Customers"
+msgstr "Clienti"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1533
+msgid "Orders"
+msgstr "Comenzi"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1534
+msgid "Add Product"
+msgstr "Adauga Produs"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1535
+msgid "Add a new product"
+msgstr "Adauga produs nou"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1538
+msgid "Selected Products"
+msgstr "Produse Selectate"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1539
+msgid "Duplicate Store"
+msgstr "Duplicare Magazin"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1541
+msgid "Add product feature is available only in Pro version"
+msgstr "Adaugare produs este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1542
+msgid "Print"
+msgstr "Printeaza"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1543
+msgid "Print Order"
+msgstr "Printeaza comanda"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1544
+msgid "Print Preview feature is available only in Pro version"
+msgstr "Print Preview este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1545
+msgid "Delete"
+msgstr "Sterge"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1546
+msgid "Delete the selected items"
+msgstr "Sterge obiectele selectate"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1547
+msgid "Type"
+msgstr "Tip"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1548
+msgid "Product Images"
+msgstr "Imagini Produs"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1553
+msgid "Sale Price From"
+msgstr "Pret vanzare de la"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1554
+msgid "Sale Price To"
+msgstr "Pret vanzare pana la"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1561
+msgid "Product Status"
+msgstr "Status Produs"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1567
+msgid "Edit"
+msgstr "Editeaza"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1568
+msgid "Product Info"
+msgstr "Info Produs"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1570
+msgid "Update selected items"
+msgstr "Modifica obiectele selectate"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1571
+msgid "Save"
+msgstr "Salveaza"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1572
+msgid "Save all Changes"
+msgstr "Salveaza toate schimbarile"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1574
+msgid "Download CSV file"
+msgstr "Downloadeaza CSV"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1575
+msgid "Export CSV feature is available only in Pro version"
+msgstr "Exportarea CSV este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1576
+msgid "Duplicate Product feature is available only in Pro version"
+msgstr "Duplicarea Produselor este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1577
+msgid "Duplicate Store feature is available only in Pro version"
+msgstr "Duplicarea magazinului este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1578
+msgid "Are you sure you want to delete the selected record?"
+msgstr "Esti sigur ca vrei sa stergi campul selectat?"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1579
+msgid "Are you sure you want to delete the selected records?"
+msgstr "Esti sigur ca vrei sa stergi campurile selectate?"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1580
+msgid "Are you sure you want to duplicate the selected product?"
+msgstr "Esti sigur ca vrei sa duplici produsul selectat?"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1581
+msgid "Are you sure you want to duplicate the selected products?"
+msgstr "Esti sigur ca vrei sa duplici produsele selectate?"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1582
+msgid "Are you sure you want to duplicate the entire store?"
+msgstr "Esti sigur ca vrei sa duplici intregul magazin?"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1583
+msgid "Confirm File Delete"
+msgstr "Confirm stergere fisier"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1584
+msgid "list is empty"
+msgstr "lista este goala"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1585
+msgid "Confirm Save"
+msgstr "Confirm Salvare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1586
+msgid "Do you want to save the modified records?"
+msgstr "Vrei sa salvezi modificarile facute?"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1588
+msgid "Search feature is available only in Pro version"
+msgstr "Functia de cautare este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1589
+msgid "Please wait"
+msgstr "Te rugam asteapta"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1590
+msgid "Select a field"
+msgstr "Selecteaza un camp"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1591
+msgid "Only numbers are allowed"
+msgstr "Doar numere sunt acceptate"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1592
+msgid "Enter Attribute Name"
+msgstr "Introdu Numele Atributului"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1595
+msgid "Select an action"
+msgstr "Selecteaza o actiune"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1596
+msgid "Select a value"
+msgstr "Selecteaza o valoare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1597
+msgid "Enter the value"
+msgstr "Introdu o valoare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1598
+msgid "Select a Value"
+msgstr "Selectati o valoare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1599
+msgid "Select a Visibility"
+msgstr "Selectati o vizibilitate"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1600
+msgid "Enter values"
+msgstr "Introdu valorile"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1603
+msgid "For more than one values, use pipe (|) as delimiter"
+msgstr "Pentru mai multe de o valoare, foloseste (|) ca delimitare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1604
+msgid "Delete Row"
+msgstr "Sterge rand"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1606 ../pro/sm-privilege.php:186
+msgid "Upload Image"
+msgstr "Incarca Imagine"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1607
+msgid "Add Row"
+msgstr "Adauga rand"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1608
+msgid "Add a new row"
+msgstr "Adauga rand nou"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1609
+msgid "Update"
+msgstr "Update"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1610
+msgid "Apply all changes"
+msgstr "Aplica toate schimbarile"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1611
+msgid "Reset"
+msgstr "Reseteaza"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1612
+msgid "Reset all fields"
+msgstr "Reseteaza toate campurile"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1613
+msgid "Batch Update - available only in Pro version"
+msgstr "Modificari multiple - disponibile doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1614
+msgid "Your browser does not support iframes."
+msgstr "Bowser-ul dumneavoastra nu suporta iframes."
+
+# @ wpsc
+# @ smart-manager
+#: ../sm/manager-console.php:1619 ../pro/sm38.php:112
+msgid "Email"
+msgstr "Email"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1620
+msgid "Email Address"
+msgstr "Adresa de email"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1624 ../pro/woo.php:241
+msgid "Billing Address"
+msgstr "Adresa de facturare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1627
+msgid "Postal Code"
+msgstr "Codul Postal"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1628
+msgid "Billing Postal Code"
+msgstr "Codul postal de facturare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1630
+msgid "Billing City"
+msgstr "Orasul de facturare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1631
+msgid "Region"
+msgstr "Regiune/Judet"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1632
+msgid "Billing Region"
+msgstr "Regiunea/Judetul de facturare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1634
+msgid "Billing Country"
+msgstr "Tara de facturare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1638 ../sm/manager-console.php:1731 ../sm/woo-json.
+#: php:2651
+msgid "Total Purchased"
+msgstr "Total cumparaturi"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1639
+msgid "Last Order"
+msgstr "Ultima comanda"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1641
+msgid "Last Order Details"
+msgstr "Detaliile ultimei comenzi"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1642
+msgid "Phone Number"
+msgstr "Numar de telefon"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1644
+msgid "Total Orders Amount"
+msgstr "Valoarea totala a comenzilor"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1646
+msgid "Order Id"
+msgstr "Id comanda"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1647
+msgid "Date / Time"
+msgstr "Data / Timp"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1649
+msgid "Customer Name"
+msgstr "Nume client"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1650
+msgid "Amount"
+msgstr "Valoare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1651 ../sm/woo-json.php:2663
+msgid "Details"
+msgstr "Detalii"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1652
+msgid "Track Id"
+msgstr "Id de urmarire"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1653 ../sm/woo-json.php:2674
+msgid "Payment Method"
+msgstr "Metoda de plata"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1654
+msgid "Status"
+msgstr "Status"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1656
+msgid "Orders Notes"
+msgstr "Notite comenzi"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1657 ../sm/woo-json.php:2676
+msgid "Shipping Method"
+msgstr "Metoda livrare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1663
+msgid "Shipping Postal Code"
+msgstr "Cod Postal livrare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1665
+msgid "Shipping Region"
+msgstr "Livrare Judet / Regiune"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1666
+msgid "Shipping Country"
+msgstr "Livrare Tara"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1667
+msgid "Customer Phone Number"
+msgstr "Numar de telefon client"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1668
+msgid "Show Variations feature is available only in Pro version"
+msgstr "Arata variatiile este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1669
+msgid "Show Variations feature is available only for WPeC 3.8+"
+msgstr "Arata variatiile este disponibila doar pentru WPeC 3.8+"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1670
+msgid "Show Variations"
+msgstr "Arata Variatiile"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1671
+msgid "Access Denied"
+msgstr "Acces nepermis"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1672
+msgid "You dont have sufficient permission to view this page"
+msgstr "Nu ai suficiente drepturi de a vedea aceasta pagina"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1673
+msgid "This feature is available only in Pro version"
+msgstr "Aceasta optiune este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1674
+msgid "Products Details"
+msgstr "Detalii produse"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1675
+msgid "Manage your Product Images"
+msgstr "Administreaza imaginile de produs"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1676
+msgid "Manage your Product Images - Available only in Pro version"
+msgstr "Administrarea imaginilor de produs - Disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1677
+msgid "Batch Update feature is available only in Pro version"
+msgstr "Actualizare in grup este disponibila doar in versiunea Pro"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1678
+msgid "set to"
+msgstr "setat la"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1679
+msgid "append"
+msgstr "adauga"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1680
+msgid "prepend"
+msgstr "prefixul"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1681
+msgid "increase by %"
+msgstr "creste dupa %"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1682
+msgid "decrease by %"
+msgstr "scade dupa %"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1683
+msgid "increase by number"
+msgstr "creste dupa numar"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1684
+msgid "decrease by number"
+msgstr "scade dupa numar"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1685
+msgid "set to sales price"
+msgstr "seteaza la pretul de vanzare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1686
+msgid "set to regular price"
+msgstr "seteaza un pret normal"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1689
+msgid "add to"
+msgstr "adauga la"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1690
+msgid "remove from"
+msgstr "sterge de la"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1706
+msgid "Pending"
+msgstr "Pending"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1707
+msgid "Failed"
+msgstr "Esuat"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1708
+msgid "On Hold"
+msgstr "In asteptare"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1709
+msgid "Processing"
+msgstr "Procesat"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1710
+msgid "Completed"
+msgstr "Complet"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1711
+msgid "Refunded"
+msgstr "Returnat"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1712
+msgid "Cancelled"
+msgstr "Anulat"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1720
+msgid "Product Visibility"
+msgstr "Vizibilitate produs"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1730
+msgid "Sum Total Of All Orders"
+msgstr "Suma totala a tuturor comenzilor"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1733 ../sm/woo-json.php:2664
+msgid "Order Shipping"
+msgstr "Livrare comanda"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1734 ../sm/woo-json.php:2665 ../pro/woo.php:303
+msgid "Order Discount"
+msgstr "Reducere comanda"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1735 ../sm/woo-json.php:2666 ../pro/woo.php:298
+msgid "Cart Discount"
+msgstr "Reducere cos"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1736 ../sm/woo-json.php:2668
+msgid "Order Tax"
+msgstr "Taxe comanda"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1737 ../sm/woo-json.php:2669
+msgid "Order Shipping Tax"
+msgstr "Taxe de livrare comanda"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1738 ../sm/woo-json.php:2672
+msgid "Order Currency"
+msgstr "Moneda comenzii"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1739 ../sm/woo-json.php:2667
+msgid "Coupons Used"
+msgstr "Cupoane folosite"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1740
+msgid "Order Excluding Tax"
+msgstr "Comanda fara taxe"
+
+# @ smart-manager
+#: ../sm/manager-console.php:1741 ../sm/woo-json.php:2671
+msgid "Order Total Excluding Tax"
+msgstr "Total comanda fara taxe"
+
+# @ smart-manager
+#: ../sm/woo-json.php:2338 ../sm/woo-json.php:2387
+msgid "Qty"
+msgstr "Cantitate"
+
+# @ smart-manager
+#: ../sm/woo-json.php:2621
+msgid "Sale Price Dates (From)"
+msgstr "Data pret de vazare(de la)"
+
+# @ smart-manager
+#: ../sm/woo-json.php:2622
+msgid "Sale Price Dates (To)"
+msgstr "Data pretului de vanzare (pana la)"
+
+# @ smart-manager
+#: ../sm/woo-json.php:2673
+msgid "Order Items (Product Name [SKU][Qty][Price])"
+msgstr "Detalii Comanda (Nume Produs [SKU][Qty][Pret])"
+
+# @ smart-manager
+#: ../sm/woo-json.php:3722
+msgid " Deleted Successfully"
+msgstr "Sters cu succes"
+
+# @ smart-manager
+#: ../sm/woo-json.php:3725
+msgid "s Deleted Successfully"
+msgstr "s Sters cu succes"
+
+# @ smart-manager
+#: ../sm/woo-json.php:3729
+msgid "s were not deleted"
+msgstr "s nu a fost sters"
+
+# @ smart-manager
+#: ../sm/woo-json.php:3731
+msgid "s removed from the grid"
+msgstr "s sters de pe lista"
+
+# @ smart-manager
+#: ../smart-manager.php:861 ../smart-manager.php:1311 ../smart-manager.php:1346
+msgid "add-on requires"
+msgstr "add-on necesare"
+
+# @ smart-manager
+#: ../smart-manager.php:861 ../smart-manager.php:1311 ../smart-manager.php:1346
+msgid "WP e-Commerce"
+msgstr "WP e-Commerce"
+
+# @ smart-manager
+#: ../smart-manager.php:861 ../smart-manager.php:1311 ../smart-manager.php:1346
+msgid "plugin or"
+msgstr "plugin sau"
+
+# @ smart-manager
+#: ../smart-manager.php:861 ../smart-manager.php:1311 ../smart-manager.php:1346
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+# @ smart-manager
+#: ../smart-manager.php:861 ../smart-manager.php:1311 ../smart-manager.php:1346
+msgid "plugin. Please install and activate it."
+msgstr "plugin. Te rugam instaleaza-l si activeaza-l."
+
+# @ smart-manager
+#: ../smart-manager.php:1164
 msgid ""
 "Please enter your license key for automatic upgrades and support to get "
 "activated."
@@ -1648,82 +2454,311 @@ msgstr ""
 "activare."
 
 # @ smart-manager
-#: smart-manager.php:448
+#: ../smart-manager.php:1164
 msgid "Enter License Key"
 msgstr "Introdu cheia de licenta"
 
 # @ smart-manager
-#: smart-manager.php:461
-msgid ""
-"Upgrading to Pro gives you powerful features like '<i>Batch Update</i>' , "
-"'<i>Export CSV</i>' , '<i>Duplicate Products</i>' &amp; many more..."
-msgstr ""
-"Trecerea la versiunea Pro iti ofera in plus optiuni ca '<i>Editare multipla</"
-"i>' , '<i>Exportare CSV</i>' , '<i>Duplicare Produse</i>' &amp; mult mai "
-"multe..."
-
-# @ smart-manager
-#: smart-manager.php:461
-msgid "Learn more about Pro version here"
-msgstr "Afla mai multe despre versiunea Pro aici"
-
-# @ smart-manager
-#: smart-manager.php:461
-msgid "or take a"
-msgstr "sau i-a o versiune"
-
-# @ smart-manager
-#: smart-manager.php:461
-msgid "Live Demo here"
-msgstr "Live Demo aici"
-
-# @ smart-manager
-#: smart-manager.php:478 smart-manager.php:491 smart-manager.php:506
-#: smart-manager.php:523
+#: ../smart-manager.php:1293 ../smart-manager.php:1306 ../smart-manager.php:1321 .
+#: ./smart-manager.php:1338
 msgid "A required Smart Manager file is missing. Can't continue."
 msgstr "Un fisier necesar Smart Manager lipseste. Nu se poate continua."
 
 # @ smart-manager
-#: smart-manager.php:481 smart-manager.php:509
+#: ../smart-manager.php:1296 ../smart-manager.php:1324
 msgid "Smart Manager currently works only with WP e-Commerce 3.7 or above."
 msgstr "Smart Manager lucreaza doar cu WP e-Commerce 3.7 sau mai nou."
 
 # @ smart-manager
-#: smart-manager.php:485 smart-manager.php:517
+#: ../smart-manager.php:1300 ../smart-manager.php:1332
 msgid "Smart Manager currently works only with WooCommerce 1.4 or above."
 msgstr "Smart Manager  lucreaza doar cu WooCommerce 1.4 sau mai nou."
 
 # @ smart-manager
-#: smart-manager.php:512
+#: ../smart-manager.php:1327
 msgid "WP e-Commerce plugin is not activated."
 msgstr "Pluginul WP e-Commerce nu este activat."
 
 # @ smart-manager
-#: smart-manager.php:512
+#: ../smart-manager.php:1327
 msgid "add-on requires WP e-Commerce plugin, please activate it."
 msgstr "add-on necesita WP e-Commerce plugin, va rugam activati-l."
 
 # @ smart-manager
-#: smart-manager.php:527
+#: ../smart-manager.php:1342
 msgid "WooCommerce plugin is not activated."
 msgstr "Pluginul WooCommerce nu este activat."
 
 # @ smart-manager
-#: smart-manager.php:527
+#: ../smart-manager.php:1342
 msgid "add-on requires WooCommerce plugin, please activate it."
 msgstr "add-on necesita WooCommerce plugin, va rugam sa-l activati."
 
 # @ smart-manager
-#: smart-manager.php:554
+#: ../smart-manager.php:1369
 msgid "Or"
 msgstr "Sau"
 
 # @ smart-manager
-#: smart-manager.php:554
+#: ../smart-manager.php:1369
 msgid "click here to download the latest version."
 msgstr "click aici pentru a downloada ultima versiune"
 
 # @ smart-manager
-#: smart-manager.php:561
-msgid "Error:"
-msgstr "Eroare:"
+#: ../pro/sm-privilege.php:34
+msgid "Smart Manager Settings <b>Updated</b>"
+msgstr "Smart Manager Setari <b>Modificate cu succes!</b>"
+
+# @ smart-manager
+#: ../pro/sm-privilege.php:154
+msgid "Privileges for different System Roles"
+msgstr "Privilegii pentru diferite roluri in site"
+
+# @ smart-manager
+#: ../pro/sm-privilege.php:160
+msgid "Can Manage Products?"
+msgstr "Poate administra produsele?"
+
+# @ smart-manager
+#: ../pro/sm-privilege.php:161
+msgid "Can Manage Customers & Orders?"
+msgstr "Poate administra clientii si ordinele?"
+
+# @ smart-manager
+#: ../pro/sm-privilege.php:176
+msgid "Print Order Settings"
+msgstr "Setarile de printare"
+
+# @ smart-manager
+#: ../pro/sm-privilege.php:181
+msgid "Company logo:"
+msgstr "Logo-ul firmei:"
+
+# @ default
+#: ../pro/sm-privilege.php:191
+msgid "Back to Smart Manager"
+msgstr "Inapoi la Smart Manager"
+
+# @ smart-manager
+#: ../pro/sm-settings.php:29
+msgid "Your key is valid. Automatic Upgrades and support are now activated."
+msgstr "Cheia de licenta este valida. Reinoirile automate si suportul a fost activat."
+
+# @ smart-manager
+#: ../pro/sm-settings.php:35
+msgid "Please enter license key"
+msgstr "Te rugam introdu cheia de licenta"
+
+# @ smart-manager
+#: ../pro/sm-settings.php:44
+msgid "Smart Manager Pro Settings"
+msgstr "Setari Smart Manager Pro"
+
+# @ smart-manager
+#: ../pro/sm-settings.php:45
+msgid ""
+"Your Smart Manager Pro license key is used to verify your support package, "
+"enable automatic updates and receive support."
+msgstr ""
+"Cheia ta de licenta Smart Manager Pro este pentru verificarea pachetului tau,"
+" pentru reinoiri automate si pentru suport tehnic."
+
+# @ smart-manager
+#: ../pro/sm-settings.php:47
+msgid "License key:"
+msgstr "Cheie de licenta:"
+
+# @ smart-manager
+#: ../pro/sm-settings.php:49
+msgid "Validate"
+msgstr "Valideaza"
+
+# @ smart-manager
+#: ../pro/sm37.php:574
+msgid "No Records Updated"
+msgstr "Nici o modificare salvata"
+
+# @ smart-manager
+#: ../pro/sm37.php:661
+msgid "Incomplete Sale"
+msgstr "Vanzare incompleta"
+
+# @ smart-manager
+#: ../pro/sm37.php:665
+msgid "Order Received"
+msgstr "Comanda primita"
+
+# @ smart-manager
+#: ../pro/sm37.php:669
+msgid "Accepted Payment"
+msgstr "Plata acceptata"
+
+# @ smart-manager
+#: ../pro/sm37.php:673
+msgid "Job Dispatched"
+msgstr "Comanda Expediata"
+
+# @ smart-manager
+#: ../pro/sm37.php:677
+msgid "Closed Order"
+msgstr "Comenzi inchise"
+
+# @ smart-manager
+#: ../pro/sm37.php:681
+msgid "Payment Declined"
+msgstr "Plata neacceptata"
+
+# @ wpsc
+#: ../pro/sm38.php:63 ../pro/sm38.php:71
+msgid "State"
+msgstr "Judet"
+
+# @ wpsc
+#: ../pro/sm38.php:111
+msgid "Phone"
+msgstr "Telefon"
+
+# @ wpsc
+#: ../pro/sm38.php:125
+msgid "Manual Payment"
+msgstr "Plata manuala"
+
+# @ wpsc
+#: ../pro/sm38.php:228
+#, php-format
+msgid "Packing Slip for Order #%s"
+msgstr "Packing Slip pentru comanda  #%s"
+
+# @ wpsc
+#: ../pro/sm38.php:233
+msgctxt "packing slip"
+msgid "Ship To:"
+msgstr "Expediata catre:"
+
+# @ wpsc
+#: ../pro/sm38.php:241
+msgctxt "packing slip"
+msgid "Bill To:"
+msgstr "Platita de:"
+
+# @ wpsc
+#: ../pro/sm38.php:252
+msgctxt "packing slip"
+msgid "Order Date"
+msgstr "Data comanda"
+
+# @ wpsc
+#: ../pro/sm38.php:253
+msgctxt "packing slip"
+msgid "Order ID"
+msgstr "ID comanda"
+
+# @ wpsc
+#: ../pro/sm38.php:254
+msgctxt "packing slip"
+msgid "Shipping Method"
+msgstr "Metoda de livrare"
+
+# @ wpsc
+#: ../pro/sm38.php:255
+msgctxt "packing slip"
+msgid "Payment Method"
+msgstr "Metoda de plata"
+
+# @ wpsc
+#: ../pro/sm38.php:270
+msgid "Item Name"
+msgstr "Nume produs"
+
+# @ wpsc
+# @ smart-manager
+#: ../pro/sm38.php:272 ../pro/woo.php:260
+msgid "Quantity"
+msgstr "Cantitate"
+
+# @ wpsc
+#: ../pro/sm38.php:274
+msgid "Item Shipping"
+msgstr "Livrare produs"
+
+# @ wpsc
+#: ../pro/sm38.php:275
+msgid "Item Tax"
+msgstr "Taxa produs"
+
+# @ wpsc
+#: ../pro/sm38.php:276
+msgid "Item Total"
+msgstr "Total produs"
+
+# @ wpsc
+#: ../pro/sm38.php:312
+msgid "Coupon Code"
+msgstr "Cod cupon"
+
+# @ wpsc
+#: ../pro/sm38.php:315
+msgid "Discount"
+msgstr "Reducere"
+
+# @ wpsc
+#: ../pro/sm38.php:322
+msgid "Taxes"
+msgstr "Taxe"
+
+# @ wpsc
+# @ smart-manager
+#: ../pro/sm38.php:329 ../pro/woo.php:294
+msgid "Shipping"
+msgstr "Livrare"
+
+# @ wpsc
+# @ smart-manager
+#: ../pro/sm38.php:334 ../pro/woo.php:311
+msgid "Total"
+msgstr "Total"
+
+# @ smart-manager
+#: ../pro/woo.php:255
+msgid "Email id"
+msgstr "Email id"
+
+# @ smart-manager
+#: ../pro/woo.php:256
+msgid "Tel"
+msgstr "Tel"
+
+# @ smart-manager
+#: ../pro/woo.php:259 ../pro/sa-includes/class-storeapps-upgrade-3-0.php:862
+msgid "Product"
+msgstr "Produs"
+
+# @ smart-manager
+#: ../pro/woo.php:310
+msgid "Tax"
+msgstr "Taxa"
+
+# @ smart-manager
+#: ../pro/woo.php:2114
+msgid "Batch Updation of Region not successful"
+msgstr "Salvarea lotului pe regiune a esuat"
+
+# @ default
+#: ../pro/woo.php:2199 ../pro/woo.php:2217
+msgid "Success"
+msgstr "Succes"
+
+# @ smart-manager
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:858
+msgid "E-mail"
+msgstr "Email"
+
+# @ smart-manager
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:866
+msgid "Subject"
+msgstr "Subiect"
+
+# @ smart-manager
+#: ../pro/sa-includes/class-storeapps-upgrade-3-0.php:870
+msgid "Message"
+msgstr "Mesaj"

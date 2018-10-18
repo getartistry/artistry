@@ -92,13 +92,15 @@ if ( ! class_exists( 'Astra_Elementor' ) ) :
 
 					// In the preview mode, Apply the layouts using filters for Elementor Template Library.
 					add_filter(
-						'astra_page_layout', function() {
+						'astra_page_layout',
+						function() {
 							return 'no-sidebar';
 						}
 					);
 
 					add_filter(
-						'astra_get_content_layout', function () {
+						'astra_get_content_layout',
+						function () {
 							return 'page-builder';
 						}
 					);

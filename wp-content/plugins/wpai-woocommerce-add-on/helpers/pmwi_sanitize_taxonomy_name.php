@@ -1,6 +1,15 @@
 <?php
 
-function pmwi_sanitize_taxonomy_name($taxonomy){
+/**
+ *
+ * Prepare taxonomy name.
+ *
+ * @param $taxonomy
+ *
+ * @return mixed
+ */
+function pmwi_sanitize_taxonomy_name($taxonomy) {
+
 	$filtered = strtolower( remove_accents( stripslashes( strip_tags( $taxonomy ) ) ) );
 	$filtered = preg_replace( '/&.+?;/', '', $filtered ); // Kill entities
 	$filtered = str_replace( array( '.', '\'', '"' ), '', $filtered ); // Kill quotes and full stops.
@@ -8,5 +17,3 @@ function pmwi_sanitize_taxonomy_name($taxonomy){
 
 	return apply_filters( 'sanitize_taxonomy_name', $filtered, $taxonomy );
 }
-
-?>

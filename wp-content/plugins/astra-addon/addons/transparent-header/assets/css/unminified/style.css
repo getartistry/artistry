@@ -16,7 +16,8 @@
   right: 0;
 }
 
-.ast-theme-transparent-header .main-header-bar {
+.ast-theme-transparent-header .main-header-bar,
+.ast-theme-transparent-header.ast-header-break-point .main-header-bar {
   background: none;
 }
 

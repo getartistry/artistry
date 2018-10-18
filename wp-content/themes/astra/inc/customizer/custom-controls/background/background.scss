@@ -1,10 +1,13 @@
 .customize-control-ast-background {
     position: relative;
 
-    .wp-picker-container input[type="text"].wp-color-picker {
-        max-width: 65px !important;
+    .ast-color-control.wp-color-picker {
+        width: 96px !important;
+        line-height: 17px;
     }
-
+    .wp-picker-clear {
+        margin-left: 2%;
+    }
     .screen-reader-text {
         top: initial;
     }

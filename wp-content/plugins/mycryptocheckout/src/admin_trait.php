@@ -42,8 +42,20 @@ trait admin_trait
 		$form->id( 'account' );
 		$r = '';
 
+		$public_listing = $form->checkbox( 'public_listing' )
+			->checked( $this->get_site_option( 'public_listing' ) )
+			->description( __( 'Check the box and refresh your account if you want your webshop listed in the upcoming store directory on mycryptocheckout.com. Your store name and URL will be listed.', 'mycryptocheckout' ) )
+			->label( __( 'Be featured in the MCC store directory?', 'mycryptocheckout' ) );
+
 		if ( isset( $_POST[ 'retrieve_account' ] ) )
 		{
+			$form->post();
+			$form->use_post_values();
+			if ( $public_listing->is_checked() )
+				MyCryptoCheckout()->update_site_option( 'public_listing', true );
+			else
+				MyCryptoCheckout()->delete_site_option( 'public_listing' );
+
 			$result = $this->mycryptocheckout_retrieve_account();
 			if ( $result )
 			{
@@ -99,7 +111,7 @@ trait admin_trait
 		catch ( Exception $e )
 		{
 			$message = sprintf( '%s: %s',
-				__( 'Payments using MyCryptoCheckout are currently not available', 'woocommerce' ),
+				__( 'Payments using MyCryptoCheckout are currently not available', 'mycryptocheckout' ),
 				$e->getMessage()
 			);
 			$r .= $this->error_message_box()->_( $message );
@@ -220,6 +232,8 @@ trait admin_trait
 
 		$r .= $table;
 
+
+
 		return $r;
 	}
 
@@ -306,6 +320,7 @@ trait admin_trait
 		$fs->legend->label( __( 'Add new currency / wallet', 'mycryptocheckout' ) );
 
 		$wallet_currency = $fs->select( 'currency' )
+			->css_class( 'currency_id' )
 			->description( __( 'Which currency shall the new wallet belong to?', 'mycryptocheckout' ) )
 			// Input label
 			->label( __( 'Currency', 'mycryptocheckout' ) );
@@ -320,6 +335,24 @@ trait admin_trait
 			->label( __( 'Address', 'mycryptocheckout' ) )
 			->required()
 			->size( 64, 128 )
+			->trim();
+
+		// This is an ugly hack for Monero. Ideally it would be hidden away in the wallet settings, but for the user it's much nicer here.
+		$wallet_address = $fs->text( 'wallet_address' )
+			->description( $text )
+			// Input label
+			->label( __( 'Address', 'mycryptocheckout' ) )
+			->required()
+			->size( 64, 128 )
+			->trim();
+
+		$monero_private_view_key = $fs->text( 'monero_private_view_key' )
+			->css_class( 'only_for_currency XMR' )
+			->description( __( 'Your private view key that is used to see the amounts in private transactions to your wallet.', 'mycryptocheckout' ) )
+			// Input label
+			->label( __( 'Monero private view key', 'mycryptocheckout' ) )
+			->placeholder( '157e74dc4e2961c872f87aaf43461f6d0f596f2f116a51fbace1b693a8e3020a' )
+			->size( 64, 64 )
 			->trim();
 
 		$save = $form->primary_button( 'save' )
@@ -388,10 +421,14 @@ trait admin_trait
 					$currency = $this->currencies()->get( $chosen_currency );
 					$currency->validate_address( $wallet->address );
 
+					if ( $currency->supports( 'monero_private_view_key' ) )
+						$wallet->set( 'monero_private_view_key', $form->input( 'monero_private_view_key' )->get_filtered_post_value() );
+
 					$wallet->currency_id = $chosen_currency;
 
-					$wallets->add( $wallet );
+					$index = $wallets->add( $wallet );
 					$wallets->save();
+
 					$r .= $this->info_message_box()->_( __( 'Settings saved!', 'mycryptocheckout' ) );
 					$reshow = true;
 				}
@@ -513,7 +550,7 @@ trait admin_trait
 				$fs->legend->label( __( 'HD wallet settings', 'mycryptocheckout' ) );
 
 				$btc_hd_public_key = $fs->text( 'btc_hd_public_key' )
-					->description( __( 'If you have an HD wallet and want to generate a new address after each purchase, enter your XPUB, YPUB or ZPUB public key here.', 'mycryptocheckout' ) )
+					->description( __( 'If you have an HD wallet and want to generate a new address after each purchase, enter your XPUB / YPUB / ZPUB public key here.', 'mycryptocheckout' ) )
 					// Input label
 					->label( __( 'HD public key', 'mycryptocheckout' ) )
 					->trim()
@@ -532,6 +569,18 @@ trait admin_trait
 				$fs->markup( 'm_btc_hd_public_key_generate_address_path' )
 					->p( __( 'The address at index %d is %s.', 'mycryptocheckout' ), $path, $new_address );
 			}
+		}
+
+		if ( $currency->supports( 'monero_private_view_key' ) )
+		{
+			$monero_private_view_key = $fs->text( 'monero_private_view_key' )
+				->description( __( 'Your private view key that is used to see the amounts in private transactions to your wallet.', 'mycryptocheckout' ) )
+				// Input label
+				->label( __( 'Monero private view key', 'mycryptocheckout' ) )
+				->required()
+				->size( 64, 64 )
+				->trim()
+				->value( $wallet->get( 'monero_private_view_key' ) );
 		}
 
 		if ( $this->is_network && is_super_admin() )
@@ -597,6 +646,12 @@ trait admin_trait
 					{
 						$wallet->network = $wallet_on_network->is_checked();
 						$wallet->sites = $sites->get_post_value();
+					}
+
+					if ( $currency->supports( 'monero_private_view_key' ) )
+					{
+						foreach( [ 'monero_private_view_key' ] as $key )
+							$wallet->set( $key, $$key->get_filtered_post_value() );
 					}
 
 					$wallets->save();

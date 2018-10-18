@@ -192,6 +192,7 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 			$sm_dashboards_final = array();
 			$sm_dashboards_final ['post'] = __(ucwords('post'), self::$text_domain);
 			$sm_dashboards_final ['page'] = __(ucwords('page'), self::$text_domain);
+			$sm_dashboards_final ['user'] = __(ucwords('users'), self::$text_domain);
 
 			if (! is_plugin_active( 'woocommerce/woocommerce.php' )) {
 				$exclude_from_dashboards = array('product_variation', 'product', 'shop_order', 'shop_coupon');
@@ -440,12 +441,12 @@ if ( ! class_exists( 'Smart_Manager' ) ) {
 	            	add_thickbox();
 	        	}
 
-	            if ( ! method_exists( 'StoreApps_Upgrade_2_8', 'support_ticket_content' ) ) return;
+	            if ( ! method_exists( 'StoreApps_Upgrade_3_0', 'support_ticket_content' ) ) return;
 
 	            $plugin_data = get_plugin_data( self::$plugin_file );
 	            $license_key = get_site_option( self::$prefix.'_license_key' );
 
-	            StoreApps_Upgrade_2_8::support_ticket_content( 'sa_smart_manager_beta', self::$sku, $plugin_data, $license_key, self::$text_domain );
+	            StoreApps_Upgrade_3_0::support_ticket_content( 'sa_smart_manager_beta', self::$sku, $plugin_data, $license_key, self::$text_domain );
 	    }
 
 		function footer_text($text) {

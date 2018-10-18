@@ -54,9 +54,10 @@ jQuery(window).on('elementor/frontend/init',function(){
         
         function add_marker( pin, map ,autoOpen, hoverOpen, hoverClose ) {
         
-            var latlng = new google.maps.LatLng( pin.attr('data-lat'), pin.attr('data-lng') );
-
-            icon_img = pin.attr('data-icon');
+            var latlng = new google.maps.LatLng( pin.attr('data-lat'), pin.attr('data-lng') ),
+                icon_img = pin.attr('data-icon'),
+                maxWidth = pin.attr('data-max-width');
+            
             if(icon_img != ''){
                 var icon = {
                     url : pin.attr('data-icon')
@@ -81,6 +82,7 @@ jQuery(window).on('elementor/frontend/init',function(){
             {
                 // create info window
                 var infowindow = new google.maps.InfoWindow({
+                    maxWidth    : maxWidth,
                     content		: pin.html()
                 });
                 if(autoOpen){

@@ -43,7 +43,7 @@ function wp_automatic_rating_notice() {
 		$count = $row->count;
 		
 		if ($count > 10) {
-			  echo '<div class="updated"><p>Do you mind helping (<a href="http://deandev.com/">ValvePress</a>) by rating  "Wordpress automatic plugin"? Your high rating will <strong>help us improve</strong> the plugin <a style="text-decoration: underline;" href="http://codecanyon.net/downloads">Rate Now »</a> <a  style="float:right"  href="' . $uri . '">(x) </a></p></div>';
+			  echo '<div class="updated"><p>Do you mind helping (<a href="https://deandev.com/">ValvePress</a>) by rating  "Wordpress automatic plugin"? Your high rating will <strong>help us improve</strong> the plugin <a style="text-decoration: underline;" href="http://codecanyon.net/downloads">Rate Now »</a> <a  style="float:right"  href="' . $uri . '">(x) </a></p></div>';
 		} // count ok
 	} // rating yes
 }

@@ -32,11 +32,15 @@ function pinterest_get_post($camp){
 
 
 			// getting links from the db for that keyword
-			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'pt_{$camp->camp_id}_$keyword' and item_status ='0'";
+			$query = "select * from {$this->wp_prefix}automatic_general where item_type=  'pt_{$camp->camp_id}_$keyword' ";
 			$res = $this->db->get_results ( $query );
 
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_general where item_type='pt_{$camp->camp_id}_$keyword' ";
+				$this->db->query ( $query_delete );
 
 				//get new links
 				$this->pinterest_fetch_items ( $keyword, $camp );
@@ -64,7 +68,7 @@ function pinterest_get_post($camp){
 					  echo '<br>Pinterest pin ('. $t_data ['pin_title'] .') found cached but duplicated <a href="'.get_permalink($this->duplicate_id).'">#'.$this->duplicate_id.'</a>'  ;
 						
 					//delete the item
-					$query = "delete from {$this->wp_prefix}automatic_general where item_id='{$t_row->pin_id}' and item_type=  'pt_{$camp->camp_id}_$keyword'";
+					$query = "delete from {$this->wp_prefix}automatic_general where id= {$t_row->id} ";
 					$this->db->query ( $query );
 						
 				}else{
@@ -99,7 +103,10 @@ function pinterest_get_post($camp){
 						    $temp['pin_title'] = $newTitle.'...';
 						}
 						
-					}else{
+					}
+					
+					
+					if( trim($temp['pin_title']) == '' ){
 							
 						$temp['pin_title'] = '(notitle)';
 							
@@ -112,13 +119,13 @@ function pinterest_get_post($camp){
 				  echo '<br>Found Link:'.$temp['pin_url'] ;
 
 				// update the link status to 1
-				$query = "update {$this->wp_prefix}automatic_general set item_status='1' where item_id='$ret->item_id' and item_type='pt_{$camp->camp_id}_$keyword' ";
-				$this->db->query ( $query );
+				  $query = "delete from {$this->wp_prefix}automatic_general where id={$ret->id}";
+				  $this->db->query ( $query );
 
 				// if cache not active let's delete the cached videos and reset indexes
 				if (! in_array ( 'OPT_PT_CACHE', $camp_opt )) {
-					  echo '<br>Cache disabled claring cache ...';
-					$query = "delete from {$this->wp_prefix}automatic_general where item_type='pt_{$camp->camp_id}_$keyword' and item_status ='0'";
+					echo '<br>Cache disabled claring cache ...';
+					$query = "delete from {$this->wp_prefix}automatic_general where item_type='pt_{$camp->camp_id}_$keyword' ";
 					$this->db->query ( $query );
 
 					// reset index
@@ -190,10 +197,12 @@ function pinterest_fetch_items($keyword,$camp){
 
 		}
 
+	}elseif( ! in_array( 'OPT_PT_CACHE' , $camp_opt ) ){
+		$start =1;
+		echo '<br>Cache disabled resetting index to 1';
 	}
-
-
-	  echo ' index:' . $start;
+ 
+	echo ' index:' . $start;
 
 	// update start index to start+1
 	$nextstart = $start + 1;
@@ -334,7 +343,7 @@ function pinterest_fetch_items($keyword,$camp){
 	$exec=curl_exec($this->ch);
 	$x=curl_error($this->ch);
 
-	//validating reply
+ 	//validating reply
 	if(stristr($exec, 'request_identifier')){
 		//valid reply
 
@@ -353,6 +362,7 @@ function pinterest_fetch_items($keyword,$camp){
 
 			$pins = $arr->resource_response->data;
 			$new_bookmark = $arr->resource->options->bookmarks[0];
+			 
 		}
 			
 			
@@ -370,6 +380,9 @@ function pinterest_fetch_items($keyword,$camp){
 
 		  echo '<ol>';
 
+		  
+		 
+		  
 		//loop pins
 		$i = 0;
 		foreach ($pins as $pin){
@@ -395,7 +408,22 @@ function pinterest_fetch_items($keyword,$camp){
 			$itm['pin_pinner_full_name'] = $pin->pinner->full_name;
 			$itm['pin_pinner_id'] = $pin->pinner->id;
 			$itm['pin_title'] = $pin->title;
+			
+			
+			if( trim( $itm['pin_title'] ) == '' ){
 				
+				if( isset($pin->grid_title) && trim($pin->grid_title) != '' ){
+					
+					$itm['pin_title'] = $pin->grid_title;
+					
+				}elseif(  isset($pin->rich_summary->display_name) && trim($pin->rich_summary->display_name) != ''  ){
+
+					$itm['pin_title'] = $pin->rich_summary->display_name;
+				
+				}
+				
+			}
+			
 			$data = base64_encode(serialize ( $itm ));
 
 			if( $this->is_execluded($camp->camp_id, $itm['pin_url']) ){
@@ -418,6 +446,31 @@ function pinterest_fetch_items($keyword,$camp){
 		  echo '</ol>';
 
 		  echo '<br>Total '. $i .' pins found & cached';
+		  
+		  //bookmark not found error workaround: {"api_error_code":10,"message":"Bookmark not found."
+		  $bookmark_name = 'bookmark_try_'.md5($keyword);
+		  if(stristr($exec, 'api_error_code":10,')){
+		  		
+		  		$bookmark_trials = get_post_meta($camp->camp_id , $bookmark_name , 1);
+		  		
+		  		if(! is_numeric($bookmark_trials) ) $bookmark_trials = 0 ;
+		  		
+		  		echo '<br>Bookmark not found error found applying a workaround and sleeping instead of cleaning the bookmark';
+		  		
+		  		if($bookmark_trials > 2){
+		  			echo '<br>Bookmark exceeded maximum number of allowed trials, deleting...';
+		  			delete_post_meta($camp->camp_id, $bookmark_name);
+		  		}else{
+		  			$bookmark_trials++;
+		  			echo '<br>Failed trials:' .$bookmark_trials;
+		  			update_post_meta( $camp->camp_id , $bookmark_name , $bookmark_trials );
+		  			return false;
+		  		}
+		  		
+		  	
+		  }else{
+			  	delete_post_meta($camp->camp_id, $bookmark_name);
+		  }
 
 		//check if nothing found so deactivate
 		if($i == 0 ){

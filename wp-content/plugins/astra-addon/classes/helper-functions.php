@@ -137,7 +137,8 @@ if ( ! function_exists( 'astra_get_supported_posts' ) ) :
 		$post_types = get_post_types(
 			array(
 				'public' => true,
-			), 'objects'
+			),
+			'objects'
 		);
 
 		$supported_types     = array();

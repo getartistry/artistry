@@ -87,7 +87,7 @@ class Product_Add_To_Cart extends Widget_Base {
 						'icon' => 'fa fa-align-justify',
 					],
 				],
-				'prefix_class' => 'elementor-add-to-cart--align-',
+				'prefix_class' => 'elementor-add-to-cart%s--align-',
 			]
 		);
 

@@ -49,12 +49,16 @@ class Admin {
 		<div class="notice elementor-message">
 			<div class="elementor-message-inner">
 				<div class="elementor-message-icon">
-					<i class="eicon-elementor-square"></i>
+					<div class="e-logo-wrapper">
+						<i class="eicon-elementor" aria-hidden="true"></i>
+					</div>
 				</div>
+
 				<div class="elementor-message-content">
 					<strong><?php echo $title; ?></strong>
 					<p><?php echo $description; ?></p>
 				</div>
+
 				<?php if ( ! empty( $button_text ) ) : ?>
 					<div class="elementor-message-action">
 						<a class="button elementor-button" href="<?php echo esc_url( $button_url ); ?>"><?php echo $button_text; ?></a>

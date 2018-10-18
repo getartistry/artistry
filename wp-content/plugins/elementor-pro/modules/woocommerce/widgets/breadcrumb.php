@@ -15,7 +15,7 @@ class Breadcrumb extends Widget_Base {
 	}
 
 	public function get_title() {
-		return __( 'Woo Breadcrumbs', 'elementor-pro' );
+		return __( 'WooCommerce Breadcrumbs', 'elementor-pro' );
 	}
 
 	public function get_icon() {

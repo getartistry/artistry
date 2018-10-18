@@ -1,5 +1,5 @@
 <?php
-	$settings = $this->get_settings();
+	$settings = $this->get_settings_for_display();
 	$position = $settings['download_icon_position'];
 ?>
 <a class="elementor-button elementor-size-md jet-download icon-position-<?php echo $position; ?>" href="<?php echo jet_elements_download_handler()->get_download_link( $settings['download_file'] ); ?>"><?php

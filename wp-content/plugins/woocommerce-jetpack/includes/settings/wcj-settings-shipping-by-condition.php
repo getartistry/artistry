@@ -2,9 +2,10 @@
 /**
  * Booster for WooCommerce - Settings - Shipping by Condition
  *
- * @version 3.6.0
+ * @version 4.0.0
  * @since   3.2.1
  * @author  Algoritmika Ltd.
+ * @todo    [dev] hide settings for the disabled subsection
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -51,6 +52,10 @@ foreach ( $this->condition_options as $options_id => $options_data ) {
 		),
 	) );
 	$settings = array_merge( $settings, $this->get_additional_section_settings( $options_id ) );
+	$options  = $this->get_condition_options( $options_id );
+	$type     = ( isset( $options_data['type'] )  ? $options_data['type']  : 'multiselect' );
+	$class    = ( isset( $options_data['class'] ) ? $options_data['class'] : 'chosen_select' );
+	$css      = ( isset( $options_data['css'] )   ? $options_data['css']   : '' );
 	foreach ( $shipping_methods as $method ) {
 		$method_id = ( $use_shipping_instances ? $method['shipping_method_id'] : $method->id );
 		if ( ! in_array( $method_id, array( 'flat_rate', 'local_pickup' ) ) ) {
@@ -63,31 +68,30 @@ foreach ( $this->condition_options as $options_id => $options_data ) {
 			$custom_attributes = array();
 			$desc_tip = '';
 		}
-		$type  = ( isset( $options_data['type'] )  ? $options_data['type']  : 'multiselect' );
-		$class = ( isset( $options_data['class'] ) ? $options_data['class'] : 'chosen_select' );
-		$css   = ( isset( $options_data['css'] )   ? $options_data['css']   : '' );
+		$include_id = 'wcj_shipping_' . $options_id . '_include_' . ( $use_shipping_instances ? 'instance_' . $method['shipping_method_instance_id'] : $method->id );
+		$exclude_id = 'wcj_shipping_' . $options_id . '_exclude_' . ( $use_shipping_instances ? 'instance_' . $method['shipping_method_instance_id'] : $method->id );
 		$settings = array_merge( $settings, array(
 			array(
 				'title'     => ( $use_shipping_instances ? $method['zone_name'] . ': ' . $method['shipping_method_title'] : $method->get_method_title() ),
 				'desc_tip'  => $desc_tip,
-				'desc'      => '<br>' . sprintf( __( 'Include %s', 'woocommerce-jetpack' ), $options_data['title'] ),
-				'id'        => 'wcj_shipping_' . $options_id . '_include_' . ( $use_shipping_instances ? 'instance_' . $method['shipping_method_instance_id'] : $method->id ),
+				'desc'      => '<br>' . sprintf( __( 'Include %s', 'woocommerce-jetpack' ), $options_data['title'] ) . $this->get_extra_option_desc( $include_id ),
+				'id'        => $include_id,
 				'default'   => '',
 				'type'      => $type,
 				'class'     => $class,
 				'css'       => $css,
-				'options'   => $this->get_condition_options( $options_id ),
+				'options'   => $options,
 				'custom_attributes' => $custom_attributes,
 			),
 			array(
 				'desc_tip'  => $desc_tip,
-				'desc'      => '<br>' . sprintf( __( 'Exclude %s', 'woocommerce-jetpack' ), $options_data['title'] ),
-				'id'        => 'wcj_shipping_' . $options_id . '_exclude_' . ( $use_shipping_instances ? 'instance_' . $method['shipping_method_instance_id'] : $method->id ),
+				'desc'      => '<br>' . sprintf( __( 'Exclude %s', 'woocommerce-jetpack' ), $options_data['title'] ) . $this->get_extra_option_desc( $exclude_id ),
+				'id'        => $exclude_id,
 				'default'   => '',
 				'type'      => $type,
 				'class'     => $class,
 				'css'       => $css,
-				'options'   => $this->get_condition_options( $options_id ),
+				'options'   => $options,
 				'custom_attributes' => $custom_attributes,
 			),
 		) );

@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Title_Widget extends Widget_Base
-{
+class Premium_Title extends Widget_Base {
     public function get_name() {
         return 'premium-addon-title';
     }
@@ -542,8 +541,7 @@ class Premium_Title_Widget extends Widget_Base
 
     }
 
-    protected function render($instance = [])
-    {
+    protected function render($instance = []) {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
         
@@ -552,7 +550,7 @@ class Premium_Title_Widget extends Widget_Base
         $title_tag = $settings['premium_title_tag'];
         
         $selected_style = $settings['premium_title_style'];
-?>
+    ?>
 
 <div class="premium-title-container <?php echo $selected_style; ?>">
     <<?php echo $title_tag ; ?> class="premium-title-header premium-title-<?php echo $selected_style; ?>">
@@ -568,5 +566,42 @@ class Premium_Title_Widget extends Widget_Base
 
     <?php
     }
+    
+    protected function _content_template() {
+        ?>
+        <#
+            
+            view.addInlineEditingAttributes('premium_title_text', 'none');
+        
+            var titleTag = settings.premium_title_tag,
+        
+            selectedStyle = settings.premium_title_style,
+            
+            titleTag = settings.premium_title_tag,
+            
+            titleIcon = settings.premium_title_icon,
+            
+            titleText = settings.premium_title_text;
+            
+            view.addRenderAttribute( 'premium_title_container', 'class', [ 'premium-title-container', selectedStyle ] );
+            
+            view.addRenderAttribute( 'premium_title', 'class', [ 'premium-title-header', 'premium-title-' + selectedStyle ] );
+            
+            view.addRenderAttribute( 'premium_title_icon', 'class', [ 'premium-title-icon', titleIcon ] );
+        
+        #>
+        <div {{{ view.getRenderAttributeString('premium_title_container') }}}>
+            <{{{titleTag}}} {{{view.getRenderAttributeString('premium_title')}}}>
+                <# if( selectedStyle == 'style7' ) { #>
+                    <span class="premium-title-style7-strip"></span>
+                <# } 
+                    if( '' != settings.premium_title_icon && 'yes' == settings.premium_title_icon_switcher ) { #>
+                        <i {{{ view.getRenderAttributeString('premium_title_icon') }}}></i>
+                    <# } #>
+                <span {{{ view.getRenderAttributeString('premium_title_text') }}}>{{{ titleText }}}</span>
+            </{{{titleTag}}}>
+        </div>
+        
+        <?php
+    }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Title_Widget());

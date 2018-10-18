@@ -70,16 +70,15 @@ function wp_automatic_the_content_filter($cnt){
 
 //link to source instead
 
-add_filter('post_link','wp_automatic_permalink_changer');
+add_filter('post_link','wp_automatic_permalink_changer' , 10, 3);
 
-function wp_automatic_permalink_changer($permalink ){
-  
-	global $post;
+function wp_automatic_permalink_changer($permalink , $post, $leavename=false  ){
+   
 	 
 	if (!empty($post->ID)) {
 
 		$link_to_source = get_post_meta($post->ID, '_link_to_source', true);
-		
+ 
 		if ( trim($link_to_source) != '' ) {
 			
 			$new_permalink = get_post_meta($post->ID, 'original_link', true);
@@ -90,7 +89,9 @@ function wp_automatic_permalink_changer($permalink ){
 	
 	return $permalink;
 }
+
  
+
 
 //Canonical urls
 function wp_automatic_rel_canonical_with_custom_tag_override()
@@ -131,12 +132,23 @@ function wp_automatic_fbvid_shortcode_func( $atts ) {
 
 	extract( shortcode_atts( array(
 	'id' => 'something',
-	'autoplay' => 'false'
+	'autoplay' => 'false',
+	'mute' => 0
 		
 	), $atts ) );
 	
-	return '<div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, \'script\', \'facebook-jssdk\'));</script><div class="fb-video" data-autoplay="'.$autoplay.'" data-allowfullscreen="true" data-href="https://www.facebook.com/video.php?v='.$id.'&amp;set=vb.500808182&amp;type=1"><div class="fb-xfbml-parse-ignore"></div></div>';
+	$js_mute = '';
+	if( $mute != 1  && $autoplay == 'false'  ) {
+		$js_mute = "window.fbAsyncInit = function() {FB.init({appId      : '',xfbml      : true,version    : 'v2.5'});var my_video_player;FB.Event.subscribe('xfbml.ready', function(msg) {if (msg.type === 'video') {my_video_player = msg.instance; my_video_player.unmute();}});};";
+	}
+	 
+	return '<div id="fb-root"></div><script>' . $js_mute . '(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, \'script\', \'facebook-jssdk\'));  </script><div class="fb-video"    data-autoplay="'.$autoplay.'" data-allowfullscreen="true" data-href="https://www.facebook.com/video.php?v='.$id.'&set=vb.500808182&type=1"><div class="fb-xfbml-parse-ignore"></div></div>
+
+
 	
+
+';
+	//return '<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fdubsmashegyptian%2Fvideos%2F1924060651230370%2F&show_text=0&width=560"  style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>';
 }
 
 //eBay redirect 
@@ -264,7 +276,7 @@ add_filter( 'get_comment_author_link' , 'wp_automatic_custom_comment_url' , 1 , 
 function wp_automatic_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
 	 								
 	//print_r($id_or_email);
-	
+	$theMail = '';
 	if ( is_numeric( $id_or_email ) ) {
 		
 		$theMail = (int) $id_or_email;
@@ -282,15 +294,21 @@ function wp_automatic_custom_avatar( $avatar, $id_or_email, $size, $default, $al
 	}
 	
 	
+	
+	
 	if(stristr($theMail, 'fb.com')){
 	
 		$theMailParts = explode('@', $theMail);
 		$fbUserID = $theMailParts[0];
-		$fbImage = "https://graph.facebook.com/$fbUserID/picture?type=small";
+		$fbImage = "https://graph.facebook.com/$fbUserID/picture?type=large";
 		
 		   $avatar = "<img alt='{$alt}' src='{$fbImage}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+	
+	}elseif(stristr($theMail, 'photo.jpg')){
 		
-	}elseif ( isset($id_or_email->comment_author_url) && stristr($id_or_email->comment_author_url , 'photo.jpg|')){
+		$avatar = "<img alt='{$alt}' src='{$theMail}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+		   
+	}elseif ( isset($id_or_email->comment_author_url) && stristr($id_or_email->comment_author_url , 'photo.jpg')){
 		
 		$imgParts = explode('|', $id_or_email->comment_author_url);
 		
@@ -308,7 +326,8 @@ function wp_automatic_custom_comment_url (  $return , $author , $comment_id) {
 	 
 	if(stristr($return	, 'photo.jpg|')  ){
 		 $return =  preg_replace("{https://yt3.*?photo.jpg\|}", "https://www.youtube.com/channel/", $return);
-		 
+		 $return = str_replace('https://www.youtube.com/channel/\'', '#\'', $return) ;
+		 $return = str_replace('https://www.youtube.com/channel/"', '#"', $return) ;
 	}
 	
 	return $return;

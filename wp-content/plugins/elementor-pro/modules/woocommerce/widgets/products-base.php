@@ -104,7 +104,7 @@ abstract class Products_Base extends Widget_Base {
 				],
 				'prefix_class' => 'elementor-product-loop-item--align-',
 				'selectors' => [
-					'{{WRAPPER}} .product' => 'text-align: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product' => 'text-align: {{VALUE}}',
 				],
 			]
 		);
@@ -169,7 +169,7 @@ abstract class Products_Base extends Widget_Base {
 					'value' => Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .woocommerce-loop-product__title' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .woocommerce-loop-product__title' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -179,7 +179,7 @@ abstract class Products_Base extends Widget_Base {
 			[
 				'name' => 'title_typography',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .woocommerce-loop-product__title',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product .woocommerce-loop-product__title',
 			]
 		);
 
@@ -197,7 +197,7 @@ abstract class Products_Base extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .woocommerce-loop-product__title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .woocommerce-loop-product__title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -217,7 +217,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Star Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .star-rating' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .star-rating' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -228,7 +228,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Empty Star Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .star-rating::before' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .star-rating::before' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -249,7 +249,7 @@ abstract class Products_Base extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .star-rating' => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .star-rating' => 'font-size: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -268,7 +268,7 @@ abstract class Products_Base extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .star-rating' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .star-rating' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -292,9 +292,9 @@ abstract class Products_Base extends Widget_Base {
 					'value' => Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .price' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .price ins' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .price ins amount' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .price' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .price ins' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .price ins .amount' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -304,7 +304,7 @@ abstract class Products_Base extends Widget_Base {
 			[
 				'name' => 'price_typography',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .price',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product .price',
 			]
 		);
 
@@ -327,8 +327,8 @@ abstract class Products_Base extends Widget_Base {
 					'value' => Scheme_Color::COLOR_1,
 				],
 				'selectors' => [
-					'{{WRAPPER}} .price del' => 'color: {{VALUE}}',
-					'{{WRAPPER}} .price del .amount' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .price del' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .price del .amount' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -338,8 +338,8 @@ abstract class Products_Base extends Widget_Base {
 			[
 				'name' => 'old_price_typography',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_1,
-				'selector' => '{{WRAPPER}} .price del .amount  ',
-				'selector' => '{{WRAPPER}} .price del ',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product .price del .amount  ',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product .price del ',
 			]
 		);
 
@@ -368,7 +368,7 @@ abstract class Products_Base extends Widget_Base {
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button' => 'color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .button' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -379,7 +379,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .button' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -390,7 +390,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .button' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -400,7 +400,7 @@ abstract class Products_Base extends Widget_Base {
 			[
 				'name' => 'button_typography',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
-				'selector' => '{{WRAPPER}}.elementor-wc-products .product .button',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product .button',
 			]
 		);
 
@@ -419,7 +419,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .button:hover' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -430,7 +430,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .button:hover' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -441,7 +441,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}}..elementor-wc-products ul.products li.product .button:hover' => 'border-color: {{VALUE}};',
 				],
 			]
 		);
@@ -454,7 +454,7 @@ abstract class Products_Base extends Widget_Base {
 			Group_Control_Border::get_type(), [
 				'name' => 'button_border',
 				'exclude' => [ 'color' ],
-				'selector' => '{{WRAPPER}}.elementor-wc-products .product .button',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product .button',
 				'separator' => 'before',
 			]
 		);
@@ -466,7 +466,7 @@ abstract class Products_Base extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%' ],
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -478,7 +478,7 @@ abstract class Products_Base extends Widget_Base {
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -490,8 +490,37 @@ abstract class Products_Base extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product .button' => 'margin-top: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product .button' => 'margin-top: {{SIZE}}{{UNIT}}',
 				],
+			]
+		);
+
+		$this->add_control(
+			'heading_view_cart_style',
+			[
+				'label' => __( 'View Cart', 'elementor-pro' ),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'view_cart_color',
+			[
+				'label' => __( 'Color', 'elementor-pro' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}.elementor-wc-products .added_to_cart' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'view_cart_typography',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
+				'selector' => '{{WRAPPER}}.elementor-wc-products .added_to_cart',
 			]
 		);
 
@@ -518,7 +547,7 @@ abstract class Products_Base extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product' => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product' => 'border-style: solid; border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				],
 			]
 		);
@@ -536,7 +565,7 @@ abstract class Products_Base extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product' => 'border-radius: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product' => 'border-radius: {{SIZE}}{{UNIT}}',
 				],
 			]
 		);
@@ -554,7 +583,7 @@ abstract class Products_Base extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
 				],
 			]
 		);
@@ -571,7 +600,7 @@ abstract class Products_Base extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow',
-				'selector' => '{{WRAPPER}}.elementor-wc-products .product',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product',
 			]
 		);
 
@@ -581,7 +610,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -592,7 +621,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product' => 'border-color: {{VALUE}}',
 				],
 			]
 		);
@@ -609,7 +638,7 @@ abstract class Products_Base extends Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'box_shadow_hover',
-				'selector' => '{{WRAPPER}}.elementor-wc-products .product:hover',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product:hover',
 			]
 		);
 
@@ -619,7 +648,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product:hover' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product:hover' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
@@ -630,7 +659,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Border Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.elementor-wc-products .product:hover' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product:hover' => 'border-color: {{VALUE}}',
 				],
 			]
 		);
@@ -833,7 +862,7 @@ abstract class Products_Base extends Widget_Base {
 				'default' => 'yes',
 				'return_value' => 'yes',
 				'selectors' => [
-					'{{WRAPPER}} span.onsale' => 'display: block',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale' => 'display: block',
 				],
 			]
 		);
@@ -844,7 +873,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Text Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} span.onsale' => 'color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale' => 'color: {{VALUE}}',
 				],
 				'condition' => [
 					'show_onsale_flash' => 'yes',
@@ -858,7 +887,7 @@ abstract class Products_Base extends Widget_Base {
 				'label' => __( 'Background Color', 'elementor-pro' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} span.onsale' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale' => 'background-color: {{VALUE}}',
 				],
 				'condition' => [
 					'show_onsale_flash' => 'yes',
@@ -870,7 +899,7 @@ abstract class Products_Base extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'onsale_typography',
-				'selector' => '{{WRAPPER}} span.onsale',
+				'selector' => '{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale',
 				'condition' => [
 					'show_onsale_flash' => 'yes',
 				],
@@ -884,7 +913,7 @@ abstract class Products_Base extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} span.onsale' => 'border-radius: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale' => 'border-radius: {{SIZE}}{{UNIT}}',
 				],
 				'condition' => [
 					'show_onsale_flash' => 'yes',
@@ -899,7 +928,7 @@ abstract class Products_Base extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} span.onsale' => 'min-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale' => 'min-width: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_onsale_flash' => 'yes',
@@ -914,7 +943,7 @@ abstract class Products_Base extends Widget_Base {
 				'type' => Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em' ],
 				'selectors' => [
-					'{{WRAPPER}} span.onsale' => 'min-height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale' => 'min-height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_onsale_flash' => 'yes',
@@ -939,7 +968,7 @@ abstract class Products_Base extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} span.onsale' => '{{VALUE}}',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale' => '{{VALUE}}',
 				],
 				'selectors_dictionary' => [
 					'left' => 'right: auto; left: 0',
@@ -968,7 +997,7 @@ abstract class Products_Base extends Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} span.onsale' => 'margin: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-wc-products ul.products li.product span.onsale' => 'margin: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'show_onsale_flash' => 'yes',

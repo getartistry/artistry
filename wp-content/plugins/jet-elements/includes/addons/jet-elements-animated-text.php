@@ -29,7 +29,7 @@ class Jet_Elements_Animated_Text extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-16';
+		return 'jetelements-icon-12';
 	}
 
 	public function get_categories() {
@@ -92,7 +92,7 @@ class Jet_Elements_Animated_Text extends Jet_Elements_Base {
 						'item_text' => esc_html__( 'Create', 'jet-elements' ),
 					),
 					array(
-						'item_text' => esc_html__( 'Animate', 'elementor-pro' ),
+						'item_text' => esc_html__( 'Animate', 'jet-elements' ),
 					),
 				),
 				'title_field' => '{{{ item_text }}}',

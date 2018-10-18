@@ -1,12 +1,14 @@
 <?php
 /*
  * Plugin Name: Stripe Payment Gateway for WooCommerce ( Basic )
- * Plugin URI: https://www.xadapter.com/product/stripe-payment-gateway-for-woocommerce/
+ * Plugin URI: https://wordpress.org/plugins/payment-gateway-stripe-and-woocommerce-integration/
  * Description: Make your Shop Orders with Credit Cards and Alipay via Stripe.
- * Author: XAdapter
- * Author URI: https://www.xadapter.com/shop
- * Version: 3.1.4
- * WC tested up to: 3.4.3
+ * Author: WebToffee
+ * Author URI: https://www.webtoffee.com/product/woocommerce-stripe-payment-gateway/
+ * Version: 3.1.5
+ * WC tested up to: 3.4.5
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  */
 if (!defined('ABSPATH')) {
     exit;
@@ -18,7 +20,7 @@ if (!defined('EH_STRIPE_MAIN_PATH')) {
     define('EH_STRIPE_MAIN_PATH', plugin_dir_path(__FILE__));
 }
 if (!defined('EH_STRIPE_VERSION')) {
-    define('EH_STRIPE_VERSION', '3.1.4');
+    define('EH_STRIPE_VERSION', '3.1.5');
 }
 if (!defined('EH_STRIPE_MAIN_FILE')) {
     define('EH_STRIPE_MAIN_FILE', __FILE__);
@@ -96,9 +98,9 @@ if (get_option($option_name) == $conflict) {
         $setting_link = admin_url('admin.php?page=wc-settings&tab=checkout&section=eh_stripe_pay');
         $plugin_links = array(
             '<a href="' . $setting_link . '">' . __('Settings', 'eh-stripe-gateway') . '</a>',
-            '<a href="https://wordpress.org/support/plugin/payment-gateway-stripe-and-woocommerce-integration" target="_blank">' . __('Support', 'eh-stripe-gateway') . '</a>',
-            '<a href="https://wordpress.org/support/plugin/payment-gateway-stripe-and-woocommerce-integration/reviews/" target="_blank">' . __('Review', 'eh-stripe-gateway') . '</a>',
-            '<a href="https://www.xadapter.com/product/stripe-payment-gateway-for-woocommerce/" target="_blank">' . __('Premium Upgrade', 'eh-stripe-gateway') . '</a>',
+            '<a href="https://www.webtoffee.com/product/woocommerce-stripe-payment-gateway/" target="_blank">' . __('Premium Upgrade', 'eh-stripe-gateway') . '</a>',
+            '<a href="https://www.webtoffee.com/support/" target="_blank">' . __('Support', 'eh-stripe-gateway') . '</a>',
+            '<a href="https://wordpress.org/support/plugin/payment-gateway-stripe-and-woocommerce-integration/reviews/" target="_blank">' . __('Review', 'eh-stripe-gateway') . '</a>',            
         );
         return array_merge($plugin_links, $links);
     }

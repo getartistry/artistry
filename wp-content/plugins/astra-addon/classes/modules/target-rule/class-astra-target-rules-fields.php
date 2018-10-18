@@ -105,21 +105,6 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 		}
 
 		/**
-		 * Get list of post types attached to taxonomies.
-		 *
-		 * @param string $taxonomy taxonomy name.
-		 *
-		 * @return array
-		 */
-		public static function ast_get_post_types_by_taxonomy( $taxonomy = '' ) {
-			global $wp_taxonomies;
-			if ( isset( $wp_taxonomies[ $taxonomy ] ) ) {
-				return $wp_taxonomies[ $taxonomy ]->object_type;
-			}
-			return array();
-		}
-
-		/**
 		 * Get location selection options.
 		 *
 		 * @return array
@@ -182,13 +167,7 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 						continue;
 					}
 
-					$attached_post_types = self::ast_get_post_types_by_taxonomy( $taxonomy->name );
-
 					foreach ( $post_types as $post_type ) {
-
-						if ( ! in_array( $post_type->name, $attached_post_types ) ) {
-							continue;
-						}
 
 						$post_opt = self::get_post_target_rule_options( $post_type, $taxonomy );
 
@@ -220,7 +199,12 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 				),
 			);
 
-			return $selection_options;
+			/**
+			 * Filter options displayed in the display conditions select field of Display conditions.
+			 *
+			 * @since 1.5.0
+			 */
+			return  apply_filters( 'astra_display_on_list', $selection_options );
 		}
 
 		/**
@@ -252,7 +236,12 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 				$selection_options['advanced']['value'][ $slug ] = $data['name'];
 			}
 
-			return $selection_options;
+			/**
+			 * Filter options displayed in the user select field of Display conditions.
+			 *
+			 * @since 1.5.0
+			 */
+			return apply_filters( 'astra_user_roles_list', $selection_options );
 		}
 
 		/**
@@ -387,7 +376,8 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 
 			foreach ( $taxonomies as $taxonomy ) {
 				$terms = get_terms(
-					$taxonomy->name, array(
+					$taxonomy->name,
+					array(
 						'orderby'    => 'count',
 						'hide_empty' => 0,
 						'name__like' => $search_string,
@@ -594,24 +584,36 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 
 					$ast_lang = $select2_lang[ $wp_lang ];
 					wp_enqueue_script(
-						'astra-select2-lang', ASTRA_EXT_URI . 'classes/modules/target-rule/i18n/' . $select2_lang[ $wp_lang ] . '.js', array(
+						'astra-select2-lang',
+						ASTRA_EXT_URI . 'classes/modules/target-rule/i18n/' . $select2_lang[ $wp_lang ] . '.js',
+						array(
 							'jquery',
 							'astra-select2',
-						), ASTRA_EXT_VER, true
+						),
+						ASTRA_EXT_VER,
+						true
 					);
 				}
 			}
 
 			wp_enqueue_script(
-				'astra-target-rule', ASTRA_EXT_URI . 'classes/modules/target-rule/target-rule.js', array(
+				'astra-target-rule',
+				ASTRA_EXT_URI . 'classes/modules/target-rule/target-rule.js',
+				array(
 					'jquery',
 					'astra-select2',
-				), ASTRA_EXT_VER, true
+				),
+				ASTRA_EXT_VER,
+				true
 			);
 			wp_enqueue_script(
-				'astra-user-role', ASTRA_EXT_URI . 'classes/modules/target-rule/user-role.js', array(
+				'astra-user-role',
+				ASTRA_EXT_URI . 'classes/modules/target-rule/user-role.js',
+				array(
 					'jquery',
-				), ASTRA_EXT_VER, true
+				),
+				ASTRA_EXT_VER,
+				true
 			);
 			wp_enqueue_style( 'astra-select2', ASTRA_EXT_URI . 'classes/modules/target-rule/select2.css', '', ASTRA_EXT_VER );
 			wp_enqueue_style( 'astra-target-rule', ASTRA_EXT_URI . 'classes/modules/target-rule/target-rule.css', '', ASTRA_EXT_VER );
@@ -727,13 +729,15 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 				$post_option[ $post_name . '|all|archive' ] = $all_archive;
 			}
 
-			$tax_label = ucwords( $taxonomy->label );
-			$tax_name  = $taxonomy->name;
+			if ( in_array( $post_type->name, $taxonomy->object_type ) ) {
+				$tax_label = ucwords( $taxonomy->label );
+				$tax_name  = $taxonomy->name;
 
-			/* translators: %s taxonomy label */
-			$tax_archive = sprintf( __( 'All %s Archive', 'astra-addon' ), $tax_label );
+				/* translators: %s taxonomy label */
+				$tax_archive = sprintf( __( 'All %s Archive', 'astra-addon' ), $tax_label );
 
-			$post_option[ $post_name . '|all|taxarchive|' . $tax_name ] = $tax_archive;
+				$post_option[ $post_name . '|all|taxarchive|' . $tax_name ] = $tax_archive;
+			}
 
 			$post_output['post_key'] = $post_key;
 			$post_output['label']    = $post_label;
@@ -1452,7 +1456,8 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 				INNER JOIN {$wpdb->posts} as p ON pm.post_id = p.ID
 				WHERE pm.meta_key = %s
 				AND p.post_type = %s
-				AND p.post_status = 'publish'", $location,
+				AND p.post_status = 'publish'",
+					$location,
 					$post_type
 				)
 			);
@@ -1532,7 +1537,8 @@ if ( ! class_exists( 'Astra_Target_Rules_Fields' ) ) {
 
 			if ( ! empty( $already_set_rule ) ) {
 				add_action(
-					'admin_notices', function() use ( $already_set_rule ) {
+					'admin_notices',
+					function() use ( $already_set_rule ) {
 
 						$rule_set_titles = '<strong>' . implode( ',', $already_set_rule ) . '</strong>';
 

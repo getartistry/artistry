@@ -30,7 +30,7 @@ class Jet_Elements_Brands extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-02';
+		return 'jetelements-icon-2';
 	}
 
 	public function get_categories() {
@@ -139,6 +139,7 @@ class Jet_Elements_Brands extends Jet_Elements_Base {
 		$css_scheme = apply_filters(
 			'jet-elements/brands/css-scheme',
 			array(
+				'list'      => '.brands-list',
 				'logo'      => '.brands-list .brands-list__item-img',
 				'logo_wrap' => '.brands-list .brands-list__item-img-wrap',
 				'name'      => '.brands-list .brands-list__item-name',
@@ -146,6 +147,42 @@ class Jet_Elements_Brands extends Jet_Elements_Base {
 			)
 		);
 
+		$this->start_controls_section(
+			'section_brand_item_style',
+			array(
+				'label'      => esc_html__( 'Company Item', 'jet-elements' ),
+				'tab'        => Controls_Manager::TAB_STYLE,
+				'show_label' => false,
+			)
+		);
+
+		$this->add_responsive_control(
+			'vertical_brands_alignment',
+			array(
+				'label'       => esc_html__( 'Vertical Alignment', 'jet-elements' ),
+				'type'        => Controls_Manager::CHOOSE,
+				'label_block' => true,
+				'options' => array(
+					'flex-start' => array(
+						'title' => esc_html__( 'Top', 'jet-elements' ),
+						'icon' => 'eicon-v-align-top',
+					),
+					'center' => array(
+						'title' => esc_html__( 'Middle', 'jet-elements' ),
+						'icon' => 'eicon-v-align-middle',
+					),
+					'flex-end' => array(
+						'title' => esc_html__( 'Bottom', 'jet-elements' ),
+						'icon' => 'eicon-v-align-bottom',
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} ' . $css_scheme['list'] => 'align-items: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_section();
 
 		$this->start_controls_section(
 			'section_brand_logo_style',

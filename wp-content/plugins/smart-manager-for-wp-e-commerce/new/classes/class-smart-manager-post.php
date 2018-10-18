@@ -27,5 +27,3 @@ if ( ! class_exists( 'Smart_Manager_Post' ) ) {
 }
 
 // $smart_manager_posts = new Smart_Manager_Posts();
-
-?>

@@ -1,7 +1,7 @@
 #customize-control-astra-settings-archive-sidebar-layout .customizer-text,
 #customize-control-astra-settings-single-page-sidebar-layout .customizer-text,
 #customize-control-astra-settings-single-post-sidebar-layout .customizer-text {
-	display: none;
+    display: none;
 }
 
 /**
@@ -55,4 +55,70 @@
 
 .accordion-section + .customize-control-ast-description .ast-customizer-notice {
     margin-top: 0px;
+}
+
+/* Astra Customizer Blog Featured Image sizes */
+#customize-control-astra-settings-blog-archive-image-width:not(.ast-hide),
+#customize-control-astra-settings-blog-archive-image-height:not(.ast-hide),
+#customize-control-astra-settings-blog-single-post-image-width:not(.ast-hide),
+#customize-control-astra-settings-blog-single-post-image-height:not(.ast-hide),
+#customize-control-astra-settings-blog-archive-image-apply-sizes:not(.ast-hide),
+#customize-control-astra-settings-blog-single-post-image-apply-sizes:not(.ast-hide){
+    display: -webkit-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
+    -ms-flex-wrap: wrap-reverse;
+    flex-wrap: wrap-reverse;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 33%;
+    clear: none;
+    text-align: center;
+    vertical-align: bottom;
+    float: none;
+}
+#customize-control-astra-settings-blog-archive-image-width:not(.ast-hide) input[type="number"],
+#customize-control-astra-settings-blog-archive-image-height:not(.ast-hide) input[type="number"],
+#customize-control-astra-settings-blog-single-post-image-width:not(.ast-hide) input[type="number"],
+#customize-control-astra-settings-blog-single-post-image-height:not(.ast-hide) input[type="number"],
+#customize-control-astra-settings-blog-archive-image-apply-sizes:not(.ast-hide) input[type="number"],
+#customize-control-astra-settings-blog-single-post-image-apply-sizes:not(.ast-hide) input[type="number"]{
+    margin-right: 20px;
+    width: 65px;
+}
+#customize-control-astra-settings-blog-archive-image-apply-sizes:not(.ast-hide),
+#customize-control-astra-settings-blog-single-post-image-apply-sizes:not(.ast-hide){
+    margin-left: 1%;
+    vertical-align: top;
+}
+#customize-control-astra-settings-blog-archive-image-width .customize-control-title,
+#customize-control-astra-settings-blog-archive-image-height .customize-control-title,
+#customize-control-astra-settings-blog-single-post-image-width .customize-control-title,
+#customize-control-astra-settings-blog-single-post-image-height .customize-control-title {
+    font-weight: normal;
+}
+#customize-control-astra-settings-blog-archive-image-width .customize-control-title:after,
+#customize-control-astra-settings-blog-archive-image-height .customize-control-title:after,
+#customize-control-astra-settings-blog-single-post-image-width .customize-control-title:after,
+#customize-control-astra-settings-blog-single-post-image-height .customize-control-title:after {
+    content: "px";
+    width: 18px;
+    top: 0;
+    right: 0;
+    position: absolute;
+    display: inline-block;
+    background: #eee;
+    height: 26px;
+    border: 1px solid #DDD;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 26px;
+}
+
+
+#customize-control-astra-settings-above-header-submenu-item-border .ast-border-wrapper,
+#customize-control-astra-settings-below-header-submenu-item-border .ast-border-wrapper{
+    width: 100%;
 }

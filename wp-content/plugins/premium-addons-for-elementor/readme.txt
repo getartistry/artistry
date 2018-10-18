@@ -5,17 +5,14 @@ Donate link: http://premiumaddons.com
 Requires at least: 4.5
 Tested up to: 4.9.8
 Requires PHP: 5.4
-Stable tag: 2.5.6
+Stable tag: 2.7.2
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
-20 Elementor Widgets and Addons like Grid, Modal Box, Carousel, Google Maps, Pricing Tables, Countdown, Testimonials, Blog, and much more.
-
-== Important: ==
-Premium Dual Heading widget has been rebuilt to be 100% SEO compitable. Please make sure to check websites you built using Dual Heading widget as its styling may need to be amended.
+Elementor Widgets and Addons like Grid, Modal Box, Carousel, Google Maps, Pricing Tables, Countdown, Testimonials, Blog, and much more.
 
 == Description ==
-20 Premium Elementor addons & widgets with numerous customization options that extends Elementor Page Builder capabilities to help you build impressive websites with no coding required. Click [Here](https://premiumaddons.com/) to check addon elements’ demos.
+Premium Elementor addons & widgets with numerous customization options that extends Elementor Page Builder capabilities to help you build impressive websites with no coding required. Click [Here](https://premiumaddons.com/) to check addon elements’ demos.
 
 Premium Addons for elementor plugin’s widgets & addons are cross browser compatible and also fully responsive, Your website will rock on all browsers as well as tables and mobile devices.
 
@@ -30,8 +27,7 @@ Premium Addons for Elementor can be used only as a complement of Elementor page 
 * Options panel for enabling desired widgets only for faster performance.
 * Free Support through online forums and our Facebook group.
 * Fully Responsive and Cross Browser Compatible, Tested By [Browserstack](https://www.browserstack.com)
-
->Enable/disable specific elements and their related CSS and JS files to prevent overloading your site.
+* Enable/disable specific elements and their related CSS and JS files to prevent overloading your site.
 
 
 ### Available Elements
@@ -57,7 +53,7 @@ Premium Addons for Elementor can be used only as a complement of Elementor page 
 19. [Contact Form 7 Elementor Widget](https://premiumaddons.com/contact-form-7-widget-for-elementor-page-builder/) Elementor contact form 7 add-on with 2 readymade styles. 
 20. [Image Button Elementor Widget](https://premiumaddons.com/image-button-widget-for-elementor-page-builder/) A unique element that can be used for innovative call to action ideas. 
 
-### PRO addons & widgets [Check more](https://premiumaddons.com/pro/)
+### PRO addons & widgets [Click here](https://premiumaddons.com/pro/)
 
 1. [Premium Alert Box](https://premiumaddons.com/alert-box-widget-for-elementor-page-builder/)
 2. [Premium Animated Section Gradient](https://premiumaddons.com/animated-section-gradients-for-elementor-page-builder/)
@@ -65,25 +61,28 @@ Premium Addons for Elementor can be used only as a complement of Elementor page 
 4. [Premium Charts](https://premiumaddons.com/charts-widget-for-elementor-page-builder/)
 5. [Premium Content Switcher](https://premiumaddons.com/content-switcher-widget-for-elementor-page-builder/)
 6. [Premium Divider](https://premiumaddons.com/dual-header-widget-for-elementor-page-builder/)
-7. [Premium Facebook Messenger](https://premiumaddons.com/facebook-messenger-widget-for-elementor-page-builder/)
-8. [Premium Facebook Reviews](https://premiumaddons.com/facebook-reviews-widget-for-elementor-page-builder/)
-9. [Premium Flip Box](https://premiumaddons.com/flip-box-widget-for-elementor-page-builder/)
-10. [Premium Google Reviews](https://premiumaddons.com/google-reviews-for-elementor-page-builder/)
-11. [Premium Icon Box](https://premiumaddons.com/icon-box-widget-for-elementor-page-builder/)
-12. [Premium iHover](https://premiumaddons.com/ihover-widget-for-elementor-page-builder/)
-13. [Premium Image Comparison](https://premiumaddons.com/image-comparison-widget-for-elementor-page-builder/)
-14. [Premium Image Hotspots](https://premiumaddons.com/image-hotspots-widget-for-elementor-page-builder/)
-15. [Premium Image Layers](https://premiumaddons.com/image-layers-widget-for-elementor-page-builder/)
-16. [Premium Instagram Feed](https://premiumaddons.com/instagram-feed-widget-for-elementor-page-builder/)
-17. [Premium Ken Burns](https://premiumaddons.com/ken-burns-section-addon-for-elementor-page-builder/)
-18. [Premium Magic Section](https://premiumaddons.com/magic-section-widget-for-elementor-page-builder/)
-19. [Premium Parallax](https://premiumaddons.com/parallax-section-addon-for-elementor-page-builder/)
-20. [Premium Particles](https://premiumaddons.com/particles-section-addon-for-elementor-page-builder/)
-21. [Premium Preview Window](https://premiumaddons.com/preview-window-widget-for-elementor-page-builder/)
-22. [Premium Tables](https://premiumaddons.com/table-widget-for-elementor-page-builder/)
-23. [Premium Twitter Feed](https://premiumaddons.com/twitter-feed-widget-for-elementor-page-builder/)
-24. [Premium Tabs](https://premiumaddons.com/tabs-widget-for-elementor-page-builder-2/)
-25. [Premium Unfold](https://premiumaddons.com/unfold-widget-for-elementor-page-builder/)
+7. [Premium Facebook Feed](https://premiumaddons.com/facebook-feed-widget-for-elementor-page-builder-2/)
+8. [Premium Facebook Messenger](https://premiumaddons.com/facebook-messenger-widget-for-elementor-page-builder/)
+9. [Premium Facebook Reviews](https://premiumaddons.com/facebook-reviews-widget-for-elementor-page-builder/)
+10. [Premium Flip Box](https://premiumaddons.com/flip-box-widget-for-elementor-page-builder/)
+11. [Premium Google Reviews](https://premiumaddons.com/google-reviews-for-elementor-page-builder/)
+12. [Premium Icon Box](https://premiumaddons.com/icon-box-widget-for-elementor-page-builder/)
+13. [Premium iHover](https://premiumaddons.com/ihover-widget-for-elementor-page-builder/)
+14. [Premium Image Comparison](https://premiumaddons.com/image-comparison-widget-for-elementor-page-builder/)
+15. [Premium Image Hotspots](https://premiumaddons.com/image-hotspots-widget-for-elementor-page-builder/)
+16. [Premium Image Layers](https://premiumaddons.com/image-layers-widget-for-elementor-page-builder/)
+17. [Premium Instagram Feed](https://premiumaddons.com/instagram-feed-widget-for-elementor-page-builder/)
+18. [Premium Ken Burns](https://premiumaddons.com/ken-burns-section-addon-for-elementor-page-builder/)
+19. [Premium Magic Section](https://premiumaddons.com/magic-section-widget-for-elementor-page-builder/)
+20. [Premium Multi Scroll](https://premiumaddons.com/multi-scroll-widget-for-elementor-page-builder/)
+21. [Premium Parallax](https://premiumaddons.com/parallax-section-addon-for-elementor-page-builder/)
+22. [Premium Particles](https://premiumaddons.com/particles-section-addon-for-elementor-page-builder/)
+23. [Premium Preview Window](https://premiumaddons.com/preview-window-widget-for-elementor-page-builder/)
+24. [Premium Tables](https://premiumaddons.com/table-widget-for-elementor-page-builder/)
+25. [Premium Twitter Feed](https://premiumaddons.com/twitter-feed-widget-for-elementor-page-builder/)
+26. [Premium Tabs](https://premiumaddons.com/tabs-widget-for-elementor-page-builder-2/)
+27. [Premium Unfold](https://premiumaddons.com/unfold-widget-for-elementor-page-builder/)
+28. [Premium Whatsapp Chat](https://premiumaddons.com/whatsapp-widget-for-elementor-page-builder/)
 
 
 == Installation ==
@@ -136,6 +135,90 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 14. Premium Progress Bar Widget for Elementor
 
 == Changelog ==
+
+= 2.7.2 =
+
+- Tweak: Added Padding Option in Premium Modal Box widget.
+- Tweak: Added Close Button text option in Premium Modal Box widget.
+- Fixed: Grid images conflict with LiteSpeed plugin.
+
+= 2.7.1 =
+
+- Tweak: Added Max Height option in Premium Modal Box widget.
+- Fixed: Pointer issue in Premium Banner widget.
+- Fixed: Video restart in Premium Modal Box.
+
+= 2.7.0 =
+
+- Fixed: 'Undefined variable: $image_src' in Premium Testimonials widget.
+
+= 2.6.9 =
+
+- Fixed: Scrollbar issue in Premium Modal Box widget.
+- Fixed: Premium Grid style 2 on iOS mobiles/tablets.
+
+= 2.6.8 =
+
+- Tweak: Added Dynamic Images option for all widgets.
+- Fixed: Premium Maps issue.
+- Fixed: Responsive issues in Premium Modal widget.
+
+= 2.6.7 =
+
+- Tweak: Premium Testimonials widget performance enhanced.
+- Tweak: Plugin core enhancement for faster performance.
+- Fixed: Conflict with 'Pods – Custom Content Types and Fields' plugin.
+
+= 2.6.6 =
+
+- Tweak: Premium Image Button widget performance enhanced.
+
+= 2.6.5 =
+
+- Tweak: Premium Button widget performance enhanced.
+- Fixed: Modal Box responsive issues.
+
+= 2.6.4 =
+
+- Tweak: Premium Dual Heading widget performance enhanced.
+- Fixed: Modal Box overlay issue.
+
+= 2.6.3 =
+
+- Tweak: Premium Person widget performance enhanced.
+- Tweak: Premium Pricing Table widget performance enhanced.
+- Fixed: Videos continue playing after Premium Modal is closed.
+
+= 2.6.2 =
+
+- Tweak: Premium Title widget performance enhanced.
+- Tweak: Premium Image Separator widget performance enhanced.
+
+= 2.6.1 =
+
+- Tweak: Added enable/disable related videos option in Premium Video Box widget.
+
+= 2.6.0 =
+
+- Fixed: Warning "Cannot redeclare control with same name premium_gallery_img_alt".
+
+= 2.5.9 =
+
+- Tweak: Added enable/disable default category in Premium Grid widget.
+- Tweak: Added rotate option for each category in Premium Grid widget.
+- Fixed: Back delay option issue in Premium Fancy Text widget.
+- Fixed: Primary label typography and margin issue in Premium Progress Bar widget.
+- Fixed: Longitude/Latitude finder issue in Premium Maps widget.
+
+= 2.5.8 =
+
+- Tweak: Added border and border radius options to Premium Banner widget.
+- Fixed: Existing Page Link issue.
+
+= 2.5.7 =
+
+- Tweak: Added max width option for markers description box in Premium Maps widget.
+- Tweak: Added change default category name in Premium Grid widget.
 
 = 2.5.6 =
 

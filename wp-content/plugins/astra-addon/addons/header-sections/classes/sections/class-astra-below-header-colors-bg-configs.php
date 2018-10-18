@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Below_Header_Colors_Bg_Configs' ) ) {
@@ -354,47 +360,6 @@ if ( ! class_exists( 'Astra_Below_Header_Colors_Bg_Configs' ) ) {
 					'title'      => __( 'Active Background Color', 'astra-addon' ),
 					'responsive' => true,
 					'rgba'       => true,
-				),
-
-				/**
-				 * Option: Submenu Border
-				 */
-				array(
-					'name'     => ASTRA_THEME_SETTINGS . '[below-header-submenu-border]',
-					'default'  => astra_get_option( 'below-header-submenu-border' ),
-					'type'     => 'control',
-					'control'  => 'checkbox',
-					'required' => array(
-						'conditions' => array(
-							array( ASTRA_THEME_SETTINGS . '[below-header-section-1]', '==', 'menu' ),
-							array( ASTRA_THEME_SETTINGS . '[below-header-section-2]', '==', 'menu' ),
-						),
-						'operator'   => 'OR',
-					),
-					'section'  => 'section-below-header-colors-bg',
-					'title'    => __( 'Enable Border', 'astra-addon' ),
-				),
-
-				// Check Astra_Control_Color is exist in the theme.
-				/**
-				 * Option: Submenu Border Color
-				 */
-
-				array(
-					'name'      => ASTRA_THEME_SETTINGS . '[below-header-submenu-border-color]',
-					'type'      => 'control',
-					'control'   => 'ast-color',
-					'transport' => 'postMessage',
-					'required'  => array(
-						'conditions' => array(
-							array( ASTRA_THEME_SETTINGS . '[below-header-section-1]', '==', 'menu' ),
-							array( ASTRA_THEME_SETTINGS . '[below-header-section-2]', '==', 'menu' ),
-						),
-						'operator'   => 'OR',
-					),
-					'default'   => $defaults['below-header-submenu-border-color'],
-					'section'   => 'section-below-header-colors-bg',
-					'title'     => __( 'Border Color', 'astra-addon' ),
 				),
 
 				/**

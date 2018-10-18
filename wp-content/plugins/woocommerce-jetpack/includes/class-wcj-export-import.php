@@ -5,7 +5,6 @@
  * @version 3.0.0
  * @since   2.5.4
  * @author  Algoritmika Ltd.
- * @todo    import products, customers and (maybe) orders
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -19,6 +18,7 @@ class WCJ_Export_Import extends WCJ_Module {
 	 *
 	 * @version 2.8.0
 	 * @since   2.5.4
+	 * @todo    [feature] import products, customers and (maybe) orders
 	 */
 	function __construct() {
 
@@ -35,7 +35,8 @@ class WCJ_Export_Import extends WCJ_Module {
 			),
 			'export_customers_from_orders' => array(
 				'title'     => __( 'Export Customers from Orders', 'woocommerce-jetpack' ),
-				'desc'      => __( 'Export Customers (extracted from orders).', 'woocommerce-jetpack' ) . ' ' . __( 'Customers are identified by billing email.', 'woocommerce-jetpack' ),
+				'desc'      => __( 'Export Customers (extracted from orders).', 'woocommerce-jetpack' ) . ' ' .
+					__( 'Customers are identified by billing email.', 'woocommerce-jetpack' ),
 			),
 			'export_orders' => array(
 				'title'     => __( 'Export Orders', 'woocommerce-jetpack' ),
@@ -64,8 +65,8 @@ class WCJ_Export_Import extends WCJ_Module {
 	 *
 	 * @version 2.5.9
 	 * @since   2.4.8
-	 * @todo    when filtering now using strpos, but other options would be stripos (case-insensitive) or strict equality
-	 * @todo    (maybe) do filtering directly in WP_Query
+	 * @todo    [dev] when filtering now using `strpos`, but other options would be `stripos` (case-insensitive) or strict equality
+	 * @todo    [dev] (maybe) do filtering directly in WP_Query
 	 */
 	function export( $tool_id ) {
 		$data = array();
@@ -108,9 +109,6 @@ class WCJ_Export_Import extends WCJ_Module {
 				}
 			}
 		}
-		/* if ( 1 == count( $data ) ) {
-			return '<em>' . __( 'No results found.', 'woocommerce-jetpack' ) . '</em>';
-		} */
 		return $data;
 	}
 
@@ -119,8 +117,8 @@ class WCJ_Export_Import extends WCJ_Module {
 	 *
 	 * @version 2.5.9
 	 * @since   2.5.9
-	 * @todo    templates for xml_start, xml_end, xml_item.
-	 * @todo    strip_tags (same to Export WooCommerce plugin)
+	 * @todo    [dev] templates for xml_start, xml_end, xml_item.
+	 * @todo    [dev] `strip_tags`
 	 */
 	function export_xml() {
 		if ( isset( $_POST['wcj_export_xml'] ) ) {
@@ -184,7 +182,7 @@ class WCJ_Export_Import extends WCJ_Module {
 	 *
 	 * @version 2.5.9
 	 * @since   2.5.5
-	 * @todo    filter each field separately
+	 * @todo    [dev] filter each field separately
 	 */
 	function export_filter_fields( $tool_id ) {
 		$fields = array();
@@ -214,7 +212,7 @@ class WCJ_Export_Import extends WCJ_Module {
 				'<button class="button-primary" type="submit" name="wcj_export_filter" value="' . $tool_id . '">' . __( 'Filter', 'woocommerce-jetpack' ) . '</button>',
 				'',
 			);
-			return wcj_get_table_html( $data, array( 'table_class' => 'widefat', 'table_style' => 'width:50%;min-width:300px;', 'table_heading_type' => 'vertical', ) );
+			return wcj_get_table_html( $data, array( 'table_class' => 'widefat', 'table_style' => 'width:50%;min-width:300px;', 'table_heading_type' => 'vertical' ) );
 		}
 	}
 
@@ -223,7 +221,7 @@ class WCJ_Export_Import extends WCJ_Module {
 	 *
 	 * @version 3.0.0
 	 * @since   3.0.0
-	 * @todo    mark current (i.e. active) link (if exists)
+	 * @todo    [dev] mark current (i.e. active) link (if exists)
 	 */
 	function export_date_fields( $tool_id ) {
 		$current_start_date = ( isset( $_GET['start_date'] ) ? $_GET['start_date'] : '' );
@@ -270,9 +268,12 @@ class WCJ_Export_Import extends WCJ_Module {
 		echo '<p>';
 		echo '<button class="button-primary" type="submit" name="wcj_export" value="' . $tool_id . '">' . __( 'Download CSV', 'woocommerce-jetpack' ) . '</button>';
 		echo ' ';
-		echo '<button class="button-primary" type="submit" name="wcj_export_xml" value="' . $tool_id . '">' . __( 'Download XML', 'woocommerce-jetpack' ) . '</button>';
-		echo '<button style="float:right;margin-right:10px;" class="button-primary" type="submit" name="wcj_export_filter" value="' . $tool_id . '">' . __( 'Filter by All Fields', 'woocommerce-jetpack' ) . '</button>';
-		echo '<input style="float:right;margin-right:10px;" type="text" name="wcj_export_filter_all_columns" value="' . ( isset( $_POST['wcj_export_filter_all_columns'] ) ? $_POST['wcj_export_filter_all_columns'] : '' ) . '">';
+		echo '<button class="button-primary" type="submit" name="wcj_export_xml" value="' . $tool_id . '">' .
+			__( 'Download XML', 'woocommerce-jetpack' ) . '</button>';
+		echo '<button style="float:right;margin-right:10px;" class="button-primary" type="submit" name="wcj_export_filter" value="' . $tool_id . '">' .
+			__( 'Filter by All Fields', 'woocommerce-jetpack' ) . '</button>';
+		echo '<input style="float:right;margin-right:10px;" type="text" name="wcj_export_filter_all_columns" value="' .
+			( isset( $_POST['wcj_export_filter_all_columns'] ) ? $_POST['wcj_export_filter_all_columns'] : '' ) . '">';
 		echo '</p>';
 		echo '</form>';
 		$data = $this->export( $tool_id );

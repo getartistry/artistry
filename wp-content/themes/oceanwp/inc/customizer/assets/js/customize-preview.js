@@ -61,6 +61,10 @@
 			'woo-default-cat',
 			'woo-dropdown-cat'
 		],
+		wooAccountStyle 	= [
+			'account-side-style',
+			'account-original-style'
+		],
 		wooSaleStyle 		= [
 			'square-sale',
 			'circle-sale'
@@ -124,6 +128,48 @@
 			'arrow',
 			'square'
 		];
+		eddProductsCol 		= [
+			'1',
+			'2',
+			'3',
+			'4'
+		],
+		eddProductsTabletCol = [
+			'tablet-1-col',
+			'tablet-2-col',
+			'tablet-3-col',
+			'tablet-4-col'
+		],
+		eddProductsMobileCol = [
+			'mobile-1-col',
+			'mobile-2-col',
+			'mobile-3-col',
+			'mobile-4-col'
+		],
+		llmsCol = [
+			'1',
+			'2',
+			'3',
+			'4',
+			'5',
+			'6'
+		],
+		llmsTabletCol = [
+			'tablet-1-col',
+			'tablet-2-col',
+			'tablet-3-col',
+			'tablet-4-col',
+			'tablet-5-col',
+			'tablet-6-col'
+		],
+		llmsMobileCol = [
+			'mobile-1-col',
+			'mobile-2-col',
+			'mobile-3-col',
+			'mobile-4-col',
+			'mobile-5-col',
+			'mobile-6-col'
+		],
 
 	/******** WordPress Core *********/
 
@@ -198,6 +244,17 @@
 				if ( $arrow.length ) {
 					$arrow.removeClass();
 					$arrow.addClass( newval );
+				}
+			});
+		});
+
+		api('ocean_scroll_top_position', function( value ) {
+			value.bind( function( newval ) {
+				var $position = $( '#scroll-top' );
+
+				if ( $position.length ) {
+					$position.removeClass();
+					$position.addClass( 'scroll-top-' + newval );
 				}
 			});
 		});
@@ -1348,6 +1405,271 @@
 			} );
 		} );
 
+	/******** EDD *********/
+
+		// Cart style
+		api('ocean_edd_cart_dropdown_style', function( value ) {
+			value.bind( function( newval ) {
+				var cart = $( '.edd-menu-icon' );
+				if ( cart.length ) {
+					$.each( wooCartStyle, function( i, v ) {
+						cart.removeClass( v );
+					});
+					cart.addClass( newval );
+				}
+			});
+		});
+
+		// Cart icon
+		api('ocean_edd_menu_icon', function( value ) {
+			value.bind( function( newval ) {
+				var $cart = $( '#site-navigation-wrap .dropdown-menu > li > a.eddmenucart i' );
+
+				if ( $cart.length ) {
+					$cart.removeClass();
+					$cart.addClass( newval );
+				}
+			});
+		});
+
+		// Custom Cart icon
+		api('ocean_edd_menu_custom_icon', function( value ) {
+			value.bind( function( newval ) {
+				var $cart = $( '#site-navigation-wrap .dropdown-menu > li > a.eddmenucart i' );
+
+				if ( $cart.length ) {
+					$cart.removeClass();
+					$cart.addClass( newval );
+				}
+			});
+		});
+
+		// Menu cart icon size
+		api( 'ocean_edd_menu_icon_size', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_menu_icon_size' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_menu_icon_size">.eddmenucart i { font-size: ' + to + 'px; }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Menu cart icon size tablet
+		api( 'ocean_edd_menu_icon_size_tablet', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_menu_icon_size_tablet' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_menu_icon_size_tablet">@media (max-width: 768px){.oceanwp-mobile-menu-icon a.eddmenucart { font-size: ' + to + 'px; }}</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Menu cart icon size mobile
+		api( 'ocean_edd_menu_icon_size_mobile', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_menu_icon_size_mobile' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_menu_icon_size_mobile">@media (max-width: 480px){.oceanwp-mobile-menu-icon a.eddmenucart { font-size: ' + to + 'px; }}</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Menu cart icon center vertically
+		api( 'ocean_edd_menu_icon_center_vertically', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_menu_icon_center_vertically' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_menu_icon_center_vertically">.eddmenucart i { top: ' + to + 'px; }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Menu cart icon center vertically tablet
+		api( 'ocean_edd_menu_icon_center_vertically_tablet', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_menu_icon_center_vertically_tablet' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_menu_icon_center_vertically_tablet">@media (max-width: 768px){.oceanwp-mobile-menu-icon a.eddmenucart { top: ' + to + 'px; }}</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Menu cart icon center vertically mobile
+		api( 'ocean_edd_menu_icon_center_vertically_mobile', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_menu_icon_center_vertically_mobile' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_menu_icon_center_vertically_mobile">@media (max-width: 480px){.oceanwp-mobile-menu-icon a.eddmenucart { top: ' + to + 'px; }}</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Archives products columns
+		api('ocean_edd_archive_columns', function( value ) {
+			value.bind( function( newval ) {
+				var archivesCol = $( '.oceanwp-row .edd_downloads_list' );
+				if ( archivesCol.length ) {
+					$.each( eddProductsCol, function( i, v ) {
+						archivesCol.parent().removeClass( 'desktop-col-'+ v );
+						archivesCol.removeClass( 'span_1_of_'+ v );
+					});
+					archivesCol.parent().addClass( 'custom-col desktop-col-'+ newval );
+					archivesCol.addClass( 'span_1_of_'+ newval );
+				}
+			});
+		});
+
+		// Archives tablet columns class
+		api('ocean_edd_tablet_archive_columns', function( value ) {
+			value.bind( function( newval ) {
+				var archivesCol = $( '.oceanwp-row .edd_downloads_list' );
+				if ( archivesCol.length ) {
+					$.each( eddProductsTabletCol, function( i, v ) {
+						archivesCol.removeClass( v );
+					});
+					archivesCol.addClass( 'tablet-col' );
+					archivesCol.addClass( 'tablet-'+ newval +'-col' );
+				}
+			});
+		});
+
+		// Archives mobile columns class
+		api('ocean_edd_mobile_archive_columns', function( value ) {
+			value.bind( function( newval ) {
+				var archivesCol = $( '.oceanwp-row .edd_downloads_list' );
+				if ( archivesCol.length ) {
+					$.each( eddProductsMobileCol, function( i, v ) {
+						archivesCol.removeClass( v );
+					});
+					archivesCol.addClass( 'mobile-col' );
+					archivesCol.addClass( 'mobile-'+ newval +'-col' );
+				}
+			});
+		});
+
+		// Content Alignment
+		api('ocean_edd_archive_entry_content_alignment', function( value ) {
+			value.bind( function( newval ) {
+				var content_alignment = $( '.oceanwp-row .edd_downloads_list .edd-download' );
+				if ( content_alignment.length ) {
+					$.each( wooContentAlignment, function( i, v ) {
+						content_alignment.removeClass( v );
+					});
+					content_alignment.addClass( 'owp-content-'+ newval );
+				}
+			});
+		});
+
+		// Both Sidebars layout shop page content width
+		api( 'ocean_edd_archive_both_sidebars_content_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_archive_both_sidebars_content_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_archive_both_sidebars_content_width">@media only screen and (min-width: 960px){ body.edd.archive.content-both-sidebars .content-area { width: ' + to + '%; } body.edd.archive.content-both-sidebars.scs-style .widget-area.sidebar-secondary, body.edd.archive.content-both-sidebars.ssc-style .widget-area {left: -' + to + '%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Both Sidebars layout archive page sidebars width
+		api( 'ocean_edd_archive_both_sidebars_sidebars_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_archive_both_sidebars_sidebars_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_archive_both_sidebars_sidebars_width">@media only screen and (min-width: 960px){ body.edd.archive.content-both-sidebars .widget-area{width:' + to + '%;} body.edd.archive.content-both-sidebars.scs-style .content-area{left:' + to + '%;} body.edd.archive.content-both-sidebars.ssc-style .content-area{left:'+ to * 2 +'%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Both Sidebars layout single edd content width
+		api( 'ocean_edd_download_both_sidebars_content_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_download_both_sidebars_content_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_download_both_sidebars_content_width">@media only screen and (min-width: 960px){ body.single-edd.content-both-sidebars .content-area { width: ' + to + '%; } body.single-edd.content-both-sidebars.scs-style .widget-area.sidebar-secondary, body.single-edd.content-both-sidebars.ssc-style .widget-area {left: -' + to + '%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
+		// Both Sidebars layout single edd sidebars width
+		api( 'ocean_edd_download_both_sidebars_sidebars_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_edd_download_both_sidebars_sidebars_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_edd_download_both_sidebars_sidebars_width">@media only screen and (min-width: 960px){ body.single-edd.content-both-sidebars .widget-area{width:' + to + '%;} body.single-edd.content-both-sidebars.scs-style .content-area{left:' + to + '%;} body.single-edd.content-both-sidebars.ssc-style .content-area{left:'+ to * 2 +'%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		} );
+
 	/******** Footer *********/
 
 		// Tablet columns class
@@ -1578,7 +1900,7 @@
 				var $child = $(".customizer-ocean_page_header_title_color");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_page_header_title_color">.page-header .page-header-title { color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_page_header_title_color">.page-header .page-header-title, .page-header.background-image-page-header .page-header-title { color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2058,7 +2380,7 @@
 				var $child = $(".customizer-ocean_input_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_top_padding">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-top: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_top_padding">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-top: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2073,7 +2395,7 @@
 				var $child = $(".customizer-ocean_input_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_right_padding">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-right: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_right_padding">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-right: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2088,7 +2410,7 @@
 				var $child = $(".customizer-ocean_input_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_bottom_padding">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-bottom: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_bottom_padding">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-bottom: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2103,7 +2425,7 @@
 				var $child = $(".customizer-ocean_input_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_left_padding">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-left: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_left_padding">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-left: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2118,7 +2440,7 @@
 				var $child = $(".customizer-ocean_input_tablet_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_tablet_top_padding">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-top: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_tablet_top_padding">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-top: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2133,7 +2455,7 @@
 				var $child = $(".customizer-ocean_input_tablet_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_tablet_right_padding">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-right: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_tablet_right_padding">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-right: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2148,7 +2470,7 @@
 				var $child = $(".customizer-ocean_input_tablet_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_tablet_bottom_padding">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-bottom: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_tablet_bottom_padding">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-bottom: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2163,7 +2485,7 @@
 				var $child = $(".customizer-ocean_input_tablet_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_tablet_left_padding">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-left: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_tablet_left_padding">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-left: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2178,7 +2500,7 @@
 				var $child = $(".customizer-ocean_input_mobile_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_mobile_top_padding">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-top: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_mobile_top_padding">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-top: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2193,7 +2515,7 @@
 				var $child = $(".customizer-ocean_input_mobile_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_mobile_right_padding">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-right: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_mobile_right_padding">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-right: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2208,7 +2530,7 @@
 				var $child = $(".customizer-ocean_input_mobile_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_mobile_bottom_padding">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-bottom: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_mobile_bottom_padding">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-bottom: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2223,7 +2545,7 @@
 				var $child = $(".customizer-ocean_input_mobile_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_mobile_left_padding">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { padding-left: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_mobile_left_padding">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { padding-left: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2238,7 +2560,7 @@
 				var $child = $(".customizer-ocean_input_border_radius");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_border_radius">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-radius: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_border_radius">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-radius: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2253,7 +2575,7 @@
 				var $child = $(".customizer-ocean_input_font_size");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_font_size">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { font-size: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_font_size">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { font-size: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2268,7 +2590,7 @@
 				var $child = $(".customizer-ocean_input_background");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_background">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { background-color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_input_background">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { background-color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2283,7 +2605,7 @@
 				var $child = $(".customizer-ocean_input_border_color");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_border_color">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea,.select2-container .select2-choice { border-color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_input_border_color">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea,.select2-container .select2-choice, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2298,7 +2620,7 @@
 				var $child = $(".customizer-ocean_input_border_color_focus");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_border_color_focus">form input[type="text"]:focus,form input[type="password"]:focus,form input[type="email"]:focus,form input[type="tel"]:focus,form input[type="url"]:focus,form input[type="search"]:focus,form textarea:focus,.select2-drop-active,.select2-dropdown-open.select2-drop-above .select2-choice,.select2-dropdown-open.select2-drop-above .select2-choices,.select2-drop.select2-drop-above.select2-drop-active,.select2-container-active .select2-choice,.select2-container-active .select2-choices { border-color: ' +
+					var img = '<style class="customizer-ocean_input_border_color_focus">form input[type="text"]:focus,form input[type="password"]:focus,form input[type="email"]:focus,form input[type="tel"]:focus,form input[type="url"]:focus,form input[type="search"]:focus,form textarea:focus,.select2-drop-active,.select2-dropdown-open.select2-drop-above .select2-choice,.select2-dropdown-open.select2-drop-above .select2-choices,.select2-drop.select2-drop-above.select2-drop-active,.select2-container-active .select2-choice,.select2-container-active .select2-choices, body div.wpforms-container-full .wpforms-form input:focus, body div.wpforms-container-full .wpforms-form textarea:focus, body div.wpforms-container-full .wpforms-form select:focus { border-color: ' +
 						to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
@@ -2314,7 +2636,7 @@
 				var $child = $(".customizer-ocean_input_top_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_top_border_width">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-top-width: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_top_border_width">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-top-width: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2329,7 +2651,7 @@
 				var $child = $(".customizer-ocean_input_right_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_right_border_width">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-right-width: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_right_border_width">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-right-width: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2344,7 +2666,7 @@
 				var $child = $(".customizer-ocean_input_bottom_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_bottom_border_width">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-bottom-width: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_bottom_border_width">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-bottom-width: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2359,7 +2681,7 @@
 				var $child = $(".customizer-ocean_input_left_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_left_border_width">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-left-width: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_input_left_border_width">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-left-width: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2374,7 +2696,7 @@
 				var $child = $(".customizer-ocean_input_tablet_top_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_tablet_top_border_width">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-top-width: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_tablet_top_border_width">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-top-width: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2389,7 +2711,7 @@
 				var $child = $(".customizer-ocean_input_tablet_right_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_tablet_right_border_width">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-right-width: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_tablet_right_border_width">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-right-width: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2404,7 +2726,7 @@
 				var $child = $(".customizer-ocean_input_tablet_bottom_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_tablet_bottom_border_width">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-bottom-width: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_tablet_bottom_border_width">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-bottom-width: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2419,7 +2741,7 @@
 				var $child = $(".customizer-ocean_input_tablet_left_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_tablet_left_border_width">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-left-width: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_tablet_left_border_width">@media (max-width: 768px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-left-width: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2434,7 +2756,7 @@
 				var $child = $(".customizer-ocean_input_mobile_top_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_mobile_top_border_width">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-top-width: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_mobile_top_border_width">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-top-width: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2449,7 +2771,7 @@
 				var $child = $(".customizer-ocean_input_mobile_right_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_mobile_right_border_width">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-right-width: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_mobile_right_border_width">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-right-width: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2464,7 +2786,7 @@
 				var $child = $(".customizer-ocean_input_mobile_bottom_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_mobile_bottom_border_width">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-bottom-width: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_mobile_bottom_border_width">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-bottom-width: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2479,7 +2801,7 @@
 				var $child = $(".customizer-ocean_input_mobile_left_border_width");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_mobile_left_border_width">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { border-left-width: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_input_mobile_left_border_width">@media (max-width: 480px){form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { border-left-width: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2494,7 +2816,7 @@
 				var $child = $(".customizer-ocean_input_color");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_input_color">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea { color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_input_color">form input[type="text"],form input[type="password"],form input[type="email"],form input[type="tel"],form input[type="url"],form input[type="search"],form textarea, body div.wpforms-container-full .wpforms-form input[type=date], body div.wpforms-container-full .wpforms-form input[type=datetime], body div.wpforms-container-full .wpforms-form input[type=datetime-local], body div.wpforms-container-full .wpforms-form input[type=email], body div.wpforms-container-full .wpforms-form input[type=month], body div.wpforms-container-full .wpforms-form input[type=number], body div.wpforms-container-full .wpforms-form input[type=password], body div.wpforms-container-full .wpforms-form input[type=range], body div.wpforms-container-full .wpforms-form input[type=search], body div.wpforms-container-full .wpforms-form input[type=tel], body div.wpforms-container-full .wpforms-form input[type=text], body div.wpforms-container-full .wpforms-form input[type=time], body div.wpforms-container-full .wpforms-form input[type=url], body div.wpforms-container-full .wpforms-form input[type=week], body div.wpforms-container-full .wpforms-form select, body div.wpforms-container-full .wpforms-form textarea { color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2569,7 +2891,7 @@
 				var $child = $(".customizer-ocean_theme_button_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_top_padding">.theme-button,input[type="submit"],button { padding-top: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_top_padding">.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-top: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2584,7 +2906,7 @@
 				var $child = $(".customizer-ocean_theme_button_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_right_padding">.theme-button,input[type="submit"],button { padding-right: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_right_padding">.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-right: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2599,7 +2921,7 @@
 				var $child = $(".customizer-ocean_theme_button_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_bottom_padding">.theme-button,input[type="submit"],button { padding-bottom: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_bottom_padding">.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-bottom: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2614,7 +2936,7 @@
 				var $child = $(".customizer-ocean_theme_button_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_left_padding">.theme-button,input[type="submit"],button { padding-left: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_left_padding">.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-left: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2629,7 +2951,7 @@
 				var $child = $(".customizer-ocean_theme_button_tablet_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_tablet_top_padding">@media (max-width: 768px){.theme-button,input[type="submit"],button { padding-top: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_theme_button_tablet_top_padding">@media (max-width: 768px){.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-top: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2644,7 +2966,7 @@
 				var $child = $(".customizer-ocean_theme_button_tablet_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_tablet_right_padding">@media (max-width: 768px){.theme-button,input[type="submit"],button { padding-right: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_theme_button_tablet_right_padding">@media (max-width: 768px){.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-right: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2659,7 +2981,7 @@
 				var $child = $(".customizer-ocean_theme_button_tablet_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_tablet_bottom_padding">@media (max-width: 768px){.theme-button,input[type="submit"],button { padding-bottom: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_theme_button_tablet_bottom_padding">@media (max-width: 768px){.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-bottom: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2674,7 +2996,7 @@
 				var $child = $(".customizer-ocean_theme_button_tablet_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_tablet_left_padding">@media (max-width: 768px){.theme-button,input[type="submit"],button { padding-left: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_theme_button_tablet_left_padding">@media (max-width: 768px){.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-left: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2689,7 +3011,7 @@
 				var $child = $(".customizer-ocean_theme_button_mobile_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_mobile_top_padding">@media (max-width: 480px){.theme-button,input[type="submit"],button { padding-top: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_theme_button_mobile_top_padding">@media (max-width: 480px){.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-top: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2704,7 +3026,7 @@
 				var $child = $(".customizer-ocean_theme_button_mobile_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_mobile_right_padding">@media (max-width: 480px){.theme-button,input[type="submit"],button { padding-right: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_theme_button_mobile_right_padding">@media (max-width: 480px){.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-right: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2719,7 +3041,7 @@
 				var $child = $(".customizer-ocean_theme_button_mobile_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_mobile_bottom_padding">@media (max-width: 480px){.theme-button,input[type="submit"],button { padding-bottom: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_theme_button_mobile_bottom_padding">@media (max-width: 480px){.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-bottom: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2734,7 +3056,7 @@
 				var $child = $(".customizer-ocean_theme_button_mobile_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_mobile_left_padding">@media (max-width: 480px){.theme-button,input[type="submit"],button { padding-left: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_theme_button_mobile_left_padding">@media (max-width: 480px){.theme-button,input[type="submit"],button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { padding-left: ' + to + "px; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2749,7 +3071,7 @@
 				var $child = $(".customizer-ocean_theme_button_border_radius");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_border_radius">input[type="button"], input[type="reset"], input[type="submit"], .button { border-radius: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_border_radius">input[type="button"], input[type="reset"], input[type="submit"], .button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { border-radius: ' + to + "px; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2764,7 +3086,7 @@
 				var $child = $(".customizer-ocean_theme_button_color");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_color">body .theme-button,body input[type="submit"],body button[type="submit"],body button,body .button { color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_color">body .theme-button,body input[type="submit"],body button[type="submit"],body button,body .button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2779,7 +3101,7 @@
 				var $child = $(".customizer-ocean_theme_button_hover_color");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_hover_color">body .theme-button:hover,body input[type="submit"]:hover,body button[type="submit"]:hover,body button:hover,body .button:hover { color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_hover_color">body .theme-button:hover,body input[type="submit"]:hover,body button[type="submit"]:hover,body button:hover,body .button:hover, body div.wpforms-container-full .wpforms-form input[type=submit]:hover, body div.wpforms-container-full .wpforms-form input[type=submit]:active, body div.wpforms-container-full .wpforms-form button[type=submit]:hover, body div.wpforms-container-full .wpforms-form button[type=submit]:active, body div.wpforms-container-full .wpforms-form .wpforms-page-button:hover, body div.wpforms-container-full .wpforms-form .wpforms-page-button:active { color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2794,7 +3116,7 @@
 				var $child = $(".customizer-ocean_theme_button_bg");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_bg">body input[type="button"],body button[type="submit"], body input[type="reset"], body input[type="submit"], body .button { background-color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_bg">body input[type="button"],body button[type="submit"], body input[type="reset"], body input[type="submit"], body .button, body div.wpforms-container-full .wpforms-form input[type=submit], body div.wpforms-container-full .wpforms-form button[type=submit], body div.wpforms-container-full .wpforms-form .wpforms-page-button { background-color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -2809,7 +3131,7 @@
 				var $child = $(".customizer-ocean_theme_button_hover_bg");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_theme_button_hover_bg">body input[type="button"]:hover,body button[type="submit"]:hover, body input[type="reset"]:hover, body input[type="submit"]:hover, body .button:hover { background-color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_theme_button_hover_bg">body input[type="button"]:hover,body button[type="submit"]:hover, body input[type="reset"]:hover, body input[type="submit"]:hover, body .button:hover, body div.wpforms-container-full .wpforms-form input[type=submit]:hover, body div.wpforms-container-full .wpforms-form input[type=submit]:active, body div.wpforms-container-full .wpforms-form button[type=submit]:hover, body div.wpforms-container-full .wpforms-form button[type=submit]:active, body div.wpforms-container-full .wpforms-form .wpforms-page-button:hover, body div.wpforms-container-full .wpforms-form .wpforms-page-button:active { background-color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3124,7 +3446,7 @@
 				var $child = $(".customizer-ocean_sidebar_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_top_padding">.widget-area { padding-top: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_sidebar_top_padding">.widget-area { padding-top: ' + to + "px !important; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3139,7 +3461,7 @@
 				var $child = $(".customizer-ocean_sidebar_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_right_padding">.widget-area { padding-right: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_sidebar_right_padding">.widget-area { padding-right: ' + to + "px !important; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3154,7 +3476,7 @@
 				var $child = $(".customizer-ocean_sidebar_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_bottom_padding">.widget-area { padding-bottom: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_sidebar_bottom_padding">.widget-area { padding-bottom: ' + to + "px !important; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3169,7 +3491,7 @@
 				var $child = $(".customizer-ocean_sidebar_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_left_padding">.widget-area { padding-left: ' + to + "px; }</style>";
+					var img = '<style class="customizer-ocean_sidebar_left_padding">.widget-area { padding-left: ' + to + "px !important; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3184,7 +3506,7 @@
 				var $child = $(".customizer-ocean_sidebar_tablet_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_tablet_top_padding">@media (max-width: 768px){.widget-area { padding-top: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_sidebar_tablet_top_padding">@media (max-width: 768px){.widget-area { padding-top: ' + to + "px !important; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3199,7 +3521,7 @@
 				var $child = $(".customizer-ocean_sidebar_tablet_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_tablet_right_padding">@media (max-width: 768px){.widget-area { padding-right: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_sidebar_tablet_right_padding">@media (max-width: 768px){.widget-area { padding-right: ' + to + "px !important; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3214,7 +3536,7 @@
 				var $child = $(".customizer-ocean_sidebar_tablet_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_tablet_bottom_padding">@media (max-width: 768px){.widget-area { padding-bottom: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_sidebar_tablet_bottom_padding">@media (max-width: 768px){.widget-area { padding-bottom: ' + to + "px !important; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3229,7 +3551,7 @@
 				var $child = $(".customizer-ocean_sidebar_tablet_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_tablet_left_padding">@media (max-width: 768px){.widget-area { padding-left: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_sidebar_tablet_left_padding">@media (max-width: 768px){.widget-area { padding-left: ' + to + "px !important; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3244,7 +3566,7 @@
 				var $child = $(".customizer-ocean_sidebar_mobile_top_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_mobile_top_padding">@media (max-width: 480px){.widget-area { padding-top: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_sidebar_mobile_top_padding">@media (max-width: 480px){.widget-area { padding-top: ' + to + "px !important; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3259,7 +3581,7 @@
 				var $child = $(".customizer-ocean_sidebar_mobile_right_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_mobile_right_padding">@media (max-width: 480px){.widget-area { padding-right: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_sidebar_mobile_right_padding">@media (max-width: 480px){.widget-area { padding-right: ' + to + "px !important; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3274,7 +3596,7 @@
 				var $child = $(".customizer-ocean_sidebar_mobile_bottom_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_mobile_bottom_padding">@media (max-width: 480px){.widget-area { padding-bottom: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_sidebar_mobile_bottom_padding">@media (max-width: 480px){.widget-area { padding-bottom: ' + to + "px !important; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -3289,7 +3611,7 @@
 				var $child = $(".customizer-ocean_sidebar_mobile_left_padding");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_sidebar_mobile_left_padding">@media (max-width: 480px){.widget-area { padding-left: ' + to + "px; }}</style>";
+					var img = '<style class="customizer-ocean_sidebar_mobile_left_padding">@media (max-width: 480px){.widget-area { padding-left: ' + to + "px !important; }}</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -6384,7 +6706,7 @@
 				var $child = $(".customizer-ocean_mobile_menu_links");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_mobile_menu_links">body .sidr a, body .sidr-class-dropdown-toggle, #mobile-dropdown ul li a, #mobile-dropdown ul li a .dropdown-toggle, #mobile-fullscreen ul li a, #mobile-fullscreen .oceanwp-social-menu.simple-social ul li a, #mobile-fullscreen a.close { color: ' + to + "; }</style>";
+					var img = '<style class="customizer-ocean_mobile_menu_links">body .sidr a, body .sidr-class-dropdown-toggle, #mobile-dropdown ul li a, #mobile-dropdown ul li a .dropdown-toggle, #mobile-fullscreen ul li a, #mobile-fullscreen .oceanwp-social-menu.simple-social ul li a { color: ' + to + '; }#mobile-fullscreen a.close .close-icon-inner, #mobile-fullscreen a.close .close-icon-inner::after{background-color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -6399,8 +6721,7 @@
 				var $child = $(".customizer-ocean_mobile_menu_links_hover");
 				if (to) {
 					/** @type {string} */
-					var img = '<style class="customizer-ocean_mobile_menu_links_hover">body .sidr a:hover, body .sidr-class-dropdown-toggle:hover, body .sidr-class-dropdown-toggle .fa, body .sidr-class-menu-item-has-children.active > a, body .sidr-class-menu-item-has-children.active > a > .sidr-class-dropdown-toggle, #mobile-dropdown ul li a:hover, #mobile-dropdown ul li a .dropdown-toggle:hover, #mobile-dropdown .menu-item-has-children.active > a, #mobile-dropdown .menu-item-has-children.active > a > .dropdown-toggle, #mobile-fullscreen ul li a:hover, #mobile-fullscreen .oceanwp-social-menu.simple-social ul li a:hover, #mobile-fullscreen a.close:hover { color: ' +
-						to + "; }</style>";
+					var img = '<style class="customizer-ocean_mobile_menu_links_hover">body .sidr a:hover, body .sidr-class-dropdown-toggle:hover, body .sidr-class-dropdown-toggle .fa, body .sidr-class-menu-item-has-children.active > a, body .sidr-class-menu-item-has-children.active > a > .sidr-class-dropdown-toggle, #mobile-dropdown ul li a:hover, #mobile-dropdown ul li a .dropdown-toggle:hover, #mobile-dropdown .menu-item-has-children.active > a, #mobile-dropdown .menu-item-has-children.active > a > .dropdown-toggle, #mobile-fullscreen ul li a:hover, #mobile-fullscreen .oceanwp-social-menu.simple-social ul li a:hover { color: ' + to + '; }#mobile-fullscreen a.close:hover .close-icon-inner, #mobile-fullscreen a.close:hover .close-icon-inner::after{ background-color: ' + to + "; }</style>";
 					if ($child.length) {
 						$child.replaceWith(img);
 					} else {
@@ -9322,6 +9643,2181 @@
 			$swipe.bind(function(size) {
 				$(".woocommerce-checkout #payment div.payment_box").css("color", size);
 			});
+		}), api("ocean_edd_top_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_top_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_top_padding">.edd_downloads_list .edd_download_inner { padding-top: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_right_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_right_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_right_padding">.edd_downloads_list .edd_download_inner { padding-right: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_bottom_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_bottom_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_bottom_padding">.edd_downloads_list .edd_download_inner { padding-bottom: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_left_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_left_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_left_padding">.edd_downloads_list .edd_download_inner { padding-left: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_top_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_top_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_top_padding">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { padding-top: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_right_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_right_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_right_padding">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { padding-right: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_bottom_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_bottom_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_bottom_padding">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { padding-bottom: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_left_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_left_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_left_padding">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { padding-left: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_top_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_top_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_top_padding">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { padding-top: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_right_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_right_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_right_padding">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { padding-right: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_bottom_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_bottom_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_bottom_padding">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { padding-bottom: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_left_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_left_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_left_padding">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { padding-left: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_top_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_top_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_top_margin">.edd_downloads_list .edd_download_inner .edd_download_image { margin-top: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_right_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_right_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_right_margin">.edd_downloads_list .edd_download_inner .edd_download_image { margin-right: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_bottom_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_bottom_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_bottom_margin">.edd_downloads_list .edd_download_inner .edd_download_image { margin-bottom: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_left_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_left_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_left_margin">.edd_downloads_list .edd_download_inner .edd_download_image { margin-left: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_tablet_top_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_tablet_top_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_tablet_top_margin">@media (max-width: 768px){.edd_downloads_list .edd_download_inner .edd_download_image { margin-top: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_tablet_right_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_tablet_right_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_tablet_right_margin">@media (max-width: 768px){.edd_downloads_list .edd_download_inner .edd_download_image { margin-right: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_tablet_bottom_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_tablet_bottom_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_tablet_bottom_margin">@media (max-width: 768px){.edd_downloads_list .edd_download_inner .edd_download_image { margin-bottom: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_tablet_left_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_tablet_left_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_tablet_left_margin">@media (max-width: 768px){.edd_downloads_list .edd_download_inner .edd_download_image { margin-left: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_mobile_top_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_mobile_top_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_mobile_top_margin">@media (max-width: 480px){.edd_downloads_list .edd_download_inner .edd_download_image { margin-top: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_mobile_right_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_mobile_right_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_mobile_right_margin">@media (max-width: 480px){.edd_downloads_list .edd_download_inner .edd_download_image { margin-right: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_mobile_bottom_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_mobile_bottom_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_mobile_bottom_margin">@media (max-width: 480px){.edd_downloads_list .edd_download_inner .edd_download_image { margin-bottom: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_image_mobile_left_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_image_mobile_left_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_image_mobile_left_margin">@media (max-width: 480px){.edd_downloads_list .edd_download_inner .edd_download_image { margin-left: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_top_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_top_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_top_border_width">.edd_downloads_list .edd_download_inner { border-top-width: ' + to + "px; border-style: solid; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_right_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_right_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_right_border_width">.edd_downloads_list .edd_download_inner { border-right-width: ' + to + "px; border-style: solid; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_bottom_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_bottom_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_bottom_border_width">.edd_downloads_list .edd_download_inner { border-bottom-width: ' + to + "px; border-style: solid; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_left_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_left_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_left_border_width">.edd_downloads_list .edd_download_inner { border-left-width: ' + to + "px; border-style: solid; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_top_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_top_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_top_border_width">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { border-top-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_right_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_right_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_right_border_width">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { border-right-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_bottom_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_bottom_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_bottom_border_width">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { border-bottom-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_left_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_left_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_left_border_width">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { border-left-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_top_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_top_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_top_border_width">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { border-top-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_right_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_right_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_right_border_width">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { border-right-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_bottom_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_bottom_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_bottom_border_width">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { border-bottom-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_left_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_left_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_left_border_width">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { border-left-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_top_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_top_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_top_border_radius">.edd_downloads_list .edd_download_inner { border-top-left-radius: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_right_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_right_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_right_border_radius">.edd_downloads_list .edd_download_inner { border-top-right-radius: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_bottom_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_bottom_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_bottom_border_radius">.edd_downloads_list .edd_download_inner { border-bottom-right-radius: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_left_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_left_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_left_border_radius">.edd_downloads_list .edd_download_inner { border-bottom-left-radius: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_top_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_top_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_top_border_radius">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { border-top-left-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_right_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_right_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_right_border_radius">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { border-top-right-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_bottom_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_bottom_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_bottom_border_radius">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { border-bottom-right-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_tablet_left_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_tablet_left_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_tablet_left_border_radius">@media (max-width: 768px){.edd_downloads_list .edd_download_inner { border-bottom-left-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_top_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_top_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_top_border_radius">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { border-top-left-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_right_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_right_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_right_border_radius">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { border-top-right-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_bottom_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_bottom_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_bottom_border_radius">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { border-bottom-right-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_mobile_left_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_mobile_left_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_mobile_left_border_radius">@media (max-width: 480px){.edd_downloads_list .edd_download_inner { border-bottom-left-radius:' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}) , api("ocean_edd_background_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".edd_downloads_list .edd_download_inner").css("background-color", size);
+			});
+		}), api("ocean_edd_border_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".edd_downloads_list .edd_download_inner").css("border-color", size);
+			});
+		}), api("ocean_edd_category_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".edd_downloads_list .edd_download_inner .edd_download_categories a").css("color", size);
+			});
+		}), api("ocean_edd_category_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_category_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_category_color_hover">.edd_downloads_list .edd_download_inner .edd_download_categories a:hover{ color: ' + to + "!important; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_title_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".edd_downloads_list .edd_download_inner .edd_download_title a").css("color", size);
+			});
+		}), api("ocean_edd_title_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_product_title_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_title_color_hover">.edd_downloads_list .edd_download_inner .edd_download_title a:hover{ color: ' + to + "!important; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_entry_price_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".edd_downloads_list .edd_download_inner span.edd_price").css("color", size);
+			});
+		}), api("ocean_edd_entry_addtocart_bg_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".edd_downloads_list .edd_download_inner .button").css("background-color", size);
+			});
+		}), api("ocean_edd_entry_addtocart_bg_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_entry_addtocart_bg_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_entry_addtocart_bg_color_hover">.edd_downloads_list .edd_download_inner .button:hover{ background-color: ' + to + "!important; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_entry_addtocart_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".edd_downloads_list .edd_download_inner .button").css("color", size);
+			});
+		}), api("ocean_edd_entry_addtocart_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_entry_addtocart_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_product_entry_addtocart_color_hover">.edd_downloads_list .edd_download_inner .button:hover{ color: ' + to + "!important; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_entry_addtocart_border_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".edd_downloads_list .edd_download_inner .button").css("border-color", size);
+			});
+		}), api("ocean_edd_entry_addtocart_border_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_entry_addtocart_border_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_product_entry_addtocart_border_color_hover">..edd_downloads_list .edd_download_inner .button:hover{ border-color: ' + to + "!important; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api('ocean_edd_entry_addtocart_border_style', function(value) {
+			value.bind(function(to) {
+				var $child = $('.customizer-ocean_edd_entry_addtocart_border_style');
+				if (to) {
+					var style = '<style class="customizer-ocean_edd_entry_addtocart_border_style">.edd_downloads_list .edd_download_inner .button{border-style:' + to + ';}</style>';
+					if ($child.length) {
+						$child.replaceWith(style);
+					} else {
+						$('head').append(style);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api('ocean_edd_entry_addtocart_border_size', function(value) {
+			value.bind(function(to) {
+				var $child = $('.customizer-ocean_edd_entry_addtocart_border_size');
+				if (to) {
+					var style = '<style class="customizer-ocean_edd_entry_addtocart_border_size">.edd_downloads_list .edd_download_inner .button{border-width:' + to + ';}</style>';
+					if ($child.length) {
+						$child.replaceWith(style);
+					} else {
+						$('head').append(style);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api('ocean_edd_entry_addtocart_border_radius', function(value) {
+			value.bind(function(to) {
+				var $child = $('.customizer-ocean_edd_entry_addtocart_border_radius');
+				if (to) {
+					var style = '<style class="customizer-ocean_edd_entry_addtocart_border_radius">.edd_downloads_list .edd_download_inner .button{border-radius:' + to + ';}</style>';
+					if ($child.length) {
+						$child.replaceWith(style);
+					} else {
+						$('head').append(style);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_single_edd_title_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".single-download .edd-download .edd_download_title").css("color", size);
+			});
+		}), api("ocean_single_edd_description_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('.single-download .edd-download .edd_download_content').css("color", size);
+			});
+		}), api("ocean_edd_checkout_titles_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_form_wrap legend').css("color", size);
+			});
+		}), api("ocean_edd_checkout_titles_border_bottom_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_form_wrap legend').css("border-bottom-color", size);
+			});
+		}), api("ocean_edd_checkout_borders_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_cart th, #edd_checkout_cart td, #edd_checkout_form_wrap #edd-discount-code-wrap, #edd_checkout_form_wrap #edd_final_total_wrap, #edd_checkout_form_wrap #edd_show_discount').css("border-color", size);
+			});
+		}), api("ocean_edd_checkout_label_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_form_wrap .edd-label').css("color", size);
+			});
+		}), api("ocean_edd_checkout_description_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_form_wrap .edd-description').css("color", size);
+			});
+		}), api("ocean_edd_checkout_head_bg", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_cart .edd_cart_header_row th, .edd-table tr th').css("background-color", size);
+			});
+		}), api("ocean_edd_checkout_head_titles_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_cart .edd_cart_header_row th, .edd-table tr th').css("color", size);
+			});
+		}), api("ocean_edd_checkout_totals_table_titles_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_cart th.edd_cart_total').css("color", size);
+			});
+		}), api("ocean_edd_checkout_remove_button_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$('#edd_checkout_cart a.edd_cart_remove_item_btn').css("color", size);
+			});
+		}), api("ocean_edd_checkout_remove_button_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_checkout_remove_button_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_checkout_remove_button_color_hover">#edd_checkout_cart a.edd_cart_remove_item_btn:hover{ color: ' + to + "!important; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_bg", function($swipe) {
+			$swipe.bind(function(to) {
+				$(".edd-menu-icon .current-shop-items-dropdown").css("background-color", to);
+			});
+		}), api("ocean_edd_cart_dropdown_borders", function($swipe) {
+			$swipe.bind(function(to) {
+				$(".edd-menu-icon .current-shop-items-dropdown .widget_edd_cart_widget li").css("border-color", to);
+			});
+		}), api("ocean_edd_cart_dropdown_title_color", function($swipe) {
+			$swipe.bind(function(to) {
+				$(".current-shop-items-dropdown .widget_edd_cart_widget li .edd-cart-item-title").css("color", to);
+			});
+		}), api("ocean_edd_cart_dropdown_price_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_price_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_price_color">.current-shop-items-dropdown .widget_edd_cart_widget li .edd-cart-item-price { color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_remove_link_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_remove_link_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_remove_link_color">.current-shop-items-dropdown .widget_edd_cart_widget ul.edd-cart li a.edd-remove-from-cart { color: ' + to + '; } .widget_shopping_cart ul.cart_list li .owp-grid-wrap .owp-grid a.remove { border-color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_remove_link_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_remove_link_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_remove_link_color_hover">.current-shop-items-dropdown .widget_edd_cart_widget ul.edd-cart li a.edd-remove-from-cart:hover{ color: ' + to + '; } .widget_shopping_cart ul.cart_list li .owp-grid-wrap .owp-grid a.remove:hover { border-color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_subtotal_bg", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_subtotal_bg");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_subtotal_bg">.current-shop-items-dropdown .widget_edd_cart_widget li.edd_total { background-color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_subtotal_border_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_subtotal_border_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_subtotal_border_color">.current-shop-items-dropdown .widget_edd_cart_widget li.edd_total { borde-color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_subtotal_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_subtotal_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_subtotal_color">.current-shop-items-dropdown .widget_edd_cart_widget li.edd_total { color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_total_price_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_total_price_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_total_price_color">.current-shop-items-dropdown .widget_edd_cart_widget .edd_total .cart-total{ color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_checkout_button_bg", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_checkout_button_bg");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_checkout_button_bg">.current-shop-items-dropdown .widget_edd_cart_widget .edd_checkout a{ background-color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_checkout_button_bg_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_checkout_button_bg_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_checkout_button_bg_hover">.current-shop-items-dropdown .widget_edd_cart_widget .edd_checkout a:hover { background-color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_checkout_button_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_checkout_button_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_checkout_button_color">.current-shop-items-dropdown .widget_edd_cart_widget .edd_checkout a { color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_cart_dropdown_checkout_button_hover_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_checkout_button_hover_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_checkout_button_hover_color">.current-shop-items-dropdown .widget_edd_cart_widget .edd_checkout a:hover { color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}),  api("ocean_edd_cart_dropdown_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_cart_dropdown_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_cart_dropdown_width">.edd-menu-icon .current-shop-items-dropdown { min-width: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_menu_bag_icon_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_menu_bag_icon_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_menu_bag_icon_color">.eddmenucart-cart-icon .eddmenucart-count { border-color: ' + to + '; }eddmenucart-cart-icon .eddmenucart-count:after { border-color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_menu_bag_icon_hover_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_menu_bag_icon_hover_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_menu_bag_icon_hover_color">.bag-style:hover .eddmenucart-cart-icon .eddmenucart-count, .show-cart .eddmenucart-cart-icon .eddmenucart-count { background-color: ' + to + '; border-color: ' + to + '; }.bag-style:hover .eddmenucart-cart-icon .eddmenucart-count:after, .show-cart .eddmenucart-cart-icon .eddmenucart-count:after { border-color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_menu_bag_icon_count_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_menu_bag_icon_count_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_menu_bag_icon_count_color">.eddmenucart-cart-icon .eddmenucart-count, .edd-menu-icon .eddmenucart-total span{ color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_edd_menu_bag_icon_hover_count_color", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_edd_menu_bag_icon_hover_count_color");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_edd_menu_bag_icon_hover_count_color">.bag-style:hover .eddmenucart-cart-icon .eddmenucart-count, .show-cart .eddmenucart-cart-icon .eddmenucart-count{ color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}),
+
+
+	/******** LifterLMS *********/
+		// Courses columns
+		api('ocean_llms_courses_columns', function( value ) {
+			value.bind( function( newval ) {
+				var coursesCol = $( '.llms-loop-list.llms-course-list' );
+				if ( coursesCol.length ) {
+					$.each( llmsCol, function( i, v ) {
+						coursesCol.removeClass( 'cols-'+ v );
+					});
+					coursesCol.addClass( 'cols-'+ newval );
+				}
+			});
+		}),
+
+		// Courses Tablet columns
+		api('ocean_llms_tablet_courses_columns', function( value ) {
+			value.bind( function( newval ) {
+				var coursesCol = $( '.llms-loop-list.llms-course-list' );
+				if ( coursesCol.length ) {
+					$.each( llmsTabletCol, function( i, v ) {
+						coursesCol.removeClass( v );
+					});
+					coursesCol.addClass( 'tablet-col' );
+					coursesCol.addClass( 'tablet-'+ newval +'-col' );
+				}
+			});
+		}),
+
+		// Courses Mobile columns
+		api('ocean_llms_mobile_courses_columns', function( value ) {
+			value.bind( function( newval ) {
+				var coursesCol = $( '.llms-loop-list.llms-course-list' );
+				if ( coursesCol.length ) {
+					$.each( llmsMobileCol, function( i, v ) {
+						coursesCol.removeClass( v );
+					});
+					coursesCol.addClass( 'mobile-col' );
+					coursesCol.addClass( 'mobile-'+ newval +'-col' );
+				}
+			});
+		});
+
+		// Membership columns
+		api('ocean_llms_membership_columns', function( value ) {
+			value.bind( function( newval ) {
+				var membershipCol = $( '.llms-loop-list.llms-membership-list' );
+				if ( membershipCol.length ) {
+					$.each( llmsCol, function( i, v ) {
+						membershipCol.removeClass( 'cols-'+ v );
+					});
+					membershipCol.addClass( 'cols-'+ newval );
+				}
+			});
+		}),
+
+		// Membership Tablet columns
+		api('ocean_llms_tablet_membership_columns', function( value ) {
+			value.bind( function( newval ) {
+				var membershipCol = $( '.llms-loop-list.llms-membership-list' );
+				if ( membershipCol.length ) {
+					$.each( llmsTabletCol, function( i, v ) {
+						membershipCol.removeClass( v );
+					});
+					membershipCol.addClass( 'tablet-col' );
+					membershipCol.addClass( 'tablet-'+ newval +'-col' );
+				}
+			});
+		}),
+
+		// Membership Mobile columns
+		api('ocean_llms_mobile_membership_columns', function( value ) {
+			value.bind( function( newval ) {
+				var membershipCol = $( '.llms-loop-list.llms-membership-list' );
+				if ( membershipCol.length ) {
+					$.each( llmsMobileCol, function( i, v ) {
+						membershipCol.removeClass( v );
+					});
+					membershipCol.addClass( 'mobile-col' );
+					membershipCol.addClass( 'mobile-'+ newval +'-col' );
+				}
+			});
+		}),
+
+		// Advanced Styling Options
+		api("ocean_llms_top_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_top_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_top_padding">.llms-loop-item .llms-loop-item-content{ padding-top: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_right_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_right_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_right_padding">.llms-loop-item .llms-loop-item-content{ padding-right: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_bottom_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_bottom_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_bottom_padding">.llms-loop-item .llms-loop-item-content{ padding-bottom: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_left_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_left_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_left_padding">.llms-loop-item .llms-loop-item-content{ padding-left: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_top_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_top_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_top_padding">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ padding-top: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_right_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_right_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_right_padding">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ padding-right: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_bottom_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_bottom_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_bottom_padding">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ padding-bottom: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_left_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_left_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_left_padding">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ padding-left: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_top_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_top_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_top_padding">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ padding-top: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_right_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_right_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_right_padding">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ padding-right: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_bottom_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_bottom_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_bottom_padding">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ padding-bottom: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_left_padding", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_left_padding");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_left_padding">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ padding-left: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_top_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_top_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_top_margin">.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-top: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_right_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_right_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_right_margin">.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-right: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_bottom_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_bottom_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_bottom_margin">.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-bottom: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_left_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_left_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_left_margin">.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-left: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_tablet_top_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_tablet_top_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_tablet_top_margin">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-top: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_tablet_right_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_tablet_right_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_tablet_right_margin">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-right: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_tablet_bottom_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_tablet_bottom_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_tablet_bottom_margin">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-bottom: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_tablet_left_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_tablet_left_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_tablet_left_margin">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-left: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_mobile_top_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_mobile_top_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_mobile_top_margin">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-top: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_mobile_right_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_mobile_right_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_mobile_right_margin">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-right: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_mobile_bottom_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_mobile_bottom_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_mobile_bottom_margin">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-bottom: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_image_mobile_left_margin", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_image_mobile_left_margin");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_image_mobile_left_margin">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content .llms-featured-image{ margin-left: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_top_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_top_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_top_border_width">.llms-loop-item .llms-loop-item-content{ border-top-width: ' + to + "px; border-style: solid; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_right_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_right_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_right_border_width">.llms-loop-item .llms-loop-item-content{ border-right-width: ' + to + "px; border-style: solid; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_bottom_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_bottom_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_bottom_border_width">.llms-loop-item .llms-loop-item-content{ border-bottom-width: ' + to + "px; border-style: solid; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_left_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_left_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_left_border_width">.llms-loop-item .llms-loop-item-content{ border-left-width: ' + to + "px; border-style: solid; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_top_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_top_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_top_border_width">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ border-top-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_right_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_right_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_right_border_width">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ border-right-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_bottom_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_bottom_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_bottom_border_width">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ border-bottom-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_left_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_left_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_left_border_width">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ border-left-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_top_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_top_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_top_border_width">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ border-top-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_right_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_right_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_right_border_width">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ border-right-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_bottom_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_bottom_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_bottom_border_width">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ border-bottom-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_left_border_width", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_left_border_width");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_left_border_width">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ border-left-width: ' + to + "px; border-style: solid; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_top_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_top_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_top_border_radius">.llms-loop-item .llms-loop-item-content{ border-top-left-radius: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_right_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_right_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_right_border_radius">.llms-loop-item .llms-loop-item-content{ border-top-right-radius: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_bottom_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_bottom_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_bottom_border_radius">.llms-loop-item .llms-loop-item-content{ border-bottom-right-radius: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_left_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_left_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_left_border_radius">.llms-loop-item .llms-loop-item-content{ border-bottom-left-radius: ' + to + "px; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_top_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_top_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_top_border_radius">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ border-top-left-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_right_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_right_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_right_border_radius">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ border-top-right-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_bottom_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_bottom_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_bottom_border_radius">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ border-bottom-right-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_tablet_left_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_tablet_left_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_tablet_left_border_radius">@media (max-width: 768px){.llms-loop-item .llms-loop-item-content{ border-bottom-left-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_top_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_top_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_top_border_radius">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ border-top-left-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_right_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_right_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_right_border_radius">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ border-top-right-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_bottom_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_bottom_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_bottom_border_radius">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ border-bottom-right-radius: ' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_mobile_left_border_radius", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-ocean_llms_mobile_left_border_radius");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_mobile_left_border_radius">@media (max-width: 480px){.llms-loop-item .llms-loop-item-content{ border-bottom-left-radius:' + to + "px; }}</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_background_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-loop-item .llms-loop-item-content").css("background-color", size);
+			});
+		}), api("ocean_llms_border_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-loop-item .llms-loop-item-content").css("border-color", size);
+			});
+		}), api("ocean_llms_title_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-loop-item-content .llms-loop-title").css("color", size);
+			});
+		}), api("ocean_llms_title_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-llms_title_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_title_color_hover">.llms-loop-item-content .llms-loop-title:hover { color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_author_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-loop-item-content .llms-author").css("color", size);
+			});
+		}), api("ocean_llms_meta_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-loop-item-content .llms-meta").css("color", size);
+			});
+		}), api("ocean_llms_course_title_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".single-course .entry-title").css("color", size);
+			});
+		}), api("ocean_llms_course_subtitle_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".single-course .llms-meta-title").css("color", size);
+			});
+		}), api("ocean_llms_course_meta_title_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-meta-info .llms-meta p").css("color", size);
+			});
+		}), api("ocean_llms_course_meta_link_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-meta-info .llms-meta span, .llms-meta-info .llms-meta a").css("color", size);
+			});
+		}), api("ocean_llms_course_meta_link_color_hover", function($swipe) {
+			$swipe.bind(function(to) {
+				var $child = $(".customizer-llms_course_meta_link_color_hover");
+				if (to) {
+					/** @type {string} */
+					var img = '<style class="customizer-ocean_llms_course_meta_link_color_hover">.llms-meta-info .llms-meta a:hover{ color: ' + to + "; }</style>";
+					if ($child.length) {
+						$child.replaceWith(img);
+					} else {
+						$("head").append(img);
+					}
+				} else {
+					$child.remove();
+				}
+			});
+		}), api("ocean_llms_course_author_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-instructor-info .llms-instructors .llms-author").css("color", size);
+			});
+		}), api("ocean_llms_course_progress_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-progress .progress-bar-complete").css("color", size);
+			});
+		}), api("ocean_llms_course_section_title_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-syllabus-wrapper .llms-section-title, .llms-access-plan-title").css("color", size);
+			});
+		}), api("ocean_llms_course_section_title_background", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".llms-syllabus-wrapper .llms-section-title, .llms-access-plan-title").css("background-color", size);
+			});
+		}), api("ocean_llms_lesson_title_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".single-lesson .entry-title").css("color", size);
+			});
+		}), api("ocean_llms_lesson_description_color", function($swipe) {
+			$swipe.bind(function(size) {
+				$(".single-lesson .entry-content").css("color", size);
+			});
+		}), 
+		// Both Sidebars - LLMS Global
+		api( 'ocean_llms_global_both_sidebars_content_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_llms_global_both_sidebars_content_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_llms_global_both_sidebars_content_width">@media only screen and (min-width: 960px){ body.llms-global-layout.content-both-sidebars .content-area { width: ' + to + '%; } body.llms-global-layout.content-both-sidebars.scs-style .widget-area.sidebar-secondary, body.llms-global-layout.content-both-sidebars.ssc-style .widget-area {left: -' + to + '%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		}),
+
+		api( 'ocean_llms_global_both_sidebars_sidebars_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_llms_global_both_sidebars_sidebars_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_llms_global_both_sidebars_sidebars_width">@media only screen and (min-width: 960px){ body.llms-global-layout.content-both-sidebars .widget-area{width:' + to + '%;} body.llms-global-layout.content-both-sidebars.scs-style .content-area{left:' + to + '%;} body.llms-global-layout.content-both-sidebars.ssc-style .content-area{left:'+ to * 2 +'%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		}),
+
+		// Both Sidebars - LLMS Course
+		api( 'ocean_llms_course_both_sidebars_content_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_llms_course_both_sidebars_content_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_llms_course_both_sidebars_content_width">@media only screen and (min-width: 960px){ body.single-course.content-both-sidebars .content-area { width: ' + to + '%; } body.single-course.content-both-sidebars.scs-style .widget-area.sidebar-secondary, body.single-course.content-both-sidebars.ssc-style .widget-area {left: -' + to + '%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		}),
+
+		api( 'ocean_llms_course_both_sidebars_sidebars_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_llms_course_both_sidebars_sidebars_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_llms_course_both_sidebars_sidebars_width">@media only screen and (min-width: 960px){ body.single-course.content-both-sidebars .widget-area{width:' + to + '%;} body.single-course.content-both-sidebars.scs-style .content-area{left:' + to + '%;} body.single-course.content-both-sidebars.ssc-style .content-area{left:'+ to * 2 +'%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		}),
+
+		// Both Sidebars - LLMS Lesson
+		api( 'ocean_llms_lesson_both_sidebars_content_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_llms_lesson_both_sidebars_content_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_llms_lesson_both_sidebars_content_width">@media only screen and (min-width: 960px){ body.single-lesson.content-both-sidebars .content-area { width: ' + to + '%; } body.single-lesson.content-both-sidebars.scs-style .widget-area.sidebar-secondary, body.single-lesson.content-both-sidebars.ssc-style .widget-area {left: -' + to + '%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
+		}),
+
+		api( 'ocean_llms_lesson_both_sidebars_sidebars_width', function( value ) {
+			value.bind( function( to ) {
+				var $child = $( '.customizer-ocean_llms_lesson_both_sidebars_sidebars_width' );
+				if ( to ) {
+					var style = '<style class="customizer-ocean_llms_lesson_both_sidebars_sidebars_width">@media only screen and (min-width: 960px){ body.single-lesson.content-both-sidebars .widget-area{width:' + to + '%;} body.single-lesson.content-both-sidebars.scs-style .content-area{left:' + to + '%;} body.single-lesson.content-both-sidebars.ssc-style .content-area{left:'+ to * 2 +'%;} }</style>';
+					if ( $child.length ) {
+						$child.replaceWith( style );
+					} else {
+						$( 'head' ).append( style );
+					}
+				} else {
+					$child.remove();
+				}
+			} );
 		});
 
 } )( jQuery );

@@ -5,8 +5,8 @@ Author URI: https://www.storeapps.org/
 Plugin URI: https://www.storeapps.org/
 Tags: woocommerce, store manager, bulk update, inline edit, manage variations, bulk edit, coupons , shop manager,  batch update,  wp ecommerce, productivity, products, variations, orders, customers, manager, pro, manager pro, pro manager, extension, premium, free, download, woocommerce customer management
 Requires at least: 2.0.2
-Tested up to: 4.9.6
-Stable tag: 3.19.0
+Tested up to: 4.9.8
+Stable tag: 3.20.0
 License: GPLv3
 
 The #1 tool to bulk update, inline edit products, orders, customers, coupons on your Woocommerce store. Easily manage your WooCommerce shop within seconds.
@@ -149,6 +149,25 @@ It also gives the warm feeling of supporting further development of the plugin.
 4. Batch Update (only in paid version)
 
 == Changelog ==
+
+= 3.20.0 (08.10.2018) =
+* New: Users Dashboard consisting of all WordPress users along with WooCommerce customers (Beta)
+* Update: Updated translation files for French (Thanks to Sandra Boulou)
+* Update: Added 'contains' & 'not contains' search operators in advanced search (Beta)
+* Update: StoreApps Connector improvements 
+* Update: POT file
+* Fix: Advanced search columns not appearing properly in some cases (Beta)
+* Fix: Batch update not working for entire store for all custom post types (Beta)
+* Fix: Batch update not working for products dashboard in some cases (Beta)
+* Fix: Products dashboard not loading in some cases due to unhandled complex meta fields (WooCommerce)
+
+= 3.19.1 (21.08.2018) =
+* Fix: Product Title not getting synced for variations when the product title of the variation parent is updated (WooCommerce)
+* Fix: Upload/Edit image not working in batch update (WPML Translation Management) (WooCommerce)
+* Fix: Column state not getting saved in some cases (Beta)
+* Fix: Batch Update not working in some cases (Beta)
+* Fix: Some minor fixes
+* Update: POT file
 
 = 3.19.0 (12.06.2018) =
 * New: Batch Update for WooCommerce Product Attributes & Categories (Beta)
@@ -806,6 +825,12 @@ It also gives the warm feeling of supporting further development of the plugin.
 * Product administration features
 
 == Upgrade Notice ==
+
+= 3.20.0 =
+Added new Users dashboard consisting of all WordPress users along with WooCommerce customers (Beta), impotant batch update fixes (Beta) along with other important fixes & updates. Recommended upgrade.
+
+= 3.19.1 =
+Fixed the Product Title not getting synced for variations when the product title of the variation parent is updated (WooCommerce) along with other important fixes & updates. Recommended upgrade.
 
 = 3.19.0 =
 Added Batch Update for WooCommerce Product Attributes & Categories (Beta), fix for column layout not getting saved (Beta) along with other important fixes & updates. Recommended upgrade.

@@ -100,7 +100,8 @@ if ( ! class_exists( 'Astra_Ext_White_Label_Markup' ) ) {
 		static public function get_white_labels() {
 
 			$branding_default = apply_filters(
-				'astra_addon_branding_options', array(
+				'astra_addon_branding_options',
+				array(
 					'astra-agency' => array(
 						'author'        => '',
 						'author_url'    => '',
@@ -122,7 +123,7 @@ if ( ! class_exists( 'Astra_Ext_White_Label_Markup' ) ) {
 			$branding = Astra_Admin_Helper::get_admin_settings_option( '_astra_ext_white_label', true );
 			$branding = wp_parse_args( $branding, $branding_default );
 
-			return $branding;
+			return apply_filters( 'astra_addon_get_white_labels', $branding );
 		}
 
 		/**

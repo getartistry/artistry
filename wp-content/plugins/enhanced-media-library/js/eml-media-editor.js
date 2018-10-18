@@ -218,11 +218,9 @@ window.eml = window.eml || { l10n: {} };
         },
 
         edit: function( content ) {
-
             var shortcode = wp.shortcode.next( this.tag, content ),
                 defaultPostId = this.defaults.id,
-                attachments, selection, state, props;
-
+                attachments, selection, state;
 
             // Bail if we didn't match the shortcode or all of the content.
             if ( ! shortcode || shortcode.content !== content ) {
@@ -237,7 +235,8 @@ window.eml = window.eml || { l10n: {} };
             }
 
             attachments = this.attachments( shortcode );
-            attachments.props.set( 'perPage', -1 );
+            // @todo
+            // attachments.props.set( 'perPage', -1 );
 
             selection = new wp.media.model.Selection( attachments.models, {
                 props:    attachments.props.toJSON(),
@@ -252,6 +251,7 @@ window.eml = window.eml || { l10n: {} };
                 // Break ties with the query.
                 selection.props.set({ query: false });
                 selection.unmirror();
+                selection.props.unset('orderby'); // @todo: test more carefully
             });
 
             // Destroy the previous gallery frame.
@@ -259,8 +259,9 @@ window.eml = window.eml || { l10n: {} };
                 this.frame.dispose();
             }
 
-            if ( shortcode.attrs.named.type && 'video' === shortcode.attrs.named.type ) {
-                state = 'video-' + this.tag + '-edit';
+            if ( shortcode.attrs.named.type ) {
+                if ( 'video' === shortcode.attrs.named.type )
+                    state = 'video-' + this.tag + '-edit';
             } else {
                 state = this.tag + '-edit';
             }
@@ -286,7 +287,7 @@ window.eml = window.eml || { l10n: {} };
      *
      */
     _.extend( media.gallery.defaults, {
-		orderby : 'menuOrder',
+        orderby : 'menuOrder',
         order: 'ASC'
     });
 
@@ -309,5 +310,6 @@ window.eml = window.eml || { l10n: {} };
     delete media.playlist.defaults.id;
 
     _.extend( media.playlist, eml.mediaCollection );
+
 
 })( jQuery, _ );

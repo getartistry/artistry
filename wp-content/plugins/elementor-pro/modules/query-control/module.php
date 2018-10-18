@@ -3,9 +3,11 @@ namespace ElementorPro\Modules\QueryControl;
 
 use Elementor\Controls_Manager;
 use Elementor\Core\Ajax_Manager;
-use Elementor\Utils;
+
 use Elementor\Widget_Base;
 use ElementorPro\Base\Module_Base;
+use ElementorPro\Classes\Utils;
+use Elementor\Utils as ElementorUtils;
 use ElementorPro\Modules\QueryControl\Controls\Group_Control_Posts;
 use ElementorPro\Modules\QueryControl\Controls\Query;
 use ElementorPro\Plugin;
@@ -279,7 +281,9 @@ class Module extends Module_Base {
 		];
 
 		if ( 'by_id' === $post_type ) {
-			$query_args['post_type'] = 'any';
+			$post_types = Utils::get_public_post_types();
+
+			$query_args['post_type'] = array_keys( $post_types );
 			$query_args['posts_per_page'] = -1;
 
 			$query_args['post__in'] = $settings[ $control_id . '_posts_ids' ];
@@ -323,7 +327,7 @@ class Module extends Module_Base {
 		$post__not_in = [];
 		if ( ! empty( $settings['exclude'] ) ) {
 			if ( in_array( 'current_post', $settings['exclude'] ) ) {
-				if ( Utils::is_ajax() && ! empty( $_REQUEST['post_id'] ) ) {
+				if ( ElementorUtils::is_ajax() && ! empty( $_REQUEST['post_id'] ) ) {
 					$post__not_in[] = $_REQUEST['post_id'];
 				} elseif ( is_singular() ) {
 					$post__not_in[] = get_queried_object_id();
@@ -364,7 +368,7 @@ class Module extends Module_Base {
 	 * @return mixed
 	 */
 	public function fix_query_found_posts( $found_posts, $query ) {
-		$offset_to_fix = $query->get( 'fix_pagination_offset' );
+		$offset_to_fix = $query->get( 'offset_to_fix' );
 
 		if ( $offset_to_fix ) {
 			$found_posts -= $offset_to_fix;

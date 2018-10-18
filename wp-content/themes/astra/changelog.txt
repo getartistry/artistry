@@ -1,3 +1,45 @@
+v1.5.1
+- Improvement: Remove link pointer animation styles. We will work on these to get better animations that can be provided from the theme.
+- Add option to set border color for submenu item.
+
+v1.5.0
+- Fix: Site Title line height is different for home/front page and other pages.
+- Fix: Sub menu toggle not working when a drop-down target set to link.
+
+v1.5.0-rc.3
+- New: Post meta support for attachment page
+- Fix: RTL styling not working in customizer
+
+v1.5.0-rc.2
+Fix: Menu highlight labels not working for non mega menus.
+
+v1.5.0-rc.1
+- Improvement: Submenu opens below the header instead of cropping the header. This fix introduces padding difference of ~5px in the header hence for existing sites updating to this version this change will be disabled by default. 
+You can enable this by adding a filter `add_filter( 'astra_submenu_below_header_fix', '__return_true' );` in your child theme's functions'php file.
+For all the new installations this option will be enabled by default and don't need any snippet.
+- Improvement: If the content in header is larger the navigation menu will drop on a new line.
+- Improvement: Add correct license information for the images used in the screenshot.
+- Improvement: Add correct license information for wp-color-picker-alpha JS Library.
+- Fix: Search from the Last Item in Menu is not align vertically center.
+
+v1.5.0-beta.4
+- New: Added Link Pointer styles for primary menu.
+- New: Added Primary Header submenu border width and color.
+
+v1.5.0-beta.3
+- New: Submenu Container Animations.
+
+v1.5.0-beta.2
+- New: Menu container animation.
+
+v1.5.0-beta.1 
+- Introducing Nav Menu from Astra Pro
+
+v1.4.9
+- Improvement: Search will not turn into search box on mobile devices. This will make search layouts usable on mobile devices as well.
+- Fix: Elementor Pro's WooCommerce grid adding not displayed in full width because of Astra's WooCommerce options.
+- Fix: Content width not working in Full width / stretched container layout.
+
 v1.4.8
 - Fix: Correctly sanitize font-family settings in customizer. This fixes font-family settings not being saved.
 

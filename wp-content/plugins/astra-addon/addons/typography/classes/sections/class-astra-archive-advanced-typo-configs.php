@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Archive_Advanced_Typo_Configs' ) ) {
@@ -88,16 +94,17 @@ if ( ! class_exists( 'Astra_Archive_Advanced_Typo_Configs' ) ) {
 				 * Option: Archive Summary Box Title Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[line-height-archive-summary-title]',
-					'section'     => 'section-archive-typo',
-					'transport'   => 'postMessage',
-					'default'     => '',
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'type'        => 'control',
-					'control'     => 'ast-slider',
-					'priority'    => 4,
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[line-height-archive-summary-title]',
+					'section'           => 'section-archive-typo',
+					'transport'         => 'postMessage',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'type'              => 'control',
+					'control'           => 'ast-slider',
+					'priority'          => 4,
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 5,
@@ -160,16 +167,17 @@ if ( ! class_exists( 'Astra_Archive_Advanced_Typo_Configs' ) ) {
 				 * Option: Blog - Post Title Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[line-height-page-title]',
-					'section'     => 'section-archive-typo',
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'default'     => '',
-					'type'        => 'control',
-					'control'     => 'ast-slider',
-					'transport'   => 'postMessage',
-					'priority'    => 10,
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[line-height-page-title]',
+					'section'           => 'section-archive-typo',
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'type'              => 'control',
+					'control'           => 'ast-slider',
+					'transport'         => 'postMessage',
+					'priority'          => 10,
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 5,
@@ -261,15 +269,16 @@ if ( ! class_exists( 'Astra_Archive_Advanced_Typo_Configs' ) ) {
 				 * Option: Post Meta Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[line-height-post-meta]',
-					'section'     => 'section-archive-typo',
-					'title'       => __( 'Line Height', 'astra-addon' ),
-					'type'        => 'control',
-					'control'     => 'ast-slider',
-					'default'     => '',
-					'transport'   => 'postMessage',
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[line-height-post-meta]',
+					'section'           => 'section-archive-typo',
+					'title'             => __( 'Line Height', 'astra-addon' ),
+					'type'              => 'control',
+					'control'           => 'ast-slider',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'transport'         => 'postMessage',
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 5,

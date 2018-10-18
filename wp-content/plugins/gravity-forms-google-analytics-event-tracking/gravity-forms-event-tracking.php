@@ -3,7 +3,7 @@
  * Plugin Name:       Gravity Forms Event Tracking
  * Plugin URI:        https://wordpress.org/plugins/gravity-forms-google-analytics-event-tracking/
  * Description:       Add event tracking to your Gravity Forms with ease using Google Analytics, Tag Manager, or Matomo (formerly Piwik).
- * Version:           2.1.1
+ * Version:           2.3.0
  * Author:            Ronald Huereca
  * Author URI:        https://mediaron.com
  * Text Domain:       gravity-forms-google-analytics-event-tracking
@@ -120,12 +120,17 @@ class GFGAET {
 		// Initialize settings screen and feeds
 		GFAddOn::register( 'GFGAET_UA' );
 		GFAddOn::register( 'GFGAET_Submission_Feeds' );
+		if( class_exists( 'GF_Partial_Entries' ) ) {
+			GFAddOn::register( 'GFGAET_Partial_Entries' );
+		}
 
 		// Initialize pagination
 		add_action( 'gform_post_paging', array( $this, 'pagination'), 10, 3 );
 
 		// Initialize whether Ajax is on or off
 		add_filter( 'gform_form_args', array( $this, 'maybe_ajax_only' ), 15, 1 );
+
+
 	}
 
 	/**
@@ -145,6 +150,20 @@ class GFGAET {
 			return $ua_id;
 		}
 		return false;
+	}
+	
+	/**
+	 * Get the Google Analytics Tracker
+	 *
+	 * @since 2.2.4
+	 * @return string Returns a custom tracker or empty string if not set
+	 */
+	public static function get_ua_tracker() {
+		$gravity_forms_add_on_settings = get_option( 'gravityformsaddon_GFGAET_UA_settings', array() );
+
+		$tracker = isset( $gravity_forms_add_on_settings[ 'gravity_forms_event_tracking_ua_tracker' ] ) ? trim($gravity_forms_add_on_settings[ 'gravity_forms_event_tracking_ua_tracker' ]) : '';
+
+		return $tracker;
 	}
 
 	/**

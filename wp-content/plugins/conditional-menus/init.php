@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name:  Conditional Menus
-Plugin URI:   http://themify.me/conditional-menus
-Version:      1.0.9
+Plugin URI:   https://themify.me/conditional-menus
+Version:      1.1.0
 Author:       Themify
-Author URI:   http://themify.me/
+Author URI:   https://themify.me/
 Description:  This plugin enables you to set conditional menus per posts, pages, categories, archive pages, etc.
 Text Domain:  themify-cm
 Domain Path:  /languages
@@ -41,6 +41,7 @@ class Themify_Conditional_Menus {
 		add_action( 'plugins_loaded', array( $this, 'i18n' ), 5 );
 		add_action( 'plugins_loaded', array( $this, 'setup' ), 10 );
 		add_action( 'wpml_after_startup', array( $this, 'wpml_after_startup' ) );
+		add_filter( 'plugin_row_meta', array( $this, 'themify_plugin_meta'), 10, 2 );
 	}
 
 	public function constants() {
@@ -54,6 +55,16 @@ class Themify_Conditional_Menus {
 			define( 'THEMIFY_CM_VERSION', '1.0.1' );
 	}
 
+	public function themify_plugin_meta( $links, $file ) {
+		if ( plugin_basename( __FILE__ ) == $file ) {
+			$row_meta = array(
+			  'changelogs'    => '<a href="' . esc_url( 'https://themify.me/changelogs/' ) . basename( dirname( $file ) ) .'.txt" target="_blank" aria-label="' . esc_attr__( 'Plugin Changelogs', 'themify-cm' ) . '">' . esc_html__( 'View Changelogs', 'themify-cm' ) . '</a>'
+			);
+	 
+			return array_merge( $links, $row_meta );
+		}
+		return (array) $links;
+	}
 	public function i18n() {
 		load_plugin_textdomain( 'themify-cm', false, '/languages' );
 	}
@@ -69,16 +80,16 @@ class Themify_Conditional_Menus {
 			add_action( 'wp_delete_nav_menu', array( $this, 'wp_delete_nav_menu' ) );
 		} else {
 			add_filter( 'wp_nav_menu_args', array( $this, 'setup_menus' ) );
-			add_filter( 'theme_mod_nav_menu_locations', array( $this, 'theme_mod_nav_menu_locations' ) );
+			add_filter( 'theme_mod_nav_menu_locations', array( $this, 'theme_mod_nav_menu_locations' ), 99 );
 		}
 	}
 
 	public function get_options() {
-		remove_filter( 'theme_mod_nav_menu_locations', array( $this, 'theme_mod_nav_menu_locations' ) );
+		remove_filter( 'theme_mod_nav_menu_locations', array( $this, 'theme_mod_nav_menu_locations' ), 99 );
 		$options = get_theme_mod( 'themify_conditional_menus', array() );
 		$options = wp_parse_args( $options, get_nav_menu_locations() );
 		if( ! is_admin() ) {
-			add_filter( 'theme_mod_nav_menu_locations', array( $this, 'theme_mod_nav_menu_locations' ) );
+			add_filter( 'theme_mod_nav_menu_locations', array( $this, 'theme_mod_nav_menu_locations' ), 99 );
 		}
 
 		return $options;
@@ -87,11 +98,26 @@ class Themify_Conditional_Menus {
 	public function theme_mod_nav_menu_locations( $locations = array() ) {
 		if( ! empty( $locations ) ) {
 			$menu_assignments = $this->get_options();
-						
+
 			foreach( $locations as $location => $menu_id ) {
-				if( is_array( $menu_assignments[$location] ) && ! empty( $menu_assignments[$location] ) ) {
-					foreach( $menu_assignments[$location] as $id => $new_menu ) {
-						if( $new_menu['menu'] == '' ) {
+				if( empty( $menu_assignments[$location] ) ) continue;
+
+				$menus = $menu_assignments[$location];
+
+				// PolyLang support
+				if( function_exists( 'pll_current_language' ) && function_exists( 'pll_default_language' ) ) {
+					if( pll_current_language() !== pll_default_language() ) {
+						$polylang_location = $location . '___' . pll_current_language();
+						
+						if( ! empty( $menu_assignments[$polylang_location] ) ) {
+							$menus = $menu_assignments[$polylang_location];
+						}
+					}
+				}
+
+				if( is_array( $menus ) ) {
+					foreach( $menus as $id => $new_menu ) {
+						if( $new_menu['menu'] == '' || $new_menu['condition'] == '' ) {
 							continue;
 						}
 						if( $this->check_visibility( $new_menu['condition'] ) ) {
@@ -116,7 +142,7 @@ class Themify_Conditional_Menus {
 		if( isset( $args['theme_location'] ) && ! empty( $args['theme_location'] ) && isset( $menu_assignments[$args['theme_location']] ) ) {
 			if( is_array( $menu_assignments[$args['theme_location']] ) && ! empty( $menu_assignments[$args['theme_location']] ) ) {
 				foreach( $menu_assignments[$args['theme_location']] as $id => $new_menu ) {
-					if( $new_menu['menu'] == '' ) {
+					if( $new_menu['menu'] == '' || $new_menu['condition'] == '' ) {
 						continue;
 					}
 					if( $this->check_visibility( $new_menu['condition'] ) ) {
@@ -281,20 +307,18 @@ class Themify_Conditional_Menus {
 					}
 				}
 
-				if( ! $visible && ! empty( $logic['post_type'] ) ) {
-
-					$slug = $shop ? $this->get_wc_shop() : $query_object->post_name;
+				if( ! $visible && ! empty( $logic['post_type'] ) && ( $slug = $shop ? $this->get_wc_shop() : isset( $query_object->post_name ) ? $query_object->post_name : false ) ) {
 
 					foreach( $logic['post_type'] as $post_type => $posts ) {
 						$posts = array_keys( $posts );
 						if( $post_type == 'page' && isset( $query_object->post_parent ) && $query_object->post_parent > 0 ) {
-						   $slug = str_replace( site_url(), '', get_permalink( $query_object->ID ) );
+						   $slug = str_replace( home_url(), '', get_permalink( $query_object->ID ) );
 						}
 
 						if( ( $post_type == 'post' && is_single() && is_single( $posts ) )
 							|| ( $post_type == 'page' && ( is_page( $posts ) || ( ! is_front_page() && is_home() &&  in_array( get_post_field( 'post_name', get_option( 'page_for_posts' ) ), $posts ) ) // check for Posts page
 							) )
-							|| ( (is_singular( $post_type ) || $shop) && in_array($slug, $posts ) )
+							|| ( ( is_singular( $post_type ) || $shop ) && in_array( $slug, $posts ) )
 						) {
 							$visible = true;
 							break;
@@ -312,10 +336,10 @@ class Themify_Conditional_Menus {
 	}
 	
 	public function get_wc_shop(){
-		if( !class_exists( 'WooCommerce' ) ) {
+		if( ! class_exists( 'WooCommerce' ) ) {
 			return false;
 		}
-		$shop = get_post(wc_get_page_id( 'shop' ));
+		$shop = get_post( wc_get_page_id( 'shop' ) );
 		return $shop->post_name;
 	}
 
@@ -389,7 +413,7 @@ class Themify_Conditional_Menus {
 			$posts = get_posts( array( 'post_type' => $key, 'posts_per_page' => -1, 'status' => 'published', 'order' => 'ASC', 'orderby' => 'title' ) );
 			if( ! empty( $posts ) ) : foreach( $posts as $post ) :
 				if($post->post_parent>0){
-					 $post->post_name =  str_replace(site_url(),'',get_permalink($post->ID));
+					 $post->post_name =  str_replace(home_url(),'',get_permalink($post->ID));
 				}
 				$checked = isset( $selected['post_type'][$key][$post->post_name] ) ? checked( $selected['post_type'][$key][$post->post_name], 'on', false ) : '';
 				/* note: slugs are more reliable than IDs, they stay unique after export/import */
@@ -484,7 +508,7 @@ class Themify_Conditional_Menus {
 	}
 
 	public static function activate( $network_wide ) {
-		If( version_compare( get_bloginfo( 'version' ), '3.9', ' < ' ) ) {
+		if( version_compare( get_bloginfo( 'version' ), '3.9', ' < ' ) ) {
 			/* the plugin requires at least 3.9 */
 			deactivate_plugins( basename( __FILE__ ) ); // Deactivate the plugin
 		} else {

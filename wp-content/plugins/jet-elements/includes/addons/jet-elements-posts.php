@@ -30,7 +30,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-04';
+		return 'jetelements-icon-5';
 	}
 
 	public function get_categories() {
@@ -228,7 +228,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			'infinite',
 			array(
-				'label'        => esc_html__( 'Infinite Loop', 'elementor' ),
+				'label'        => esc_html__( 'Infinite Loop', 'jet-elements' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
 				'label_off'    => esc_html__( 'No', 'jet-elements' ),
@@ -1482,6 +1482,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'arrows_style',
+				'label'          => esc_html__( 'Arrows Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-posts .jet-arrow',
 				'fields_options' => array(
 					'color' => array(
@@ -1507,6 +1508,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'arrows_hover_style',
+				'label'          => esc_html__( 'Arrows Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-posts .jet-arrow:hover',
 				'fields_options' => array(
 					'color' => array(
@@ -1535,7 +1537,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			'prev_vert_position',
 			array(
-				'label'   => esc_html__( 'Vertical Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Vertical Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'top',
 				'options' => array(
@@ -1606,7 +1608,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			'prev_hor_position',
 			array(
-				'label'   => esc_html__( 'Horizontal Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Horizontal Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'left',
 				'options' => array(
@@ -1686,7 +1688,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			'next_vert_position',
 			array(
-				'label'   => esc_html__( 'Vertical Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Vertical Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'top',
 				'options' => array(
@@ -1757,7 +1759,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			'next_hor_position',
 			array(
-				'label'   => esc_html__( 'Horizontal Postition by', 'jet-elements' ),
+				'label'   => esc_html__( 'Horizontal Position by', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'right',
 				'options' => array(
@@ -1849,6 +1851,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-carousel .jet-slick-dots li span',
 				'fields_options' => array(
 					'color' => array(
@@ -1857,6 +1860,10 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_3,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -1874,6 +1881,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_hover',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-carousel .jet-slick-dots li span:hover',
 				'fields_options' => array(
 					'color' => array(
@@ -1882,6 +1890,10 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_1,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -1899,6 +1911,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'dots_style_active',
+				'label'          => esc_html__( 'Dots Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} .jet-carousel .jet-slick-dots li.slick-active span',
 				'fields_options' => array(
 					'color' => array(
@@ -1907,6 +1920,10 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 							'value' => Scheme_Color::COLOR_4,
 						),
 					),
+				),
+				'exclude' => array(
+					'box_font_color',
+					'box_font_size',
 				),
 			)
 		);
@@ -1988,13 +2005,13 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 
 		$this->add_meta_style_controls(
 			'title_related',
-			esc_html__( 'Before/After Title', 'jet-blog' ),
+			esc_html__( 'Before/After Title', 'jet-elements' ),
 			'jet-title-fields'
 		);
 
 		$this->add_meta_style_controls(
 			'content_related',
-			esc_html__( 'Before/After Content', 'jet-blog' ),
+			esc_html__( 'Before/After Content', 'jet-elements' ),
 			'jet-content-fields'
 		);
 
@@ -2073,7 +2090,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 				continue;
 			}
 
-			$attr_val            = $settings[ $attr ];
+			$attr_val            = isset( $settings[ $attr ] ) ? $settings[ $attr ] : '';
 			$attr_val            = ! is_array( $attr_val ) ? $attr_val : implode( ',', $attr_val );
 			$attributes[ $attr ] = $attr_val;
 		}
@@ -2101,10 +2118,10 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			'show_' . $position_slug . '_meta',
 			array(
-				'label'        => sprintf( esc_html__( 'Show Meta %s', 'jet-blog' ), $position_name ),
+				'label'        => sprintf( esc_html__( 'Show Meta %s', 'jet-elements' ), $position_name ),
 				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'jet-blog' ),
-				'label_off'    => esc_html__( 'No', 'jet-blog' ),
+				'label_on'     => esc_html__( 'Yes', 'jet-elements' ),
+				'label_off'    => esc_html__( 'No', 'jet-elements' ),
 				'return_value' => 'yes',
 				'default'      => '',
 				'separator'    => 'before',
@@ -2114,12 +2131,12 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			'meta_' . $position_slug . '_position',
 			array(
-				'label'   => esc_html__( 'Meta Fields Position', 'jet-blog' ),
+				'label'   => esc_html__( 'Meta Fields Position', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'before',
 				'options' => array(
-					'before' => esc_html__( 'Before', 'jet-blog' ),
-					'after'  => esc_html__( 'After', 'jet-blog' ),
+					'before' => esc_html__( 'Before', 'jet-elements' ),
+					'after'  => esc_html__( 'After', 'jet-elements' ),
 				),
 				'condition'   => array(
 					'show_' . $position_slug . '_meta' => 'yes',
@@ -2161,11 +2178,11 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$repeater->add_control(
 			'meta_callback',
 			array(
-				'label'   => esc_html__( 'Prepare meta value with callback', 'jet-blog' ),
+				'label'   => esc_html__( 'Prepare meta value with callback', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => array(
-					''                        => esc_html__( 'Clean', 'jet-blog' ),
+					''                        => esc_html__( 'Clean', 'jet-elements' ),
 					'get_permalink'           => 'get_permalink',
 					'get_the_title'           => 'get_the_title',
 					'wp_get_attachment_url'   => 'wp_get_attachment_url',
@@ -2204,7 +2221,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			$position_slug . '_meta_styles',
 			array(
-				'label'     => sprintf( esc_html__( 'Meta Styles %s', 'jet-blog' ), $position_name ),
+				'label'     => sprintf( esc_html__( 'Meta Styles %s', 'jet-elements' ), $position_name ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -2213,7 +2230,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			$position_slug . '_meta_bg_color',
 			array(
-				'label'     => esc_html__( 'Background Color', 'jet-blog' ),
+				'label'     => esc_html__( 'Background Color', 'jet-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .' . $base => 'background-color: {{VALUE}}',
@@ -2224,7 +2241,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			$position_slug . '_meta_label_heading',
 			array(
-				'label'     => esc_html__( 'Meta Label', 'jet-blog' ),
+				'label'     => esc_html__( 'Meta Label', 'jet-elements' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -2233,7 +2250,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			$position_slug . '_meta_label_color',
 			array(
-				'label'     => esc_html__( 'Color', 'jet-blog' ),
+				'label'     => esc_html__( 'Color', 'jet-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .' . $base . '__item-label' => 'color: {{VALUE}}',
@@ -2253,12 +2270,12 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			$position_slug . '_meta_label_display',
 			array(
-				'label'   => esc_html__( 'Dispaly Meta Label and Value', 'jet-blog' ),
+				'label'   => esc_html__( 'Dispaly Meta Label and Value', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => array(
-					'inline-block' => esc_html__( 'Inline', 'jet-blog' ),
-					'block'        => esc_html__( 'As Blocks', 'jet-blog' ),
+					'inline-block' => esc_html__( 'Inline', 'jet-elements' ),
+					'block'        => esc_html__( 'As Blocks', 'jet-elements' ),
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .' . $base . '__item-label' => 'display: {{VALUE}}',
@@ -2270,7 +2287,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			$position_slug . '_meta_label_gap',
 			array(
-				'label'       => esc_html__( 'Horizontal Gap Between Label and Value', 'jet-blog' ),
+				'label'       => esc_html__( 'Horizontal Gap Between Label and Value', 'jet-elements' ),
 				'type'        => Controls_Manager::NUMBER,
 				'default'     => 5,
 				'min'         => 0,
@@ -2285,7 +2302,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			$position_slug . '_meta_value_heading',
 			array(
-				'label'     => esc_html__( 'Meta Value', 'jet-blog' ),
+				'label'     => esc_html__( 'Meta Value', 'jet-elements' ),
 				'type'      => Controls_Manager::HEADING,
 				'separator' => 'before',
 			)
@@ -2294,7 +2311,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_control(
 			$position_slug . '_meta_color',
 			array(
-				'label'     => esc_html__( 'Color', 'jet-blog' ),
+				'label'     => esc_html__( 'Color', 'jet-elements' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .' . $base . '__item-value' => 'color: {{VALUE}}',
@@ -2313,19 +2330,20 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_responsive_control(
 			$position_slug . '_meta_margin',
 			array(
-				'label'      => esc_html__( 'Margin', 'jet-blog' ),
+				'label'      => esc_html__( 'Margin', 'jet-elements' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
 					'{{WRAPPER}} .' . $base => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+				'separator' => 'before',
 			)
 		);
 
 		$this->add_responsive_control(
 			$position_slug . '_meta_padding',
 			array(
-				'label'      => esc_html__( 'Padding', 'jet-blog' ),
+				'label'      => esc_html__( 'Padding', 'jet-elements' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
@@ -2337,7 +2355,7 @@ class Jet_Elements_Posts extends Jet_Elements_Base {
 		$this->add_responsive_control(
 			$position_slug . '_meta_border_radius',
 			array(
-				'label'      => esc_html__( 'Border Radius', 'jet-blog' ),
+				'label'      => esc_html__( 'Border Radius', 'jet-elements' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(

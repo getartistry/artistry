@@ -109,6 +109,8 @@ global $camp_replace_link;
 		               
 		                <input value="<?php   echo @$camp_general['cg_content_limit']   ?>" max="20000" min="0" name="cg_content_limit" id="fieldlimit" required="required" class="ttw-range range"
                type="range">
+               
+               			 
 		               
 		            </div>
 		            
@@ -125,14 +127,33 @@ global $camp_replace_link;
                     </span>
                     <br>
                     
-		            <div id="limit_title_c" class="field f_100">
-		               <label>
-		                    Number of characters ?
-		               </label>
+		            <div id="limit_title_c" >
+		              
+		              <div class="field f_100" >
+			               <label>
+			                    Number of characters ?
+			               </label>
+			               
+			                <input value="<?php   echo @$camp_general['cg_title_limit']   ?>" max="20000" min="0" name="cg_title_limit" id="fieldlimit2" required="required" class="ttw-range range" type="range">
+			               
+		               </div>
 		               
-		                <input value="<?php   echo @$camp_general['cg_title_limit']   ?>" max="20000" min="0" name="cg_title_limit" id="fieldlimit2" required="required" class="ttw-range range"
-               type="range">
-		               
+		               <div class="field f_100" >
+		               <input name="camp_options[]"    value="OPT_LIMIT_NO_DOT" type="checkbox">
+		                    <span class="option-title">
+								Do not add "..." to the end of the truncated title? 
+		                    </span>
+		            	
+		            		</div>
+		            		
+		            		 <div class="field f_100" >
+		               		<input name="camp_options[]"    value="OPT_LIMIT_NO_TRUN" type="checkbox">
+		                    <span class="option-title">
+								Remove the last truncated word (not-complete) from the truncated title?
+		                    </span>
+		            	
+		             	</div>
+		            
 		            </div>
 		            
                </div>

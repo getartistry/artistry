@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Settings - Multicurrency (Currency Switcher)
  *
- * @version 3.8.0
+ * @version 3.9.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
  * @todo    "pretty prices"
@@ -11,7 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $currency_from  = get_woocommerce_currency();
-$all_currencies = wcj_get_currencies_names_and_symbols();
+$all_currencies = wcj_get_woocommerce_currencies_and_symbols();
 $settings = array(
 	array(
 		'title'    => __( 'General Options', 'woocommerce-jetpack' ),
@@ -56,12 +56,17 @@ $settings = array(
 		'type'     => 'checkbox',
 	),
 	array(
-		'title'    => __( 'Revert Currency to Default on Checkout', 'woocommerce-jetpack' ),
-		'desc_tip' => __( 'Enable this if you want prices to revert back to your shop\'s default currency, when customer reaches the checkout page.', 'woocommerce-jetpack' ),
-		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'title'    => __( 'Revert Currency to Shop\'s Default', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Enable this if you want prices to revert back to your shop\'s default currency, when customer reaches the cart and/or checkout page.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_multicurrency_revert',
 		'default'  => 'no',
-		'type'     => 'checkbox',
+		'type'     => 'select',
+		'options'  => array(
+			'no'                => __( 'Do not revert', 'woocommerce-jetpack' ),
+			'cart_only'         => __( 'Revert on cart page only', 'woocommerce-jetpack' ),
+			'yes'               => __( 'Revert on checkout page only', 'woocommerce-jetpack' ),
+			'cart_and_checkout' => __( 'Revert on both cart & checkout pages', 'woocommerce-jetpack' ),
+		),
 	),
 	array(
 		'title'    => __( 'Rounding', 'woocommerce-jetpack' ),

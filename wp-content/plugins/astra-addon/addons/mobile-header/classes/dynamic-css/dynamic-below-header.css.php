@@ -163,7 +163,7 @@ function astra_ext_mobile_below_header_dynamic_css( $dynamic_css, $dynamic_css_f
 			'color' => esc_attr( $below_header_submenu_text_color['desktop'] ),
 		),
 		// Submenu bg color.
-		'.ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .sub-menu a, .ast-header-break-point .ast-below-header-menu .children a' => array(
+		'.ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .children' => array(
 			'background-color' => esc_attr( $below_header_submenu_bg_color['desktop'] ),
 		),
 		// Submenu hover color.
@@ -232,7 +232,7 @@ function astra_ext_mobile_below_header_dynamic_css( $dynamic_css, $dynamic_css_f
 			'color' => esc_attr( $below_header_submenu_text_color['tablet'] ),
 		),
 		// Submenu bg color.
-		'.ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .sub-menu a, .ast-header-break-point .ast-below-header-menu .children a' => array(
+		'.ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .children' => array(
 			'background-color' => esc_attr( $below_header_submenu_bg_color['tablet'] ),
 		),
 		// Submenu hover color.
@@ -301,7 +301,7 @@ function astra_ext_mobile_below_header_dynamic_css( $dynamic_css, $dynamic_css_f
 			'color' => esc_attr( $below_header_submenu_text_color['mobile'] ),
 		),
 		// Submenu bg color.
-		'.ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .sub-menu a, .ast-header-break-point .ast-below-header-menu .children a' => array(
+		'.ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .sub-menu, .ast-header-break-point .ast-below-header-menu .children' => array(
 			'background-color' => esc_attr( $below_header_submenu_bg_color['mobile'] ),
 		),
 		// Submenu hover color.

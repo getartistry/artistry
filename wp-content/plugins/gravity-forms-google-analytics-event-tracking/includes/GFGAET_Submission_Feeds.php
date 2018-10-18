@@ -336,8 +336,8 @@ class GFGAET_Submission_Feeds extends GFFeedAddOn {
 		 */
 		$event_value = apply_filters( 'gform_event_value', $ga_event_data['gaEventValue'], $form, $entry );
 		if ( $event_value ) {
-			// Event value must be a valid float!
-			$event_value = GFCommon::to_number( $event_value );
+			// Event value must be a valid integer!
+			$event_value = absint( round( GFCommon::to_number( $event_value ) ) );
 			$event->set_event_value( $event_value );
 		}
 
@@ -353,29 +353,58 @@ class GFGAET_Submission_Feeds extends GFFeedAddOn {
 				?>
 				var feed_submission = sessionStorage.getItem('feed_<?php echo absint( $feed_id ); ?>_entry_<?php echo absint( $entry[ 'id' ] ); ?>');
 				if ( null == feed_submission ) {
-					if ( typeof window.parent.ga == 'undefined' ) {
-						if ( typeof window.parent.__gaTracker != 'undefined' ) {
-							window.parent.ga = window.parent.__gaTracker;
+					
+					// Check for gtab implementation
+					if( typeof window.parent.gtag != 'undefined' ) {
+						window.parent.gtag( 'event', '<?php echo esc_js( $event_action ); ?>', {
+							'event_category': '<?php echo esc_js( $event_category ); ?>',
+							'event_label': '<?php echo esc_js( $event_label ); ?>'
+							<?php if ( 0 !== $event_value && !empty( $event_value ) ) { echo sprintf( ",'value': '%s'", esc_js( $event_value ) ); } ?>
+							}
+						);
+						if ( typeof( console ) == 'object' ) {
+							console.log('gtag tried');
 						}
-					}
-					if ( typeof window.parent.ga != 'undefined' ) {
-
-						// Try to get original UA code from third-party plugins or tag manager
-						var default_ua_code = null;
-						window.parent.ga(function(tracker) {
-							default_ua_code = tracker.get('trackingId');
-						});
-
-						// If UA code matches, use that tracker
-						if ( default_ua_code == '<?php echo esc_js( $ua_code ); ?>' ) {
-							window.parent.ga( 'send', 'event', '<?php echo esc_js( $event_category ); ?>', '<?php echo esc_js( $event_action ); ?>', '<?php echo esc_js( $event_label ); ?>' );
-						} else {
-							// UA code doesn't match, use another tracker
-							window.parent.ga( 'create', '<?php echo esc_js( $ua_code ); ?>', 'auto', 'GTGAET_Tracker<?php echo absint( $count ); ?>' );
-							window.parent.ga( 'GTGAET_Tracker<?php echo absint( $count ); ?>.send', 'event', '<?php echo esc_js( $event_category );?>', '<?php echo esc_js( $event_action ); ?>', '<?php echo esc_js( $event_label ); ?>' );
-						}
-
 						sessionStorage.setItem('feed_<?php echo absint( $feed_id ); ?>_entry_<?php echo absint( $entry[ 'id' ] ); ?>', true );
+					} else {
+						// Check for GA from Monster Insights Plugin
+						if ( typeof window.parent.ga == 'undefined' ) {
+							console.log('ga not found');
+							if ( typeof window.parent.__gaTracker != 'undefined' ) {
+								if( typeof( console ) == 'object' ) {
+									console.log('monster insights found');
+								}
+								window.parent.ga = window.parent.__gaTracker;
+							}
+						}
+						if ( typeof( console ) == 'object' ) {
+							console.log('try window.parent.ga');
+						}
+						if ( typeof window.parent.ga != 'undefined' ) {
+							
+							var ga_tracker = '';
+							var ga_send = 'send';
+							// Try to get original UA code from third-party plugins or tag manager
+							
+							ga_tracker = '<?php echo esc_js( GFGAET::get_ua_tracker() ); ?>';
+							if ( typeof( console ) == 'object' ) {
+								console.log( 'tracker name' );
+								console.log( ga_tracker );
+							}
+							if( ga_tracker.length > 0 ) {
+								ga_send = ga_tracker + '.' + ga_send;
+							}
+							if ( typeof( console ) == 'object' ) {
+								console.log( 'send command' );
+								console.log( ga_send );
+								console.log( <?php echo $event_value; ?> );
+							}
+							
+							// Use that tracker
+							window.parent.ga( ga_send, 'event', '<?php echo esc_js( $event_category ); ?>', '<?php echo esc_js( $event_action ); ?>', '<?php echo esc_js( $event_label ); ?>'<?php if ( 0 !== $event_value && !empty( $event_value ) ) { echo ',' . "'" . esc_js( $event_value ) . "'"; } ?>);
+	
+							sessionStorage.setItem('feed_<?php echo absint( $feed_id ); ?>_entry_<?php echo absint( $entry[ 'id' ] ); ?>', true );
+						}	
 					}
 				}
 
@@ -386,7 +415,7 @@ class GFGAET_Submission_Feeds extends GFFeedAddOn {
 			</script>
 			<?php
 			return;
-		} else if ( GFGAET::is_gtm_only() ) {
+		} elseif ( GFGAET::is_gtm_only() ) {
 			?>
 			<script>
 			var form_submission = sessionStorage.getItem('feed_<?php echo absint( $feed_id ); ?>_entry_<?php echo absint( $entry[ 'id' ] ); ?>');
@@ -396,6 +425,7 @@ class GFGAET_Submission_Feeds extends GFFeedAddOn {
 						'GFTrackCategory':'<?php echo esc_js( $event_category ); ?>',
 						'GFTrackAction':'<?php echo esc_js( $event_action ); ?>',
 						'GFTrackLabel':'<?php echo esc_js( $event_label ); ?>',
+						'GFTrackValue': <?php echo absint( $event_value ); ?>,
 						'GFEntryData':<?php echo json_encode( $entry ); ?>
 						});
 					sessionStorage.setItem("feed_<?php echo absint( $feed_id ); ?>_entry_<?php echo absint( $entry[ 'id' ] ); ?>", "true");
@@ -404,13 +434,15 @@ class GFGAET_Submission_Feeds extends GFFeedAddOn {
 			</script>
 			<?php
 			return;
+		} else {
+			//Push out the event to each UA code
+			foreach( $google_analytics_codes as $ua_code ) {
+				// Submit the event
+				$event->send( $ua_code );
+			}
 		}
 
-		//Push out the event to each UA code
-		foreach( $google_analytics_codes as $ua_code ) {
-			// Submit the event
-			$event->send( $ua_code );
-		}
+		
 	}
 
 	/**
@@ -485,8 +517,8 @@ class GFGAET_Submission_Feeds extends GFFeedAddOn {
 		 */
 		$event_value = apply_filters( 'gform_event_value', $ga_event_data['gaEventValue'], $form, $entry );
 		if ( $event_value ) {
-			// Event value must be a valid float!
-			$event_value = GFCommon::to_number( $event_value );
+			// Event value must be a valid integer!
+			$event_value = absint( round( GFCommon::to_number( $event_value ) ) );
 			$event->set_matomo_event_value( $event_value );
 		}
 
@@ -500,7 +532,7 @@ class GFGAET_Submission_Feeds extends GFFeedAddOn {
 			if ( null == matomo_feed_submission ) {
 				if ( typeof window.parent._paq != 'undefined' ) {
 
-					window.parent._paq.push(['trackEvent', '<?php echo esc_js( $event_category ); ?>', '<?php echo esc_js( $event_action ); ?>', '<?php echo esc_js( $event_label ); ?>']);
+					window.parent._paq.push(['trackEvent', '<?php echo esc_js( $event_category ); ?>', '<?php echo esc_js( $event_action ); ?>', '<?php echo esc_js( $event_label ); ?>'<?php if ( 0 !== $event_value && !empty( $event_value ) ) { echo ',' . "'" . esc_js( $event_value ) . "'"; } ?>]);
 
 					sessionStorage.setItem('matomo_feed_<?php echo absint( $feed_id ); ?>_entry_<?php echo absint( $entry[ 'id' ] ); ?>', true );
 				}
@@ -672,7 +704,7 @@ class GFGAET_Submission_Feeds extends GFFeedAddOn {
 						"type"    => "text",
 						"name"    => "gaEventValue",
 						"class"   => "medium merge-tag-support mt-position-right",
-						"tooltip" => sprintf( '<h6>%s</h6>%s', __( 'Event Value', 'gravity-forms-google-analytics-event-tracking' ), __( 'Enter your Google Analytics event value. Leave blank to omit pushing a value to Google Analytics. Or to use the purchase value of a payment based form. <strong>Note:</strong> This must be a number (int/float).', 'gravity-forms-google-analytics-event-tracking' ) ),
+						"tooltip" => sprintf( '<h6>%s</h6>%s', __( 'Event Value', 'gravity-forms-google-analytics-event-tracking' ), __( 'Enter your Google Analytics event value. Leave blank to omit pushing a value to Google Analytics. Or to use the purchase value of a payment based form. <strong>Note:</strong> This must be a number (int). Floating numbers (e.g., 20.95) will be rounded up (e.g., 30)', 'gravity-forms-google-analytics-event-tracking' ) ),
 					),
 				)
 			),

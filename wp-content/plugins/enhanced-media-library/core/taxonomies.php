@@ -267,9 +267,11 @@ if ( ! function_exists( 'wpuxss_eml_ajax_query_attachments_args' ) ) {
 
                     if( is_numeric( $query[$taxonomy_name] ) || is_array( $query[$taxonomy_name] ) ) {
 
+                        $field = ctype_digit( implode( '', (array) $query[$taxonomy_name] ) ) ? 'term_id' : 'slug';
+
                         $tax_query[] = array(
                             'taxonomy' => $taxonomy_name,
-                            'field' => 'term_id',
+                            'field' => $field,
                             'terms' => (array) $query[$taxonomy_name],
                             'include_children' => (bool) $wpuxss_eml_lib_options['include_children']
                         );
@@ -412,7 +414,8 @@ if ( ! function_exists( 'wpuxss_eml_disable_months_dropdown' ) ) {
 
         $wpuxss_eml_lib_options = get_option( 'wpuxss_eml_lib_options' );
 
-        if ( ! in_array( 'dates', $wpuxss_eml_lib_options['filters_to_show'] ) ) {
+        if( isset( $wpuxss_eml_lib_options['filters_to_show'] ) &&
+            ! in_array( 'dates', $wpuxss_eml_lib_options['filters_to_show'] ) ) {
             add_filter( 'disable_months_dropdown', '__return_true' );
         }
     }
@@ -471,14 +474,14 @@ if ( ! function_exists( 'wpuxss_eml_dropdown_cats' ) ) {
         if ( isset( $r['show_option_in'] ) && $r['show_option_in'] ) {
 
             $show_option_in = $r['show_option_in'];
-            $selected = ( 'in' === strval($r['selected']) ) ? " selected='selected'" : '';
+            $selected = ( isset($r['selected']) && 'in' === strval($r['selected']) ) ? " selected='selected'" : '';
             $new_output .= "\t<option value='in'{$selected}>" . esc_html($show_option_in) . "</option>\n";
         }
 
         if ( isset( $r['show_option_not_in'] ) && $r['show_option_not_in'] ) {
 
             $show_option_not_in = $r['show_option_not_in'];
-            $selected = ( 'not_in' === strval($r['selected']) ) ? " selected='selected'" : '';
+            $selected = ( isset($r['selected']) && 'not_in' === strval($r['selected']) ) ? " selected='selected'" : '';
             $new_output .= "\t<option value='not_in'{$selected}>" . esc_html($show_option_not_in) . "</option>\n";
         }
 
@@ -715,18 +718,31 @@ if ( ! function_exists( 'wpuxss_eml_attachment_fields_to_edit' ) ) {
                     if ( $content )
                         $html = '<ul class="term-list">' . $content . '</ul>';
                     else
-                        $html = '<ul class="term-list"><li>No ' . esc_html($args['label']) . ' found.</li></ul>';
+                        $html = '<ul class="term-list"><li>No ' . esc_html($args['label']) . ' found. <a href="' . admin_url('/edit-tags.php?taxonomy='.$field.'&post_type=attachment') . '">' . __('Add some', 'enhanced-media-library') . '.</a></li></ul>';
 
                 ob_end_clean();
 
                 unset( $form_fields[$field]['value'] );
 
-                $form_fields[$field]['input'] = 'html';
-                $form_fields[$field]['html'] = $html;
+                $tax_field = $form_fields[$field];
+                unset( $form_fields[$field] );
+
+                $tax_field['input'] = 'html';
+                $tax_field['html'] = $html;
+
+                // re-order tax_field at the end
+                $form_fields = $form_fields + array( $field => $tax_field );
             }
             else {
                 $values = wp_get_object_terms( $post->ID, $field, array( 'fields' => 'names' ) );
-                $form_fields[$field]['value'] = join(', ', $values);
+
+                $tax_field = $form_fields[$field];
+                unset( $form_fields[$field] );
+
+                $tax_field['value'] = join(', ', $values);
+
+                // re-order tax_field at the end
+                $form_fields = $form_fields + array( $field => $tax_field );
             } // if
         } // foreach
 
@@ -920,7 +936,9 @@ if ( ! class_exists( 'Walker_Media_Taxonomy_Uploader_Filter' ) ) {
 
             $el = array(
                 'term_id' => intval( $category->term_id ),
-                'term_name' => $indent . esc_html( apply_filters( 'the_category', $category->name ) ) . $count
+                'slug' => $category->slug,
+                'term_name' => esc_html( apply_filters( 'the_category', $category->name ) ),
+                'term_row' => $indent . esc_html( apply_filters( 'the_category', $category->name ) ) . $count
             );
 
             $output .= json_encode( $el );
@@ -1333,13 +1351,13 @@ if ( ! function_exists( '_eml_update_post_term_count' ) ) {
 /**
  *  wpuxss_eml_the_posts
  *
- *  Natural sort order for titles (list view)
+ *  Natural sort order for titles (List Mode)
  *
  *  @since    2.5
  *  @created  12/01/18
  */
 
-add_filter( 'the_posts', 'wpuxss_eml_the_posts', 10, 2);
+add_filter( 'the_posts', 'wpuxss_eml_the_posts', 10, 2 );
 
 if ( ! function_exists( 'wpuxss_eml_the_posts' ) ) {
 
@@ -1357,19 +1375,32 @@ if ( ! function_exists( 'wpuxss_eml_the_posts' ) ) {
         }
 
 
-        $sort_posts = array();
-
-        foreach( $posts as $post ) {
-            $sort_posts[$post->post_title] = $post;
-        }
-
-        uksort( $sort_posts, 'strnatcmp' );
+        usort( $posts, 'wpuxss_eml_cmp' );
 
         if ( "desc" === strtolower( $query->query_vars['order'] ) ) {
-            $sort_posts = array_reverse( $sort_posts );
+            $posts = array_reverse( $posts );
         }
 
-        return array_values( $sort_posts );
+        return $posts;
+    }
+}
+
+
+
+/**
+ *  wpuxss_eml_cmp
+ *
+ *  Apply natural compare to post titles
+ *
+ *  @since    2.7
+ *  @created  15/06/18
+ */
+
+if ( ! function_exists( 'wpuxss_eml_cmp' ) ) {
+
+    function wpuxss_eml_cmp( $a, $b ) {
+
+        return strnatcmp( $a->post_title, $b->post_title );
     }
 }
 
@@ -1467,27 +1498,9 @@ if ( ! function_exists( 'wpuxss_eml_print_media_templates' ) ) {
 
     function wpuxss_eml_print_media_templates() {
 
-        global $wp_version;
+        $remove_button = '<button type="button" class="button-link attachment-close media-modal-icon"><span class="screen-reader-text">' . __( 'Remove' ) . '</span></button>';
 
-
-        $wpuxss_eml_lib_options = get_option('wpuxss_eml_lib_options');
-        $caption_type = isset( $wpuxss_eml_lib_options['grid_caption_type'] ) ? $wpuxss_eml_lib_options['grid_caption_type'] : 'title';
-
-
-        if ( version_compare( $wp_version, '4.3', '<' ) ) {
-
-            $remove_button = '<a class="close media-modal-icon" href="#" title="' . __('Remove') . '"></a>';
-
-            $deselect_button = '<a class="check" href="#" title="' . __('Deselect') . '" tabindex="-1"><div class="media-modal-icon"></div></a>';
-
-        }
-        else {
-
-            $remove_button = '<button type="button" class="button-link attachment-close media-modal-icon"><span class="screen-reader-text">' . __( 'Remove' ) . '</span></button>';
-
-            $deselect_button = '<button type="button" class="button-link check" tabindex="-1"><span class="media-modal-icon"></span><span class="screen-reader-text">' . __( 'Deselect' ) . '</span></button>';
-
-        } ?>
+        $deselect_button = '<button type="button" class="button-link check" tabindex="-1"><span class="media-modal-icon"></span><span class="screen-reader-text">' . __( 'Deselect' ) . '</span></button>'; ?>
 
 
         <script type="text/html" id="tmpl-attachment-grid-view">
@@ -1557,6 +1570,115 @@ if ( ! function_exists( 'wpuxss_eml_print_media_templates' ) ) {
             } #>
         </script>
 
+        <script type="text/html" id="tmpl-eml-media-selection">
+
+            <div class="selection-info">
+                <span class="count"></span>
+            </div>
+            <div class="selection-view"></div>
+
+        </script>
+
+        <script type="text/html" id="tmpl-eml-grid-attachment-details">
+
+            <h2>
+                <?php _e( 'Attachment Details' ); ?>
+                <span class="settings-save-status">
+                    <span class="spinner"></span>
+                    <span class="saved"><?php esc_html_e('Saved.'); ?></span>
+                </span>
+            </h2>
+            <div class="attachment-info">
+                <div class="thumbnail thumbnail-{{ data.type }}">
+                    <# if ( data.uploading ) { #>
+                        <div class="media-progress-bar"><div></div></div>
+                    <# } else if ( 'image' === data.type && data.sizes ) { #>
+                        <img src="{{ data.size.url }}" draggable="false" alt="" />
+                    <# } else { #>
+                        <img src="{{ data.icon }}" class="icon" draggable="false" alt="" />
+                    <# } #>
+                </div>
+                <div class="details">
+                    <div class="filename">{{ data.filename }}</div>
+                    <div class="uploaded">{{ data.dateFormatted }}</div>
+
+                    <div class="file-size">{{ data.filesizeHumanReadable }}</div>
+                    <# if ( 'image' === data.type && ! data.uploading ) { #>
+                        <# if ( data.width && data.height ) { #>
+                            <div class="dimensions">{{ data.width }} &times; {{ data.height }}</div>
+                        <# } #>
+
+                        <# if ( data.can.save && data.sizes ) { #>
+                            <a class="edit-attachment" href="{{ data.editLink }}&amp;image-editor" target="_blank"><?php _e( 'Edit Image' ); ?></a>
+                        <# } #>
+                    <# } #>
+
+                    <# if ( data.fileLength ) { #>
+                        <div class="file-length"><?php _e( 'Length:' ); ?> {{ data.fileLength }}</div>
+                    <# } #>
+
+                    <# if ( ! data.uploading && data.can.remove ) { #>
+                        <?php if ( MEDIA_TRASH ): ?>
+                        <# if ( 'trash' === data.status ) { #>
+                            <button type="button" class="button-link untrash-attachment"><?php _e( 'Untrash' ); ?></button>
+                        <# } else { #>
+                            <button type="button" class="button-link trash-attachment"><?php _ex( 'Trash', 'verb' ); ?></button>
+                        <# } #>
+                        <?php else: ?>
+                            <button type="button" class="button-link delete-attachment"><?php _e( 'Delete Permanently' ); ?></button>
+                        <?php endif; ?>
+                    <# } #>
+
+                    <a class="eml-toggle-collapse" href="javascript:;"><?php _e( 'More Details', 'enhanced-media-library' ); ?> &darr;</a>
+
+                    <div class="compat-meta">
+                        <# if ( data.compat && data.compat.meta ) { #>
+                            {{{ data.compat.meta }}}
+                        <# } #>
+                    </div>
+                </div>
+            </div>
+
+            <div class="eml-collapse" style="display:none;">
+                <label class="setting" data-setting="url">
+                    <span class="name"><?php _e('URL'); ?></span>
+                    <input type="text" value="{{ data.url }}" readonly />
+                </label>
+                <# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
+                <?php if ( post_type_supports( 'attachment', 'title' ) ) : ?>
+                <label class="setting" data-setting="title">
+                    <span class="name"><?php _e('Title'); ?></span>
+                    <input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
+                </label>
+                <?php endif; ?>
+                <# if ( 'audio' === data.type ) { #>
+                <?php foreach ( array(
+                    'artist' => __( 'Artist' ),
+                    'album' => __( 'Album' ),
+                ) as $key => $label ) : ?>
+                <label class="setting" data-setting="<?php echo esc_attr( $key ) ?>">
+                    <span class="name"><?php echo $label ?></span>
+                    <input type="text" value="{{ data.<?php echo $key ?> || data.meta.<?php echo $key ?> || '' }}" />
+                </label>
+                <?php endforeach; ?>
+                <# } #>
+                <label class="setting" data-setting="caption">
+                    <span class="name"><?php _e('Caption'); ?></span>
+                    <textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
+                </label>
+                <# if ( 'image' === data.type ) { #>
+                    <label class="setting" data-setting="alt">
+                        <span class="name"><?php _e('Alt Text'); ?></span>
+                        <input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
+                    </label>
+                <# } #>
+                <label class="setting" data-setting="description">
+                    <span class="name"><?php _e('Description'); ?></span>
+                    <textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
+                </label>
+            </div>
+
+        </script>
     <?php }
 }
 

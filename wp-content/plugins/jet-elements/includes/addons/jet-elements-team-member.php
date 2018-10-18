@@ -25,11 +25,11 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 	}
 
 	public function get_title() {
-		return esc_html__( 'Team Memeber', 'jet-elements' );
+		return esc_html__( 'Team Member', 'jet-elements' );
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-22';
+		return 'jetelements-icon-25';
 	}
 
 	public function get_categories() {
@@ -52,6 +52,7 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 				'socials'          => '.jet-team-member__socials',
 				'socials_item'     => '.jet-team-member__socials-item',
 				'socials_icon'     => '.jet-team-member__socials-icon',
+				'socials_label'    => '.jet-team-member__socials-label',
 				'button_container' => '.jet-team-member__button-container',
 				'button'           => '.jet-team-member__button',
 			)
@@ -90,6 +91,26 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 				'label'   => esc_html__( 'Last Name', 'jet-elements' ),
 				'type'    => Controls_Manager::TEXT,
 				'default' => esc_html__( 'Borthwick', 'jet-elements' ),
+			)
+		);
+
+		$this->add_control(
+			'member_name_html_tag',
+			array(
+				'label'   => esc_html__( 'Name HTML Tag', 'jet-elements' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => array(
+					'h1'   => esc_html__( 'H1', 'jet-elements' ),
+					'h2'   => esc_html__( 'H2', 'jet-elements' ),
+					'h3'   => esc_html__( 'H3', 'jet-elements' ),
+					'h4'   => esc_html__( 'H4', 'jet-elements' ),
+					'h5'   => esc_html__( 'H5', 'jet-elements' ),
+					'h6'   => esc_html__( 'H6', 'jet-elements' ),
+					'div'  => esc_html__( 'div', 'jet-elements' ),
+					'span' => esc_html__( 'span', 'jet-elements' ),
+					'p'    => esc_html__( 'p', 'jet-elements' ),
+				),
+				'default' => 'h3',
 			)
 		);
 
@@ -281,6 +302,7 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 					'{{WRAPPER}} ' . $css_scheme['cover'] . ':after' => 'border-color: {{VALUE}} transparent transparent transparent;',
 				),
 				'condition' => array(
+					'cover_like_hint' => 'yes',
 					'use_hint_corner' => 'yes',
 				),
 			)
@@ -590,6 +612,7 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['name'] => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+				'separator' => 'before',
 			)
 		);
 
@@ -927,6 +950,33 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 			)
 		);
 
+		$this->add_control(
+			'social_items_spacing',
+			array(
+				'label' => esc_html__( 'Items Spacing', 'jet-elements' ),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 50,
+					),
+				),
+				'selectors' => array(
+					'body:not(.rtl) {{WRAPPER}} ' . $css_scheme['socials_item'] . ':not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'body.rtl {{WRAPPER}} ' . $css_scheme['socials_item'] . ':not(:last-child)' => 'margin-left: {{SIZE}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'social_icon_heading',
+			array(
+				'label'     => esc_html__( 'Icon', 'jet-elements' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			)
+		);
+
 		$this->start_controls_tabs( 'tabs_social_icon_style' );
 
 		$this->start_controls_tab(
@@ -1158,6 +1208,45 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
+
+		$this->add_control(
+			'social_label_heading',
+			array(
+				'label'     => esc_html__( 'Label', 'jet-elements' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'social_label_typography',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['socials_label'],
+			)
+		);
+
+		$this->add_control(
+			'social_label_color',
+			array(
+				'label' => esc_html__( 'Color', 'jet-elements' ),
+				'type'  => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} ' . $css_scheme['socials_label']  => 'color: {{VALUE}};',
+				),
+			)
+		);
+
+		$this->add_control(
+			'social_label_hover_color',
+			array(
+				'label' => esc_html__( 'Hover Color', 'jet-elements' ),
+				'type'  => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} ' . $css_scheme['socials_item'] . ' a:hover ' . $css_scheme['socials_label']  => 'color: {{VALUE}};',
+				),
+			)
+		);
 
 		$this->end_controls_section();
 
@@ -1455,6 +1544,19 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 		);
 
 		$this->add_responsive_control(
+			'overlay_margin',
+			array(
+				'label'      => __( 'Margin', 'jet-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['cover'] => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; width: calc( 100% - {{LEFT}}{{UNIT}} - {{RIGHT}}{{UNIT}} );',
+					'{{WRAPPER}} ' . $css_scheme['instance'] . ':not(.jet-team-member--cover-hint) ' . $css_scheme['cover'] => 'height: calc( 100% - {{TOP}}{{UNIT}} - {{BOTTOM}}{{UNIT}} );',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
 			'overlay_border_radius',
 			array(
 				'label'      => __( 'Border Radius', 'jet-elements' ),
@@ -1624,9 +1726,11 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 			$last_name_html = sprintf( '<span class="jet-team-member__name-last"> %s</span>', $last_name );
 		}
 
-		$format = apply_filters( 'jet-elements/team-member/name-format', '<h3 class="jet-team-member__name">%1$s%2$s</h3>' );
+		$name_tag = $this->get_settings( 'member_name_html_tag' );
 
-		return sprintf( $format, $first_name_html, $last_name_html );
+		$format = apply_filters( 'jet-elements/team-member/name-format', '<%3$s class="jet-team-member__name">%1$s%2$s</%3$s>' );
+
+		return sprintf( $format, $first_name_html, $last_name_html, $name_tag );
 
 	}
 
@@ -1722,17 +1826,19 @@ class Jet_Elements_Team_Member extends Jet_Elements_Base {
 
 		foreach ( $social_icon_list as $key => $icon_data ) {
 			$label = '';
+			$icon  = '';
 
 			if ( ! empty( $icon_data[ 'social_link' ] ) ) {
-				$icon = sprintf( '<div class="jet-team-member__socials-icon"><div class="inner"><i class="%s"></i></div></div>', $icon_data[ 'social_icon' ] );
+
+				if ( ! empty( $icon_data[ 'social_icon' ] ) ) {
+					$icon = sprintf( '<div class="jet-team-member__socials-icon"><div class="inner"><i class="%s"></i></div></div>', $icon_data[ 'social_icon' ] );
+				}
 
 				if ( filter_var( $icon_data['label_visible'], FILTER_VALIDATE_BOOLEAN ) ) {
 					$label = sprintf( '<span class="jet-team-member__socials-label">%s</span>', $icon_data[ 'social_label' ] );
 				}
 
-				if ( $icon ) {
-					$icon_list .= sprintf( '<div class="jet-team-member__socials-item"><a href="%1$s">%2$s%3$s</a></div>', $icon_data[ 'social_link' ], $icon, $label );
-				}
+				$icon_list .= sprintf( '<div class="jet-team-member__socials-item"><a href="%1$s">%2$s%3$s</a></div>', $icon_data[ 'social_link' ], $icon, $label );
 			}
 		}
 

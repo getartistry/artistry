@@ -5,6 +5,10 @@
 /**
  * Flyout Menu styling
  */
+.ast-flyout-above-menu-enable.ast-header-break-point {
+  /* Fixed Header markup override the main header markup which don't allow to click on menu while the header is not sticky */
+}
+
 .ast-flyout-above-menu-enable.ast-header-break-point.ast-flyout-above-left-side .ast-above-header-navigation-wrap {
   left: 0;
 }
@@ -104,6 +108,14 @@
 
 .ast-flyout-above-menu-enable.ast-header-break-point .ast-button-wrap .menu-above-header-toggle.toggled .menu-toggle-icon:before {
   content: "\e5d2";
+}
+
+.ast-flyout-above-menu-enable.ast-header-break-point #ast-fixed-header.ast-sticky-active .ast-above-header-navigation-wrap {
+  display: block !important;
+}
+
+.ast-flyout-above-menu-enable.ast-header-break-point #ast-fixed-header .ast-above-header-navigation-wrap {
+  display: none !important;
 }
 
 .ast-flyout-above-menu-overlay .ast-flyout-above-menu-enable.ast-header-break-point .site-header {

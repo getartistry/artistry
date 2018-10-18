@@ -12,7 +12,7 @@ class Toolset_Text extends Toolset_Base {
 	}
 
 	public function get_title() {
-		return __( 'Toolset Field', 'elementor-pro' );
+		return __( 'Toolset', 'elementor-pro' ) . ' ' . __( 'Field', 'elementor-pro' );
 	}
 
 	public function render() {

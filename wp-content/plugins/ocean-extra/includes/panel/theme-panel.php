@@ -31,6 +31,9 @@ class Ocean_Extra_Theme_Panel {
 		// Add panel submenu
 		add_action( 'admin_menu', 				array( 'Ocean_Extra_Theme_Panel', 'add_menu_subpage' ) );
 
+		// Dismiss theme panel rating box
+		add_action( 'admin_init', 				array( 'Ocean_Extra_Theme_Panel', 'dismiss_rating_box' ) );
+
 		// Add custom CSS for the theme panel
 		add_action( 'admin_enqueue_scripts', 	array( 'Ocean_Extra_Theme_Panel', 'css' ) );
 
@@ -352,17 +355,26 @@ class Ocean_Extra_Theme_Panel {
 		$class = '';
 		if ( true != apply_filters( 'oceanwp_licence_tab_enable', false ) ) {
 			$class = ' has-bundle';
-		} ?>
+		}
 
-		<div class="oceanwp-bloc oceanwp-review">
-			<h3><?php esc_html_e( 'Are you a helpful person?', 'ocean-extra' ); ?></h3>
-			<div class="content-wrap">
-				<p class="content"><?php esc_html_e( 'I&rsquo;m grateful that you&rsquo;ve decided to join the OceanWP family. If I could take 2 min of your time, I&rsquo;d really appreciate if you could leave a review. By spreading the love, we can create even greater free stuff in the future!', 'ocean-extra' ); ?></p>
-				<a href="https://wordpress.org/support/theme/oceanwp/reviews/#new-post" class="button owp-button" target="_blank"><?php esc_html_e( 'Leave my review', 'ocean-extra' ); ?></a>
-				<p class="bottom-text"><?php esc_html_e( 'Thank you very much!', 'ocean-extra' ); ?></p>
+		// Dismiss
+		$dismiss = wp_nonce_url( add_query_arg( 'oe_panel_rating_box', 'oe_dismiss_panel_btn' ), 'oe_dismiss_panel_btn' );
+
+		// if dismiss rating box
+		if ( '1' != get_option( 'oe_panel_dismiss_rating_box' ) ) { ?>
+
+			<div class="oceanwp-bloc oceanwp-review">
+				<h3><?php esc_html_e( 'Are you a helpful person?', 'ocean-extra' ); ?><a href="<?php echo $dismiss; ?>" class="dismiss"><span class="dashicons dashicons-dismiss"></span></a></h3>
+				<div class="content-wrap">
+					<p class="content"><?php esc_html_e( 'we&rsquo;re grateful that you&rsquo;ve decided to join the OceanWP family. If you could take 2 min of your time, we&rsquo;d really appreciate if you could leave a review. By spreading the love, we can create even greater free stuff in the future!', 'ocean-extra' ); ?></p>
+					<a href="https://wordpress.org/support/theme/oceanwp/reviews/#new-post" class="button owp-button" target="_blank"><?php esc_html_e( 'Leave my review', 'ocean-extra' ); ?></a>
+					<p class="bottom-text"><?php esc_html_e( 'Thank you very much!', 'ocean-extra' ); ?></p>
+				</div>
+				<i class="dashicons dashicons-wordpress"></i>
 			</div>
-			<i class="dashicons dashicons-wordpress"></i>
-		</div>
+
+        <?php
+    	} ?>
 
 		<?php
 		// if no premium extensions activated
@@ -406,6 +418,25 @@ class Ocean_Extra_Theme_Panel {
 
 	<?php
 	}
+
+    /**
+     * Dismiss rating box
+     *
+     * @since   1.4.27
+     */
+    public static function dismiss_rating_box() {
+        if ( ! isset( $_GET['oe_panel_rating_box'] ) ) {
+            return;
+        }
+
+        if ( 'oe_dismiss_panel_btn' === $_GET['oe_panel_rating_box'] ) {
+            check_admin_referer( 'oe_dismiss_panel_btn' );
+            update_option( 'oe_panel_dismiss_rating_box', '1' );
+        }
+
+        wp_redirect( remove_query_arg( 'oe_panel_rating_box' ) );
+        exit;
+    }
 
 	/**
 	 * Settings page output

@@ -1,3 +1,16 @@
+.customize-control-ast-responsive-color .wp-picker-container {
+  float: left;
+}
+
+.customize-control-ast-responsive-color .ast-responsive-color.wp-color-picker {
+  width: 96px !important;
+  line-height: 17px;
+}
+
+.customize-control-ast-responsive-color .wp-picker-clear {
+  margin-left: 2%;
+}
+
 .customize-control-ast-responsive-color .customize-control-content .wp-picker-container {
   display: none;
 }

@@ -30,7 +30,7 @@ class Jet_Elements_Countdown_Timer extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-07';
+		return 'jetelements-icon-9';
 	}
 
 	public function get_categories() {

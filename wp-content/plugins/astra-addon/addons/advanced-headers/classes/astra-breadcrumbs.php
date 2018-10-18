@@ -16,7 +16,8 @@ if ( ! function_exists( 'astra_breadcrumb' ) ) {
 
 		/* Set up the arguments for the breadcrumb. */
 		$args = apply_filters(
-			'astra_breadcrumb_defaults', array(
+			'astra_breadcrumb_defaults',
+			array(
 				'prefix'         => null,
 				'suffix'         => null,
 				'title'          => null,

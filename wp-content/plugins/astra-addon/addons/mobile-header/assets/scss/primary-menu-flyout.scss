@@ -113,6 +113,14 @@
 				width: 70%;
 			}
 		}
+
+		/* Fixed Header markup override the main header markup which don't allow to click on menu while the header is not sticky */
+		#ast-fixed-header.ast-sticky-active .main-header-bar-navigation {
+		    display: block !important;
+		}
+		#ast-fixed-header .main-header-bar-navigation {
+		    display: none !important;
+		}
 	}
 
 	/* Toggle Button */

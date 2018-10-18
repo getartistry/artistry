@@ -290,7 +290,7 @@ function youtube_fetch_links($keyword, $camp) {
 			
 		//vid thumbnail
 		$link_img = $itm->snippet->thumbnails->high->url;
-			
+	
 		//get largest size
 		//$link_img = str_replace('hqdefault', 'hqdefault', $link_img);
 			
@@ -397,11 +397,16 @@ function youtube_get_post($camp) {
 			update_post_meta($camp->camp_id, 'last_keyword', trim($keyword));
 
 			// getting links from the db for that keyword
-			$query = "select * from {$this->wp_prefix}automatic_youtube_links where link_keyword='{$camp->camp_id}_$keyword' and link_status ='0'";
+			$query = "select * from {$this->wp_prefix}automatic_youtube_links where link_keyword='{$camp->camp_id}_$keyword' ";
 			$res = $this->db->get_results ( $query );
 
 			// when no links lets get new links
 			if (count ( $res ) == 0) {
+				
+				//clean any old cache for this keyword
+				$query_delete = "delete from {$this->wp_prefix}automatic_youtube_links where link_keyword='{$camp->camp_id}_$keyword' ";
+				$this->db->query ( $query_delete );
+				
 				$this->youtube_fetch_links ( $keyword, $camp );
 				// getting links from the db for that keyword
 				$res = $this->db->get_results ( $query );
@@ -415,6 +420,8 @@ function youtube_get_post($camp) {
 				$t_link_url=$t_row->link_url;
 				$t_link_url_http = str_replace('https', 'http', $t_link_url);
 
+			  
+				
 				if( $this->is_duplicate($t_link_url) || $this->is_duplicate($t_link_url_http)  ){
 						
 					//duplicated item let's delete
@@ -439,8 +446,8 @@ function youtube_get_post($camp) {
 				$ret = $res [$i];
 
 					
-				  echo '<br>Link:'.$ret->link_url;
-					
+				 echo '<br>Link:'.$ret->link_url;
+
 				//extract video id
 				$temp_ex=explode('v=', $ret->link_url);
 				$vid_id=$temp_ex[1];
@@ -730,18 +737,15 @@ function youtube_get_post($camp) {
 					}
 
 				}
-
-
-				
-
+ 
 				// update the link status to 1
-				$query = "update {$this->wp_prefix}automatic_youtube_links set link_status='1' where link_id=$ret->link_id";
+				$query = "delete from {$this->wp_prefix}automatic_youtube_links where link_id={$ret->link_id}";
 				$this->db->query ( $query );
 					
 				// if cache not active let's delete the cached videos and reset indexes
 				if (! in_array ( 'OPT_YT_CACHE', $camp_opt )) {
 					  echo '<br>Cache disabled claring cache ...';
-					$query = "delete from {$this->wp_prefix}automatic_youtube_links where link_keyword='{$camp->camp_id}_$keyword' and link_status ='0'";
+					$query = "delete from {$this->wp_prefix}automatic_youtube_links where link_keyword='{$camp->camp_id}_$keyword' ";
 					//$query = "update {$this->wp_prefix}automatic_youtube_links set link_status ='1' where link_keyword='{$camp->camp_id}_$keyword' and link_status ='0'";
 
 					$this->db->query ( $query );
@@ -760,7 +764,7 @@ function youtube_get_post($camp) {
 					$temp['vid_desc'] = $this->hyperlink_this($temp['vid_desc']);
 					
 				}
-				
+			 
 				return $temp;
 			} else {
 					

@@ -122,16 +122,17 @@ if ( ! class_exists( 'Astra_Body_Typo_Configs' ) ) {
 				 * Option: Body Line Height
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[body-line-height]',
-					'type'        => 'control',
-					'control'     => 'ast-slider',
-					'section'     => 'section-body-typo',
-					'transport'   => 'postMessage',
-					'default'     => '',
-					'priority'    => 25,
-					'title'       => __( 'Line Height', 'astra' ),
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[body-line-height]',
+					'type'              => 'control',
+					'control'           => 'ast-slider',
+					'section'           => 'section-body-typo',
+					'transport'         => 'postMessage',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'priority'          => 25,
+					'title'             => __( 'Line Height', 'astra' ),
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 1,
 						'step' => 0.01,
 						'max'  => 5,
@@ -142,16 +143,17 @@ if ( ! class_exists( 'Astra_Body_Typo_Configs' ) ) {
 				 * Option: Paragraph Margin Bottom
 				 */
 				array(
-					'name'        => ASTRA_THEME_SETTINGS . '[para-margin-bottom]',
-					'type'        => 'control',
-					'control'     => 'ast-slider',
-					'default'     => '',
-					'transport'   => 'postMessage',
-					'section'     => 'section-body-typo',
-					'priority'    => 25,
-					'title'       => __( 'Paragraph Margin Bottom', 'astra' ),
-					'suffix'      => '',
-					'input_attrs' => array(
+					'name'              => ASTRA_THEME_SETTINGS . '[para-margin-bottom]',
+					'type'              => 'control',
+					'control'           => 'ast-slider',
+					'default'           => '',
+					'sanitize_callback' => array( 'Astra_Customizer_Sanitizes', 'sanitize_number_n_blank' ),
+					'transport'         => 'postMessage',
+					'section'           => 'section-body-typo',
+					'priority'          => 25,
+					'title'             => __( 'Paragraph Margin Bottom', 'astra' ),
+					'suffix'            => '',
+					'input_attrs'       => array(
 						'min'  => 0.5,
 						'step' => 0.01,
 						'max'  => 5,

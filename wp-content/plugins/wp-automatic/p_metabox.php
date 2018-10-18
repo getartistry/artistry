@@ -54,9 +54,9 @@ $allowed_tags['Vimeo']=array(array('[keyword]','Keyword used to get current item
 $allowed_tags['Flicker']=array(array('[keyword]','Keyword used to get current item'), array('[img_title]','Image Title'),array('[img_author]','Image author ID'),array('[img_src]','Image Src link'),array('[img_src_s]','small square 75x75') , array('[img_src_q]','large square 150x150') , array('[img_src_t]','thumbnail, 100 on longest side') , array('[img_src_m]','small, 240 on longest side') , array('[img_src_n]','small, 320 on longest side') , array('[img_src_z]','medium 640, 640 on longest side') , array('[img_src_c]','medium 800, 800 on longest side†') , array('[img_src_b]','large, 1024 on longest side ') , array('[img_src_h]','large, 1600 on longest side ') , array('[img_src_k]','large, 2048 on longest side ') , array('[img_src_o]','Original Image uploaded with original size') ,array('[img_link]','Image link on flicker'),array('[img_author_name]','Image author name'),array('[img_description]','Image description'),array('[img_date_posted]','Date when the image posted'),array('[img_date_taken]','Date when the image taken'),array('[img_viewed]','Num of views of the image'),array('[img_tags]','image tags on flicker'),$ad1,$ad2,$source );
 $allowed_tags['eBay']=array(array('[keyword]','Keyword used to get current item'),array('[item_id]','added item id on ebay'),array('[item_title]','item title'),array('[item_desc]','item description'),array('[item_images]','html of all item images'),array('[item_img]','item image http source'),array('[item_link]','item link on ebay'),array('[item_publish_date]','when item published'),array('[item_bids]','Number of current bids if applicable'),array('[item_price]','current item price'),array('[item_bin]','item buy it now price if applicable'),array('[item_end_date]','item when the listing ends'),array('[item_payment]','abvailable payment options') ,$ad1,$ad2,$source );
 $allowed_tags['Pinterest'] = array(array('[pin_id]','Numerical id of the posted pin'),array('[pin_url]','Pin url at pinterest.com'),array('[pin_link]','original page link where the pin image exits *only for pins with link back to the source'),array('[pin_title]','Title of the pin'),array('[pin_description]','Description of the pin'),array('[pin_board_id]','Numeric ID of the board the pin belons to'),array('[pin_board_url]','URL of the matching board'),array('[pin_board_name]','Name of the board the pin belons to'),array('[pin_pinner_username]','Username of the pinner'),array('[pin_pinner_full_name]','Full name of the pinner'),array('[pin_pinner_id]','Numeric ID of the pin pinner'),array('[pin_domain]','Domain for the pin if posted from a url'),array('[pin_likes]','Number of likes of the pin'),array('[repin_count]','Number of repins'),array('[pin_img]','Image src link for the pin image'),array('[pin_img_width]','Width of the pin image'),array('[pin_img_height]','Height of the pin image'),$ad1,$ad2); 
-$allowed_tags['Instagram'] = array( array('[item_title]','Instagram image title'), array('[item_embed]','The embed code of the item') , array('[item_id]','The instagram pic id'),array('[item_url]','Instagram pic url'),array('[item_description]','Instagram pic description'),array('[item_img]','Instagram image src'),array('[item_images]','Item images HTML code'),array('[item_img_width]','Width of the instagram image'),array('[item_img_height]','Height of the image'),array('[item_user_id]','Instagram user id'),array('[item_user_username]','Username of the instagram image poster'),array('[item_user_name]','user name of the image poster'),array('[item_user_profile_pic]','Image src of the user pic'),array('[item_created_date]','date when the item created'),array('[item_likes_count]','Likes count of the item'),array('[item_tags]','Comma separated list of tags'),array('[item_location_name]','Location name'),array('[item_location_id]','Location ID'),array('[item_location_url]','Location explore link'),$ad1,$ad2,$source );
+$allowed_tags['Instagram'] = array( array('[item_title]','Instagram image title'), array('[item_embed]','The embed code of the item') , array('[item_id]','The instagram pic id'),array('[item_url]','Instagram pic url'),array('[item_description]','Instagram pic description'),array('[item_img]','Instagram image src'),array('[item_images]','Item images HTML code'),array('[item_img_width]','Width of the instagram image'),array('[item_img_height]','Height of the image'),array('[item_user_id]','Instagram user id'),array('[item_user_username]','Username of the instagram image poster'),array('[item_user_name]','user name of the image poster'),array('[item_user_profile_pic]','Image src of the user pic'),array('[item_created_date]','date when the item created'),array('[item_likes_count]','Likes count of the item'),array('[item_tags]','Comma separated list of tags'),array('[item_location_name]','Location name'),array('[item_location_id]','Location ID'),array('[item_location_url]','Location explore link'), array('[video_view_count]','Views count only if the imported item is a video.') ,$ad1,$ad2,$source );
 $allowed_tags['Facebook'] = $allowed_tags['Facebookposts'] = $allowed_tags['Facebookfeed'] = $allowed_tags['Facebooktagged']= array( array('[post_id]','Facebook post ID including page id'), array('[post_id_single]','Facebook post ID single numeric value') , array('[post_embed]','Embed code of the post') ,  array('[original_title]','Post title'), array('[matched_content]','Post content'),array('[from_name]','Username of the post author'),array('[from_id]','ID of the post author'),array('[from_url]','FB url of the post author'),array('[from_thumb]','Thumbnail url of the post author'),array('[shares_count]','Shares count'),array('[original_date]','Date of the post'),array('[external_url]','External url of the shared post. only if the item is actually a shared link on the page'),array('[image_src]','source url of an image at the post if exists'),array('[likes_count]','Number of likes'),array('[vid_embed]','Embed code of the video if exists'),array('[vid_url]','URL of the video if exists'), array('[item_tags]','Hashtags comma separated if exist.'),$ad1,$ad2,$source );
-$allowed_tags['Facebookevents'] = array(array('[event_description]','Description of the event'),array('[post_id]','ID of the FB event'),array('[original_title]','Event title'),array('[original_date]','Date when the event was modified'),array('[image_src]','Event cover picture'),array('[place_name]','Place name where the event will happen'),array('[place_street]','Street name of the place'),array('[place_city]','Place city'),array('[place_country]','Place Country'),array('[place_latitude]','Latitude of the place location'),array('[place_longitude]','Longitude of the place'),array('[place_zip]','Zip of the location'),array('[start_time]','When the event starts'),array('[end_time]','When the event ends'),array('[place_map]','Embed code of a map showing the place if exists'),$ad1,$ad2,$source );
+$allowed_tags['Facebookevents'] = array(array('[event_description]','Description of the event'),array('[post_id]','ID of the FB event'),array('[original_title]','Event title'),array('[original_date]','Date when the event was modified'),array('[image_src]','Event cover picture'),array('[place_name]','Place name where the event will happen'), array('[place_address]','Address of the event location'), array('[place_street]','Street name of the place'),array('[place_city]','Place city'),array('[place_country]','Place Country'),array('[place_latitude]','Latitude of the place location'),array('[place_longitude]','Longitude of the place'),array('[place_zip]','Zip of the location'),array('[start_time]','When the event starts'),array('[start_time_timestamp]','Timestamp for the event start time e.g 1535052600'),array('[end_time]','When the event ends'),array('[end_time_timestamp]','Timestamp of when the event ends date e.g 1535052600'),array('[place_map]','Embed code of a map showing the place if exists'),$ad1,$ad2,$source );
 
 $allowed_tags['Twitter'] = array(array('[item_id]','ID of the tweet'),array('[item_url]','Tweet url') , array('[item_original_link]','original url to the shared post if exists') ,array('[item_description]','Tweet textual content'),array('[item_embed]','embed code of the tweet') ,array('[item_retweet_count]','Rewteet Count'),array('[item_favorite_count]','Favorite count'),array('[item_author_id]','Numeric user id'),array('[item_author_screen_name]','Screen name of the user example: cnn'),array('[item_author_name]','User name'),array('[item_author_description]','User description'),array('[item_author_url]','user url'),array('[item_author_profile_image]','user profile image src'),array('[item_author_profile_background_image]','Background image src url used by the user'),array('[item_created_at]','Time of the tweet'),array('[item_title]','Title'));
 $allowed_tags['SoundCloud']= array( array('[item_id]','Numeric ID of the sound') ,array('[item_url]','Link of the sound at soundcloud'), array('[item_embed]','Embed code of the sound') , array('[item_video_url]','URL of the video if exists'), array('[item_video_embed]','embed code of the video if exists'),array('[item_likes_count]','Likes count'),array('[item_purchase_url]','Purchase link if exists'),array('[item_thumbnail]','Thumbnail url'),array('[item_comment_count]','Comments count'),array('[item_title]','Title of the sound'),array('[item_description]','Description of the sound'),array('[item_favoritings_count]','Favourites count'),array('[item_genre]','Genre of the post'),array('[item_playback_count]','Playback count'),array('[item_reposts_count]','Repost count'),array('[item_tags]','Item tags if exists'),array('[item_created_at]','Time where the sound was created'),array('[item_duration]','Duration of the post in minutes'),array('[item_user_id]','User ID of the soundCloud user'),array('[item_user_link]','Link of the author'),array('[item_user_thumbnail]','Thumbnail source of the sound'),array('[item_user_username]','username of the author'),array('[item_download_url]','Download url of the item if the item is downloadable '),$ad1,$ad2,$source );
@@ -71,9 +71,9 @@ $allowed_tags['ItunestvShow'] = array(array('[item_link]','Link to the item at I
 $allowed_tags['Itunesebook'] = array( array('[item_link]','Link to the item at Itunes'),array('[item_id]','Numeric ID of the item at Itunes'),array('[item_description]','Textual description of the item at Itunes'),array('[item_title]','Title of the item'),array('[item_img]','Main item image url'),array('[item_artistName]','Name of the item author/artist'),array('[item_trackName]','Name of the item at Itunes'),array('[item_price]','Price of the item'),array('[item_country]','Country of the item'),array('[item_currency]','Currency of the item'),array('[item_rating]','Rating of the item'),array('[item_rating_counts]','Number of ratings of the item'),array('[item_releaseDate]','Release date of the item') );
 $allowed_tags['Itunessoftware'] = array( array('[item_link]','Link to the item at Itunes'),array('[item_id]','Numeric ID of the item at Itunes'),array('[item_description]','Textual description of the item at Itunes'),array('[item_title]','Title of the item'),array('[item_img]','Main item image url'),array('[item_artistName]','Name of the item author/artist'),array('[item_artistViewUrl]','Url of the item author/artist'),array('[item_supportedDevices]','Supported Devices for the app'),array('[item_fileSize]','Size of the item in MegaBytes'),array('[item_sellerUrl]','External website of the item seller'),array('[item_trackName]','Name of the item at Itunes'),array('[item_price]','Price of the item'),array('[item_currency]','Currency of the item'),array('[item_version]','Version number of the item'),array('[item_primaryGenreName]','Genre name of the item'),array('[item_rating]','Rating of the item'),array('[item_rating_counts]','Number of ratings of the item'),array('[item_screenshotUrls]','Urls of the screenshots comma separated'),array('[item_screenshot]','html of the screenshots'),array('[item_releaseDate]','Release date of the item') );
 
-$envatoTags = array( array('[item_id]','Numeric ID of the item'),array('[item_title]','Title of the item'),array('[item_link]','Url of the item at Envato'),array('[item_description]','Html description of the item'),array('[item_category]','Category of the item at Envato'),array('[item_category_url]','Url of the category at Envato'),array('[item_price]','Price of the item in $'),array('[item_author]','User name of the item author'),array('[item_author_url]','Url of the item author') ,array('[item_published_at]','Time when the item was published'),array('[item_updated_at]','Time when the item was updated'),array('[item_author_image]','url of the author image'),array('[item_rating]','Rating of the item out of 5'),array('[item_tags]','Tags of the item comma separated'),array('[item_sales]','Sales count of the item when posted'),array('[affiliate_id]','Affiliate ID set at the plugin settings page'));
+$envatoTags = array( array('[item_id]','Numeric ID of the item'),array('[item_title]','Title of the item'),array('[item_link]','URL of the item at Envato'),array('[item_link_affiliate]','Affiliate URL of the item using impact radius')  , array('[item_description]','Html description of the item'),array('[item_category]','Category of the item at Envato'),array('[item_category_url]','Url of the category at Envato'),array('[item_price]','Price of the item in $'),array('[item_author]','User name of the item author'),array('[item_author_url]','Url of the item author') ,array('[item_published_at]','Time when the item was published'),array('[item_updated_at]','Time when the item was updated'),array('[item_author_image]','url of the author image'),array('[item_rating]','Rating of the item out of 5'),array('[item_tags]','Tags of the item comma separated'),array('[item_sales]','Sales count of the item when posted'),array('[affiliate_id]','Affiliate ID set at the plugin settings page'));
 
-$allowed_tags['Envatothemeforest'] = $allowed_tags['Envatocodecanyon'] = $allowed_tags['Envato3docean'] = array_merge($envatoTags,array( array('[preview_img]','Preview image url'),array('[preview_icon]','Url of the item icon'),array('[live_site]','url of the item live preview')  )); 
+$allowed_tags['Envatothemeforest'] = $allowed_tags['Envatocodecanyon'] = $allowed_tags['Envato3docean'] = array_merge($envatoTags,array( array('[preview_img]','Preview image url'),array('[preview_icon]','Url of the item icon'),array('[live_site]','url of the item live preview') ,array('[live_site_affiliate]','Affiliate URL of the item live preview')   )); 
 $allowed_tags['Envatographicriver'] = $allowed_tags['Envatophotodune'] = array_merge($envatoTags,array( array('[preview_icon]','Url of the preview icon'),array('[preview_img]','Url of the preview image') ));
 $allowed_tags['Envatovideohive'] = array_merge($envatoTags,array( array('[preview_icon]','Url of the preview icon'),array('[preview_img]','Url of the preview image'),array('[preview_vid]','Url of the preview video') ));
 $allowed_tags['Envatoaudiojungle'] = array_merge($envatoTags,array( array('[preview_icon]','Url of the preview icon'),array('[preview_mp3]','Url of the preview sound') ));
@@ -206,7 +206,7 @@ if (count($res) > 0 ){
 			$cg_custom_strip_selector = array_filter($cg_custom_strip_selector);
 			
 			if(count($cg_feed_custom_strip_id) == 0 ) $cg_feed_custom_strip_id = array("");
-			if(count($cg_feed_custom_strip_selector) == 0 ) $cg_feed_custom_strip_selector = array("class");
+			if(count($cg_custom_strip_selector) == 0 ) $cg_custom_strip_selector = array("class");
 			
 			
 			$camp_general['cg_feed_custom_strip_id'] = $cg_feed_custom_strip_id;
@@ -2245,7 +2245,7 @@ if (count($res) > 0 ){
                </label>
                
 			   <input value="<?php   echo @$camp_general['cg_rd_page']  ?>" name="cg_rd_page"   type="text">
-			   <div class="description">without any parametesrs ex: https://www.reddit.com/r/popular/</div>
+			   <div class="description">without any parameters ex: https://www.reddit.com/r/popular/</div>
 			   
 			    <div  class="field f_100">
 			    
@@ -2672,7 +2672,7 @@ if (count($res) > 0 ){
 		 <div  class="field f_100 typepart Facebook"  style="display:none">
 		 
 			   <label>
-                    Page or Public Group ?
+                    Page, group or profile?
                </label>
                
                <select name="cg_fb_source" >
@@ -2682,8 +2682,12 @@ if (count($res) > 0 ){
                     </option>
  
                     <option  value="group"  <?php @wp_automatic_opt_selected('group',$camp_general['cg_fb_source']) ?>  >
-                         Public Group
+                          Group
                     </option> 
+                    
+                    <option  value="profile"  <?php @wp_automatic_opt_selected('profile',$camp_general['cg_fb_source']) ?>  >
+                         Profile
+                    </option>
                     
                 </select>
 		 
@@ -2707,8 +2711,6 @@ if (count($res) > 0 ){
 				
 				<select id="cg_fb_from" name="cg_fb_from"  class="templateChanger"  >
 				 	<option value="posts" <?php @wp_automatic_opt_selected('posts',$camp_general['cg_fb_from']) ?>>Page timeline posts</option>
-					<option value="feed" <?php @wp_automatic_opt_selected('feed',$camp_general['cg_fb_from']) ?>>Page posts including visitor posts to the page</option>
-					<option value="tagged" <?php @wp_automatic_opt_selected('tagged',$camp_general['cg_fb_from']) ?>>Tagged posts where the page was mentioned</option>
 					<option value="events" <?php @wp_automatic_opt_selected('events',$camp_general['cg_fb_from']) ?>>Page events</option>
 				</select>
 		 	 
@@ -2895,7 +2897,15 @@ if (count($res) > 0 ){
 	          <div class="option clearfix">
 	                    <input name="camp_options[]"   value="OPT_FB_VID_AUTO" type="checkbox">
 	                    <span class="option-title">
-								Auto play embeded videos     
+								Auto play embeded videos (Audio will mute)   
+	                    </span>
+	                    <br>
+	          </div>
+	          
+	          <div class="option clearfix">
+	                    <input name="camp_options[]"   value="OPT_FB_VID_MUTE" type="checkbox">
+	                    <span class="option-title">
+								Mute embeded videos by default     
 	                    </span>
 	                    <br>
 	          </div>
@@ -2935,7 +2945,7 @@ if (count($res) > 0 ){
 	          <div class="option clearfix">
 	                    <input name="camp_options[]"   value="OPT_FB_CACHE" type="checkbox">
 	                    <span class="option-title">
-								Cache items for faster posting ( Disabling this option posts from latest 100 only )   
+								Cache items for faster posting ( Disabling this option posts from latest 5 posts only )   
 	                    </span>
 	                    <br>
 	          </div>
@@ -2943,7 +2953,7 @@ if (count($res) > 0 ){
 	          <div class="option clearfix">
 	                    <input name="camp_options[]" value="OPT_FB_OLD" type="checkbox">
 	                    <span class="option-title">
-								Post old posts as well (By default it posts from latest 100)(cache option must be enabled)
+								Post old posts as well (By default it posts from the latest 5 )(cache option must be enabled for this option to function)
 	                    </span>
 	                    <br>
 	          </div>
@@ -3977,7 +3987,7 @@ if (count($res) > 0 ){
 		                    User ID  
 		               </label>
 		                
-		                <input id="camp_dm_user" value="<?php   echo $camp_general['cg_dm_user']   ?>" name="cg_dm_user" type="text">
+		                <input id="camp_dm_user" value="<?php  if ( isset($camp_general['cg_dm_user'] ) )  echo $camp_general['cg_dm_user']   ?>" name="cg_dm_user" type="text">
 		                <div class="description"><br>Example:add Dakar for this user  <a href="http://www.dailymotion.com/Dakar">http://www.dailymotion.com/Dakar</a> </div>
 		                
 		                <br>
@@ -5320,9 +5330,7 @@ Ends at: [end_time]
 Location:
 
 [place_name]
-[place_street]
-[place_city]
-[place_country]
+[place_address]
 
 [place_map]
 
@@ -5578,25 +5586,25 @@ Price: <span style="color:#b12704">[price_with_discount]</span><br><i><small>(as
 
 <div class="tempEnvatophotodune tempEnvatocodecanyon tempEnvatothemeforest tempEnvato3docean tempEnvatophotodune tempEnvatographicriver">[ad_1]
 
-<a class="wp_automatic_demo_btn" target="_blank" href="[live_site]?ref=[affiliate_id]">LIVE PREVIEW</a><a class="wp_automatic_buy_btn" target="_blank" href="[item_link]?ref=[affiliate_id]">BUY FOR $[item_price]</a>
+<a class="wp_automatic_demo_btn" target="_blank" href="[live_site_affiliate]">LIVE PREVIEW</a><a class="wp_automatic_buy_btn" target="_blank" href="[item_link_affiliate]">BUY FOR $[item_price]</a>
 
 <img src="[preview_img]">
 [item_description]
 [ad_2]
-<a href="[item_link]?ref=[affiliate_id]">Source</a></div>
+<a href="[item_link_affiliate]">Source</a></div>
 <div class="tempEnvatoaudiojungle">[ad_1]
 [embed][preview_mp3][/embed]
 <p>
-<a class="wp_automatic_demo_btn" target="_blank" href="[live_site]?ref=[affiliate_id]">LIVE PREVIEW</a><a class="wp_automatic_buy_btn" target="_blank" href="[item_link]?ref=[affiliate_id]">BUY FOR $[item_price]</a>
+<a class="wp_automatic_buy_btn" target="_blank" href="[item_link_affiliate]">BUY FOR $[item_price]</a>
 <img  class="alignleft" src="[preview_icon]">[item_description]</p>
 [ad_2]
-<a href="[item_link]?ref=[affiliate_id]">Source</a></div>
+<a href="[item_link_affiliate]">Source</a></div>
 <div class="tempEnvatovideohive">[ad_1]
 <img src="[preview_img]">
 [embed][preview_vid][/embed]
 [item_description]
 [ad_2]
-<a href="[item_link]?ref=[affiliate_id]">Source</a></div>
+<a href="[item_link_affiliate]">Source</a></div>
 
 <!-- DailyMotion template -->
 

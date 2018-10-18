@@ -69,6 +69,10 @@ class Admin {
 		remove_action( 'admin_menu', [ Plugin::elementor()->settings, 'register_pro_menu' ], Settings::MENU_PRIORITY_GO_PRO );
 	}
 
+	public function hide_getting_started_menu() {
+		remove_submenu_page( 'elementor', 'elementor-getting-started' );
+	}
+
 	public function register_admin_tools_fields( Tools $tools ) {
 		// Rollback
 		$tools->add_fields( 'versions', 'rollback', [
@@ -152,6 +156,7 @@ class Admin {
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 		add_action( 'admin_menu', [ $this, 'remove_go_pro_menu' ], 0 );
+		add_action( 'admin_head', [ $this, 'hide_getting_started_menu' ], 510 );
 
 		add_action( 'elementor/admin/after_create_settings/' . Tools::PAGE_ID, [ $this, 'register_admin_tools_fields' ], 50 );
 

@@ -76,6 +76,11 @@ if ( ! class_exists( 'Ocean_Extra_About_Me_Widget' ) ) {
 		 * @since 1.0.0
 		 */
 		public function scripts() {
+			// If is not customizer to avoid conflct
+			if ( is_customize_preview() ) {
+				return;
+			}
+
 			wp_enqueue_media();
 		}
 
@@ -104,7 +109,12 @@ if ( ! class_exists( 'Ocean_Extra_About_Me_Widget' ) ) {
 		 *
 		 * @since 1.3.8
 		 */
-		public function print_scripts() { ?>
+		public function print_scripts() {
+			// If is not customizer to avoid conflct
+			if ( is_customize_preview() ) {
+				return;
+			} ?>
+
 			<script>
 				( function( $ ){
 					$(document).ajaxSuccess(function(e, xhr, settings) {

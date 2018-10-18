@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Modal_Box_Widget extends Widget_Base
-{
+class Premium_Modalbox extends Widget_Base {
     public function getTemplateInstance(){
         return $this->templateInstance = premium_Template_Tags::getInstance();
     }
@@ -94,6 +93,7 @@ class Premium_Modal_Box_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Custom Image', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::MEDIA,
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => [
                         'url'   => Utils::get_placeholder_image_src(),
                     ],
@@ -187,6 +187,19 @@ class Premium_Modal_Box_Widget extends Widget_Base
                     'label'         => esc_html__('Lower Close Button', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::SWITCHER,
                     'default'       => 'yes',
+                ]
+                );
+        
+        $this->add_control('premium_modal_close_text',
+                [
+                    'label'         => esc_html__('Text', 'premium-addons-for-elementor'),
+                    'default'       => esc_html__('Close','premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::TEXT,
+                    'dynamic'       => [ 'active' => true ],
+                    'label_block'   => true,
+                    'condition'     => [
+                      'premium_modal_box_lower_close'  => 'yes'
+                    ],
                 ]
                 );
         
@@ -392,6 +405,7 @@ class Premium_Modal_Box_Widget extends Widget_Base
                 [
                     'label'         => esc_html__('Image', 'premium-addons-for-elementor'),
                     'type'          => Controls_Manager::MEDIA,
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => [
                         'url'   => Utils::get_placeholder_image_src(),
                     ],
@@ -1109,6 +1123,24 @@ class Premium_Modal_Box_Widget extends Widget_Base
                 ]
                 );
         
+        $this->add_responsive_control('premium_modal_box_modal_max_height',
+                [
+                    'label'         => esc_html__('Max Height', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::SLIDER,
+                    'size_units'    => ['px', 'em'],
+                    'range'         => [
+                        'px'    => [
+                            'min'   => 50,
+                            'max'   => 1000,
+                        ]
+                    ],
+                    'label_block'   => true,
+                    'selectors'     => [
+                        '{{WRAPPER}} .premium-modal-box-modal-dialog'  => 'max-height: {{SIZE}}{{UNIT}};',
+                    ]
+                ]
+                );
+        
         /*Modal Background Color*/
         $this->add_control('premium_modal_box_modal_background',
                 [
@@ -1175,12 +1207,22 @@ class Premium_Modal_Box_Widget extends Widget_Base
                     ]
                 );
         
+        $this->add_responsive_control('premium_modal_box_padding',
+                [
+                    'label'         => esc_html__('Padding', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::DIMENSIONS,
+                    'size_units'    => [ 'px', 'em', '%' ],
+                    'selectors'     => [
+                        '{{WRAPPER}} .premium-modal-box-modal-body' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+                        ]
+                    ]
+                );
+        
         $this->end_controls_section();
         
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
         $this->add_inline_editing_attributes('premium_modal_box_selector_text');
@@ -1194,72 +1236,70 @@ class Premium_Modal_Box_Widget extends Widget_Base
             'trigger'   => $settings['premium_modal_box_display_on'],
             'delay'     => $settings['premium_modal_box_popup_delay'],
         ];
-?>
+    ?>
 
 
-<div class="container premium-modal-box-container" data-settings='<?php echo wp_json_encode($modal_settings); ?>'>
-  <!-- Trigger The Modal Box -->
-  <div class="premium-modal-box-selector-container">
-      <?php
-      if ( $settings['premium_modal_box_display_on'] === 'button' ) : ?>
-      <button type="button" class="premium-modal-box-button-selector btn btn-info <?php
-      if( $settings['premium_modal_box_button_size'] === 'sm' ) : echo "premium-btn-sm";
-      elseif( $settings['premium_modal_box_button_size'] === 'md' ) : echo "premium-btn-md";
-      elseif( $settings['premium_modal_box_button_size'] === 'lg' ) : echo "premium-btn-lg";
-      elseif( $settings['premium_modal_box_button_size'] === 'block' ) : echo "premium-btn-block"; endif; ?>" data-toggle="premium-modal" data-target="#premium-modal-<?php echo esc_attr( $this->get_id() ); ?>"><?php if($settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] == 'before' && !empty($settings['premium_modal_box_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?><span><?php echo $settings['premium_modal_box_button_text']; ?></span><?php if($settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] == 'after' &&!empty($settings['premium_modal_box_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?></button>
-      <?php elseif ( $settings['premium_modal_box_display_on'] === 'image' ) : ?>
-      <img class="premium-modal-box-img-selector" data-toggle="premium-modal" data-target="#premium-modal-<?php  echo esc_attr( $this->get_id() ); ?>" src="<?php echo $settings['premium_modal_box_image_src']['url'];?>">
-      <?php elseif($settings['premium_modal_box_display_on'] === 'text') : ?>
-      <span class="premium-modal-box-text-selector" data-toggle="premium-modal" data-target="#premium-modal-<?php  echo esc_attr( $this->get_id() ); ?>"><div <?php echo $this->get_render_attribute_string('premium_modal_box_selector_text'); ?>><?php echo $settings['premium_modal_box_selector_text'];?></div></span>
-       <?php endif; ?>
-  </div>
-  
-  <!-- Modal -->
-  <div id="premium-modal-<?php echo  $this->get_id(); ?>"  class="premium-modal-box-modal premium-modal-fade" role="dialog">
-    <div class="premium-modal-box-modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="premium-modal-box-modal-content">
-          <?php if($settings['premium_modal_box_header_switcher'] == 'yes'): ?>
-        <div class="premium-modal-box-modal-header">
-            <?php if ( $settings['premium_modal_box_upper_close'] === 'yes' ) : ?>
-            <div class="premium-modal-box-close-button-container">
-                <button type="button" class="premium-modal-box-modal-close" data-dismiss="premium-modal">&times;</button>
+    <div class="container premium-modal-box-container" data-settings='<?php echo wp_json_encode($modal_settings); ?>'>
+      <!-- Trigger The Modal Box -->
+      <div class="premium-modal-box-selector-container">
+          <?php
+          if ( $settings['premium_modal_box_display_on'] === 'button' ) : ?>
+          <button type="button" class="premium-modal-box-button-selector btn btn-info <?php
+          if( $settings['premium_modal_box_button_size'] === 'sm' ) : echo "premium-btn-sm";
+          elseif( $settings['premium_modal_box_button_size'] === 'md' ) : echo "premium-btn-md";
+          elseif( $settings['premium_modal_box_button_size'] === 'lg' ) : echo "premium-btn-lg";
+          elseif( $settings['premium_modal_box_button_size'] === 'block' ) : echo "premium-btn-block"; endif; ?>" data-toggle="premium-modal" data-target="#premium-modal-<?php echo esc_attr( $this->get_id() ); ?>"><?php if($settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] == 'before' && !empty($settings['premium_modal_box_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?><span><?php echo $settings['premium_modal_box_button_text']; ?></span><?php if($settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] == 'after' &&!empty($settings['premium_modal_box_button_icon_selection'])) : ?><i class="fa <?php echo esc_attr($button_icon); ?>"></i><?php endif; ?></button>
+          <?php elseif ( $settings['premium_modal_box_display_on'] === 'image' ) : ?>
+          <img class="premium-modal-box-img-selector" data-toggle="premium-modal" data-target="#premium-modal-<?php  echo esc_attr( $this->get_id() ); ?>" src="<?php echo $settings['premium_modal_box_image_src']['url'];?>">
+          <?php elseif($settings['premium_modal_box_display_on'] === 'text') : ?>
+          <span class="premium-modal-box-text-selector" data-toggle="premium-modal" data-target="#premium-modal-<?php  echo esc_attr( $this->get_id() ); ?>"><div <?php echo $this->get_render_attribute_string('premium_modal_box_selector_text'); ?>><?php echo $settings['premium_modal_box_selector_text'];?></div></span>
+           <?php endif; ?>
+      </div>
+
+      <!-- Modal -->
+      <div id="premium-modal-<?php echo  $this->get_id(); ?>"  class="premium-modal-box-modal premium-modal-fade" role="dialog">
+        <div class="premium-modal-box-modal-dialog">
+
+          <!-- Modal content-->
+          <div class="premium-modal-box-modal-content">
+              <?php if($settings['premium_modal_box_header_switcher'] == 'yes'): ?>
+            <div class="premium-modal-box-modal-header">
+                <?php if ( $settings['premium_modal_box_upper_close'] === 'yes' ) : ?>
+                <div class="premium-modal-box-close-button-container">
+                    <button type="button" class="premium-modal-box-modal-close" data-dismiss="premium-modal">&times;</button>
+                </div>
+                <?php endif; ?>
+                <h3 class="premium-modal-box-modal-title">
+                    <?php if($settings['premium_modal_box_icon_selection'] === 'fonticon') : ?>
+                    <i class="fa <?php echo $settings['premium_modal_box_font_icon'];?>"></i>
+                        <?php elseif( $settings['premium_modal_box_icon_selection'] === 'image' ) : ?>
+                    <img src="<?php echo $settings['premium_modal_box_image_icon']['url'];?>">
+                        <?php endif; ?><?php echo $settings['premium_modal_box_title'];?></h3>
             </div>
-            <?php endif; ?>
-            <h3 class="premium-modal-box-modal-title">
-                <?php if($settings['premium_modal_box_icon_selection'] === 'fonticon') : ?>
-                <i class="fa <?php echo $settings['premium_modal_box_font_icon'];?>"></i>
-                    <?php elseif( $settings['premium_modal_box_icon_selection'] === 'image' ) : ?>
-                <img src="<?php echo $settings['premium_modal_box_image_icon']['url'];?>">
-                    <?php endif; ?><?php echo $settings['premium_modal_box_title'];?></h3>
+              <?php endif; ?>
+              <div class="premium-modal-box-modal-body">
+                  <?php if($settings['premium_modal_box_content_type'] == 'editor') : echo $settings['premium_modal_box_content']; else: echo $premium_elements_frontend->get_builder_content($elementor_post_id, true); endif; ?>
+              </div>
+              <?php if ( $settings['premium_modal_box_lower_close'] === 'yes' ) : ?>
+              <div class="premium-modal-box-modal-footer">
+                  <button type="button" class="btn premium-modal-box-modal-lower-close" data-dismiss="premium-modal"><?php echo $settings['premium_modal_close_text']; ?></button>
+              </div>
+              <?php endif; ?>
+          </div>
         </div>
-          <?php endif; ?>
-          <div class="premium-modal-box-modal-body">
-              <?php if($settings['premium_modal_box_content_type'] == 'editor') : echo $settings['premium_modal_box_content']; else: echo $premium_elements_frontend->get_builder_content($elementor_post_id, true); endif; ?>
-          </div>
-          <?php if ( $settings['premium_modal_box_lower_close'] === 'yes' ) : ?>
-          <div class="premium-modal-box-modal-footer">
-              <button type="button" class="btn premium-modal-box-modal-lower-close" data-dismiss="premium-modal">Close
-              </button>
-          </div>
-          <?php endif; ?>
       </div>
     </div>
-  </div>
-</div>
-<style>
-    
-    <?php if( !empty($settings['premium_modal_box_modal_size']['size'] ) ) :
-        echo '@media (min-width:992px) {'; ?>
-        #premium-modal-<?php echo  $this->get_id(); ?> .premium-modal-box-modal-dialog {
-            width: <?php echo $settings['premium_modal_box_modal_size']['size'] . $settings['premium_modal_box_modal_size']['unit']; ?>
-        } 
-        <?php echo '}'; endif; ?>
-    
-</style>
+    <style>
+
+        <?php if( !empty($settings['premium_modal_box_modal_size']['size'] ) ) :
+            echo '@media (min-width:992px) {'; ?>
+            #premium-modal-<?php echo  $this->get_id(); ?> .premium-modal-box-modal-dialog {
+                width: <?php echo $settings['premium_modal_box_modal_size']['size'] . $settings['premium_modal_box_modal_size']['unit']; ?>
+            } 
+            <?php echo '}'; endif; ?>
+
+    </style>
 
     <?php
     }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Modal_Box_Widget());

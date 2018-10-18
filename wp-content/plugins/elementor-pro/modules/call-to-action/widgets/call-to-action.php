@@ -1427,8 +1427,11 @@ class Call_To_Action extends Base_Widget {
 					'darken' => 'Darken',
 					'lighten' => 'Lighten',
 					'color-dodge' => 'Color Dodge',
+					'color-burn' => 'Color Burn',
+					'hue' => 'Hue',
 					'saturation' => 'Saturation',
 					'color' => 'Color',
+					'exclusion' => 'Exclusion',
 					'luminosity' => 'Luminosity',
 				],
 				'selectors' => [
@@ -1495,7 +1498,7 @@ class Call_To_Action extends Base_Widget {
 	}
 
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		$title_tag = $settings['title_tag'];
 		$wrapper_tag = 'div';

@@ -162,7 +162,10 @@ if ( ! class_exists( 'Astra_ExtTransparenty_Header_Markup' ) ) {
 					'<a href="%1$s" class="custom-logo-link transparent-custom-logo" rel="home" itemprop="url">%2$s</a>',
 					esc_url( home_url( '/' ) ),
 					wp_get_attachment_image(
-						$custom_logo_id, $size, false, array(
+						$custom_logo_id,
+						$size,
+						false,
+						array(
 							'class' => 'custom-logo',
 						)
 					)

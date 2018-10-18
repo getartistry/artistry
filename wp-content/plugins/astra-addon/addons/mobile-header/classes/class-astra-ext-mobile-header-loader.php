@@ -39,9 +39,7 @@ if ( ! class_exists( 'Astra_Ext_Mobile_Header_Loader' ) ) {
 
 			add_filter( 'astra_theme_defaults', array( $this, 'theme_defaults' ) );
 			add_action( 'customize_register', array( $this, 'new_customize_register' ), 2 );
-			add_action( 'customize_register', array( $this, 'old_customize_register' ) );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ), 9 );
 
 			add_action( 'astra_get_fonts', array( $this, 'add_fonts' ), 1 );
 
@@ -322,48 +320,19 @@ if ( ! class_exists( 'Astra_Ext_Mobile_Header_Loader' ) ) {
 		 */
 		function new_customize_register( $wp_customize ) {
 
-			if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
+			/**
+			 * Register Sections & Panels
+			 */
+			require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/class-astra-customizer-register-mobile-header-sections.php';
 
-				/**
-				 * Register Sections & Panels
-				 */
-				require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/class-astra-customizer-register-mobile-header-sections.php';
+			/**
+			 * Sections
+			 */
+			require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/class-astra-customizer-mobile-header-configs.php';
 
-				/**
-				 * Sections
-				 */
-				require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/class-astra-customizer-mobile-header-configs.php';
-
-				if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
-					require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/class-astra-customizer-mobile-above-header-configs.php';
-					require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/class-astra-customizer-mobile-below-header-configs.php';
-				}
-			}
-		}
-
-		/**
-		 * Add postMessage support for site title and description for the Theme Customizer.
-		 *
-		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
-		 */
-		function old_customize_register( $wp_customize ) {
-
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
-
-				/**
-				 * Register Sections & Panels
-				 */
-				require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/customizer-panels-and-sections.php';
-
-				/**
-				 * Sections
-				 */
-				require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/section-mobile-header.php';
-
-				if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
-					require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/section-mobile-above-header.php';
-					require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/section-mobile-below-header.php';
-				}
+			if ( Astra_Ext_Extension::is_active( 'header-sections' ) ) {
+				require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/class-astra-customizer-mobile-above-header-configs.php';
+				require_once ASTRA_EXT_MOBILE_HEADER_DIR . 'classes/sections/class-astra-customizer-mobile-below-header-configs.php';
 			}
 		}
 
@@ -376,23 +345,6 @@ if ( ! class_exists( 'Astra_Ext_Mobile_Header_Loader' ) ) {
 				wp_enqueue_script( 'astra-ext-mobile-header-customize-preview-js', ASTRA_EXT_MOBILE_HEADER_URL . 'assets/js/unminified/customizer-preview.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
 			} else {
 				wp_enqueue_script( 'astra-ext-mobile-header-customize-preview-js', ASTRA_EXT_MOBILE_HEADER_URL . 'assets/js/minified/customizer-preview.min.js', array( 'customize-preview', 'astra-customizer-preview-js' ), ASTRA_EXT_VER, true );
-			}
-		}
-
-		/**
-		 * Customizer Controls
-		 *
-		 * @see 'astra-customizer-controls-js' panel in parent theme
-		 */
-		function controls_scripts() {
-
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
-
-				if ( SCRIPT_DEBUG ) {
-					wp_enqueue_script( 'astra-ext-mobile-header-customizer-toggles', ASTRA_EXT_MOBILE_HEADER_URL . 'assets/js/unminified/customizer-toggles.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
-				} else {
-					wp_enqueue_script( 'astra-ext-mobile-header-customizer-toggles', ASTRA_EXT_MOBILE_HEADER_URL . 'assets/js/minified/customizer-toggles.min.js', array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
-				}
 			}
 		}
 

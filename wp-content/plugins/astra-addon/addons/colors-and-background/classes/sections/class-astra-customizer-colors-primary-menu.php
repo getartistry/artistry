@@ -9,9 +9,14 @@
  * @since       1.4.3
  */
 
-// No direct access, please.
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 /**
@@ -213,33 +218,6 @@ if ( ! class_exists( 'Astra_Customizer_Colors_Primary_Menu' ) ) {
 					'responsive' => true,
 					'rgba'       => true,
 				),
-
-				// Option: Primary Menu Border.
-				array(
-					'type'    => 'control',
-					'control' => 'checkbox',
-					'name'    => ASTRA_THEME_SETTINGS . '[primary-submenu-border]',
-					'section' => 'section-colors-primary-menu',
-					'default' => astra_get_option( 'primary-submenu-border' ),
-					'title'   => __( 'Enable Border', 'astra-addon' ),
-				),
-
-				// Option: Submenu Border Color.
-				array(
-					'type'      => 'control',
-					'control'   => 'ast-color',
-					'transport' => 'postMessage',
-					'name'      => ASTRA_THEME_SETTINGS . '[primary-submenu-b-color]',
-					'default'   => $defaults['primary-submenu-b-color'],
-					'title'     => __( 'Border Color', 'astra-addon' ),
-					'section'   => 'section-colors-primary-menu',
-					'required'  => array(
-						ASTRA_THEME_SETTINGS . '[primary-submenu-border]',
-						'==',
-						true,
-					),
-				),
-
 			);
 
 			return array_merge( $configurations, $_configs );

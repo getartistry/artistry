@@ -229,6 +229,8 @@ function feed_process_link($feed, $camp) {
 			 
 			$args['body'] = trim($args['body']);
 			
+			//$args['body'] = preg_replace('{article/(\d+?)/}' , "article/$1wpp/",  trim($args['body']) ) ; 
+			
 			return $args;
 		}
 	}
@@ -406,6 +408,11 @@ function feed_process_link($feed, $camp) {
 		  echo '<--Empty title skipping';
 		continue;
 	}
+	
+	//&# encoded chars
+	if(stristr($url, '&#')){
+		$url = html_entity_decode($url);
+	}
 		
 	// check if execluded link due to exact match does not exists
 	if( $this->is_execluded($camp->camp_id, $url)){
@@ -441,10 +448,7 @@ function feed_process_link($feed, $camp) {
 	}
 	
 	
-	//&# encoded chars
-	if(stristr($url, '&#')){
-		$url = html_entity_decode($url);
-	}
+	
 	
 	// Duplicate check
 	if (! $this->is_duplicate($url) ) {
@@ -548,7 +552,9 @@ function feed_process_link($feed, $camp) {
 				curl_setopt($this->ch, CURLOPT_ENCODING , "");
 			}
 			
+
 			$original_cont = $this->curl_exec_follow( $this->ch );
+	 
 			
 			//get scripts
 			$postponedScripts = array();
@@ -574,7 +580,7 @@ function feed_process_link($feed, $camp) {
 			// If not UTF-8
 			if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt)   ){
 				echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
-				$convertedContent = iconv( trim($camp_general['cg_feed_encoding']) , "UTF-8", $original_cont);
+				$convertedContent = iconv( trim($camp_general['cg_feed_encoding']).'//IGNORE' , "UTF-8//IGNORE", $original_cont);
 				$wp_automatic_Readability = new wp_automatic_Readability ( $convertedContent, $url );
 			}else{
 				$wp_automatic_Readability = new wp_automatic_Readability ( $original_cont, $url );
@@ -698,7 +704,11 @@ function feed_process_link($feed, $camp) {
 			$x = curl_error ( $this->ch );
 			$url = curl_getinfo($this->ch, CURLINFO_EFFECTIVE_URL); // Final url
 			
-			 
+			//converting encoding
+			if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt)  ){
+				echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
+				$original_cont = iconv( trim($camp_general['cg_feed_encoding']).'//IGNORE' , "UTF-8//IGNORE", $original_cont );
+			}
 			
 			// Load dom
 			require_once 'inc/class.dom.php';
@@ -813,6 +823,11 @@ function feed_process_link($feed, $camp) {
 				$original_cont = $this->curl_exec_follow( $this->ch );
 				$x = curl_error ( $this->ch );
 				 
+				//converting encoding
+				if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt)  ){
+					echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
+					$original_cont = iconv( trim($camp_general['cg_feed_encoding']).'//IGNORE' , "UTF-8//IGNORE", $original_cont );
+				}
 
 				//extracting
 				if(trim($original_cont) !=''){
@@ -1108,6 +1123,12 @@ function feed_process_link($feed, $camp) {
 				}
 				
 				$original_cont = $this->curl_exec_follow ( $this->ch );
+				
+				//converting encoding
+				if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt)  ){
+					echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
+					$original_cont = iconv( trim($camp_general['cg_feed_encoding']).'//IGNORE' , "UTF-8//IGNORE", $original_cont );
+				}
 					
 			}
 
@@ -1198,6 +1219,12 @@ function feed_process_link($feed, $camp) {
 				}
 				
 				$original_cont = $this->curl_exec_follow ( $this->ch );
+				
+				//converting encoding
+				if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt)  ){
+					echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
+					$original_cont = iconv( trim($camp_general['cg_feed_encoding']).'//IGNORE' , "UTF-8//IGNORE", $original_cont );
+				}
 					
 			}
 				 
@@ -1332,6 +1359,12 @@ function feed_process_link($feed, $camp) {
 					}
 					
 					$original_cont = $this->curl_exec_follow ( $this->ch );
+					
+					//converting encoding
+					if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt)  ){
+						echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
+						$original_cont = iconv( trim($camp_general['cg_feed_encoding']).'//IGNORE' , "UTF-8//IGNORE", $original_cont );
+					}
 						
 				}
 				 
@@ -1453,6 +1486,13 @@ function feed_process_link($feed, $camp) {
 				}
 				
 				$original_cont = $this->curl_exec_follow ( $this->ch );
+				
+				
+				//converting encoding
+				if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt)  ){
+					echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
+					$original_cont = iconv( trim($camp_general['cg_feed_encoding']).'//IGNORE' , "UTF-8//IGNORE", $original_cont );
+				}
 		 			
 			}
 				
@@ -1638,7 +1678,7 @@ function feed_process_link($feed, $camp) {
 			
 			
 			//og image fix
-			if(trim($res ['og_img']) !=''){
+			if( isset( $res ['og_img'] ) && trim($res ['og_img']) !=''){
 				
 				//make sure it has the domain
 				if(! stristr($og_img, 'http:')){
@@ -1666,13 +1706,7 @@ function feed_process_link($feed, $camp) {
 			$res['cont'] = preg_replace('{href="/(\w)}', 'href="http://'.$host.'/$1', $res['cont']);
 			
 			
-			//converting encoding
-			//get original encoding
-
-			if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt) && ! in_array ( 'OPT_FULL_FEED', $camp_opt ) ){
-				  echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
-				$res['cont'] = iconv( trim($camp_general['cg_feed_encoding']) , "UTF-8", $res['cont']);
-			}
+			
 				
 			if(in_array('OPT_FEED_OG_TTL', $camp_opt)){
 				
@@ -1690,6 +1724,12 @@ function feed_process_link($feed, $camp) {
 					}
 					
 					$original_cont = $this->curl_exec_follow ( $this->ch );
+					
+					//converting encoding
+					if(in_array('OPT_FEED_CONVERT_ENC', $camp_opt)  ){
+						echo '<br>Converting encoding from '.$camp_general['cg_feed_encoding']. ' to utf-8';
+						$original_cont = iconv( trim($camp_general['cg_feed_encoding']).'//IGNORE' , "UTF-8//IGNORE", $original_cont );
+					}
 					
 					 
 				}

@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Shortcodes - Orders
  *
- * @version 3.5.0
+ * @version 3.9.0
  * @author  Algoritmika Ltd.
  */
 
@@ -15,7 +15,7 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.5.0
+	 * @version 3.9.0
 	 */
 	function __construct() {
 
@@ -49,6 +49,7 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 			'wcj_order_number',
 			'wcj_order_payment_method',
 			'wcj_order_payment_method_transaction_id',
+			'wcj_order_products_meta',
 			'wcj_order_profit',
 			'wcj_order_refunds_table',
 			'wcj_order_remaining_refund_amount',
@@ -88,7 +89,6 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 			'wcj_order_total_tax_refunded',
 			'wcj_order_total_weight',
 			'wcj_order_total_width',
-//			'wcj_order_cart_discount',
 		);
 
 		parent::__construct();
@@ -691,7 +691,7 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_order_items_total_weight.
 	 *
-	 * @version    2.5.7
+	 * @version 2.5.7
 	 * @deprecated 2.5.7
 	 */
 	function wcj_order_items_total_weight( $atts ) {
@@ -732,7 +732,7 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	 *
 	 * @version 3.5.0
 	 * @since   3.4.0
-	 * @todo    (maybe) run `strip_tags` on `comment_content`
+	 * @todo    [dev] (maybe) run `strip_tags` on `comment_content`
 	 */
 	function wcj_order_notes( $atts ) {
 		$notes = array();
@@ -862,9 +862,33 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	}
 
 	/**
+	 * wcj_order_products_meta.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 */
+	function wcj_order_products_meta( $atts ) {
+		if ( '' === $atts['meta_key'] ) {
+			return '';
+		}
+		$metas = array();
+		$items = $this->the_order->get_items();
+		foreach ( $items as $item_id => $item ) {
+			$product_id = ( ! empty( $item['variation_id'] ) ? $item['variation_id'] : $item['product_id'] );
+			if ( '' != ( $meta = get_post_meta( $product_id, $atts['meta_key'], true ) ) ) {
+				$metas[] = $meta;
+			}
+		}
+		if ( 'yes' === $atts['unique_only'] ) {
+			$metas = array_unique( $metas );
+		}
+		return ( ! empty( $metas ) ? implode( $atts['sep'], $metas ) : '' );
+	}
+
+	/**
 	 * wcj_order_items_meta.
 	 *
-	 * @version 2.7.0
+	 * @version 3.9.0
 	 * @since   2.5.3
 	 */
 	function wcj_order_items_meta( $atts ) {
@@ -878,16 +902,11 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 			if ( '' != $the_meta ) {
 				$items_metas[] = $the_meta;
 			}
-			/* foreach ( $item as $key => $value ) {
-				if ( $atts['meta_key'] === $key ) {
-					$items_metas[] = $value;
-				}
-			} */
 		}
 		if ( 'yes' === $atts['unique_only'] ) {
 			$items_metas = array_unique( $items_metas );
 		}
-		return ( ! empty( $items_metas ) ) ? implode( ', ', $items_metas ) : '';
+		return ( ! empty( $items_metas ) ? implode( $atts['sep'], $items_metas ) : '' );
 	}
 
 	/**
@@ -1032,62 +1051,14 @@ class WCJ_Orders_Shortcodes extends WCJ_Shortcodes {
 	}
 
 	/**
-	 * wcj_order_get_cart_discount_tax.
-	 */
-	/* function wcj_order_get_cart_discount_tax() {
-
-		$the_cart_discount = $this->the_order->get_cart_discount();
-		$is_discount_taxable = ( $the_cart_discount > 0 ) ? true : false;
-
-		if ( $is_discount_taxable ) {
-
-			/* $order_total_incl_tax = $this->the_order->get_total();
-			$order_total_tax      = $this->the_order->get_total_tax(); *//*
-
-			$order_total_incl_tax = 0;
-			$order_total_tax = 0;
-			$items = $this->the_order->get_items();
-			foreach ( $items as $item ) {
-				$order_total_incl_tax += $item['line_total'] + $item['line_tax'];
-				$order_total_tax += $item['line_tax'];
-			}
-
-			if ( 0 != $order_total_incl_tax ) {
-
-				$order_tax_rate = $order_total_tax / $order_total_incl_tax;
-				$the_tax = $the_cart_discount * $order_tax_rate;
-
-				return $the_tax;
-			}
-		}
-
-		return false;
-	} */
-
-	/**
 	 * wcj_order_total_discount.
 	 *
 	 * @version 2.4.0
 	 */
 	function wcj_order_total_discount( $atts ) {
-
 		$the_discount = $this->the_order->get_total_discount( $atts['excl_tax'] );
-
-		/* if ( true === $atts['excl_tax'] ) {
-			if ( false != ( $the_tax = $this->wcj_order_get_cart_discount_tax() ) ) {
-				$the_discount -= $the_tax;
-			}
-		} */
-
 		return $this->wcj_price_shortcode( $the_discount, $atts );
 	}
-
-	/**
-	 * wcj_order_cart_discount.
-	 */
-	/* function wcj_order_cart_discount( $atts ) {
-		return $this->wcj_price_shortcode( $this->the_order->get_cart_discount() , $atts );
-	} */
 
 	/**
 	 * wcj_order_shipping_tax.

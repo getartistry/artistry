@@ -47,6 +47,16 @@ if (  isset($_GET ['id']) ){
 	
 }
 
+//table version
+$wp_automatic_version = get_option('wp_automatic_version' , 199 );
+
+if( $wp_automatic_version < 202 ){
+	
+	$update_url = home_url('?wp_automatic=test');
+	echo 'Tables update required. Please visit the update URL <a target="_blank" href="'.$update_url.'">HERE</a>, it will keep refreshing, leave it till it tells you congratulation!';
+	exit;
+	
+}
 
 // Inistantiate campaign processor class
 require_once 'campaignsProcessor.php'; 

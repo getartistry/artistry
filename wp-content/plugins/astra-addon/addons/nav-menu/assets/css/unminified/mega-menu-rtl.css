@@ -1,0 +1,349 @@
+/*----------  Media Query min-width Structure   ----------*/
+/*----------  Media Query max-width Structure   ----------*/
+/*----------  Break-point min-width Structure   ----------*/
+/*----------  Break-point max-width Structure   ----------*/
+/**
+ * Mega Menu styling
+ */
+.ast-desktop {
+  /** Below Header have some extra padding. */
+  /* Widget Mega Menu style */
+}
+
+.ast-desktop .ast-mega-menu-enabled {
+  /*Full Width Mega Menu*/
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li .astra-megamenu.sub-menu > li {
+  display: none;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li.ast-mm-has-desc > .menu-link {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li li:hover > a {
+  background-color: transparent;
+  color: inherit;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ast-desktop .ast-mega-menu-enabled .menu-item-has-children.astra-megamenu-li .astra-megamenu.sub-menu li > a:after {
+  content: '';
+}
+
+.ast-desktop .ast-mega-menu-enabled.submenu-with-border .astra-megamenu-li .sub-menu a,
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li .sub-menu a {
+  border: none;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu {
+  opacity: 1;
+  visibility: visible;
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 15px;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.astra-megamenu-has-divider > li {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.astra-megamenu-has-divider > li:first-child {
+  padding-right: 0;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.astra-megamenu-has-divider > li:last-child {
+  padding-left: 0;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.sub-menu.col-2 li {
+  width: 50%;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.sub-menu.col-3 li {
+  width: 33.33%;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.sub-menu.col-4 li {
+  width: 25%;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.sub-menu > li {
+  display: block;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  opacity: 1;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu .sub-menu {
+  background-color: transparent;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu .astra-nested-sub-menu li a {
+  padding-right: 24px;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu .astra-nested-sub-menu .astra-nested-sub-menu li a {
+  padding-right: 48px;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.sub-menu .sub-menu {
+  border: none;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.sub-menu > li .sub-menu {
+  position: static;
+  width: 100%;
+  margin: auto;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.sub-menu > li .sub-menu li {
+  width: 100%;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-megamenu.sub-menu li:last-child {
+  border-left: none;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-full-megamenu-wrapper {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-megamenu-li:hover .astra-full-megamenu-wrapper .astra-megamenu {
+  -js-display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ast-desktop .ast-mega-menu-enabled :not(.menu-container-width-mega).astra-megamenu-li:hover .astra-megamenu .sub-menu li {
+  width: 100%;
+}
+
+.ast-desktop .ast-mega-menu-enabled :not(.menu-container-width-mega).astra-megamenu-li:hover .astra-megamenu.sub-menu li .sub-menu {
+  min-width: 100%;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-full-megamenu-wrapper {
+  background: #FFFFFF;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  top: 100%;
+}
+
+.ast-desktop .ast-mega-menu-enabled .astra-full-megamenu-wrapper .astra-megamenu.sub-menu {
+  display: none;
+  position: relative;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+  padding-right: 0;
+  padding-left: 0;
+  border-width: 0;
+}
+
+.ast-desktop .main-header-menu .astra-megamenu-li .sub-menu li.current-menu-ancestor > a,
+.ast-desktop .ast-below-header-menu .astra-megamenu-li .sub-menu li.current-menu-ancestor > a,
+.ast-desktop .ast-above-header-menu .astra-megamenu-li .sub-menu li.current-menu-ancestor > a {
+  background-color: transparent;
+  color: inherit;
+}
+
+.ast-desktop .main-header-menu .astra-megamenu-li .sub-menu .menu-item-heading .menu-text,
+.ast-desktop .ast-below-header-menu .astra-megamenu-li .sub-menu .menu-item-heading .menu-text,
+.ast-desktop .ast-above-header-menu .astra-megamenu-li .sub-menu .menu-item-heading .menu-text {
+  vertical-align: text-top;
+}
+
+.ast-desktop .ast-mm-template-content,
+.ast-desktop .ast-mm-custom-text-content {
+  padding: 0 1em;
+}
+
+.ast-desktop .ast-below-header .ast-mm-custom-text-content,
+.ast-desktop .ast-below-header .ast-mm-template-content {
+  padding: 0.9em 1em;
+}
+
+.ast-desktop .submenu-with-border .astra-full-megamenu-wrapper {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.ast-desktop .ast-mm-widget-content a {
+  display: initial;
+}
+
+.ast-desktop .ast-mm-widget-content .ast-mm-widget-item {
+  padding: 1.5em;
+}
+
+.ast-desktop .submenu-with-border .astra-megamenu {
+  border-width: 1px;
+}
+
+.ast-menu-description {
+  line-height: 1.6;
+  display: block;
+  font-size: 0.8em;
+  padding: 2px 0;
+}
+
+/** Added the prefix `.site-header` because it is the common for above, below & primary. */
+.site-header a .sub-arrow,
+.site-header a .ast-menu-description {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.site-header .menu-text {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.ast-header-break-point .ast-menu-description {
+  line-height: inherit;
+}
+
+.astra-mm-highlight-label {
+  font-size: 0.7em;
+  margin-right: 5px;
+  line-height: normal;
+  padding: 3px 6px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.ast-desktop .ast-hide-menu-item {
+  display: none;
+}
+
+.ast-desktop .ast-mega-menu-enabled .ast-hide-menu-item {
+  display: none;
+}
+
+.ast-desktop .ast-mega-menu-enabled.main-header-menu > .menu-item-has-children > a .sub-arrow:after,
+.ast-desktop .ast-mega-menu-enabled.main-header-menu > .page_item_has_children > a .sub-arrow:after, .ast-desktop .ast-mega-menu-enabled.ast-below-header-menu > .menu-item-has-children > a .sub-arrow:after,
+.ast-desktop .ast-mega-menu-enabled.ast-below-header-menu > .page_item_has_children > a .sub-arrow:after, .ast-desktop .ast-mega-menu-enabled.ast-above-header-menu > .menu-item-has-children > a .sub-arrow:after,
+.ast-desktop .ast-mega-menu-enabled.ast-above-header-menu > .page_item_has_children > a .sub-arrow:after {
+  content: "\e900";
+  display: inline-block;
+  font-family: 'Astra';
+  font-size: 9px;
+  font-size: .6rem;
+  font-weight: bold;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-right: 10px;
+  line-height: normal;
+}
+
+.ast-desktop .ast-mega-menu-enabled.main-header-menu > .menu-item-has-children > a:after,
+.ast-desktop .ast-mega-menu-enabled.main-header-menu > .page_item_has_children > a:after, .ast-desktop .ast-mega-menu-enabled.ast-below-header-menu > .menu-item-has-children > a:after,
+.ast-desktop .ast-mega-menu-enabled.ast-below-header-menu > .page_item_has_children > a:after, .ast-desktop .ast-mega-menu-enabled.ast-above-header-menu > .menu-item-has-children > a:after,
+.ast-desktop .ast-mega-menu-enabled.ast-above-header-menu > .page_item_has_children > a:after {
+  content: '';
+  margin: 0;
+}
+
+.ast-desktop .ast-mega-menu-enabled.main-header-menu ul li.menu-item-has-children > a .sub-arrow:after,
+.ast-desktop .ast-mega-menu-enabled.main-header-menu ul li.menu-item-has-children > a .sub-arrow:after, .ast-desktop .ast-mega-menu-enabled.ast-below-header-menu ul li.menu-item-has-children > a .sub-arrow:after,
+.ast-desktop .ast-mega-menu-enabled.ast-below-header-menu ul li.menu-item-has-children > a .sub-arrow:after, .ast-desktop .ast-mega-menu-enabled.ast-above-header-menu ul li.menu-item-has-children > a .sub-arrow:after,
+.ast-desktop .ast-mega-menu-enabled.ast-above-header-menu ul li.menu-item-has-children > a .sub-arrow:after {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.ast-desktop .ast-mega-menu-enabled.main-header-menu ul li.menu-item-has-children > a .sub-arrow,
+.ast-desktop .ast-mega-menu-enabled.main-header-menu ul li.menu-item-has-children > a .sub-arrow, .ast-desktop .ast-mega-menu-enabled.ast-below-header-menu ul li.menu-item-has-children > a .sub-arrow,
+.ast-desktop .ast-mega-menu-enabled.ast-below-header-menu ul li.menu-item-has-children > a .sub-arrow, .ast-desktop .ast-mega-menu-enabled.ast-above-header-menu ul li.menu-item-has-children > a .sub-arrow,
+.ast-desktop .ast-mega-menu-enabled.ast-above-header-menu ul li.menu-item-has-children > a .sub-arrow {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.ast-desktop .ast-mega-menu-enabled.main-header-menu .ast-masthead-custom-menu-items a:hover,
+.ast-desktop .ast-mega-menu-enabled.main-header-menu .ast-masthead-custom-menu-items a:focus, .ast-desktop .ast-mega-menu-enabled.ast-below-header-menu .ast-masthead-custom-menu-items a:hover,
+.ast-desktop .ast-mega-menu-enabled.ast-below-header-menu .ast-masthead-custom-menu-items a:focus, .ast-desktop .ast-mega-menu-enabled.ast-above-header-menu .ast-masthead-custom-menu-items a:hover,
+.ast-desktop .ast-mega-menu-enabled.ast-above-header-menu .ast-masthead-custom-menu-items a:focus {
+  background: transparent;
+}
+
+.ast-header-break-point .ast-mega-menu-enabled .menu-item-has-children.astra-megamenu-li > a .sub-arrow:after,
+.ast-header-break-point .ast-mega-menu-enabled .page_item_has_children.astra-megamenu-li > a .sub-arrow:after {
+  display: none;
+}
+
+.ast-disable-link {
+  cursor: default;
+}
+
+.ast-desktop {
+  /**
+	 * Above Header
+	 */
+  /**
+	 * Below Header
+	 */
+  /**
+	 * Primary Header
+	 */
+}
+
+.ast-desktop .ast-mega-menu-enabled.ast-above-header-menu .sub-menu .menu-item-heading:hover > a,
+.ast-desktop .ast-mega-menu-enabled.ast-above-header-menu .sub-menu .menu-item-heading:focus > a,
+.ast-desktop .ast-mega-menu-enabled.ast-above-header-menu .sub-menu .menu-item-heading > a:hover {
+  background: transparent;
+}
+
+.ast-desktop .ast-mega-menu-enabled.ast-below-header-menu .sub-menu .menu-item-heading:hover > a,
+.ast-desktop .ast-mega-menu-enabled.ast-below-header-menu .sub-menu .menu-item-heading:focus > a,
+.ast-desktop .ast-mega-menu-enabled.ast-below-header-menu .sub-menu .menu-item-heading > a:hover {
+  background: transparent;
+}
+
+.ast-desktop .ast-mega-menu-enabled.main-header-menu .sub-menu .menu-item-heading:hover > a,
+.ast-desktop .ast-mega-menu-enabled.main-header-menu .sub-menu .menu-item-heading:focus > a,
+.ast-desktop .ast-mega-menu-enabled.main-header-menu .sub-menu .menu-item-heading > a:hover {
+  background: transparent;
+}
+
+.ast-desktop .ast-below-header-menu .astra-mega-menu-width-full,
+.ast-desktop .ast-above-header-menu .astra-mega-menu-width-full,
+.ast-desktop .astra-mega-menu-width-full {
+  background: transparent;
+}
+
+.astra-megamenu-li .ast-mm-template-content a:not(.button) {
+  padding: inherit;
+}

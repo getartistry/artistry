@@ -6,6 +6,7 @@ $settings = $this->get_settings();
 $data_settings = $this->generate_setting_json();
 
 $classes_list[] = 'jet-slider';
+$classes_list[] = 'jet-slider__image-' . $settings['slide_image_scale_mode'];
 $classes = implode( ' ', $classes_list );
 ?>
 

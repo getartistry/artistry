@@ -85,7 +85,7 @@ if ( ! function_exists( 'astra_single_get_post_meta' ) ) {
 		$post_meta   = astra_get_option( 'blog-single-meta' );
 
 		$output = '';
-		if ( is_array( $post_meta ) && 'post' == get_post_type() && $enable_meta ) {
+		if ( is_array( $post_meta ) && ( 'post' == get_post_type() || 'attachment' == get_post_type() ) && $enable_meta ) {
 
 			$output_str = astra_get_post_meta( $post_meta );
 			if ( ! empty( $output_str ) ) {
@@ -172,7 +172,8 @@ if ( ! function_exists( 'astra_theme_comment' ) ) {
 									<?php
 									comment_reply_link(
 										array_merge(
-											$args, array(
+											$args,
+											array(
 												'reply_text' => astra_default_strings( 'string-comment-reply-link', false ),
 												'add_below' => 'comment',
 												'depth'  => $depth,
@@ -231,7 +232,8 @@ if ( ! function_exists( 'astra_single_post_navigation_markup' ) ) {
 			 */
 			the_post_navigation(
 				apply_filters(
-					'astra_single_post_navigation', array(
+					'astra_single_post_navigation',
+					array(
 						'next_text' => $next_text,
 						'prev_text' => $prev_text,
 					)

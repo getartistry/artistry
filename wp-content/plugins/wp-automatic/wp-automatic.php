@@ -3,7 +3,7 @@
  Plugin Name: Wordpress Automatic Plugin
  Plugin URI: http://codecanyon.net/item/wordpress-automatic-plugin/1904470?ref=ValvePress
  Description: Wordpress automatic posts high quality articles,amazon products,clickbank products,youtube videos , eBay items,flicker images and RSS feeds posts on auto-pilot.
- Version: 3.38.3
+ Version: 3.39.3
  Author: ValvePress
  Author URI: http://codecanyon.net/user/ValvePress/portfolio?ref=ValvePress
  */
@@ -24,7 +24,7 @@ if(trim($licenseactive) != ''){
 	//fire checks
 	require_once  plugin_dir_path(__FILE__) . 'plugin-updates/plugin-update-checker.php';
 	$wp_automatic_UpdateChecker = Puc_v4_Factory::buildUpdateChecker(
-			'http://deandev.com/upgrades/meta/wp-automatic.json',
+			'https://deandev.com/upgrades/meta/wp-automatic.json',
 			__FILE__,
 			'wp-automatic'
 			);

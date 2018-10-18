@@ -4,13 +4,19 @@
  *
  * @package     Astra Addon
  * @author      Brainstorm Force
- * @copyright   Copyright (c) 2015, Brainstorm Force
+ * @copyright   Copyright (c) 2018, Brainstorm Force
  * @link        http://www.brainstormforce.com
  * @since       1.0.0
  */
 
+// Block direct access to the file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
+}
+
+// Bail if Customizer config base class does not exist.
+if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+	return;
 }
 
 if ( ! class_exists( 'Astra_Below_Header_Configs' ) ) {
@@ -242,6 +248,138 @@ if ( ! class_exists( 'Astra_Below_Header_Configs' ) ) {
 						'min'  => 30,
 						'step' => 1,
 						'max'  => 600,
+					),
+				),
+
+				/**
+				 * Option: Below Header Divider
+				 */
+				array(
+					'name'     => ASTRA_THEME_SETTINGS . '[below-header-submenu-border-divider]',
+					'section'  => 'section-below-header',
+					'priority' => 75,
+					'required' => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'type'     => 'control',
+					'control'  => 'ast-divider',
+					'settings' => array(),
+				),
+				/**
+				 * Option: Submenu Border
+				 */
+				array(
+					'name'           => ASTRA_THEME_SETTINGS . '[below-header-submenu-border]',
+					'default'        => astra_get_option( 'below-header-submenu-border' ),
+					'type'           => 'control',
+					'control'        => 'ast-border',
+					'transport'      => 'postMessage',
+					'priority'       => 75,
+					'required'       => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'section'        => 'section-below-header',
+					'title'          => __( 'Submenu Container Border', 'astra-addon' ),
+					'linked_choices' => true,
+					'choices'        => array(
+						'top'    => __( 'Top', 'astra-addon' ),
+						'right'  => __( 'Right', 'astra-addon' ),
+						'bottom' => __( 'Bottom', 'astra-addon' ),
+						'left'   => __( 'Left', 'astra-addon' ),
+					),
+				),
+
+				/**
+				 * Option: Submenu Border Color
+				 */
+
+				array(
+					'name'      => ASTRA_THEME_SETTINGS . '[below-header-submenu-border-color]',
+					'type'      => 'control',
+					'control'   => 'ast-color',
+					'transport' => 'postMessage',
+					'priority'  => 75,
+					'required'  => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'default'   => astra_get_option( 'below-header-submenu-border-color' ),
+					'section'   => 'section-below-header',
+					'title'     => __( 'Border Color', 'astra-addon' ),
+				),
+
+				/**
+				 * Option: Submenu Item Border
+				 */
+				array(
+					'name'      => ASTRA_THEME_SETTINGS . '[below-header-submenu-item-border]',
+					'default'   => astra_get_option( 'below-header-submenu-item-border' ),
+					'type'      => 'control',
+					'control'   => 'checkbox',
+					'transport' => 'postMessage',
+					'priority'  => 75,
+					'required'  => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'section'   => 'section-below-header',
+					'title'     => __( 'Submenu Item Border', 'astra-addon' ),
+				),
+
+				/**
+				 * Option: Submenu Item Border Color
+				 */
+				array(
+					'name'      => ASTRA_THEME_SETTINGS . '[below-header-submenu-item-b-color]',
+					'type'      => 'control',
+					'control'   => 'ast-color',
+					'transport' => 'postMessage',
+					'priority'  => 75,
+					'required'  => array(
+						ASTRA_THEME_SETTINGS . '[below-header-submenu-item-border]',
+						'==',
+						true,
+					),
+					'default'   => astra_get_option( 'below-header-submenu-item-b-color' ),
+					'section'   => 'section-below-header',
+					'title'     => __( 'Submenu Item Border Color', 'astra-addon' ),
+				),
+
+				// Option: Submenu Container Animation.
+				array(
+					'name'     => ASTRA_THEME_SETTINGS . '[below-header-submenu-container-animation]',
+					'default'  => astra_get_option( 'below-header-submenu-container-animation' ),
+					'type'     => 'control',
+					'control'  => 'select',
+					'section'  => 'section-below-header',
+					'priority' => 75,
+					'title'    => __( 'Submenu Container Animation', 'astra-addon' ),
+					'required' => array(
+						'conditions' => array(
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-1]', '==', 'menu' ),
+							array( ASTRA_THEME_SETTINGS . '[below-header-section-2]', '==', 'menu' ),
+						),
+						'operator'   => 'OR',
+					),
+					'choices'  => array(
+						''           => __( 'Default', 'astra-addon' ),
+						'slide-down' => __( 'Slide Down', 'astra-addon' ),
+						'slide-up'   => __( 'Slide Up', 'astra-addon' ),
+						'fade'       => __( 'Fade', 'astra-addon' ),
 					),
 				),
 

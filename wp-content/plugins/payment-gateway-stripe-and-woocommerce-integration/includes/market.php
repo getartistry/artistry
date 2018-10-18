@@ -63,14 +63,14 @@
 </style>
 <div class="box14 table-box-main">
     <h3>
-       <center><a href="https://www.xadapter.com/" target="_blank" style="text-decoration:  none;color:black;" >XAdapter</a></center></h3> 
+       <center><a href="https://www.webtoffee.com/" target="_blank" style="text-decoration:  none;color:black;" >WebToffee</a></center></h3> 
        <hr>
-       <img src="https://cdn.xadapter.com/wp-content/uploads/2016/08/Stripe-WooCommerce-Payment-Gateway-Product-Image-2.png">
+       <img src="<?php echo EH_STRIPE_MAIN_URL_PATH . 'assets/img/Stripe-WooCommerce-Payment-Gateway-Product-Image.jpg'?>">
        <h3>Stripe Payment Gateway for WooCommerce<br/></h3>
    <!--  <p style="color:red;">
         <strong>Your Business is precious. Go Premium!</strong>
     </p> -->
-    <br/> <center><a href="https://www.xadapter.com/product/stripe-payment-gateway-for-woocommerce/" target="_blank" class="button button-primary">Upgrade to Premium Version</a></center>
+    <br/> <center><a href="https://www.webtoffee.com/product/woocommerce-stripe-payment-gateway/" target="_blank" class="button button-primary">Upgrade to Premium Version</a></center>
     <span>
         <ul style="list-style: disc; margin-left:20px;">
             <strong>
@@ -84,5 +84,5 @@
         </ul>
     </span>
     
-    <center> <a href="https://www.xadapter.com/category/documentation/stripe-payment-gateway-for-woocommerce/" target="_blank" class="button button-primary">Documentation</a> </center>
+    <center> <a href="https://www.webtoffee.com/category/documentation/stripe-payment-gateway-for-woocommerce/" target="_blank" class="button button-primary">Documentation</a> </center>
 </div>

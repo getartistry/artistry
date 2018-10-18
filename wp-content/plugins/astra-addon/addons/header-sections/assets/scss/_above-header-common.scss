@@ -1,3 +1,6 @@
+.ast-above-header {
+    z-index: 5;
+}
 
 .ast-above-header-wrap {
     position: relative;
@@ -28,6 +31,7 @@
 
 .ast-above-header-section { 
     flex: auto;
+    align-items: center;
     .widget{
         margin: 0 .5em;
         display: inline-block;
@@ -70,7 +74,6 @@
 
     .ast-search-icon {
         display: block;
-        padding:0 1em;
     }
     
     .astra-search-icon {
@@ -99,11 +102,7 @@
 }
 
 .ast-above-header-section-1 {
-    .ast-search-icon{
-        padding: 0 .5em;
-    }
     .ast-search-menu-icon {
-        left: -.5em;
         &.ast-inline-search {
             left: 0;
         }
@@ -111,6 +110,8 @@
         .search-form {
             padding-left: 3em;
             padding-right: 0;
+            right: auto;
+            left: -1em;
         }
     }
 }
@@ -122,6 +123,13 @@
     display: none;
 }
 
+.ast-above-header-section-2 .search-field {
+    padding-right: 0;
+}
+
+.ast-above-header-section-1 .search-field {
+    padding-left: 0;
+}
 
 .ast-header-break-point {
 
@@ -249,11 +257,19 @@
                 padding: 1em 0em 1em 0em;
             }
             &.ast-swap-above-header-sections .ast-above-header-section-2 {
-                padding: 1em 0em 0 0;
+                padding: 1em 0 1em 0;
             }
 
             &.ast-swap-above-header-sections .ast-above-header-section-1 {
                 padding: 0 0 1em 0;
+            }
+
+            &.ast-swap-above-header-sections {
+                .ast-above-header-1 {
+                    .ast-above-header-section-1 {
+                        padding: 0 0 1em 0;
+                    }
+                }
             }
 
             .ast-above-header-1 {
@@ -337,31 +353,9 @@
 
     .ast-above-header {
         line-height: 3;
-        border-top: 1px solid #eaeaea;
-        
-        .ast-search-icon {
-            display: none;
-        }
-
-        .ast-search-menu-icon {
-            right: auto;
-            left: auto;
-            visibility: inherit;
-        }
-
-        .search-form {
-            padding: 0;
-        }
-
-        .search-field {
-            padding-left: 1em;
-            padding-right: 5em;
-        }
 
         .ast-search-menu-icon .search-field {
             max-height: initial;
-            padding-top: .4em;
-            padding-bottom: .4em;
         }
 
          /* Woocommerce Above Header cart*/

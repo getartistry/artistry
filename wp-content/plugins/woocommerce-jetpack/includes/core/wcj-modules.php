@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Modules
  *
- * @version 3.7.0
+ * @version 4.0.0
  * @since   3.2.4
  * @author  Algoritmika Ltd.
  */
@@ -83,6 +83,7 @@ $wcj_module_files = array(
 	'class-wcj-shipping-by-user-role.php',
 	'class-wcj-shipping-by-products.php',
 	'class-wcj-shipping-by-cities.php',
+	'class-wcj-shipping-by-time.php',
 	'class-wcj-shipping-by-order-amount.php',
 	'class-wcj-address-formats.php',
 	'class-wcj-orders.php',
@@ -96,7 +97,7 @@ $wcj_module_files = array(
 	'class-wcj-emails.php',
 	'class-wcj-email-options.php',
 	'class-wcj-emails-verification.php',
-	'class-wcj-currencies.php',
+	'class-wcj-currency.php',
 	'class-wcj-multicurrency.php',
 	'class-wcj-multicurrency-product-base-price.php',
 	'class-wcj-currency-per-product.php',
@@ -114,6 +115,7 @@ $wcj_module_files = array(
 	'class-wcj-my-account.php',
 	'class-wcj-custom-css.php',
 	'class-wcj-custom-js.php',
+	'class-wcj-custom-php.php',
 	'class-wcj-products-xml.php',
 	'class-wcj-export-import.php',
 	'class-wcj-eu-vat-number.php',
@@ -121,6 +123,7 @@ $wcj_module_files = array(
 	'class-wcj-reports.php',
 	'class-wcj-wpml.php',
 	'class-wcj-modules-by-user-roles.php',
+	'class-wcj-template-editor.php',
 	'pdf-invoices/submodules/class-wcj-pdf-invoicing-numbering.php',
 	'pdf-invoices/submodules/class-wcj-pdf-invoicing-templates.php',
 	'pdf-invoices/submodules/class-wcj-pdf-invoicing-styling.php',

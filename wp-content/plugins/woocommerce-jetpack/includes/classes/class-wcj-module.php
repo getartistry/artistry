@@ -2,16 +2,17 @@
 /**
  * Booster for WooCommerce Module
  *
- * @version 3.8.0
+ * @version 4.0.0
  * @since   2.2.0
  * @author  Algoritmika Ltd.
+ * @todo    [dev] maybe should be `abstract` ?
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( ! class_exists( 'WCJ_Module' ) ) :
 
-/* abstract */ class WCJ_Module {
+class WCJ_Module {
 
 	public $id;
 	public $short_desc;
@@ -296,7 +297,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	/**
 	 * save_meta_box.
 	 *
-	 * @version 3.6.0
+	 * @version 3.9.0
 	 * @since   2.5.0
 	 * @todo    (maybe) also order_id in `$the_post_id = ...`
 	 */
@@ -319,6 +320,13 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 				$option_value  = ( isset( $_POST[ $option['name'] ] ) ) ? $_POST[ $option['name'] ] : $option['default'];
 				$the_post_id   = ( isset( $option['product_id'] )     ) ? $option['product_id']     : $post_id;
 				$the_meta_name = ( isset( $option['meta_name'] ) )      ? $option['meta_name']      : '_' . $option['name'];
+				if ( isset( $option['convert'] ) && 'from_date_to_timestamp' === $option['convert'] ) {
+					$option_value = strtotime( $option_value );
+					if ( empty( $option_value ) ) {
+						continue;
+					}
+				}
+				delete_post_meta( $the_post_id, $the_meta_name ); // solves lowercase/uppercase issue
 				update_post_meta( $the_post_id, $the_meta_name, apply_filters( 'wcj_save_meta_box_value', $option_value, $option['name'], $this->id ) );
 			}
 		}
@@ -462,16 +470,6 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	}
 
 	/**
-	 * add_enabled_option.
-	 * only for `module`
-	 *
-	function add_enabled_option( $settings ) {
-		$all_settings = $this->get_settings();
-		$settings[] = $all_settings[1];
-		return $settings;
-	}
-
-	/**
 	 * settings_section.
 	 *
 	 * @version 2.3.0
@@ -521,7 +519,7 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	function add_tools_list( $settings ) {
 		return array_merge( $settings, array(
 			array(
-				'title'    => /* $this->short_desc . ' ' .  */__( 'Tools', 'woocommerce-jetpack' ),
+				'title'    => __( 'Tools', 'woocommerce-jetpack' ),
 				'type'     => 'title',
 				'desc'     => '',
 				'id'       => 'wcj_' . $this->id . '_tools_options'
@@ -672,14 +670,14 @@ if ( ! class_exists( 'WCJ_Module' ) ) :
 	 * settings_section.
 	 * only for `module`
 	 *
-	 * @version 2.8.0
+	 * @version 4.0.0
 	 */
 	function add_enable_module_setting( $settings, $module_desc = '' ) {
 		if ( 'module' != $this->type ) {
 			return $settings;
 		}
 		if ( '' === $module_desc && isset( $this->extra_desc ) ) {
-			$module_desc = $this->extra_desc;
+			$module_desc = '<div style="padding: 15px; background-color: #ffffff; color: #000000;">' . $this->extra_desc . '</div>';
 		}
 		if ( ! isset( $this->link ) && isset( $this->link_slug ) && '' != $this->link_slug ) {
 			$this->link = 'https://booster.io/features/' . $this->link_slug . '/';

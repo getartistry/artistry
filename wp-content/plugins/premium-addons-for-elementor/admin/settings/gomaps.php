@@ -6,7 +6,7 @@ if(!defined('ABSPATH')) exit;
 
 class PA_Gomaps {
     
-    public $pa_maps_keys = [ 'premium-map-api', 'premium-map-disable-api' ];
+    public static $pa_maps_keys = [ 'premium-map-api', 'premium-map-disable-api' ];
     
     private $pa_maps_default_settings;
     
@@ -36,11 +36,11 @@ class PA_Gomaps {
 			'ajaxurl' => admin_url( 'admin-ajax.php' )
 		);
         
-        wp_localize_script( 'premium-addons-admin-js', 'settings', $js_info );
+        wp_localize_script( 'pa-admin-js', 'settings', $js_info );
         
-        $this->pa_maps_default_settings = array_fill_keys( $this->pa_maps_keys, true );
+        $this->pa_maps_default_settings = $this->get_default_keys();
        
-        $this->pa_maps_get_settings = get_option( 'pa_maps_save_settings', $this->pa_maps_default_settings );
+        $this->pa_maps_get_settings = $this->get_enabled_keys();
        
         $pa_maps_new_settings = array_diff_key( $this->pa_maps_default_settings, $this->pa_maps_get_settings );
         
@@ -98,6 +98,19 @@ class PA_Gomaps {
    </form>
 </div>
     <?php }
+    
+    public static function get_default_keys() {
+        
+        $default_keys = array_fill_keys( self::$pa_maps_keys, true );
+        
+        return $default_keys;
+    }
+    
+    public static function get_enabled_keys() {
+        $enabled_keys = get_option( 'pa_maps_save_settings', self::get_default_keys() );
+        
+        return $enabled_keys;
+    }
     
     public function pa_save_maps_settings_with_ajax() {
         

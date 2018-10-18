@@ -79,7 +79,8 @@ if ( ! function_exists( 'astra_widgets_init' ) ) :
 		 */
 		register_sidebar(
 			apply_filters(
-				'astra_widgets_init', array(
+				'astra_widgets_init',
+				array(
 					'name'          => esc_html__( 'Main Sidebar', 'astra' ),
 					'id'            => 'sidebar-1',
 					'description'   => '',
@@ -96,7 +97,8 @@ if ( ! function_exists( 'astra_widgets_init' ) ) :
 		 */
 		register_sidebar(
 			apply_filters(
-				'astra_header_widgets_init', array(
+				'astra_header_widgets_init',
+				array(
 					'name'          => esc_html__( 'Header', 'astra' ),
 					'id'            => 'header-widget',
 					'description'   => '',
@@ -113,7 +115,8 @@ if ( ! function_exists( 'astra_widgets_init' ) ) :
 		 */
 		register_sidebar(
 			apply_filters(
-				'astra_footer_1_widgets_init', array(
+				'astra_footer_1_widgets_init',
+				array(
 					'name'          => esc_html__( 'Footer Bar Section 1', 'astra' ),
 					'id'            => 'footer-widget-1',
 					'description'   => '',
@@ -127,7 +130,8 @@ if ( ! function_exists( 'astra_widgets_init' ) ) :
 
 		register_sidebar(
 			apply_filters(
-				'astra_footer_2_widgets_init', array(
+				'astra_footer_2_widgets_init',
+				array(
 					'name'          => esc_html__( 'Footer Bar Section 2', 'astra' ),
 					'id'            => 'footer-widget-2',
 					'description'   => '',

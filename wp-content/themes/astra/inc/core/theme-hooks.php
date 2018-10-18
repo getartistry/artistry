@@ -25,7 +25,8 @@
  * </code>
  */
 add_theme_support(
-	'astra_hooks', array(
+	'astra_hooks',
+	array(
 
 		/**
 		 * As a Theme developer, use the 'all' parameter, to declare support for all

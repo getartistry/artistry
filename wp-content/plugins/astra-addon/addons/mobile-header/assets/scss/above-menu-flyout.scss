@@ -98,6 +98,14 @@
 				}
 			} 
 		}
+
+		/* Fixed Header markup override the main header markup which don't allow to click on menu while the header is not sticky */
+		#ast-fixed-header.ast-sticky-active .ast-above-header-navigation-wrap {
+		    display: block !important;
+		}
+		#ast-fixed-header .ast-above-header-navigation-wrap {
+		    display: none !important;
+		}
 	}
 }
 .ast-flyout-above-menu-overlay {

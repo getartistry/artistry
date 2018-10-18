@@ -16,7 +16,7 @@ class ACF_Text extends Tag {
 	}
 
 	public function get_title() {
-		return __( 'ACF Field', 'elementor-pro' );
+		return __( 'ACF', 'elementor-pro' ) . ' ' . __( 'Field', 'elementor-pro' );
 	}
 
 	public function get_group() {

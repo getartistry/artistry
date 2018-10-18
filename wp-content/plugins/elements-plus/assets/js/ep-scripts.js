@@ -230,4 +230,46 @@
 		});
 	});
 
+	$(document).on('elementor/render/ep_image_comparison', function (e, data) {
+		var container = $(data);
+		var offset = container.data('offset');
+		var orientation = container.data('orientation');
+		var before = container.data('before-label');
+		var after = container.data('after-label');
+		var overlay = container.data('overlay');
+		var hover = container.data('hover');
+		var handle = container.data('handle');
+		var click = container.data('click');
+
+		$(data).imagesLoaded( function() {
+			$(data).twentytwenty({
+				default_offset_pct: offset,
+				orientation: orientation,
+				before_label: before,
+				after_label: after,
+				no_overlay: overlay,
+				move_slider_on_hover: hover,
+				move_with_handle_only: handle,
+				click_to_move: click,
+			});
+		});
+		
+	});
+
+	$(document).on('elementor/render/ep_image_hover_effects', function (e, data) {
+		var container = $(data);
+		var image1 = container.data('image1');
+		var image2 = container.data('image2');
+		var displacement = container.data('displacement');
+
+		new hoverEffect({
+			parent: document.querySelector(data + ' .img-container'),
+			intensity: 0.3,
+			image1: image1,
+			image2: image2,
+			displacementImage: displacement
+		});
+
+		
+	});
 })( jQuery );

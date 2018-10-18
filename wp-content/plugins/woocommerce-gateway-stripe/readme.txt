@@ -4,7 +4,7 @@ Tags: credit card, stripe, apple pay, payment request, google pay, sepa, sofort,
 Requires at least: 4.4
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 4.1.8
+Stable tag: 4.1.10
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Attributions: thorsten-stripe
@@ -101,10 +101,12 @@ If you get stuck, you can ask for help in the Plugin Forum.
 
 == Changelog ==
 
-= 4.1.8 - 2018-07-19 =
-* Fix - 3DS payment sometimes will create additional transaction in Stripe.
-* Fix - WC 2.6 with SEPA saved payment causing error on checkout.
-* Update - EPS logo.
+= 4.1.10 - 2018-09-17 =
+* Fix - When 3DS card redirect status is "not_required", charge the 3DS source.
+* Fix - Payment Request not validating quantity before payment sheet shows.
+* Fix - Test mode info not showing when description field is left blank.
+* Add - Filter for Payment Request localized parameters `wc_stripe_payment_request_params`.
+* Update - Stripe API version to 2018-09-06.
 
 [See changelog for all versions](https://raw.githubusercontent.com/woothemes/woocommerce-gateway-stripe/master/changelog.txt).
 

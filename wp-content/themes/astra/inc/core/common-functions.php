@@ -44,7 +44,7 @@ if ( ! function_exists( 'astra_get_foreground_color' ) ) {
 			$b   = hexdec( substr( $hex, 4, 2 ) );
 			$hex = ( ( $r * 299 ) + ( $g * 587 ) + ( $b * 114 ) ) / 1000;
 
-			return 128 <= $hex ? '#000000' : '#ffffff';
+			return 128 <= $hex ? '#222222' : '#ffffff';
 		}
 	}
 }
@@ -1041,6 +1041,80 @@ if ( ! function_exists( 'astra_get_pro_url' ) ) :
 		}
 
 		return esc_url( $url );
+	}
+
+endif;
+
+
+/**
+ * Search Form
+ */
+if ( ! function_exists( 'astra_get_search_form' ) ) :
+	/**
+	 * Display search form.
+	 *
+	 * @param bool $echo Default to echo and not return the form.
+	 * @return string|void String when $echo is false.
+	 */
+	function astra_get_search_form( $echo = true ) {
+
+		$form = '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">
+			<label>
+				<span class="screen-reader-text">' . _x( 'Search for:', 'label', 'astra' ) . '</span>
+				<input type="search" class="search-field" placeholder="' . esc_attr_x( 'Search &hellip;', 'placeholder', 'astra' ) . '" value="' . get_search_query() . '" name="s" />
+			</label>
+			<button type="submit" class="search-submit" value="' . esc_html__( 'Search', 'astra' ) . '"><i class="astra-search-icon"></i></button>
+		</form>';
+
+		/**
+		 * Filters the HTML output of the search form.
+		 *
+		 * @param string $form The search form HTML output.
+		 */
+		$result = apply_filters( 'astra_get_search_form', $form );
+
+		if ( null === $result ) {
+			$result = $form;
+		}
+
+		if ( $echo ) {
+			echo $result;
+		} else {
+			return $result;
+		}
+	}
+
+endif;
+
+if ( ! function_exists( 'astra_get_script_polyfill' ) ) :
+
+	/**
+	 * Returns contents of an inline script used in appending polyfill scripts for
+	 * browsers which fail the provided tests. The provided array is a mapping from
+	 * a condition to verify feature support to its polyfill script handle.
+	 *
+	 * @param array $tests Features to detect.
+	 * @return string Conditional polyfill inline script.
+	 */
+	function astra_get_script_polyfill( $tests ) {
+		global $wp_scripts;
+		$polyfill = '';
+		foreach ( $tests as $test => $handle ) {
+			if ( ! array_key_exists( $handle, $wp_scripts->registered ) ) {
+				continue;
+			}
+			$polyfill .= (
+				// Test presence of feature...
+				'( ' . $test . ' ) || ' .
+				// ...appending polyfill on any failures. Cautious viewers may balk
+				// at the `document.write`. Its caveat of synchronous mid-stream
+				// blocking write is exactly the behavior we need though.
+				'document.write( \'<script src="' .
+				esc_url( $wp_scripts->registered[ $handle ]->src ) .
+				'"></scr\' + \'ipt>\' );'
+			);
+		}
+		return $polyfill;
 	}
 
 endif;

@@ -19,6 +19,23 @@ function wp_automatic_update_notice() {
 </div>
 <?php
 	}
+	
+	//table version
+	$wp_automatic_version = get_option('wp_automatic_version' , 199 );
+	
+	if( $wp_automatic_version < 202 ){
+		
+		$update_url = home_url('?wp_automatic=test');
+		
+		?>
+	
+		<div class="error">
+			<p><?php    echo '<a href="https://codecanyon.net/item/wordpress-automatic-plugin/1904470">WordPress Automatic plugin</a> tables update required. Please visit the update URL <a target="_blank" href="'.$update_url.'">HERE</a>, it will keep refreshing, leave it till it tells you congratulation!'; ?></p>
+		</div>
+	
+	<?php 
+	}
+	
 }
 
 // function to get latest version return version
@@ -61,7 +78,7 @@ function wp_automatic_update_version() {
 		update_option ( 'wp_automatic_version_updated', time ( 'now' ) );
 		
 		$x = 'error';
-		$url = 'http://deandev.com/versions/wp-automatic.txt';
+		$url = 'https://deandev.com/versions/wp-automatic.txt';
 		curl_setopt ( $ch, CURLOPT_HTTPGET, 1 );
 		curl_setopt ( $ch, CURLOPT_URL, trim ( $url ) );
 		

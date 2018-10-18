@@ -1,7 +1,41 @@
-@22 June 2018 v3.38.3
-Update: Facebook module updated to work again using a new APP. Visit the plugin settings page and generate a new token if you have any issues posting from FB
-Improved: Translation module algorithm updates
+@6 October 2018 v3.39.3
+NEW: Instagram new tag for video views got added
+Fix: Instagram unexpected page content error sorted
+Fix: Pinterest now paginates correctly coping with Pinterest random failure to return correct data
+Fix: Now Pinterest returns the correct title from Rich pins
+Improved: FB videos now display unmuted and a new option to mute them got added
+Improved: content type verification for featured images now more smarter not to skip false positives
 
+@18September 2018 v3.39.2
+Important Note: If you are updating from an older version, activating this version will take long time so be patient as it includes database tables refactoring
+Improved: performance optimized so it is now more lighter & smarter
+Fix: Facebook pagination back to work 
+Fix: FB for sale posts now get imported correctly
+Fix: Make permalinks link to the source now works with almost all themes
+Fix: from_id from closed groups now returns the correct id
+
+@6 September 2018 v3.39.1
+Fix:Facebook module essential code fixes
+New: Facebook events new tags added [end_time_timestamp] , [start_time_timestamp] 
+New: WordPress comments now get added as bbPress replies if bbPress was used
+Improved: formated_date tag now works on custom fields as well 
+Improved: Items from Envato can now get posts as Woo products
+
+@17 August 2018 v3.39.0
+New: Facebook module updated and now imports from pages, groups and personal profiles
+New: Translate option new languages added like Urdu,Chinese and more
+New: Titlte truncation new option to skip "..." addition to the generated title
+New: Title truncation new option to remove last truncated word
+Improved: Feed chang encoding now gets applied before content extraction
+Improved: Translate option now translates images title tag
+Fix: No author comment URL now works with Youtube module
+Fix: Feed excluding links with html encoded chars was causing a loop
+Fix: Code updated to cope with recent WPML changes that caused the posted posts using the internal cron to disappear
+Fix: Youtube comments avatar quality increased
+Fix: Twitter tags as WordPress tags now functions correctly when cache is enabled
+
+@22 June 2018 v3.38.3
+Update: FB module updates
 
 @17 June 2018 v3.38.2
 Improved: Translation module algorithm updates
@@ -12,7 +46,6 @@ Fix:Amazon products with too many images now uses the correct featured image URL
 @30 May 2018 v3.38.1
 Fix:EzineArticles module now back to work after a recent Google custom search update
 Fix:Featured image from the og:image contining no domain now gets corrected
-
 
 @19 May 2018 v3.38.0
 Improved: ClickBank thumbnail source changed to a more reliable one

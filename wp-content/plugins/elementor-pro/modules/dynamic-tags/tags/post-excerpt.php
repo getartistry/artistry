@@ -33,6 +33,6 @@ class Post_Excerpt extends Tag {
 			return;
 		}
 
-		echo esc_html( $post->post_excerpt );
+		echo wp_kses_post( $post->post_excerpt );
 	}
 }

@@ -160,6 +160,19 @@
     }
 }
 
+.ast-plain-container,
+.ast-page-builder-template{
+    .ast-grid-2,
+    .ast-grid-3,
+    .ast-grid-4 {
+        .ast-article-post{
+            @media (max-width: $mx-col-md) {
+                width: 100%;
+            }
+        }
+    }
+}
+
 @media (min-width: $col-md) {
     // padding of the content
     .ast-separate-container{

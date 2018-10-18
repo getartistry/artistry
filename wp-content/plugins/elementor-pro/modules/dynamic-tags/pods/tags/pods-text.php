@@ -12,7 +12,7 @@ class Pods_Text extends Pods_Base {
 	}
 
 	public function get_title() {
-		return __( 'Pods Field', 'elementor-pro' );
+		return __( 'Pods', 'elementor-pro' ) . ' ' . __( 'Field', 'elementor-pro' );
 	}
 
 	public function render() {

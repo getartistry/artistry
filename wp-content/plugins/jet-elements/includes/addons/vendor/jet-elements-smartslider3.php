@@ -110,7 +110,7 @@ class Jet_Elements_Smartslider3 extends Jet_Elements_Base {
 
 		$sliderstable = $wpdb->prefix . 'nextend2_smartslider3_sliders';
 		$slidestable  = $wpdb->prefix . 'nextend2_smartslider3_slides';
-		$placeholder  = esc_html__( 'Please, select slider to show', 'cherry-elemetor' );
+		$placeholder  = esc_html__( 'Please, select slider to show', 'jet-elements' );
 		$format       = '<div class="elementor-smartslider">%s</div>';
 
 		if ( ! $slider ) {

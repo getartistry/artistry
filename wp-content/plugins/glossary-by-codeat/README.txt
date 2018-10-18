@@ -4,7 +4,7 @@ Donate link: http://codeat.com/
 Tags: glossary, vocabulary, dictionary, tooltip, terms, lexicon, knowledgebase, knowledge base, reference, terminology, catalog, directory, index, listing, literature, appendix
 Requires at least: 4.7
 Tested up to: 4.9
-Stable tag: 1.6.5
+Stable tag: 1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,6 +121,18 @@ You can find the plugin's documentation in [the dedicated website here](https://
 
 == Changelog ==
 
+== 1.6.8 ==
+* Enhancement: Improved support for Firefox Read Mode
+* [PRO] Fix: Replace Support forum link to the ticket system
+* Update: Freemius SDK to 2.1.3 release
+
+== 1.6.7 ==
+* Enhancement: Updated Requirements.php library
+
+== 1.6.6 ==
+* [PRO] Enhancement: Parameter `content` to show the term content `glossary-list` shortcode
+* [PRO] Enhancement: Added span wrap to excerpt and content parameters in `glossary-list` shortcode
+
 == 1.6.5 ==
 * Fix: For a strange issue previous release had a wrong enconding for the search engine
 
@@ -143,7 +155,7 @@ You can find the plugin's documentation in [the dedicated website here](https://
 
 = 1.6.0 =
 * Enhancement: Prevent same term option moved from PRO to free version
-* [PRO] Feature: Parameter theme to add a layout grid on `glossary-list` shortcode
+* [PRO] Feature: Parameter `theme` to add a layout grid on `glossary-list` shortcode
 * [PRO] Feature: Parameter `letters` to show only specific terms by initial on `glossary-list` shortcode
 * [PRO] Feature: Parameter `excerpt` to add the excerpt on `glossary-list` shortcode
 * [PRO] Feature: Multisite support by a filter `glossary_multisite_parent`

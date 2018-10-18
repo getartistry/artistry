@@ -20,6 +20,7 @@ class WooSEA_google_local {
 					"name" => "Itemid",
 					"feed_name" => "itemid",
 					"format" => "required",
+					"woo-suggest" => "id",
 				),
 				"Quantity" => array(
 					"name" => "Quantity",

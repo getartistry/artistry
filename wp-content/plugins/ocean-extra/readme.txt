@@ -2,8 +2,8 @@
 Contributors: oceanwp
 Tags: widgets, meta box, metaboxes, metabox, oceanwp
 Requires at least: 4.6
-Tested up to: 4.9.7
-Stable tag: 1.4.20
+Tested up to: 4.9.8
+Stable tag: 1.4.29
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,33 @@ This plugin will only work with the [OceanWP](https://oceanwp.org/) theme.
 3. Custom CSS.
 
 == Changelog ==
+
+= 1.4.29 =
+- Tweak: Some tweaks for an upcoming big update.
+
+= 1.4.28 =
+- Tweak: Notices will not be displayed if Ocean White Label is used (you don't need to update if you don't use this white label plugin).
+
+= 1.4.27 =
+- Added: Dismiss button for the theme panel rating box so you can easily remove it.
+
+= 1.4.26 =
+- Fixed: Missing CSS issue.
+
+= 1.4.25 =
+- Tweak: Contact Forms 7 replaced by WPForms for all free demos, which is a much better and flexible form plugin.
+
+= 1.4.24 =
+- Fixed: Issue with the [oceanwp_woo_free_shipping_left} shortcode.
+
+= 1.4.23 =
+- Fixed: White screen if PHP under 5.6 is used.
+
+= 1.4.22 =
+- Tweak: Slick script in Theme Panel > Scripts & Styles.
+
+= 1.4.21 =
+- Fixed: Issue with the About Me widget in the customizer.
 
 = 1.4.20 =
 - Added: New setting in OceanWP Settings to select a custom footer per page/post.

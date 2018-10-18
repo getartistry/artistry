@@ -2,6 +2,15 @@
   position: relative;
 }
 
+.customize-control-ast-background .ast-color-control.wp-color-picker {
+  width: 96px !important;
+  line-height: 17px;
+}
+
+.customize-control-ast-background .wp-picker-clear {
+  margin-left: 2%;
+}
+
 .customize-control-ast-background .screen-reader-text {
   top: initial;
 }

@@ -1865,7 +1865,6 @@ var productsColumnModel = new Ext.ProductsColumnModel({
 					parameters: products_search_cols
 				});
 
-
 			var grid_pannel_width = $(".x-panel-tbar").width();
 			$('#sm_advanced_search_content').css('width',(grid_pannel_width/2.2));
 

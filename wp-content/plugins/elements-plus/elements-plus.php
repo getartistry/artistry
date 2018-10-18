@@ -4,7 +4,7 @@
  * Description: Custom elements for the Elementor page builder by CSSIgniter.com
  * Plugin URI: https://cssigniter.com/plugins/elements-plus/
  * Author: The CSSIgniter Team
- * Version: 1.7.6
+ * Version: 1.9.1
  * Author URI: https://cssigniter.com/
  * Text Domain: elements-plus
  * Domain Path: /languages
@@ -110,20 +110,22 @@ function elements_plus_get_video_url_info( $url ) {
 
 function elements_plus_sanitize_settings( $options ) {
 	$defaults = array(
-		'checkbox_label'        => '',
-		'checkbox_dual_input'   => '',
-		'checkbox_justified'    => '',
-		'checkbox_cta'          => '',
-		'checkbox_maps'         => '',
-		'checkbox_audioigniter' => '',
-		'checkbox_video_slider' => '',
-		'checkbox_preloader'    => '',
-		'checkbox_instagram'    => '',
-		'checkbox_tooltip'      => '',
-		'checkbox_scheduled'    => '',
-		'checkbox_icon'         => '',
-		'checkbox_flipclock'    => '',
-		'api_maps'              => '',
+		'checkbox_label'               => '',
+		'checkbox_dual_input'          => '',
+		'checkbox_justified'           => '',
+		'checkbox_cta'                 => '',
+		'checkbox_maps'                => '',
+		'checkbox_audioigniter'        => '',
+		'checkbox_video_slider'        => '',
+		'checkbox_preloader'           => '',
+		'checkbox_instagram'           => '',
+		'checkbox_tooltip'             => '',
+		'checkbox_scheduled'           => '',
+		'checkbox_icon'                => '',
+		'checkbox_flipclock'           => '',
+		'checkbox_image_comparison'    => '',
+		'checkbox_image_hover_effects' => '',
+		'api_maps'                     => '',
 	);
 
 	$options = wp_parse_args( $options, $defaults );
@@ -200,23 +202,33 @@ function elements_plus_add_elements() {
 	if ( $options['checkbox_flipclock'] ) {
 		require_once ELEMENTS_PLUS_PATH . 'elements/ep-flipclock.php';
 	}
+
+	if ( $options['checkbox_image_comparison'] ) {
+		require_once ELEMENTS_PLUS_PATH . 'elements/ep-image-comparison.php';
+	}
+
+	if ( $options['checkbox_image_hover_effects'] ) {
+		require_once ELEMENTS_PLUS_PATH . 'elements/ep-image-hover-effects.php';
+	}
 }
 
 function elements_plus_scripts() {
-	$options      = elements_plus_sanitize_settings( get_option( 'elements_plus_settings' ) );
-	$label        = $options['checkbox_label'];
-	$button_plus  = $options['checkbox_dual_input'];
-	$justified    = $options['checkbox_justified'];
-	$maps         = $options['checkbox_maps'];
-	$api_key      = $options['api_maps'];
-	$cta          = $options['checkbox_cta'];
-	$audioigniter = $options['checkbox_audioigniter'];
-	$video_slider = $options['checkbox_video_slider'];
-	$preloader    = $options['checkbox_preloader'];
-	$instagram    = $options['checkbox_instagram'];
-	$tooltip      = $options['checkbox_tooltip'];
-	$icon         = $options['checkbox_icon'];
-	$flipclock    = $options['checkbox_flipclock'];
+	$options             = elements_plus_sanitize_settings( get_option( 'elements_plus_settings' ) );
+	$label               = $options['checkbox_label'];
+	$button_plus         = $options['checkbox_dual_input'];
+	$justified           = $options['checkbox_justified'];
+	$maps                = $options['checkbox_maps'];
+	$api_key             = $options['api_maps'];
+	$cta                 = $options['checkbox_cta'];
+	$audioigniter        = $options['checkbox_audioigniter'];
+	$video_slider        = $options['checkbox_video_slider'];
+	$preloader           = $options['checkbox_preloader'];
+	$instagram           = $options['checkbox_instagram'];
+	$tooltip             = $options['checkbox_tooltip'];
+	$icon                = $options['checkbox_icon'];
+	$flipclock           = $options['checkbox_flipclock'];
+	$image_comparison    = $options['checkbox_image_comparison'];
+	$image_hover_effects = $options['checkbox_image_hover_effects'];
 
 	if ( 1 === $icon ) {
 		wp_enqueue_style( 'ep-icon-module', ELEMENTS_PLUS_URL . 'assets/css/ep-icon-module.css' );
@@ -227,7 +239,7 @@ function elements_plus_scripts() {
 		wp_enqueue_script( 'justified-gallery', ELEMENTS_PLUS_URL . 'assets/js/jquery.justifiedGallery.min.js', array( 'jquery' ), '3.6.3', true );
 	}
 
-	if ( 1 === $justified || 1 === $maps || 1 === $audioigniter || 1 === $video_slider || 1 === $preloader || 1 === $flipclock ) {
+	if ( 1 === $justified || 1 === $maps || 1 === $audioigniter || 1 === $video_slider || 1 === $preloader || 1 === $flipclock || 1 === $image_comparison ) {
 		wp_enqueue_script( 'ep-scripts', ELEMENTS_PLUS_URL . 'assets/js/ep-scripts.js', array( 'jquery' ), '1.0.0', true );
 	}
 
@@ -249,7 +261,20 @@ function elements_plus_scripts() {
 		wp_enqueue_script( 'flipclock', ELEMENTS_PLUS_URL . 'assets/js/flipclock.min.js', array( 'jquery' ), '1.1.a', true );
 	}
 
-	if ( 1 === $label || 1 === $button_plus || 1 === $justified || 1 === $cta || 1 === $video_slider || 1 === $preloader || 1 === $instagram || 1 === $tooltip || 1 === $icon || 1 === $flipclock ) {
+	if ( 1 === $image_comparison ) {
+		wp_enqueue_style( 'image-comparison', ELEMENTS_PLUS_URL . 'assets/css/twentytwenty.css' );
+		wp_enqueue_script( 'jquery-imagesLoaded', ELEMENTS_PLUS_URL . 'assets/js/imagesloaded.pkgd.min.js', array( 'jquery' ), '4.1.4', true );
+		wp_enqueue_script( 'jquery-event-move', ELEMENTS_PLUS_URL . 'assets/js/jquery.event.move.js', array( 'jquery' ), '2.0.1', true );
+		wp_enqueue_script( 'image-comparison', ELEMENTS_PLUS_URL . 'assets/js/jquery.twentytwenty.js', array( 'jquery', 'jquery-event-move' ), '1.0', true );
+	}
+
+	if ( 1 === $image_hover_effects ) {
+		wp_enqueue_script( 'three', ELEMENTS_PLUS_URL . 'assets/js/three.min.js', '', '1.0', true );
+		wp_enqueue_script( 'tweenmax', ELEMENTS_PLUS_URL . 'assets/js/TweenMax.min.js', '', '1.20.3', true );
+		wp_enqueue_script( 'hover', ELEMENTS_PLUS_URL . 'assets/js/hover.min.js',  '', '1.0', true );
+	}
+
+	if ( 1 === $label || 1 === $button_plus || 1 === $justified || 1 === $cta || 1 === $video_slider || 1 === $preloader || 1 === $instagram || 1 === $tooltip || 1 === $icon || 1 === $flipclock || 1 === $image_hover_effects ) {
 		wp_enqueue_style( 'ep-elements', ELEMENTS_PLUS_URL . 'assets/css/ep-elements.css' );
 	}
 }

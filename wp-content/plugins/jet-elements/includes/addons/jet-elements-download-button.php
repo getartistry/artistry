@@ -30,7 +30,7 @@ class Jet_Elements_Download_Button extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-33';
+		return 'jetelements-icon-24';
 	}
 
 	public function get_categories() {
@@ -51,6 +51,7 @@ class Jet_Elements_Download_Button extends Jet_Elements_Base {
 			array(
 				'label'       => esc_html__( 'Download ID', 'jet-elements' ),
 				'type'        => Controls_Manager::TEXT,
+				'dynamic'     => array( 'active' => true, ),
 				'description' => esc_html__( 'Here you can specify ID of media library element which will be downloaded on button click', 'jet-elements' ),
 				'default'     => array(),
 			)
@@ -195,6 +196,49 @@ class Jet_Elements_Download_Button extends Jet_Elements_Base {
 			)
 		);
 
+		$this->add_responsive_control(
+			'button_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'jet-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['button'] => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'        => 'button_border',
+				'label'       => esc_html__( 'Border', 'jet-elements' ),
+				'placeholder' => '1px',
+				'default'     => '1px',
+				'selector'    => '{{WRAPPER}} ' . $css_scheme['button'],
+			)
+		);
+
+		$this->add_responsive_control(
+			'button_border_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'jet-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['button'] => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'name'     => 'button_box_shadow',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['button'],
+			)
+		);
+
 		$this->add_control(
 			'button_icon',
 			array(
@@ -273,49 +317,6 @@ class Jet_Elements_Download_Button extends Jet_Elements_Base {
 			)
 		);
 
-		$this->add_responsive_control(
-			'button_padding',
-			array(
-				'label'      => esc_html__( 'Padding', 'jet-elements' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array(
-					'{{WRAPPER}} ' . $css_scheme['button'] => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->add_responsive_control(
-			'button_border_radius',
-			array(
-				'label'      => esc_html__( 'Border Radius', 'jet-elements' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%' ),
-				'selectors'  => array(
-					'{{WRAPPER}} ' . $css_scheme['button'] => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			array(
-				'name'        => 'button_border',
-				'label'       => esc_html__( 'Border', 'jet-elements' ),
-				'placeholder' => '1px',
-				'default'     => '1px',
-				'selector'    => '{{WRAPPER}} ' . $css_scheme['button'],
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			array(
-				'name'     => 'button_box_shadow',
-				'selector' => '{{WRAPPER}} ' . $css_scheme['button'],
-			)
-		);
-
 		$this->end_controls_tab();
 
 		$this->start_controls_tab(
@@ -329,6 +330,49 @@ class Jet_Elements_Download_Button extends Jet_Elements_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'button_bg_hover',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['button'] . ':hover',
+			)
+		);
+
+		$this->add_responsive_control(
+			'button_hover_padding',
+			array(
+				'label'      => esc_html__( 'Padding', 'jet-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%', 'em' ),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['button'] . ':hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			array(
+				'name'        => 'button_hover_border',
+				'label'       => esc_html__( 'Border', 'jet-elements' ),
+				'placeholder' => '1px',
+				'default'     => '1px',
+				'selector'    => '{{WRAPPER}} ' . $css_scheme['button'] . ':hover',
+			)
+		);
+
+		$this->add_responsive_control(
+			'button_hover_border_radius',
+			array(
+				'label'      => esc_html__( 'Border Radius', 'jet-elements' ),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => array( 'px', '%' ),
+				'selectors'  => array(
+					'{{WRAPPER}} ' . $css_scheme['button'] . ':hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			array(
+				'name'     => 'button_hover_box_shadow',
 				'selector' => '{{WRAPPER}} ' . $css_scheme['button'] . ':hover',
 			)
 		);
@@ -408,49 +452,6 @@ class Jet_Elements_Download_Button extends Jet_Elements_Base {
 				'name'     => 'button_hover_sub_typography',
 				'scheme'   => Scheme_Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} ' . $css_scheme['button'] . ':hover '. $css_scheme['button_sublabel'],
-			)
-		);
-
-		$this->add_responsive_control(
-			'button_hover_padding',
-			array(
-				'label'      => esc_html__( 'Padding', 'jet-elements' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array(
-					'{{WRAPPER}} ' . $css_scheme['button'] . ':hover' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->add_responsive_control(
-			'button_hover_border_radius',
-			array(
-				'label'      => esc_html__( 'Border Radius', 'jet-elements' ),
-				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => array( 'px', '%' ),
-				'selectors'  => array(
-					'{{WRAPPER}} ' . $css_scheme['button'] . ':hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				),
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			array(
-				'name'        => 'button_hover_border',
-				'label'       => esc_html__( 'Border', 'jet-elements' ),
-				'placeholder' => '1px',
-				'default'     => '1px',
-				'selector'    => '{{WRAPPER}} ' . $css_scheme['button'] . ':hover',
-			)
-		);
-
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			array(
-				'name'     => 'button_hover_box_shadow',
-				'selector' => '{{WRAPPER}} ' . $css_scheme['button'] . ':hover',
 			)
 		);
 

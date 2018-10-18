@@ -1,30 +1,33 @@
-=== MyCryptoCheckout ===
+=== MyCryptoCheckout - Accept 70+ coins: Bitcoin, Ethereum, and more ===
 Contributors: edward_plainview
 Donate link: https://mycryptocheckout.com
 License: GPLv3
 Requires at least: 4.9
 Requires PHP: 5.4
-Stable tag: 2.14
+Stable tag: 2.22
 Tags: bitcoin, ethereum, cryptocurrency, gateway, woocommerce
-Tested up to: 4.9.4
+Tested up to: 4.9.8
 
-Cryptocurrency payment gateway for WooCommerce and Easy Digital Downloads.
+Cryptocurrency payment gateway for WooCommerce and Easy Digital Downloads. Accept 70+ coins: Bitcoin, Ethereum, Litecoin, and more. Peer-to-peer transactions.
 
 == Description ==
 
-MyCryptoCheckout is a cryptocurrency payment gateway for WooCommerce and Easy Digital Downloads. It allows you to receive coins directly into the wallet of your choice.
+Cryptocurrency payment gateway for WooCommerce and Easy Digital Downloads. Receive coins directly into the wallet of your choice.
+
+https://www.youtube.com/watch?v=nUoJ9ziaAJQ
 
 = Key Features & Highlights =
 
 - 0% transaction fees
 - No product restrictions
 - Peer-to-peer transactions
-- Use any wallet(s) you want: desktop, mobile or online
-- Automagically detect unique payments from an endless amount of customers using one wallet address
+- Use any wallet(s) you want: desktop, mobile, or online
+- Automagically detect unique payments from customers using one wallet address
 - Optional hierarchically deterministic (HD) wallet support
-- No redirection to 3rd parties, no iframes nor modal windows
-- Donations shortcode generator you can use in widgets and pages to show your users how to send cryptocurrency donations
-- See the full <a href="https://mycryptocheckout.com/comparison/">feature comparison table</a> on our website to see why you should use MyCryptoCheckout instead of other crypto payment gateways
+- No redirection to 3rd parties, no iframes, no modal windows
+- Optional donations widget shortcode generator
+- See the <a href="https://mycryptocheckout.com/comparison/">feature comparison table</a> to see why you should use MyCryptoCheckout instead of other crypto gateways
+- How to auto convert received <a href="https://mycryptocheckout.com/doc/auto-convert-crypto-to-fiat/">Bitcoin/Altcoin to USD/EUR/etc</a>
 
 The free license can process three sales per month. A <a href="https://mycryptocheckout.com/pricing/">flat rate license</a> can be purchased for your account if you require more. The flat rate license includes unlimited transactions. <a href="https://mycryptocheckout.com/bulk-pricing/">Bulk pricing options</a> are available if you need to use MyCryptoCheckout on several domains.
 
@@ -36,48 +39,60 @@ The free license can process three sales per month. A <a href="https://mycryptoc
 = Cryptocurrencies supported: =
 
 - Bitcoin BTC (Including SegWit addresses, Electrum HD wallet)
-- Bitcoin Cash BCH
+- Bitcoin Cash BCH (Including Electrum HD wallet)
 - Bitcoin Gold BTG
+- Bits'mdo' BSD
+- CatoCoin CATO
 - ColossusXT COLX
+- CrypticCoin CRYP
 - Dash DASH
 - Decred DCR
-- Digibyte DGB
+- Digibyte DGB (Including SegWit addresses)
 - Elite 1337
-- Ethereum ETH
+- Ethereum ETH (Including MetaMask)
 - Ethereum Classic ETC
-- Litecoin LTC (Including SegWit addresses)
+- Litecoin LTC (Including SegWit addresses, Electrum HD wallet)
 - MarsCoin MARS
+- Monero XMR
 - NEM XEM
-- Neo Smart Economy NEO
 - New York Coin NYC
 - Solaris XLR
 - Straks STAK
 - TokenPay TPAY
-- Tron TRX
+- TRON TRX
+- TurtleNetwork TN
 - Verge XVG
-- Zcash ZEC
+- Viacoin VIA
+- Waves WAVES
+- Zcash ZEC (T-address recipients only)
 - We can now add your <a href="https://mycryptocheckout.com/add-cryptocurrency/">cryptocurrency</a>!
 
-= ERC20 tokens supported: =
+= ERC20 tokens supported (Including MetaMask): =
 
-- 0xProject ZRX
+- 0x ZRX
+- ADULTEUM ADULT
 - Aeternity AE
 - Aragon ANT
 - Augur REP
 - Bancor BNT
 - Basic Attention Token BAT
 - Binance Coin BNB
-- Dai Stablecoin DAI
-- Digix Global DGD
+- Dai DAI
+- DigixDAO DGD
 - Dragonchain DRGN
+- eBitcoin EBTC
 - Flix FLIX
 - FunFair FUN
 - Gifto GTO
 - Golem GNT
+- Huobi Token HT
 - Icon ICX
 - intimate ITM
-- Kyber Network Crystal KNC
-- Loom
+- Invacio INV
+- Kyber Network KNC
+- Latino Token LATINO
+- L'île LILE
+- Loom LOOM
 - Maker MKR
 - MetalPay MTL
 - Monaco MCO
@@ -85,18 +100,33 @@ The free license can process three sales per month. A <a href="https://mycryptoc
 - Omisego OMG
 - onG.social ONG
 - Populous PPT
-- Pundi X Token NPXS
-- Qash
+- Pundi X NPXS
+- QASH
 - Raiden RDN
 - Request Network REQ
-- Salt
-- StakeIt STAKE
-- Status Network SNT
-- Storm
+- SALT
+- shelterDAO SHEL
+- Status SNT
+- Storm STORM
 - TenXPay PAY
 - Veritaseum VERI
 - Worldcoin1 WRD1
 - We can now add your <a href="https://mycryptocheckout.com/custom-token/">custom ERC20 tokens</a>!
+
+= NEM Mosaic tokens supported: =
+
+- shelterDAO SHEL
+- We can now add your <a href="https://mycryptocheckout.com/nem-token/">custom NEM mosaic tokens</a>!
+
+= TRON TRC-20 Tokens supported: =
+
+- TRONBITCOIN TBTC
+- We can now add your <a href="https://mycryptocheckout.com/trc-20-token/">custom TRON TRC-20 tokens</a>!
+
+= WAVES Tokens supported: =
+
+- CoffeeCoin COF
+- We can now add your <a href="https://mycryptocheckout.com/waves-token/">custom WAVES tokens</a>!
 
 = Cryptocurrency Donations Widget =
 
@@ -136,14 +166,77 @@ If your server cannot be reached by the API server this plugin will not function
 3. WooCommerce purchase confirmation page with payment data
 4. Account tab
 5. Currencies tab
-6. Global settings tab for network and single installs
-6. Local settings tab for network installs
-8. WooCommerce gateway settings
-9. EasyDigitalDownloads gateway settings
-10. Donations generator form
-11. Donations widget
+6. Adding a Monero wallet
+7. Global settings tab for network and single installs
+8. Local settings tab for network installs
+9. WooCommerce gateway settings
+10. EasyDigitalDownloads gateway settings
+11. Donations generator form
+12. Donations widget
 
 == Changelog ==
+
+= 2.22 20181012 =
+
+* We now accept <a href="https://mycryptocheckout.com/waves-token/">custom WAVES tokens</a>!
+* New currency: CoffeeCoin COF
+* New currency: Invacio INV
+* New: Want your webshop publically listed in our upcoming store directory? There's a checkbox for that in the account overview tab.
+* New: Added Monero private view key input placeholder text.
+
+= 2.21 20181006 =
+
+* New: HD wallet support for Bitcoin Cash BCH
+* New: HD wallet support for Litecoin LTC
+
+= 2.20 20181004 =
+
+* New currency: ADULTEUM ADULT
+* New currency: CrypticCoin CRYP
+* New currency: L'île LILE
+* Fix: WooCommerce and EDD: allow having virtual currency as base currency.
+* Fix: EDD: Override checkout payment method name to match checkout method name.
+* Fix: Metamask: Use different dividers for different currencies.
+* New snippet: <a href="https://mycryptocheckout.com/doc/snippets/refresh-page-after-payment-complete/">Refresh page after payment complete</a>
+
+= 2.19 20180925 =
+
+* New currency: Monero XMR
+
+= 2.18 20180920 =
+
+* New currency: CatoCoin CATO
+* New currency: TRONBITCOIN TBTC
+* New currency: TurtleNetwork TN
+* Fix: EDD: Show receipt when _not_ using MCC on checkout.
+* Fix: QRcode CSS on payment page.
+* Test: Used BrowserStack to test payment page across browsers, operating systems, and mobile devices.
+
+= 2.17 20180915 =
+
+* New currency: Bits'mdo' BSD
+* New currency: Latino Token LATINO
+* New: Added MetaMask support for all ERC20 tokens except Flix.
+* Fix: Wordpress: Checkout icon generated on a per blog basis.
+
+= 2.16 20180904 =
+
+* New currency: Huobi Token HT
+* New currency: Viacoin VIA
+* Fix: Woocommerce: Fire woocommerce_cancelled_order action upon cancelling the order.
+* Fix: EDD: Fix checkout QR code.
+* Fix: EDD: Don't show MCC checkout boxes when using test payments.
+* Fix: Fatal error with GoURL fixed, but double currencies won't allow MCC to work.
+
+= 2.15 20180829 =
+
+* New currency: eBitcoin EBTC
+* New currency: shelterDAO SHEL
+* New: WooCommerce Metamask payment support on checkout. The MetaMask button is automatically shown during checkout if detected.
+* Fix woocommerce_settings_get_option error on some installs.
+* Fix Woocommerce checkout "optional" text. It should be required, of course.
+* Fix removal of thousands separator when sending the amount to the API.
+* Currency disabled: NEO
 
 = 2.14 20180813 =
 

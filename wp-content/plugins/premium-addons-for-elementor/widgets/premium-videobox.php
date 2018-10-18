@@ -3,8 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Video_Box_Widget extends Widget_Base
-{
+class Premium_Videobox extends Widget_Base {
     public function get_name() {
         return 'premium-addon-video-box';
     }
@@ -42,6 +41,7 @@ class Premium_Video_Box_Widget extends Widget_Base
                     'label'         => esc_html__('Image', 'premium-addons-for-elementor'),
                     'description'   => esc_html__('Choose an image for the video box', 'premium-addons-for-elementor' ),
                     'type'          => Controls_Manager::MEDIA,
+                    'dynamic'       => [ 'active' => true ],
                     'default'       => [
                         'url'	=> Utils::get_placeholder_image_src()
                 ],
@@ -98,6 +98,19 @@ class Premium_Video_Box_Widget extends Widget_Base
                         ]
                     ]
                 );
+        
+        /*Related Videos*/
+        $this->add_control('premium_video_box_related_video',
+            [
+                'label'         => esc_html__('Show Related Videos', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::SWITCHER,
+                'description'   => esc_html__('Enable/Disable related videos after the video'),
+                'default'       => 'yes',
+                'condition'     => [
+                    'premium_video_box_video_type' => 'youtube',
+                ]
+            ]
+        );
         
         /*End Image Settings Section*/
         $this->end_controls_section();
@@ -495,8 +508,7 @@ class Premium_Video_Box_Widget extends Widget_Base
         $this->end_controls_section();
     }
 
-    protected function render($instance = [])
-    {
+    protected function render() {
         // get our input from the widget settings.
         $settings = $this->get_settings_for_display();
         
@@ -509,6 +521,8 @@ class Premium_Video_Box_Widget extends Widget_Base
         $video_id = $settings['premium_video_box_video_id'];
         
         $video_embed = $settings['premium_video_box_video_embed'];
+        
+        $rel_videos = ( 'yes' == $settings['premium_video_box_related_video'] && isset( $settings['premium_video_box_related_video'] ) ) ? '' : '?rel=0';
 ?>
 
 <div class="premium-video-box-container" id="premium-video-box-container-<?php echo esc_attr( $this->get_id() ); ?>">
@@ -528,10 +542,10 @@ class Premium_Video_Box_Widget extends Widget_Base
     <div class="premium-video-box-video-container">
         <?php if ( $video_type  === 'youtube'){ ?>
         <?php if ( $video_url_type === 'id' && !empty( $video_id ) ) : ?>
-            <iframe src="https://www.youtube.com/embed/<?php echo $video_id; ?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen>
+            <iframe src="https://www.youtube.com/embed/<?php echo $video_id . $rel_videos; ?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen>
             </iframe>
         <?php elseif ( $video_url_type === 'embed' && !empty( $video_embed ) ) : ?>
-            <iframe src="<?php echo $video_embed; ?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen>
+            <iframe src="<?php echo $video_embed . $rel_videos; ?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen>
             </iframe>
         <?php endif; ?>
         <?php } elseif ( $video_type  === 'vimeo'){ ?>
@@ -550,4 +564,3 @@ class Premium_Video_Box_Widget extends Widget_Base
     <?php
     }
 }
-Plugin::instance()->widgets_manager->register_widget_type(new Premium_Video_Box_Widget());

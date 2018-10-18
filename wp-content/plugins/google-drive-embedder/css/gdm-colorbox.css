@@ -1,0 +1,68 @@
+/*
+    Colorbox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#gdmColorbox, #gdmCboxOverlay, #gdmCboxWrapper{position:absolute; top:0; left:0; z-index:999999; overflow:hidden;}
+#gdmCboxWrapper {max-width:none;}
+#gdmCboxOverlay{position:fixed; width:100%; height:100%;}
+#gdmCboxMiddleLeft, #gdmCboxBottomLeft{clear:left;}
+#gdmCboxContent{position:relative;}
+#gdmCboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+#gdmCboxTitle{margin:0;}
+#gdmCboxLoadingOverlay, #gdmCboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#gdmCboxPrevious, #gdmCboxNext, #gdmCboxClose, #gdmCboxSlideshow{cursor:pointer;}
+.gdmCboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+.gdmCboxIframe{width:100%; height:100%; display:block; border:0;}
+#gdmColorbox, #gdmCboxContent, #gdmCboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+/* 
+    User Style:
+    Change the following styles to modify the appearance of Colorbox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#gdmCboxOverlay{background:#000;}
+#gdmColorbox{outline:0;}
+#gdmCboxContent{margin-top:30px;background:#000;}
+.gdmCboxIframe{background:#fff;}
+#gdmCboxError{padding:50px; border:1px solid #ccc;}
+#gdmCboxLoadedContent{border:5px solid #000; background:#fff;}
+#gdmCboxTitle{position:absolute; top:-30px; left:0; color:#ccc; background-color: black;}
+#gdmCboxCurrent{position:absolute; top:-20px; right:0px; color:#ccc;}
+#gdmCboxLoadingGraphic{background:url(../images/colorbox/loading.gif) no-repeat center center;}
+
+/* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+#gdmCboxPrevious, #gdmCboxNext, #gdmCboxSlideshow, #gdmCboxClose {border:0; padding:0; margin:0; overflow:visible; width:auto; background:none; }
+
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+#gdmCboxPrevious:active, #gdmCboxNext:active, #gdmCboxSlideshow:active, #gdmCboxClose:active {outline:0;}
+
+#gdmCboxSlideshow{position:absolute; top:-20px; right:90px; color:#fff;}
+#gdmCboxPrevious{position:absolute; top:50%; left:5px; margin-top:-32px; background:url(../images/colorbox/controls.png) no-repeat top left; width:28px; height:65px; text-indent:-9999px;}
+#gdmCboxPrevious:hover{background-position:bottom left;}
+#gdmCboxNext{position:absolute; top:50%; right:5px; margin-top:-32px; background:url(../images/colorbox/controls.png) no-repeat top right; width:28px; height:65px; text-indent:-9999px;}
+#gdmCboxNext:hover{background-position:bottom right;}
+#gdmCboxClose{position:absolute; top:5px; right:5px; display:block; background:url(../images/colorbox/controls.png) no-repeat top center; width:38px; height:19px; text-indent:-9999px;}
+#gdmCboxClose:hover{background-position:bottom center;}
+
+/* For GDM */
+#gdmCboxLoadedContent iframe {
+	width: 100%;
+	height: 100%;	
+}
+
+#gdmCboxLoadedContent .gdm-nopreview {
+	text-align: center;
+	padding-top: 25%;
+}
+
+#gdmCboxContent button {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#gdmCboxTitle a {
+	color: lightgray;
+	background-color: darkblue;
+	padding: 2px 10px 2px 10px;
+	border-radius: 2px;
+}

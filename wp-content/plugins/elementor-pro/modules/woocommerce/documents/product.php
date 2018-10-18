@@ -130,6 +130,11 @@ class Product extends Single {
 	}
 
 	public function print_content() {
+		global $product;
+		if ( ! is_object( $product ) ) {
+			$product = wc_get_product( get_the_ID() );
+		}
+
 		do_action( 'woocommerce_before_single_product' );
 		parent::print_content();
 		do_action( 'woocommerce_after_single_product' );

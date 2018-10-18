@@ -369,13 +369,14 @@ p.demo_store a,
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  width: 2.1em;
-  height: 2.1em;
+  min-width: 2.1em;
+  min-height: 2.1em;
   font-size: 0.860em;
   line-height: 1.8;
   border-radius: 0em 0em 0.3em 0.3em;
   border-width: 2px;
   border-style: solid;
+  padding: 0 .4em;
 }
 
 .ast-cart-menu-wrap .count:after {

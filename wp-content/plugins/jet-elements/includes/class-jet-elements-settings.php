@@ -64,8 +64,6 @@ if ( ! class_exists( 'Jet_Elements_Settings' ) ) {
 			add_action( 'init', array( $this, 'save' ), 40 );
 			add_action( 'admin_notices', array( $this, 'saved_notice' ) );
 
-			add_action( 'init', array( $this, 'version_compatibility_updater' ) );
-
 			foreach ( glob( jet_elements()->plugin_path( 'includes/addons/' ) . '*.php' ) as $file ) {
 				$data = get_file_data( $file, array( 'class'=>'Class', 'name' => 'Name', 'slug'=>'Slug' ) );
 
@@ -83,45 +81,6 @@ if ( ! class_exists( 'Jet_Elements_Settings' ) ) {
 
 			if ( isset( $_REQUEST['page'] ) && $this->key === $_REQUEST['page'] ) {
 				$this->builder = jet_elements()->get_core()->init_module( 'cherry-interface-builder', array() );
-			}
-		}
-
-		/**
-		 * Compatibility Updater
-		 *
-		 * @return void
-		 */
-		public function version_compatibility_updater() {
-			jet_elements()->get_core()->init_module( 'cherry-db-updater',
-				array(
-					'slug'      => 'jet-elements',
-					'version'   => '1.7.2',
-					'callbacks' => array(
-						'1.7.2' => array(
-							array( $this, 'update_db' ),
-						),
-					),
-				)
-			);
-		}
-
-		/**
-		 * Update db updater
-		 *
-		 * @return void
-		 */
-		public function update_db() {
-
-			$current_version_settings = get_option( $this->key, false );
-
-			if ( $current_version_settings ) {
-				if ( isset( $current_version_settings['avaliable_widgets'] ) ) {
-					if ( ! isset( $current_version_settings['avaliable_widgets']['jet-elements-progress-bar'] ) ) {
-						$current_version_settings['avaliable_widgets']['jet-elements-progress-bar'] = 'true';
-					}
-					update_option( $this->key, $current_version_settings );
-				}
-
 			}
 		}
 
@@ -344,7 +303,7 @@ if ( ! class_exists( 'Jet_Elements_Settings' ) ) {
 						'title'       => esc_html__( 'API Key:', 'jet-elements' ),
 						'placeholder' => esc_html__( 'API key', 'jet-elements' ),
 						'description' => sprintf(
-							esc_html__( 'Create own API key here %s', 'tm_builder' ),
+							esc_html__( 'Create own API key here %s', 'jet-elements' ),
 							make_clickable( 'https://developers.google.com/maps/documentation/javascript/get-api-key' )
 						)
 					),
@@ -393,6 +352,13 @@ if ( ! class_exists( 'Jet_Elements_Settings' ) ) {
 							'false_toggle' => 'Off',
 						),
 					),
+
+					/*'mailchimp-get-list-merge-fields' => array(
+						'type'    => 'button',
+						'parent'  => 'mailing_options',
+						'title'   => esc_html__( 'Sync list merge fields', 'jet-elements' ),
+						'content' => esc_html__( 'Sync', 'jet-elements' ),
+					),*/
 
 					'avaliable_widgets' => array(
 						'type'        => 'checkbox',

@@ -3,7 +3,7 @@ namespace Elementor;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
-class Premium_Banner_Widget extends Widget_Base {
+class Premium_Banner extends Widget_Base {
 
 	protected $templateInstance;
 
@@ -49,6 +49,7 @@ class Premium_Banner_Widget extends Widget_Base {
 				'label'			=> esc_html__( 'Upload Image', 'premium-addons-for-elementor' ),
 				'description'	=> esc_html__( 'Select an image for the Banner', 'premium-addons-for-elementor' ),
 				'type'			=> Controls_Manager::MEDIA,
+                'dynamic'       => [ 'active' => true ],
 				'default'		=> [
 					'url'	=> Utils::get_placeholder_image_src()
 				],
@@ -506,6 +507,26 @@ class Premium_Banner_Widget extends Widget_Base {
 			]
 		);
 
+		$this->add_group_control(
+            Group_Control_Border::get_type(), 
+                [
+                    'name'          => 'premium_banner_image_border',
+                    'selector'      => '{{WRAPPER}} .premium_addons-banner-ib',
+                ]
+                );
+
+		$this->add_responsive_control(
+			'premium_banner_image_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'premium-addons-for-elementor' ),
+				'type' => Controls_Manager::SLIDER,
+				'size_units'    => ['px', '%' ,'em'],
+				'selectors' => [
+		            '{{WRAPPER}} .premium_addons-banner-ib' => 'border-radius: {{SIZE}}{{UNIT}};',
+		        ],
+			]
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -673,7 +694,7 @@ class Premium_Banner_Widget extends Widget_Base {
 		);
         
         $this->add_control(
-			'premium_banner_hover_backcolor_of_buttin',
+			'premium_banner_hover_backcolor_of_button',
 			[
 				'label' => esc_html__( 'Hover Background Color', 'premium-addons-for-elementor' ),
 				'type' => Controls_Manager::COLOR,
@@ -808,5 +829,3 @@ class Premium_Banner_Widget extends Widget_Base {
 	<?php
 	}
 }
-
-Plugin::instance()->widgets_manager->register_widget_type( new Premium_Banner_Widget() );

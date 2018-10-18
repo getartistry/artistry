@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Price by Country - Local
  *
- * @version 3.3.0
+ * @version 4.0.0
  * @author  Algoritmika Ltd.
  * @todo    (maybe) remove this and leave only standard meta box option (i.e. only `'meta_box' === get_option( 'wcj_price_by_country_local_options_style', 'inline' )`)
  */
@@ -189,7 +189,7 @@ class WCJ_Price_by_Country_Local {
 	/**
 	 * get_all_options_html.
 	 *
-	 * @version 3.3.0
+	 * @version 4.0.0
 	 */
 	function get_all_options_html( $simple_or_variable, $current_post_id, $total_number, $variation_id_addon = '' ) {
 		$html = '';
@@ -203,13 +203,13 @@ class WCJ_Price_by_Country_Local {
 			$countries = '';
 			switch ( get_option( 'wcj_price_by_country_selection', 'comma_list' ) ) {
 				case 'comma_list':
-					$countries .= get_option( 'wcj_price_by_country_exchange_rate_countries_group_' . $i );
+					$countries .= get_option( 'wcj_price_by_country_exchange_rate_countries_group_' . $i, '' );
 					break;
 				case 'multiselect':
-					$countries .= implode( ',', get_option( 'wcj_price_by_country_countries_group_' . $i ) );
+					$countries .= ( '' != ( $group = get_option( 'wcj_price_by_country_countries_group_' . $i, '' ) ) ? implode( ',', $group ) : '' );
 					break;
 				case 'chosen_select':
-					$countries .= implode( ',', get_option( 'wcj_price_by_country_countries_group_chosen_select_' . $i ) );
+					$countries .= ( '' != ( $group = get_option( 'wcj_price_by_country_countries_group_chosen_select_' . $i, '' ) ) ? implode( ',', $group ) : '' );
 					break;
 			}
 			$admin_title = get_option( 'wcj_price_by_country_countries_group_admin_title_' . $i, __( 'Group', 'woocommerce-jetpack' ) . ' #' . $i );
@@ -229,7 +229,7 @@ class WCJ_Price_by_Country_Local {
 					$html .= '<p class="form-row form-row-' . $column_position . '">';
 				}
 				$group_currency_code = get_option( 'wcj_price_by_country_exchange_rate_currency_group_' . $i );
-				$currency_code_html = ( 'checkbox' != $option['type'] ) ? ' (' . wcj_get_currency_symbol( $group_currency_code ) . ')' : '';
+				$currency_code_html = ( 'checkbox' != $option['type'] ) ? ' (' . get_woocommerce_currency_symbol( $group_currency_code ) . ')' : '';
 				$html .= '<label for="' . $option_id . $variation_id_addon . '">' . $option['title'] . $currency_code_html . '</label>';
 				$html .= $this->get_option_field_html( $current_post_id, $option_id, $option, $variation_id_addon );
 				$html .= '</p>';

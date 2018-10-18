@@ -1,15 +1,23 @@
-/*! elementor-pro - v2.1.3 - 15-08-2018 */
+/*! elementor-pro - v2.1.10 - 09-10-2018 */
 #elementor-panel-get-pro-elements {
   display: none; }
 
+.elementor-panel .elementor-control.forms-field-shortcode .elementor-control-content {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-flow: row;
+      -ms-flex-flow: row;
+          flex-flow: row;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+
 .elementor-panel .elementor-control.forms-field-shortcode .elementor-control-title {
-  display: table-cell;
-  vertical-align: middle;
   width: 45%; }
 
 .elementor-panel .elementor-control.forms-field-shortcode .elementor-control-raw-html {
-  display: table-cell;
-  vertical-align: middle; }
+  width: 55%; }
 
 #elementor-widget-template-empty-templates {
   margin-top: 15px;
@@ -282,17 +290,17 @@
   .elementor-conditions-conflict-message a {
     color: #b01b1b; }
 
-#elementor-panel-footer-theme-builder-button-preview-wrapper .elementor-panel-footer-sub-menu {
+.elementor-panel-footer-theme-builder-buttons-wrapper .elementor-panel-footer-sub-menu {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
 
-#elementor-panel-footer-theme-builder-button-preview-wrapper .elementor-panel-footer-sub-menu-item {
+.elementor-panel-footer-theme-builder-buttons-wrapper .elementor-panel-footer-sub-menu-item {
   display: inline-block; }
-  #elementor-panel-footer-theme-builder-button-preview-wrapper .elementor-panel-footer-sub-menu-item i {
+  .elementor-panel-footer-theme-builder-buttons-wrapper .elementor-panel-footer-sub-menu-item i {
     margin-right: 5px; }
-  #elementor-panel-footer-theme-builder-button-preview-wrapper .elementor-panel-footer-sub-menu-item > * {
+  .elementor-panel-footer-theme-builder-buttons-wrapper .elementor-panel-footer-sub-menu-item > * {
     display: inline-block;
     line-height: 40px; }
 

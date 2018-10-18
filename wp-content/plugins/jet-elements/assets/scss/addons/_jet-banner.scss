@@ -55,6 +55,15 @@
 			opacity: .2;
 		}
 	}
+
+	&.jet-effect-none {
+		.jet-banner__content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
 	&.jet-effect-lily {
 		.jet-banner__img {
 			max-width: none;

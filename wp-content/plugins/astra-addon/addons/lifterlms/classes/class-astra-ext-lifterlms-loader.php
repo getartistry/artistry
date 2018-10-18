@@ -37,10 +37,8 @@ if ( ! class_exists( 'Astra_Ext_LifterLMS_Loader' ) ) {
 		public function __construct() {
 
 			add_filter( 'astra_theme_defaults', array( $this, 'theme_defaults' ) );
-			add_action( 'customize_register', array( $this, 'customize_register_old' ) );
 			add_action( 'customize_register', array( $this, 'customize_register' ), 2 );
 			add_action( 'customize_preview_init', array( $this, 'preview_scripts' ) );
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ), 9 );
 			add_filter( 'astra_theme_lifterlms_settings', array( $this, 'register_builder_fields' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
 
@@ -84,43 +82,16 @@ if ( ! class_exists( 'Astra_Ext_LifterLMS_Loader' ) ) {
 		 */
 		function customize_register( $wp_customize ) {
 
-			if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
+			/**
+			 * Register Sections & Panels
+			 */
+			require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/class-astra-customizer-lifterlms-panels-and-sections.php';
 
-				/**
-				 * Register Sections & Panels
-				 */
-				require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/class-astra-customizer-lifterlms-panels-and-sections.php';
-
-				/**
-				 * Sections
-				 */
-				require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/sections/class-astra-customizer-lifterlms-general-configs.php';
-				require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/sections/class-astra-customizer-lifterlms-course-lesson-configs.php';
-
-			}
-
-		}
-
-		/**
-		 * Add postMessage support for site title and description for the Theme Customizer.
-		 *
-		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
-		 */
-		function customize_register_old( $wp_customize ) {
-
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
-
-				/**
-				 * Register Sections & Panels
-				 */
-				require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/customizer-panels-and-sections.php';
-
-				/**
-				 * Sections
-				 */
-				require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/sections/section-general.php';
-				require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/sections/section-course-lesson.php';
-			}
+			/**
+			 * Sections
+			 */
+			require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/sections/class-astra-customizer-lifterlms-general-configs.php';
+			require_once ASTRA_EXT_LIFTERLMS_DIR . 'classes/sections/class-astra-customizer-lifterlms-course-lesson-configs.php';
 
 		}
 
@@ -141,26 +112,6 @@ if ( ! class_exists( 'Astra_Ext_LifterLMS_Loader' ) ) {
 			wp_enqueue_script( 'ast-lifterlms-customizer-preview' );
 		}
 
-
-		/**
-		 * Customizer Controls
-		 *
-		 * @see 'astra-customizer-controls-js' panel in parent theme
-		 */
-		function controls_scripts() {
-
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
-
-				if ( SCRIPT_DEBUG ) {
-					$js_path = 'assets/js/unminified/customizer-toggles.js';
-				} else {
-					$js_path = 'assets/js/minified/customizer-toggles.min.js';
-				}
-
-				wp_enqueue_script( 'ast-lifterlms-customizer-toggles', ASTRA_EXT_LIFTERLMS_URI . $js_path, array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
-			}
-
-		}
 
 		/**
 		 * Register theme postmeta fields with the LifterLMS Builder

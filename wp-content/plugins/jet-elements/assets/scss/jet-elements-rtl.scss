@@ -34,3 +34,137 @@
 .jet-animated-text__animated-text-item {
 	direction: ltr;
 }
+
+.jet-timeline {
+	&--align-right,
+	&--align-left {
+		.jet-timeline-item{
+			direction: ltr;
+		}
+	}
+	
+	&--align-center {
+		@media (min-width: 1025px) {
+			.jet-timeline-item:nth-child(even) {
+				.timeline-item__meta {
+					text-align: left;
+				}
+				
+				.timeline-item__card-arrow {
+					right: 0;
+					margin-right: -10px;
+				}
+			}
+			
+			.jet-timeline-item:nth-child(odd) {
+				.timeline-item__meta {
+					text-align: right;
+				}
+				
+				.timeline-item__card-arrow {
+					left: 0;
+					right: auto;
+					margin-left: -10px;
+				}
+			}
+		}
+		@media (max-width: 1024px) {
+			.jet-timeline-item {
+				direction: ltr;
+			}
+		}
+	}
+	
+	&--align-top {
+		&.jet-timeline--align-center{
+			.timeline-item__card-arrow {
+				@media (min-width: 1025px) {
+					transform: rotate(-135deg);
+				}
+			}
+		}
+	}
+
+	&--align-middle {
+		&.jet-timeline--align-center{
+			.timeline-item__card-arrow {
+				@media (min-width: 1025px) {
+					transform: translateY(-50%) rotate(-135deg);
+				}
+			}
+		}
+	}
+
+	&--align-bottom {
+		&.jet-timeline--align-center{
+			.timeline-item__card-arrow {
+				@media (min-width: 1025px) {
+					transform:  rotate(-135deg);
+				}
+			}
+		}
+	}
+}
+
+.jet-table {
+	&__cell-content {
+		margin-left: auto;
+		margin-right: 0;
+		text-align: right;
+	}
+
+
+	&__cell-icon,
+	&__cell-img {
+		&--before:not(:only-child) {
+			margin-left: 5px;
+		}
+
+		&--after:not(:only-child) {
+			margin-right: 5px;
+		}
+	}
+
+	&__sort-icon {
+		margin-right: 5px;
+		margin-left: 0;
+	}
+}
+
+.jet-dropbar {
+	&__button {
+		&-icon--before:not(:only-child) {
+			margin-left: 5px;
+		}
+
+		&-icon--after:not(:only-child) {
+			margin-right: 5px;
+		}
+	}
+}
+
+.jet-audio,
+.jet-video .jet-video-mejs-player {
+	.mejs-controls {
+		.mejs-volume-button,
+		.mejs-fullscreen-button,
+		.mejs-currenttime,
+		.mejs-duration {
+			margin-left: 0;
+			margin-right: 10px;
+		}
+
+		.mejs-currenttime ~ .mejs-duration {
+			margin-right: 0;
+		}
+
+		.mejs-time-rail {
+			margin: 0 10px 0 0;
+		}
+
+		.mejs-horizontal-volume-slider {
+			margin-left: 0;
+			margin-right: 7px;
+		}
+	}
+}

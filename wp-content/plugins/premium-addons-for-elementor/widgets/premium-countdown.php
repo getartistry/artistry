@@ -2,7 +2,7 @@
 namespace Elementor;
 if( !defined( 'ABSPATH' ) ) exit; // No access of directly access
 
-class Premium_Counter_Down_Widget extends Widget_Base {
+class Premium_Countdown extends Widget_Base {
 	public function get_name() {
 		return 'premium-countdown-timer';
 	}
@@ -535,5 +535,3 @@ class Premium_Counter_Down_Widget extends Widget_Base {
       	<?php
     }
 }
-
-Plugin::instance()->widgets_manager->register_widget_type( new Premium_Counter_Down_Widget() );

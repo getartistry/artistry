@@ -49,6 +49,11 @@ if ( ! class_exists( 'Jet_Elements_Compatibility' ) ) {
 			require jet_elements()->plugin_path( 'includes/lib/compatibility/modules/class-wpml-jet-elements-testimonials.php' );
 			require jet_elements()->plugin_path( 'includes/lib/compatibility/modules/class-wpml-jet-elements-image-comparison.php' );
 			require jet_elements()->plugin_path( 'includes/lib/compatibility/modules/class-wpml-jet-elements-scroll-navigation.php' );
+			require jet_elements()->plugin_path( 'includes/lib/compatibility/modules/class-wpml-jet-elements-portfolio.php' );
+			require jet_elements()->plugin_path( 'includes/lib/compatibility/modules/class-wpml-jet-elements-price-list.php' );
+			require jet_elements()->plugin_path( 'includes/lib/compatibility/modules/class-wpml-jet-elements-subscribe-form.php' );
+			require jet_elements()->plugin_path( 'includes/lib/compatibility/modules/class-wpml-jet-elements-timeline.php' );
+			require jet_elements()->plugin_path( 'includes/lib/compatibility/modules/class-wpml-jet-elements-table.php' );
 		}
 
 		/**
@@ -90,6 +95,11 @@ if ( ! class_exists( 'Jet_Elements_Compatibility' ) ) {
 						'field'       => 'back_side_description',
 						'type'        => esc_html__( 'Jet Animated Box: Back Description', 'jet-elements' ),
 						'editor_type' => 'VISUAL',
+					),
+					array(
+						'field'       => 'back_side_button_text',
+						'type'        => esc_html__( 'Jet Animated Box: Button Text', 'jet-elements' ),
+						'editor_type' => 'LINE',
 					),
 				),
 			);
@@ -200,8 +210,14 @@ if ( ! class_exists( 'Jet_Elements_Compatibility' ) ) {
 			);
 
 			$nodes_to_translate[ 'jet-map' ] = array(
-				'conditions'        => array( 'widgetType' => 'jet-map' ),
-				'fields'            => array(),
+				'conditions' => array( 'widgetType' => 'jet-map' ),
+				'fields'     => array(
+					array(
+						'field'       => 'map_center',
+						'type'        => esc_html__( 'Jet Map: Map Center', 'jet-elements' ),
+						'editor_type' => 'LINE',
+					),
+				),
 				'integration-class' => 'WPML_Jet_Elements_Map',
 			);
 
@@ -231,9 +247,24 @@ if ( ! class_exists( 'Jet_Elements_Compatibility' ) ) {
 						'editor_type' => 'LINE',
 					),
 					array(
+						'field'       => 'price_prefix',
+						'type'        => esc_html__( 'Jet Pricing Table: Price Prefix', 'jet-elements' ),
+						'editor_type' => 'LINE',
+					),
+					array(
+						'field'       => 'price',
+						'type'        => esc_html__( 'Jet Pricing Table: Price', 'jet-elements' ),
+						'editor_type' => 'LINE',
+					),
+					array(
 						'field'       => 'price_suffix',
 						'type'        => esc_html__( 'Jet Pricing Table: Price Suffix', 'jet-elements' ),
 						'editor_type' => 'LINE',
+					),
+					array(
+						'field'       => 'price_desc',
+						'type'        => esc_html__( 'Jet Pricing Table: Price Description', 'jet-elements' ),
+						'editor_type' => 'VISUAL',
 					),
 					array(
 						'field'       => 'button_before',
@@ -372,6 +403,80 @@ if ( ! class_exists( 'Jet_Elements_Compatibility' ) ) {
 						'editor_type' => 'LINE',
 					),
 				),
+				'integration-class' => 'WPML_Jet_Elements_Subscribe_Form',
+			);
+
+			$nodes_to_translate[ 'jet-dropbar' ] = array(
+				'conditions' => array( 'widgetType' => 'jet-dropbar' ),
+				'fields'     => array(
+					array(
+						'field'       => 'button_text',
+						'type'        => esc_html__( 'Jet Dropbar: Button Text', 'jet-elements' ),
+						'editor_type' => 'LINE',
+					),
+					array(
+						'field'       => 'simple_content',
+						'type'        => esc_html__( 'Jet Dropbar: Simple Text', 'jet-elements' ),
+						'editor_type' => 'VISUAL',
+					),
+				),
+			);
+
+			$nodes_to_translate[ 'jet-portfolio' ] = array(
+				'conditions' => array( 'widgetType' => 'jet-portfolio' ),
+				'fields'     => array(
+					array(
+						'field'       => 'all_filter_label',
+						'type'        => esc_html__( 'Jet Portfolio: `All` Filter Label', 'jet-elements' ),
+						'editor_type' => 'LINE',
+					),
+					array(
+						'field'       => 'view_more_button_text',
+						'type'        => esc_html__( 'Jet Portfolio: View More Button Text', 'jet-elements' ),
+						'editor_type' => 'LINE',
+					),
+				),
+				'integration-class' => 'WPML_Jet_Elements_Portfolio',
+			);
+
+			$nodes_to_translate[ 'jet-price-list' ] = array(
+				'conditions'        => array( 'widgetType' => 'jet-price-list' ),
+				'fields'            => array(),
+				'integration-class' => 'WPML_Jet_Elements_Price_List',
+			);
+
+			$nodes_to_translate[ 'jet-progress-bar' ] = array(
+				'conditions' => array( 'widgetType' => 'jet-progress-bar' ),
+				'fields'     => array(
+					array(
+						'field'       => 'title',
+						'type'        => esc_html__( 'Jet Progress Bar: Title', 'jet-elements' ),
+						'editor_type' => 'LINE',
+					),
+				),
+			);
+
+			$nodes_to_translate[ 'jet-timeline' ] = array(
+				'conditions'        => array( 'widgetType' => 'jet-timeline' ),
+				'fields'            => array(),
+				'integration-class' => 'WPML_Jet_Elements_Timeline',
+			);
+
+			$nodes_to_translate[ 'jet-weather' ] = array(
+				'conditions' => array( 'widgetType' => 'jet-weather' ),
+				'fields'     => array(
+					array(
+						'field'       => 'location',
+						'type'        => esc_html__( 'Jet Weather: Location', 'jet-elements' ),
+						'editor_type' => 'LINE',
+					),
+				),
+			);
+
+			$nodes_to_translate[ 'jet-table' ] = array(
+				'conditions'        => array( 'widgetType' => 'jet-table' ),
+				'fields'            => array(),
+				'integration-class' => 'WPML_Jet_Elements_Table',
 			);
 
 			return $nodes_to_translate;

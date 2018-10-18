@@ -1,5 +1,98 @@
 # OceanWP Changelog
 
+### *2018.10.08* - 1.5.28:
+* **Added** - Filter to allow you to change the heading for the sidebar titles.
+* **Fixed** - Floating bar issue on IOS.
+* **Fixed** - Styling issue with WPForms.
+
+### *2018.09.04* - 1.5.27:
+* **Tweak** - Taxonomy description added before the content instead as subheading.
+* **Fixed** - Little issue in the elementor editor to make the text bold, italic, add a link, etc.. who was not selectable.
+* **Fixed** - WooCommerce grouped product issue with the quantity buttons when the floating bar is activated.
+* **Fixed** - WooCommerce grouped product issue with the add to cart button if ajax is activated.
+* **Fixed** - WooCommerce grouped product issue in the quick view.
+
+### *2018.08.30* - 1.5.26:
+* **Fixed** - Breadcrumb issue with the shortcode who was causing a fatal error.
+
+### *2018.08.27* - 1.5.25:
+* **Fixed** - Slick css issue when Elementor is used.
+
+### *2018.08.27* - 1.5.24:
+* **Added** - Danish translation, thanks to Henrik Leth.
+* **Fixed** - Slick icons missing when a script or style disabled.
+
+### *2018.08.09* - 1.5.23:
+* **Added** - Compatibility with YITH WooCommerce Badge Management Premium.
+* **Fixed** - Padding issue on mobile for the Separate layout style.
+* **Fixed** - Sidebar padding issue for the customizer setting.
+
+### *2018.08.02* - 1.5.22:
+* **Added** - Description for the product categories in List view.
+* **Tweak** - Better theme screenshot added.
+
+### *2018.07.26* - 1.5.21:
+* **Added** - SEOPRess breadcrumb if enabled.
+* **Added** - New setting for the scroll up button to allow you to place it in left or right.
+* **Added** - New setting to allow you to add the My Account login/register side by side.
+* **Tweak** - Improved style for the rating filter widget of WooCommerce.
+* **Tweak** - Product category description removed from the archive categories.
+* **Tweak** - Breadcrumb displayed on all screens.
+* **Fixed** - Sale badge if product navigation in responsive.
+* **Fixed** - Megamenu issue if the boxed layout is used.
+
+### *2018.07.10* - 1.5.20:
+* **Fixed** - Class 'Elementor\Plugin' not found in the woocommerce-config.php file.
+
+### *2018.07.10* - 1.5.19:
+* **Tweak** - The Hide cart if empty feature is improved now it is directly displayed instead of reloading the page.
+* **Tweak** - Scroll to timeline on the multi-step checkout when the next/prev button is clicked.
+* **Fixed** - Ajax issue if single product button disabled.
+* **Fixed** - Percentage issue on WooCommerce.
+* **Fixed** - Next/Previous product text in the wrong arrow for the product navigation.
+* **Fixed** - Issue with WooCommerce shortcodes in the Elementor editor, thanks to Josh Marom from the Elementor team.
+
+### *2018.07.04* - 1.5.18:
+* **Fixed** - Issue with sans serif fonts.
+
+### *2018.07.04* - 1.5.17:
+* **Added** - Full integration with LifterLMS.
+* **Added** - Ajax for the Multi-Step checkout fields, so when a required field is not filled in step one or two, it is not possible to go to the next step.
+* **Added** - New Widgets section in the Typography section of the customizer to allow you to change widgets typography.
+* **Tweak** - Better style for the single product reviews stars.
+* **Tweak** - Brackets added in font so no font errors.
+* **Tweak** - Next/Prev text added for the product navigation in responsive to better understanding.
+* **Fixed** - Product image issue with the grid/list view if image slider selected for the shop page.
+* **Fixed** - Quick View issue on mobile.
+* **Fixed** - Mobile menu target link if mobile menu selected.
+* **Fixed** - Ocean Demo Import plugin notice removed if Ocean Pro Demos is activated.
+* **Fixed** - Menu item description.
+* **Fixed** - Issue with the font family select in the customizer wehn The Event Calendar plugin is active.
+* **Fixed** - Tag description not displayed as subheading.
+* **Fixed** - FitVids doesn't work on infinite scroll.
+* **Fixed** - Issue with WooCommerce Stripe Payment Gateway plugin on the multi-step checkout.
+* **Fixed** - Issue with logo if Center or Full Screen header style and if you choose a different header style per page.
+
+### *2018.06.03* - 1.5.16:
+* **Added** - Easy Digital Downloads integration, check the new demo: https://book.oceanwp.org/ 
+* **Tweak** - Moved the WooCommerce Checkout settings in the OceanWP WooCommerce section in the customizer. 
+* **Tweak** - The "Redirect to the cart page after successful addition" WooCommerce setting work now on the single product Ajax add to cart, the quick view and the floating bar. 
+* **Fixed** - Ordered list in the product summary. 
+* **Fixed** - Quick view button on the product image entry slider style.
+
+### *2018.05.19* - 1.5.15:
+* **Fixed** - Blog layout and pagination issue.
+
+### *2018.05.17* - 1.5.14:
+* **Added** - Text Color setting for the page tittle if the background image style is selected.
+* **Fixed** - Checkbox styling issue for the GDPR consent in the comments form.
+* **Fixed** - Color settings in the customizer that close on input click on the Safari browser.
+* **Fixed** - Quantity input issue on the cart page.
+
+### *2018.04.24* - 1.5.13:
+* **Fixed** - Quantity input issue with WooCommerce when the floating bar is enabled.
+* **Tweak** - Now the links works if you have sub menu for the Full Screen header style and Full Screen mobile menu style.
+
 ### *2018.04.20* - 1.5.12:
 * **Fixed** - Issue with Elmentor Themer Builder if a page is selected as condition.
 * **Updated** - Isotope script.

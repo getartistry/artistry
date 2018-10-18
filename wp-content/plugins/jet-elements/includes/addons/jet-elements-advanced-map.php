@@ -32,7 +32,7 @@ class Jet_Elements_Advanced_Map extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-06';
+		return 'jetelements-icon-8';
 	}
 
 	public function get_categories() {
@@ -367,6 +367,8 @@ class Jet_Elements_Advanced_Map extends Jet_Elements_Base {
 		$full_path    = untrailingslashit( ABSPATH ) . $style;
 		$include_path = null;
 
+		ob_start();
+
 		if ( file_exists( $full_path ) ) {
 			$include_path = $full_path;
 		} elseif ( file_exists( $style ) ) {
@@ -374,6 +376,8 @@ class Jet_Elements_Advanced_Map extends Jet_Elements_Base {
 		} elseif ( file_exists( str_replace( '\\', '/', $full_path ) ) ) {
 			$include_path = str_replace( '\\', '/', $full_path );
 		}
+
+		ob_get_clean();
 
 		if ( ! $include_path ) {
 			return '';
@@ -391,19 +395,23 @@ class Jet_Elements_Advanced_Map extends Jet_Elements_Base {
 	 */
 	public function get_location_coord( $location ) {
 
+		$api_key = jet_elements_settings()->get( 'api_key' );
+
+		// Do nothing if api key not provided
+		if ( ! $api_key ) {
+			$message = esc_html__( 'Please set Google maps API key before using this widget.', 'jet-elements' );
+
+			echo $this->get_map_message( $message );
+
+			return;
+		}
+
 		$key = md5( $location );
 
 		$coord = get_transient( $key );
 
 		if ( ! empty( $coord ) ) {
 			return $coord;
-		}
-
-		$api_key = jet_elements_settings()->get( 'api_key' );
-
-		// Do nothing if api key not provided
-		if ( ! $api_key ) {
-			return;
 		}
 
 		// Prepare request data
@@ -418,6 +426,9 @@ class Jet_Elements_Advanced_Map extends Jet_Elements_Base {
 			$this->geo_api_url
 		) );
 
+		// Fixed '&' encoding bug
+		$reques_url = str_replace( '&#038;', '&', $reques_url );
+
 		$response = wp_remote_get( $reques_url );
 		$json     = wp_remote_retrieve_body( $response );
 		$data     = json_decode( $json, true );
@@ -427,6 +438,11 @@ class Jet_Elements_Advanced_Map extends Jet_Elements_Base {
 			: false;
 
 		if ( ! $coord ) {
+
+			$message = esc_html__( 'Coordinates of this location not found', 'jet-elements' );
+
+			echo $this->get_map_message( $message );
+
 			return;
 		}
 
@@ -506,6 +522,15 @@ class Jet_Elements_Advanced_Map extends Jet_Elements_Base {
 			$this->get_render_attribute_string( 'map-data' ),
 			$this->get_render_attribute_string( 'map-pins' )
 		);
+	}
+
+	/**
+	 * [map_message description]
+	 * @param  [type] $message [description]
+	 * @return [type]          [description]
+	 */
+	public function get_map_message( $message ) {
+		return sprintf( '<div class="jet-map-message"><div class="jet-map-message__dammy-map"></div><span class="jet-map-message__text">%s</span></div>', $message );
 	}
 
 }

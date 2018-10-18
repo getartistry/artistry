@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Custom Price Labels
  *
- * @version 3.6.0
+ * @version 3.9.0
  * @author  Algoritmika Ltd.
  */
 
@@ -26,34 +26,32 @@ class WCJ_Price_Labels extends WCJ_Module {
 		parent::__construct();
 
 		// Custom Price Labels - fields array
-		$this->custom_tab_group_name = 'wcj_price_labels'; // for compatibility with Custom Price Label Pro plugin should use 'simple_is_custom_pricing_label'
-		$this->custom_tab_sections = array( '_instead', '_before', '_between', '_after', );
-		$this->custom_tab_sections_titles = array(
-			'_instead' => __( 'Instead of the price', 'woocommerce-jetpack' ), // for compatibility with Custom Price Label Pro plugin should use ''
+		$this->custom_tab_group_name                  = 'wcj_price_labels';
+		$this->custom_tab_sections                    = array( '_instead', '_before', '_between', '_after', );
+		$this->custom_tab_sections_titles             = array(
+			'_instead' => __( 'Instead of the price', 'woocommerce-jetpack' ),
 			'_before'  => __( 'Before the price', 'woocommerce-jetpack' ),
 			'_between' => __( 'Between regular and sale prices', 'woocommerce-jetpack' ),
 			'_after'   => __( 'After the price', 'woocommerce-jetpack' ),
 		);
-		$this->custom_tab_section_variations = array( '_text', '_enabled', '_home', '_products', '_single', '_page', '_cart', /*'_simple',*/ '_variable', '_variation', /*'_grouped',*/ );
-		$this->custom_tab_section_variations_titles = array(
+		$this->custom_tab_section_variations          = array( '_text', '_enabled', '_home', '_products', '_single', '_page', '_cart', '_variable', '_variation' );
+		$this->custom_tab_section_variations_titles   = array(
 			'_text'      => '', // 'The label',
-			'_enabled'   => __( 'Enable', 'woocommerce-jetpack' ), // for compatibility with Custom Price Label Pro plugin should use ''
+			'_enabled'   => __( 'Enable', 'woocommerce-jetpack' ),
 			'_home'      => __( 'Hide on home page', 'woocommerce-jetpack' ),
 			'_products'  => __( 'Hide on products page', 'woocommerce-jetpack' ),
 			'_single'    => __( 'Hide on single', 'woocommerce-jetpack' ),
 			'_page'      => __( 'Hide on all pages', 'woocommerce-jetpack' ),
 			'_cart'      => __( 'Hide on cart page only', 'woocommerce-jetpack' ),
-//			'_simple'    => __( 'Hide for simple product', 'woocommerce-jetpack' ),
 			'_variable'  => __( 'Hide for main price', 'woocommerce-jetpack' ),
 			'_variation' => __( 'Hide for all variations', 'woocommerce-jetpack' ),
-//			'_grouped'   => __( 'Hide for grouped product', 'woocommerce-jetpack' ),
 		);
 
 		if ( $this->is_enabled() ) {
 
 			if ( 'yes' === get_option( 'wcj_local_price_labels_enabled', 'yes' ) ) {
 				// Meta box (admin)
-				add_action( 'add_meta_boxes', array( $this, 'add_price_label_meta_box' ) );
+				add_action( 'add_meta_boxes',    array( $this, 'add_price_label_meta_box' ) );
 				add_action( 'save_post_product', array( $this, 'save_custom_price_labels' ), 999, 2 );
 			}
 
@@ -228,7 +226,7 @@ class WCJ_Price_Labels extends WCJ_Module {
 	/*
 	 * custom_price - front end.
 	 *
-	 * @version 3.6.0
+	 * @version 3.9.0
 	 * @todo    rewrite this with less filters (e.g. `woocommerce_get_price_html` only) - at least for `! WCJ_IS_WC_VERSION_BELOW_3`
 	 */
 	function custom_price( $price, $product ) {
@@ -273,11 +271,11 @@ class WCJ_Price_Labels extends WCJ_Module {
 		$do_apply_global = true;
 		$products_incl = get_option( 'wcj_global_price_labels_products_incl', array() );
 		if ( ! empty( $products_incl ) ) {
-			$do_apply_global = ( in_array( $_product_id, $products_incl ) ) ? true : false;
+			$do_apply_global = (   in_array( $_product_id, $products_incl ) );
 		}
 		$products_excl = get_option( 'wcj_global_price_labels_products_excl', array() );
 		if ( ! empty( $products_excl ) ) {
-			$do_apply_global = ( in_array( $_product_id, $products_excl ) ) ? false : true;
+			$do_apply_global = ( ! in_array( $_product_id, $products_excl ) );
 		}
 		$product_categories = get_the_terms( $_product_id, 'product_cat' );
 		$product_categories_incl = get_option( 'wcj_global_price_labels_product_cats_incl', array() );

@@ -2,8 +2,8 @@
 Contributors: themifyme
 Tags: menu, conditional-tags, context, menu-items, admin
 Requires at least: 3.9
-Tested up to: 4.8
-Stable tag: 1.0.9
+Tested up to: 4.9.8
+Stable tag: 1.1.0
 License: GPLv2 or later
 
 This plugin enables you to set conditional menus per posts, pages, categories, archive pages, etc.
@@ -26,7 +26,7 @@ Once you activate the plugin, you will see the conditional menus on the Manage L
 2) Click on “+ Conditions" to add conditions in the modal box (tick the checkboxes where you want the menu to appear)
 3) To remove the conditional menus, click on the "X" button
 
-Visit http://themify.me/conditional-menus for more details.
+Visit https://themify.me/conditional-menus for more details.
 
 
 == Screenshots ==

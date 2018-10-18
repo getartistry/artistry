@@ -1108,7 +1108,7 @@ function get_data_woo ( $post, $offset, $limit, $is_export = false ) {
                 // and
                 //                     prod_othermeta.meta_key IN ('_regular_price','_sale_price','_sale_price_dates_from','_sale_price_dates_to','_sku','_stock','_weight','_height','_length','_width','_price','_thumbnail_id','_tax_status','_min_variation_regular_price','_min_variation_sale_price','_min_variation_price','_visibility','_product_attributes','" . implode( "','", $variation ) . "')
 
-                $ignored_meta_keys = array('id'); //added for handling conflicting custom fields
+                $ignored_meta_keys = array('id', '_wcj_custom_product_tabs_content_local_1'); //added for handling conflicting custom fields
 
                 $query_postmeta = "SELECT prod_othermeta.post_id as post_id,
                                 prod_othermeta.meta_key AS meta_key,
@@ -2975,6 +2975,9 @@ function woo_insert_update_data($post) {
                 $post_content = $post_excerpt ='';
                 $product_type = (!empty($obj->product_type)) ? $obj->product_type : 'simple';
 
+                $old_post_title = '';
+                $new_post_title = ( !empty( $obj->post_title ) ) ? $obj->post_title : '';
+
                 if ( isset ( $obj->id ) && $obj->id != '' ) {
 
                     //Code for handling the description and addl. description
@@ -2984,6 +2987,8 @@ function woo_insert_update_data($post) {
                     $product_custom_fields = get_post_custom ( $obj->id );                                          // woocommerce uses this method to load product's details before creating WooCommerce Product Object
                     $post = get_post ( $obj->id );                                                                  // woocommerce load posts from cache
                     // $terms = wp_get_object_terms( $obj->id, 'product_type', array('fields' => 'names') );
+
+                    $old_post_title = ( !empty( $post->post_title ) ) ? $post->post_title : '';
 
                     // // woocommerce gets product_type using this method
                     // $product_type = (isset($terms[0])) ? sanitize_title($terms[0]) : 'simple';
@@ -3108,6 +3113,23 @@ function woo_insert_update_data($post) {
                         $post_id = wp_insert_post($postarr);
                         $post_meta_key = $post_meta_info;
                         $parent_id = $postarr['post_parent'];
+
+                        //Code for updating the variation titles on updation of the parent title
+                        if( (!empty($_POST['SM_IS_WOO30']) && $_POST['SM_IS_WOO30'] == "true") && ( !empty($product_type) && $product_type == 'variable' ) && ( $old_post_title != $new_post_title ) ) {
+
+                            $wpdb->query(
+                                $wpdb->prepare(
+                                    "UPDATE {$wpdb->posts}
+                                    SET post_title = REPLACE( post_title, %s, %s )
+                                    WHERE post_type = 'product_variation'
+                                    AND post_parent = %d",
+                                    $old_post_title ? $old_post_title : 'AUTO-DRAFT',
+                                    $new_post_title,
+                                    $post_id
+                                )
+                            );
+
+                        }
 
                 } else {
                         $parent_id = $postarr['post_parent'];

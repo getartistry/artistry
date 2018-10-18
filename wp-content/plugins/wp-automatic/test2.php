@@ -1,7 +1,13 @@
 <?php 
+exit;
+//wp-load
+require_once('../../../wp-load.php');
 
-$wp_rankie_googlecustom_key = 'AIzaSyAKw3TbEbJNGX_HI8Ov_ek52EKzaAPJol0';
-$wp_rankie_googlecustom_id = '013156076200156289477:aavh3lmtysa';
+echo get_date_from_gmt(1531942039);
+exit;
+
+$wp_rankie_googlecustom_key = 'AIzaSyAKw3TbEbJNGX_HI8Ov_ek52EKzaAPJol0halmos';
+$wp_rankie_googlecustom_id = '013156076200156289477:aavh3lmtysahalmos';
 $wp_rankie_ezmlm_gl = 'google.com';
 $startIndex =31;
 $keyword = 'site:ezinearticles.com category inurl:"id"';

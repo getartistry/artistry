@@ -16,7 +16,7 @@ class Toolset_Image extends Data_Tag {
 	}
 
 	public function get_title() {
-		return __( 'Toolset Image Field', 'elementor-pro' );
+		return __( 'Toolset', 'elementor-pro' ) . ' ' . __( 'Image Field', 'elementor-pro' );
 	}
 
 	public function get_group() {

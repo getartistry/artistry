@@ -2,6 +2,24 @@
 	width: 100%;
 	position: relative;
 
+	&.jet-equal-cols {
+		.slick-track {
+			display: flex;
+			align-items: stretch;
+		}
+
+		.jet-testimonials__item {
+			display: flex;
+			flex-direction: column;
+			float: none;
+			height: auto;
+		}
+
+		.jet-testimonials__item-inner {
+			flex-grow: 1;
+		}
+	}
+
 	&__instance {
 		width: 100%;
 		position: relative;

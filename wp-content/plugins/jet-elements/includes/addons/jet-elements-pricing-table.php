@@ -29,7 +29,7 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-05';
+		return 'jetelements-icon-4';
 	}
 
 	public function get_categories() {
@@ -103,7 +103,7 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 		$this->add_control(
 			'featured_position',
 			array(
-				'label'   => esc_html__( 'Featured Postition', 'jet-elements' ),
+				'label'   => esc_html__( 'Featured Position', 'jet-elements' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'right',
 				'options' => array(
@@ -241,6 +241,14 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 			)
 		);
 
+		$this->add_control(
+			'price_desc',
+			array(
+				'label' => esc_html__( 'Price Description', 'jet-elements' ),
+				'type'  => Controls_Manager::TEXTAREA,
+			)
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -362,6 +370,7 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 				'price_prefix'  => '.pricing-table__price-prefix',
 				'price_value'   => '.pricing-table__price-val',
 				'price_suffix'  => '.pricing-table__price-suffix',
+				'price_desc'    => '.pricing-table__price-desc',
 				'features'      => '.pricing-table__features',
 				'features_item' => '.pricing-feature',
 				'included_item' => '.pricing-feature.item-included',
@@ -614,6 +623,7 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 			\Jet_Group_Control_Box_Style::get_type(),
 			array(
 				'name'           => 'icon_style',
+				'label'          => esc_html__( 'Icon Style', 'jet-elements' ),
 				'selector'       => '{{WRAPPER}} ' . $css_scheme['icon'],
 				'fields_options' => array(
 					'box_font_color' => array(
@@ -841,7 +851,52 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 				'selectors' => array(
 					'{{WRAPPER}} ' . $css_scheme['price_suffix'] => 'display: {{VALUE}};',
 				),
-				'separator' => 'after',
+			)
+		);
+
+		$this->add_control(
+			'price_desc_style',
+			array(
+				'label'     => esc_html__( 'Description', 'jet-elements' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+			)
+		);
+
+		$this->add_control(
+			'price_desc_color',
+			array(
+				'label' => esc_html__( 'Price Description Color', 'jet-elements' ),
+				'type'  => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} ' . $css_scheme['price_desc'] => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'price_desc_typography',
+				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}}  ' . $css_scheme['price_desc'],
+			)
+		);
+
+		$this->add_control(
+			'price_desc_gap',
+			array(
+				'label' => esc_html__( 'Gap', 'jet-elements' ),
+				'type'  => Controls_Manager::SLIDER,
+				'range' => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 30,
+					),
+				),
+				'selectors' => array(
+					'{{WRAPPER}} ' . $css_scheme['price_desc'] => 'margin-top: {{SIZE}}{{UNIT}};',
+				),
 			)
 		);
 
@@ -854,6 +909,7 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 				'selectors'  => array(
 					'{{WRAPPER}} ' . $css_scheme['price'] => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
+				'separator' => 'before',
 			)
 		);
 
@@ -1303,7 +1359,7 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 		$this->add_control(
 			'action_color',
 			array(
-				'label' => esc_html__( 'Price Prefix Color', 'jet-elements' ),
+				'label' => esc_html__( 'Color', 'jet-elements' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} ' . $css_scheme['action'] => 'color: {{VALUE}}',
@@ -1338,7 +1394,7 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 				'name'           => 'action_border',
 				'label'          => esc_html__( 'Border', 'jet-elements' ),
 				'placeholder'    => '1px',
-				'selector'       => '{{WRAPPER}} ' . $css_scheme['features'],
+				'selector'       => '{{WRAPPER}} ' . $css_scheme['action'],
 			)
 		);
 
@@ -1349,7 +1405,7 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} ' . $css_scheme['features'] => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} ' . $css_scheme['action'] => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1508,17 +1564,33 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 			)
 		);
 
-		$this->add_control(
-			'button_bg_color',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			array(
-				'label' => esc_html__( 'Background Color', 'jet-elements' ),
-				'type' => Controls_Manager::COLOR,
-				'scheme' => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+				'name'     => 'button_bg',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['button'],
+				'fields_options' => array(
+					'background' => array(
+						'default' => 'classic',
+					),
+					'color' => array(
+						'label'  => _x( 'Background Color', 'Background Control', 'jet-elements' ),
+						'scheme' => array(
+							'type'  => Scheme_Color::get_type(),
+							'value' => Scheme_Color::COLOR_1,
+						),
+					),
+					'color_b' => array(
+						'label' => _x( 'Second Background Color', 'Background Control', 'jet-elements' ),
+					),
 				),
-				'selectors' => array(
-					'{{WRAPPER}} ' . $css_scheme['button'] => 'background-color: {{VALUE}}',
+				'exclude' => array(
+					'image',
+					'position',
+					'attachment',
+					'attachment_alert',
+					'repeat',
+					'size',
 				),
 			)
 		);
@@ -1595,13 +1667,29 @@ class Jet_Elements_Pricing_Table extends Jet_Elements_Base {
 			)
 		);
 
-		$this->add_control(
-			'button_hover_bg_color',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			array(
-				'label'     => esc_html__( 'Background Color', 'jet-elements' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} ' . $css_scheme['button'] . ':hover' => 'background-color: {{VALUE}}',
+				'name'     => 'button_hover_bg',
+				'selector' => '{{WRAPPER}} ' . $css_scheme['button'] . ':hover',
+				'fields_options' => array(
+					'background' => array(
+						'default' => 'classic',
+					),
+					'color' => array(
+						'label' => _x( 'Background Color', 'Background Control', 'jet-elements' ),
+					),
+					'color_b' => array(
+						'label' => _x( 'Second Background Color', 'Background Control', 'jet-elements' ),
+					),
+				),
+				'exclude' => array(
+					'image',
+					'position',
+					'attachment',
+					'attachment_alert',
+					'repeat',
+					'size',
 				),
 			)
 		);

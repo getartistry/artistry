@@ -41,6 +41,22 @@ add_action("admin_print_styles", 'adminCsslibs');
 add_action('wp_enqueue_scripts', 'uaf_client_css');
 add_action('plugins_loaded', 'uaf_update_check');
 add_action('init', 'uaf_editor_setup');
+add_action('admin_notices', 'uaf_api_notification');
+
+if (isset($_GET['uaf_api_notification_hide']) == 1){
+	update_option('uaf_api_notification_hide','yes_2');
+}
+
+function uaf_api_notification(){
+	if (get_option('uaf_api_notification_hide') != 'yes_2'){
+		 echo '<div class="updated">
+       <p style="color:#900;"><b>Use Any Font</b></p>
+	   <p>
+	   Premium Key that were bought before 24th Sep, 2018 will no longer work in Use Any Font 5.0. So please get your replacement key <a href="https://dineshkarki.com.np/use-any-font/api-key" target="_blank"><b>here</b></a>. You do not need to pay again. Use your old Premium Key as Discount Coupon and it will apply 100% discount. We are sorry for the inconvenience caused.</p><p>
+	   <a style="display:block;text-align:right;" href="admin.php?page=uaf_settings_page&uaf_api_notification_hide=1">Hide This Message</a></p>
+	   </div>';
+	}
+}
 
 $uaf_disbale_editor_font_list_value = get_option('uaf_disbale_editor_font_list');
 if ($uaf_disbale_editor_font_list_value != 1):
@@ -92,8 +108,8 @@ function uaf_activate(){
 
 function uaf_update_check() { // MUST CHANGE WITH EVERY VERSION
     $uaf_version_check = get_option('uaf_current_version');
-	if ($uaf_version_check != '4.9.2'):
-		update_option('uaf_current_version', '4.9.2');
+	if ($uaf_version_check != '5.0'):
+		update_option('uaf_current_version', '5.0');
 		if ($uaf_version_check < 4.0):
 			uaf_create_folder();
 			uaf_move_file_to_newPath();

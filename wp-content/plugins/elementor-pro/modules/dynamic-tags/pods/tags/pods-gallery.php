@@ -16,7 +16,7 @@ class Pods_Gallery extends Data_Tag {
 	}
 
 	public function get_title() {
-		return __( 'Pods Gallery Field', 'elementor-pro' );
+		return __( 'Pods', 'elementor-pro' ) . ' ' . __( 'Gallery Field', 'elementor-pro' );
 	}
 
 	public function get_categories() {

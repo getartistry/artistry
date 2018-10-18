@@ -4,6 +4,15 @@ function gm_setting() {
 	//license ini
 	$licenseactive=get_option('wp_automatic_license_active','');
 	
+	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+	$state = base64_encode($actual_link);
+	
+	// Save FB token returned from FB login
+	if(isset($_GET['token'])){
+		update_option('wp_automatic_fb_token',$_GET['token']);
+	}
+	 
+	
 	//purchase check
 	if(isset($_POST['wp_automatic_license']) && trim($licenseactive) == '' ){
 		
@@ -36,7 +45,7 @@ function gm_setting() {
 		$proxy = false;
 		
 		if($proxy == false){
-			$url='http://deandev.com/license/index.php?itm=1904470&domain='.$_SERVER['HTTP_HOST'].'&purchase='.trim($_POST['wp_automatic_license']).$append;
+			$url='https://deandev.com/license/index.php?itm=1904470&domain='.$_SERVER['HTTP_HOST'].'&purchase='.trim($_POST['wp_automatic_license']).$append;
 		}else{
 			$url='http://deandev-proxy.appspot.com/license/index.php?itm=1904470&domain='.$_SERVER['HTTP_HOST'].'&purchase='.trim($_POST['wp_automatic_license']).$append;
 		}
@@ -412,7 +421,7 @@ h2 span{
 								</h2>
 								<div class="inside TTWForm main" style="padding-bottom: 14px">
 									<!--start container-->
-
+									
 									<div class="field f_100 ">
 										<label> Access Token</label> <input value="<?php   echo get_option( 'wp_automatic_vm_tocken' ) ?>" name="wp_automatic_vm_tocken" type="text">
 										<div class="description">Check <a href="http://valvepress.com/how-to-generate-a-vimeo-access-token-to-post-from-vimeo-to-wordpress/" target="_blank">this tutorial</a> on how to get your vimeo access token </div>
@@ -485,8 +494,8 @@ h2 span{
 									</div>
 									
 									<div class="field f_100 ">
-										<label>Envato User Name (Affiliate ID)</label> <input value="<?php   echo get_option( 'wp_automatic_envato_user' ) ?>" name="wp_automatic_envato_user" type="text">
-										<div class="description">Your username for affiliate integration for example "ValvePress"</div>
+										<label>Impact Radius affiliate URL</label> <input value="<?php   echo get_option( 'wp_automatic_envato_ir' ) ?>" name="wp_automatic_envato_ir" type="text">
+										<div class="description">Check <a href="http://valvepress.com/how-to-get-envato-impact-radium-affiliate-url/">this tutorial</a> on how to get it</div>
 									</div>
 
 									<div id="form-submit" class="field f_100 clearfix submit" style>
@@ -506,13 +515,18 @@ h2 span{
 								<div class="inside TTWForm main" style="padding-bottom: 14px">
 									<!--start container-->
 									
-								 
+									 
 									<div class="field f_100 ">
-										<label> Access Token</label> <input value="<?php   echo get_option( 'wp_automatic_fb_token' ) ?>" name="wp_automatic_fb_token" type="text">
-										<div class="descripion">Check <a href="http://valvepress.com/how-to-config-wp-automatic-for-fb/" target="_blank">this tutorial</a> on how to get the access token</div>
+										<label>c_user cookie value</label> <input value="<?php   echo get_option( 'wp_automatic_fb_cuser' ) ?>" name="wp_automatic_fb_cuser" type="text">
+										<div class="description">Check this tutorial  <a href="http://valvepress.com/how-to-config-wp-automatic-for-fb/" target="_blank">Here</a> to know how to get these values </div>
+									</div>
+									 
+									 <div class="field f_100 ">
+										<label>xs cookie value</label> <input value="<?php   echo get_option( 'wp_automatic_fb_xs' ) ?>" name="wp_automatic_fb_xs" type="text">
+										
 									</div>
 									
-									 
+									
 									
 									<div id="form-submit" class="field f_100 clearfix submit" style>
 										<input style="margin-left: 0" value="Save Changes" type="submit">

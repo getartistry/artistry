@@ -13,20 +13,19 @@
 				height: auto;
 				display: flex;
 				flex-direction: column;
-				> *:last-child {
-					flex-grow: 1;
-				}
+
 				img {
 					object-fit: cover;
 					flex-grow: 1;
 				}
-				.jet-carousel__item-link,
+				.jet-carousel__item-inner,
 				.jet-banner,
 				.jet-banner__link {
 					display: flex;
-					display: flex;
 					flex-direction: column;
 				}
+				.jet-carousel__item-inner,
+				.jet-carousel__item-inner > *:last-child,
 				.jet-banner__link {
 					flex-grow: 1;
 				}
@@ -45,6 +44,13 @@
 		position: relative;
 		z-index: 2;
 	}
+
+	&__content,
+	&__item-title,
+	&__item-text {
+		transition: all 200ms linear;
+	}
+
 	.jet-arrow {
 		position: absolute;
 		top: 50%;

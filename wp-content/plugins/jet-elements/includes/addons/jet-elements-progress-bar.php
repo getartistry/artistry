@@ -30,7 +30,7 @@ class Jet_Elements_Progress_Bar extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-50';
+		return 'jetelements-icon-34';
 	}
 
 	public function get_categories() {
@@ -361,8 +361,9 @@ class Jet_Elements_Progress_Bar extends Jet_Elements_Base {
 		$this->add_control(
 			'title_icon_heading',
 			array(
-				'label' => esc_html__( 'Icon', 'jet-elements' ),
-				'type'  => Controls_Manager::HEADING,
+				'label'     => esc_html__( 'Icon', 'jet-elements' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
 			)
 		);
 
@@ -447,7 +448,7 @@ class Jet_Elements_Progress_Bar extends Jet_Elements_Base {
 				'default'     => '',
 				'options'     => array(
 					'flex-start' => array(
-						'title' => esc_html__( 'Left', 'jet-elements' ),
+						'title' => esc_html__( 'Top', 'jet-elements' ),
 						'icon'  => 'eicon-v-align-top',
 					),
 					'center' => array(
@@ -455,7 +456,7 @@ class Jet_Elements_Progress_Bar extends Jet_Elements_Base {
 						'icon'  => 'eicon-v-align-middle',
 					),
 					'flex-end' => array(
-						'title' => esc_html__( 'Right', 'jet-elements' ),
+						'title' => esc_html__( 'Bottom', 'jet-elements' ),
 						'icon'  => 'eicon-v-align-bottom',
 					),
 				),

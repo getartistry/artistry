@@ -166,7 +166,7 @@ class Glossary_Tooltip_Engine
                 $class .= ' glossary-external-link';
             }
         }
-        $tooltip = '<span class="glossary-tooltip' . $media . '">' . '<span class="' . $class . '">' . $html_link . '</span>';
+        $tooltip = '<span class="hidden glossary-tooltip' . $media . '">' . '<span class="' . $class . '">' . $html_link . '</span>';
         $tooltip_container = '<span class="glossary-tooltip-content clearfix">';
         if ( !empty($media) ) {
             $tooltip_container = '<span class="glossary-video clearfix">';

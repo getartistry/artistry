@@ -156,14 +156,14 @@ class Typekit_Fonts extends Font_Base {
 		$settings->add_section( Settings::TAB_INTEGRATIONS, 'typekit', [
 			'callback' => function() {
 				echo '<hr><h2>' . esc_html__( 'TypeKit', 'elementor-pro' ) . '</h2>';
-				esc_html_e( 'Typekit partners with the world’s leading type foundries to bring thousands of beautiful fonts to designers every day.', 'elementor-pro' );
+				esc_html_e( 'TypeKit partners with the world’s leading type foundries to bring thousands of beautiful fonts to designers every day.', 'elementor-pro' );
 			},
 			'fields' => [
 				self::TYPEKIT_KIT_ID_OPTION_NAME => [
 					'label' => __( 'Kit ID', 'elementor-pro' ),
 					'field_args' => [
 						'type' => 'text',
-						'desc' => sprintf( __( 'Enter Your Typekit Kit ID', 'elementor-pro' ) ),
+						'desc' => sprintf( __( 'Enter Your TypeKit Kit ID', 'elementor-pro' ) ),
 					],
 					'setting_args' => [
 						'sanitize_callback' => [ $this, 'sanitize_kit_id_settings' ],

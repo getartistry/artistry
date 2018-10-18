@@ -1,8 +1,8 @@
 <?php
 /**
  * Helper class which defnes a namespace for some commonly used functions
- * 
- * @author Pavel Kulbakin <p.kulbakin@gmail.com>
+ *
+ * @author Maksym Tsypliakov <maksym.tsypliakov@gmail.com>
  */
 class PMWI_Helper {
 	const GLOB_MARK = 1;
@@ -40,17 +40,13 @@ class PMWI_Helper {
 	public static function safe_glob($pattern,  $flags=0) {
 		$split = explode('/', str_replace('\\', '/', $pattern));
 		$mask = array_pop($split);
-		$path = implode('/', $split);
-		
-		if (($dir = @opendir($path)) !== false or ($dir = @opendir($path . '/')) !== false) {
+		$path = implode('/', $split);			
+
+		if (($dir = @opendir($path . '/')) !== false or ($dir = @opendir($path)) !== false) {
 			$glob = array();
 			while(($file = readdir($dir)) !== false) {
-				// Recurse subdirectories (self::GLOB_RECURSE)
-				if (($flags & self::GLOB_RECURSE) && is_dir($path . '/' . $file) && ( ! in_array($file, array('.', '..')))) {
-					$glob = array_merge($glob, self::array_prepend(self::safe_glob($path . '/' . $file . '/' . $mask, $flags), ($flags & self::GLOB_PATH ? '' : $file . '/')));
-				}
 				// Match file mask				
-				if (self::fnmatch($mask, $file)) {					
+				if (self::fnmatch($mask, $file, self::FNM_CASEFOLD)) {					
 					if ((( ! ($flags & self::GLOB_ONLYDIR)) || is_dir("$path/$file"))
 						&& (( ! ($flags & self::GLOB_NODIR)) || ( ! is_dir($path . '/' . $file)))
 						&& (( ! ($flags & self::GLOB_NODOTS)) || ( ! in_array($file, array('.', '..'))))
@@ -59,11 +55,20 @@ class PMWI_Helper {
 					}
 				}				
 			}
+            closedir($dir);
+            if (($dir = @opendir($path . '/')) !== false or ($dir = @opendir($path)) !== false) {
+                while(($file = readdir($dir)) !== false) {
+                    // Recurse subdirectories (self::GLOB_RECURSE)
+                    if (($flags & self::GLOB_RECURSE) && is_dir($path . '/' . $file) && ( ! in_array($file, array('.', '..')))) {
+                        $glob = array_merge($glob, self::array_prepend(self::safe_glob($path . '/' . $file . '/' . $mask, $flags), ($flags & self::GLOB_PATH ? '' : $file . '/')));
+                    }
+                }
+            }
 			closedir($dir);
-			if ( ! ($flags & self::GLOB_NOSORT)) sort($glob);			
+			if ( ! ($flags & self::GLOB_NOSORT)) sort($glob);
 			return $glob;
 		} else {
-			return false;
+			return (strpos($pattern, "*") === false) ? array($pattern) : false;
 		}
 	}
 	

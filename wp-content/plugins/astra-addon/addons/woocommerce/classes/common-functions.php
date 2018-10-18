@@ -152,4 +152,3 @@ if ( ! function_exists( 'astra_woo_remove_shop_page_description' ) ) :
 		return $description;
 	}
 endif;
-

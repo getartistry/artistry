@@ -476,6 +476,23 @@
   margin-left: -20px;
 }
 
+/* EP Image Hover Effects */
+
+.elementor-widget-ep-image-hover-effects .ep-ihe {
+  height: 0;
+  overflow: hidden;
+  background: white;
+  position: relative;
+}
+
+.elementor-widget-ep-image-hover-effects .ep-ihe .img-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Media Queries */
 
 @media only screen and (max-width: 1024px) {

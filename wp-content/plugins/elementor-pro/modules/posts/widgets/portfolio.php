@@ -93,7 +93,11 @@ class Portfolio extends Base_Widget {
 					'5' => '5',
 					'6' => '6',
 				],
+				'prefix_class' => 'elementor-grid%s-',
 				'frontend_available' => true,
+				'selectors' => [
+					'.elementor-msie {{WRAPPER}} .elementor-portfolio-item' => 'width: calc( 100% / {{SIZE}} )',
+				],
 			]
 		);
 
@@ -313,14 +317,33 @@ class Portfolio extends Base_Widget {
 			]
 		);
 
+		/*
+		 * The `item_gap` control is replaced by `column_gap` and `row_gap` controls since v 2.1.6
+		 * It is left (hidden) in the widget, to provide compatibility with older installs
+		 */
+
 		$this->add_control(
 			'item_gap',
 			[
 				'label' => __( 'Item Gap', 'elementor-pro' ),
 				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 10,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-grid' => 'grid-row-gap: {{SIZE}}{{UNIT}}; grid-column-gap: {{SIZE}}{{UNIT}}',
+					'.elementor-msie {{WRAPPER}} .elementor-portfolio' => 'margin: 0 -{{SIZE}}px',
+					'(desktop).elementor-msie {{WRAPPER}} .elementor-portfolio-item' => 'width: calc( 100% / {{columns.SIZE}} ); border: {{SIZE}}px solid transparent',
+					'(tablet).elementor-msie {{WRAPPER}} .elementor-portfolio-item' => 'width: calc( 100% / {{columns_tablet.SIZE}} ); border: {{SIZE}}px solid transparent',
+					'(mobile).elementor-msie {{WRAPPER}} .elementor-portfolio-item' => 'width: calc( 100% / {{columns_mobile.SIZE}} ); border: {{SIZE}}px solid transparent',
 				],
+				'frontend_available' => true,
+				'classes' => 'elementor-hidden',
+			]
+		);
+
+		$this->add_control(
+			'column_gap',
+			[
+				'label' => __( 'Columns Gap', 'elementor-pro' ),
+				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
 						'min' => 0,
@@ -328,12 +351,29 @@ class Portfolio extends Base_Widget {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-portfolio' => 'margin: 0 -{{SIZE}}px',
-					'(desktop){{WRAPPER}} .elementor-portfolio-item' => 'width: calc( 100% / {{columns.SIZE}} ); border: {{SIZE}}px solid transparent',
-					'(tablet){{WRAPPER}} .elementor-portfolio-item' => 'width: calc( 100% / {{columns_tablet.SIZE}} ); border: {{SIZE}}px solid transparent',
-					'(mobile){{WRAPPER}} .elementor-portfolio-item' => 'width: calc( 100% / {{columns_mobile.SIZE}} ); border: {{SIZE}}px solid transparent',
+					'{{WRAPPER}} .elementor-posts-container' => 'grid-column-gap: {{SIZE}}{{UNIT}}',
+					'.elementor-msie {{WRAPPER}} .elementor-portfolio' => 'margin: 0 -{{SIZE}}px',
+					'.elementor-msie {{WRAPPER}} .elementor-portfolio-item' => 'border-style: solid; border-color: transparent; border-right-width: calc({{SIZE}}px / 2); border-left-width: calc({{SIZE}}px / 2)',
+				],
+			]
+		);
+
+		$this->add_control(
+			'row_gap',
+			[
+				'label' => __( 'Rows Gap', 'elementor-pro' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
 				],
 				'frontend_available' => true,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-posts-container' => 'grid-row-gap: {{SIZE}}{{UNIT}}',
+					'.elementor-msie {{WRAPPER}} .elementor-portfolio-item' => 'border-bottom-width: {{SIZE}}px',
+				],
 			]
 		);
 
@@ -694,7 +734,7 @@ class Portfolio extends Base_Widget {
 			$this->render_filter_menu();
 		}
 		?>
-		<div class="elementor-portfolio elementor-posts-container">
+		<div class="elementor-portfolio elementor-grid elementor-posts-container">
 		<?php
 	}
 

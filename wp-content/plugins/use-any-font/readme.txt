@@ -1,9 +1,9 @@
-=== Use Any Font ===
+=== Use Any Font [ Freemium ] ===
 Contributors: dnesscarkey
 Tags: custom fonts, font embed, font uploader, any font, embed any font, font uploader, css3 font embed, @font-face embed, font conversion, webfont, ttf, opentype
 Requires at least: 3.0
-Tested up to: 4.9.2
-Stable tag: 4.9.2
+Tested up to: 4.9.8
+Stable tag: 5.0
 
 Embed any custom font in your website. #1 Rated custom fonts plugin by WPMUDev.org.
 
@@ -40,7 +40,7 @@ Use Any Font gives you freedom to use custom fonts in your website. It is not li
 
 You need API key to connect to our server for font conversion. Our server converts your font and sends it back. 
 
-Offer your contribution (Free for 1 font, $20 to $100) and get the API key from <a href="http://dnesscarkey.com/font-convertor/api/" target="_blank">here</a>.
+You can get key from <a href="https://dineshkarki.com.np/use-any-font/api-key" target="_blank">here</a>. You can also generate Lite / Test API key from button at top of the plugin page. <strong>Note : </strong> Lite / Test API only allow single font conversion.
 
 <strong>Installation Video</strong>
 [youtube http://www.youtube.com/watch?v=QzGaWIPVwEk]
@@ -112,6 +112,9 @@ No, our server is needed during font conversion only. After that all fonts are s
 1. Screenshot #6. Assign fonts to custom elements.
 
 == Changelog ==
+
+= 5.0 =
+* New API Key system, Lite / Test API key generation from plugin page.
 
 = 4.9.2 =
 * Adds custom fonts to typography of Themify and Beaver Page Builder

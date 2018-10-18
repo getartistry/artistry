@@ -30,7 +30,7 @@ class Jet_Elements_Button extends Jet_Elements_Base {
 	}
 
 	public function get_icon() {
-		return 'jetelements-icon-19';
+		return 'jetelements-icon-28';
 	}
 
 	public function get_categories() {
@@ -150,8 +150,8 @@ class Jet_Elements_Button extends Jet_Elements_Base {
 			array(
 				'effect-0'  => esc_html__( 'None', 'jet-elements' ),
 				'effect-1'  => esc_html__( 'Fade', 'jet-elements' ),
-				'effect-2'  => esc_html__( 'Down Slide', 'jet-elements' ),
-				'effect-3'  => esc_html__( 'Up Slide', 'jet-elements' ),
+				'effect-2'  => esc_html__( 'Up Slide', 'jet-elements' ),
+				'effect-3'  => esc_html__( 'Down Slide', 'jet-elements' ),
 				'effect-4'  => esc_html__( 'Right Slide', 'jet-elements' ),
 				'effect-5'  => esc_html__( 'Left Slide', 'jet-elements' ),
 				'effect-6'  => esc_html__( 'Up Scale', 'jet-elements' ),

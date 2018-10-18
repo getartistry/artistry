@@ -22,7 +22,7 @@ if ( ! function_exists( 'wpuxss_eml_mimes_validate' ) ) {
 
         if ( isset( $_POST['eml-restore-mime-types-settings'] ) ) {
 
-            $input = get_option( 'wpuxss_eml_mimes_backup' , array() );
+            $input = get_site_option( 'wpuxss_eml_mimes_backup', array() );
 
             add_settings_error(
                 'mime-types',
@@ -139,7 +139,7 @@ add_filter('upload_mimes', 'wpuxss_eml_upload_mimes');
 
 if ( ! function_exists( 'wpuxss_eml_upload_mimes' ) ) {
 
-    function wpuxss_eml_upload_mimes( $existing_mimes=array() ) {
+    function wpuxss_eml_upload_mimes( $existing_mimes = array() ) {
 
         $wpuxss_eml_mimes = get_option('wpuxss_eml_mimes');
 
@@ -178,27 +178,23 @@ add_filter( 'mime_types', 'wpuxss_eml_mime_types' );
 
 if ( ! function_exists( 'wpuxss_eml_mime_types' ) ) {
 
-    function wpuxss_eml_mime_types( $existing_mimes ) {
+    function wpuxss_eml_mime_types( $default_mimes ) {
 
-        $wpuxss_eml_mimes = get_option('wpuxss_eml_mimes');
+        $new_mimes = array();
+        $wpuxss_eml_mimes = get_option( 'wpuxss_eml_mimes' );
 
-        if ( ! empty( $wpuxss_eml_mimes ) ) {
+        if ( false !== $wpuxss_eml_mimes ) {
 
             foreach ( $wpuxss_eml_mimes as $extension => $mime ) {
 
                 $extension = wpuxss_eml_sanitize_extension( $extension );
-                $existing_mimes[$extension] = sanitize_mime_type( $mime['mime'] );
+                $new_mimes[$extension] = sanitize_mime_type( $mime['mime'] );
             }
 
-            foreach ( $existing_mimes as $extension => $mime ) {
-
-                if ( ! isset( $wpuxss_eml_mimes[$extension] ) ) {
-                    unset( $existing_mimes[$extension] );
-                }
-            }
+            return $new_mimes;
         }
 
-        return $existing_mimes;
+        return $default_mimes;
     }
 }
 

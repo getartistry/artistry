@@ -17,7 +17,7 @@ class Product_Image extends Base_Data_Tag {
 	}
 
 	public function get_group() {
-		return Module::WOOCOMMERCE_PRODUCT_GROUP;
+		return Module::WOOCOMMERCE_GROUP;
 	}
 
 	public function get_categories() {

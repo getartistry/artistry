@@ -6,7 +6,7 @@ if(trim($licenseactive) != ''){
 	//fire checks
 	require 'plugin-updates/plugin-update-checker.php';
 	$wp_automatic_UpdateChecker = PucFactory::buildUpdateChecker(
-			'http://deandev.com/upgrades/meta/wp-automatic.json',
+			'https://deandev.com/upgrades/meta/wp-automatic.json',
 			__FILE__,
 			'wp-automatic'
 			);

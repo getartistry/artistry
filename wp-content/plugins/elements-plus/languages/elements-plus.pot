@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Elements Plus!\n"
-"POT-Creation-Date: 2018-06-06 17:20+0300\n"
+"POT-Creation-Date: 2018-09-18 13:01+0300\n"
 "PO-Revision-Date: 2016-08-29 19:22+0300\n"
 "Last-Translator: Nik Vourvachis <nvourva@cssigniter.com>\n"
 "Language-Team: Nik Vourvachis <nvourva@cssigniter.com>\n"
@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: elements-plus.php:48 inc/elements-plus-options.php:269
+#: elements-plus.php:48 inc/elements-plus-options.php:296
 msgid "Elements Plus!"
 msgstr ""
 
@@ -309,12 +309,12 @@ msgid "Toggle Labels"
 msgstr ""
 
 #: elements/ep-flipclock.php:56 elements/ep-flipclock.php:83
-#: elements/ep-justified-gallery.php:189
+#: elements/ep-image-comparison.php:106 elements/ep-justified-gallery.php:189
 msgid "Show"
 msgstr ""
 
 #: elements/ep-flipclock.php:57 elements/ep-flipclock.php:84
-#: elements/ep-justified-gallery.php:112
+#: elements/ep-image-comparison.php:107 elements/ep-justified-gallery.php:112
 #: elements/ep-justified-gallery.php:190
 msgid "Hide"
 msgstr ""
@@ -436,6 +436,155 @@ msgstr ""
 msgid "Hover Animation"
 msgstr ""
 
+#: elements/ep-image-comparison.php:13 elements/ep-image-comparison.php:28
+msgid "Image Comparison Plus!"
+msgstr ""
+
+#: elements/ep-image-comparison.php:35 elements/ep-image-hover-effects.php:35
+msgid "Choose First Image"
+msgstr ""
+
+#: elements/ep-image-comparison.php:43 elements/ep-image-hover-effects.php:43
+msgid "Choose Second Image"
+msgstr ""
+
+#: elements/ep-image-comparison.php:51
+msgid "Image Offset"
+msgstr ""
+
+#: elements/ep-image-comparison.php:71
+msgid "Orientation"
+msgstr ""
+
+#: elements/ep-image-comparison.php:75
+msgid "Horizontal"
+msgstr ""
+
+#: elements/ep-image-comparison.php:76
+msgid "Vertical"
+msgstr ""
+
+#: elements/ep-image-comparison.php:84
+msgid "Before Label"
+msgstr ""
+
+#: elements/ep-image-comparison.php:86 elements/ep-label.php:87
+msgid "Before"
+msgstr ""
+
+#: elements/ep-image-comparison.php:93
+msgid "After Label"
+msgstr ""
+
+#: elements/ep-image-comparison.php:95 elements/ep-label.php:88
+msgid "After"
+msgstr ""
+
+#: elements/ep-image-comparison.php:102
+msgid "Overlay"
+msgstr ""
+
+#: elements/ep-image-comparison.php:115
+msgid "Move Slider On Hover"
+msgstr ""
+
+#: elements/ep-image-comparison.php:117 elements/ep-image-comparison.php:129
+#: elements/ep-image-comparison.php:141 elements/ep-justified-gallery.php:70
+#: elements/ep-styled-maps.php:133
+msgid "Yes"
+msgstr ""
+
+#: elements/ep-image-comparison.php:118 elements/ep-image-comparison.php:130
+#: elements/ep-image-comparison.php:142 elements/ep-justified-gallery.php:71
+#: elements/ep-styled-maps.php:134
+msgid "No"
+msgstr ""
+
+#: elements/ep-image-comparison.php:127
+msgid "Move Slider By Clicking Anywhere"
+msgstr ""
+
+#: elements/ep-image-comparison.php:139
+msgid "Move Slider Only With Handle"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:13
+#: elements/ep-image-hover-effects.php:28
+msgid "Image Hover Effects Plus!"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:51
+msgid "Displacement Image"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:55
+msgid "1"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:56
+msgid "2"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:57
+msgid "3"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:58
+msgid "4"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:59
+msgid "5"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:60
+msgid "6"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:61
+msgid "7"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:62
+msgid "8"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:63
+msgid "9"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:64
+msgid "10"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:65
+msgid "11"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:66
+msgid "12"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:67
+msgid "13"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:68
+msgid "14"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:69
+msgid "15"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:70
+msgid "16"
+msgstr ""
+
+#: elements/ep-image-hover-effects.php:71
+msgid "17"
+msgstr ""
+
 #: elements/ep-instagram.php:13 elements/ep-instagram.php:28
 msgid "Instagram Plus!"
 msgstr ""
@@ -542,14 +691,6 @@ msgstr ""
 msgid "Lightbox"
 msgstr ""
 
-#: elements/ep-justified-gallery.php:70 elements/ep-styled-maps.php:133
-msgid "Yes"
-msgstr ""
-
-#: elements/ep-justified-gallery.php:71 elements/ep-styled-maps.php:134
-msgid "No"
-msgstr ""
-
 #: elements/ep-justified-gallery.php:82
 msgid "Row Height"
 msgstr ""
@@ -604,14 +745,6 @@ msgstr ""
 
 #: elements/ep-label.php:83
 msgid "Icon Position"
-msgstr ""
-
-#: elements/ep-label.php:87
-msgid "Before"
-msgstr ""
-
-#: elements/ep-label.php:88
-msgid "After"
 msgstr ""
 
 #: elements/ep-label.php:99
@@ -831,7 +964,7 @@ msgid "Custom Widgets For Elementor"
 msgstr ""
 
 #: inc/elements-plus-options.php:32
-msgid "Label <em>Plus!</em>"
+msgid "AudioIgniter <em>Plus!</em>"
 msgstr ""
 
 #: inc/elements-plus-options.php:40
@@ -839,51 +972,59 @@ msgid "Button <em>Plus!</em>"
 msgstr ""
 
 #: inc/elements-plus-options.php:48
-msgid "Gallery <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:56
 msgid "Call to Action <em>Plus!</em>"
 msgstr ""
 
-#: inc/elements-plus-options.php:64
-msgid "Google Maps <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:72
-msgid "AudioIgniter <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:80
-msgid "YouTube Slideshow <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:88
-msgid "Preloader <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:96
-msgid "Instagram <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:104
-msgid "Tooltip <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:112
-msgid "Scheduled <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:120
-msgid "Icon <em>Plus!</em>"
-msgstr ""
-
-#: inc/elements-plus-options.php:128
+#: inc/elements-plus-options.php:56
 msgid "FlipClock <em>Plus!</em>"
 msgstr ""
 
-#: inc/elements-plus-options.php:136
+#: inc/elements-plus-options.php:64
+msgid "Gallery <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:72
+msgid "Google Maps <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:80
 msgid "Google Maps API Key"
+msgstr ""
+
+#: inc/elements-plus-options.php:88
+msgid "Icon <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:96
+msgid "Image Comparison <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:104
+msgid "Image Hover Effects <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:112
+msgid "Instagram <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:120
+msgid "Label <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:128
+msgid "Preloader <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:136
+msgid "Scheduled <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:144
+msgid "Tooltip <em>Plus!</em>"
+msgstr ""
+
+#: inc/elements-plus-options.php:152
+msgid "YouTube Slideshow <em>Plus!</em>"
 msgstr ""
 
 #. translators: %s is a URL.
@@ -894,29 +1035,36 @@ msgid ""
 "and activate the plugin to use this module."
 msgstr ""
 
+#: inc/elements-plus-options.php:215
+msgid ""
+"Caution: These effects are WebGL based and may hurt the performance of "
+"your pages. Do not use more than 4 - 5 instances of this widget in any "
+"given page. "
+msgstr ""
+
 #. translators: %s is a URL.
-#: inc/elements-plus-options.php:196
+#: inc/elements-plus-options.php:223
 #, php-format
 msgid ""
 "<a href=\"%s\" target=\"_blank\">WP Instagram Widget</a> is not active. "
 "Install and activate the plugin to use this module."
 msgstr ""
 
-#: inc/elements-plus-options.php:210
-msgid ""
-"This option will enable a tooltip section in the following Elementor "
-"default widgets: Heading, Button, Icon, and Icon Box."
-msgstr ""
-
-#: inc/elements-plus-options.php:217
+#: inc/elements-plus-options.php:245
 msgid ""
 "With this module you can set date/time-based display restrictions on every "
 "module available. Check the \"Schedule\" section in the \"Advanced\" tab "
 "of your modules."
 msgstr ""
 
+#: inc/elements-plus-options.php:252
+msgid ""
+"This option will enable a tooltip section in the following Elementor "
+"default widgets: Heading, Button, Icon, and Icon Box."
+msgstr ""
+
 #. translators: %s is a URL.
-#: inc/elements-plus-options.php:237
+#: inc/elements-plus-options.php:268
 #, php-format
 msgid ""
 "Paste your Google Maps API Key below. This is <strong>required</strong> in "
@@ -924,7 +1072,7 @@ msgid ""
 "read <a href=\"%s\" target=\"_blank\">this article</a>."
 msgstr ""
 
-#: inc/elements-plus-options.php:257
+#: inc/elements-plus-options.php:284
 msgid "Use the checkboxes below to enable or disable the custom elements."
 msgstr ""
 

@@ -9,6 +9,7 @@
 		left: 0;
 		overflow: hidden;
 		pointer-events: none;
+		perspective: 1200px;
 	}
 
 	&__image {
@@ -18,6 +19,7 @@
 		background-size: auto;
 		background-position-x: 50%;
 		background-position-y: 50%;
+		will-change: transform;
 	}
 
 	.jet-parallax-section__scroll-layout:not(.is-mac) {

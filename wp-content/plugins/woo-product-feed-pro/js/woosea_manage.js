@@ -67,6 +67,26 @@ jQuery(document).ready(function($) {
 		}
 	})	
 
+	// Check if user would like to use mother image for variations
+	$('#add_mother_image').on('change', function(){ // on change of state
+   		if(this.checked){
+
+			// Checkbox is on
+                	jQuery.ajax({
+                        	method: "POST",
+                        	url: ajaxurl,
+                        	data: { 'action': 'woosea_add_mother_image', 'status': "on" }
+                	})
+		} else {
+			// Checkbox is off
+                	jQuery.ajax({
+                        	method: "POST",
+                        	url: ajaxurl,
+                        	data: { 'action': 'woosea_add_mother_image', 'status': "off" }
+                	})
+		}
+	})	
+
 	// Check if user would like to enable Dynamic Remarketing
 	$('#add_remarketing').on('change', function(){ // on change of state
    		if(this.checked){

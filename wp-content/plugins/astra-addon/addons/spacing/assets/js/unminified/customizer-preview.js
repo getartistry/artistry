@@ -65,7 +65,7 @@
 	/**
 	 * Primary Submenu Spacing
 	 */
-	astra_responsive_spacing( 'astra-settings[primary-submenu-spacing]', '.main-navigation ul.sub-menu li a, .main-navigation ul.children li a, .ast-header-break-point .main-navigation ul.sub-menu li a, .ast-header-break-point .main-navigation ul.children li a', 'padding', ['top', 'right', 'bottom', 'left' ] );
+	astra_responsive_spacing( 'astra-settings[primary-submenu-spacing]', '.ast-desktop .main-navigation .ast-mm-template-content, .ast-desktop .main-navigation .ast-mm-custom-text-content, .main-navigation ul.sub-menu li a, .main-navigation ul.children li a, .ast-header-break-point .main-navigation ul.sub-menu li a, .ast-header-break-point .main-navigation ul.children li a', 'padding', ['top', 'right', 'bottom', 'left' ] );
 	
 	wp.customize( 'astra-settings[primary-submenu-spacing]', function( value ) {
 		value.bind( function( padding ) {
@@ -111,7 +111,7 @@
 	 * Below Header Spacing
 	 */
 	astra_responsive_spacing( 'astra-settings[below-header-spacing]','.ast-below-header, .ast-header-break-point .ast-below-header', 'padding', ['top', 'bottom' ] );
-	astra_responsive_spacing( 'astra-settings[below-header-spacing]','.ast-below-header .ast-container', 'padding', ['right', 'left' ] );
+	astra_responsive_spacing( 'astra-settings[below-header-spacing]','.ast-below-header .ast-container, #masthead .ast-below-header .ast-container', 'padding', ['right', 'left' ] );
 	/**
 	 * Below Header Menu Spacing
 	 */
@@ -135,7 +135,7 @@
 	/**
 	 * Below Header Submenu Spacing
 	 */
-	astra_responsive_spacing( 'astra-settings[below-header-submenu-spacing]', '.ast-below-header-menu ul a, .ast-header-break-point .ast-below-header-actual-nav ul.sub-menu li a', 'padding', ['top', 'right', 'bottom', 'left' ] );
+	astra_responsive_spacing( 'astra-settings[below-header-submenu-spacing]', '.ast-desktop .ast-below-header-menu .ast-mm-template-content, .ast-desktop .ast-below-header-menu .ast-mm-custom-text-content,.ast-below-header-menu ul a, .ast-header-break-point .ast-below-header-actual-nav ul.sub-menu li a', 'padding', ['top', 'right', 'bottom', 'left' ] );
 
 	wp.customize( 'astra-settings[below-header-submenu-spacing]', function( value ) {
 		value.bind( function( padding ) {
@@ -171,7 +171,7 @@
 	 * Above Header Spacing
 	 */
 	astra_responsive_spacing( 'astra-settings[above-header-spacing]','.ast-above-header', 'padding', ['top', 'bottom' ] );
-	astra_responsive_spacing( 'astra-settings[above-header-spacing]','.ast-above-header .ast-container', 'padding', ['right', 'left' ] );
+	astra_responsive_spacing( 'astra-settings[above-header-spacing]','.ast-above-header-wrap .ast-above-header .ast-container, #masthead .ast-above-header-wrap .ast-above-header .ast-container', 'padding', ['right', 'left' ] );
 
 	/**
 	 * Above Header Menu Spacing
@@ -193,7 +193,7 @@
 	/**
 	 * Above Header Subenu Spacing
 	 */
-	astra_responsive_spacing( 'astra-settings[above-header-submenu-spacing]', '.ast-above-header-enabled .ast-above-header-navigation .ast-above-header-menu li ul a, .ast-header-break-point .ast-above-header-enabled .ast-above-header-menu li ul.sub-menu a, .ast-above-header-enabled .ast-above-header-menu > li:first-child .sub-menu li a', 'padding', ['top', 'right', 'bottom', 'left' ] );
+	astra_responsive_spacing( 'astra-settings[above-header-submenu-spacing]', '.ast-desktop .ast-above-header-navigation .ast-mm-custom-text-content, .ast-desktop .ast-above-header-navigation .ast-mm-template-content, .ast-above-header-enabled .ast-above-header-navigation .ast-above-header-menu li ul a, .ast-header-break-point .ast-above-header-enabled .ast-above-header-menu li ul.sub-menu a, .ast-above-header-enabled .ast-above-header-menu > li:first-child .sub-menu li a', 'padding', ['top', 'right', 'bottom', 'left' ] );
 
 	wp.customize( 'astra-settings[above-header-submenu-spacing]', function( value ) {
 		value.bind( function( padding ) {

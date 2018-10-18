@@ -1,25 +1,25 @@
 <?php
 /**
- * Booster for WooCommerce - Settings - Gateways Currency
+ * Booster for WooCommerce - Settings - Gateways Currency Converter
  *
- * @version 3.2.4
+ * @version 4.0.0
  * @since   2.8.0
  * @author  Algoritmika Ltd.
+ * @todo    [dev] maybe make "Advanced: Fix Chosen Payment Method" option enabled by default (or even remove option completely and always perform `$this->fix_chosen_payment_method()`)
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $settings = array(
 	array(
-		'title'    => __( 'Payment Gateways Currency Options', 'woocommerce-jetpack' ),
+		'title'    => __( 'Payment Gateways', 'woocommerce-jetpack' ),
 		'type'     => 'title',
 		'desc'     => __( 'This section lets you set different currency for each payment gateway.', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_payment_gateways_currency_options',
 	),
 );
-$currency_from = get_woocommerce_currency();
-global $woocommerce;
-$available_gateways = $woocommerce->payment_gateways->payment_gateways();
+$currency_from      = get_woocommerce_currency();
+$available_gateways = WC()->payment_gateways->payment_gateways();
 foreach ( $available_gateways as $key => $gateway ) {
 	$currency_to = get_option( 'wcj_gateways_currency_' . $key, get_woocommerce_currency() );
 	$custom_attributes = array(
@@ -36,16 +36,14 @@ foreach ( $available_gateways as $key => $gateway ) {
 	}
 	$settings = array_merge( $settings, array(
 		array(
-			'title'     => $gateway->title,
-//			'desc'      => __( 'currency', 'woocommerce-jetpack' ),
-			'id'        => 'wcj_gateways_currency_' . $key,
-			'default'   => 'no_changes', // get_woocommerce_currency(),
-			'type'      => 'select',
-			'options'   => array_merge( array( 'no_changes' => __( 'No changes', 'woocommerce-jetpack' ) ), wcj_get_currencies_names_and_symbols() ),
+			'title'    => $gateway->title,
+			'id'       => 'wcj_gateways_currency_' . $key,
+			'default'  => 'no_changes',
+			'type'     => 'select',
+			'options'  => array_merge( array( 'no_changes' => __( 'No changes', 'woocommerce-jetpack' ) ), wcj_get_woocommerce_currencies_and_symbols() ),
 		),
 		array(
 			'title'                    => '',
-//			'desc'                     => __( 'exchange rate', 'woocommerce-jetpack' ) . ' ' . $currency_from . ' / ' . $currency_to,
 			'id'                       => 'wcj_gateways_currency_exchange_rate_' . $key,
 			'default'                  => 1,
 			'type'                     => 'exchange_rate',
@@ -56,6 +54,15 @@ foreach ( $available_gateways as $key => $gateway ) {
 }
 $settings = array_merge( $settings, array(
 	array(
+		'type'     => 'sectionend',
+		'id'       => 'wcj_payment_gateways_currency_options',
+	),
+	array(
+		'title'    => __( 'Options', 'woocommerce-jetpack' ),
+		'type'     => 'title',
+		'id'       => 'wcj_payment_gateways_currency_general_options',
+	),
+	array(
 		'title'    => __( 'Exchange Rates Updates', 'woocommerce-jetpack' ),
 		'id'       => 'wcj_gateways_currency_exchange_rate_update_auto',
 		'default'  => 'manual',
@@ -65,13 +72,33 @@ $settings = array_merge( $settings, array(
 			'auto'   => __( 'Automatically via Currency Exchange Rates module', 'woocommerce-jetpack' ),
 		),
 		'desc'     => ( '' == apply_filters( 'booster_message', '', 'desc' ) ) ?
-			__( 'Visit', 'woocommerce-jetpack' ) . ' <a href="' . admin_url( 'admin.php?page=wc-settings&tab=jetpack&wcj-cat=prices_and_currencies&section=currency_exchange_rates' ) . '">' . __( 'Currency Exchange Rates module', 'woocommerce-jetpack' ) . '</a>'
+			__( 'Visit', 'woocommerce-jetpack' ) .
+				' <a href="' . admin_url( 'admin.php?page=wc-settings&tab=jetpack&wcj-cat=prices_and_currencies&section=currency_exchange_rates' ) . '">' .
+					__( 'Currency Exchange Rates module', 'woocommerce-jetpack' ) . '</a>'
 			: apply_filters( 'booster_message', '', 'desc' ),
 		'custom_attributes' => apply_filters( 'booster_message', '', 'disabled' ),
 	),
 	array(
+		'title'    => __( 'Show Converted Prices', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_gateways_currency_page_scope',
+		'default'  => 'cart_and_checkout',
+		'type'     => 'select',
+		'options'  => array(
+			'cart_and_checkout' => __( 'On both cart and checkout pages', 'woocommerce-jetpack' ),
+			'checkout_only'     => __( 'On checkout page only', 'woocommerce-jetpack' ),
+		),
+	),
+	array(
+		'title'    => __( 'Advanced: Fix "Chosen Payment Method"', 'woocommerce-jetpack' ),
+		'desc'     => __( 'Enable', 'woocommerce-jetpack' ),
+		'desc_tip' => __( 'Enable this if you are having compatibility issues with some other plugins or modules.', 'woocommerce-jetpack' ),
+		'id'       => 'wcj_gateways_currency_fix_chosen_payment_method',
+		'default'  => 'no',
+		'type'     => 'checkbox',
+	),
+	array(
 		'type'     => 'sectionend',
-		'id'       => 'wcj_payment_gateways_currency_options',
+		'id'       => 'wcj_payment_gateways_currency_general_options',
 	),
 ) );
 return $settings;

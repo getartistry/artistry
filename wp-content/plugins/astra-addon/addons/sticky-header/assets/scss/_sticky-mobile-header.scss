@@ -13,3 +13,12 @@
 .ast-fullscreen-menu-overlay #ast-fixed-header {
 	z-index: 9;
 }
+
+/**
+ * Need to override the overflow-y which is given form the javascript
+ * To fix the rendering problem with the flyout menu
+ */
+.ast-flyout-menu-enable.ast-primary-sticky-enabled .main-header-bar,
+.ast-flyout-menu-enable.ast-primary-sticky-enabled .ast-stick-primary-below-wrapper{
+    overflow-y: unset !important;
+}

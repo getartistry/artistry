@@ -95,6 +95,7 @@ if ( ! class_exists( 'Astra_Site_Identity_Configs' ) ) {
 					'type'        => 'control',
 					'control'     => 'ast-responsive-slider',
 					'section'     => 'title_tagline',
+					'transport'   => 'postMessage',
 					'default'     => array(
 						'desktop' => '',
 						'tablet'  => '',

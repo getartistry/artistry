@@ -53,7 +53,7 @@ class Widget_Icon_Plus extends Widget_Base {
 	 * @return string Widget icon.
 	 */
 	public function get_icon() {
-		return 'eicon-favorite';
+		return 'ep-icon ep-icon-icon_plus';
 	}
 
 	public function get_categories() {

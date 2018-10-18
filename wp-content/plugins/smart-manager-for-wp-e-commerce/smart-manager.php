@@ -3,16 +3,16 @@
 * Plugin Name: Smart Manager
 * Plugin URI: https://www.storeapps.org/product/smart-manager/
 * Description: <strong>Lite Version Installed</strong> The most popular store admin plugin for WooCommerce. 10x faster, inline updates. Price, inventory, variations management. 200+ features.
-* Version: 3.19.0
+* Version: 3.20.0
 * Author: StoreApps
 * Author URI: https://www.storeapps.org/
 * Text Domain: smart-manager-for-wp-e-commerce
 * Domain Path: /languages/
 
 * Requires at least: 2.0.2
-* Tested up to: 4.9.6
+* Tested up to: 4.9.8
 * WC requires at least: 2.0.0
-* WC tested up to: 3.4.2
+* WC tested up to: 3.4.4
 
 * Copyright (c) 2010 - 2018 StoreApps All rights reserved.
 * License: GNU General Public License v3.0
@@ -109,6 +109,7 @@ define( 'SM_TEXT_DOMAIN', 'smart-manager-for-wp-e-commerce' );
 define( 'SM_PREFIX', 'sa_smart_manager' );
 define( 'SM_SKU', 'sm' );
 define( 'SM_PLUGIN_NAME', 'Smart Manager' );
+define( 'SM_ADMIN_URL', get_admin_url() ); //defining the admin url
 
 define( 'SM_PLUGIN_DIR_PATH', dirname( __FILE__ ) );
 define( 'SM_PLUGINS_FILE_PATH', dirname( dirname( __FILE__ ) ) );
@@ -198,7 +199,7 @@ function sm_get_latest_upgrade_class() {
     $available_upgrade_classes = array_filter( $available_classes, function ( $class_name ) {
 																							return strpos( $class_name, 'StoreApps_Upgrade_' ) === 0;
 																					    } );
-    $latest_class = 'StoreApps_Upgrade_2_8';
+    $latest_class = 'StoreApps_Upgrade_3_0';
     $latest_version = 0;
     foreach ( $available_upgrade_classes as $class ) {
     	$exploded = explode( '_', $class );
@@ -219,8 +220,8 @@ function sm_get_latest_upgrade_class() {
 function sm_upgrade() {
 
 	if ( defined('SMPRO') && SMPRO === true ) {
-		if ( !class_exists( 'StoreApps_Upgrade_2_8' ) ) {
-	        require_once 'pro/sa-includes/class-storeapps-upgrade-2-8.php';
+		if ( !class_exists( 'StoreApps_Upgrade_3_0' ) ) {
+	        require_once 'pro/sa-includes/class-storeapps-upgrade-3-0.php';
 	    }
 
 	    $latest_upgrade_class = sm_get_latest_upgrade_class();
@@ -245,6 +246,19 @@ add_action ( 'admin_init', 'sm_dismiss_admin_notices' );
 
 //For handling media links on plugins page
 add_action( 'admin_footer', 'sm_add_plugin_style_script' );
+
+// Function to dequeue unwanted WPML scripts on Smart Manager page. It was conflicting with batch update of images [Ratnakar]
+function sa_sm_dequeue_wpml_scripts() {
+	if ( is_admin() && ! empty( $_GET['page'] ) && ( 'smart-manager-woo' === $_GET['page'] || 'smart-manager-wpsc' === $_GET['page'] || ( !empty($_GET['sm_beta']) && 1 === $_GET['sm_beta'] ) || 'smart-manager-settings' === $_GET['page'] ) ) {
+		if ( wp_script_is( 'wpml-tm-progressbar' ) ) {
+			wp_dequeue_script( 'wpml-tm-progressbar' );
+		}
+		if ( wp_script_is( 'wpml-tm-scripts' ) ) {
+			wp_dequeue_script( 'wpml-tm-scripts' );
+		}
+	}
+}
+add_action( 'admin_enqueue_scripts', 'sa_sm_dequeue_wpml_scripts', 100 );
 
 if ( defined('SMPRO') && SMPRO === false ) {
 	add_action( 'admin_init', 'sm_show_upgrade_to_pro'); //for handling Pro to Lite
@@ -272,7 +286,7 @@ function localize_smart_manager() {
 
     $locale = apply_filters( 'plugin_locale', get_locale(), $text_domain );
 
-    $loaded = load_textdomain( $text_domain, WP_LANG_DIR . '/' . $plugin_dirname . '/' . $text_domain . '-' . $locale . '.mo' );    
+    $loaded = load_textdomain( $text_domain, WP_LANG_DIR . '/plugins/' . $text_domain . '-' . $locale . '.mo' );    
 
     if ( ! $loaded ) {
         $loaded = load_plugin_textdomain( $text_domain, false, $plugin_dirname . '/languages/' );
@@ -329,6 +343,43 @@ function sm_add_plugin_style_script() {
 	
 	function smart_admin_init() {
                 global $wp_version,$wpdb;
+
+
+                if( defined('WOOCOMMERCE_VERSION') ) {
+                	// checking the version for WooCommerce plugin
+					define ( 'IS_WOO13', version_compare ( WOOCOMMERCE_VERSION, '1.4', '<' ) );
+
+					if (version_compare ( WOOCOMMERCE_VERSION, '3.0.0', '<' )) {
+						
+						if (version_compare ( WOOCOMMERCE_VERSION, '2.2.0', '<' )) {
+
+							if (version_compare ( WOOCOMMERCE_VERSION, '2.1.0', '<' )) {
+
+								if (version_compare ( WOOCOMMERCE_VERSION, '2.0', '<' )) {
+	                            	define ( 'SM_IS_WOO16', "true" );
+	                        	} else {
+	                        		define ( 'SM_IS_WOO16', "false" );	
+	                        	}
+	                        	define ( 'SM_IS_WOO21', "false" );
+	                    	} else {
+	                    		define ( 'SM_IS_WOO16', "false" );
+	                        	define ( 'SM_IS_WOO21', "true" );
+	                    	}
+	                    	define ( 'SM_IS_WOO22', "false" );
+	                    } else {
+	                    	define ( 'SM_IS_WOO16', "false" );
+	                        define ( 'SM_IS_WOO21', "false" );
+	                        define ( 'SM_IS_WOO22', "true" );
+	                    }
+	                    define ( 'SM_IS_WOO30', "false" );
+					} else {
+						define ( 'SM_IS_WOO16', "false" );
+	                    define ( 'SM_IS_WOO21', "false" );
+						define ( 'SM_IS_WOO22', "false" );
+						define ( 'SM_IS_WOO30', "true" );
+					}
+                }
+              
 
 				include_once ('new/smart-manager.php');
 
@@ -415,41 +466,6 @@ function sm_add_plugin_style_script() {
 			wp_register_script ( 'sm_main', plugins_url ( '/sm/smart-manager-woo.js', __FILE__ ), array ('sm_ext_all' ), $sm_plugin_info ['Version'] );
 			define('WPSC_RUNNING', false);
 			define('WOO_RUNNING', true);
-
-			// checking the version for WooCommerce plugin
-			define ( 'IS_WOO13', version_compare ( WOOCOMMERCE_VERSION, '1.4', '<' ) );
-			
-			//todo change 2.1-beta-2 to 2.1  before release
-
-						if (version_compare ( WOOCOMMERCE_VERSION, '3.0.0', '<' )) {
-							
-							if (version_compare ( WOOCOMMERCE_VERSION, '2.2.0', '<' )) {
-
-								if (version_compare ( WOOCOMMERCE_VERSION, '2.1.0', '<' )) {
-
-									if (version_compare ( WOOCOMMERCE_VERSION, '2.0', '<' )) {
-		                            	define ( 'SM_IS_WOO16', "true" );
-		                        	} else {
-		                        		define ( 'SM_IS_WOO16', "false" );	
-		                        	}
-	                            	define ( 'SM_IS_WOO21', "false" );
-	                        	} else {
-	                        		define ( 'SM_IS_WOO16', "false" );
-	                            	define ( 'SM_IS_WOO21', "true" );
-	                        	}
-	                        	define ( 'SM_IS_WOO22', "false" );
-	                        } else {
-	                        	define ( 'SM_IS_WOO16', "false" );
-	                            define ( 'SM_IS_WOO21', "false" );
-	                            define ( 'SM_IS_WOO22', "true" );
-	                        }
-	                        define ( 'SM_IS_WOO30', "false" );
-						} else {
-							define ( 'SM_IS_WOO16', "false" );
-                            define ( 'SM_IS_WOO21', "false" );
-							define ( 'SM_IS_WOO22', "false" );
-							define ( 'SM_IS_WOO30', "true" );
-						}
                         
 //			define ( 'IS_WOO20', version_compare ( WOOCOMMERCE_VERSION, '2.0', '>=' ) );
                         
@@ -708,10 +724,10 @@ function sm_add_plugin_style_script() {
 			$sm_promo_hide_msg = __('No, I don\'t like offers...', 'smart-manager');
 
 			if ( $date_diff >= 0 && $date_diff <= 1 ) {
-				$sm_promo_msg = '<b>'. __('Big Savings!!!', 'smart-manager') .' </b> <span style="color:#b32727;font-weight:bold;">' .  __('15% OFF ', 'smart-manager') . ' </span>' . __('on Smart Manager Pro', 'smart-manager');
+				$sm_promo_msg = '<b>'. __('Big Savings!!!', 'smart-manager') .' </b> <span style="color:#d46f15;font-weight:bold;font-size:1.35em;">' .  __('15% OFF ', 'smart-manager') . ' </span>' . __('on Smart Manager Pro', 'smart-manager');
 				$sm_klawoo_list_id = '0mHi7635Zb4L2vN7hmngdYDQ';
 			} else if ( $date_diff > 1 && $date_diff <= 3 ) {
-				$sm_promo_msg = '<b>'. __('Offer Ends Today!!!', 'smart-manager') .' </b> <span style="color:#b32727;font-weight:bold;">' . __('10% OFF ', 'smart-manager') . ' </span>' . __('on Smart Manager Pro!', 'smart-manager');
+				$sm_promo_msg = '<b>'. __('Offer Ends Today!!!', 'smart-manager') .' </b> <span style="color:#d46f15;font-weight:bold;font-size:1.35em;">' . __('10% OFF ', 'smart-manager') . ' </span>' . __('on Smart Manager Pro!', 'smart-manager');
 				$sm_klawoo_list_id = 'gSlZ3HGl3OMOjE5ZEnAJUQ';
 			} else if ( $date_diff > 3 ) {
 				$sm_promo_msg = '<b>'. __('Sign up to get updates, insights & tips...', 'smart-manager');
@@ -725,23 +741,23 @@ function sm_add_plugin_style_script() {
 
 			    $current_url = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') === FALSE ? 'http' : 'https') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME'] . '?' . $_SERVER['QUERY_STRING'];
 
-				echo '<div id="sm_promo_msg" class="updated fade" style="display:block !important;background-color:#bdb76b;"> 
+				echo '<div id="sm_promo_msg" class="updated fade" style="display:block !important;background-color:#584079;color:#fff;border-left-color:#A3B745;"> 
 						<table style="width:100%;"> 
 							<tbody> 
 								<tr>
 									<td> 
-										<span class="dashicons dashicons-awards" style="font-size:3em;color:#b32727;margin-left: -0.2em;margin-right: 0.3rem;margin-bottom: 0.45em;"></span> 
+										<span class="dashicons dashicons-awards" style="font-size:5em;color:#A3B745;margin-left: -0.2em;margin-right: 0.5rem;margin-bottom: 0.65em;"></span> 
 									</td> 
 									<td id="sm_promo_msg_content" style="padding:0.5em;">
 										<div style="padding-top: 0.3em;float: left;font-size:1.1em;">'. $sm_promo_msg .'</div>
 				                        <div id="sm_promo_valid_msg">'. $sm_promo_cond .'</div>
-										<form name="sm_klawoo_subscribe" action="#" method="POST" accept-charset="utf-8" style="padding-top:0.5em;"><br/>
+										<form name="sm_klawoo_subscribe" action="#" method="POST" accept-charset="utf-8" style="padding-top:0.65em;"><br/>
 				                            <input class="regular-text ltr" type="email" name="email" id="email" placeholder="Email" required="required" style="width:14em;height:1.75em;"/>
 				                            <input type="checkbox" name="sm-gdpr-agree" id="sm-gdpr-agree" value="1" required="required" style="margin-left:0.5em;">
 				                            <label for="es-gdpr-agree" style="margin-right:0.5em;">I have read and agreed to your <a href="https://www.storeapps.org/privacy-policy/" target="_blank">Privacy Policy</a>.</label>
 				                            <input type="hidden" name="list" value="'. $sm_klawoo_list_id .'"/>
 				                            <span id="resp_message" style="display:none;">'. $sm_resp_msg .'</span>
-				                            <input type="submit" name="submit" id="submit" class="button button-primary" value="Subscribe" style="height:1.75em;line-height:1.6em;margin-top:0;">
+				                            <input type="submit" name="submit" id="submit" class="button button-primary" value="Subscribe" style="font-size:1.1em;line-height:0em;margin-top:0;font-weight:bold;">
 				                        </form>
 				                        <div style="padding-top: 0.5em;font-size:0.8em;width:100%;float:left;">
 				                        	<div style="float:left;"><a href="https://www.storeapps.org/product/smart-manager" target=_storeapps> '. __( 'Learn more about Pro version', 'smart-manager' ) . '</a> ' . __( 'or take a', 'smart-manager' ) . ' <a href="http://demo.storeapps.org/?demo=sm-woo" target=_livedemo> ' . __( 'Live Demo', 'smart-manager' ) . ' </a>	</div>
@@ -952,7 +968,7 @@ function sm_add_plugin_style_script() {
 		$query = "SELECT option_value FROM {$wpdb->prefix}options WHERE option_name = 'sm_" . $roles [0] . "_dashboard'";
 		$results = $wpdb->get_results( $query );
 
-	        if (! empty( $results [0]->option_value ) || $current_user->roles [0] == 'administrator' //modified cond for client fix
+	        if ( ! empty( $results [0] ) && ! empty( $results [0]->option_value ) || $current_user->roles [0] == 'administrator' //modified cond for client fix
 	        	|| (!empty($current_user_caps) && $current_user_caps == 'administrator')) {
 			add_filter( 'wpsc_additional_pages', 'smart_wpsc_add_modules_admin_pages', 10, 2 );
 			add_action( 'admin_menu', 'smart_woo_add_modules_admin_pages' );
@@ -1033,7 +1049,6 @@ function sm_add_plugin_style_script() {
 		}
 		// define( 'JSON_URL', SM_PLUGIN_DIRNAME . "/sm/$json_filename.php" );
 		define( 'SM_JSON_URL', $json_filename );
-		define( 'SM_ADMIN_URL', get_admin_url() ); //defining the admin url
 		define( 'SM_ABS_WPSC_URL', WP_PLUGIN_DIR . '/wp-e-commerce' );
 		define( 'SM_WPSC_NAME', 'wp-e-commerce' );
 		

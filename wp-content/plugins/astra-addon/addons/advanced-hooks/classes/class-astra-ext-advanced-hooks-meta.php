@@ -51,228 +51,265 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 			if ( ! isset( self::$instance ) ) {
 				self::$instance = new self;
 			}
-			self::$astra_layouts = array(
-				'header'   => array(
-					'title' => __( 'Header', 'astra-addon' ),
-				),
-				'footer'   => array(
-					'title' => __( 'Footer', 'astra-addon' ),
-				),
-				'404-page' => array(
-					'title' => __( '404 Page', 'astra-addon' ),
-				),
-				'hooks'    => array(
-					'title' => __( 'Hooks', 'astra-addon' ),
-				),
-			);
-			self::$astra_hooks   = array(
 
-				'head'    => array(
-					'title' => __( 'Head', 'astra-addon' ),
-					'hooks' => array(
-						'astra_html_before' => array(
-							'title'       => 'html_before',
-							'description' => __( 'astra_html_before - Action to add your content or snippet just before the opening of <html> tag.', 'astra-addon' ),
-						),
-						'astra_head_top'    => array(
-							'title'       => 'head_top',
-							'description' => __( 'astra_head_top - Action to add your content or snippet at top of the <head> tag.', 'astra-addon' ),
-						),
-						'astra_head_bottom' => array(
-							'title'       => 'head_bottom',
-							'description' => __( 'astra_head_bottom - Action to add your content or snippet at bottom of the <head> tag.', 'astra-addon' ),
-						),
-						'wp_head'           => array(
-							'title'       => 'wp_head',
-							'description' => __( 'wp_head - Action to add custom style, script and meta at the bottom of <head> tag.', 'astra-addon' ),
+			/**
+			 * Filter for the 'Layouts' in Custom Layouts selection.
+			 *
+			 * @since 1.5.0
+			 */
+			self::$astra_layouts = apply_filters(
+				'astra_custom_layouts_layout',
+				array(
+					'header'   => array(
+						'title' => __( 'Header', 'astra-addon' ),
+					),
+					'footer'   => array(
+						'title' => __( 'Footer', 'astra-addon' ),
+					),
+					'404-page' => array(
+						'title' => __( '404 Page', 'astra-addon' ),
+					),
+					'hooks'    => array(
+						'title' => __( 'Hooks', 'astra-addon' ),
+					),
+				)
+			);
+
+			/**
+			 * Filter for the 'Hooks' in Custom Layouts selection.
+			 *
+			 * @since 1.5.0
+			 */
+			self::$astra_hooks = apply_filters(
+				'astra_custom_layouts_hooks',
+				array(
+					'head'    => array(
+						'title' => __( 'Head', 'astra-addon' ),
+						'hooks' => array(
+							'astra_html_before' => array(
+								'title'       => 'html_before',
+								'description' => __( 'astra_html_before - Action to add your content or snippet just before the opening of <html> tag.', 'astra-addon' ),
+							),
+							'astra_head_top'    => array(
+								'title'       => 'head_top',
+								'description' => __( 'astra_head_top - Action to add your content or snippet at top of the <head> tag.', 'astra-addon' ),
+							),
+							'astra_head_bottom' => array(
+								'title'       => 'head_bottom',
+								'description' => __( 'astra_head_bottom - Action to add your content or snippet at bottom of the <head> tag.', 'astra-addon' ),
+							),
+							'wp_head'           => array(
+								'title'       => 'wp_head',
+								'description' => __( 'wp_head - Action to add custom style, script and meta at the bottom of <head> tag.', 'astra-addon' ),
+							),
 						),
 					),
-				),
-				'header'  => array(
-					'title' => __( 'Header', 'astra-addon' ),
-					'hooks' => array(
-						'astra_body_top'               => array(
-							'title'       => 'body_top',
-							'description' => __( 'astra_body_top - Action to add your content or snippet at top of the <body> tag.', 'astra-addon' ),
-						),
-						'astra_header_before'          => array(
-							'title'       => 'header_before',
-							'description' => __( 'astra_header_before - Action to add your content or snippet just before the opening <header> tag.', 'astra-addon' ),
-						),
-						'astra_masthead_top'           => array(
-							'title'       => 'masthead_top',
-							'description' => __( 'astra_masthead_top - Action to add your content or snippet at  top of the <header> tag.', 'astra-addon' ),
-						),
-						'astra_main_header_bar_top'    => array(
-							'title'       => 'main_header_bar_top',
-							'description' => __( 'astra_main_header_bar_top - Action to add your content or snippet at top of the Main header.', 'astra-addon' ),
-						),
-						'astra_masthead_content'       => array(
-							'title'       => 'masthead_content',
-							'description' => __( 'astra_masthead_content - Action to add your content or snippet in <header> tag.', 'astra-addon' ),
-						),
-						'astra_masthead_toggle_buttons_before' => array(
-							'title'       => 'masthead_toggle_buttons_before',
-							'description' => __( 'astra_masthead_toggle_buttons_before - Action to add your content or snippet before responsive menu toggle button.', 'astra-addon' ),
-						),
-						'astra_masthead_toggle_buttons_after' => array(
-							'title'       => 'masthead_toggle_buttons_after',
-							'description' => __( 'astra_masthead_toggle_buttons_after - Action to add your content or snippet after responsive menu toggle button.', 'astra-addon' ),
-						),
-						'astra_main_header_bar_bottom' => array(
-							'title'       => 'main_header_bar_bottom',
-							'description' => __( 'astra_main_header_bar_bottom - Action to add your content or snippet after at bottom of the Main header.', 'astra-addon' ),
-						),
-						'astra_masthead_bottom'        => array(
-							'title'       => 'masthead_bottom',
-							'description' => __( 'astra_masthead_bottom - Action to add your content or snippet at  bottom of the <header> tag.', 'astra-addon' ),
-						),
-						'astra_header_after'           => array(
-							'title'       => 'header_after',
-							'description' => __( 'astra_header_after - Action to add your content or snippet after the closing <header> tag.', 'astra-addon' ),
-						),
-					),
-				),
-				'content' => array(
-					'title' => __( 'Content', 'astra-addon' ),
-					'hooks' => array(
-						'astra_content_before'         => array(
-							'title'       => 'content_before',
-							'description' => __( 'astra_content_before - Action to add your content or snippet before main content.', 'astra-addon' ),
-						),
-						'astra_content_top'            => array(
-							'title'       => 'content_top',
-							'description' => __( 'astra_content_top - Action to add your content or snippet at top of main content.', 'astra-addon' ),
-						),
-						'astra_primary_content_top'    => array(
-							'title'       => 'primary_content_top',
-							'description' => __( 'astra_primary_content_top - Action to add your content or snippet at top of the primary content.', 'astra-addon' ),
-						),
-						'astra_content_while_before'   => array(
-							'title'       => 'content_while_before',
-							'description' => __( 'astra_content_while_before - Action to add your content or snippet before loop start.', 'astra-addon' ),
-						),
-						'astra_entry_before'           => array(
-							'title'       => 'entry_before',
-							'description' => __( 'astra_entry_before - Action to add your content or snippet before <article> tag.', 'astra-addon' ),
-						),
-						'astra_entry_top'              => array(
-							'title'       => 'entry_top',
-							'description' => __( 'astra_entry_top - Action to add your content or snippet at top of the <article> tag.', 'astra-addon' ),
-						),
-						'astra_single_header_before'   => array(
-							'title'       => 'single_header_before',
-							'description' => __( 'astra_single_header_before - Action to add your content or snippet before single post header.', 'astra-addon' ),
-						),
-						'astra_single_header_top'      => array(
-							'title'       => 'single_header_top',
-							'description' => __( 'astra_single_header_top - Action to add your content or snippet at top of the single post header.', 'astra-addon' ),
-						),
-						'astra_single_header_bottom'   => array(
-							'title'       => 'single_header_bottom',
-							'description' => __( 'astra_single_header_bottom - Action to add your content or snippet at bottom of the single post header.', 'astra-addon' ),
-						),
-						'astra_single_header_after'    => array(
-							'title'       => 'single_header_after',
-							'description' => __( 'astra_single_header_after - Action to add your content or snippet after single post header.', 'astra-addon' ),
-						),
-						'astra_entry_content_before'   => array(
-							'title'       => 'entry_content_before',
-							'description' => __( 'astra_entry_content_before - Action to add your content or snippet before post content.', 'astra-addon' ),
-						),
-						'astra_entry_content_after'    => array(
-							'title'       => 'entry_content_after',
-							'description' => __( 'astra_entry_content_after - Action to add your content or snippet after post content', 'astra-addon' ),
-						),
-						'astra_entry_bottom'           => array(
-							'title'       => 'entry_bottom',
-							'description' => __( 'astra_entry_bottom - Action to add your content or snippet at bottom of the <article> tag.', 'astra-addon' ),
-						),
-						'astra_entry_after'            => array(
-							'title'       => 'entry_after',
-							'description' => __( 'astra_entry_after - Action to add your content or snippet after closing <article> tag.', 'astra-addon' ),
-						),
-						'astra_primary_content_bottom' => array(
-							'title'       => 'primary_content_bottom',
-							'description' => __( 'astra_primary_content_bottom - Action to add your content or snippet at bottom of the primary content.', 'astra-addon' ),
-						),
-						'astra_content_while_after'    => array(
-							'title'       => 'content_while_after',
-							'description' => __( 'astra_content_while_after - Action to add your content or snippet after loop end.', 'astra-addon' ),
-						),
-						'astra_content_bottom'         => array(
-							'title'       => 'content_bottom',
-							'description' => __( 'astra_content_bottom - Action to add your content or snippet at bottom of the main content.', 'astra-addon' ),
-						),
-						'astra_content_after'          => array(
-							'title'       => 'content_after',
-							'description' => __( 'astra_content_after - Action to add your content or snippet after main content.', 'astra-addon' ),
+					'header'  => array(
+						'title' => __( 'Header', 'astra-addon' ),
+						'hooks' => array(
+							'astra_body_top'               => array(
+								'title'       => 'body_top',
+								'description' => __( 'astra_body_top - Action to add your content or snippet at top of the <body> tag.', 'astra-addon' ),
+							),
+							'astra_header_before'          => array(
+								'title'       => 'header_before',
+								'description' => __( 'astra_header_before - Action to add your content or snippet just before the opening <header> tag.', 'astra-addon' ),
+							),
+							'astra_masthead_top'           => array(
+								'title'       => 'masthead_top',
+								'description' => __( 'astra_masthead_top - Action to add your content or snippet at  top of the <header> tag.', 'astra-addon' ),
+							),
+							'astra_main_header_bar_top'    => array(
+								'title'       => 'main_header_bar_top',
+								'description' => __( 'astra_main_header_bar_top - Action to add your content or snippet at top of the Main header.', 'astra-addon' ),
+							),
+							'astra_masthead_content'       => array(
+								'title'       => 'masthead_content',
+								'description' => __( 'astra_masthead_content - Action to add your content or snippet in <header> tag.', 'astra-addon' ),
+							),
+							'astra_masthead_toggle_buttons_before' => array(
+								'title'       => 'masthead_toggle_buttons_before',
+								'description' => __( 'astra_masthead_toggle_buttons_before - Action to add your content or snippet before responsive menu toggle button.', 'astra-addon' ),
+							),
+							'astra_masthead_toggle_buttons_after' => array(
+								'title'       => 'masthead_toggle_buttons_after',
+								'description' => __( 'astra_masthead_toggle_buttons_after - Action to add your content or snippet after responsive menu toggle button.', 'astra-addon' ),
+							),
+							'astra_main_header_bar_bottom' => array(
+								'title'       => 'main_header_bar_bottom',
+								'description' => __( 'astra_main_header_bar_bottom - Action to add your content or snippet after at bottom of the Main header.', 'astra-addon' ),
+							),
+							'astra_masthead_bottom'        => array(
+								'title'       => 'masthead_bottom',
+								'description' => __( 'astra_masthead_bottom - Action to add your content or snippet at  bottom of the <header> tag.', 'astra-addon' ),
+							),
+							'astra_header_after'           => array(
+								'title'       => 'header_after',
+								'description' => __( 'astra_header_after - Action to add your content or snippet after the closing <header> tag.', 'astra-addon' ),
+							),
 						),
 					),
-				),
-				'comment' => array(
-					'title' => __( 'Comment', 'astra-addon' ),
-					'hooks' => array(
-						'astra_comments_before' => array(
-							'title'       => 'comments_before',
-							'description' => __( 'astra_comments_before - Action to add your content or snippet before opening of comment start.', 'astra-addon' ),
-						),
-						'astra_comments_after'  => array(
-							'title'       => 'comments_after',
-							'description' => __( 'astra_comments_after - Action to add your content or snippet after closing of comment wrapper.', 'astra-addon' ),
+					'content' => array(
+						'title' => __( 'Content', 'astra-addon' ),
+						'hooks' => array(
+							'astra_content_before'         => array(
+								'title'       => 'content_before',
+								'description' => __( 'astra_content_before - Action to add your content or snippet before main content.', 'astra-addon' ),
+							),
+							'astra_content_top'            => array(
+								'title'       => 'content_top',
+								'description' => __( 'astra_content_top - Action to add your content or snippet at top of main content.', 'astra-addon' ),
+							),
+							'astra_primary_content_top'    => array(
+								'title'       => 'primary_content_top',
+								'description' => __( 'astra_primary_content_top - Action to add your content or snippet at top of the primary content.', 'astra-addon' ),
+							),
+							'astra_content_loop'           => array(
+								'title'       => 'content_loop',
+								'description' => __( 'astra_content_loop - Action to add your content or snippet at top of the primary content loop.', 'astra-addon' ),
+							),
+							'astra_template_parts_content_none' => array(
+								'title'       => 'template_parts_content_none',
+								'description' => __( 'astra_template_parts_content_none - Action to add your content or snippet at top of the primary content.', 'astra-addon' ),
+							),
+							'astra_content_while_before'   => array(
+								'title'       => 'content_while_before',
+								'description' => __( 'astra_content_while_before - Action to add your content or snippet before loop start.', 'astra-addon' ),
+							),
+							'astra_template_parts_content_top' => array(
+								'title'       => 'template_parts_content_top',
+								'description' => __( 'astra_template_parts_content_top - Action to add your content or snippet at top of the primary template content.', 'astra-addon' ),
+							),
+							'astra_template_parts_content' => array(
+								'title'       => 'template_parts_content',
+								'description' => __( 'astra_template_parts_content - Action to add your content or snippet at top of the primary template content.', 'astra-addon' ),
+							),
+							'astra_entry_before'           => array(
+								'title'       => 'entry_before',
+								'description' => __( 'astra_entry_before - Action to add your content or snippet before <article> tag.', 'astra-addon' ),
+							),
+							'astra_entry_top'              => array(
+								'title'       => 'entry_top',
+								'description' => __( 'astra_entry_top - Action to add your content or snippet at top of the <article> tag.', 'astra-addon' ),
+							),
+							'astra_single_header_before'   => array(
+								'title'       => 'single_header_before',
+								'description' => __( 'astra_single_header_before - Action to add your content or snippet before single post header.', 'astra-addon' ),
+							),
+							'astra_single_header_top'      => array(
+								'title'       => 'single_header_top',
+								'description' => __( 'astra_single_header_top - Action to add your content or snippet at top of the single post header.', 'astra-addon' ),
+							),
+							'astra_single_header_bottom'   => array(
+								'title'       => 'single_header_bottom',
+								'description' => __( 'astra_single_header_bottom - Action to add your content or snippet at bottom of the single post header.', 'astra-addon' ),
+							),
+							'astra_single_header_after'    => array(
+								'title'       => 'single_header_after',
+								'description' => __( 'astra_single_header_after - Action to add your content or snippet after single post header.', 'astra-addon' ),
+							),
+							'astra_entry_content_before'   => array(
+								'title'       => 'entry_content_before',
+								'description' => __( 'astra_entry_content_before - Action to add your content or snippet before post content.', 'astra-addon' ),
+							),
+							'astra_entry_content_after'    => array(
+								'title'       => 'entry_content_after',
+								'description' => __( 'astra_entry_content_after - Action to add your content or snippet after post content', 'astra-addon' ),
+							),
+							'astra_entry_bottom'           => array(
+								'title'       => 'entry_bottom',
+								'description' => __( 'astra_entry_bottom - Action to add your content or snippet at bottom of the <article> tag.', 'astra-addon' ),
+							),
+							'astra_entry_after'            => array(
+								'title'       => 'entry_after',
+								'description' => __( 'astra_entry_after - Action to add your content or snippet after closing <article> tag.', 'astra-addon' ),
+							),
+							'astra_template_parts_content_bottom' => array(
+								'title'       => 'template_parts_content_bottom',
+								'description' => __( 'astra_template_parts_content_bottom - Action to add your content or snippet after closing <article> tag.', 'astra-addon' ),
+							),
+							'astra_primary_content_bottom' => array(
+								'title'       => 'primary_content_bottom',
+								'description' => __( 'astra_primary_content_bottom - Action to add your content or snippet at bottom of the primary content.', 'astra-addon' ),
+							),
+							'astra_content_while_after'    => array(
+								'title'       => 'content_while_after',
+								'description' => __( 'astra_content_while_after - Action to add your content or snippet after loop end.', 'astra-addon' ),
+							),
+							'astra_content_bottom'         => array(
+								'title'       => 'content_bottom',
+								'description' => __( 'astra_content_bottom - Action to add your content or snippet at bottom of the main content.', 'astra-addon' ),
+							),
+							'astra_content_after'          => array(
+								'title'       => 'content_after',
+								'description' => __( 'astra_content_after - Action to add your content or snippet after main content.', 'astra-addon' ),
+							),
 						),
 					),
-				),
-				'sidebar' => array(
-					'title' => __( 'Sidebar', 'astra-addon' ),
-					'hooks' => array(
-						'astra_sidebars_before' => array(
-							'title'       => 'sidebars_before',
-							'description' => __( 'astra_sidebars_before - Action to add your content or snippet before opening of sidebar wrapper.', 'astra-addon' ),
-						),
-						'astra_sidebars_after'  => array(
-							'title'       => 'sidebars_after',
-							'description' => __( 'astra_sidebars_after - Action to add your content or snippet after closing of sidebar wrapper.', 'astra-addon' ),
-						),
-					),
-				),
-				'footer'  => array(
-					'title' => __( 'Footer', 'astra-addon' ),
-					'hooks' => array(
-						'astra_footer_before'         => array(
-							'title'       => 'footer_before',
-							'description' => __( 'astra_footer_before - Action to add your content or snippet before the opening <footer> tag.', 'astra-addon' ),
-						),
-						'astra_footer_content_top'    => array(
-							'title'       => 'footer_content_top',
-							'description' => __( 'astra_footer_content_top - Action to add your content or snippet at top of the <footer> tag.', 'astra-addon' ),
-						),
-						'astra_footer_inside_container_top' => array(
-							'title'       => 'footer_inside_container_top',
-							'description' => __( 'astra_footer_inside_container_top - Action to add your content or snippet at top of the footer container.', 'astra-addon' ),
-						),
-						'astra_footer_inside_container_bottom' => array(
-							'title'       => 'footer_inside_container_bottom',
-							'description' => __( 'astra_footer_inside_container_bottom - Action to add your content or snippet at bottom of the footer container.', 'astra-addon' ),
-						),
-						'astra_footer_content_bottom' => array(
-							'title'       => 'footer_content_bottom',
-							'description' => __( 'astra_footer_content_bottom - Action to add your content or snippet at bottom of the <footer> tag.', 'astra-addon' ),
-						),
-						'astra_footer_after'          => array(
-							'title'       => 'footer_after',
-							'description' => __( 'astra_footer_after - Action to add your content or snippet after the closing <footer> tag.', 'astra-addon' ),
-						),
-						'astra_body_bottom'           => array(
-							'title'       => 'body_bottom',
-							'description' => __( 'astra_body_bottom - Action to add your content or snippet at bottom of the <body> tag.', 'astra-addon' ),
-						),
-						'wp_footer'                   => array(
-							'title'       => 'wp_footer',
-							'description' => __( 'wp_footer - Action to add your content or snippet at end of the document.', 'astra-addon' ),
+					'comment' => array(
+						'title' => __( 'Comment', 'astra-addon' ),
+						'hooks' => array(
+							'astra_comments_before' => array(
+								'title'       => 'comments_before',
+								'description' => __( 'astra_comments_before - Action to add your content or snippet before opening of comment start.', 'astra-addon' ),
+							),
+							'astra_comments_after'  => array(
+								'title'       => 'comments_after',
+								'description' => __( 'astra_comments_after - Action to add your content or snippet after closing of comment wrapper.', 'astra-addon' ),
+							),
 						),
 					),
-				),
+					'sidebar' => array(
+						'title' => __( 'Sidebar', 'astra-addon' ),
+						'hooks' => array(
+							'astra_sidebars_before' => array(
+								'title'       => 'sidebars_before',
+								'description' => __( 'astra_sidebars_before - Action to add your content or snippet before opening of sidebar wrapper.', 'astra-addon' ),
+							),
+							'astra_sidebars_after'  => array(
+								'title'       => 'sidebars_after',
+								'description' => __( 'astra_sidebars_after - Action to add your content or snippet after closing of sidebar wrapper.', 'astra-addon' ),
+							),
+						),
+					),
+					'footer'  => array(
+						'title' => __( 'Footer', 'astra-addon' ),
+						'hooks' => array(
+							'astra_footer_before'         => array(
+								'title'       => 'footer_before',
+								'description' => __( 'astra_footer_before - Action to add your content or snippet before the opening <footer> tag.', 'astra-addon' ),
+							),
+							'astra_footer_content_top'    => array(
+								'title'       => 'footer_content_top',
+								'description' => __( 'astra_footer_content_top - Action to add your content or snippet at top of the <footer> tag.', 'astra-addon' ),
+							),
+							'astra_footer_inside_container_top' => array(
+								'title'       => 'footer_inside_container_top',
+								'description' => __( 'astra_footer_inside_container_top - Action to add your content or snippet at top of the footer container.', 'astra-addon' ),
+							),
+							'astra_footer_inside_container_bottom' => array(
+								'title'       => 'footer_inside_container_bottom',
+								'description' => __( 'astra_footer_inside_container_bottom - Action to add your content or snippet at bottom of the footer container.', 'astra-addon' ),
+							),
+							'astra_footer_content_bottom' => array(
+								'title'       => 'footer_content_bottom',
+								'description' => __( 'astra_footer_content_bottom - Action to add your content or snippet at bottom of the <footer> tag.', 'astra-addon' ),
+							),
+							'astra_footer_after'          => array(
+								'title'       => 'footer_after',
+								'description' => __( 'astra_footer_after - Action to add your content or snippet after the closing <footer> tag.', 'astra-addon' ),
+							),
+							'astra_body_bottom'           => array(
+								'title'       => 'body_bottom',
+								'description' => __( 'astra_body_bottom - Action to add your content or snippet at bottom of the <body> tag.', 'astra-addon' ),
+							),
+							'wp_footer'                   => array(
+								'title'       => 'wp_footer',
+								'description' => __( 'wp_footer - Action to add your content or snippet at end of the document.', 'astra-addon' ),
+							),
+						),
+					),
+				)
 			);
 
 			// If plugin - 'WooCommerce'.
@@ -761,7 +798,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 			 * @see http://php.net/manual/en/filter.filters.sanitize.php
 			 */
 			self::$meta_option = apply_filters(
-				'astra_advanced_hooks_meta_box_options', array(
+				'astra_advanced_hooks_meta_box_options',
+				array(
 					'ast-advanced-hook-location'  => array(
 						'default'  => array(),
 						'sanitize' => 'FILTER_DEFAULT',
@@ -888,7 +926,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 				INNER JOIN {$wpdb->posts} as p ON pm.post_id = p.ID
 				WHERE pm.meta_key = %s
 				AND p.post_type = %s
-				AND p.post_status = 'publish'", $location,
+				AND p.post_status = 'publish'",
+					$location,
 					$post_type
 				)
 			);
@@ -959,7 +998,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 									continue;
 								}
 
-								if ( $current_post_layout === $data['layout'] ) {
+								if ( '0' !== $data['layout'] && $current_post_layout === $data['layout'] ) {
 
 									$already_set_rule[] = $data['name'];
 								}
@@ -973,7 +1012,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 								continue;
 							}
 
-							if ( $current_post_layout === $data['layout'] ) {
+							if ( '0' !== $data['layout'] && $current_post_layout === $data['layout'] ) {
 								$already_set_rule[] = $data['name'];
 							}
 						}
@@ -983,7 +1022,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Hooks_Meta' ) ) {
 
 			if ( ! empty( $already_set_rule ) ) {
 				add_action(
-					'admin_notices', function() use ( $already_set_rule, $current_post_layout ) {
+					'admin_notices',
+					function() use ( $already_set_rule, $current_post_layout ) {
 
 						$rule_set_titles = '<strong>' . implode( ',', $already_set_rule ) . '</strong>';
 						$layout          = '<strong>' . ucfirst( $current_post_layout ) . '</strong>';

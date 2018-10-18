@@ -436,10 +436,6 @@
   left: 0;
 }
 
-.ast-fullscreen-menu-overlay .ast-fullscreen-menu-enable.ast-header-break-point.ast-main-header-nav-open .ast-header-sticked .main-header-bar-navigation {
-  visibility: hidden;
-}
-
 .ast-fullscreen-menu-overlay .ast-fullscreen-menu-enable.ast-header-break-point .ast-header-sections-navigation,
 .ast-fullscreen-menu-overlay .ast-fullscreen-menu-enable.ast-header-break-point .ast-above-header-menu-items,
 .ast-fullscreen-menu-overlay .ast-fullscreen-menu-enable.ast-header-break-point .ast-below-header-menu-items {

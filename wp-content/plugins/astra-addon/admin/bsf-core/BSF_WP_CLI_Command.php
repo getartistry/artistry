@@ -28,7 +28,6 @@ class BSF_WP_CLI_Command extends WP_CLI_Command {
 	 *      - This will activate the license for plugin Ultimate Addons for beaver builder with purchase key <purchase-key>
 	 *  2. wp brainstormforce license deactivate uabb <purchase-key>
 	 *      - This will deactivate the license for plugin Ultimate Addons for beaver builder with purchase key <purchase-key>
-	 *
 	 */
 	public function license( $args, $assoc_args ) {
 
@@ -56,8 +55,8 @@ class BSF_WP_CLI_Command extends WP_CLI_Command {
 		$_POST = array(
 			'bsf_license_manager' => array(
 				'license_key' => $purchase_key,
-				'product_id'  => $poduct_id
-			)
+				'product_id'  => $poduct_id,
+			),
 		);
 
 		if ( $action == 'activate' ) {

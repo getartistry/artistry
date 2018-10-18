@@ -16,7 +16,7 @@ class Toolset_URL extends Data_Tag {
 	}
 
 	public function get_title() {
-		return __( 'Toolset URL Field', 'elementor-pro' );
+		return __( 'Toolset', 'elementor-pro' ) . ' ' . __( 'URL Field', 'elementor-pro' );
 	}
 
 	public function get_group() {

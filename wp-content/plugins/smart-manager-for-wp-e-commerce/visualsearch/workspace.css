@@ -258,6 +258,8 @@
 .VS-interface.ui-autocomplete li {
 	list-style: none;
 	width: auto;
+	/*border-bottom: 1px solid #FAFAFA;*/
+	padding: 3px;
 }
 
 .advanced_search_or_placeholder {	    

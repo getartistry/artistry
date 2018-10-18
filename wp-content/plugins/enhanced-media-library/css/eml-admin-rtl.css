@@ -1,7 +1,19 @@
 
 /* == Main Menu Styles == */
+
 #adminmenu .wp-submenu li.eml-media-submenu {
-    padding-right: 20px;
+    padding-left: 20px;
+}
+
+
+
+/* == Rating Star Styles == */
+
+.rating-stars a .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
 }
 
 
@@ -11,7 +23,7 @@
 .eml-attacment-inline-toolbar {
     position: absolute;
     z-index: 10;
-    right: 7px;
+    left: 7px;
     top: 7px;
 
     -webkit-transition: all 0.2s;
@@ -28,7 +40,7 @@
     opacity: 1;
 }
 .eml-attacment-inline-toolbar i {
-    margin: 0 0 0 5px;
+    margin: 0 5px 0 0;
     padding: 2px;
     width: 24px;
     height: 24px;
@@ -66,16 +78,16 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 .wpuxss-eml-button-container-right {
-    text-align: left;
+    text-align: right;
     margin: 20px 0 0;
 }
 
 
 #post-query-submit {
-    margin: 1px 5px 0 8px;
+    margin: 1px 8px 0 5px;
 }
 #eml-reset-filters-query-submit {
-    margin: 1px 0 0 8px;
+    margin: 1px 8px 0 0;
 }
 
 
@@ -101,7 +113,7 @@
     background: rgba( 0, 86, 132, 0.9 );
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     z-index: 300000;
@@ -111,14 +123,14 @@
 	border: 1px dashed #fff;
 	position: absolute;
 	top: 10px;
-	right: 10px;
 	left: 10px;
+	right: 10px;
 	bottom: 10px;
 }
 .fullscreen-spinner-box .eml-spinner {
     position: absolute;
     top: 50%;
-    right: 0;
+    left: 0;
 
     background: url(../images/spinner.gif) no-repeat center bottom;
     width: 100%;
@@ -183,7 +195,7 @@
 }
 #wpuxss-credits li {
     list-style: disc;
-    margin-right: 1.4em;
+    margin-left: 1.4em;
 }
 
 @font-face {
@@ -240,7 +252,7 @@
     width: 30px;
 }
 #eml-restore-mime-types-settings {
-    margin-right:  20px;
+    margin-left:  20px;
 }
 
 
@@ -256,7 +268,7 @@
     box-shadow: 0 1px 0 #940B0B;
     color: #fff;
     text-decoration: none;
-    text-shadow: 0 -1px 1px #940B0B, -1px 0 1px #940B0B, 0 1px 1px #940B0B, 1px 0 1px #940B0B;
+    text-shadow: 0 -1px 1px #940B0B, 1px 0 1px #940B0B, 0 1px 1px #940B0B, -1px 0 1px #940B0B;
 }
 .wp-core-ui #eml-submit-settings-cleanup:hover,
 .wp-core-ui .button-primary.eml-warning-button:hover {
@@ -296,16 +308,16 @@
 .wpuxss-eml-settings-list > li > label {
     font-size: 14px;
     display: inline-block;
-    margin-left: 100px;
-    margin-right: 0;
+    margin-right: 100px;
+    margin-left: 0;
 }
 .wpuxss-eml-settings-list input {
     margin: 0;
 }
 .wpuxss-eml-settings-list > li .wpuxss-eml-button-edit {
     position: absolute;
-    right: auto;
-    left: 40px;
+    left: auto;
+    right: 40px;
     top: 7px;
     text-decoration: none;
     height: 14px;
@@ -315,16 +327,16 @@
     padding: 3px 10px;
 }
 .wpuxss-eml-settings-list.wpuxss-eml-non-media-taxonomy-list > li .wpuxss-eml-button-edit {
-    left: 10px;
+    right: 10px;
 }
 .wpuxss-eml-settings-list > li .wpuxss-eml-button-remove {
     position: absolute;
-    right: auto;
-    left: 10px;
+    left: auto;
+    right: 10px;
     top: 7px;
 }
 .wpuxss-eml-settings-list .wpuxss-eml-assigned {
-    margin: 0 0 0 10px;
+    margin: 0 10px 0 0;
 }
 
 .wpuxss-eml-taxonomy-edit label {
@@ -333,17 +345,17 @@
 }
 .wpuxss-eml-non-media-taxonomy-list .wpuxss-eml-taxonomy-edit label {
     width: auto;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 .wpuxss-eml-taxonomy-edit .wpuxss-eml-labels-edit {
-    float: right;
+    float: left;
     width: 48%;
-    margin-left: 1%;
+    margin-right: 1%;
 }
 .wpuxss-eml-taxonomy-edit .wpuxss-eml-settings-edit {
-    float: right;
+    float: left;
     width: 50%;
-    margin-right: 1%;
+    margin-left: 1%;
 }
 .wpuxss-eml-taxonomy-edit .wpuxss-eml-settings-edit li {
     padding: 3px 0;

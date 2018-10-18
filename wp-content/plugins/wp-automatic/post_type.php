@@ -155,7 +155,12 @@ function wp_automatic_columns_display($wp_automatic_columns){
 				echo $camp_general['cg_sn_source'] ;
 				
 			}else{
-				  echo $ret->camp_keywords;
+				
+				if(strlen($ret->camp_keywords) > 100){
+					echo 	substr($ret->camp_keywords, 0,100).'...';
+				}else{
+					echo $ret->camp_keywords;
+				}
 			}
 			  
 			break;

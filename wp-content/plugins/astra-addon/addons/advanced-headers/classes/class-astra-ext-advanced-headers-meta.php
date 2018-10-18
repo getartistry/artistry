@@ -132,7 +132,8 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 			 * @see http://php.net/manual/en/filter.filters.sanitize.php
 			 */
 			self::$meta_option = apply_filters(
-				'astra_advanced_headers_meta_box_options', array(
+				'astra_advanced_headers_meta_box_options',
+				array(
 					'ast-advanced-headers-layout'    => array(
 						'default'  => array(
 							'layout'                     => 'advanced-headers-layout-2',
@@ -185,6 +186,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 							'custom-menu-item'             => 'default',
 							'custom-menu-item-outside'     => '',
 							'custom-menu-item-text-html'   => '',
+							'search-style'                 => 'default',
 						),
 						'sanitize' => 'FILTER_DEFAULT',
 					),
@@ -340,6 +342,7 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 				'custom-menu-item'              => 'default',
 				'custom-menu-item-outside'      => '',
 				'custom-menu-item-text-html'    => '',
+				'search-style'                  => 'default',
 			);
 
 			$display_locations = ( isset( $meta['ast-advanced-headers-location']['default'] ) ) ? $meta['ast-advanced-headers-location']['default'] : '';
@@ -496,14 +499,17 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 			foreach ( $post_meta as $key => $data ) {
 				if ( in_array( $key, $advanced_headers_meta ) ) {
 					$meta_value = array_map( 'esc_attr', $_POST[ $key ] );
+					$meta_value = array_map( 'stripslashes', $_POST[ $key ] );
 				} elseif ( in_array( $key, array( 'ast-advanced-headers-users' ) ) ) {
 					$index = array_search( '', $_POST[ $key ] );
 					if ( false !== $index ) {
 						unset( $_POST[ $key ][ $index ] );
 					}
 					$meta_value = array_map( 'esc_attr', $_POST[ $key ] );
+					$meta_value = array_map( 'stripslashes', $_POST[ $key ] );
 				} elseif ( in_array(
-					$key, array(
+					$key,
+					array(
 						'ast-advanced-headers-location',
 						'ast-advanced-headers-exclusion',
 					)
@@ -1067,24 +1073,45 @@ if ( ! class_exists( 'Astra_Ext_Advanced_Headers_Meta' ) ) {
 						</td>
 						<td class="ast-advanced-headers-row-content">
 							<?php
-							if ( isset( $design['custom-menu-item'] ) ) {
-								$custom_menu_item = isset( $design['custom-menu-item'] ) ? $design['custom-menu-item'] : 'default';
-							}
-								$primary_custom_menu_item = apply_filters(
-									'astra_header_section_elements',
-									array(
-										'default'   => __( 'Customizer Setting', 'astra-addon' ),
-										'none'      => __( 'None', 'astra-addon' ),
-										'search'    => __( 'Search', 'astra-addon' ),
-										'text-html' => __( 'Text / HTML', 'astra-addon' ),
-										'widget'    => __( 'Widget', 'astra-addon' ),
-									),
-									'primary-header'
-								);
+							$custom_menu_item         = isset( $design['custom-menu-item'] ) ? $design['custom-menu-item'] : 'default';
+							$primary_custom_menu_item = apply_filters(
+								'astra_header_section_elements',
+								array(
+									'default'   => __( 'Customizer Setting', 'astra-addon' ),
+									'none'      => __( 'None', 'astra-addon' ),
+									'search'    => __( 'Search', 'astra-addon' ),
+									'text-html' => __( 'Text / HTML', 'astra-addon' ),
+									'widget'    => __( 'Widget', 'astra-addon' ),
+								),
+								'primary-header'
+							);
 							?>
 							<select id="ast-advanced-headers-design-custom-menu-item" name="ast-advanced-headers-design[custom-menu-item]" style="width: auto" ;>
 								<?php foreach ( $primary_custom_menu_item as $custom_menu_item_key => $custom_menu_item_value ) { ?>
 									<option <?php selected( $custom_menu_item, $custom_menu_item_key ); ?> value="<?php echo $custom_menu_item_key; ?>"> <?php echo esc_html( $custom_menu_item_value ); ?></option>
+								<?php } ?>
+							</select>
+						</td>
+					</tr>
+					<tr class="ast-advanced-headers-row">
+						<td class="ast-advanced-headers-row-sub-heading">
+							<label><?php esc_html_e( 'Search Style', 'astra-addon' ); ?></label>
+						</td>
+						<td class="ast-advanced-headers-row-content">
+							<?php
+							$current_search_style = isset( $design['search-style'] ) ? $design['search-style'] : 'default';
+
+							$search_styles = array(
+								'default'      => __( 'Customizer Setting', 'astra-addon' ),
+								'slide-search' => __( 'Slide Search', 'astra-addon' ),
+								'full-screen'  => __( 'Full Screen Search', 'astra-addon' ),
+								'header-cover' => __( 'Header Cover Search', 'astra-addon' ),
+								'search-box'   => __( 'Search Box', 'astra-addon' ),
+							);
+							?>
+							<select id="ast-advanced-headers-design-search-style" name="ast-advanced-headers-design[search-style]" style="width: auto" ;>
+								<?php foreach ( $search_styles as $style_slug => $style_title ) { ?>
+									<option <?php selected( $current_search_style, $style_slug ); ?> value="<?php echo $style_slug; ?>"> <?php echo esc_html( $style_title ); ?></option>
 								<?php } ?>
 							</select>
 						</td>

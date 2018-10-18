@@ -14,7 +14,9 @@
 		right: 0;
 	}
 
-	.main-header-bar {
+	.main-header-bar,
+	/* Override the main-header-bar bakground color which applied from the Colors Background. */
+	&.ast-header-break-point .main-header-bar {
 	    background: none;
 	}
 }

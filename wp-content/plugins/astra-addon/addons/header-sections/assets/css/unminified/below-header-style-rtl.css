@@ -7,6 +7,10 @@
 /*----------  Break-point min-width Structure   ----------*/
 /*----------  Break-point max-width Structure   ----------*/
 .ast-below-header {
+  z-index: 3;
+}
+
+.ast-below-header {
   border-bottom: 1px solid #ffffff;
   margin-right: auto;
   margin-left: auto;
@@ -41,7 +45,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-right: 10px;
-  vertical-align: middle;
   line-height: normal;
 }
 
@@ -51,7 +54,6 @@
 
 .ast-below-header .ast-search-icon {
   display: block;
-  padding: 0 1em;
 }
 
 .ast-below-header .widget_search .search-field,
@@ -69,21 +71,20 @@
   background: none;
 }
 
-.below-header-section-1 .ast-search-icon {
-  padding: 0 .5em;
-}
-
-.below-header-section-1 .ast-search-menu-icon {
-  right: -.5em;
-}
-
 .below-header-section-1 .ast-search-menu-icon .search-form {
+  left: auto;
+  right: -1em;
   padding-right: 3em;
   padding-left: 0;
 }
 
 .below-header-user-select {
   padding-top: 0;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .below-header-user-select .widget {
@@ -275,19 +276,6 @@
   max-height: initial;
 }
 
-.ast-header-break-point .below-header-user-select .ast-search-menu-icon {
-  left: auto;
-  right: auto;
-}
-
-.ast-header-break-point .below-header-user-select .search-form {
-  padding: 0;
-}
-
-.ast-header-break-point .below-header-user-select .search-field {
-  padding-left: 5.5em;
-}
-
 .ast-header-break-point .below-header-user-select .widget {
   margin: .5em 0;
   display: block;
@@ -408,10 +396,6 @@
 .ast-header-break-point .ast-below-header {
   line-height: 3;
   padding: 1em 0;
-}
-
-.ast-header-break-point .ast-below-header .ast-search-icon {
-  display: none;
 }
 
 .ast-header-break-point .ast-below-header-actual-nav ul li a,
@@ -550,4 +534,24 @@
 .ast-fullscreen-below-menu-enable.ast-header-break-point .ast-below-header-navigation ul.sub-menu li li li li a,
 .ast-fullscreen-below-menu-enable.ast-header-break-point .ast-below-header-menu-items ul.sub-menu li li li li a {
   padding-right: 0;
+}
+
+.ast-desktop .ast-below-header-menu .sub-menu {
+  -webkit-box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+}
+
+.ast-desktop .ast-below-header-menu .astra-full-megamenu-wrapper {
+  -webkit-box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+}
+
+.ast-desktop .ast-below-header-menu .astra-full-megamenu-wrapper .sub-menu {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ast-desktop .ast-below-header-menu .astra-megamenu .sub-menu {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }

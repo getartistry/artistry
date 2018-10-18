@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Shortcodes - Products
  *
- * @version 3.7.0
+ * @version 4.0.0
  * @author  Algoritmika Ltd.
  */
 
@@ -294,15 +294,12 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_product_time_since_last_sale.
 	 *
-	 * @version 2.5.4
+	 * @version 4.0.0
 	 * @since   2.4.0
 	 */
 	function wcj_product_time_since_last_sale( $atts ) {
-		global $woocommerce_loop, $post;
-		$saved_wc_loop = $woocommerce_loop;
-		$saved_post    = $post;
-		$offset = 0;
-		$block_size = 96;
+		$offset     = 0;
+		$block_size = 512;
 		while( true ) {
 			// Create args for new query
 			$args = array(
@@ -312,7 +309,8 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 				'offset'         => $offset,
 				'orderby'        => 'date',
 				'order'          => 'DESC',
-				'date_query'     => array( array( 'after' => strtotime( '-' . $atts['days_to_cover'] . ' days' ) ) ),
+				'date_query'     => array( 'after' => '-' . $atts['days_to_cover'] . ' days' ),
+				'fields'         => 'ids',
 			);
 			// Run new query
 			$loop = new WP_Query( $args );
@@ -320,28 +318,19 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 				break;
 			}
 			// Analyze the results, i.e. orders
-			while ( $loop->have_posts() ) : $loop->the_post();
-				$order = new WC_Order( $loop->post->ID );
+			foreach ( $loop->posts as $order_id ) {
+				$order = wc_get_order( $order_id );
 				$items = $order->get_items();
 				foreach ( $items as $item ) {
 					// Run through all order's items
 					if ( $item['product_id'] == $atts['product_id'] ) {
 						// Found sale!
-						$result = sprintf( __( '%s ago', 'woocommerce-jetpack' ), human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) );
-//						wp_reset_postdata();
-						$woocommerce_loop = $saved_wc_loop;
-						$post             = $saved_post;
-						setup_postdata( $post );
-						return $result;
+						return sprintf( __( '%s ago', 'woocommerce-jetpack' ), human_time_diff( get_the_time( 'U', $order_id ), current_time( 'timestamp' ) ) );
 					}
 				}
-			endwhile;
+			}
 			$offset += $block_size;
 		}
-//		wp_reset_postdata();
-		$woocommerce_loop = $saved_wc_loop;
-		$post             = $saved_post;
-		setup_postdata( $post );
 		// No sales found
 		return ( 'yes' === $atts['hide_if_no_sales'] ? '' : __( 'No sales yet.', 'woocommerce-jetpack' ) );
 	}
@@ -349,20 +338,24 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_product_available_variations.
 	 *
-	 * @version 2.4.0
+	 * @version 4.0.0
 	 * @since   2.4.0
+	 * @todo    [dev] re-check `$attribute_name`
 	 */
 	function wcj_product_available_variations( $atts ) {
 		$return_html = '';
+		$param       = ( isset( $atts['param'] ) ? $atts['param'] : 'price_html' );
 		if ( $this->the_product->is_type( 'variable' ) ) {
 			$return_html .= '<table>';
 			foreach ( $this->the_product->get_available_variations() as $variation ) {
 				$return_html .= '<tr>';
 				foreach ( $variation['attributes'] as $attribute_slug => $attribute_name ) {
-					if ( '' == $attribute_name ) $attribute_name = __( 'Any', 'woocommerce-jetpack' );
+					if ( '' == $attribute_name ) {
+						$attribute_name = __( 'Any', 'woocommerce-jetpack' );
+					}
 					$return_html .= '<td>' . $attribute_name . '</td>';
 				}
-				$return_html .= '<td>' . $variation['price_html'] . '</td>';
+				$return_html .= '<td>' . $variation[ $param ] . '</td>';
 				$return_html .= '</tr>';
 			}
 			$return_html .= '</table>';
@@ -755,7 +748,7 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * Returns product (modified) price.
 	 *
-	 * @version 3.5.0
+	 * @version 3.9.0
 	 * @todo    variable products: a) not range; and b) price by country.
 	 * @return  string The product (modified) price
 	 */
@@ -795,6 +788,9 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 				$min = wc_price( $min, array( 'currency' => $atts['currency'] ) );
 				$max = wc_price( $max, array( 'currency' => $atts['currency'] ) );
 			}
+			if ( ! empty( $atts['min_or_max'] ) && ( 'min' === $atts['min_or_max'] || 'max' === $atts['min_or_max'] ) ) {
+				return ( 'min' === $atts['min_or_max'] ? $min : $max );
+			}
 			return ( $min != $max ) ? sprintf( '%s-%s', $min, $max ) : $min;
 		}
 		// Simple etc.
@@ -830,7 +826,7 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 	/**
 	 * wcj_product_wholesale_price_table.
 	 *
-	 * @version 3.7.0
+	 * @version 4.0.0
 	 * @todo    (maybe) `if ( 'yes' === $atts['add_percent_row'] )` for 'fixed' or 'price_directly'; `if ( 'yes' === $atts['add_discount_row'] )` for 'percent' or 'price_directly'
 	 */
 	function wcj_product_wholesale_price_table( $atts ) {
@@ -852,6 +848,10 @@ class WCJ_Products_Shortcodes extends WCJ_Shortcodes {
 					break;
 				}
 			}
+		}
+
+		if ( isset( $atts['user_role'] ) ) {
+			$role_option_name_addon = '_' . $atts['user_role'];
 		}
 
 		$wholesale_price_levels = array();

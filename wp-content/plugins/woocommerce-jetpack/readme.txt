@@ -3,11 +3,11 @@ Contributors: algoritmika, anbinder, debugeris
 Tags: woocommerce, booster for woocommerce, woocommerce jetpack
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 3.8.0
+Stable tag: 4.0.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Supercharge your WordPress WooCommerce site with these awesome powerful features.
+Supercharge your WordPress WooCommerce site with these awesome powerful features. More than 100 modules. All in one WooCommerce plugin.
 
 == Description ==
 
@@ -119,7 +119,8 @@ Booster for WooCommerce is a WordPress WooCommerce plugin that supercharges your
 * *Shipping Calculator* - Customize WooCommerce shipping calculator on cart page.
 * *Shipping Descriptions* - Add descriptions to shipping methods on frontend.
 * *Shipping Icons* - Add icons to shipping methods on frontend.
-* *Shipping Methods by Cities* - Set cities to include/exclude for shipping methods to show up.
+* *Shipping Methods by City or Postcode* - Set shipping cities or postcodes to include/exclude for shipping methods to show up.
+* *Shipping Methods by Current Date/Time* - Set date and/or time to include/exclude for shipping methods to show up.
 * *Shipping Methods by Min/Max Order Amount* - Set minimum and/or maximum order amount for shipping methods to show up.
 * *Shipping Methods by Products* - Set products, product categories, tags or shipping classes to include/exclude for shipping methods to show up.
 * *Shipping Methods by Users* - Set user roles, users or membership plans to include/exclude for shipping methods to show up.
@@ -139,6 +140,7 @@ Booster for WooCommerce is a WordPress WooCommerce plugin that supercharges your
 * *Custom CSS* - Separate custom CSS for front and back end. Per product CSS.
 * *Custom Emails* - Add custom emails to WooCommerce.
 * *Custom JS* - Separate custom JS for front and back end.
+* *Custom PHP* - Custom PHP tool.
 * *Email Options* - WooCommerce email options. E.g.: add another email recipient(s) to all WooCommerce emails.
 * *Email Verification* - Add WooCommerce email verification.
 * *Export* - WooCommerce export tools.
@@ -147,6 +149,7 @@ Booster for WooCommerce is a WordPress WooCommerce plugin that supercharges your
 * *My Account* - WooCommerce "My Account" page customization.
 * *Old Slugs* - Remove old products slugs.
 * *Reports* - Stock, sales, customers etc. reports.
+* *Template Editor* - WooCommerce template editor.
 * *User Tracking* - Track your users in WooCommerce.
 
 = Feedback =
@@ -161,9 +164,9 @@ Booster for WooCommerce is a WordPress WooCommerce plugin that supercharges your
 
 == Installation ==
 
-1. Upload the entire `woocommerce-jetpack` folder to the `/wp-content/plugins/` directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to WooCommerce > Settings > Booster.
+1. Upload the entire plugin folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the "Plugins" menu in WordPress.
+3. Go to "WooCommerce > Settings > Booster".
 
 == Frequently Asked Questions ==
 
@@ -187,6 +190,128 @@ You can see the differences between versions in this [table](https://booster.io/
 8. Booster for WooCommerce - Emails & Misc.
 
 == Changelog ==
+
+= 4.0.1 - 12/10/2018 =
+* Fix - SHIPPING & ORDERS - Shipping Methods by Current Date/Time - Admin settings section title fixed.
+* Dev - EMAILS & MISC. - Custom PHP - Module description updated.
+
+= 4.0.0 - 11/10/2018 =
+* Feature - PRICES & CURRENCIES - Multicurrency (Currency Switcher) - Widget - "Form Method", "Class" and "Style" options added.
+* Feature - PRODUCTS - Product Addons - Frontend Templates - "Each Addon - Type: Select Box (Each Option)" option added.
+* Feature - SHIPPING & ORDERS - Order Custom Statuses - "Add Custom Statuses Buttons to Admin Order Preview Actions" option added.
+* Feature - SHIPPING & ORDERS - Orders - "Editable Orders" options added.
+* Feature - SHIPPING & ORDERS - Shipping Methods by City or Postcode - "Shipping Methods by Postcodes" subsection added.
+* Feature - SHIPPING & ORDERS - Shipping Methods by Current Date/Time - Initial module release.
+* Feature - EMAILS & MISC. - Admin Tools - "Suppress Admin Connect Notice" and "Suppress Admin Notices" options added.
+* Feature - EMAILS & MISC. - Custom CSS - "Code Position" option added.
+* Feature - EMAILS & MISC. - Custom JS - "Code Position" option added.
+* Feature - EMAILS & MISC. - Custom PHP - Initial module release.
+* Feature - EMAILS & MISC. - General - Add/Manage Custom Roles tool - "Capabilities" option added.
+* Fix - PRICES & CURRENCIES - Prices and Currencies by Country - Default values for options and empty string checks added.
+* Fix - CART & CHECKOUT - EU VAT Number - Possible "Undefined index: wcj_eu_vat_number_to_check..." PHP notice fixed.
+* Fix - PAYMENT GATEWAYS - Gateways by Shipping - Use Shipping Instances - Trying to extract shipping instance number from form with underscore symbol (e.g. "Flexible Shipping" plugin).
+* Fix - SHIPPING & ORDERS - Order Min/Max Quantities - `isEmptyObject` check added in `wcj-order-quantities.js`.
+* Fix - PDF INVOICING & PACKING SLIPS - Invoices Report tool - "Disable Saving PDFs in PHP directory for temporary files..." notice fixed.
+* Fix - EMAILS & MISC. - General - Add/Manage Custom Roles tool - `sanitize_key()` added for role ID (when adding new role).
+* Fix - EMAILS & MISC. - General - Products Attributes tool - Column titles fixed.
+* Fix - EMAILS & MISC. - Template Editor - Checking for modified template file to exist before replacing the original template.
+* Fix - Shortcodes - Products - `[wcj_product_time_since_last_sale]` - `date_query` fixed.
+* Fix - Functions - General - `wcj_is_frontend()` - AJAX part improved (`woocommerce_load_variations` backend `action` added).
+* Dev - PRICES & CURRENCIES - Global Discount - "Global Discount in Admin" option added.
+* Dev - PRICES & CURRENCIES - Multicurrency (Currency Switcher) - Module description updated.
+* Dev - PRODUCTS - Sale Flash - Code refactoring - "Per Category" and "Per Tag" options are stored in arrays now.
+* Dev - PAYMENT GATEWAYS - Gateways by Country, State or Postcode - Code refactoring.
+* Dev - PAYMENT GATEWAYS - Gateways Currency Converter - "Show Converted Prices" option added.
+* Dev - PAYMENT GATEWAYS - Gateways Currency Converter - Admin settings minor restyling.
+* Dev - SHIPPING & ORDERS - Order Custom Statuses - Code refactoring.
+* Dev - SHIPPING & ORDERS - Order Numbers - `wcj_order_number_meta` filter added.
+* Dev - EMAILS & MISC. - Admin Tools - Admin settings restyled ("Debug Tools Options" subsection added, "Debug Log" tool renamed).
+* Dev - EMAILS & MISC. - General - Add/Manage Custom Roles tool - Restyled; JS confirmation added etc.
+* Dev - EMAILS & MISC. - Template Editor - Admin settings minor restyling.
+* Dev - Shortcodes - General - `[wcj_country_select_drop_down_list]` - Code refactoring.
+* Dev - Shortcodes - Products - `[wcj_product_available_variations]` - `param` attribute added.
+* Dev - Shortcodes - Products - `[wcj_product_time_since_last_sale]` - Code refactoring.
+* Dev - Shortcodes - Products - `[wcj_product_wholesale_price_table]` - `user_role` attribute added.
+* Dev - Functions - Price and Currency - `wcj_update_products_price_by_country()` - `WP_Query` optimized to return `ids` only.
+* Dev - Classes - `WCJ_Module` - Modules' "extra description" restyled.
+* Dev - Code clean up.
+
+= 3.9.1 - 06/09/2018 =
+* Fix - Shortcodes - General - `[wcj_cross_sell_display]` - Returning the result instead of echoing.
+* Fix - Shortcodes - General - `[wcj_cross_sell_display]` - Additional checks added for `WC()->cart` to exist before executing the shortcode's code.
+* Dev - PRODUCTS - Product Input Fields - "Strip Slashes" option added.
+* Dev - Translations - Files updated: `az`, `es_ES`, `fr_FR`, `is_IS`, `it_IT`, `ja`, `nl_NL`, `pt_BR`, `ro_RO`, `ru_RU`, `sv_SE`.
+* Dev - Translations - New files added: `cs_CZ`, `el`.
+
+= 3.9.0 - 05/09/2018 =
+* Feature - PRICES & CURRENCIES - Currencies - Shortcodes (e.g. `[wcj_wpml]`) can now be used in currency symbol fields.
+* Feature - PRICES & CURRENCIES - Currency Exchange Rates - Exchange Rates Server - "The Free Currency Converter API" server added.
+* Feature - BUTTON & PRICE LABELS - Add to Cart Button Labels - Per Product Type - "Products not in stock" option added.
+* Feature - PRODUCTS - Cross-sells - "Exclude Not in Stock Products" option added.
+* Feature - PRODUCTS - Cross-sells - "Replace Cart Products with Cross-sells" option added.
+* Feature - PRODUCTS - Product Images - Placeholder Image - "Custom Placeholder Image URL" option added.
+* Feature - SHIPPING & ORDERS - Custom Shipping - Shortcodes can now be used in "Cost" field (e.g.: `[wcj_shipping_costs_table]`).
+* Feature - PDF INVOICING & PACKING SLIPS - Advanced - Add PDF Invoices Meta Box to Admin Edit Order Page - Editable date added.
+* Feature - EMAILS & MISC. - Email Verification - "Redirect User After Successful Verification to Custom URL" option added.
+* Feature - EMAILS & MISC. - Reports - Stock - "product type" option added.
+* Feature - EMAILS & MISC. - Reports - Stock - "Include deleted products" option added.
+* Feature - EMAILS & MISC. - Template Editor - Initial module release.
+* Fix - PRICES & CURRENCIES - Currency Exchange Rates - Discontinued servers (Yahoo, Google, Fixer) removed.
+* Fix - BUTTON & PRICE LABELS - Add to Cart Button Labels - Per Product Type - Products with empty price - Default value fixed.
+* Fix - PRODUCTS - Cost of Goods - Products List Columns - Variable products fixed in both ("Profit" and "Cost") columns.
+* Fix - PRODUCTS - Cost of Goods - Products List Columns - Profit - Checking for price to be `is_numeric()`.
+* Fix - PRODUCTS - Product Addons - `maybe_convert_currency()` - "Global Discount" module conversion added.
+* Fix - PRODUCTS - Product by Condition - `pre_get_posts()` - Additional checks added (to prevent possible "Call to undefined function is_user_logged_in() ..." error).
+* Fix - PRODUCTS - Products XML Feeds - `html_entity_decode()` added to XML header and footer.
+* Fix - PRODUCTS - Related Products - Relate Manually - Hiding related products for current product (i.e. if enabled and no products selected) fixed.
+* Fix - CART & CHECKOUT - Checkout Fees - "Checkout Field" option fixed.
+* Fix - SHIPPING & ORDERS - Admin Orders List - Additional checks for `wp_get_current_user()` function to exist added (`wcj_current_user_can()` function added).
+* Fix - EMAILS & MISC. - Email Verification - "Login User After Successful Verification" admin description fixed.
+* Fix - EMAILS & MISC. - Email Verification - "Message - Resend" default value fixed.
+* Fix - EMAILS & MISC. - Email Verification - "Message - Failed (no user ID)" option added.
+* Fix - EMAILS & MISC. - Reports - Stock - `is_numeric()` checks added.
+* Fix - EMAILS & MISC. - Reports - Stock - "Last sale" column fixed.
+* Fix - EMAILS & MISC. - User Tracking - Fatal error on "Update now" button fixed.
+* Fix - Core - `WCJ_Module` - `save_meta_box()` - `delete_post_meta()` added.
+* Fix - Functions - Country - `wcj_get_country_by_ip()` - Additional checks added (to prevent possible "Call to undefined function wc_format_country_state_string() ..." error).
+* Fix - Functions - Exchange Rates - Average exchange rates function fixed (used in "Booster: Monthly Sales (with Currency Conversion)" report).
+* Fix - Functions - General - `wcj_wrap_in_wc_email_template()` - `{site_title}` in footer replaced with blog name.
+* Dev - PRICES & CURRENCIES - Bulk Price Converter - `WP_Query` optimized to return `ids` only.
+* Dev - PRICES & CURRENCIES - Bulk Price Converter - Tool restyled. "Pretty prices threshold" option description added.
+* Dev - PRICES & CURRENCIES - Currencies - Major code refactoring and optimization.
+* Dev - PRICES & CURRENCIES - Global Discount - Advanced Settings - "Price Filters Priority" option added.
+* Dev - PRICES & CURRENCIES - Multicurrency (Currency Switcher) - Revert Currency to Shop's Default - "Revert on cart page only" and "Revert on both cart & checkout pages" options added.
+* Dev - PRICES & CURRENCIES - Multicurrency Product Base Price - Advanced Settings - "Price Filters Priority" option added.
+* Dev - PRICES & CURRENCIES - Prices and Currencies by Country - Autogenerate Groups - Cleaned up; restyled; Yahoo exchange rates server related buttons removed; "PayPal supported currencies only" button added.
+* Dev - PRICES & CURRENCIES - Product Price by Formula - Advanced Settings - "Price Filters Priority" option added.
+* Dev - PRICES & CURRENCIES - Wholesale Price - Discount Info on Cart Page - `%original_price%` replaced value added.
+* Dev - PRICES & CURRENCIES - Wholesale Price - Admin settings restyled.
+* Dev - BUTTON & PRICE LABELS - Add to Cart Button Labels - Admin settings restyled.
+* Dev - PRODUCTS - Add to Cart Button Visibility - All Products - "Advanced: Method" options added.
+* Dev - PRODUCTS - Product Addons - Advanced Settings - Apply Price Filter - "... modules to apply ..." option added.
+* Dev - PRODUCTS - Product Addons - Advanced Settings - "Price Filters Priority" option added.
+* Dev - PRODUCTS - Related Products - Relate Manually - "Select box type" option added.
+* Dev - CART & CHECKOUT - Checkout Files Upload - Advanced Options - "Notice Type" option added.
+* Dev - PAYMENT GATEWAYS - Gateways by Country, State or Postcode - Trying to get customer country and state from `$_REQUEST` first (before accessing `WC()->customer`). Postcode code part rewritten.
+* Dev - PAYMENT GATEWAYS - Gateways Currency Converter - "Advanced: Fix Chosen Payment Method" option added.
+* Dev - PAYMENT GATEWAYS - Gateways Currency Converter - Code refactoring (`get_chosen_payment_method()` function added; `global $woocommerce` replaced with `WC()`).
+* Dev - SHIPPING & ORDERS - Custom Shipping - Admin settings restyled.
+* Dev - SHIPPING & ORDERS - Left to Free Shipping - Info on Checkout - Position - New positions added.
+* Dev - SHIPPING & ORDERS - Shipping Methods by Products - Minor code changes.
+* Dev - EMAILS & MISC. - Admin Bar - "Booster: Active" admin bar can now be added without adding "Booster" admin bar.
+* Dev - EMAILS & MISC. - Custom Emails - Code cleaned up and refactored.
+* Dev - EMAILS & MISC. - Email Verification - Admin settings restyled. Code refactored.
+* Dev - EMAILS & MISC. - Reports - Admin settings restyled.
+* Dev - Functions - Price and Currency - `wcj_get_woocommerce_currencies_and_symbols()` function added. `wcj_get_currency_symbol()`, `wcj_get_currencies_names_and_symbols()` and `wcj_get_currencies_array()` functions removed. Affected modules: "Currency Exchange Rates", "Admin Orders List", "Currency for External Products", "Currency per Product", "Multicurrency Product Base Price", "Multicurrency (Currency Switcher)", "Gateways by Currency", "Gateways Currency Converter", "Prices and Currencies by Country", "Price Formats", "Orders", "Currencies".
+* Dev - Shortcodes - General - `[wcj_get_option]` shortcode added.
+* Dev - Shortcodes - General - `[wcj_image]` shortcode added.
+* Dev - Shortcodes - General - `[wcj_shipping_costs_table]` shortcode added.
+* Dev - Shortcodes - Orders - `[wcj_order_items_meta]` - `sep` attribute added.
+* Dev - Shortcodes - Orders - `[wcj_order_products_meta]` shortcode added.
+* Dev - Shortcodes - Products - `[wcj_product_price]` - `min_or_max` attribute added (for variable products).
+* Dev - Settings - Shipping by Condition - Code optimized.
+* Dev - Unnecessary `woocommerce_currency_symbol` hooks removed (affected modules: "Prices and Currencies by Country", "Currency for External Products", "Multicurrency (Currency Switcher)", "Currency per Product", "Gateways Currency Converter").
+* Dev - Code cleaned up.
 
 = 3.8.0 - 28/07/2018 =
 * Feature - PRICES & CURRENCIES - Global Discount - "Final Correction" options added.

@@ -60,7 +60,8 @@ if ( ! class_exists( 'ASTRA_Ext_LearnDash_Markup' ) ) {
 			$attrs = shortcode_atts(
 				array(
 					'link' => astra_get_option( 'learndash-profile-link' ),
-				), $attrs
+				),
+				$attrs
 			);
 
 			$profile_link = esc_attr( $attrs['link'] );

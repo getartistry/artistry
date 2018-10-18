@@ -38,8 +38,6 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Loader' ) ) {
 		public function __construct() {
 
 			add_filter( 'astra_theme_defaults', array( $this, 'theme_defaults' ) );
-			add_action( 'customize_controls_enqueue_scripts', array( $this, 'controls_scripts' ), 9 );
-			add_action( 'customize_register', array( $this, 'old_customize_register' ) );
 			add_action( 'customize_register', array( $this, 'new_customize_register' ), 2 );
 
 		}
@@ -77,6 +75,14 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Loader' ) ) {
 			$defaults['ast-auto-prev-post']            = false;
 			$defaults['single-featured-image-padding'] = false;
 
+			// Blog Archive Images size.
+			$defaults['blog-archive-image-width']  = false;
+			$defaults['blog-archive-image-height'] = false;
+
+			// Blog Single Images size.
+			$defaults['blog-single-post-image-width']  = false;
+			$defaults['blog-single-post-image-height'] = false;
+
 			return $defaults;
 		}
 
@@ -88,66 +94,16 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Loader' ) ) {
 		function new_customize_register( $wp_customize ) {
 
 			/**
-			 * Customizer Configurations.
+			 * Register Sections & Panels
 			 */
-			if ( class_exists( 'Astra_Customizer_Config_Base' ) ) {
-
-				/**
-				 * Register Sections & Panels
-				 */
-				require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/class-astra-customizer-blog-pro-panels-and-sections.php';
-
-				/**
-				 * Sections
-				 */
-				require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/sections/class-astra-customizer-blog-pro-configs.php';
-				require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/sections/class-astra-customizer-blog-pro-single-configs.php';
-			}
-
-		}
-
-		/**
-		 * Register panel, section and controls
-		 *
-		 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
-		 */
-		function old_customize_register( $wp_customize ) {
+			require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/class-astra-customizer-blog-pro-panels-and-sections.php';
 
 			/**
-			 * Customizer Configurations.
+			 * Sections
 			 */
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
+			require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/sections/class-astra-customizer-blog-pro-configs.php';
+			require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/sections/class-astra-customizer-blog-pro-single-configs.php';
 
-				/**
-				 * Register Sections & Panels
-				 */
-				require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/customizer-panels-and-sections.php';
-
-				/**
-				 * Sections
-				 */
-				require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/sections/section-blog.php';
-				require_once ASTRA_EXT_BLOG_PRO_DIR . 'classes/sections/section-blog-single.php';
-			}
-
-		}
-
-		/**
-		 * Customizer Controls
-		 *
-		 * @see 'astra-customizer-controls-js' panel in parent theme
-		 */
-		function controls_scripts() {
-
-			if ( ! class_exists( 'Astra_Customizer_Config_Base' ) ) {
-				if ( SCRIPT_DEBUG ) {
-					$js_path = 'assets/js/unminified/customizer-toggles.js';
-				} else {
-					$js_path = 'assets/js/minified/customizer-toggles.min.js';
-				}
-
-				wp_enqueue_script( 'astra-ext-blog-pro-customizer-toggles', ASTRA_EXT_BLOG_PRO_URI . $js_path, array( 'astra-customizer-controls-toggle-js' ), ASTRA_EXT_VER, true );
-			}
 		}
 	}
 

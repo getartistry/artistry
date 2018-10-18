@@ -101,7 +101,7 @@
 }
 
 .above-header-nav-padding-support .ast-justify-content-flex-end .ast-above-header-menu li ul a {
-  padding: 0 0 0 1em;
+  padding: 0.9em 1em;
 }
 
 .above-header-nav-padding-support .ast-justify-content-flex-end .ast-above-header-menu > li:last-child a {
@@ -119,10 +119,6 @@
 
 .ast-header-break-point .ast-above-header {
   line-height: 3;
-}
-
-.ast-header-break-point .ast-above-header .ast-search-icon {
-  display: none;
 }
 
 .ast-header-break-point .ast-above-header-navigation,
@@ -270,6 +266,30 @@
   padding-left: 0;
 }
 
+.ast-desktop .ast-above-header-menu .sub-menu {
+  -webkit-box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+}
+
+.ast-desktop .ast-above-header-menu .astra-full-megamenu-wrapper {
+  -webkit-box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.1);
+}
+
+.ast-desktop .ast-above-header-menu .astra-full-megamenu-wrapper .sub-menu {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ast-desktop .ast-above-header-menu .astra-megamenu .sub-menu {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ast-above-header {
+  z-index: 5;
+}
+
 .ast-above-header-wrap {
   position: relative;
   /* Search widget. */
@@ -300,6 +320,11 @@
   -moz-box-flex: 1;
   -ms-flex: auto;
   flex: auto;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .ast-above-header-section .widget {
@@ -347,7 +372,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-left: 10px;
-  vertical-align: middle;
   line-height: normal;
 }
 
@@ -357,7 +381,6 @@
 
 .ast-above-header .ast-search-icon {
   display: block;
-  padding: 0 1em;
 }
 
 .ast-above-header .astra-search-icon {
@@ -387,14 +410,6 @@
   background: none;
 }
 
-.ast-above-header-section-1 .ast-search-icon {
-  padding: 0 .5em;
-}
-
-.ast-above-header-section-1 .ast-search-menu-icon {
-  left: -.5em;
-}
-
 .ast-above-header-section-1 .ast-search-menu-icon.ast-inline-search {
   left: 0;
 }
@@ -402,12 +417,22 @@
 .ast-above-header-section-1 .ast-search-menu-icon .search-form {
   padding-left: 3em;
   padding-right: 0;
+  right: auto;
+  left: -1em;
 }
 
 /* Above Header menu li class */
 .ast-above-header-menu-items,
 .ast-above-header-custom-menu-items {
   display: none;
+}
+
+.ast-above-header-section-2 .search-field {
+  padding-right: 0;
+}
+
+.ast-above-header-section-1 .search-field {
+  padding-left: 0;
 }
 
 .ast-header-break-point {
@@ -539,10 +564,14 @@
 }
 
 .ast-header-break-point .ast-above-header-section-separated.ast-above-header-mobile-stack.ast-swap-above-header-sections .ast-above-header-section-2 {
-  padding: 1em 0em 0 0;
+  padding: 1em 0 1em 0;
 }
 
 .ast-header-break-point .ast-above-header-section-separated.ast-above-header-mobile-stack.ast-swap-above-header-sections .ast-above-header-section-1 {
+  padding: 0 0 1em 0;
+}
+
+.ast-header-break-point .ast-above-header-section-separated.ast-above-header-mobile-stack.ast-swap-above-header-sections .ast-above-header-1 .ast-above-header-section-1 {
   padding: 0 0 1em 0;
 }
 
@@ -634,33 +663,11 @@
 
 .ast-header-break-point .ast-above-header {
   line-height: 3;
-  border-top: 1px solid #eaeaea;
   /* Woocommerce Above Header cart*/
-}
-
-.ast-header-break-point .ast-above-header .ast-search-icon {
-  display: none;
-}
-
-.ast-header-break-point .ast-above-header .ast-search-menu-icon {
-  right: auto;
-  left: auto;
-  visibility: inherit;
-}
-
-.ast-header-break-point .ast-above-header .search-form {
-  padding: 0;
-}
-
-.ast-header-break-point .ast-above-header .search-field {
-  padding-left: 1em;
-  padding-right: 5em;
 }
 
 .ast-header-break-point .ast-above-header .ast-search-menu-icon .search-field {
   max-height: initial;
-  padding-top: .4em;
-  padding-bottom: .4em;
 }
 
 .ast-header-break-point .ast-above-header .ast-addon-cart-wrap {

@@ -522,7 +522,7 @@ window.eml = window.eml || { l10n: {} };
     		});
         })
         .fail(function() {
-            return;
+            return false;
         });
     });
 

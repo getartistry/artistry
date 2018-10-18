@@ -8,7 +8,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 			$default_store_model = array(),
 			$prod_sort = false,
 			$terms_att_search_flag = 0, //flag for handling attrbute search
-			$product_visibility_visible_flag = 0; //flag for handling visibility search
+			$product_visibility_visible_flag = 0, //flag for handling visibility search
+			$product_old_title = array(); // array for storing the old product titles
 
 		function __construct($dashboard_key) {
 			$this->dashboard_key = $dashboard_key;
@@ -16,10 +17,10 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 			$this->req_params  	= (!empty($_REQUEST)) ? $_REQUEST : array();
 
 			add_filter('sm_dashboard_model',array(&$this,'products_dashboard_model'),10,1);
-			add_filter('sm_data_model',array(&$this,'products_data_model'),10,1);
+			add_filter('sm_data_model',array(&$this,'products_data_model'),10,3);
 
 			add_filter('sm_inline_update_pre',array(&$this,'products_inline_update_pre'),10,1);
-			add_action('sm_inline_update_post',array(&$this,'products_inline_update'),10,1);
+			add_action('sm_inline_update_post',array(&$this,'products_inline_update'),10,2);
 
 			// add_filter('posts_orderby',array(&$this,'sm_product_query_order_by'),10,2);
 
@@ -537,8 +538,6 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 							$column['type'] = 'multilist';
 							$column['editable']	= false;
 							$column['name']	= 'Category';
-						} else if ($src == 'ID') {
-							$column['key'] = true; //for tree grid
 						} else if ( in_array($src, $numeric_columns) ) {
 							$column['type'] = 'number';
 						} else if ( in_array($src, $datetime_columns) ) {
@@ -548,6 +547,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 													   'catalog' => __('Catalog', Smart_Manager::$text_domain),
 													   'search' => __('Search', Smart_Manager::$text_domain),
 													   'hidden' => __('Hidden', Smart_Manager::$text_domain));
+
+							$column ['search_values'] = array();
 
 							$column['search_values'][0] = array('key' => 'visible', 'value' =>  __('Catalog & Search',Smart_Manager::$text_domain));
 							$column['search_values'][1] = array('key' => 'catalog', 'value' =>  __('Catalog',Smart_Manager::$text_domain));
@@ -562,6 +563,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 													   'shipping' => __('Shipping only', Smart_Manager::$text_domain),
 													   'none' => __('None', Smart_Manager::$text_domain));
 
+							$column ['search_values'] = array();
+
 							$column['search_values'][0] = array('key' => 'taxable', 'value' =>  __('Taxable',Smart_Manager::$text_domain));
 							$column['search_values'][1] = array('key' => 'shipping', 'value' =>  __('Shipping only',Smart_Manager::$text_domain));
 							$column['search_values'][2] = array('key' => 'none', 'value' =>  __('None',Smart_Manager::$text_domain));
@@ -573,6 +576,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 							$column ['values'] = array('instock' => __('In stock', Smart_Manager::$text_domain),
 													   'outofstock' => __('Out of stock', Smart_Manager::$text_domain));
 
+							$column ['search_values'] = array();
+
 							$column['search_values'][0] = array('key' => 'instock', 'value' =>  __('In stock',Smart_Manager::$text_domain));
 							$column['search_values'][1] = array('key' => 'outofstock', 'value' =>  __('Out of stock',Smart_Manager::$text_domain));
 						} else if ($src == '_tax_class') {
@@ -582,6 +587,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 							$column ['values'] = array('' => __('Standard', Smart_Manager::$text_domain),
 													   'reduced-rate' => __('Reduced Rate', Smart_Manager::$text_domain),
 													   'zero-rate' => __('Zero Rate', Smart_Manager::$text_domain));
+
+							$column ['search_values'] = array();
 
 							$column['search_values'][0] = array('key' => '', 'value' =>  __('Standard',Smart_Manager::$text_domain));
 							$column['search_values'][1] = array('key' => 'reduced-rate', 'value' =>  __('Reduced Rate',Smart_Manager::$text_domain));
@@ -594,6 +601,8 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 							$column ['values'] = array('no' => __('Do Not Allow', Smart_Manager::$text_domain),
 													   'notify' => __('Allow, but notify customer', Smart_Manager::$text_domain),
 													   'yes' => __('Allow', Smart_Manager::$text_domain));
+
+							$column ['search_values'] = array();
 
 							$column['search_values'][0] = array('key' => 'no', 'value' =>  __('Do Not Allow',Smart_Manager::$text_domain));
 							$column['search_values'][1] = array('key' => 'notify', 'value' =>  __('Allow, but notify customer',Smart_Manager::$text_domain));
@@ -613,11 +622,11 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 
 							$column['search_values'] = array_unshift($column['search_values'], array('key' => '', 'value' =>  __('No shipping class',Smart_Manager::$text_domain)));
 						}  else if ($src == '_sku') {
-							$column ['name'] = 'SKU';
+							$column ['name'] = $column ['key'] = 'SKU';
 						} else if ($src == 'post_title') {
-							$column ['name'] = 'Name';
+							$column ['name'] = $column ['key'] = 'Name';
 						} else if ($src == 'post_content') {
-							$column ['name'] = 'Description';
+							$column ['name'] = $column ['key'] = 'Description';
 						} else if ( substr($src, 0, 12) == 'attribute_pa' || substr($src, 0, 10) == 'attribute_' ) {
 							$column ['searchable']= false;
 							$column ['batch_editable']= false;
@@ -836,7 +845,7 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 			return $dashboard_model;
 		}
 
-		public function products_data_model ($data_model) {
+		public function products_data_model ($data_model, $data_cols, $data_cols_serialized) {
 
 			global $wpdb, $current_user;
 
@@ -1133,7 +1142,15 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 		public function products_inline_update_pre($edited_data) {
 			if (empty($edited_data)) return $edited_data;
 
+			global $wpdb;
+
+			$prod_title_ids = array();
+
 			foreach ($edited_data as $key => $edited_row) {
+
+				if( !empty( $edited_row['posts/post_title'] ) && !empty( Smart_Manager::$sm_is_woo30 ) ) {
+					$prod_title_ids[] = $key;
+				}
 
 				if ( empty($edited_row['postmeta/meta_key=_product_attributes/meta_value=_product_attributes']) ) {
  					continue;
@@ -1153,13 +1170,24 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 				$edited_data[$key]['postmeta/meta_key=_product_attributes/meta_value=_product_attributes'] = json_encode($product_attributes);
 			}
 
+			if( !empty( $prod_title_ids ) && !empty( Smart_Manager::$sm_is_woo30 ) ) {
+
+		        $results = sm_get_current_variation_title( $prod_title_ids );
+
+                if( count( $results ) > 0 ) {
+                    foreach( $results as $result ) {
+                        $this->product_old_title[ $result['id'] ] = $result['post_title'];
+                    }
+                }
+			}
+
 			return $edited_data;
 		}
 
 		//function for inline update of custom fields
-		public function products_inline_update($edited_data) {
+		public function products_inline_update($edited_data, $params) {
 
-			global $current_user;
+			global $current_user, $wpdb;
 
 			if(empty($edited_data)) return;
 
@@ -1197,8 +1225,17 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 			}
 
 			$price_update_ids = array();
+			$post_title_update_ids = array();
+			$new_title_update_case = array();
 
 			foreach ($edited_data as $pid => $edited_row) {
+
+				if( !empty( $edited_row['posts/post_title'] ) && !empty( Smart_Manager::$sm_is_woo30 ) ) {
+					if( !empty( $this->product_old_title[ $pid ] ) && $this->product_old_title[ $pid ] != $edited_row['posts/post_title'] ) {
+						$post_title_update_ids[] = $pid;
+                        $new_title_update_case[] = 'WHEN post_parent='. $pid .' THEN REPLACE(post_title, \''. $this->product_old_title[ $pid ] .'\', \''. $edited_row['posts/post_title'] .'\')';
+                    }
+				}
 
 				$id = (!empty($edited_row['posts/ID'])) ? $edited_row['posts/ID'] : $pid;
 
@@ -1295,6 +1332,11 @@ if ( ! class_exists( 'Smart_Manager_Product' ) ) {
 			if( !empty($price_update_ids) ) {
 				sm_update_price_meta($price_update_ids);
 			}
+
+			//code to update the post title for variations if parent is updated
+			if( !empty( $new_title_update_case ) && !empty( $post_title_update_ids ) ) {
+				sm_sync_variation_title( $new_title_update_case, $post_title_update_ids );
+            }
 		}
 	} //End of Class
 }

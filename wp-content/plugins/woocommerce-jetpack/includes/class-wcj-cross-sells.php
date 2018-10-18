@@ -2,7 +2,7 @@
 /**
  * Booster for WooCommerce - Module - Cross-sells
  *
- * @version 3.6.0
+ * @version 3.9.0
  * @since   3.5.3
  * @author  Algoritmika Ltd.
  */
@@ -16,8 +16,9 @@ class WCJ_Cross_Sells extends WCJ_Module {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.6.0
+	 * @version 3.9.0
 	 * @since   3.5.3
+	 * @todo    [feature] add pop up box (for `wcj_cross_sells_replace_with_cross_sells`)
 	 */
 	function __construct() {
 
@@ -43,6 +44,9 @@ class WCJ_Cross_Sells extends WCJ_Module {
 				if ( 'yes' === apply_filters( 'booster_option', 'no', get_option( 'wcj_cross_sells_global_enabled', 'no' ) ) ) {
 					add_filter( 'woocommerce_product_get_cross_sell_ids', array( $this, 'cross_sells_ids' ), PHP_INT_MAX, 2 );
 				}
+				if ( 'yes' === apply_filters( 'booster_option', 'no', get_option( 'wcj_cross_sells_exclude_not_in_stock', 'no' ) ) ) {
+					add_filter( 'woocommerce_product_get_cross_sell_ids', array( $this, 'cross_sells_exclude_not_in_stock' ), PHP_INT_MAX, 2 );
+				}
 			}
 			if ( 'yes' === get_option( 'wcj_cross_sells_hide', 'no' ) ) {
 				add_action( 'init', array( $this, 'hide_cross_sells' ), PHP_INT_MAX );
@@ -50,8 +54,59 @@ class WCJ_Cross_Sells extends WCJ_Module {
 			if ( 'no_changes' != get_option( 'wcj_cross_sells_position', 'no_changes' ) ) {
 				add_action( 'init', array( $this, 'reposition_cross_sells' ), PHP_INT_MAX );
 			}
+			if ( 'yes' === apply_filters( 'booster_option', 'no', get_option( 'wcj_cross_sells_replace_with_cross_sells', 'no' ) ) ) {
+				add_filter( 'woocommerce_product_add_to_cart_url',  array( $this, 'replace_with_cross_sells_to_url' ), PHP_INT_MAX, 2 );
+				add_action( 'woocommerce_cart_loaded_from_session', array( $this, 'remove_from_cart_by_product_id' ) );
+			}
 		}
 
+	}
+
+	/**
+	 * replace_with_cross_sells_to_url.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 * @todo    [dev] re-check variable products
+	 */
+	function replace_with_cross_sells_to_url( $url, $product ) {
+		if ( is_cart() && ( $_cart = WC()->cart ) ) {
+			$product_id            = $product->get_id();
+			$product_ids_to_remove = array();
+			foreach ( $_cart->get_cart() as $cart_item_key => $values ) {
+				$_product       = wc_get_product( $values['product_id'] );
+				$cross_sell_ids = $_product->get_cross_sell_ids();
+				if ( in_array( $product_id, $cross_sell_ids ) ) {
+					$product_ids_to_remove[] = $values['product_id'];
+				}
+			}
+			if ( ! empty( $product_ids_to_remove ) ) {
+				$url = add_query_arg( array( 'wcj-remove-from-cart' => implode( ',', array_unique( $product_ids_to_remove ) ) ), $url );
+			}
+		}
+		return $url;
+	}
+
+	/**
+	 * remove_from_cart_by_product_id.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 * @todo    [dev] AJAX
+	 */
+	function remove_from_cart_by_product_id() {
+		if ( isset( $_GET['wcj-remove-from-cart'] ) ) {
+			if ( $_cart = WC()->cart ) {
+				$product_ids_to_remove = explode( ',', $_GET['wcj-remove-from-cart'] );
+				foreach ( $_cart->get_cart() as $cart_item_key => $values ) {
+					if ( in_array( $values['product_id'], $product_ids_to_remove ) ) {
+						$_cart->remove_cart_item( $cart_item_key );
+					}
+				}
+			}
+			wp_safe_redirect( remove_query_arg( 'wcj-remove-from-cart' ) );
+			exit;
+		}
 	}
 
 	/**
@@ -59,7 +114,7 @@ class WCJ_Cross_Sells extends WCJ_Module {
 	 *
 	 * @version 3.6.0
 	 * @since   3.6.0
-	 * @todo    (maybe) check `woocommerce\templates\cart\cart.php` for more positions
+	 * @todo    [dev] (maybe) check `woocommerce\templates\cart\cart.php` for more positions
 	 */
 	function reposition_cross_sells() {
 		$this->hide_cross_sells();
@@ -77,19 +132,35 @@ class WCJ_Cross_Sells extends WCJ_Module {
 	}
 
 	/**
+	 * cross_sells_exclude_not_in_stock.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 */
+	function cross_sells_exclude_not_in_stock( $ids, $_product ) {
+		foreach ( $ids as $key => $product_id ) {
+			$product = wc_get_product( $product_id );
+			if ( ! $product->is_in_stock() ) {
+				unset( $ids[ $key ] );
+			}
+		}
+		return $ids;
+	}
+
+	/**
 	 * cross_sells_ids.
 	 *
 	 * @version 3.6.0
 	 * @since   3.6.0
-	 * @todo    (maybe) on per category/tag basis
-	 * @todo    (maybe) ids instead of list
-	 * @todo    (maybe) on cart update (i.e. product removed) cross-sells are not updated (so it may be needed to reload page manually to see new cross-sells)
+	 * @todo    [dev] (maybe) ids instead of list
+	 * @todo    [dev] (maybe) on cart update (i.e. product removed) cross-sells are not updated (so it may be needed to reload page manually to see new cross-sells)
+	 * @todo    [feature] (maybe) on per category/tag basis
 	 */
 	function cross_sells_ids( $ids, $_product ) {
 		$global_cross_sells = get_option( 'wcj_cross_sells_global_ids', '' );
 		if ( ! empty( $global_cross_sells ) ) {
 			$global_cross_sells = array_unique( $global_cross_sells );
-			$product_id     = wcj_get_product_id_or_variation_parent_id( $_product );
+			$product_id         = wcj_get_product_id_or_variation_parent_id( $_product );
 			if ( false !== ( $key = array_search( $product_id, $global_cross_sells ) ) ) {
 				unset( $global_cross_sells[ $key ] );
 			}

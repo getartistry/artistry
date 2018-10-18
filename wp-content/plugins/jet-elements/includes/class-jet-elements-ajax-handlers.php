@@ -88,7 +88,26 @@ if ( ! class_exists( 'Jet_Elements_Ajax_Handlers' ) ) {
 				wp_send_json_error( array( 'type' => 'error', 'message' => $this->sys_messages['server_error'] ) );
 			}
 
-			$mail = $data['mail'];
+			$api_key = jet_elements_settings()->get( 'mailchimp-api-key' );
+
+			if ( ! $api_key ) {
+				wp_send_json( array( 'type' => 'error', 'message' => $this->sys_messages['mailchimp'] ) );
+			}
+
+			$list_id = jet_elements_settings()->get( 'mailchimp-list-id', '' );
+
+			if ( isset( $data['use_target_list_id'] ) &&
+				filter_var( $data['use_target_list_id'], FILTER_VALIDATE_BOOLEAN ) &&
+				! empty( $data['target_list_id'] )
+			) {
+				$list_id = $data['target_list_id'];
+			}
+
+			if ( ! $list_id ) {
+				wp_send_json( array( 'type' => 'error', 'message' => $this->sys_messages['mailchimp'] ) );
+			}
+
+			$mail = $data['email'];
 
 			if ( empty( $mail ) || ! is_email( $mail ) ) {
 				wp_send_json( array( 'type' => 'error', 'message' => $this->sys_messages['invalid_mail'] ) );
@@ -96,14 +115,24 @@ if ( ! class_exists( 'Jet_Elements_Ajax_Handlers' ) ) {
 
 			$double_opt_in = filter_var( jet_elements_settings()->get( 'mailchimp-double-opt-in' ), FILTER_VALIDATE_BOOLEAN );
 
-			$args = array(
-				'email' => array(
-					'email' => $mail,
-				),
-				'double_optin' => $double_opt_in,
-			);
+			$args = [
+				'email_address' => $mail,
+				'status'        => $double_opt_in ? 'pending' : 'subscribed',
+			];
 
-			$response = $this->api_call( 'lists/subscribe', $args );
+			if ( ! empty( $data['additional'] ) ) {
+
+				$additional = $data['additional'];
+
+				foreach ( $additional as $key => $value ) {
+					$merge_fields[ strtoupper( $key ) ] = $value;
+				}
+
+				$args['merge_fields'] = $merge_fields;
+
+			}
+
+			$response = $this->api_call( $api_key, $list_id, $args );
 
 			if ( false === $response ) {
 				wp_send_json( array( 'type' => 'error', 'message' => $this->sys_messages['mailchimp'] ) );
@@ -129,18 +158,7 @@ if ( ! class_exists( 'Jet_Elements_Ajax_Handlers' ) ) {
 		 * @param  array  $args   API call arguments.
 		 * @return array|bool
 		 */
-		public function api_call( $method, $args = array() ) {
-
-			if ( ! $method ) {
-				return false;
-			}
-
-			$api_key = jet_elements_settings()->get( 'mailchimp-api-key' );
-			$list_id = jet_elements_settings()->get( 'mailchimp-list-id', '' );
-
-			if ( ! $api_key || ! $list_id ) {
-				return false;
-			}
+		public function api_call( $api_key, $list_id, $args = [] ) {
 
 			$key_data = explode( '-', $api_key );
 
@@ -148,13 +166,37 @@ if ( ! class_exists( 'Jet_Elements_Ajax_Handlers' ) ) {
 				return false;
 			}
 
-			$this->api_server = sprintf( $this->api_server, $key_data[1] );
+			$this->api_server = sprintf( 'https://%s.api.mailchimp.com/3.0/', $key_data[1] );
 
-			$url      = esc_url( trailingslashit( $this->api_server . $method ) );
-			$defaults = array( 'apikey' => $api_key, 'id' => $list_id );
-			$data     = json_encode( array_merge( $defaults, $args ) );
+			$url = esc_url( trailingslashit( $this->api_server . 'lists/' . $list_id . '/members/' ) );
 
-			$request = wp_remote_post( $url, array( 'body' => $data ) );
+			$data = json_encode( $args );
+
+			$request_args = [
+				'method'      => 'POST',
+				'timeout'     => 20,
+				'headers'     => [
+					'Content-Type'  => 'application/json',
+					'Authorization' => 'apikey ' . $api_key
+				],
+				'body'        => $data,
+			];
+
+			$request = wp_remote_post( $url, $request_args );
+
+			/*$url = esc_url( trailingslashit( $this->api_server . 'lists/' . $list_id . '/merge-fields' ) );
+			$request = wp_remote_post( $url, [
+				'method'      => 'GET',
+				'timeout'     => 20,
+				'headers'     => [
+					'Content-Type'  => 'application/json',
+					'Authorization' => 'apikey ' . $api_key
+				],
+				//'body'        => $data,
+			] );*/
+
+			//var_dump( json_decode(wp_remote_retrieve_body( $request ), true ) );
+			//exit();
 
 			return wp_remote_retrieve_body( $request );
 		}

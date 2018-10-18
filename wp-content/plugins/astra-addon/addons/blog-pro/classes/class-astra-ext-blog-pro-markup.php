@@ -26,7 +26,7 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -232,9 +232,19 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 					esc_html( get_the_modified_date() )
 				);
 
-				$posted_on = sprintf(
-					esc_html( '%s' ),
-					$time_string
+				/**
+				 * Filters the Date Box time format.
+				 *
+				 * @since 1.5.0
+				 *
+				 * @param string posted date format for the posts.
+				 */
+				$posted_on = apply_filters(
+					'astra_date_box_time_format',
+					sprintf(
+						esc_html( '%s' ),
+						$time_string
+					)
 				);
 
 				ob_start();
@@ -247,7 +257,14 @@ if ( ! class_exists( 'Astra_Ext_Blog_Pro_Markup' ) ) {
 				<?php
 				$posted_on_data = ob_get_clean();
 
-				$output .= $posted_on_data;
+				/**
+				 * Filters the Date Box markup.
+				 *
+				 * @since 1.5.0
+				 *
+				 * @param string $posted_on_data the posted date markup for the posts.
+				 */
+				$output .= apply_filters( 'astra_date_box_markup', $posted_on_data );
 			endif;
 
 			return $output;

@@ -16,7 +16,7 @@ class Pods_URL extends Data_Tag {
 	}
 
 	public function get_title() {
-		return __( 'Pods URL Field', 'elementor-pro' );
+		return __( 'Pods', 'elementor-pro' ) . ' ' . __( 'URL Field', 'elementor-pro' );
 	}
 
 	public function get_group() {
